@@ -1,8 +1,10 @@
 // import { NextUIProvider } from "@nextui-org/react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Header from "@/src/components/Header";
+import Footer from "@/src/components/Footer";
 
-const poppins = Poppins({ weight:["300", "500"],  subsets: ["latin"] });
+const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -14,7 +16,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         {/* <NextUIProvider> */}
-          {children}
+        <Header />
+        {children}
+        <Footer />
+
         {/* </NextUIProvider> */}
       </body>
     </html>
