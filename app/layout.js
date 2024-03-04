@@ -16,11 +16,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className + " dark"}>
-        {/* <NextUIProvider> */}
+        <main className="flex items-center flex-col min-h-screen">
+          {/* <NextUIProvider> */}
           <Header />
           {children}
           <Footer />
-        {/* </NextUIProvider> */}
+          {/* </NextUIProvider> */}
+        </main>
       </body>
     </html>
   );
