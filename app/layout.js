@@ -1,3 +1,4 @@
+
 // import { NextUIProvider } from "@nextui-org/react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -14,12 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={poppins.className + " dark"}>
         {/* <NextUIProvider> */}
-        <Header />
-        {children}
-        <Footer />
-
+          <Header />
+          {children}
+          <Footer />
         {/* </NextUIProvider> */}
       </body>
     </html>
