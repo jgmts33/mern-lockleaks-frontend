@@ -9,7 +9,6 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 export default function HomePage() {
-
   const icons = {
     left: <ChevronLeft fill="currentColor" size={16} />,
     right: <ChevronRight fill="currentColor" size={16} />,
@@ -179,7 +178,7 @@ export default function HomePage() {
 
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
 
-  const reviewItems = customReview.map((item, index) => <div key={index} className="text-left w-[418px] flex flex-wrap outline-none rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 p-10">
+  const reviewItems = customReview.map((item, index) => <div key={index} className="w-1/3 text-left flex flex-wrap outline-none rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 p-10 cursor-pointer">
     <div className='ml-3 mt-2 flex items-center gap-4'>
       <img src="assets/floyed.svg" />
       <div>
@@ -214,10 +213,9 @@ export default function HomePage() {
   return (
 
     <main className="flex items-center flex-col px-10 text-white max-w-[1480px] py-4">
-
       <div className='relative'>
         <div className="flex w-full justify-center items-center flex-col relative z-20">
-          <div className="max-w-[1100px] text-center gap-10">
+          <div className="max-w-[1300px] text-center gap-10">
             <p className="font-medium text-[70px]">INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION</p>
             <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg mt-4 px-10 py-7 text-lg" size='lg'>
               Protect Content Now!
@@ -240,8 +238,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-
-
       <div className='w-full relative mt-32'>
         <div className="flex flex-col mx-auto z-20 relative">
           <p className="font-medium text-[50px] uppercase">We're ready to assist</p>
@@ -294,7 +290,6 @@ export default function HomePage() {
         </div>
         <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-2xl' />
       </div>
-
       <div className="flex flex-col p-20 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
         <span className='font-medium text-[50px] mx-auto text-white max-w-[600px]'>OUR SERVICES FOR YOUR BENEFIT</span>
         <div className="flex flex-wrap relative gap-x-4 gap-y-2">
@@ -315,8 +310,6 @@ export default function HomePage() {
           }
         </div>
       </div>
-
-
       {
         services.map((service, index) => {
           return (
@@ -343,15 +336,12 @@ export default function HomePage() {
           <Image src="assets/safeground/robot-hand-finger.svg" width={461} height={352} className='absolute right-0 top-10' />
         </div>
       </div>
-
-
       <div className="mt-32 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8">
         <video controls preload="none" className='rounded-xl w-full'>
           <source src="/path/to/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-
       <div className="container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24">
         {
           percentDescription.map((item, index) => {
@@ -370,8 +360,6 @@ export default function HomePage() {
           })
         }
       </div>
-
-
       <div className="mt-32 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 ">
         <div className='flex justify-start w-full'>
           <div className='p-10'>
@@ -381,14 +369,10 @@ export default function HomePage() {
           <Image src="assets/setup/message.svg" width={300} height={170} className="top-20 right-[460px] absolute" />
           <Image src="assets/setup/clock-message.svg" width={800} height={600} className="top-0 right-0 absolute" />
         </div>
-
         <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full" size='lg'>
           Free Analisis
         </Button>
       </div>
-
-
-
       <div className='my-20 container'>
         <p className='font-medium text-5xl '>Customer Reviews</p>
         <div className="flex top-0 relative gap-8 mt-16 items-center">
