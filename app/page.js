@@ -313,7 +313,7 @@ export default function HomePage() {
       {
         services.map((service, index) => {
           return (
-            <div className={'flex mt-10 justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
+            <div key={index} className={'flex mt-10 justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
               <img src={service.img} alt="Service" />
               <span className='max-w-1/2'>{service.description}</span>
             </div>
