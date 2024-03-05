@@ -51,7 +51,7 @@ export default function Footer() {
             <Link href={"/contact-us"} >Contact US</Link>
           </div>
         </div>
-        <p className='font-light text-xs text-center pb-8'>Copyright © 2023 LockLeaks.</p>
+        <p className='font-light text-xs text-center pb-8 text-white'>Copyright © 2023 LockLeaks.</p>
       </div>
       <div className='w-full h-52 bg-[#362666] blur-3xl absolute bottom-0 left-0 bg-opacity-35 rounded-t-3xl z-20'>
         <img src="assets/bg-footer.svg" className='absolute bottom-0' />

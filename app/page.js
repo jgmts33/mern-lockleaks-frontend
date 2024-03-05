@@ -237,7 +237,7 @@ export default function HomePage() {
             <p className="text-center font-light text-base mt-5 opacity-80">Chosen by esteemed industry leaders</p>
           </div>
         </div>
-      </div>
+      </div >
       <div className='w-full relative mt-32'>
         <div className="flex flex-col mx-auto z-20 relative">
           <p className="font-medium text-[50px] uppercase">We're ready to assist</p>
