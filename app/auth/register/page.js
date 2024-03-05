@@ -152,10 +152,10 @@ export default function Register() {
                                 <span className='font-light text-xs pl-2'>I agree to WEBSITE NAMEr's</span> <Link href='' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                         </div>
-                        <ReCAPTCHA
+                        {/* <ReCAPTCHA
                             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                             security={process.env.RECAPTCHA_SECRET_KEY}
-                        />
+                        /> */}
                         <Button radius="lg" onClick={() => handleRegister()} className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
                             Sign Up
                         </Button>

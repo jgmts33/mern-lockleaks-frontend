@@ -40,13 +40,13 @@ export default function Pricing() {
                 <div className='flex justify-start'>
                     <p className='font-medium text-5xl mt-36'>PRICING TABLE</p>
                 </div>
-                <div>
+                <div className='relative bg-gradient-to-tr mx-auto from-[#262627] to-[#3a3838] border-gray-600 border rounded-full'>
                     <Button radius="lg" className="mt-5 bg-gradient-to-tr mx-auto from-[#9C3FE4] to-[#C65647] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
-                        Protect Content Now!
+                        Bill Monthly
                         <span>{icons.shine}</span>
                     </Button>
                     <Button radius="lg" className="mt-5 bg-gradient-to-tr mx-auto from-[#262627] to-[#3a3838] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
-                        Protect Content Now!
+                        Bill Yearly
                         <span>{icons.shine}</span>
                     </Button>
                 </div>
