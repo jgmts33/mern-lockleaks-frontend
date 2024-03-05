@@ -252,38 +252,34 @@ export default function HomePage() {
       <div className='relative'>
         <div className="flex w-full justify-center items-center flex-col relative z-20">
           <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
-            <p className="font-medium text-[70px]">INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION</p>
+            <p className="font-medium text-[70px] max-md:text-[50px] max-md:justify-center">INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION</p>
           </div>
           <div className='justify-center flex px-160 mt-8 relative w-full'>
             <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg px-10 py-7 text-lg" size='lg'>
               Protect Content Now!
               <span>{icons.shine}</span>
             </Button>
-
-            <div className={"duration-700 flex bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute -left-8 top-6 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
+            <div className={"duration-700 flex max-lg:hidden bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute -left-8 top-6 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
               <div>{icons.success}</div>
               <div>
                 <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
                 <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
               </div>
             </div>
-            <div className={"duration-700 flex bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer w-[422px] absolute -right-12 -top-8 " + (animationCounter >= 4 ? "opacity-100" : "opacity-0")}>
+            <div className={"duration-700 flex max-lg:hidden bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer w-[422px] absolute -right-12 -top-8 " + (animationCounter >= 4 ? "opacity-100" : "opacity-0")}>
               <div className='-rotate-[8deg]'>{icons.chat}</div>
               <div>
                 <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
                 <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
               </div>
             </div>
-
-            <div className={"duration-700 flex bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute right-6 top-20 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+            <div className={"duration-700 flex max-lg:hidden bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute right-6 top-20 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
               <div>{icons.profile}</div>
               <div>
                 <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
                 <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
               </div>
             </div>
-
-
           </div>
           <div className="flex flex-col w-full mt-60 text-center items-center">
             <p className="text-center font-normal text-xl">Increase your online success with professional copyright protection</p>
@@ -371,7 +367,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-2xl' />
+        <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
       </div>
 
 
@@ -398,7 +394,7 @@ export default function HomePage() {
       {
         services.map((service, index) => {
           return (
-            <div key={index} className={'flex mt-10 justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
+            <div key={index} className={'flex max-sm:flex-wrap mt-10 justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
               <img src={service.img} alt="Service" />
               <span className='max-w-1/2'>{service.description}</span>
             </div>
