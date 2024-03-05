@@ -14,8 +14,8 @@ export default function Footer() {
   return (
     <div className='w-full bg-black px-10 relative'>
       <div className='max-w-[1512px] mx-auto relative z-30'>
-        <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16'>
-          <div className='mt-4'>
+        <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-md:flex-col gap-10'>
+          <div>
             <Link href="/" className="text-white text-xl font-semibold">Your Logo</Link>
             <div className='flex gap-2 items-center mt-6'>
               <Link href={"#"}>{icons.twitter}</Link>

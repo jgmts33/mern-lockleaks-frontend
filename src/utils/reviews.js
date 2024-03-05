@@ -1,4 +1,3 @@
-"use client";
 import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,7 +11,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 
-export default function Blog() {
+export default function Reviews() {
   return (
     <>
       <Swiper

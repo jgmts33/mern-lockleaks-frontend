@@ -5,8 +5,13 @@ import {
 import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft, ChevronRight, ICON_SUCCESS, PROFILE, CHAT, TIP } from "@/src/utils/Icons";
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import Reviews from '@/src/utils/reviews';
 
 export default function HomePage() {
   const icons = {
@@ -197,10 +202,14 @@ export default function HomePage() {
     { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
     { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
     { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
+    { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
+    { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
+    { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
   ]
 
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
   const [animationCounter, setAnimationCounter] = useState(0);
+  const [swiperRef, setSwiperRef] = useState(null);
   const [isFlipped, setIsFlipped] = useState(-1);
 
   useEffect(() => {
@@ -214,256 +223,282 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, []);
 
-  const reviewItems = customReview.map((item, index) => <div key={index} className="w-1/3 text-left flex flex-wrap outline-none rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 p-10 cursor-pointer">
-    <div className='ml-3 mt-2 flex items-center gap-4'>
-      <img src="assets/floyed.svg" />
-      <div>
-        <p className='font-semibold text-xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{item.title}</p>
-        <p className='font-light text-xs opacity-80'>{item.subTitle}</p>
-        <div className='flex'>
-          <span>{icons.star}</span>
-          <span>{icons.star}</span>
-          <span>{icons.star}</span>
-          <span>{icons.star}</span>
-          <span>{icons.star}</span>
-        </div>
-      </div>
-      <span>{icons.twitter}</span>
-    </div>
-    <p className='text-base font-normal opacity-80 pt-4'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-  </div>);
+  const carouselLeftButton = <button className="bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg relative top-[132px] mr-2">
+    {icons.left}
+  </button>
 
-  const responsive = {
-    0: {
-      items: 1
-    },
-    568: {
-      items: 2
-    },
-    1024: {
-      items: 3,
-      itemsFit: 'contain'
-    },
-  };
+  const carouselRightButton = <button className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg  relative top-[132px] ml-2">
+    {icons.right}
+  </button>
 
   return (
-
-    <main className="flex items-center flex-col px-10 text-white max-w-[1480px] py-4">
-      <div className='relative'>
-        <div className="flex w-full justify-center items-center flex-col relative z-20">
-          <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
-            <p className="font-medium text-[70px] max-md:text-[50px] max-md:justify-center">INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION</p>
+    <>
+      <div className="px-10 text-white max-w-[1480px] py-4">
+        <div className='relative'>
+          <div className="flex w-full justify-center items-center flex-col relative z-20">
+            <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
+              <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center">INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION</p>
+            </div>
+            <div className='justify-center flex mt-8 relative w-[calc(100%-40px)]  max-xl:w-full max-xl:flex-col max-xl:items-center max-xl:mx-auto'>
+              <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-[#9C3FE4] to-[#C65647] text-white shadow-lg px-10 py-7 text-lg" size='lg'>
+                Protect Content Now!
+                <span>{icons.shine}</span>
+              </Button>
+              <div className={"duration-700 flex max-md:hidden max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
+                <div>{icons.success}</div>
+                <div>
+                  <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
+                  <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
+                </div>
+              </div>
+              <div className={"duration-700 flex max-md:hidden max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute right-6 top-20 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+                <div>{icons.profile}</div>
+                <div>
+                  <p className='font-semibold text-xl mt-3'>PROFESSIONAL SUPPORT</p>
+                  <p className='font-normal text-base mt-2'>Live Support at Your Fingertips - We're Just a Click Away.</p>
+                </div>
+              </div>
+              <div className={"duration-700 flex max-md:hidden max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer w-[422px] absolute -right-12 -top-8 " + (animationCounter >= 4 ? "opacity-100" : "opacity-0")}>
+                <div className='-rotate-[8deg]'>{icons.chat}</div>
+                <div>
+                  <p className='font-semibold text-xl mt-3'>DEFEND YOUR NAME</p>
+                  <p className='font-normal text-base mt-2'>Your Brand is Your Legacy, Let Us Be Your Guardians.</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col w-full mt-60 text-center items-center">
+              <p className="text-center font-normal text-xl max-md:justify-center">Increase your online success with professional copyright protection</p>
+              <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col">
+                <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
+                <Image src="assets/myfreecams.svg" width={151} height={13} alt='myfreecams' />
+                <Image src="assets/stripchat.svg" width={143} height={26} alt='stripchat' />
+                <Image src="assets/patreon.svg" width={118} height={32} alt='patreon' />
+                <Image src="assets/stripchat.svg" width={134} height={26} alt='stripchat' />
+                <Image src="assets/manyvids.svg" width={186} height={95} alt='manyvids' />
+                <Image src="assets/chaturbate.svg" width={136} height={41} alt='chaturbate' />
+                <p className="font-normal text-xl">and more</p>
+              </div>
+              <p className="text-center font-light text-base mt-5 opacity-80">Chosen by esteemed industry leaders</p>
+            </div>
           </div>
-          <div className='justify-center flex px-160 mt-8 relative w-full'>
-            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg px-10 py-7 text-lg" size='lg'>
-              Protect Content Now!
-              <span>{icons.shine}</span>
+        </div >
+        <div className='w-full relative mt-32'>
+          <div className="flex flex-col mx-auto z-20 relative">
+            <p className="font-medium text-[50px] uppercase max-lg:text-[40px] max-lg:text-center">We're ready to assist</p>
+            <div className="flex justify-center items-center gap-8 max-lg:mt-10">
+              <div className="max-xl:hidden flex justify-center items-center max-lg:hidden w-full">
+                <img src="assets/robert.svg" alt='robert' className='w-80 h-[680px] mt-20 bg-opacity-90' />
+              </div>
+              <div className='flex items-center justify-center gap-6 max-lg:flex-col'>
+                <div className="flex flex-col top-0 relative gap-8">
+                  {
+                    assistSecionItems[0].map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className='card w-[374px] relative h-[315px] cursor-pointer'
+                          onMouseEnter={() => setIsFlipped(index)}
+                          onMouseLeave={() => setIsFlipped(-1)}
+                        >
+                          <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index ? "hidden" : "flex flex-col items-start")}>
+                            <div className='mb-2'> {item.icon} </div>
+                            <p className='font-semibold text-xl'>{item.title}</p>
+                            <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                            <p className='font-normal text-base mt-5'>{item.content}</p>
+                            <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
+                              <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                              <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
+                            </Button>
+                          </div>
+                          <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index].bg_color + (isFlipped != index ? " hidden" : " flex")}>
+                            <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
+                            <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index].description}</p></div>
+                          </div>
+                        </div>
+
+                      )
+                    })
+                  }
+                </div>
+                <div className="flex flex-col top-24 max-lg:top-2 relative gap-8">
+                  {
+                    assistSecionItems[1].map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className='card w-[374px] relative h-[315px] cursor-pointer'
+                          onMouseEnter={() => setIsFlipped(index + 2)}
+                          onMouseLeave={() => setIsFlipped(-1)}
+                        >
+                          <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index + 2 ? "hidden" : "flex flex-col items-start")}>
+                            <div className='mb-2'> {item.icon} </div>
+                            <p className='font-semibold text-xl'>{item.title}</p>
+                            <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                            <p className='font-normal text-base mt-5'>{item.content}</p>
+                            <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
+                              <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                              <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
+                            </Button>
+                          </div>
+                          <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index + 2].bg_color + (isFlipped != index + 2 ? " hidden" : " flex")}>
+                            <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
+                            <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index + 2].description}</p></div>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+        </div>
+        <div className="flex flex-col p-20 max-md:p-10 max-sm:p-0 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
+          <span className='font-medium text-[50px] mx-auto text-white max-w-[600px] max-lg:text-[40px]'>OUR SERVICES FOR YOUR BENEFIT</span>
+          <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
+            {
+              services.map((service, index) => {
+                return (
+                  <Button
+                    key={index}
+                    radius="full"
+                    variant={selectedServiceIndex == index ? 'solid' : 'faded'}
+                    className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-[#9C3FE4] to-[#C65647]" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4 px-4"}
+                    onClick={() => setSelectedServiceIndex(index)}
+                  >
+                    <span>{icons.shine}</span>{service.name}
+                  </Button>
+                )
+              })
+            }
+          </div>
+        </div>
+        {
+          services.map((service, index) => {
+            return (
+              <div key={index} className={'flex max-xl:flex-col mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
+                <img src={service.img} alt="Service" className='max-xl:w-full max-md:hidden' />
+                <span className='max-w-1/2 max-xl:text-center'>{service.description}</span>
+              </div>
+            )
+          })
+        }
+        <div className="mt-24 max-lg:text-center max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative">
+          <div className='p-28 max-xl:p-16'>
+            <p className='font-medium text-[50px] max-lg:text-[40px] leading-[70px] max-lg:leading-[46px] max-xl:text-[40px] uppercase'>Securing Your Brand:</p>
+            <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
+            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full mt-6" size='lg'>
+              Free Analisis
             </Button>
-            <div className={"duration-700 flex max-lg:hidden bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute -left-8 top-6 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
-              <div>{icons.success}</div>
-              <div>
-                <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
-                <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
-              </div>
-            </div>
-            <div className={"duration-700 flex max-lg:hidden bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer w-[422px] absolute -right-12 -top-8 " + (animationCounter >= 4 ? "opacity-100" : "opacity-0")}>
-              <div className='-rotate-[8deg]'>{icons.chat}</div>
-              <div>
-                <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
-                <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
-              </div>
-            </div>
-            <div className={"duration-700 flex max-lg:hidden bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute right-6 top-20 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
-              <div>{icons.profile}</div>
-              <div>
-                <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
-                <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
-              </div>
-            </div>
           </div>
-          <div className="flex flex-col w-full mt-60 text-center items-center">
-            <p className="text-center font-normal text-xl">Increase your online success with professional copyright protection</p>
-            <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center">
-              <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
-              <Image src="assets/myfreecams.svg" width={151} height={13} alt='myfreecams' />
-              <Image src="assets/stripchat.svg" width={143} height={26} alt='stripchat' />
-              <Image src="assets/patreon.svg" width={118} height={32} alt='patreon' />
-              <Image src="assets/stripchat.svg" width={134} height={26} alt='stripchat' />
-              <Image src="assets/manyvids.svg" width={186} height={95} alt='manyvids' />
-              <Image src="assets/chaturbate.svg" width={136} height={41} alt='chaturbate' />
-              <p className="font-normal text-xl">and more</p>
-            </div>
-            <p className="text-center font-light text-base mt-5 opacity-80">Chosen by esteemed industry leaders</p>
+          <div className='flex max-lg:hidden'>
+            <Image src="assets/safeground/message.svg" width={300} height={170} className="top-[180x] right-[520px] absolute max-xl:!w-[200px] max-xl:right-[320px]" />
+            <Image src="assets/safeground/img-thumbnail.svg" width={320} height={200} className='top-[40px] right-[330px] absolute max-xl:!w-[220px] max-xl:right-[234px]' />
+            <Image src="assets/safeground/robot-hand-finger.svg" width={461} height={352} className='absolute right-0 top-10 max-xl:!w-[320px]' />
           </div>
         </div>
-      </div >
-      <div className='w-full relative mt-32'>
-        <div className="flex flex-col mx-auto z-20 relative">
-          <p className="font-medium text-[50px] uppercase">We're ready to assist</p>
-          <div className="flex justify-center items-center gap-8">
-            <div className="max-xl:hidden flex justify-center items-center max-lg:hidden w-full">
-              <img src="assets/robert.svg" alt='robert' className='w-80 h-[680px] mt-20 bg-opacity-90' />
-            </div>
-            <div className='flex items-center justify-center gap-6'>
-              <div className="flex flex-col top-0 relative gap-8">
-                {
-                  assistSecionItems[0].map((item, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className='card w-[374px] relative h-[315px] cursor-pointer'
-                        onMouseEnter={() => setIsFlipped(index)}
-                        onMouseLeave={() => setIsFlipped(-1)}
-                      >
-                        <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index ? "hidden" : "flex flex-col items-start")}>
-                          <div className='mb-2'> {item.icon} </div>
-                          <p className='font-semibold text-xl'>{item.title}</p>
-                          <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
-                          <p className='font-normal text-base mt-5'>{item.content}</p>
-                          <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
-                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                            <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
-                          </Button>
-                        </div>
-                        <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index].bg_color + (isFlipped != index ? " hidden" : " flex")}>
-                          <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
-                          <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index].description}</p></div>
-                        </div>
-                      </div>
 
-                    )
-                  })
-                }
-              </div>
-              <div className="flex flex-col top-24 relative gap-8">
-                {
-                  assistSecionItems[1].map((item, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className='card w-[374px] relative h-[315px] cursor-pointer'
-                        onMouseEnter={() => setIsFlipped(index + 2)}
-                        onMouseLeave={() => setIsFlipped(-1)}
-                      >
-                        <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index + 2 ? "hidden" : "flex flex-col items-start")}>
-                          <div className='mb-2'> {item.icon} </div>
-                          <p className='font-semibold text-xl'>{item.title}</p>
-                          <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
-                          <p className='font-normal text-base mt-5'>{item.content}</p>
-                          <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
-                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                            <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
-                          </Button>
-                        </div>
-                        <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index + 2].bg_color + (isFlipped != index + 2 ? " hidden" : " flex")}>
-                          <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
-                          <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index + 2].description}</p></div>
-                        </div>
-                      </div>
-                    )
-                  })
-                }
-              </div>
-            </div>
-          </div>
+        <div className="mt-32 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8">
+          <video controls preload="none" className='rounded-xl w-full'>
+            <source src="/path/to/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
-        <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-      </div>
-
-
-      <div className="flex flex-col p-20 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
-        <span className='font-medium text-[50px] mx-auto text-white max-w-[600px]'>OUR SERVICES FOR YOUR BENEFIT</span>
-        <div className="flex flex-wrap relative gap-x-4 gap-y-2">
+        <div className="max-lg:flex-col container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24">
           {
-            services.map((service, index) => {
+            percentDescription.map((item, index) => {
               return (
-                <Button
-                  key={index}
-                  radius="full"
-                  variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                  className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-[#9C3FE4] to-[#C65647]" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4 px-4"}
-                  onClick={() => setSelectedServiceIndex(index)}
-                >
-                  <span>{icons.shine}</span>{service.name}
-                </Button>
+                item.bgColor == true ?
+                  <div>
+                    <p className='font-medium text-5xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{item.title}</p>
+                    <p className='font-normal text-lg'>{item.content}</p>
+                  </div>
+                  :
+                  <div>
+                    <p className='font-medium text-5xl'>{item.title}</p>
+                    <p className='font-normal text-lg'>{item.content}</p>
+                  </div>
               )
             })
           }
         </div>
-      </div>
-      {
-        services.map((service, index) => {
-          return (
-            <div key={index} className={'flex max-sm:flex-wrap mt-10 justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
-              <img src={service.img} alt="Service" />
-              <span className='max-w-1/2'>{service.description}</span>
+        <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
+          <div className='flex justify-start w-full'>
+            <div className='p-10 max-xl:w-full max-xl:text-center'>
+              <p className='font-medium text-5xl max-lg:text-[40px] max-w-[580px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
+              <p className='max-w-[520px] max-xl:mx-auto pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
             </div>
-          )
-        })
-      }
-      <div className="mt-24 outline-none  rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative">
-        <div className='p-28'>
-          <p className='font-medium text-[50px] leading-[70px] uppercase'>Securing Your Brand:</p>
-          <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
-          <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full mt-6" size='lg'>
+            <div className='max-xl:hidden'>
+              <Image src="assets/setup/message.svg" width={300} height={170} className="top-20 right-[460px] absolute" />
+              <Image src="assets/setup/clock-message.svg" width={800} height={600} className="top-0 right-0 absolute" />
+            </div>
+          </div>
+          <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full" size='lg'>
             Free Analisis
           </Button>
         </div>
-        <div className='flex'>
-          <Image src="assets/safeground/message.svg" width={300} height={170} className="top-[180x] right-[520px] absolute" />
-          <Image src="assets/safeground/img-thumbnail.svg" width={320} height={200} className='top-[40px] right-[330px] absolute' />
-          <Image src="assets/safeground/robot-hand-finger.svg" width={461} height={352} className='absolute right-0 top-10' />
-        </div>
-      </div>
-      <div className="mt-32 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8">
-        <video controls preload="none" className='rounded-xl w-full'>
-          <source src="/path/to/video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div className="container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24">
-        {
-          percentDescription.map((item, index) => {
-            return (
-              item.bgColor == true ?
+      </div >
+      <div className='my-20 container relative text-white'>
+        <p className='font-medium text-5xl max-xl:text-[40px] max-xl:text-center'>Customer Reviews</p>
+        <div className="mt-16 relative">
+          <Swiper
+            onSwiper={setSwiperRef}
+            slidesPerView={3}
+            centeredSlides={true}
+            spaceBetween={10}
+            pagination={{
+              type: 'fraction',
+            }}
+            navigation={{
+              nextEl: ".swiper-custom-next",
+              prevEl: ".swiper-custom-prev"
+            }}
+            loop={true}
+            modules={[Navigation]}
+            breakpoints={{
+              1420: {
+                slidesPerView: 3,
+              },
+              900: {
+                slidesPerView: 2,
+              },
+              300: {
+                slidesPerView: 1,
+              }
+            }}
+            initialSlide={2}
+            style={{ width: "calc(100% - 160px)" }}
+          >
+            {customReview.map((item, index) => <SwiperSlide key={index}><div className="mx-auto text-left max-w-[432px] flex flex-wrap outline-none rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 p-10 max-sm:p-4 cursor-pointer">
+              <div className='ml-3 mt-2 flex items-center gap-4'>
+                <img src="assets/floyed.svg" />
                 <div>
-                  <p className='font-medium text-5xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{item.title}</p>
-                  <p className='font-normal text-lg'>{item.content}</p>
+                  <p className='font-semibold text-xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{item.title}</p>
+                  <p className='font-light text-xs opacity-80'>{item.subTitle}</p>
+                  <div className='flex'>
+                    <span>{icons.star}</span>
+                    <span>{icons.star}</span>
+                    <span>{icons.star}</span>
+                    <span>{icons.star}</span>
+                    <span>{icons.star}</span>
+                  </div>
                 </div>
-                :
-                <div>
-                  <p className='font-medium text-5xl'>{item.title}</p>
-                  <p className='font-normal text-lg'>{item.content}</p>
-                </div>
-            )
-          })
-        }
-      </div>
-      <div className="mt-32 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 ">
-        <div className='flex justify-start w-full'>
-          <div className='p-10'>
-            <p className='font-medium text-5xl max-w-[580px]'>Quick Setup in Less Than 24 Hours!</p>
-            <p className='max-w-[520px] pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
-          </div>
-          <Image src="assets/setup/message.svg" width={300} height={170} className="top-20 right-[460px] absolute" />
-          <Image src="assets/setup/clock-message.svg" width={800} height={600} className="top-0 right-0 absolute" />
+                <span>{icons.twitter}</span>
+              </div>
+              <p className='text-base font-normal opacity-80 pt-4'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div></SwiperSlide>)}
+
+          </Swiper>
         </div>
-        <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full" size='lg'>
-          Free Analisis
-        </Button>
+
+        <button className="swiper-custom-prev bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg absolute z-50 bottom-[calc(50%-80px)] left-2">
+          {icons.left}
+        </button>
+        <button className="swiper-custom-next bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg  absolute z-50 bottom-[calc(50%-80px)] right-2">
+          {icons.right}
+        </button>
       </div>
-      <div className='my-20 container'>
-        <p className='font-medium text-5xl '>Customer Reviews</p>
-        <div className="flex top-0 relative gap-8 mt-16 items-center">
-          <Button radius="lg" className="bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20 text-white shadow-full py-7" size='sm'>
-            {icons.left}
-          </Button>
-          {reviewItems.map((item) => item)}
-          <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full py-7" size='sm'>
-            {icons.right}
-          </Button>
-        </div>
-      </div>
-    </main >
+    </>
   )
 }     

@@ -11,7 +11,7 @@ export default function Header() {
     <div className='flex items-center justify-between w-full text-large font-semibold text-[17px] py-8 px-10 '>
       <div className="flex items-center gap-20">
         <Link href="/" className="text-white text-xl font-semibold">Your Logo</Link>
-        <div className="flex items-center gap-12 uppercase opacity-80 max-lg:hidden">
+        <div className="flex items-center gap-12 uppercase opacity-80 max-xl:hidden">
           <Link href="/pricing" className="text-white font-light" >Pricing</Link>
           <div className="text-white font-light flex items-center gap-2 hover:cursor-pointer">
             Services
