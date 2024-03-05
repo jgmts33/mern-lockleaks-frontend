@@ -89,12 +89,12 @@ export default function Register() {
                 <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto object-cover object-center' />
             </div>
             <div className='w-full lg:w-1/2 flex items-center justify-center'>
-                <div className="w-[562px] flex flex-col items-center  gap-2 text-white">
+                <div className="w-[562px] flex flex-col items-center text-white">
                     <div className='text-center max-w-[354px]'>
                         <p className="font-medium text-5xl ">Sign up</p>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
                     </div>
-                    <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-[transparent] '>
+                    <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-[transparent] '>
                         <div className='relative w-full'>
                             <p className='font-[300] text-white pb-2'>Email Address</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.envelop}</i>

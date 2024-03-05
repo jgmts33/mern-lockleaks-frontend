@@ -1,8 +1,10 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from "@nextui-org/react";
 import { ChevronDown } from "@/src/utils/Icons";
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
+  const currentPath = usePathname();
   const icons = {
     chevron: <ChevronDown fill="currentColor" size={16} />,
   };
