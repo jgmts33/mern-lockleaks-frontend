@@ -711,3 +711,81 @@ export const TIP = ({
         </svg>
     );
 };
+
+export const COMPLETE = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_275_1739)">
+                <path d="M15 28C22.1799 28 28 22.1799 28 15C28 7.8201 22.1799 2 15 2C7.8201 2 2 7.8201 2 15C2 22.1799 7.8201 28 15 28Z" fill="url(#paint0_linear_275_1739)" />
+                <g filter="url(#filter0_d_275_1739)">
+                    <path d="M9.11682 15.8405L12.4786 19.2023L20.8832 10.7977" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
+                </g>
+            </g>
+            <defs>
+                <filter id="filter0_d_275_1739" x="2.11682" y="7.79773" width="25.7664" height="22.4045" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_275_1739" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_1739" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_275_1739" x1="15" y1="2" x2="15" y2="28" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#3BC940" />
+                    <stop offset="1" stop-color="#6CB76F" />
+                </linearGradient>
+                <clipPath id="clip0_275_1739">
+                    <rect width="26" height="26" fill="white" transform="translate(2 2)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    );
+};
+
+export const UNCOMPLETE = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_275_1820)">
+                <path d="M23.339 5.661C18.457 0.778996 10.543 0.778996 5.66101 5.661C0.779012 10.543 0.779012 18.457 5.66101 23.339C10.543 28.221 18.457 28.221 23.339 23.339C28.221 18.457 28.22 10.543 23.339 5.661ZM19.803 18.389C19.9905 18.5765 20.0959 18.8308 20.0959 19.096C20.0959 19.3612 19.9905 19.6155 19.803 19.803C19.6155 19.9905 19.3612 20.0958 19.096 20.0958C18.8308 20.0958 18.5765 19.9905 18.389 19.803L14.5 15.914L10.611 19.803C10.5184 19.8962 10.4082 19.9701 10.2869 20.0206C10.1655 20.0711 10.0354 20.097 9.90401 20.097C9.7726 20.097 9.64249 20.0711 9.52116 20.0206C9.39983 19.9701 9.28966 19.8962 9.19701 19.803C9.10407 19.7102 9.03033 19.6 8.98002 19.4787C8.92971 19.3574 8.90381 19.2273 8.90381 19.096C8.90381 18.9647 8.92971 18.8346 8.98002 18.7133C9.03033 18.592 9.10407 18.4818 9.19701 18.389L13.086 14.5L9.19701 10.611C9.0095 10.4235 8.90416 10.1692 8.90416 9.904C8.90416 9.63882 9.0095 9.3845 9.19701 9.197C9.38452 9.00949 9.63884 8.90415 9.90401 8.90415C10.1692 8.90415 10.4235 9.00949 10.611 9.197L14.5 13.086L18.389 9.197C18.4819 9.10415 18.5921 9.0305 18.7134 8.98026C18.8347 8.93001 18.9647 8.90415 19.096 8.90415C19.2273 8.90415 19.3573 8.93001 19.4786 8.98026C19.5999 9.0305 19.7102 9.10415 19.803 9.197C19.8959 9.28984 19.9695 9.40006 20.0198 9.52137C20.07 9.64268 20.0959 9.7727 20.0959 9.904C20.0959 10.0353 20.07 10.1653 20.0198 10.2866C19.9695 10.4079 19.8959 10.5182 19.803 10.611L15.914 14.5L19.803 18.389Z" fill="url(#paint0_linear_275_1820)" />
+                <g filter="url(#filter0_d_275_1820)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.86296 8.83639C8.38636 9.29829 8.37443 10.0591 8.83633 10.5357L12.6926 14.5148L8.94439 18.3591C8.48106 18.8343 8.4907 19.5951 8.96591 20.0585C9.44112 20.5218 10.202 20.5122 10.6653 20.037L14.3659 16.2414L17.9689 19.9591C18.4308 20.4357 19.1916 20.4477 19.6682 19.9858C20.1448 19.5239 20.1568 18.7631 19.6949 18.2865L16.0445 14.5198L19.8262 10.6411C20.2896 10.1659 20.2799 9.40504 19.8047 8.94171C19.3295 8.47838 18.5687 8.48801 18.1053 8.96323L14.3711 12.7932L10.5623 8.86302C10.1004 8.38642 9.33957 8.37449 8.86296 8.83639Z" fill="white" />
+                </g>
+            </g>
+            <defs>
+                <filter id="filter0_d_275_1820" x="2.49756" y="6.49762" width="23.6699" height="23.9021" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_275_1820" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_1820" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_275_1820" x1="14.4998" y1="1.9995" x2="14.4998" y2="27.0005" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DD5757" />
+                    <stop offset="1" stop-color="#F77676" />
+                </linearGradient>
+                <clipPath id="clip0_275_1820">
+                    <rect width="29" height="29" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    );
+};

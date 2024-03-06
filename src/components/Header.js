@@ -10,7 +10,7 @@ export default function Header() {
   };
 
   return (
-    <div className='flex items-center justify-between w-full text-large font-semibold text-[17px] py-8 px-10 '>
+    <div className='flex items-center justify-between w-full max-w-[1500px] text-large font-semibold text-[17px] py-8 px-10 '>
       <div className="flex items-center gap-20">
         <Link href="/" className="text-white text-xl font-semibold">Your Logo</Link>
         <div className="flex items-center gap-12 uppercase opacity-80 max-xl:hidden">
