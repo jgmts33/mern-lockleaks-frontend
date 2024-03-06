@@ -167,7 +167,7 @@ export default function Pricing() {
                                                     false
                                             }
                                             <p className='text-center font-medium text-6xl mt-10'>{item.title}</p>
-                                            <div className='mt-20 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{item.price}</p><p className='flex-col flex'>/MO</p></div>
+                                            <div className='mt-20 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{item.price}</p><p className='pt-5'>/MO</p></div>
                                             {
                                                 item.title != "STAR" ?
                                                     <Button radius="lg" className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
@@ -179,7 +179,7 @@ export default function Pricing() {
                                                     </Button>
                                             }
                                         </div>
-                                        <div className={'flex flex-col gap-y -5 ' + item.add_content}>
+                                        <div className={'flex flex-col gap-y-5 ' + item.add_content}>
                                             <div className={'flex justify-between items-center z-10 '}>
                                                 <p className='font-semibold text-xl'>USERNAMES : {item.user_name}</p>
                                                 <Button radius="full" className="w-1/3 bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2" size='md'>
