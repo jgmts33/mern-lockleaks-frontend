@@ -415,7 +415,7 @@ export default function HomePage() {
           </Button>
         </div>
       </div >
-      {/* <CustomerReview /> */}
+      <CustomerReview />
     </>
   )
 }     
