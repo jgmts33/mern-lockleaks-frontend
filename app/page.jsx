@@ -209,32 +209,32 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="px-10 text-white max-w-[1480px] py-4">
+      <div className="text-white max-w-[1480px]">
         <div className='relative'>
           <div className="flex w-full justify-center items-center flex-col relative z-20">
             <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
-              <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center">INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION</p>
+              <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center max-md:tex-[20px]">INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION</p>
             </div>
             <div className='justify-center flex mt-8 relative w-[calc(100%-40px)]  max-xl:w-full max-xl:flex-col max-xl:items-center max-xl:mx-auto'>
               <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-[#9C3FE4] to-[#C65647] text-white shadow-lg px-10 py-7 text-lg" size='lg'>
                 Protect Content Now!
                 <span>{icons.shine}</span>
               </Button>
-              <div className={"duration-700 flex max-md:hidden max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
+              <div className={"duration-700 flex max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
                   <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
                 </div>
               </div>
-              <div className={"duration-700 flex max-md:hidden max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute right-6 top-20 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+              <div className={"duration-700 flex max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer w-[422px] absolute right-6 top-20 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.profile}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>PROFESSIONAL SUPPORT</p>
                   <p className='font-normal text-base mt-2'>Live Support at Your Fingertips - We're Just a Click Away.</p>
                 </div>
               </div>
-              <div className={"duration-700 flex max-md:hidden max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer w-[422px] absolute -right-12 -top-8 " + (animationCounter >= 4 ? "opacity-100" : "opacity-0")}>
+              <div className={"duration-700 flex max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer w-[422px] absolute -right-12 -top-8 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>DEFEND YOUR NAME</p>
@@ -242,7 +242,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-full mt-60 text-center items-center">
+            <div className="flex flex-col w-full mt-60 text-center items-center max-md:mt-32">
               <p className="text-center font-normal text-xl max-md:justify-center">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col">
                 <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
@@ -353,14 +353,14 @@ export default function HomePage() {
         {
           services.map((service, index) => {
             return (
-              <div key={index} className={'flex max-xl:flex-col mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
+              <div key={index} className={'flex max-xl:flex-col max-xl:mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
                 <img src={service.img} alt="Service" className='max-xl:w-full max-md:hidden' />
                 <span className='max-w-1/2 max-xl:text-center'>{service.description}</span>
               </div>
             )
           })
         }
-        <div className="mt-24 max-lg:text-center max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative">
+        <div className="mt-24 max-lg:text-center max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative">
           <div className='p-28 max-xl:p-16'>
             <p className='font-medium text-[50px] max-lg:text-[40px] leading-[70px] max-lg:leading-[46px] max-xl:text-[40px] uppercase'>Securing Your Brand:</p>
             <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
@@ -402,7 +402,7 @@ export default function HomePage() {
         <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
           <div className='flex justify-start w-full'>
             <div className='p-10 max-xl:w-full max-xl:text-center'>
-              <p className='font-medium text-5xl max-lg:text-[40px] max-w-[580px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
+              <p className='font-medium text-5xl max-lg:text-[40px] max-w-[580px] max- max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
               <p className='max-w-[520px] max-xl:mx-auto pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
             </div>
             <div className='max-xl:hidden'>
@@ -415,7 +415,7 @@ export default function HomePage() {
           </Button>
         </div>
       </div >
-      <CustomerReview />
+      {/* <CustomerReview /> */}
     </>
   )
 }     

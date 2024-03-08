@@ -7,7 +7,7 @@ import HeroImg from "@/public/assets/Hero.svg";
 import { useEffect, useState } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google, CAPTCHA, ERROR, SUCCESS } from "@/src/utils/Icons";
 import React from "react";
-import ReCAPTCHA from 'react-google-recaptcha';
+// import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function Register() {
 

@@ -789,3 +789,587 @@ export const UNCOMPLETE = ({
 
     );
 };
+
+export const EYE = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.0137 7.27219C22.9819 7.19906 22.2019 5.46938 20.46 3.7275C18.8437 2.11313 16.0669 0.1875 12 0.1875C7.93311 0.1875 5.15623 2.11313 3.53998 3.7275C1.79811 5.46938 1.01811 7.19625 0.986235 7.27219C0.954184 7.34419 0.937622 7.42212 0.937622 7.50094C0.937622 7.57975 0.954184 7.65768 0.986235 7.72969C1.01811 7.80187 1.79811 9.53156 3.53998 11.2734C5.15623 12.8878 7.93311 14.8125 12 14.8125C16.0669 14.8125 18.8437 12.8878 20.46 11.2734C22.2019 9.53156 22.9819 7.80469 23.0137 7.72969C23.0458 7.65768 23.0623 7.57975 23.0623 7.50094C23.0623 7.42212 23.0458 7.34419 23.0137 7.27219ZM12 13.6875C9.05811 13.6875 6.48936 12.6169 4.36405 10.5066C3.47312 9.62114 2.7192 8.60781 2.12717 7.5C2.71903 6.39237 3.47297 5.37932 4.36405 4.49438C6.48936 2.38313 9.05811 1.3125 12 1.3125C14.9419 1.3125 17.5106 2.38313 19.6359 4.49438C20.527 5.37932 21.2809 6.39237 21.8728 7.5C21.2756 8.64469 18.2812 13.6875 12 13.6875ZM12 3.1875C11.1471 3.1875 10.3133 3.44042 9.60409 3.91429C8.8949 4.38815 8.34216 5.06167 8.01575 5.84968C7.68935 6.63768 7.60395 7.50478 7.77035 8.34133C7.93675 9.17787 8.34747 9.94628 8.95059 10.5494C9.5537 11.1525 10.3221 11.5632 11.1587 11.7296C11.9952 11.896 12.8623 11.8106 13.6503 11.4842C14.4383 11.1578 15.1118 10.6051 15.5857 9.8959C16.0596 9.18671 16.3125 8.35293 16.3125 7.5C16.311 6.35671 15.8562 5.26067 15.0477 4.45225C14.2393 3.64382 13.1433 3.18899 12 3.1875ZM12 10.6875C11.3696 10.6875 10.7533 10.5006 10.2291 10.1503C9.70492 9.80006 9.29637 9.30224 9.05512 8.7198C8.81387 8.13736 8.75074 7.49646 8.87373 6.87815C8.99672 6.25984 9.3003 5.69188 9.74608 5.2461C10.1919 4.80032 10.7598 4.49674 11.3781 4.37375C11.9964 4.25076 12.6373 4.31388 13.2198 4.55513C13.8022 4.79639 14.3 5.20494 14.6503 5.72912C15.0005 6.2533 15.1875 6.86957 15.1875 7.5C15.1875 8.34538 14.8517 9.15613 14.2539 9.7539C13.6561 10.3517 12.8454 10.6875 12 10.6875Z" fill="url(#paint0_linear_2_5083)" />
+            <defs>
+                <linearGradient id="paint0_linear_2_5083" x1="-14.7302" y1="7.5" x2="25.2257" y2="7.0969" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+
+    );
+};
+
+export const CHATS = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="309" height="301" viewBox="0 0 309 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_bd_2_5321)">
+                <path d="M83.1219 18.7307C86.9944 8.38608 98.5197 3.13944 108.864 7.01199L214.314 46.4876C224.659 50.3602 229.905 61.8854 226.033 72.23L205.671 126.621C201.799 136.966 190.274 142.212 179.929 138.34L128.718 119.169C127.734 118.8 126.659 118.751 125.645 119.029L82.3114 130.891C77.6229 132.175 74.0455 126.69 77.11 122.916L87.0931 110.624C89.2474 107.971 88.1652 103.987 84.9648 102.789L74.4791 98.864C64.1345 94.9914 58.8879 83.4662 62.7604 73.1215L83.1219 18.7307Z" fill="#919AFF" fill-opacity="0.4" shape-rendering="crispEdges" />
+                <path d="M83.1219 18.7307C86.9944 8.38608 98.5197 3.13944 108.864 7.01199L214.314 46.4876C224.659 50.3602 229.905 61.8854 226.033 72.23L205.671 126.621C201.799 136.966 190.274 142.212 179.929 138.34L128.718 119.169C127.734 118.8 126.659 118.751 125.645 119.029L82.3114 130.891C77.6229 132.175 74.0455 126.69 77.11 122.916L87.0931 110.624C89.2474 107.971 88.1652 103.987 84.9648 102.789L74.4791 98.864C64.1345 94.9914 58.8879 83.4662 62.7604 73.1215L83.1219 18.7307Z" stroke="white" stroke-opacity="0.2" stroke-width="2" shape-rendering="crispEdges" />
+            </g>
+            <rect x="100.286" y="23.4365" width="117.148" height="12.2596" rx="6.12982" transform="rotate(20.5236 100.286 23.4365)" fill="url(#paint0_linear_2_5321)" />
+            <rect x="91.6899" y="46.3995" width="117.148" height="12.2596" rx="6.12982" transform="rotate(20.5236 91.6899 46.3995)" fill="url(#paint1_linear_2_5321)" />
+            <rect x="83.0936" y="69.3625" width="77.6444" height="12.2596" rx="6.12982" transform="rotate(20.5236 83.0936 69.3625)" fill="url(#paint2_linear_2_5321)" />
+            <defs>
+                <filter id="filter0_bd_2_5321" x="0.485291" y="-15.2631" width="307.823" height="315.878" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="10" />
+                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_2_5321" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dx="10" dy="90" />
+                    <feGaussianBlur stdDeviation="35" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.12549 0 0 0 0 0.12549 0 0 0 0 0.12549 0 0 0 0.2 0" />
+                    <feBlend mode="normal" in2="effect1_backgroundBlur_2_5321" result="effect2_dropShadow_2_5321" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_2_5321" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_2_5321" x1="91.432" y1="29.5664" x2="262.726" y2="26.842" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="white" />
+                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="paint1_linear_2_5321" x1="82.8357" y1="52.5294" x2="254.13" y2="49.805" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="white" />
+                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="paint2_linear_2_5321" x1="77.2251" y1="75.4924" x2="190.774" y2="74.2954" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="white" />
+                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+
+
+    );
+};
+
+export const PHOTOS = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="350" height="349" viewBox="0 0 350 349" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_bd_2_5327)">
+                <rect x="57" y="47.0739" width="184" height="150" rx="20" transform="rotate(-14.8231 57 47.0739)" fill="#919AFF" fill-opacity="0.4" shape-rendering="crispEdges" />
+                <rect x="57" y="47.0739" width="184" height="150" rx="20" transform="rotate(-14.8231 57 47.0739)" stroke="white" stroke-opacity="0.2" stroke-width="2" shape-rendering="crispEdges" />
+            </g>
+            <g opacity="0.7">
+                <path d="M219.663 40.2311C218.25 34.892 212.776 31.7093 207.437 33.1222L97.2311 62.2876C91.892 63.7005 88.7093 69.1741 90.1222 74.5131L110.589 151.851C112.002 157.19 117.476 160.373 122.815 158.96L233.021 129.794C238.36 128.381 241.543 122.908 240.13 117.569L219.663 40.2311Z" fill="white" />
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M211.042 85.0172L234.103 94.7977L219.601 39.9968C218.188 34.6577 212.714 31.475 207.375 32.8879L97.1691 62.0533C91.83 63.4662 88.6473 68.9398 90.0602 74.2788L93.8538 88.6136L137.595 103.422C140.43 104.869 144.083 104.014 146.003 101.454L155.245 89.1259C157.209 86.5061 160.977 85.6811 163.822 87.2481L188.164 100.656C191.343 102.406 195.577 101.151 197.26 97.9595L202.517 87.9903C204.084 85.0183 207.904 83.6862 211.042 85.0172ZM198.674 70.0344C205.489 68.2308 209.673 61.7065 208.021 55.4618C206.368 49.217 199.504 45.6167 192.689 47.4202C185.874 49.2238 181.689 55.7481 183.342 61.9928C184.995 68.2376 191.859 71.8379 198.674 70.0344Z" fill="#0015FF" fill-opacity="0.4" />
+            </g>
+            <defs>
+                <filter id="filter0_bd_2_5327" x="0.445923" y="-16.5541" width="349.36" height="365.19" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="10" />
+                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_2_5327" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dx="10" dy="90" />
+                    <feGaussianBlur stdDeviation="35" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0.12549 0 0 0 0 0.12549 0 0 0 0 0.12549 0 0 0 0.2 0" />
+                    <feBlend mode="normal" in2="effect1_backgroundBlur_2_5327" result="effect2_dropShadow_2_5327" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_2_5327" result="shape" />
+                </filter>
+            </defs>
+        </svg>
+
+
+
+    );
+};
+
+
+export const GradiantChevronRIGHT = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_48_1753)">
+                <path d="M9.03577 7.14425L13.2017 11.2539L9.09204 15.4199" stroke="#E3796B" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
+            </g>
+            <defs>
+                <filter id="filter0_d_48_1753" x="-21.4641" y="-19.356" width="65.1658" height="69.2759" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="15" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.56 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_48_1753" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_48_1753" result="shape" />
+                </filter>
+            </defs>
+        </svg>
+    );
+};
+
+export const ROBERTCHAT = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_269_1446)">
+                <rect x="26.6519" y="15.1013" width="35" height="35" rx="5" transform="rotate(12.036 26.6519 15.1013)" fill="white" />
+                <g clip-path="url(#clip0_269_1446)">
+                    <path d="M50.8467 35.3735L38.377 32.7148C37.2394 32.4722 36.1167 33.2003 35.8741 34.3379L34.4079 41.2146C34.1653 42.3522 34.8935 43.4749 36.031 43.7175L46.8407 46.0222L48.8463 49.1149C49.0025 49.3558 49.288 49.4755 49.564 49.4238C49.7008 49.3986 49.827 49.3334 49.9267 49.2364C50.0264 49.1395 50.095 49.0151 50.1239 48.879L52.4698 37.8763C52.7124 36.7388 51.9843 35.616 50.8467 35.3735ZM45.7955 42.2047L40.2025 41.0122C39.8224 40.9312 39.5804 40.558 39.6614 40.1779C39.7425 39.7978 40.1156 39.5558 40.4957 39.6369L46.0888 40.8294C46.4689 40.9104 46.7108 41.2836 46.6298 41.6637C46.5488 42.0438 46.1756 42.2858 45.7955 42.2047ZM47.7573 39.7473L39.4136 37.9683C39.0335 37.8873 38.7915 37.5141 38.8726 37.134C38.9536 36.7539 39.3268 36.5119 39.7069 36.593L48.0506 38.372C48.4307 38.453 48.6727 38.8262 48.5916 39.2062C48.5106 39.5863 48.1374 39.8283 47.7573 39.7473Z" fill="url(#paint0_linear_269_1446)" />
+                    <path d="M28.1135 39.0988C28.3444 39.2586 28.6539 39.2657 28.8948 39.1095L31.9875 37.1039L33.7658 37.483L34.4989 34.0447C34.9031 32.1489 36.7745 30.9352 38.6703 31.3394L46.3263 32.9718L46.7662 30.9088C47.0091 29.7694 46.2824 28.6489 45.1431 28.406L32.6734 25.7472C31.534 25.5043 30.4134 26.231 30.1705 27.3704L27.8246 38.3731C27.7955 38.5091 27.8074 38.6506 27.8588 38.7798C27.9103 38.909 27.9989 39.0201 28.1135 39.0988Z" fill="url(#paint1_linear_269_1446)" />
+                </g>
+            </g>
+            <defs>
+                <filter id="filter0_d_269_1446" x="-0.646484" y="-0.898682" width="81.5288" height="81.5291" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="10" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.49 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_269_1446" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_269_1446" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_269_1446" x1="35.3945" y1="36.5874" x2="52.297" y2="40.3041" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <linearGradient id="paint1_linear_269_1446" x1="29.6909" y1="29.6199" x2="46.5934" y2="33.3366" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <clipPath id="clip0_269_1446">
+                    <rect width="24" height="24" fill="white" transform="translate(31.0601 23.1985) rotate(12.036)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+
+    );
+};
+
+
+export const SELECTSWITCH = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2_7575)">
+                <path d="M15 28C22.1799 28 28 22.1799 28 15C28 7.8201 22.1799 2 15 2C7.8201 2 2 7.8201 2 15C2 22.1799 7.8201 28 15 28Z" fill="url(#paint0_linear_2_7575)" />
+                <g filter="url(#filter0_d_2_7575)">
+                    <path d="M9.11682 15.8406L12.4786 19.2024L20.8832 10.7979" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
+                </g>
+            </g>
+            <defs>
+                <filter id="filter0_d_2_7575" x="2.11682" y="7.79785" width="25.7664" height="22.4045" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_7575" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_7575" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_2_7575" x1="15" y1="2" x2="15" y2="28" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#3BC940" />
+                    <stop offset="1" stop-color="#6CB76F" />
+                </linearGradient>
+                <clipPath id="clip0_2_7575">
+                    <rect width="26" height="26" fill="white" transform="translate(2 2)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    );
+};
+
+export const UNSELECTSWITCH = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2_7580)">
+                <path d="M23.339 5.66101C18.457 0.779012 10.543 0.779012 5.66101 5.66101C0.779012 10.543 0.779012 18.457 5.66101 23.339C10.543 28.221 18.457 28.221 23.339 23.339C28.221 18.457 28.22 10.543 23.339 5.66101ZM19.803 18.389C19.9905 18.5765 20.0959 18.8308 20.0959 19.096C20.0959 19.3612 19.9905 19.6155 19.803 19.803C19.6155 19.9905 19.3612 20.0959 19.096 20.0959C18.8308 20.0959 18.5765 19.9905 18.389 19.803L14.5 15.914L10.611 19.803C10.5184 19.8962 10.4082 19.9701 10.2869 20.0206C10.1655 20.0711 10.0354 20.097 9.90401 20.097C9.7726 20.097 9.64249 20.0711 9.52116 20.0206C9.39983 19.9701 9.28966 19.8962 9.19701 19.803C9.10407 19.7102 9.03033 19.6 8.98002 19.4787C8.92971 19.3574 8.90381 19.2273 8.90381 19.096C8.90381 18.9647 8.92971 18.8346 8.98002 18.7133C9.03033 18.592 9.10407 18.4818 9.19701 18.389L13.086 14.5L9.19701 10.611C9.0095 10.4235 8.90416 10.1692 8.90416 9.90401C8.90416 9.63884 9.0095 9.38452 9.19701 9.19701C9.38452 9.0095 9.63884 8.90416 9.90401 8.90416C10.1692 8.90416 10.4235 9.0095 10.611 9.19701L14.5 13.086L18.389 9.19701C18.4819 9.10417 18.5921 9.03052 18.7134 8.98027C18.8347 8.93002 18.9647 8.90416 19.096 8.90416C19.2273 8.90416 19.3573 8.93002 19.4786 8.98027C19.5999 9.03052 19.7102 9.10417 19.803 9.19701C19.8959 9.28986 19.9695 9.40008 20.0198 9.52139C20.07 9.64269 20.0959 9.77271 20.0959 9.90401C20.0959 10.0353 20.07 10.1653 20.0198 10.2866C19.9695 10.4079 19.8959 10.5182 19.803 10.611L15.914 14.5L19.803 18.389Z" fill="url(#paint0_linear_2_7580)" />
+                <g filter="url(#filter0_d_2_7580)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.86296 8.83633C8.38636 9.29822 8.37443 10.059 8.83633 10.5356L12.6926 14.5147L8.94439 18.359C8.48106 18.8342 8.4907 19.5951 8.96591 20.0584C9.44112 20.5217 10.202 20.5121 10.6653 20.0369L14.3659 16.2413L17.9689 19.9591C18.4308 20.4357 19.1916 20.4476 19.6682 19.9857C20.1448 19.5238 20.1568 18.763 19.6949 18.2864L16.0445 14.5198L19.8262 10.641C20.2896 10.1658 20.2799 9.40498 19.8047 8.94165C19.3295 8.47832 18.5687 8.48795 18.1053 8.96317L14.3711 12.7931L10.5623 8.86296C10.1004 8.38636 9.33957 8.37443 8.86296 8.83633Z" fill="white" />
+                </g>
+            </g>
+            <defs>
+                <filter id="filter0_d_2_7580" x="2.49756" y="6.49756" width="23.67" height="23.9021" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_7580" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_7580" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_2_7580" x1="14.4998" y1="1.99951" x2="14.4998" y2="27.0005" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#DD5757" />
+                    <stop offset="1" stop-color="#F77676" />
+                </linearGradient>
+                <clipPath id="clip0_2_7580">
+                    <rect width="29" height="29" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    );
+};
+
+export const FirstTip = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16.18" r="16" fill="url(#paint0_linear_275_5020)" />
+            <g filter="url(#filter0_d_275_5020)">
+                <path d="M12.76 11.38V9.71999H16.52V24.18H14.68V11.38H12.76Z" fill="white" />
+            </g>
+            <defs>
+                <filter id="filter0_d_275_5020" x="6.76001" y="7.71997" width="15.76" height="26.46" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_275_5020" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_5020" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_275_5020" x1="-22.661" y1="16.18" x2="35.1323" y2="15.7946" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+
+    );
+};
+
+export const SecondTip = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="41" height="42" viewBox="0 0 41 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="21" cy="21.18" r="16" fill="url(#paint0_linear_275_4933)" />
+            <g filter="url(#filter0_d_275_4933)">
+                <path d="M17.02 26.72C18.7133 25.36 20.04 24.2467 21 23.38C21.96 22.5 22.7667 21.5867 23.42 20.64C24.0867 19.68 24.42 18.74 24.42 17.82C24.42 16.9533 24.2067 16.2733 23.78 15.78C23.3667 15.2733 22.6933 15.02 21.76 15.02C20.8533 15.02 20.1467 15.3067 19.64 15.88C19.1467 16.44 18.88 17.1933 18.84 18.14H17.08C17.1333 16.6467 17.5867 15.4933 18.44 14.68C19.2933 13.8667 20.3933 13.46 21.74 13.46C23.1133 13.46 24.2 13.84 25 14.6C25.8133 15.36 26.22 16.4067 26.22 17.74C26.22 18.8467 25.8867 19.9267 25.22 20.98C24.5667 22.02 23.82 22.94 22.98 23.74C22.14 24.5267 21.0667 25.4467 19.76 26.5H26.64V28.02H17.02V26.72Z" fill="white" />
+            </g>
+            <defs>
+                <filter id="filter0_d_275_4933" x="11.02" y="11.46" width="21.62" height="26.56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_275_4933" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_4933" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_275_4933" x1="-17.661" y1="21.18" x2="40.1323" y2="20.7946" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+
+
+    );
+};
+
+export const ThirdTip = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="32" height="35" viewBox="0 0 32 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16.18" r="16" fill="url(#paint0_linear_275_5084)" />
+            <g filter="url(#filter0_d_275_5084)">
+                <path d="M11.2 13.36C11.2933 12.1333 11.7667 11.1733 12.62 10.48C13.4733 9.78666 14.58 9.43999 15.94 9.43999C16.8467 9.43999 17.6267 9.60666 18.28 9.93999C18.9467 10.26 19.4467 10.7 19.78 11.26C20.1267 11.82 20.3 12.4533 20.3 13.16C20.3 13.9867 20.06 14.7 19.58 15.3C19.1133 15.9 18.5 16.2867 17.74 16.46V16.56C18.6067 16.7733 19.2933 17.1933 19.8 17.82C20.3067 18.4467 20.56 19.2667 20.56 20.28C20.56 21.04 20.3867 21.7267 20.04 22.34C19.6933 22.94 19.1733 23.4133 18.48 23.76C17.7867 24.1067 16.9533 24.28 15.98 24.28C14.5667 24.28 13.4067 23.9133 12.5 23.18C11.5933 22.4333 11.0867 21.38 10.98 20.02H12.74C12.8333 20.82 13.16 21.4733 13.72 21.98C14.28 22.4867 15.0267 22.74 15.96 22.74C16.8933 22.74 17.6 22.5 18.08 22.02C18.5733 21.5267 18.82 20.8933 18.82 20.12C18.82 19.12 18.4867 18.4 17.82 17.96C17.1533 17.52 16.1467 17.3 14.8 17.3H14.34V15.78H14.82C16.0467 15.7667 16.9733 15.5667 17.6 15.18C18.2267 14.78 18.54 14.1667 18.54 13.34C18.54 12.6333 18.3067 12.0667 17.84 11.64C17.3867 11.2133 16.7333 11 15.88 11C15.0533 11 14.3867 11.2133 13.88 11.64C13.3733 12.0667 13.0733 12.64 12.98 13.36H11.2Z" fill="white" />
+            </g>
+            <defs>
+                <filter id="filter0_d_275_5084" x="4.97998" y="7.44" width="21.5801" height="26.84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_275_5084" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_5084" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_275_5084" x1="-22.661" y1="16.18" x2="35.1323" y2="15.7946" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+
+
+    );
+};
+
+
+export const ProtectKey = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.662354" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_2_10177)" />
+            <g clip-path="url(#clip0_2_10177)">
+                <path d="M26.2722 17.1343C26.2199 14.4067 25.8399 12.395 25.8451 12.3932C25.687 12.0848 25.4098 11.8269 25.0706 11.6951C22.8441 10.8316 20.6546 10.0074 18.5201 9.30418C18.3019 9.23219 18.0718 9.23219 17.854 9.30418C15.7198 10.0055 13.5307 10.8283 11.3045 11.6907C11.0051 11.8068 10.7538 12.0217 10.5902 12.2829C10.6028 12.2844 10.1326 13.7521 10.0525 16.9936C10.005 20.2355 10.4087 21.2066 10.3954 21.2078C10.6139 21.9203 11.0229 22.645 11.6088 23.382C12.2638 24.2051 13.1489 25.0553 14.218 25.891C15.9877 27.28 17.6439 28.1101 17.7133 28.1394C17.8636 28.2129 18.0228 28.2504 18.1868 28.25C18.3512 28.25 18.5104 28.2125 18.6604 28.1387C18.7301 28.1094 20.3882 27.2766 22.1572 25.888C23.2267 25.0515 24.1117 24.2014 24.7671 23.3786C25.395 22.5893 25.8195 21.8149 26.0247 21.0541C26.0166 21.053 26.3134 19.8625 26.2722 17.1346V17.1343ZM19.0678 19.2617V20.9899C19.0678 21.4768 18.6734 21.8713 18.1865 21.8716C17.6996 21.8716 17.3048 21.4772 17.3048 20.9903V19.2862C16.6694 18.9704 16.2323 18.3151 16.2323 17.5577C16.2323 16.4919 17.0962 15.6276 18.162 15.6276C19.2278 15.6276 20.0917 16.4915 20.092 17.5573C20.092 18.2958 19.6772 18.9374 19.0678 19.2617Z" fill="white" />
+            </g>
+            <defs>
+                <linearGradient id="paint0_linear_2_10177" x1="0.662354" y1="11.2246" x2="36.3584" y2="11.4132" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <clipPath id="clip0_2_10177">
+                    <rect width="19" height="19" fill="white" transform="translate(8.66235 9.25)" />
+                </clipPath>
+            </defs>
+        </svg>
+    );
+};
+
+
+export const MotherBoard = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.662354" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5190)" />
+            <g clip-path="url(#clip0_275_5190)">
+                <path d="M14.2288 13.8164H22.0959V21.6836H14.2288V13.8164Z" fill="white" />
+                <path d="M27.1057 16.0801C27.4132 16.0801 27.6624 15.8309 27.6624 15.5234C27.6624 15.216 27.4132 14.9668 27.1057 14.9668H25.4358V13.8535H27.1057C27.4132 13.8535 27.6624 13.6043 27.6624 13.2969C27.6624 12.9894 27.4132 12.7402 27.1057 12.7402H25.4358V11.7754C25.4358 11.0592 24.8532 10.4766 24.137 10.4766H23.1721V8.80664C23.1721 8.49919 22.9229 8.25 22.6155 8.25C22.308 8.25 22.0588 8.49919 22.0588 8.80664V10.4766H20.9456V8.80664C20.9456 8.49919 20.6964 8.25 20.3889 8.25C20.0815 8.25 19.8323 8.49919 19.8323 8.80664V10.4766H18.719V8.80664C18.719 8.49919 18.4698 8.25 18.1624 8.25C17.8549 8.25 17.6057 8.49919 17.6057 8.80664V10.4766H16.4924V8.80664C16.4924 8.49919 16.2432 8.25 15.9358 8.25C15.6283 8.25 15.3792 8.49919 15.3792 8.80664V10.4766H14.2659V8.80664C14.2659 8.49919 14.0167 8.25 13.7092 8.25C13.4018 8.25 13.1526 8.49919 13.1526 8.80664V10.4766H12.1877C11.4715 10.4766 10.8889 11.0592 10.8889 11.7754V12.7402H9.21899C8.91154 12.7402 8.66235 12.9894 8.66235 13.2969C8.66235 13.6043 8.91154 13.8535 9.21899 13.8535H10.8889V14.9668H9.21899C8.91154 14.9668 8.66235 15.216 8.66235 15.5234C8.66235 15.8309 8.91154 16.0801 9.21899 16.0801H10.8889V17.1934H9.21899C8.91154 17.1934 8.66235 17.4425 8.66235 17.75C8.66235 18.0575 8.91154 18.3066 9.21899 18.3066H10.8889V19.4199H9.21899C8.91154 19.4199 8.66235 19.6691 8.66235 19.9766C8.66235 20.284 8.91154 20.5332 9.21899 20.5332H10.8889V21.6465H9.21899C8.91154 21.6465 8.66235 21.8957 8.66235 22.2031C8.66235 22.5106 8.91154 22.7598 9.21899 22.7598H10.8889V23.7246C10.8889 24.4408 11.4715 25.0234 12.1877 25.0234H13.1526V26.6934C13.1526 27.0008 13.4018 27.25 13.7092 27.25C14.0167 27.25 14.2659 27.0008 14.2659 26.6934V25.0234H15.3792V26.6934C15.3792 27.0008 15.6283 27.25 15.9358 27.25C16.2432 27.25 16.4924 27.0008 16.4924 26.6934V25.0234H17.6057V26.6934C17.6057 27.0008 17.8549 27.25 18.1624 27.25C18.4698 27.25 18.719 27.0008 18.719 26.6934V25.0234H19.8323V26.6934C19.8323 27.0008 20.0815 27.25 20.3889 27.25C20.6964 27.25 20.9456 27.0008 20.9456 26.6934V25.0234H22.0588V26.6934C22.0588 27.0008 22.308 27.25 22.6155 27.25C22.9229 27.25 23.1721 27.0008 23.1721 26.6934V25.0234H24.137C24.8532 25.0234 25.4358 24.4408 25.4358 23.7246V22.7598H27.1057C27.4132 22.7598 27.6624 22.5106 27.6624 22.2031C27.6624 21.8957 27.4132 21.6465 27.1057 21.6465H25.4358V20.5332H27.1057C27.4132 20.5332 27.6624 20.284 27.6624 19.9766C27.6624 19.6691 27.4132 19.4199 27.1057 19.4199H25.4358V18.3066H27.1057C27.4132 18.3066 27.6624 18.0575 27.6624 17.75C27.6624 17.4425 27.4132 17.1934 27.1057 17.1934H25.4358V16.0801H27.1057ZM23.2092 22.2402C23.2092 22.5477 22.96 22.7969 22.6526 22.7969H13.6721C13.3647 22.7969 13.1155 22.5477 13.1155 22.2402V13.2598C13.1155 12.9523 13.3647 12.7031 13.6721 12.7031H22.6526C22.96 12.7031 23.2092 12.9523 23.2092 13.2598V22.2402Z" fill="white" />
+            </g>
+            <defs>
+                <linearGradient id="paint0_linear_275_5190" x1="0.662354" y1="11.2246" x2="36.3584" y2="11.4132" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <clipPath id="clip0_275_5190">
+                    <rect width="19" height="19" fill="white" transform="translate(8.66235 8.25)" />
+                </clipPath>
+            </defs>
+        </svg>
+    );
+};
+
+export const Locks = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.337769" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5174)" />
+            <g clip-path="url(#clip0_275_5174)">
+                <path d="M24.5669 14.375H23.3794V12.7917C23.3794 9.73596 20.8935 7.25 17.8378 7.25C14.782 7.25 12.2961 9.73596 12.2961 12.7917V14.375H11.1086C11.0566 14.375 11.0051 14.3852 10.9571 14.4051C10.909 14.4249 10.8654 14.4541 10.8286 14.4909C10.7919 14.5276 10.7627 14.5713 10.7428 14.6193C10.723 14.6674 10.7127 14.7189 10.7128 14.7708V24.6667C10.7128 25.5399 11.4229 26.25 12.2961 26.25H23.3795C24.2527 26.25 24.9628 25.5399 24.9628 24.6667V14.7708C24.9628 14.7189 24.9526 14.6674 24.9327 14.6193C24.9128 14.5713 24.8837 14.5276 24.8469 14.4909C24.8101 14.4541 24.7665 14.4249 24.7184 14.4051C24.6704 14.3852 24.6189 14.375 24.5669 14.375ZM19.023 22.6438C19.0291 22.6992 19.0235 22.7552 19.0065 22.8082C18.9895 22.8612 18.9615 22.91 18.9244 22.9515C18.8873 22.993 18.8418 23.0262 18.791 23.0489C18.7402 23.0716 18.6851 23.0833 18.6295 23.0833H17.0461C16.9904 23.0833 16.9354 23.0716 16.8846 23.0489C16.8338 23.0262 16.7883 22.993 16.7512 22.9515C16.714 22.91 16.6861 22.8612 16.6691 22.8082C16.6521 22.7552 16.6465 22.6992 16.6526 22.6438L16.9023 20.3983C16.4968 20.1034 16.2545 19.6368 16.2545 19.125C16.2545 18.2518 16.9645 17.5417 17.8378 17.5417C18.7111 17.5417 19.4212 18.2517 19.4212 19.125C19.4212 19.6368 19.1788 20.1034 18.7733 20.3983L19.023 22.6438ZM21.0044 14.375H14.6711V12.7917C14.6711 11.0456 16.0917 9.625 17.8378 9.625C19.5838 9.625 21.0044 11.0456 21.0044 12.7917V14.375Z" fill="white" />
+            </g>
+            <defs>
+                <linearGradient id="paint0_linear_275_5174" x1="0.337769" y1="11.2246" x2="36.0338" y2="11.4132" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <clipPath id="clip0_275_5174">
+                    <rect width="19" height="19" fill="white" transform="translate(8.33777 7.25)" />
+                </clipPath>
+            </defs>
+        </svg>
+    );
+};
+
+export const Hub = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.337769" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5182)" />
+            <g clip-path="url(#clip0_275_5182)">
+                <path d="M25.8541 21.8279H25.3011V21.1296C25.3011 19.4761 23.9559 18.131 22.3025 18.131H18.5187V15.5485H20.1775C20.9956 15.5485 21.6611 14.8829 21.6611 14.0648V10.4634C21.6611 9.64533 20.9956 8.97974 20.1775 8.97974H15.7457C14.9276 8.97974 14.262 9.64529 14.262 10.4634V14.0648C14.262 14.8828 14.9276 15.5484 15.7457 15.5484H17.4044V18.131H13.3978C11.7443 18.131 10.3992 19.4761 10.3992 21.1295V21.8279H9.82144C9.00333 21.8279 8.33777 22.4934 8.33777 23.3116V25.0366C8.33777 25.8547 9.00333 26.5203 9.82144 26.5203H12.0913C12.9093 26.5203 13.5749 25.8547 13.5749 25.0366V23.3116C13.5749 22.4934 12.9093 21.8279 12.0913 21.8279H11.5135V21.1296C11.5135 20.0906 12.3588 19.2453 13.3977 19.2453H17.4044V21.8279H16.8266C16.0085 21.8279 15.343 22.4934 15.343 23.3116V25.0366C15.343 25.8547 16.0085 26.5203 16.8266 26.5203H19.0965C19.9146 26.5203 20.5801 25.8547 20.5801 25.0366V23.3116C20.5801 22.4934 19.9146 21.8279 19.0965 21.8279H18.5187V19.2453H22.3025C23.3415 19.2453 24.1868 20.0906 24.1868 21.1296V21.8279H23.5842C22.7662 21.8279 22.1006 22.4934 22.1006 23.3116V25.0366C22.1006 25.8547 22.7662 26.5203 23.5842 26.5203H25.8541C26.6722 26.5203 27.3377 25.8547 27.3377 25.0366V23.3116C27.3378 22.4934 26.6722 21.8279 25.8541 21.8279Z" fill="white" />
+            </g>
+            <defs>
+                <linearGradient id="paint0_linear_275_5182" x1="0.337769" y1="11.2246" x2="36.0338" y2="11.4132" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <clipPath id="clip0_275_5182">
+                    <rect width="19" height="19" fill="white" transform="translate(8.33777 8.25)" />
+                </clipPath>
+            </defs>
+        </svg>
+    );
+};
+
+export const Tips = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="40" height="41" viewBox="0 0 40 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.754 34.43H24.014V32.58H14.986V34.43H14.246C13.802 34.43 13.506 34.726 13.506 35.17C13.506 35.614 13.802 35.91 14.246 35.91H14.986V37.76H24.014V35.91H24.754C25.198 35.91 25.494 35.614 25.494 35.17C25.494 34.726 25.198 34.43 24.754 34.43ZM18.242 16.3L19.5 25.55L20.758 16.3H18.242Z" fill="url(#paint0_linear_275_5340)" />
+            <path d="M18.316 2.314C13.58 2.832 9.73201 6.606 9.14001 11.342C8.77001 14.154 9.58401 16.744 11.064 18.816C13.506 22.146 14.912 26.068 14.912 30.138V31.174H18.76L16.762 16.374H16.096C14.912 16.374 14.024 15.412 14.024 14.302C14.024 13.118 14.986 12.23 16.096 12.23C17.28 12.23 18.168 13.192 18.168 14.302V14.82H20.832V14.228C20.832 13.044 21.794 12.156 22.904 12.156C24.088 12.156 24.976 13.118 24.976 14.228C24.976 15.412 24.014 16.3 22.904 16.3H22.238L20.24 31.1H24.014V30.36C24.014 26.142 25.494 22.146 27.936 18.742C29.194 17.04 29.86 14.894 29.86 12.674C29.934 6.532 24.606 1.648 18.316 2.314Z" fill="url(#paint1_linear_275_5340)" />
+            <path d="M15.43 14.228C15.43 14.598 15.726 14.82 16.022 14.82H16.614V14.228C16.614 13.858 16.318 13.636 16.022 13.636C15.726 13.636 15.43 13.932 15.43 14.228ZM23.57 14.228C23.57 13.858 23.274 13.636 22.978 13.636C22.682 13.636 22.386 13.932 22.386 14.228V14.82H22.978C23.274 14.82 23.57 14.598 23.57 14.228Z" fill="url(#paint2_linear_275_5340)" />
+            <defs>
+                <linearGradient id="paint0_linear_275_5340" x1="13.506" y1="23.029" x2="25.7326" y2="23.0651" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <linearGradient id="paint1_linear_275_5340" x1="9.05121" y1="11.3215" x2="30.2749" y2="11.4022" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <linearGradient id="paint2_linear_275_5340" x1="15.43" y1="14.0073" x2="23.7212" y2="14.3085" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+    );
+};
+
+export const Balance = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.350098" width="35" height="35" rx="5" fill="url(#paint0_linear_2_10800)" />
+            <path d="M13.5129 15.7566L14.3089 18.4867H12.7164L13.5129 15.7566Z" fill="white" />
+            <path d="M17.8499 14.25C18.1735 14.25 18.4359 13.9877 18.4359 13.6641C18.4359 13.3405 18.1735 13.0781 17.8499 13.0781C17.5263 13.0781 17.264 13.3405 17.264 13.6641C17.264 13.9877 17.5263 14.25 17.8499 14.25Z" fill="white" />
+            <path d="M22.187 15.7566L22.9834 18.4867H21.3909L22.187 15.7566Z" fill="white" />
+            <path d="M27.4691 11.5528L18.0551 8.03721C17.9229 7.9876 17.7772 7.9876 17.645 8.03721L8.23097 11.5528C8.00597 11.6348 7.84855 11.8622 7.85011 12.1016C7.85011 15.3989 8.36026 18.2832 9.3669 20.6746C10.1825 22.6125 11.3231 24.2324 12.7567 25.4902C15.2165 27.6476 17.6727 27.982 17.7758 27.9953C17.7793 27.9957 17.7825 27.9957 17.786 27.9961C17.7918 27.9969 17.7977 27.9976 17.804 27.998C17.818 27.9992 17.8321 27.9996 17.8461 28H17.854C17.868 27.9996 17.8821 27.9992 17.8961 27.998C17.902 27.9976 17.9079 27.9969 17.9137 27.9961C17.9172 27.9957 17.9208 27.9957 17.9243 27.9953C18.0274 27.982 20.4836 27.6476 22.9434 25.4902C24.377 24.2324 25.5176 22.6125 26.3332 20.6746C27.3398 18.2832 27.85 15.3989 27.85 12.1016C27.8516 11.8622 27.6941 11.6348 27.4691 11.5528ZM24.2336 19.4242C24.1227 19.5719 23.9492 19.6586 23.7649 19.6586H20.6098C20.425 19.6586 20.2516 19.5719 20.1411 19.4242C20.0864 19.3515 20.0494 19.2671 20.0331 19.1775C20.0168 19.088 20.0217 18.9959 20.0473 18.9086L21.4059 14.2501H19.5071C19.3301 14.7485 18.9344 15.1442 18.436 15.3211V22.1406H20.2907C20.6141 22.1406 20.8766 22.4031 20.8766 22.7266C20.8766 23.05 20.6141 23.3125 20.2907 23.3125H15.4094C15.086 23.3125 14.8235 23.05 14.8235 22.7266C14.8235 22.4031 15.086 22.1406 15.4094 22.1406H17.2641V15.3211C16.7657 15.1442 16.37 14.7485 16.193 14.2501H14.2942L15.6528 18.9086C15.7048 19.0856 15.67 19.2766 15.559 19.4242C15.4485 19.5719 15.2751 19.6586 15.0903 19.6586H11.9352C11.7509 19.6586 11.5774 19.5719 11.4665 19.4242C11.4119 19.3515 11.3751 19.267 11.3589 19.1775C11.3427 19.088 11.3476 18.9959 11.3731 18.9086L12.9505 13.5001C13.0193 13.2549 13.2584 13.0755 13.513 13.0782H16.193C16.4348 12.3962 17.0864 11.9063 17.8501 11.9063C18.6137 11.9063 19.2653 12.3962 19.5071 13.0782H22.1871C22.4417 13.0755 22.6808 13.2549 22.7496 13.5001L24.327 18.9086C24.3789 19.0856 24.3442 19.2766 24.2336 19.4242Z" fill="white" />
+            <defs>
+                <linearGradient id="paint0_linear_2_10800" x1="0.350098" y1="10.9746" x2="36.0461" y2="11.1632" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+
+    );
+};
+
+export const Banned = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.350098" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5600)" />
+            <path d="M16.6196 21.7656H19.0806V28H16.6196V21.7656ZM16.1549 16.3328C16.6414 16.6553 17.224 16.8438 17.8501 16.8438C19.5463 16.8438 20.9263 15.4638 20.9263 13.7676C20.9263 13.1415 20.7378 12.5588 20.4153 12.0724L16.1549 16.3328ZM19.5453 11.2024C19.0588 10.8798 18.4762 10.6914 17.8501 10.6914C16.1539 10.6914 14.7739 12.0714 14.7739 13.7676C14.7739 14.3936 14.9624 14.9763 15.2849 15.4628L19.5453 11.2024Z" fill="white" />
+            <path d="M24.4634 20.5352C25.5679 20.5352 26.4634 19.6397 26.4634 18.5352V9C26.4634 7.89543 25.5679 7 24.4634 7H11.2368C10.1322 7 9.23682 7.89543 9.23682 9V18.5352C9.23682 19.6397 10.1322 20.5352 11.2368 20.5352H24.4634ZM22.1567 13.7676C22.1567 16.1423 20.2248 18.0742 17.8501 18.0742C15.4754 18.0742 13.5435 16.1423 13.5435 13.7676C13.5435 11.3929 15.4754 9.46094 17.8501 9.46094C20.2248 9.46094 22.1567 11.3929 22.1567 13.7676Z" fill="white" />
+            <defs>
+                <linearGradient id="paint0_linear_275_5600" x1="0.350098" y1="10.9746" x2="36.0461" y2="11.1632" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+    );
+};
+
+export const Law = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.350098" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5565)" />
+            <g clip-path="url(#clip0_275_5565)">
+                <path d="M19.4227 22.5546H8.92696C8.05648 22.5546 7.3501 23.2609 7.3501 24.1315V26.9988H20.9995V24.1315C20.9995 23.2609 20.2932 22.5546 19.4227 22.5546ZM28.0671 22.777L18.4862 13.1961L20.3368 11.3489C20.6419 11.6179 21.1111 11.6048 21.3999 11.316C21.5449 11.1699 21.6263 10.9723 21.6263 10.7665C21.6263 10.5606 21.5449 10.363 21.3999 10.2169L17.4101 6.23031C17.1082 5.92518 16.616 5.92518 16.3142 6.23031C16.009 6.53219 16.009 7.02436 16.3142 7.32619L16.2814 7.29338L11.2153 12.3561L11.2481 12.3922C10.9462 12.0871 10.454 12.0871 10.1522 12.3922C9.84708 12.6941 9.84708 13.1862 10.1522 13.4881L14.1388 17.4779C14.4439 17.7798 14.9361 17.7798 15.2379 17.4779C15.383 17.3318 15.4644 17.1343 15.4644 16.9284C15.4644 16.7225 15.383 16.525 15.2379 16.3788L15.2707 16.4116L17.1213 14.5643L26.6989 24.1419C27.0762 24.5192 27.6898 24.5192 28.0671 24.1419C28.4444 23.7646 28.4444 23.1543 28.0671 22.777Z" fill="white" />
+            </g>
+            <defs>
+                <linearGradient id="paint0_linear_275_5565" x1="0.350098" y1="10.9746" x2="36.0461" y2="11.1632" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <clipPath id="clip0_275_5565">
+                    <rect width="21" height="21" fill="white" transform="translate(7.3501 6)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+
+    );
+};
