@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className + " dark"}>
-        <main className="flex items-center flex-col min-h-screen">
+        <div className="flex items-center flex-col min-h-screen">
           {/* <NextUIProvider> */}
           {
             !currentPath.includes("/auth")
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
               false
           }
           {/* </NextUIProvider> */}
-        </main>
+        </div>
       </body>
     </html>
   );
