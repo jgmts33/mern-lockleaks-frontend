@@ -7,8 +7,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-export default function CustomerReview() {
-
+export default function MobileReview() {
     const icons = {
         left: <ChevronLeft fill="currentColor" size={16} />,
         right: <ChevronRight fill="currentColor" size={16} />,
@@ -58,7 +57,7 @@ export default function CustomerReview() {
                     initialSlide={2}
                     style={{ width: "calc(100% - 160px)" }}
                 >
-                    {customReview.map((item, index) => <SwiperSlide key={index}><div className="mx-auto text-left w-full flex flex-wrap outline-none rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 p-10 max-sm:p-4 cursor-pointer">
+                    {customReview.map((item, index) => <SwiperSlide key={index}><div className="mx-auto text-left w-full max-w-[570px] flex flex-wrap outline-none rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 p-10 max-sm:p-4 cursor-pointer">
                         <div className='ml-3 mt-2 flex items-center gap-4 w-full'>
                             <img src="assets/floyed.svg" />
                             <div>
@@ -78,12 +77,6 @@ export default function CustomerReview() {
                     </div></SwiperSlide>)}
                 </Swiper>
             </div>
-            <button className="swiper-custom-prev max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg absolute z-50 bottom-[calc(50%-80px)] left-2">
-                {icons.left}
-            </button>
-            <button className="swiper-custom-next max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg  absolute z-50 bottom-[calc(50%-80px)] right-2">
-                {icons.right}
-            </button>
         </div>
     )
 }

@@ -6,6 +6,7 @@ import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CustomerReview from '@/src/components/customerReview';
+import MobileReview from '@/src/components/mobileReview';
 
 export default function HomePage() {
   const icons = {
@@ -415,7 +416,9 @@ export default function HomePage() {
           </Button>
         </div>
       </div >
-      <CustomerReview />
+      {
+        window.innerWidth > 670 ? <CustomerReview /> : <MobileReview />
+      }
     </>
   )
 }     
