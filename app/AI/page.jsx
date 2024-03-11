@@ -73,11 +73,11 @@ export default function AI() {
                     <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center from-gray-600/40 mt-36 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
                         <div className='max-w-[425px] mx-auto justify-content'><p className='font-normal text-xl '>Our AI tools are deployed across a myriad of social media networks:</p></div>
                         <div className='flex gap-8 justify-center items-center max-lg:flex-col px-5'>
-                            <Image class="h-[95px] w-[196px]" src={Facebook} />
-                            <Image class="h-[95px] w-[196px]" src={Instagram} />
-                            <Image class="h-[95px] w-[196px]" src={TikTok} />
-                            <Image class="h-[95px] w-[196px]" src={Reddit} />
-                            <Image class="h-[95px] w-[196px]" src={Ban} />
+                            <Image alt='facebook' class="h-[95px] w-[196px]" src={Facebook} />
+                            <Image alt='instagram' class="h-[95px] w-[196px]" src={Instagram} />
+                            <Image alt='tiktok' class="h-[95px] w-[196px]" src={TikTok} />
+                            <Image alt='reddit' class="h-[95px] w-[196px]" src={Reddit} />
+                            <Image alt='ban' class="h-[95px] w-[196px]" src={Ban} />
                         </div>
                     </div>
                 </div>

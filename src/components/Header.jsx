@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from "@nextui-org/react";
+import { Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from "@nextui-org/react";
 import { ChevronDown } from "@/src/utils/Icons";
 import { usePathname } from 'next/navigation';
 
@@ -20,6 +20,23 @@ export default function Header() {
             <span> {icons.chevron} </span>
             <div className="hidden"></div>
           </div>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button
+                
+              >
+                Open Menu
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Static Actions">
+              <DropdownItem key="new">New file</DropdownItem>
+              <DropdownItem key="copy">Copy link</DropdownItem>
+              <DropdownItem key="edit">Edit file</DropdownItem>
+              <DropdownItem key="delete" className="text-danger" color="danger">
+                Delete file
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
           <Link href="/help" className="text-white font-light" >Help</Link>
           <Link href="/blog" className="text-white font-light" >Blog</Link>
         </div>

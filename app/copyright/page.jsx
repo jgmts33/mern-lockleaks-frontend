@@ -84,7 +84,7 @@ export default function CopyRight() {
                     {
                         AITips.map((item, index) => {
                             return (
-                                <div className='max-w-[527px] flex gap-3'>{icons.tip}<p className='font-normal text-xl'>{item}</p></div>
+                                <div key={index} className='max-w-[527px] flex gap-3'>{icons.tip}<p className='font-normal text-xl'>{item}</p></div>
                             )
                         })
                     }

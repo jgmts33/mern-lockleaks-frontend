@@ -340,7 +340,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
           </div>
         </div>
 
@@ -390,9 +390,9 @@ export default function HomePage() {
               </Button>
             </div>
             <div className='flex max-lg:hidden'>
-              <Image src="assets/safeground/message.svg" width={300} height={170} className="top-[180x] right-[520px] absolute max-xl:!w-[200px] max-xl:right-[320px]" />
-              <Image src="assets/safeground/img-thumbnail.svg" width={320} height={200} className='top-[40px] right-[330px] absolute max-xl:!w-[220px] max-xl:right-[234px]' />
-              <Image src="assets/safeground/robot-hand-finger.svg" width={461} height={352} className='absolute right-0 top-10 max-xl:!w-[320px]' />
+              <Image src="assets/safeground/message.svg" alt='message' width={300} height={170} className="top-[180x] right-[520px] absolute max-xl:!w-[200px] max-xl:right-[320px]" />
+              <Image src="assets/safeground/img-thumbnail.svg" alt='thumbnail' width={320} height={200} className='top-[40px] right-[330px] absolute max-xl:!w-[220px] max-xl:right-[234px]' />
+              <Image src="assets/safeground/robot-hand-finger.svg" alt='robert-hand' width={461} height={352} className='absolute right-0 top-10 max-xl:!w-[320px]' />
             </div>
           </div>
         </div>
@@ -437,8 +437,8 @@ export default function HomePage() {
                 <p className='max-w-[520px] max-xl:mx-auto pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
               </div>
               <div className='max-xl:hidden'>
-                <Image src="assets/setup/message.svg" width={300} height={170} className="top-20 right-[460px] absolute" />
-                <Image src="assets/setup/clock-message.svg" width={800} height={600} className="top-0 right-0 absolute" />
+                <Image src="assets/setup/message.svg" alt='message' width={300} height={170} className="top-20 right-[460px] absolute" />
+                <Image src="assets/setup/clock-message.svg" alt='clock-message' width={800} height={600} className="top-0 right-0 absolute" />
               </div>
             </div>
             <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full" size='lg'>

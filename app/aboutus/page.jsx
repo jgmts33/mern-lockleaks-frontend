@@ -56,8 +56,8 @@ export default function AboutUs() {
                                 <div><p className='max-w-[539px] max-xl:mx-auto mt-5'>We focus on constant innovation and progress, continuously adapting to changes in the digital protection field. We are committed to staying updated with the latest technologies and methods to provide efficient and competitive solutions for our clients.</p></div>
                             </div>
                             <div className='max-xl:hidden'>
-                                <Image src="assets/setup/message.svg" width={300} height={170} className="top-20 right-[460px] absolute" />
-                                <Image src="assets/setup/bubble.svg" width={443} height={404} className="top-0 right-0 absolute" />
+                                <Image src="assets/setup/message.svg" alt='message' width={300} height={170} className="top-20 right-[460px] absolute" />
+                                <Image src="assets/setup/bubble.svg" alt='bubble' width={443} height={404} className="top-0 right-0 absolute" />
                             </div>
                         </div>
                     </div>
