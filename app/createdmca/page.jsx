@@ -71,8 +71,8 @@ export default function CreateDmca() {
                                 </Button>
                             </div>
                             <div className='relative w-1/2 flex max-xl:flex-col max-sm:hidden'>
-                                <Image className='right-0 absolute' src={Chat} />
-                                <Image className='left-0 mt-32' src={Reversechat} />
+                                <Image className='right-0 absolute' src={Chat} alt='chat' />
+                                <Image className='left-0 mt-32' src={Reversechat} alt='reverse chat' />
                             </div>
                         </div>
                     </div>

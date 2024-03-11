@@ -60,7 +60,7 @@ export default function CopyRight() {
                     <p className='font-medium text-5xl max-lg:text-[40px]'>HOW It HELPS</p>
                 </div>
                 <div className='flex gap-20 mt-20 max-lg:flex-col max-md:-mt-20 max-md:gap-0'>
-                    <div className='max-md:-mt-10'><Image class="w-[606px] mt-5 h-[550px] " src={CopyrightHelp} /></div>
+                    <div className='max-md:-mt-10'><Image class="w-[606px] mt-5 h-[550px] " src={CopyrightHelp} alt='copyright' /></div>
                     <div className='flex flex-col max-xl:items-center max-xl:px-3 max-md:-mt-20'>
                         {
                             CopyrightContent.map((item, index) => {
@@ -88,7 +88,7 @@ export default function CopyRight() {
                             )
                         })
                     }
-                    <Image class="w-[461px] h-[312px] absolute right-0" src={RobertHand} />
+                    <Image class="w-[461px] h-[312px] absolute right-0" src={RobertHand} alt='robert hand' />
                 </div>
 
                 {/* This section for define FAQ for copyright*/}

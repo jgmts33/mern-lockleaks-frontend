@@ -101,7 +101,7 @@ export default function AI() {
                             }
                         </div>
                         <div>
-                            <Image class="w-80 h-[550px] object-cover" src={Robertgroup} />
+                            <Image class="w-80 h-[550px] object-cover" src={Robertgroup}  />
                         </div>
                         <div className='flex flex-col gap-20'>
                             {
@@ -155,7 +155,7 @@ export default function AI() {
                         <p className='font-normal text-base mt-3'>Yes, our AI tools are designed to function efficiently on major social media platforms, ensuring comprehensive content protection.</p>
                     </div>
                 </div>
-                <div><Image class="w-[461px] h-[312px] absolute right-0 -mt-36" src={RobertHand} /></div>
+                <div><Image class="w-[461px] h-[312px] absolute right-0 -mt-36" src={RobertHand} alt='robert hand' /></div>
             </div>
             <CustomerReview />
         </>

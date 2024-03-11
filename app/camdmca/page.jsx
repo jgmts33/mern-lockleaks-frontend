@@ -82,8 +82,8 @@ export default function CamDmca() {
 
                 <div className='flex w-full bg-white/5 mx-auto mt-20 justify-center px-10 py-20 gap-32 max-lg:flex-col max-lg:items-center'>
                     <div className="relative max-w-[740px] flex justify-between max-sm:hidden">
-                        <Image class="" src={WriteTip} />
-                        <Image class="" src={TipDocument} />
+                        <Image class="" src={WriteTip} alt='write tip' />
+                        <Image class="" src={TipDocument} alt='tip document' />
                     </div>
                     <div className='flex max-w-[570px] justify-center flex-col gap-y-10'>
                         <div className='flex gap-8 p-7'>
