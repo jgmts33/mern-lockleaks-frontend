@@ -3,13 +3,13 @@ import Image from 'next/image';
 import {
     Button
 } from '@nextui-org/react';
-import { ChevronRight, EYE, CHATS, PHOTOS, GradiantChevronRIGHT } from "@/src/utils/Icons";
+import { ChevronRight, Eye, CHATS, PHOTOS, GradiantChevronRIGHT } from "@/src/utils/Icons";
 
 export default function SERVICES() {
 
     const icons = {
         right: <ChevronRight fill="currentColor" size={16} />,
-        eye: <EYE fill="currentColor" size={16} />,
+        eye: <Eye fill="currentColor" size={16} />,
         chat: <CHATS fill="currentColor" size={16} />,
         photo: <PHOTOS fill="currentColor" size={16} />,
         arrow_right: <GradiantChevronRIGHT fill="currentColor" size={16} />,

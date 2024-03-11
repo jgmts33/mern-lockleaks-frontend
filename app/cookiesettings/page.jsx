@@ -32,9 +32,9 @@ export default function CookieSettigs() {
                             color="default"
                             thumbIcon={({ isSelected, className }) =>
                                 isSelected ? (
-                                    <SELECTSWITCH className={className} />
+                                    <SelectSwitch className={className} />
                                 ) : (
-                                    <UNSELECTSWITCH className={className} />
+                                    <UnselectSwitch className={className} />
                                 )
                             }
                         >
@@ -54,9 +54,9 @@ export default function CookieSettigs() {
                             color="default"
                             thumbIcon={({ isSelected, className }) =>
                                 isSelected ? (
-                                    <SELECTSWITCH className={className} />
+                                    <SelectSwitch className={className} />
                                 ) : (
-                                    <UNSELECTSWITCH className={className} />
+                                    <UnselectSwitch className={className} />
                                 )
                             }
                         >
@@ -76,9 +76,9 @@ export default function CookieSettigs() {
                             color="default"
                             thumbIcon={({ isSelected, className }) =>
                                 isSelected ? (
-                                    <SELECTSWITCH className={className} />
+                                    <SelectSwitch className={className} />
                                 ) : (
-                                    <UNSELECTSWITCH className={className} />
+                                    <UnselectSwitch className={className} />
                                 )
                             }
                         >
@@ -98,9 +98,9 @@ export default function CookieSettigs() {
                             color="default"
                             thumbIcon={({ isSelected, className }) =>
                                 isSelected ? (
-                                    <SELECTSWITCH className={className} />
+                                    <SelectSwitch className={className} />
                                 ) : (
-                                    <UNSELECTSWITCH className={className} />
+                                    <UnselectSwitch className={className} />
                                 )
                             }
                         >

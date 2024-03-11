@@ -13,7 +13,6 @@ export default function Pricing() {
     const [isSelected, setSelected] = React.useState(true);
 
     const icons = {
-        lock: <Lock fill="currentColor" size={16} />,
         left: <ChevronLeft fill="currentColor" size={16} />,
         right: <ChevronRight fill="currentColor" size={16} />,
         shine: <Shine fill="currentColor" size={16} />,
