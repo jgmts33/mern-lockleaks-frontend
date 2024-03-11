@@ -4,7 +4,6 @@ import {
     Button
 } from '@nextui-org/react';
 import { ChevronRight, EYE, CHATS, PHOTOS, GradiantChevronRIGHT } from "@/src/utils/Icons";
-import { Italiana } from 'next/font/google';
 
 export default function SERVICES() {
 
@@ -16,12 +15,12 @@ export default function SERVICES() {
         arrow_right: <GradiantChevronRIGHT fill="currentColor" size={16} />,
     };
 
-    const servicesTitle = {
+    const ServicesTitle = {
         title: "SERVICE",
         content: "Discover how our specialized services can assist in safeguarding your digital content, maintaining confidentiality, and enhancing your online management. We offer efficient and tailored solutions, crafted to meet the unique needs of each client. From securing digital content to periodic analyses and personalized options, we're here to provide the necessary support."
     }
 
-    const servicesContent = [
+    const ServicesContent = [
         [{
             title: "Scan & Takedown",
             content: "Utilizing cutting-edge tech and thorough manual checks, we identify potential copyright issues across various online platforms, including Google Search, Images, Videos, file hosting services, and numerous websites. Our scan covers 100,000+ websites and social platforms, allowing us to promptly issue DMCA takedown notices for content protection."
@@ -65,30 +64,28 @@ export default function SERVICES() {
     ]
 
     return (
-        <div className="text-white relative container flex flex-col pb-20">
+        <div className="text-white flex flex-col pb-20">
+            <Image src="assets/safeground/robot-hand-finger.svg" width={600} height={170} className="mt-72 absolute right-0" />
             <div className='flex mt-32 relative justify-center'>
                 <div className='left-0 top-0'>
                     <div className='mb-0 absolute left-40 -top-28 max-2xl:w-[100px] max-xl:hidden'>{icons.photo}</div>
                     <div className='absolute left-6 top-12 max-2xl:-left-6 max-2xl:top-2 max-xl:hidden'>{icons.chat}</div>
                 </div>
                 <div className='max-w-[670px] flex flex-col justify-center text-center max-2xl:z-20'>
-                    <p className='font-medium text-5xl'>{servicesTitle.title}</p>
-                    <p className='font-normal text-xl mt-5'>{servicesTitle.content}</p>
-                </div>
-                <div>
-                    <Image src="assets/safeground/robot-hand-finger-backgrou.svg" width={624} height={420} className='absolute top-20' />
+                    <p className='font-medium text-5xl'>{ServicesTitle.title}</p>
+                    <p className='font-normal text-xl mt-5'>{ServicesTitle.content}</p>
                 </div>
             </div>
-            <div className='flex justify-center mt-20'>
-                <div className='flex grid-cols-3 gap-6 z-20 max-lg:flex-wrap max-lg:justify-center'>
+            <div className='flex mt-20 px-3'>
+                <div className='flex grid-cols-3 gap-6 z-20 max-lg:flex-wrap max-lg:justify-center '>
                     {
-                        servicesContent.map((item, index) => {
+                        ServicesContent.map((item, index) => {
                             return (
                                 <div key={index} className={(index == 1 ? 'mt-20' : "") + " max-w-[480px] max-lg:mt-1 flex flex-col gap-4"}>
                                     {
                                         item.map((service_content, count) => {
                                             return (
-                                                <div key={count} className={"flex h-[330px] max-w-[480px] bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer top-6 mt-6"}>
+                                                <div key={count} className={"flex max-w-[480px] bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer top-6 mt-6"}>
                                                     <div className='flex flex-col'>
                                                         <p className='font-semibold text-xl mt-3'>{service_content.title}</p>
                                                         <p className='font-normal text-base mt-5'>{service_content.content}</p>

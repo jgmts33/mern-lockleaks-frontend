@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Lock, Shine, COMPLETE, UNCOMPLETE, Star, ChevronLeft, ChevronRight, SELECTSWITCH, UNSELECTSWITCH } from "@/src/utils/Icons";
+import { Lock, Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, SelectSwitch, UnselectSwitch } from "@/src/utils/Icons";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { checkCustomRoutes } from 'next/dist/lib/load-custom-routes';
 
@@ -18,11 +18,9 @@ export default function Checkout() {
         left: <ChevronLeft fill="currentColor" size={16} />,
         right: <ChevronRight fill="currentColor" size={16} />,
         shine: <Shine fill="currentColor" size={16} />,
-        complete: <COMPLETE fill="currentColor" size={16} />,
+        complete: <Complete fill="currentColor" size={16} />,
         star: <Star fill="currentColor" size={16} />,
-        uncomplete: <UNCOMPLETE fill="currentColor" size={16} />,
-        selectswitch: <SELECTSWITCH fill="currentColor" size={16} />,
-        unselectswitch: <UNSELECTSWITCH fill="currentColor" size={16} />,
+        uncomplete: <Uncomplete fill="currentColor" size={16} />,
     };
 
     const ButtonContent = [
@@ -129,6 +127,9 @@ export default function Checkout() {
 
     return (
         <div className="flex flex-col text-white w-full">
+
+            {/* This section for define chechout page header*/}
+
             <div className="text-center gap-10 mt-20">
                 <p className="font-bold text-7xl max-lg:text-[40px] max-md:justify-center">PRICING</p>
             </div>
@@ -140,6 +141,9 @@ export default function Checkout() {
                     Bill Yearly
                 </Button>
             </div>
+
+            {/* This section for define chechout page content*/}
+
             <div className='flex mt-28 w-full gap-3 relative max-xl:flex-col mx-auto justify-center'>
                 {
                     pricingContent.map((item, index) => {
@@ -202,7 +206,10 @@ export default function Checkout() {
                     })
                 }
             </div>
-            <div className='flex justify-center mx-auto mt-32 gap-10 max-xl:flex-col max-md:mx-auto'>
+
+            {/* This section for define select user name*/}
+
+            <div className='flex justify-center mx-auto mt-32 gap-10 max-xl:flex-col max-md:mx-auto max-md:px-3'>
                 <div className="flex bg-white/5 shadow-sm rounded-[20px] max-w-[720px] w-full flex-col gap-4 p-20">
                     <p className='font-medium text-6xl mt-3'>ORDER</p>
                     <div className='flex flex-col'>
@@ -224,7 +231,7 @@ export default function Checkout() {
                         </select>
                     </div>
                 </div>
-                <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] rounded-[20px] z-40 p-5 cursor-pointer w-[422px] text-center ">
+                <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] rounded-[20px] z-40 p-5 cursor-pointer text-center ">
                     <div className='mt-5'>
                         <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
                             <span className='px-4'>popular</span>
@@ -239,20 +246,23 @@ export default function Checkout() {
                     </div>
                 </div>
             </div>
-            <div className='mt-20 flex mx-auto justify-center gap-80 max-2xl:gap-0 max-xl:flex-col'>
+
+            {/* This section for add new user name*/}
+
+            <div className='mt-20 flex mx-auto justify-center gap-80 max-2xl:gap-0 max-xl:flex-col max-md:px-3'>
                 <div className='flex-col flex mx-auto'>
-                    <p className='font-medium text-[34px]'>ADD NEW USERNAME</p>
+                    <p className='font-medium text-3xl'>ADD NEW USERNAME</p>
                     {
                         ButtonContent.map((item, index) => {
                             return (
-                                <Button key={index} className="rounded-[10px] mt-5 w-[327px] bg-gradient-to-tr mx-auto from-[#9C3FE4] to-[#C65647] text-white text-md" size='md'>
+                                <Button key={index} className="rounded-[10px] mt-5 w-[327px] bg-gradient-to-tr mx-auto from-[#9C3FE4] to-[#C65647] text-white text-base" size='md'>
                                     {item}
                                     <span>{icons.shine}</span>
                                 </Button>
                             )
                         })
                     }
-                    <Button className="rounded-[10px] mt-5 w-[327px] bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 text-white text-md" size='md'>
+                    <Button className="rounded-[10px] mt-5 w-[327px] bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 text-white text-base" size='md'>
                         Add New
                         <span>{icons.shine}</span>
                     </Button>
@@ -272,9 +282,9 @@ export default function Checkout() {
                                         color="default"
                                         thumbIcon={({ isSelected, className }) =>
                                             isSelected ? (
-                                                <SELECTSWITCH className={className} />
+                                                <SelectSwitch className={className} />
                                             ) : (
-                                                <UNSELECTSWITCH className={className} />
+                                                <UnselectSwitch className={className} />
                                             )
                                         }
                                     >
@@ -312,9 +322,9 @@ export default function Checkout() {
                                         color="default"
                                         thumbIcon={({ isSelected, className }) =>
                                             isSelected ? (
-                                                <SELECTSWITCH className={className} />
+                                                <SelectSwitch className={className} />
                                             ) : (
-                                                <UNSELECTSWITCH className={className} />
+                                                <UnselectSwitch className={className} />
                                             )
                                         }
                                     >
@@ -339,7 +349,7 @@ export default function Checkout() {
                             </Button>
                         </div>
                     </div>
-                    <div className="flex bg-gradient-to-br text-center from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col cursor-pointer border border-gray-700 w-[724px] py-20 px-10">
+                    <div className="flex bg-gradient-to-br text-center from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col w-full max-w-[724px] cursor-pointer border border-gray-700 py-20 px-10">
                         <p className='font-medium text-[34px]'>USERNAMES HISTORY CONTENT RECOVERY & REMOVAL REPORT</p>
                         <p>+$200</p>
                         <div className="flex w-full flex-wrap md:flex-nowrap gap-4 bg-white">
@@ -355,7 +365,7 @@ export default function Checkout() {
                     </div>
                 </div>
             </div>
-            <div className='bg-gradient-to-tr w-1/2 mx-auto mt-28 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
+            <div className='bg-gradient-to-tr w-1/2 mx-auto mt-28 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container max-md:text-center'>
                 <Button radius="full" className="bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
                     Reset
                 </Button>
@@ -363,25 +373,28 @@ export default function Checkout() {
                     NEXT
                 </Button>
             </div>
-            <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-32">
+
+            {/* This section for define payment*/}
+
+            <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">
                 <p className='font-medium text-[34px] text-center'>PAYMENT</p>
                 <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
                     Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.
                     This charge will be billed at regular intervals until you opt to cancel the automatic renewal.
                 </p>
                 <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-2 border-gray-600 border rounded-[30px] max-w-[676px] gap-3 flex max-md:flex-col items-center'>
-                    <Button radius="full" className="mx-auto w-1/3 bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" size='lg'>
+                    <Button radius="full" className="mx-auto bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" size='lg'>
                         Pay whith credit card
                     </Button>
-                    <Button radius="full" className="w-1/3 bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-7 text-lg" size='lg'>
+                    <Button radius="full" className=" bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-7 text-lg" size='lg'>
                         Pay whith paypal
                     </Button>
-                    <Button radius="full" className="w-1/3 bg-transparent mx-auto px-7 py-7 text-lg" size='lg'>
+                    <Button radius="full" className=" bg-transparent mx-auto px-7 py-7 text-lg" size='lg'>
                         Request fan support
                     </Button>
                 </div>
             </div>
-            <div className='max-w-[1420px] w-full mx-auto text-start mt-20 mb-40'>
+            <div className='max-w-[1420px] w-full mx-auto text-start mt-20 mb-40 max-md:px-3'>
                 <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
                 <p className='font-normal text-base'>You will be charged this amount at regular intervals until you opt to cancel the automatic renewal.You can cancel the subscription using your account settings in the Billing section, or you can check the email you received for this purchase in your inbox. You will find instructions on how to cancel the subscription there.</p>
             </div>

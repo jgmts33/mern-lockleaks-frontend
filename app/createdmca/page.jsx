@@ -10,8 +10,8 @@ import WriteTip from "@/public/assets/scan/write-tip.svg";
 import TipDocument from "@/public/assets/scan/tip-document.svg";
 import { Balance, FirstTip, SecondTip, ThirdTip, CHAT } from "@/src/utils/Icons";
 import CustomerReview from '@/src/components/customerReview';
-import Chat from '@/public/assets/services/chat.svg';
-import Reversechat from '@/public/assets/reverse-chat.svg';
+import Chat from '@/public/assets/dmca/envelop.svg';
+import Reversechat from '@/public/assets/dmca/envelop-reverse.svg';
 
 export default function CreateDmca() {
 
@@ -42,35 +42,46 @@ export default function CreateDmca() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
-                <div className='text-center mt-28'>
-                    <p className='font-bold text-7xl uppercase'>{CamDmcaTitle.title}</p>
-                    <div className='flex gap-32'>
-                        <div className='max-w-[855px] mt-10'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
-                        <p className='font-medium text-7xl mt-20'>LOGO</p>
+
+                {/* This section for define create dmca header*/}
+
+                <div className='text-center mt-28 max-lg:px-3'>
+                    <p className='font-bold text-7xl uppercase max-lg:text-[30px]'>{CamDmcaTitle.title}</p>
+                    <div className='flex gap-32 max-md:flex-col items-center max-md:gap-10 mt-20'>
+                        <div className='max-w-[855px]'><p className='font-normal text-base'>{CamDmcaTitle.sub_title}</p></div>
+                        <p className='font-medium text-7xl max-lg:text-[30px]'>LOGO</p>
                     </div>
                 </div>
-                <div className='flex flex-col bg-white/5 mx-auto mt-40 justify-center rounded-[20px] max-w-[1440px] px-10 py-20 gap-32'>
-                    <div className='flex'>
-                        <div className='w-1/2'>
-                            <span className='font-medium text-[63px]'>Additional</span><span className='font-medium text-[63px] text-[#F68171]'>Elements</span>
-                            <p className='mt-10'>DMCA Badges<br />
-                                To download DMCA badges and learn more about integration, please visit our dedicated DMCA badges page. (reffer link)
-                                These are examples for each category of information you requested for the "Creator DMCA Content Protection" service. If you need more details or any additional information, please let me know!
-                            </p>
+
+                {/* This section for define additional element*/}
+
+                <div className='max-xl:px-3'>
+                    <div className='flex bg-white/5 mx-auto mt-24 justify-center rounded-[20px] max-xl:flex-col w-full max-w-[1440px] px-10 py-10 gap-32'>
+                        <div className='flex max-md:items-center max-sm:flex-wrap'>
+                            <div className='w-1/2 max-sm:w-full'>
+                                <div className='max-md:flex-col flex mx-auto max-sm:items-center'><span className='font-medium text-[63px] max-lg:text-[30px]'>Additional</span><span className='font-medium max-lg:text-[30px] text-[63px] text-[#F68171]'>Elements</span></div>
+                                <p className='mt-10 max-sm:text-center'>DMCA Badges<br />
+                                    To download DMCA badges and learn more about integration, please visit our dedicated DMCA badges page. (reffer link)
+                                    These are examples for each category of information you requested for the "Creator DMCA Content Protection" service. If you need more details or any additional information, please let me know!
+                                </p>
+                            </div>
+                            <div className='self-end max-sm:mx-auto max-sm:mt-5'>
+                                <Button radius="sm" className="bg-gradient-to-tr from-[#c77fe9] to-[#C65647] text-white shadow-lg" size='lg'>
+                                    Free Analisis
+                                </Button>
+                            </div>
+                            <div className='relative w-1/2 flex max-xl:flex-col max-sm:hidden'>
+                                <Image className='right-0 absolute' src={Chat} />
+                                <Image className='left-0 mt-32' src={Reversechat} />
+                            </div>
                         </div>
-                        <div className='mx-auto relative w-1/2'>
-                            <Image src={Chat} width={300} height={170} className="top-40 left-[115px] -rotate-[45deg] absolute max-xl:!w-[200px] max-xl:right-[320px]" />
-                            <Image src={Reversechat} width={500} height={370} className="-top-40 left-[115px] -rotate-[45deg]  max-xl:!w-[200px] max-xl:right-[320px]" />
-                        </div>
-                    </div>
-                    <div className=' flex justify-center msx-auto items-center'>
-                        <Button radius="sm" className="bg-gradient-to-tr from-[#c77fe9] to-[#C65647] text-white shadow-lg" size='lg'>
-                            Free Analisis
-                        </Button>
                     </div>
                 </div>
-                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-center px-10 py-20 gap-32'>
-                    <div className='flex max-w-[756px] justify-center flex-col gap-y-10'>
+
+                {/* This section for define tips for creator dmca page*/}
+
+                <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-20 py-20 max-xl:flex-col items-center'>
+                    <div className='flex max-w-[720px] justify-center flex-col gap-y-10'>
                         <div className='flex gap-8 p-7'>
                             <div>{icons.FirstTip}</div>
                             <div className='flex flex-col'>
@@ -93,14 +104,17 @@ export default function CreateDmca() {
                             </div>
                         </div>
                     </div>
-                    <div className="relative max-w-[509px]">
-                        <Image class="h-80 w-96 object-cover absolute top-10" src={WriteTip} />
-                        <Image class="h-80 w-96 object-cover " src={TipDocument} />
+                    <div className="max-w-[740px] relative flex flex-wrap max-xl:items-center max-xl:justify-center">
+                        <Image class="z-20" src={WriteTip} />
+                        <Image class="absolute -right-20 bottom-0" src={TipDocument} />
                     </div>
                 </div>
+
+                {/* This section for define FAQ for creator dmca page*/}
+
                 <div className='font-medium text-5xl mt-56'><p className='font-medium text-5x center'>FAQ</p></div>
-                <div className='flex gap-32 mt-10'>
-                    <div className='flex mt-10 gap-10 mx-auto justify-center'>
+                <div className='flex gap-32 mt-10 max-lg:px-3'>
+                    <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>
                         {
                             CamDmcaContent.map((item, index) => {
                                 return (

@@ -6,7 +6,6 @@ import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CustomerReview from '@/src/components/customerReview';
-import MobileReview from '@/src/components/mobileReview';
 
 export default function HomePage() {
   const icons = {
@@ -212,6 +211,9 @@ export default function HomePage() {
     <>
       <div className="text-white max-w-[1480px]">
         <div className='relative flex px-3'>
+
+           {/* This section for define homepage header*/}
+
           <div className="flex w-full justify-center items-center flex-col relative z-20">
             <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
               <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center max-md:text-[26px]">
@@ -245,6 +247,9 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+
+             {/* This section for define chosen by esteemed industry leaders*/}
+
             <div className="flex flex-col w-full mt-60 text-center items-center max-md:mt-32">
               <p className="text-center font-normal text-xl max-md:justify-center">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col">
@@ -261,129 +266,148 @@ export default function HomePage() {
             </div>
           </div>
         </div >
-        {/* <div className='flex w-full relative mt-32 px-3'>
-          <div className="flex flex-col mx-auto z-20 relative">
-            <p className="font-medium text-[50px] uppercase max-lg:text-[40px] max-lg:text-center">We're ready to assist</p>
-            <div className="flex justify-center items-center gap-8 max-lg:mt-10">
-              <div className="max-xl:hidden flex justify-center items-center max-lg:hidden w-full">
-                <img src="assets/robert.svg" alt='robert' className='w-80 h-[680px] mt-20 bg-opacity-90' />
-              </div>
-              <div className='flex items-center justify-center gap-6 max-lg:flex-col'>
-                <div className="flex flex-col top-0 relative gap-8">
-                  {
-                    assistSecionItems[0].map((item, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className='card w-[374px] relative h-[315px] cursor-pointer'
-                          onMouseEnter={() => setIsFlipped(index)}
-                          onMouseLeave={() => setIsFlipped(-1)}
-                        >
-                          <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index ? "hidden" : "flex flex-col items-start")}>
-                            <div className='mb-2'> {item.icon} </div>
-                            <p className='font-semibold text-xl'>{item.title}</p>
-                            <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
-                            <p className='font-normal text-base mt-5'>{item.content}</p>
-                            <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
-                              <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                              <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
-                            </Button>
-                          </div>
-                          <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index].bg_color + (isFlipped != index ? " hidden" : " flex")}>
-                            <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
-                            <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index].description}</p></div>
-                          </div>
-                        </div>
 
-                      )
-                    })
-                  }
+        {/* This section for define we're ready to assist*/}
+
+        <div className='max-lg:px-3'>
+          <div className='flex w-full relative mt-32 px-3'>
+            <div className="flex flex-col mx-auto z-20 relative">
+              <p className="font-medium text-[50px] uppercase max-lg:text-[30px] max-lg:text-center">We're ready to assist</p>
+              <div className="flex justify-center items-center gap-8 max-lg:mt-10">
+                <div className="max-xl:hidden flex justify-center items-center max-lg:hidden w-full">
+                  <img src="assets/robert.svg" alt='robert' className='w-80 h-[680px] mt-20 bg-opacity-90' />
                 </div>
-                <div className="flex flex-col top-24 max-lg:top-2 relative gap-8">
-                  {
-                    assistSecionItems[1].map((item, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className='card w-[374px] relative h-[315px] cursor-pointer'
-                          onMouseEnter={() => setIsFlipped(index + 2)}
-                          onMouseLeave={() => setIsFlipped(-1)}
-                        >
-                          <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index + 2 ? "hidden" : "flex flex-col items-start")}>
-                            <div className='mb-2'> {item.icon} </div>
-                            <p className='font-semibold text-xl'>{item.title}</p>
-                            <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
-                            <p className='font-normal text-base mt-5'>{item.content}</p>
-                            <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
-                              <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                              <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
-                            </Button>
+                <div className='flex items-center justify-center gap-6 max-lg:flex-col'>
+                  <div className="flex flex-col top-0 relative gap-8">
+                    {
+                      assistSecionItems[0].map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className='w-[365px] max-md:w-[320px] relative h-[315px] cursor-pointer'
+                            onMouseEnter={() => setIsFlipped(index)}
+                            onMouseLeave={() => setIsFlipped(-1)}
+                          >
+                            <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index ? "hidden" : "flex flex-col items-start")}>
+                              <div className='mb-2'> {item.icon} </div>
+                              <p className='font-semibold text-xl'>{item.title}</p>
+                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                              <p className='font-normal text-base mt-5'>{item.content}</p>
+                              <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
+                                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                                <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
+                              </Button>
+                            </div>
+                            <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index].bg_color + (isFlipped != index ? " hidden" : " flex")}>
+                              <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
+                              <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index].description}</p></div>
+                            </div>
                           </div>
-                          <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index + 2].bg_color + (isFlipped != index + 2 ? " hidden" : " flex")}>
-                            <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
-                            <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index + 2].description}</p></div>
+
+                        )
+                      })
+                    }
+                  </div>
+                  <div className="flex flex-col top-24 max-lg:top-2 relative gap-8">
+                    {
+                      assistSecionItems[1].map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className='card w-[365px] max-md:w-[320px] relative h-[315px] cursor-pointer'
+                            onMouseEnter={() => setIsFlipped(index + 2)}
+                            onMouseLeave={() => setIsFlipped(-1)}
+                          >
+                            <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index + 2 ? "hidden" : "flex flex-col items-start")}>
+                              <div className='mb-2'> {item.icon} </div>
+                              <p className='font-semibold text-xl'>{item.title}</p>
+                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                              <p className='font-normal text-base mt-5'>{item.content}</p>
+                              <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
+                                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                                <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
+                              </Button>
+                            </div>
+                            <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index + 2].bg_color + (isFlipped != index + 2 ? " hidden" : " flex")}>
+                              <div className='bg-[#D599E126] p-1 flex justify-center items-center rounded-full w-1/3'>{icons.tip}&nbsp;Solution</div>
+                              <div><p className='font-normal mt-10 text-base text-start'>{hoverContent[index + 2].description}</p></div>
+                            </div>
                           </div>
-                        </div>
-                      )
-                    })
-                  }
+                        )
+                      })
+                    }
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-        </div> */}
-        {/* <div className="flex flex-col w-full p-20 max-md:p-10 max-sm:p-0 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
-          <span className='font-medium text-[50px] mx-auto text-white max-w-[600px] max-lg:text-[40px]'>OUR SERVICES FOR YOUR BENEFIT</span>
-          <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
-            {
-              services.map((service, index) => {
-                return (
-                  <Button
-                    key={index}
-                    radius="full"
-                    variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                    className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-[#9C3FE4] to-[#C65647]" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4"}
-                    onClick={() => setSelectedServiceIndex(index)}
-                  >
-                    <span>{icons.shine}</span>{service.name}
-                  </Button>
-                )
-              })
-            }
-          </div>
-        </div> */}
-        {
-          services.map((service, index) => {
-            return (
-              <div key={index} className={'flex w-[95%] max-xl:flex-col max-xl:mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
-                <img src={service.img} alt="Service" className='max-xl:w-full max-md:hidden' />
-                <span className='max-w-1/2 max-xl:text-center'>{service.description}</span>
-              </div>
-            )
-          })
-        }
-        <div className="mt-24 max-lg:text-center max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative">
-          <div className=' py-8'>
-            <p className='font-medium text-[50px] max-lg:text-[40px] leading-[70px] max-lg:leading-[46px] max-xl:text-[40px] uppercase'>Securing Your Brand:</p>
-            <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
-            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full mt-6" size='lg'>
-              Free Analisis
-            </Button>
-          </div>
-          <div className='flex max-lg:hidden'>
-            <Image src="assets/safeground/message.svg" width={300} height={170} className="top-[180x] right-[520px] absolute max-xl:!w-[200px] max-xl:right-[320px]" />
-            <Image src="assets/safeground/img-thumbnail.svg" width={320} height={200} className='top-[40px] right-[330px] absolute max-xl:!w-[220px] max-xl:right-[234px]' />
-            <Image src="assets/safeground/robot-hand-finger.svg" width={461} height={352} className='absolute right-0 top-10 max-xl:!w-[320px]' />
+            <Image src="assets/bg-shape-purple-circle.svg" width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
           </div>
         </div>
 
-        <div className="mt-32 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8">
+        {/* This section for define we're ready to assist*/}
+
+        <div className='max-lg:px-3'>
+          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
+            <span className='font-medium text-[50px] mx-auto text-white max-w-[600px] max-lg:text-[40px]'>OUR SERVICES FOR YOUR BENEFIT</span>
+            <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
+              {
+                services.map((service, index) => {
+                  return (
+                    <Button
+                      key={index}
+                      radius="full"
+                      variant={selectedServiceIndex == index ? 'solid' : 'faded'}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-[#9C3FE4] to-[#C65647]" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4"}
+                      onClick={() => setSelectedServiceIndex(index)}
+                    >
+                      <span>{icons.shine}</span><span className='max-lg:text-[10px]'>{service.name}</span>
+                    </Button>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
+        <div className='max-lg:px-3 max-w-[]'>
+          {
+            services.map((service, index) => {
+              return (
+                <div key={index} className={'flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
+                  <img src={service.img} alt="Service" className='max-xl:w-full max-md:hidden' />
+                  <span className='max-w-1/2 max-xl:text-center'>{service.description}</span>
+                </div>
+              )
+            })
+          }
+        </div>
+        <div className='max-lg:px-3 mx-auto'>
+          <div className="mt-24 max-lg:text-center mx-auto max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative p-10">
+            <div className=' py-8'>
+              <p className='font-medium text-[50px] max-lg:text-[40px] max-lg:leading-[46px] max-xl:text-[40px] uppercase'>Securing Your Brand:</p>
+              <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
+              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full mt-6" size='lg'>
+                Free Analisis
+              </Button>
+            </div>
+            <div className='flex max-lg:hidden'>
+              <Image src="assets/safeground/message.svg" width={300} height={170} className="top-[180x] right-[520px] absolute max-xl:!w-[200px] max-xl:right-[320px]" />
+              <Image src="assets/safeground/img-thumbnail.svg" width={320} height={200} className='top-[40px] right-[330px] absolute max-xl:!w-[220px] max-xl:right-[234px]' />
+              <Image src="assets/safeground/robot-hand-finger.svg" width={461} height={352} className='absolute right-0 top-10 max-xl:!w-[320px]' />
+            </div>
+          </div>
+        </div>
+
+        {/* This section for define support video*/}
+
+        <div className="mt-32 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
           <video controls preload="none" className='rounded-xl w-full'>
             <source src="/path/to/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
+
+        {/* This section for define we're ready to assist*/}
+
         <div className="max-lg:flex-col container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24">
           {
             percentDescription.map((item, index) => {
@@ -402,25 +426,31 @@ export default function HomePage() {
             })
           }
         </div>
-        <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
-          <div className='flex justify-start w-full'>
-            <div className='p-10 max-xl:w-full max-xl:text-center'>
-              <p className='font-medium text-5xl max-lg:text-[40px] max-w-[580px] max- max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
-              <p className='max-w-[520px] max-xl:mx-auto pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
+
+        {/* This section for define experience our rapid service*/}
+
+        <div className='max-lg:px-3'>
+          <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
+            <div className='flex justify-start w-full'>
+              <div className='px-9 py-6 max-xl:w-full max-xl:text-center'>
+                <p className='font-medium text-5xl max-lg:text-[30px] max-w-[580px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
+                <p className='max-w-[520px] max-xl:mx-auto pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
+              </div>
+              <div className='max-xl:hidden'>
+                <Image src="assets/setup/message.svg" width={300} height={170} className="top-20 right-[460px] absolute" />
+                <Image src="assets/setup/clock-message.svg" width={800} height={600} className="top-0 right-0 absolute" />
+              </div>
             </div>
-            <div className='max-xl:hidden'>
-              <Image src="assets/setup/message.svg" width={300} height={170} className="top-20 right-[460px] absolute" />
-              <Image src="assets/setup/clock-message.svg" width={800} height={600} className="top-0 right-0 absolute" />
-            </div>
+            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full" size='lg'>
+              Free Analisis
+            </Button>
           </div>
-          <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full" size='lg'>
-            Free Analisis
-          </Button>
         </div>
       </div >
-      {
-        window.innerWidth > 670 ? <CustomerReview /> : <MobileReview />
-      }
+
+      {/* This section for define Customer Reviews*/}
+
+      <CustomerReview />
     </>
   )
 }     

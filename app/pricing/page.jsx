@@ -10,6 +10,9 @@ import CustomerReview from '@/src/components/customerReview';
 
 export default function Pricing() {
 
+    const [billMonthly,setMonthly] = useState(false);
+    const [billYearly,setYearly] = useState(false)
+
     const icons = {
         lock: <Lock fill="currentColor" size={16} />,
         left: <ChevronLeft fill="currentColor" size={16} />,
@@ -121,8 +124,11 @@ export default function Pricing() {
     return (
         <>
             <div className="flex flex-col text-white w-full">
+
+                {/* This section for define Pricing Header*/}
+
                 <div className="text-center gap-10 mt-20">
-                    <p className="font-bold text-7xl max-lg:text-[40px] max-md:justify-center">PRICING</p>
+                    <p className="font-bold text-7xl max-lg:text-4xl max-md:justify-center">PRICING</p>
                 </div>
                 <div className='flex w-full mt-32 justify-between max-xl:text-center max-xl:flex-wrap max-xl:gap-5 max-xl:mx-auto max-xl:justify-center container mx-auto'>
                     <div className='w-max flex flex-col'>
@@ -140,16 +146,21 @@ export default function Pricing() {
                         </Button>
                     </div>
                 </div>
+
+                {/* This section for define Pricing Table*/}
+
                 <div className='flex justify-start container mx-auto'>
-                    <p className='font-medium mx-xl:text-center text-5xl mt-36 mml-20 max-xl:text-center max-xl:mx-auto'>PRICING TABLE</p>
+                    <p className='font-medium mx-xl:text-center text-5xl mt-36 mml-20 max-xl:text-center max-xl:mx-auto max-lg:text-4xl'>PRICING TABLE</p>
                 </div>
+                <div className='max-lg:px-3'>
                 <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
-                    <Button radius="full" className="bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                    <Button radius="full" className="bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg' onClick={()=>setMonthly(true)}>
                         Bill Monthly
                     </Button>
-                    <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
+                    <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg' onClick={()=>setYearly(true)}>
                         Bill Yearly
                     </Button>
+                </div>
                 </div>
                 <div className='flex mt-20 w-full gap-3 relative max-xl:flex-col mx-auto justify-center'>
                     {
@@ -166,8 +177,8 @@ export default function Pricing() {
                                                     :
                                                     false
                                             }
-                                            <p className='text-center font-medium text-6xl mt-10'>{item.title}</p>
-                                            <div className='mt-20 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{item.price}</p><p className='pt-5'>/MO</p></div>
+                                            <p className='text-center font-medium text-6xl mt-10 max-lg:text-4xl'>{item.title}</p>
+                                            <div className='mt-20 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl '>{item.price}</p><p className='pt-5'>/MO</p></div>
                                             {
                                                 item.title != "STAR" ?
                                                     <Button radius="lg" className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
@@ -214,6 +225,9 @@ export default function Pricing() {
                     }
                 </div>
             </div >
+
+            {/* This section for define Customer Reviews*/}
+
             <CustomerReview />
         </>
     );

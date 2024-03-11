@@ -712,7 +712,7 @@ export const TIP = ({
     );
 };
 
-export const COMPLETE = ({
+export const Complete = ({
     fill = "currentColor",
     size,
     height,
@@ -751,7 +751,7 @@ export const COMPLETE = ({
     );
 };
 
-export const UNCOMPLETE = ({
+export const Uncomplete = ({
     fill = "currentColor",
     size,
     height,
@@ -790,7 +790,7 @@ export const UNCOMPLETE = ({
     );
 };
 
-export const EYE = ({
+export const Eye = ({
     fill = "currentColor",
     size,
     height,
@@ -974,7 +974,7 @@ export const ROBERTCHAT = ({
 };
 
 
-export const SELECTSWITCH = ({
+export const SelectSwitch = ({
     fill = "currentColor",
     size,
     height,
@@ -1013,7 +1013,7 @@ export const SELECTSWITCH = ({
     );
 };
 
-export const UNSELECTSWITCH = ({
+export const UnselectSwitch = ({
     fill = "currentColor",
     size,
     height,
@@ -1370,6 +1370,216 @@ export const Law = ({
             </defs>
         </svg>
 
+
+    );
+};
+
+export const FirstRecoveryStep = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16.9189" cy="16.4064" r="16" fill="url(#paint0_linear_367_5539)" />
+            <g filter="url(#filter0_d_367_5539)">
+                <path d="M13.6789 11.6064V9.94637H17.4389V24.4064H15.5989V11.6064H13.6789Z" fill="white" />
+            </g>
+            <defs>
+                <filter id="filter0_d_367_5539" x="7.67896" y="7.94635" width="15.76" height="26.46" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_367_5539" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5539" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_367_5539" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+    );
+};
+
+export const SecondRecoveryStep = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16.9189" cy="16.4064" r="16" fill="url(#paint0_linear_367_5547)" />
+            <g filter="url(#filter0_d_367_5547)">
+                <path d="M12.9389 21.9464C14.6323 20.5864 15.9589 19.473 16.9189 18.6064C17.8789 17.7264 18.6856 16.813 19.3389 15.8664C20.0056 14.9064 20.3389 13.9664 20.3389 13.0464C20.3389 12.1797 20.1256 11.4997 19.6989 11.0064C19.2856 10.4997 18.6123 10.2464 17.6789 10.2464C16.7723 10.2464 16.0656 10.533 15.5589 11.1064C15.0656 11.6664 14.7989 12.4197 14.7589 13.3664H12.9989C13.0523 11.873 13.5056 10.7197 14.3589 9.90637C15.2123 9.09304 16.3123 8.68637 17.6589 8.68637C19.0323 8.68637 20.1189 9.06637 20.9189 9.82637C21.7323 10.5864 22.1389 11.633 22.1389 12.9664C22.1389 14.073 21.8056 15.153 21.1389 16.2064C20.4856 17.2464 19.7389 18.1664 18.8989 18.9664C18.0589 19.753 16.9856 20.673 15.6789 21.7264H22.5589V23.2464H12.9389V21.9464Z" fill="white" />
+            </g>
+            <defs>
+                <filter id="filter0_d_367_5547" x="6.93896" y="6.6864" width="21.62" height="26.56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_367_5547" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5547" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_367_5547" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+    );
+};
+
+export const ThirdRecoveryStep = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16.9189" cy="16.4064" r="16" fill="url(#paint0_linear_367_5550)" />
+            <g filter="url(#filter0_d_367_5550)">
+                <path d="M12.1189 13.5864C12.2123 12.3597 12.6856 11.3997 13.5389 10.7064C14.3923 10.013 15.4989 9.66637 16.8589 9.66637C17.7656 9.66637 18.5456 9.83304 19.1989 10.1664C19.8656 10.4864 20.3656 10.9264 20.6989 11.4864C21.0456 12.0464 21.2189 12.6797 21.2189 13.3864C21.2189 14.213 20.9789 14.9264 20.4989 15.5264C20.0323 16.1264 19.4189 16.513 18.6589 16.6864V16.7864C19.5256 16.9997 20.2123 17.4197 20.7189 18.0464C21.2256 18.673 21.4789 19.493 21.4789 20.5064C21.4789 21.2664 21.3056 21.953 20.9589 22.5664C20.6123 23.1664 20.0923 23.6397 19.3989 23.9864C18.7056 24.333 17.8723 24.5064 16.8989 24.5064C15.4856 24.5064 14.3256 24.1397 13.4189 23.4064C12.5123 22.6597 12.0056 21.6064 11.8989 20.2464H13.6589C13.7523 21.0464 14.0789 21.6997 14.6389 22.2064C15.1989 22.713 15.9456 22.9664 16.8789 22.9664C17.8123 22.9664 18.5189 22.7264 18.9989 22.2464C19.4923 21.753 19.7389 21.1197 19.7389 20.3464C19.7389 19.3464 19.4056 18.6264 18.7389 18.1864C18.0723 17.7464 17.0656 17.5264 15.7189 17.5264H15.2589V16.0064H15.7389C16.9656 15.993 17.8923 15.793 18.5189 15.4064C19.1456 15.0064 19.4589 14.393 19.4589 13.5664C19.4589 12.8597 19.2256 12.293 18.7589 11.8664C18.3056 11.4397 17.6523 11.2264 16.7989 11.2264C15.9723 11.2264 15.3056 11.4397 14.7989 11.8664C14.2923 12.293 13.9923 12.8664 13.8989 13.5864H12.1189Z" fill="white" />
+            </g>
+            <defs>
+                <filter id="filter0_d_367_5550" x="5.89893" y="7.66638" width="21.58" height="26.84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_367_5550" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5550" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_367_5550" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+    );
+};
+
+export const FourthRecoveryStep = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16.9189" cy="16.4064" r="16" fill="url(#paint0_linear_367_5588)" />
+            <g filter="url(#filter0_d_367_5588)">
+                <path d="M11.7189 21.1864V19.8064L18.7389 10.0864H20.9189V19.6064H22.9189V21.1864H20.9189V24.4064H19.1189V21.1864H11.7189ZM19.1989 11.9864L13.8189 19.6064H19.1989V11.9864Z" fill="white" />
+            </g>
+            <defs>
+                <filter id="filter0_d_367_5588" x="5.71893" y="8.08636" width="23.2" height="26.32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_367_5588" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5588" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_367_5588" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#B759FF" />
+                    <stop offset="0.815566" stop-color="#F78171" />
+                </linearGradient>
+            </defs>
+        </svg>
+    );
+};
+
+export const RecoveryChat = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="75" height="76" viewBox="0 0 75 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_2_12423)">
+                <rect x="20" y="16.4062" width="35" height="35" rx="5" fill="white" />
+                <g clip-path="url(#clip0_2_12423)">
+                    <path d="M47.8906 31.1875H35.1406C33.9775 31.1875 33.0312 32.1337 33.0312 33.2969V40.3281C33.0312 41.4913 33.9775 42.4375 35.1406 42.4375H46.1932L48.7997 45.044C49.0027 45.247 49.3069 45.3046 49.566 45.1964C49.6945 45.1433 49.8044 45.0532 49.8816 44.9375C49.9589 44.8219 50.0001 44.6859 50 44.5469V33.2969C50 32.1337 49.0538 31.1875 47.8906 31.1875ZM44.375 38.9219H38.6562C38.2676 38.9219 37.9531 38.6074 37.9531 38.2188C37.9531 37.8301 38.2676 37.5156 38.6562 37.5156H44.375C44.7636 37.5156 45.0781 37.8301 45.0781 38.2188C45.0781 38.6074 44.7636 38.9219 44.375 38.9219ZM45.7812 36.1094H37.25C36.8614 36.1094 36.5469 35.7949 36.5469 35.4062C36.5469 35.0176 36.8614 34.7031 37.25 34.7031H45.7812C46.1699 34.7031 46.4844 35.0176 46.4844 35.4062C46.4844 35.7949 46.1699 36.1094 45.7812 36.1094Z" fill="url(#paint0_linear_2_12423)" />
+                    <path d="M26.434 39.5714C26.6931 39.6796 26.9973 39.622 27.2003 39.419L29.8068 36.8125H31.625V33.2969C31.625 31.3585 33.2022 29.7812 35.1406 29.7812H42.9688V27.6719C42.9688 26.5069 42.0244 25.5625 40.8594 25.5625H28.1094C26.9444 25.5625 26 26.5069 26 27.6719V38.9219C25.9999 39.0609 26.0411 39.1969 26.1183 39.3126C26.1956 39.4282 26.3055 39.5183 26.434 39.5714Z" fill="url(#paint1_linear_2_12423)" />
+                </g>
+            </g>
+            <defs>
+                <filter id="filter0_d_2_12423" x="0" y="0.40625" width="75" height="75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="10" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.49 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_12423" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_12423" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_2_12423" x1="33.0313" y1="35.5969" x2="50.3372" y2="35.7073" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <linearGradient id="paint1_linear_2_12423" x1="26" y1="29.9719" x2="43.306" y2="30.0823" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+                <clipPath id="clip0_2_12423">
+                    <rect width="24" height="24" fill="white" transform="translate(26 23.4062)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    );
+};
+
+export const ProtectShadow = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_2_12749)">
+                <rect x="20" y="16" width="35" height="35" rx="5" fill="white" />
+                <path d="M45.8111 28.148C45.7872 27.6218 45.7872 27.1196 45.7872 26.6173C45.7872 26.2108 45.4763 25.8999 45.0697 25.8999C42.0802 25.8999 39.8081 25.0389 37.9187 23.1973C37.6317 22.9342 37.2013 22.9342 36.9143 23.1973C35.0249 25.0389 32.7528 25.8999 29.7633 25.8999C29.3567 25.8999 29.0458 26.2108 29.0458 26.6173C29.0458 27.1196 29.0458 27.6218 29.0219 28.148C28.9262 33.1704 28.7827 40.0583 37.1773 42.9522L37.4165 43L37.6557 42.9522C46.0264 40.0583 45.9068 33.1943 45.8111 28.148ZM36.8425 35.1076C36.699 35.2272 36.5316 35.299 36.3403 35.299L36.3164 35.299C36.125 35.299 35.9337 35.2033 35.8141 35.0598L33.5899 32.5964L34.6661 31.6398L36.412 33.577L40.2865 29.8939L41.267 30.9462L36.8425 35.1076Z" fill="url(#paint0_linear_2_12749)" />
+            </g>
+            <defs>
+                <filter id="filter0_d_2_12749" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                    <feOffset dy="4" />
+                    <feGaussianBlur stdDeviation="10" />
+                    <feComposite in2="hardAlpha" operator="out" />
+                    <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.49 0" />
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_12749" />
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_12749" result="shape" />
+                </filter>
+                <linearGradient id="paint0_linear_2_12749" x1="29" y1="29.2712" x2="46.1671" y2="29.3475" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#9C3FE4" />
+                    <stop offset="1" stop-color="#C65647" />
+                </linearGradient>
+            </defs>
+        </svg>
 
     );
 };

@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import HeroImg from "@/public/assets/Hero.svg";
 import { useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter , Facebook , Google } from "@/src/utils/Icons";
+import { Lock, Envelop, Twitter, Facebook, Google } from "@/src/utils/Icons";
 
 export default function Login() {
 
@@ -63,9 +63,15 @@ export default function Login() {
 
     return (
         <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
+
+            {/* This section for keep Lgoin page image*/}
+
             <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
                 <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto object-cover object-center' />
             </div>
+
+            {/* This section for define Login page content*/}
+
             <div className='w-full lg:w-1/2 flex items-center justify-center'>
                 <div className="w-[562px] flex flex-col items-center gap-10 text-white">
                     <div className='text-center max-w-[354px] mb-4'>
@@ -116,18 +122,18 @@ export default function Login() {
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
                         <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto'>
-                        <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
-                            {icons.google}
-                        </Button>
-                        <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
-                            {icons.facebook}
-                        </Button>
-                        <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
-                            {icons.twitter}
-                        </Button>
+                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
+                                {icons.google}
+                            </Button>
+                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
+                                {icons.facebook}
+                            </Button>
+                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
+                                {icons.twitter}
+                            </Button>
                         </div>
                         <div className='max-auto text-center'>
-                        <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>
+                            <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>
                         </div>
                     </div>
                 </div>

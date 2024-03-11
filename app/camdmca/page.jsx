@@ -52,21 +52,24 @@ export default function CamDmca() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
+
+                {/* This section for define camdmca title*/}
+
                 <div className='text-center mt-20'>
-                    <p className='font-bold text-7xl'>{CamDmcaTitle.title}</p>
-                    <div className='max-w-[1100px]'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
+                    <p className='font-bold text-7xl max-lg:text-[30px]'>{CamDmcaTitle.title}</p>
+                    <div className='max-w-[848px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
                 </div>
-                <div className='font-medium text-5xl mt-56'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
-                <div className='flex gap-32 mt-10'>
-                    <div className='flex mt-10 gap-10 mx-auto justify-center'>
+                <div className='font-medium text-5xl mt-56 max-lg:text-[40px] max-md:text-[30px]'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
+                <div className='flex gap-32 mt-10 max-md:px-3'>
+                    <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>
                         {
                             CamDmcaContent.map((item, index) => {
                                 return (
                                     <div key={index} className="flex max-w-[480px] py-10 bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer top-6 mt-6">
                                         <div className='flex flex-col'>
                                             {item.icon}
-                                            <p className='font-medium text-2xl mt-5'>{item.title}</p>
-                                            <p className='mt-5 font-normal text-xl'>{item.content}</p>
+                                            <p className='font-medium text-2xl mt-5 max-md:text-[20px]'>{item.title}</p>
+                                            <p className='mt-5 font-normal text-xl max-md:text-[15px]'>{item.content}</p>
                                         </div>
                                     </div>
                                 )
@@ -74,32 +77,34 @@ export default function CamDmca() {
                         }
                     </div>
                 </div>
-                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-center px-10 py-20 gap-32'>
-                    <div className="relative max-w-[509px]">
-                        {/* <p className='font-medium text-5xl'>Tips for Content Protection:</p> */}
-                        <Image class="h-80 w-96 object-cover absolute top-10" src={WriteTip} />
-                        <Image class="h-80 w-96 object-cover " src={TipDocument} />
+
+                {/* This section for define tips for camdmca page*/}
+
+                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-center px-10 py-20 gap-32 max-lg:flex-col max-lg:items-center'>
+                    <div className="relative max-w-[740px] flex justify-between max-sm:hidden">
+                        <Image class="" src={WriteTip} />
+                        <Image class="" src={TipDocument} />
                     </div>
                     <div className='flex max-w-[570px] justify-center flex-col gap-y-10'>
                         <div className='flex gap-8 p-7'>
                             <div>{icons.FirstTip}</div>
                             <div className='flex flex-col'>
-                            <p className='font-medium text-xl'>Regular Monitoring:</p>
+                            <p className='font-medium text-xl max-lg:text-[20px]'>Regular Monitoring:</p>
                             <p className='mt-5'>Perform routine checks to ensure the integrity and exclusivity of your uploaded content.</p>
                             </div>
                         </div>
                         <div className='flex gap-8 rounded-lg'>
                             <div className='ml-5'>{icons.SecondTip}</div>
                             <div className='flex-col'>
-                            <p className='font-medium text-xl'>Enhanced Security Measures: </p>
-                            <p>Implement two-factor authentication and regularly update your security settings to prevent unauthorized access to your accounts.</p>
+                            <p className='font-medium text-xl max-lg:text-[20px]'>Enhanced Security Measures: </p>
+                            <p className='mt-5'>Implement two-factor authentication and regularly update your security settings to prevent unauthorized access to your accounts.</p>
                             </div>
                         </div>
                         <div className='flex gap-8 mt-5 p-6'>
                             <div>{icons.ThirdTip}</div>
                             <div className='flex-col'>
-                            <p className='font-medium text-xl'>Cautious Information Sharing:</p>
-                            <p>Be mindful of sharing personal information online to reduce potential vulnerabilities.</p>
+                            <p className='font-medium text-xl max-lg:text-[20px]'>Cautious Information Sharing:</p>
+                            <p className='mt-5'>Be mindful of sharing personal information online to reduce potential vulnerabilities.</p>
                             </div>
                         </div>
                     </div>

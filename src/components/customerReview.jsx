@@ -28,7 +28,7 @@ export default function CustomerReview() {
 
     return (
         <div className='my-20 container relative text-white'>
-            <p className='font-medium text-5xl max-xl:text-[40px] max-xl:text-center'>Customer Reviews</p>
+            <p className='font-medium text-5xl max-xl:text-[30px] max-xl:text-center'>Customer Reviews</p>
             <div className="mt-16 relative">
                 <Swiper
                     onSwiper={setSwiperRef}
