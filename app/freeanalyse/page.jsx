@@ -45,7 +45,7 @@ export default function page() {
           <p className='mt-10'>{freeanalyseContent.thirdDescription}</p>
         </div>
         <div>
-          <Image class="h-72 w-80 mt-2 object-cover max-md:w-full p-2 rounded-[20px]" src={Saturn} />
+          <Image class="h-72 w-80 mt-2 object-cover max-md:w-full p-2 rounded-[20px]" src={Saturn} alt='saturn' />
         </div>
       </div>
 
@@ -55,8 +55,8 @@ export default function page() {
         <div className='w-1/2 flex justify-center items-center'>
           <div className=' relative '>
             <Image class="h-[560px] w-80 object-cover max-md:w-full rounded-[20px]" src={Robertgroup} alt="Modern building architecture" />
-            <Image src={Chat} width={500} height={370} className="-top-40 left-[115px] -rotate-[45deg] absolute  max-xl:!w-[200px] max-xl:right-[320px]" />
-            <Image src={Chat} width={200} height={170} className="top-14 left-[220px] absolute max-xl:!w-[200px] max-xl:right-[320px]" />
+            <Image src={Chat} width={500} height={370} className="-top-40 left-[115px] -rotate-[45deg] absolute  max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
+            <Image src={Chat} width={200} height={170} className="top-14 left-[220px] absolute max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
           </div>
         </div>
         <div className='flex w-1/2'>

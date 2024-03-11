@@ -38,7 +38,7 @@ export default function SCAN() {
                     </Button>
                 </div>
                 <div className='flex w-full justify-around  items-center mx-auto mt-20 max-lg:flex-col max-lg:text-center'>
-                    <Image class="h-80 w-96 object-cover max-lg:-ml-20" src={ScanTakedown} />
+                    <Image alt='scan' class="h-80 w-96 object-cover max-lg:-ml-20" src={ScanTakedown} />
                     <div className='max-w-[563px]'>
                         <p className='font-normal text-base'>Utilizing state-of-the-art software, we tirelessly scour the internet, identifying potential copyright infringements across diverse online platforms. Supported by meticulous manual scans conducted by our proficient agents, we scrutinize an extensive array of sources, including Google Search, Images, Videos, file hosting services, and various websites. Our comprehensive scan encompasses over 100 scrutinized websites and social media platforms like Reddit, Instagram, Twitter, and TikTok.</p>
                     </div>
@@ -62,8 +62,8 @@ export default function SCAN() {
                         </div>
                     </div>
                     <div className="relative max-w-[740px] flex flex-wrap">
-                        <Image class="w-[349px] h-[319px]" src={WriteTip} />
-                        <Image class="" src={TipDocument} />
+                        <Image alt='writetip' class="w-[349px] h-[319px]" src={WriteTip} />
+                        <Image alt='tip' class="" src={TipDocument} />
                     </div>
                 </div>
 

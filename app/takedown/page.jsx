@@ -41,7 +41,7 @@ export default function TakeDown() {
                 {/* This section for define takedown page content*/}
 
                 <div className='flex w-full justify-around items-center mx-auto mt-20 max-xl:flex-col'>
-                    <Image class="h-80 w-96 object-cover opacity-80" src={Warning} />
+                    <Image class="h-80 w-96 object-cover opacity-80" src={Warning} alt='warning' />
                     <div className='max-w-[743px] max-xl:text-center'>
                         <p className='font-normal text-lg'>Upon detecting any infringing content, our seasoned experts promptly issue DMCA takedown notices to the relevant internet authorities. We are committed to swiftly removing illicit copies of your content identified through both software and manual scans. Our strong affiliations with file hosting sites ensure expedited consideration of our DMCA takedown notices, aligning closely with our clients'business policies. </p>
                         <p className='font-normal text-red-300 text-lg'>(Note: Our actions may be limited by DMCA compliance  regulations.)</p>
@@ -66,8 +66,8 @@ export default function TakeDown() {
                         </div>
                     </div>
                     <div className="relative max-w-[740px] flex flex-wrap">
-                        <Image class="w-[349px] h-[319px]" src={WriteTip} />
-                        <Image class="" src={TipDocument} />
+                        <Image class="w-[349px] h-[319px]" src={WriteTip} alt='writetip' />
+                        <Image class="" src={TipDocument} alt='tip' />
                     </div>
                 </div>
                 <div>

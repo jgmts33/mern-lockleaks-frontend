@@ -105,8 +105,8 @@ export default function CreateDmca() {
                         </div>
                     </div>
                     <div className="max-w-[740px] relative flex flex-wrap max-xl:items-center max-xl:justify-center">
-                        <Image class="z-20" src={WriteTip} />
-                        <Image class="absolute -right-20 bottom-0" src={TipDocument} />
+                        <Image class="z-20" src={WriteTip} alt='write tip' />
+                        <Image class="absolute -right-20 bottom-0" src={TipDocument} alt='tip document' />
                     </div>
                 </div>
 

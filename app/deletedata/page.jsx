@@ -91,8 +91,8 @@ export default function DeleteData() {
                     <input type='text' placeholder='Type here' className="form-select bg-white text-black p-2 rounded-lg mt-5 block w-full" />
                 </div>
                 <div className='relative max-2xl:hidden'>
-                    <Image src={RightChat} className='absolute -right-52 rotate-[-50deg] w-48 h-44' />
-                    <Image src={LeftChat} className='absolute -right-72 -top-52 rotate-[50deg]' />
+                    <Image src={RightChat} className='absolute -right-52 rotate-[-50deg] w-48 h-44' alt='right rotate chat' />
+                    <Image src={LeftChat} className='absolute -right-72 -top-52 rotate-[50deg]' alt='left lotate chat' />
                 </div>
             </div>
 
@@ -140,7 +140,7 @@ export default function DeleteData() {
                     <div className='mt-10'>
                         <span className='font-medium text-3xl mt-3 max-md:text-lg'>Under which legislation are you making this request?</span>
                         <div className='relative max-xl:hidden'>
-                            <Image src={RightChat} className='absolute -left-96 -top-32 w-[500px] h-[450px] rotate-[-50deg]' />
+                            <Image src={RightChat} className='absolute -left-96 -top-32 w-[500px] h-[450px] rotate-[-50deg]' alt='right rotate chat' />
                         </div>
                         <div className="flex w-full flex-col gap-4 mt-10">
                             {
@@ -178,7 +178,7 @@ export default function DeleteData() {
                         </div>
                     </div>
                     <div className='relative max-xl:hidden'>
-                        <Image src={LeftChat} className='absolute -left-96  rotate-[50deg] w-[430px] h-[240px]' />
+                        <Image src={LeftChat} className='absolute -left-96  rotate-[50deg] w-[430px] h-[240px]' alt='left rotate chat' />
                     </div>
                     <div className='mt-10'>
                         <span className='font-medium text-3xl mt-3 max-md:text-lg'>Do you have a specific request related to your personal data?</span>
@@ -223,9 +223,9 @@ export default function DeleteData() {
                 </div>
             </div>
             <div className='relative flex w-full'>
-                <Image src={Photo} className='absolute right-80 -top-44 max-2xl:hidden' />
-                <Image src={RightChat} className='absolute right-[500px] max-2xl:hidden' />
-                <Image src={RobertHand} className='absolute right-0' />
+                <Image src={Photo} className='absolute right-80 -top-44 max-2xl:hidden' alt='photo' />
+                <Image src={RightChat} className='absolute right-[500px] max-2xl:hidden' alt='right rotate chat' />
+                <Image src={RobertHand} className='absolute right-0' alt='robert hand' />
             </div>
 
             {/* This section for confirm personal data*/}

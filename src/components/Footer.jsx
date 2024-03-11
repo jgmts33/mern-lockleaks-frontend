@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaceBook, LinkedIn, TwitterV2 } from '../utils/Icons';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
 
@@ -54,7 +55,7 @@ export default function Footer() {
         <p className='font-light text-xs text-center pb-8 text-white'>Copyright © 2023 LockLeaks.</p>
       </div>
       <div className='w-full h-52 bg-[#362666] blur-3xl absolute bottom-0 left-0 bg-opacity-35 rounded-t-3xl z-20'>
-        <img src="assets/bg-footer.svg" className='absolute bottom-0' />
+        <Image src="assets/bg-footer.svg" className='absolute bottom-0' alt='bg-footer' />
       </div>
     </div>
   )

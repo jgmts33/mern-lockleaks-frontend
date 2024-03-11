@@ -112,7 +112,7 @@ export default function Recovery() {
                             <p className='font-medium text-3xl mt-5 max-md:text-lg'>{HelpContent.first_tip.content}</p>
                         </div>
                         <div className='mt-24 max-xl:hidden'>
-                            <Image src={LeftChat} />
+                            <Image alt='left-chat' src={LeftChat} />
                         </div>
                         <div className='max-w-[673px] mt-32 max-md:mt-10 justify-end max-lg:mt-10'>
                             <p className='font-medium text-5xl max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.second_tip.title}</p>
@@ -125,11 +125,11 @@ export default function Recovery() {
                             <p className='font-medium text-3xl mt-5 max-md:text-lg'>{HelpContent.third_tip.content}</p>
                         </div>
                         <div className='flex relative max-xl:hidden'>
-                            <Image className='mt-40' src={RightChat} />
-                            <Image className='absolute left-40' src={Photo} />
+                            <Image alt='right-chat' className='mt-40' src={RightChat} />
+                            <Image alt='photo' className='absolute left-40' src={Photo} />
                         </div>
                         <div>
-                            <Image className='right-0 absolute' src={RobertHand} />
+                            <Image alt='robert-hand' className='right-0 absolute' src={RobertHand} />
                         </div>
                     </div>
                 </div>

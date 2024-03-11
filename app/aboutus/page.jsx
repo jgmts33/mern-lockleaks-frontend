@@ -68,7 +68,7 @@ export default function AboutUs() {
                 <div className='max-lg:px-3 mt-20'>
                     <div className='mx-auto text-center max-w-lg uppercase'><span className='font-medium text-5xl max-xl:text-3xl'>Success Stories or Case Studies</span></div>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-center items-center bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl '>
-                        <img src="assets/setup/aboutus.svg" alt="Service" className='max-xl:w-full max-md:hidden' />
+                        <Image src="assets/setup/aboutus.svg" alt="Service" className='max-xl:w-full max-md:hidden' />
                         <div className='px-20 max-md:text-center max-xl:py-10'>
                             <span className='max-w-1/2 justify-center font-normal  text-base max-xl:text-center'>We have had several successful projects where we managed to eliminate pirated content from various platforms, thereby contributing to protecting our clients' image and digital assets. Case studies demonstrate the effectiveness of our solutions and how we addressed specific client needs.</span>
                         </div>

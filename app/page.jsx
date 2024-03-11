@@ -275,7 +275,7 @@ export default function HomePage() {
               <p className="font-medium text-[50px] uppercase max-lg:text-[30px] max-lg:text-center">We're ready to assist</p>
               <div className="flex justify-center items-center gap-8 max-lg:mt-10">
                 <div className="max-xl:hidden flex justify-center items-center max-lg:hidden w-full">
-                  <img src="assets/robert.svg" alt='robert' className='w-80 h-[680px] mt-20 bg-opacity-90' />
+                  <Image src="assets/robert.svg" alt='robert' className='w-80 h-[680px] mt-20 bg-opacity-90' />
                 </div>
                 <div className='flex items-center justify-center gap-6 max-lg:flex-col'>
                   <div className="flex flex-col top-0 relative gap-8">
@@ -295,7 +295,7 @@ export default function HomePage() {
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
                                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                                <img src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1'></img>
+                                <Image src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1' alt='vector' />
                               </Button>
                             </div>
                             <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index].bg_color + (isFlipped != index ? " hidden" : " flex")}>

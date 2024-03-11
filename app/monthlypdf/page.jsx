@@ -119,9 +119,9 @@ export default function MonthlyPdf() {
                     }
                 </div>
                     <div className='flex max-lg:hidden relative'>
-                        <Image src={Photo} className='absolute right-80 -top-[500px]' />
-                        <Image src={RightChat} className='absolute right-64 -top-72' />
-                        <Image src={RobertHand} className='right-0 -top-[450px] absolute' />
+                        <Image alt='photo' src={Photo} className='absolute right-80 -top-[500px]' />
+                        <Image alt='rightchat' src={RightChat} className='absolute right-64 -top-72' />
+                        <Image alt='roberthand' src={RobertHand} className='right-0 -top-[450px] absolute' />
                     </div>
                 </div>
 

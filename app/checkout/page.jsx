@@ -266,7 +266,7 @@ export default function Checkout() {
                         Add New
                         <span>{icons.shine}</span>
                     </Button>
-                    <img src="assets/robert.svg" alt='robert' className='w-80 h-[400px] mt-40 bg-opacity-90' />
+                    <Image src="assets/robert.svg" alt='robert' className='w-80 h-[400px] mt-40 bg-opacity-90' />
                 </div>
                 <div className='flex flex-col gap-5'>
                     <div className="flex bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 cursor-pointer w-full max-w-[724px] flex-col border border-gray-700 py-20 px-10 ">

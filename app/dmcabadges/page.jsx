@@ -81,11 +81,11 @@ export default function DmcaBadges() {
                 </div>
                 <div className='flex w-full mt-36'>
                     <div className='flex w-1/3 relative'>
-                        <Image className='left-0 top-10 z-20' src={RobertHand} />
-                        <Image className='absolute -right-40 top-20 max-xl:hidden' src={PhotoRight} />
+                        <Image className='left-0 top-10 z-20' src={RobertHand} alt='robert-hand' />
+                        <Image className='absolute -right-40 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
                     </div>
                     <div className='w-1/3 text-center mt-32 relative z-20'>
-                        <Image className='-top-40 absolute max-xl:hidden' src={PhotoLeft} />
+                        <Image className='-top-40 absolute max-xl:hidden' src={PhotoLeft} alt='photo rotate left' />
                         <span className='font-medium text-xl mx-auto mt-20'>Why Use DMCA Badges?</span>
                     </div>
                     <div className='w-1/3 relative'>
