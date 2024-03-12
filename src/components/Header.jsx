@@ -20,23 +20,6 @@ export default function Header() {
             <span> {icons.chevron} </span>
             <div className="hidden"></div>
           </div>
-          <Dropdown>
-            <DropdownTrigger>
-              <Button
-                
-              >
-                Open Menu
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions">
-              <DropdownItem key="new">New file</DropdownItem>
-              <DropdownItem key="copy">Copy link</DropdownItem>
-              <DropdownItem key="edit">Edit file</DropdownItem>
-              <DropdownItem key="delete" className="text-danger" color="danger">
-                Delete file
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
           <Link href="/help" className="text-white font-light" >Help</Link>
           <Link href="/blog" className="text-white font-light" >Blog</Link>
         </div>

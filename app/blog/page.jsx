@@ -94,7 +94,7 @@ export default function Blog() {
                       <div className='flex justify-end'> 
                       <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
                         <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                        <Image src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1' alt='vector' />
+                        <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                       </Button>
                       </div>
                     </div>

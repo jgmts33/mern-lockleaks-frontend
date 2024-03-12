@@ -11,7 +11,11 @@ import { checkCustomRoutes } from 'next/dist/lib/load-custom-routes';
 
 export default function Checkout() {
 
-    const [isSelected, setIsSelected] = React.useState(true)
+    const [isSelected, setSelected] = React.useState(true);
+    const [username, setUsername] = React.useState(false);
+    const [linkUsername, setLinkUsername] = React.useState(false);
+    const [isRecovery, setRecovery] = React.useState(false);
+    const [isReset, setReset] = React.useState(false);
 
     const icons = {
         lock: <Lock fill="currentColor" size={16} />,
@@ -248,7 +252,6 @@ export default function Checkout() {
             </div>
 
             {/* This section for add new user name*/}
-
             <div className='mt-20 flex mx-auto justify-center gap-80 max-2xl:gap-0 max-xl:flex-col max-md:px-3'>
                 <div className='flex-col flex mx-auto'>
                     <p className='font-medium text-3xl'>ADD NEW USERNAME</p>
@@ -266,7 +269,7 @@ export default function Checkout() {
                         Add New
                         <span>{icons.shine}</span>
                     </Button>
-                    <Image src="assets/robert.svg" alt='robert' className='w-80 h-[400px] mt-40 bg-opacity-90' />
+                    <Image src="assets/robert.svg" width={320} height={400} alt='robert' className='mt-40 bg-opacity-90' />
                 </div>
                 <div className='flex flex-col gap-5'>
                     <div className="flex bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 cursor-pointer w-full max-w-[724px] flex-col border border-gray-700 py-20 px-10 ">
@@ -301,7 +304,7 @@ export default function Checkout() {
                             </div>
                         </div>
                         <div className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
-                            <Button radius="full" className="bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                            <Button radius="full" className={username ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setUsername(true)}>
                                 Next
                             </Button>
                             <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
@@ -341,7 +344,7 @@ export default function Checkout() {
                             </div>
                         </div>
                         <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[676px] gap-2 items-center container'>
-                            <Button radius="full" className="bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-700 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                            <Button radius="full" className={linkUsername ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-700 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setLinkUsername(true)}>
                                 Save
                             </Button>
                             <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
@@ -355,10 +358,10 @@ export default function Checkout() {
                         <div className="flex w-full flex-wrap md:flex-nowrap gap-4 bg-white">
                         </div>
                         <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[676px] gap-2 items-center container'>
-                            <Button radius="full" className="bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                            <Button radius="full" className={isRecovery ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setRecovery(true)}>
                                 Add
                             </Button>
-                            <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
+                            <Button radius="full" className={!isRecovery ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setRecovery(false)}>
                                 Skip
                             </Button>
                         </div>
@@ -366,10 +369,10 @@ export default function Checkout() {
                 </div>
             </div>
             <div className='bg-gradient-to-tr w-1/2 mx-auto mt-28 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container max-md:text-center'>
-                <Button radius="full" className="bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                <Button radius="full" className={isReset ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={()=>setReset(true)}>
                     Reset
                 </Button>
-                <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
+                <Button radius="full" className={!isReset ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={()=>setReset(false)}>
                     NEXT
                 </Button>
             </div>

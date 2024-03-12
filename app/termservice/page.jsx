@@ -77,7 +77,7 @@ export default function TermService() {
                                         <p className='mt-5 font-normal text-base'>{termservice.content.slice(0, 100)}...</p>
                                         <Button radius="lg" className="bg-transparent justify-start text-white mt-4 flex gap-2 items-center" size='lg'>
                                             <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>Read More</span>
-                                            <Image src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1' alt='vector' />
+                                            <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                                         </Button>
                                     </div>
                                 </div>

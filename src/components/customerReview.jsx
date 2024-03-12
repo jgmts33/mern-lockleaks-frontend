@@ -60,7 +60,7 @@ export default function CustomerReview() {
                 >
                     {customReview.map((item, index) => <SwiperSlide key={index}><div className="mx-auto text-left w-full flex flex-wrap outline-none rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 p-10 max-sm:p-4 cursor-pointer">
                         <div className='ml-3 mt-2 flex items-center gap-4 w-full'>
-                            <Image src="assets/floyed.svg" alt='floyed' />
+                            <Image src="assets/floyed.svg" alt='floyed' width={61} height={61} />
                             <div>
                                 <p className='font-semibold text-xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{item.title}</p>
                                 <p className='font-light text-xs opacity-80'>{item.subTitle}</p>

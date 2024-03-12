@@ -295,7 +295,7 @@ export default function HomePage() {
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
                                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                                <Image src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1' alt='vector' />
+                                <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                               </Button>
                             </div>
                             <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index].bg_color + (isFlipped != index ? " hidden" : " flex")}>
@@ -325,7 +325,7 @@ export default function HomePage() {
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
                                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                                <Image src="assets/vector.svg" className='w-7 h-7 -ml-2 -mt-1' alt='vector' />
+                                <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                               </Button>
                             </div>
                             <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index + 2].bg_color + (isFlipped != index + 2 ? " hidden" : " flex")}>
@@ -373,7 +373,7 @@ export default function HomePage() {
             services.map((service, index) => {
               return (
                 <div key={index} className={'flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
-                  <Image src={service.img} alt="Service" className='max-xl:w-full max-md:hidden' />
+                  <Image src={service.img} width={675} height={452} alt="Service" className='max-xl:w-full max-md:hidden' />
                   <span className='max-w-1/2 max-xl:text-center'>{service.description}</span>
                 </div>
               )
