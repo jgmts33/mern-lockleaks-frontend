@@ -213,7 +213,6 @@ export default function HomePage() {
         <div className='relative flex px-3'>
 
            {/* This section for define homepage header*/}
-
           <div className="flex w-full justify-center items-center flex-col relative z-20">
             <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
               <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center max-md:text-[26px]">

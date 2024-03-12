@@ -85,7 +85,7 @@ export default function Blog() {
                       <p class="font-semibold text-xl">{blog.title}</p>
                       <p class="font-normal text-base mt-5">{blog.description}</p>
                     </div>
-                    <div className='flex gap-2 mt-5 ml-3 max-lg:mx-auto justify-between'>
+                    <div className='flex gap-5 mt-5 ml-3 max-lg:mx-auto justify-between'>
                       <div className='flex gap-3'>
                         <Image class="h-6 w-6" src={Woman} alt="Modern building architecture" />
                         <div className='flex flex-col'>
