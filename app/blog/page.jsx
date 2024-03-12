@@ -85,17 +85,19 @@ export default function Blog() {
                       <p class="font-semibold text-xl">{blog.title}</p>
                       <p class="font-normal text-base mt-5">{blog.description}</p>
                     </div>
-                    <div className='flex gap-2 mt-5 ml-3 max-lg:mx-auto '>
-                      <Image class="h-6 w-6" src={Woman} alt="Modern building architecture" />
-                      <div className='flex flex-col'>
-                        <span className='font-light text-sm justify-start'>Fitbit Incorporated</span>
-                        <span className='font-light text-xs'>San Diego, California</span>
+                    <div className='flex gap-2 mt-5 ml-3 max-lg:mx-auto justify-between'>
+                      <div className='flex gap-3'>
+                        <Image class="h-6 w-6" src={Woman} alt="Modern building architecture" />
+                        <div className='flex flex-col'>
+                          <span className='font-light text-sm justify-start'>Fitbit Incorporated</span>
+                          <span className='font-light text-xs'>San Diego, California</span>
+                        </div>
                       </div>
-                      <div className='flex justify-end'> 
-                      <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                        <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
-                      </Button>
+                      <div className='flex'>
+                        <Button radius="lg" className="bg-transparent text-white" size='lg'>
+                          <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                          <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
+                        </Button>
                       </div>
                     </div>
                   </div>
