@@ -11,19 +11,12 @@ export default function Header() {
     "Blog",
   ];
 
-  const headerItems = [
-    "pricing",
-    "services",
-    "help",
-    "blog"
-  ]
-
   return (
     <Navbar
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-transparent"
+      className="bg-transparent sm:p-1"
     >
       <NavbarContent className="md:hidden text-white" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
@@ -43,10 +36,10 @@ export default function Header() {
             <p className="text-white text-xl font-semibold">Your Logo</p>
           </Link>
         </NavbarBrand>
-        {headerItems.map((item, index) => (
+        {menuItems.map((item, index) => (
           <NavbarItem key={`${item}-${index}`} className="max-md:hidden">
-            <Link color="foreground" href={item}>
-              {item}
+            <Link color="foreground" href={item[0].toLowerCase()+item.slice(1)}>
+            {item}
             </Link>
           </NavbarItem>
         ))}
