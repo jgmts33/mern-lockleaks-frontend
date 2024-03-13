@@ -6,7 +6,6 @@ import {
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Shine } from "@/src/utils/Icons";
-import Saturn from '@/public/assets/saturn.svg';
 import RobertHand from '@/public/assets/dmcabadge/robert-hand.svg';
 import PhotoRight from '@/public/assets/dmcabadge/photo-right.svg';
 import PhotoLeft from '@/public/assets/dmcabadge/photo-left.svg';

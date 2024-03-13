@@ -1,37 +1,88 @@
 import React from "react";
-import { Link, Button, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu } from "@nextui-org/react";
-import { ChevronDown } from "@/src/utils/Icons";
-import { usePathname } from 'next/navigation';
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button } from "@nextui-org/react";
 
 export default function Header() {
-  const currentPath = usePathname();
-  const icons = {
-    chevron: <ChevronDown fill="currentColor" size={16} />,
-  };
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const menuItems = [
+    "Pricing",
+    "Services",
+    "Help",
+    "Blog",
+  ];
+
+  const headerItems = [
+    "pricing",
+    "services",
+    "help",
+    "blog"
+  ]
 
   return (
-    <div className='flex items-center justify-between w-full max-w-[1500px] text-large font-semibold text-[17px] py-8 px-10 relative z-30'>
-      <div className="flex items-center gap-20">
-        <Link href="/" className="text-white text-xl font-semibold">Your Logo</Link>
-        <div className="flex items-center gap-12 uppercase opacity-80 max-xl:hidden">
-          <Link href="/pricing" className="text-white font-light" >Pricing</Link>
-          <div className="text-white font-light flex items-center gap-2 hover:cursor-pointer">
-            <Link href="/services">Services</Link>
-            <span> {icons.chevron} </span>
-            <div className="hidden"></div>
-          </div>
-          <Link href="/help" className="text-white font-light" >Help</Link>
-          <Link href="/blog" className="text-white font-light" >Blog</Link>
-        </div>
-      </div>
-      <div className="flex items-center gap-10 relative max-sm:hidden">
-        <Link href="/auth/login" className="text-white font-light opacity-80" >Log In</Link>
-        <div className="h-full min-h-[1em] w-px border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent "></div>
-        <Link href="/auth/register" className="text-white font-light opacity-80" >Sign Up</Link>
-        <Button radius="sm" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg" size='lg'>
-          Free Analisis
-        </Button>
-      </div>
-    </div >
+    <Navbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      className="bg-transparent"
+    >
+      <NavbarContent className="md:hidden text-white" justify="start">
+        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+      </NavbarContent>
+
+      <NavbarContent className="sm:hidden pr-3" justify="">
+        <NavbarBrand>
+          <Link href="/">
+            <p className="text-white text-xl font-semibold">Your Logo</p>
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex gap-12" justify="center">
+        <NavbarBrand>
+          <Link href="/">
+            <p className="text-white text-xl font-semibold">Your Logo</p>
+          </Link>
+        </NavbarBrand>
+        {headerItems.map((item, index) => (
+          <NavbarItem key={`${item}-${index}`} className="max-md:hidden">
+            <Link color="foreground" href={item}>
+              {item}
+            </Link>
+          </NavbarItem>
+        ))}
+      </NavbarContent>
+
+      <NavbarContent justify="end">
+        <NavbarItem>
+          <Link href="/auth/login" className="text-white">Login</Link>
+        </NavbarItem>
+        <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent"></div>
+        <NavbarItem>
+        <Link href="/auth/register" className="text-white">Register</Link>
+        </NavbarItem>
+        <NavbarItem className="max-lg:hidden">
+        <Link href="/freeanalyse">
+          <Button radius="sm" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg" size='lg'>Free Analisis</Button>
+        </Link>
+        </NavbarItem>
+      </NavbarContent>
+
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              className="w-full"
+              color={
+                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
+              }
+              href="#"
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
   );
 }
