@@ -43,3 +43,7 @@ body {
   background: linear-gradient(#aa7fe2,#ee4613);
   border-radius: 5px;
 }
+
+.panel{
+  display: none;
+}

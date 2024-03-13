@@ -51,7 +51,7 @@ export default function CookiePolicy() {
                     <p className='font-normal text-base mt-5'>The date at the top of this Cookie Policy indicates when it was last updated.</p>
                     <p className='font-normal text-[22px] mt-5 text-[#F68171]'>Where can I get further information?</p>
                     <p className='font-normal text-base'>If you have any questions about our use of cookies or other technologies, please email us at support@rulta.com or by post to: CompanyPudisoo küla, Männimäe Kuusalu vald , Harju maakond 74626 Ed Phone: (US) (443) 717-8335</p>
-                    </div>
+                </div>
             </div>
         </>
     )

@@ -21,7 +21,6 @@ export default function DmcaBadges() {
         title: "DMCA BADGES",
         content: "DMCA Badges represent a visible declaration that your content is protected by copyright and follows the DMCA (Digital Millennium Copyright Act) guidelines. Placing these badges on your content or platform serves as a warning sign to potential infringers, notifying them that your work is legally protected and any unauthorized use or reproduction will face legal repercussions."
     }
-
     const DmcaBadgesContent = [
         {
             content: "@/public/assets/saturn.svg"
