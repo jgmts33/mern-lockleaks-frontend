@@ -65,7 +65,7 @@ export default function Catfishing() {
                     <p className='font-medium text-5xl uppercase max-lg:text-[30px]'>{CamDmcaTitle.title}</p>
                     <div className='max-lg:px-3'><p className='font-normal text-base mt-10 max-w-[1100px]'>{CamDmcaTitle.sub_title}</p></div>
                 </div>
-                <p className='font-medium text-7xl mt-32 max-lg:text-[40px]'>LOGO</p>
+                <div className='font-medium text-7xl mt-32 max-lg:text-[40px]'><Image src="/assets/logo.svg" width={500} height={350} alt="logo" /></div>
                 <div className='flex justify-around mt-20 w-full max-xl:px-5 max-md:flex-col max-md:items-center max-md:text-center'>
                     <div>
                         <p className='font-medium text-5xl text-center max-lg:text-[30px]'>HOW IT HELPS</p>

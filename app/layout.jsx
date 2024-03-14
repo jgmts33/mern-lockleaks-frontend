@@ -6,6 +6,7 @@ import Header from "@/src/components/Header";
 import Footer from "@/src/components/Footer";
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
+import Image from 'next/image';
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
               <Header />
               :
               <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10'>
-                <Link href="/" className="text-white text-xl font-semibold"><p className='text-white'>Your Logo</p></Link>
+                <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
               </div>
           }
           {children}

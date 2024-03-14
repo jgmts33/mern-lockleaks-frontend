@@ -72,16 +72,18 @@ export default function MonthlyPdf() {
                     <p className='font-medium text-5xl uppercase text-center'>{MonthlyTitle.title}</p>
                     <div className='flex items-center justify-between mx-auto max-xl:justify-center max-md:flex-col'>
                         <div className='max-w-[653px] mt-10'><p className='font-normal text-lg mt-10'>{MonthlyTitle.content}</p></div>
-                        <p className='font-semibold text-lg mt-20'>Your Logo</p>
+                        <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
                     </div>
                 </div>
 
                 {/* This section for define help content*/}
 
                 <div className='flex w-full justify-center mt-32 relative max-xl:w-full max-xl:flex-col max-xl:items-center max-xl:mx-auto max-md:px-3'>
-                    <Image alt='photo' src={Photo} />
+                    <div className='relative'>
+                    <Image alt='photo' src={Photo} className='absolute ' />
                     <Image alt='rightchat' src={RightChat} width={230} height={150} className='absolute left- -top-10' />
                     <span className='font-medium text-md'>How It Helps</span>
+                    </div>
                     <div className="flex max-w-[422px] z-20 duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 ">
                         <div>{icons.protect}</div>
                         <p className='font-normal text-lg mt-2'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
@@ -102,29 +104,31 @@ export default function MonthlyPdf() {
 
                 {/* This section for define benefit content*/}
 
-                <div className='max-lg:px-5 mt-60 p-20 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px]'>
-                    <span className='font-medium text-5xl'>BENEFITS:</span>
-                    <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 justify-center items-center'>
+                <div className='flex max-lg:px-5 mt-60 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px]'>
+                    <div className='flex flex-col'>
+                    <div className='p-10'><span className='font-medium text-5xl'>BENEFITS:</span></div>
+                    <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 justify-center items-center p-10'>
                         {
                             BenefitContent.map((benefits, index) => {
                                 return (
-                                    <div key={index} className="flex max-w-[407px] bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 p-5 cursor-pointer">
+                                    <div key={index} className="flex max-w-[407px] rounded-full bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 p-5 cursor-pointer">
                                         <span className='flex mt-5 font-normal text-base'>{icons.shine}{benefits.content}...</span>
                                     </div>
                                 )
                             })
                         }
                     </div>
-                    <div className='flex max-lg:hidden relative'>
-                        <Image alt='photo' src={Photo} className='absolute right-80 -top-[500px]' />
-                        <Image alt='rightchat' src={RightChat} className='absolute right-64 -top-72' />
-                        <Image alt='roberthand' src={RobertHand} className='right-0 -top-[450px] absolute' />
                     </div>
+                    <div className='flex max-lg:hidden relative'>
+                        <Image alt='photo' src={Photo} className='' />
+                        <Image alt='rightchat' src={RightChat} className='' />
+                    </div>
+                    <div><Image alt='roberthand' src={RobertHand} className='right-0' /></div>
                 </div>
 
                 {/* This section for define tips for monthly pdf*/}
 
-                <span className='font-medium text-5xl text-center mt-10 max-md:mt-32 max-lg:text-3xl'>Tips for Use</span>
+                <span className='font-medium text-5xl text-center mt-32 max-md:mt-32 max-lg:text-3xl'>Tips for Use</span>
                 <div className='flex justify-around mt-10 max-lg:flex-col max-lg:mx-auto'>
                     {
                         TipContent.map((tips, index) => {

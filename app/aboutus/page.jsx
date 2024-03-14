@@ -52,7 +52,7 @@ export default function AboutUs() {
                     <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center relative px-10 py-20 mx-auto">
                         <div className='flex justify-start w-full'>
                             <div className='px-9 py-6 max-xl:w-full max-xl:text-center'>
-                                <div className='max-xl:text-3xl'><span className='font-medium text-5xl mt-3 max-md:text-3xl'>Innovation and</span><p className='bg-gradient-to-r font-medium text-5xl from-purple-light to-purple-weight bg-clip-text text-transparent max-md:text-3xl'>Progress</p></div>
+                                <div className='max-xl:text-3xl'><span className='font-medium text-5xl mt-3 max-md:text-3xl'>Innovation and</span><p className='bg-gradient-to-r font-medium text-5xl from-purple-light to-purple-weight bg-clip-text text-transparent max-md:text-3xl !leading-normal'>Progress</p></div>
                                 <div><p className='max-w-[539px] max-xl:mx-auto mt-5'>We focus on constant innovation and progress, continuously adapting to changes in the digital protection field. We are committed to staying updated with the latest technologies and methods to provide efficient and competitive solutions for our clients.</p></div>
                             </div>
                             <div className='max-xl:hidden'>

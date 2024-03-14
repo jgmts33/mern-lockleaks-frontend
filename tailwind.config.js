@@ -23,7 +23,7 @@ module.exports = {
         lg: ['20px', '28px'],
         xl: ['24px', '32px'],
         md:['34px','39.88px'],
-        huge:['70px','100px']
+        huge:['70px','100px'],
       },
       colors: {
         'purple-light' : '#B759FF',

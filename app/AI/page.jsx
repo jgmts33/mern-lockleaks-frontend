@@ -4,6 +4,7 @@ import {
     Button, Link,
 } from '@nextui-org/react';
 import React from 'react';
+import { useEffect, useState } from 'react';
 import Facebook from "@/public/assets/AI/facebook.svg"
 import Instagram from "@/public/assets/AI/instagram.svg"
 import TikTok from "@/public/assets/AI/TikTok.svg"
@@ -31,6 +32,8 @@ export default function AI() {
         sub_title: "ur Artificial Intelligence service integrates cutting-edge facial recognition software, machine learning, optical character recognition, and a wide array of algorithms meticulously crafted by our experts. These technologies significantly bolster content protection against potential copyright infringements on leading platforms such as Google Images and Google Videos."
     }
 
+    const [expandedFAQIndex, setExpandedFAQIndex] = useState(-1);
+
     const ProtectHelpContent = [
         {
             icon: icons.protect,
@@ -41,7 +44,7 @@ export default function AI() {
         }
     ]
 
-    const HubHelContent = [
+    const HubHelpContent = [
         {
             icon: icons.locks,
             content: "Enhances security by employing facial recognition and machine learning."
@@ -54,6 +57,18 @@ export default function AI() {
     const AITips = [
         "regularly update and monitor your content to maximize AI's effectiveness.",
         "Familiarize yourself with the AI tools available to proactively manage your content protection."
+    ]
+
+    const AIFAQContent = [
+        {
+            title: "How does the AI software detect copyright infringements?",
+            content: []
+        }, {
+            title: "Is the AI tool effective across all social media networks?",
+            content: [
+                "Yes, our AI tools are designed to function efficiently on major social media platforms, ensuring comprehensive content protection."
+            ]
+        }
     ]
 
     return (
@@ -101,11 +116,11 @@ export default function AI() {
                             }
                         </div>
                         <div>
-                            <Image class="w-80 h-[550px] object-cover" src={Robertgroup}  />
+                            <Image class="w-80 h-[550px] object-cover" src={Robertgroup} />
                         </div>
                         <div className='flex flex-col gap-20'>
                             {
-                                HubHelContent.map((item, index) => {
+                                HubHelpContent.map((item, index) => {
                                     return (
                                         <div key={index} className="flex max-w-[480px] py-10 bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer top-6 mt-6">
                                             <div className='flex flex-col'>
@@ -137,23 +152,29 @@ export default function AI() {
 
                 <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-md:px-3'>
                     <p className='font-medium text-5xl text-center'>FAQ</p>
-                    <div className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                        <div className='flex justify-between'>
-                            <p className='font-medium text-[34px] max-md:text-[18px]'>How does the AI software detect copyright infringements?</p>
-                            <button className="rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2 ">
-                                {icons.arrowtop}
-                            </button>
-                        </div>
-                    </div>
-                    <div className='flex mt-10 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg  p-12 border border-gray-600'>
-                        <div className='flex justify-between'>
-                            <p className='font-medium text-[34px] max-md:text-[18px]'>Is the AI tool effective across all social media networks?</p>
-                            <button className="bg-gradient-to-tr -rotate-[90deg] from-[#9C3FE4] to-[#C65647] text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 right-2">
-                                {icons.arrowtop}
-                            </button>
-                        </div>
-                        <p className='font-normal text-base mt-3'>Yes, our AI tools are designed to function efficiently on major social media platforms, ensuring comprehensive content protection.</p>
-                    </div>
+                    {
+                        AIFAQContent.map((FAQ_content, index) => {
+                            return (
+                                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
+                                    <div className='flex justify-between'>
+                                        <p className='font-medium text-[34px] max-md:text-[18px]'>{FAQ_content.title}</p>
+                                        <button className={expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
+                                            {icons.arrowtop}
+                                        </button>
+                                    </div>
+                                    <div className={expandedFAQIndex == index ? 'h-auto' : 'h-0'}>
+                                        {
+                                            FAQ_content.content.map((items, contentIndex) => {
+                                                return (
+                                                    <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedFAQIndex == index ? 'block' : 'hidden'} `}>{items}</p>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
                 <div><Image class="w-[461px] h-[312px] absolute right-0 -mt-36" src={RobertHand} alt='robert hand' /></div>
             </div>

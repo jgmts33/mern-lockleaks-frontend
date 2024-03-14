@@ -32,7 +32,7 @@ export default function Header() {
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
           <Link href="/">
-            <p className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></p>
+            <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -40,7 +40,7 @@ export default function Header() {
       <NavbarContent className="hidden sm:flex gap-8" justify="center">
         <NavbarBrand>
           <Link href="/">
-            <p className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></p>
+            <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
           </Link>
         </NavbarBrand>
         <NavbarItem className="max-md:hidden">
@@ -54,17 +54,19 @@ export default function Header() {
               <Link color="foreground">SERVICES<span className="animate-bounce w-6 h-6 text-white">{icons.arrowDown}</span></Link>
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6">
-            <DropdownSection title="" showDivider></DropdownSection>
-              <DropdownItem key="new"><Link href="/services" className="text-white" color="default">Services</Link></DropdownItem>
-              <DropdownItem key="copy"><Link href="/scantakedown" className="text-white" color="default">Scan&TakeDown</Link></DropdownItem>
-              <DropdownItem key="edit"><Link href="/AI" className="text-white" color="default">Artificial Intelligence</Link></DropdownItem>
-              <DropdownItem key="delete"><Link href="/copyright" className="text-white" color="default">CopyRight</Link></DropdownItem>
-              <DropdownItem key="delete"><Link href="/camdmca" className="text-white" color="default">COM DMCA Protection</Link></DropdownItem>
-              <DropdownItem key="delete"><Link href="/creatordmca" className="text-white" color="default">Creator DMCA Protection</Link></DropdownItem>
-              <DropdownItem key="delete"><Link href="/catfishing" className="text-white" color="default">Catfishing</Link></DropdownItem>
-              <DropdownItem key="delete"><Link href="/recovery" className="text-white" color="default">Username Recovery</Link></DropdownItem>
-              <DropdownItem key="delete"><Link href="/monthlypdf" className="text-white" color="default">Monthly Analytics PDF</Link></DropdownItem>
-              <DropdownItem key="delete"><Link href="/dmcabadges" className="text-white" color="default">Dmca Badges</Link></DropdownItem>
+              <DropdownSection title="" showDivider></DropdownSection>
+              <DropdownItem key="service"><Link href="/servicees" className="text-white" color="default">Services</Link></DropdownItem>
+              <DropdownItem key="blog format"><Link href="/blog/format" className="text-white" color="default">Blog Fromat</Link></DropdownItem>
+              <DropdownItem key="scantakedown"><Link href="/scantakedown" className="text-white" color="default">Scan&TakeDown</Link></DropdownItem>
+              <DropdownItem key="AI"><Link href="/AI" className="text-white" color="default">Artificial Intelligence</Link></DropdownItem>
+              <DropdownItem key="copyright"><Link href="/copyright" className="text-white" color="default">CopyRight</Link></DropdownItem>
+              <DropdownItem key="checkout"><Link href="/checkout" className="text-white" color="default">Checkout</Link></DropdownItem>
+              <DropdownItem key="dmcaprotection"><Link href="/camdmca" className="text-white" color="default">COM DMCA Protection</Link></DropdownItem>
+              <DropdownItem key="creatordmca"><Link href="/creatordmca" className="text-white" color="default">Creator DMCA Protection</Link></DropdownItem>
+              <DropdownItem key="catfishing"><Link href="/catfishing" className="text-white" color="default">Catfishing</Link></DropdownItem>
+              <DropdownItem key="usernamerecovery"><Link href="/recovery" className="text-white" color="default">Username Recovery</Link></DropdownItem>
+              <DropdownItem key="monthlypdf"><Link href="/monthlypdf" className="text-white" color="default">Monthly Analytics PDF</Link></DropdownItem>
+              <DropdownItem key="dmcabadges"><Link href="/dmcabadges" className="text-white" color="default">Dmca Badges</Link></DropdownItem>
               <DropdownSection title="" showDivider></DropdownSection>
             </DropdownMenu>
           </Dropdown>
