@@ -65,10 +65,10 @@ export default function Footer() {
         </div>
         <div className='flex justify-between mt-10 max-md:flex-col max-md:items-center max-md:gap-5'>
           <Link href="/">
-            <Image src="/assets/logo.svg" width={250} height={150} alt="logo" className='-mt-5' />
+            <Image src="/assets/logo.svg" width={250} height={200} alt="logo" className='-mt-5' />
           </Link>
           <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2023 LockLeaks.</p>
-          <div className='flex gap-3 justify-end mt-0'>
+          <div className='flex gap-5 justify-end mt-0'>
             <Link href={"#"}>{icons.twitter}</Link>
             <Link href={"#"}>{icons.linkedin}</Link>
             <Link href={"#"}>{icons.facebook}</Link>

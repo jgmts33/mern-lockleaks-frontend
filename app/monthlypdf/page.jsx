@@ -6,7 +6,6 @@ import {
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Shine, ProtectShadow, RecoveryChat } from "@/src/utils/Icons";
-import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
@@ -80,12 +79,12 @@ export default function MonthlyPdf() {
                 {/* This section for define help content*/}
 
                 <div className='flex w-full justify-center mt-32 relative max-xl:w-full max-xl:flex-col max-xl:items-center max-xl:mx-auto max-md:px-3'>
+                    <Image alt='photo' src={Photo} />
+                    <Image alt='rightchat' src={RightChat} width={230} height={150} className='absolute left- -top-10' />
                     <span className='font-medium text-md'>How It Helps</span>
-                    <div className="flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 ">
+                    <div className="flex max-w-[422px] z-20 duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 ">
                         <div>{icons.protect}</div>
-                        <div>
-                            <p className='font-normal text-lg mt-2'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
-                        </div>
+                        <p className='font-normal text-lg mt-2'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
                     </div>
                     <div className="flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-6 top-20 max-xl:right-0 max-xl:top-8 ">
                         <div>{icons.protect}</div>
@@ -103,21 +102,19 @@ export default function MonthlyPdf() {
 
                 {/* This section for define benefit content*/}
 
-                <div className='max-lg:px-5 mt-60 max-md:items-center max-md:justify-center max-md:mx-auto'>
-                <div className='mt-20 grid grid-cols-2 gap-10 mb-20 max-xl:px-3 max-lg:grid-cols-2 max-md:grid-cols-1 p-20 bg-[#0E142B] rounded-[40px]'>
-                    {
-                        BenefitContent.map((benefits, index) => {
-                            return (
-                                <div key={index} className="flex py-10 max-w-[490px] bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[40px] p-5 cursor-pointer top-6 mt-6">
-                                    <div className='flex flex-col'>
-                                        {icons.shine}
-                                        <p className='mt-5 font-normal text-base'>{benefits.content}...</p>
+                <div className='max-lg:px-5 mt-60 p-20 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px]'>
+                    <span className='font-medium text-5xl'>BENEFITS:</span>
+                    <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 justify-center items-center'>
+                        {
+                            BenefitContent.map((benefits, index) => {
+                                return (
+                                    <div key={index} className="flex max-w-[407px] bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 p-5 cursor-pointer">
+                                        <span className='flex mt-5 font-normal text-base'>{icons.shine}{benefits.content}...</span>
                                     </div>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
+                                )
+                            })
+                        }
+                    </div>
                     <div className='flex max-lg:hidden relative'>
                         <Image alt='photo' src={Photo} className='absolute right-80 -top-[500px]' />
                         <Image alt='rightchat' src={RightChat} className='absolute right-64 -top-72' />

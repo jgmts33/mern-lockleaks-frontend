@@ -186,23 +186,23 @@ export default function Checkout() {
                                         <div className='flex items-center max-xl:justify-content'>
                                             <div className='flex gap-7'><p>10/DAY</p> {icons.complete}{item.agent_request}</div>
                                         </div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.agent_request}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.takedowns}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.daily_report}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.badges}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.pdf_report}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.candidential_takedown}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.analyzer_tool}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.reverify_tool}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.google_removal_report}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.bing_removal_report}</div>
-                                        <div className='flex gap-7 flex-col'>{item.social_analyze_status ? icons.complete : icons.uncomplete}{item.social_analyze}</div>
-                                        <div className='flex gap-7 flex-col'>{item.adult_analyze_status ? icons.complete : icons.uncomplete}{item.adult_analyze}</div>
-                                        <div className='flex gap-7 flex-col'>{item.forum_analyze_status ? icons.complete : icons.uncomplete}{item.forum_analyze}</div>
-                                        <div className='flex gap-7 flex-col'>{item.file_analyze_status ? icons.complete : icons.uncomplete}{item.file_analyze}</div>
-                                        <div className='flex gap-7 flex-col'>{item.AI_analyze_status ? icons.complete : icons.uncomplete}{item.AI_analyze}</div>
-                                        <div className='flex gap-7 flex-col'>{item.monthly_analyze_status ? icons.complete : icons.uncomplete}{item.monthly_analyze}</div>
-                                        <div className='flex gap-7 flex-col'>{icons.complete}{item.history_content}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.agent_request}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.takedowns}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.daily_report}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.badges}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.pdf_report}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.candidential_takedown}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.analyzer_tool}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.reverify_tool}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.google_removal_report}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.bing_removal_report}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{item.social_analyze_status ? icons.complete : icons.uncomplete}{item.social_analyze}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{item.adult_analyze_status ? icons.complete : icons.uncomplete}{item.adult_analyze}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{item.forum_analyze_status ? icons.complete : icons.uncomplete}{item.forum_analyze}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{item.file_analyze_status ? icons.complete : icons.uncomplete}{item.file_analyze}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{item.AI_analyze_status ? icons.complete : icons.uncomplete}{item.AI_analyze}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{item.monthly_analyze_status ? icons.complete : icons.uncomplete}{item.monthly_analyze}</div>
+                                        <div className='flex gap-7 max-sm:flex-col'>{icons.complete}{item.history_content}</div>
                                     </div>
                                 </div>
                             </div>

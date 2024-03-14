@@ -1,6 +1,7 @@
 import React from "react";
-import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button,} from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection } from "@nextui-org/react";
 import Image from 'next/image';
+import { ArrowDown } from "@/src/utils/Icons";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -12,22 +13,26 @@ export default function Header() {
     "Blog",
   ];
 
+  const icons = {
+    arrowDown: <ArrowDown fill="currentColor" size={16} />,
+  };
+
   return (
     <Navbar
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       className="bg-transparent sm:p-1"
-      maxWidth="xl"
+      maxWidth="2xl"
     >
       <NavbarContent className="md:hidden text-white" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden pr-3" justify="">
+      <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
           <Link href="/">
-            <p className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={250} height={150} alt="logo" /></p>
+            <p className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></p>
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -35,16 +40,45 @@ export default function Header() {
       <NavbarContent className="hidden sm:flex gap-8" justify="center">
         <NavbarBrand>
           <Link href="/">
-            <p className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={250} height={50} alt="logo" /></p>
+            <p className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></p>
           </Link>
         </NavbarBrand>
-        {menuItems.map((item, index) => (
-          <NavbarItem key={`${item}-${index}`} className="max-md:hidden">
-            <Link color="foreground" href={item[0].toLowerCase() + item.slice(1)}>
-              {item}
-            </Link>
-          </NavbarItem>
-        ))}
+        <NavbarItem className="max-md:hidden">
+          <Link color="foreground" href="pricing">
+            PRICING
+          </Link>
+        </NavbarItem>
+        <NavbarItem className="max-md:hidden">
+          <Dropdown>
+            <DropdownTrigger>
+              <Link color="foreground">SERVICES<span className="animate-bounce w-6 h-6 text-white">{icons.arrowDown}</span></Link>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6">
+            <DropdownSection title="" showDivider></DropdownSection>
+              <DropdownItem key="new"><Link href="/services" className="text-white" color="default">Services</Link></DropdownItem>
+              <DropdownItem key="copy"><Link href="/scantakedown" className="text-white" color="default">Scan&TakeDown</Link></DropdownItem>
+              <DropdownItem key="edit"><Link href="/AI" className="text-white" color="default">Artificial Intelligence</Link></DropdownItem>
+              <DropdownItem key="delete"><Link href="/copyright" className="text-white" color="default">CopyRight</Link></DropdownItem>
+              <DropdownItem key="delete"><Link href="/camdmca" className="text-white" color="default">COM DMCA Protection</Link></DropdownItem>
+              <DropdownItem key="delete"><Link href="/creatordmca" className="text-white" color="default">Creator DMCA Protection</Link></DropdownItem>
+              <DropdownItem key="delete"><Link href="/catfishing" className="text-white" color="default">Catfishing</Link></DropdownItem>
+              <DropdownItem key="delete"><Link href="/recovery" className="text-white" color="default">Username Recovery</Link></DropdownItem>
+              <DropdownItem key="delete"><Link href="/monthlypdf" className="text-white" color="default">Monthly Analytics PDF</Link></DropdownItem>
+              <DropdownItem key="delete"><Link href="/dmcabadges" className="text-white" color="default">Dmca Badges</Link></DropdownItem>
+              <DropdownSection title="" showDivider></DropdownSection>
+            </DropdownMenu>
+          </Dropdown>
+        </NavbarItem>
+        <NavbarItem className="max-md:hidden">
+          <Link color="foreground" href="help">
+            HELP
+          </Link>
+        </NavbarItem>
+        <NavbarItem className="max-md:hidden">
+          <Link color="foreground" href="blog">
+            BLOG
+          </Link>
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">

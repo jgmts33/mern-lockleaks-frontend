@@ -276,7 +276,7 @@ export default function HomePage() {
                   <Image src="assets/robert.svg" alt='robert' width={320} height={680} className='mt-20 bg-opacity-90' />
                 </div>
                 <div className='flex items-center justify-center gap-6 max-lg:flex-col'>
-                  <div className="flex flex-col top-0 relative gap-8">
+                  <div className="flex flex-col top-10 relative gap-8">
                     {
                       assistSecionItems[0].map((item, index) => {
                         return (
@@ -306,7 +306,7 @@ export default function HomePage() {
                       })
                     }
                   </div>
-                  <div className="flex flex-col top-24 max-lg:top-2 relative gap-8">
+                  <div className="flex flex-col top-36 max-lg:top-10 relative gap-8">
                     {
                       assistSecionItems[1].map((item, index) => {
                         return (

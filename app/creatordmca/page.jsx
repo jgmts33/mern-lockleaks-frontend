@@ -13,7 +13,7 @@ import CustomerReview from '@/src/components/customerReview';
 import Chat from '@/public/assets/dmca/envelop.svg';
 import Reversechat from '@/public/assets/dmca/envelop-reverse.svg';
 
-export default function CreateDmca() {
+export default function CreatorDmca() {
 
     const icons = {
         chat: <CHAT fill="currentColor" size={16} />,
