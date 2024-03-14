@@ -24,7 +24,7 @@ export default function Footer() {
             <Link href={"/AI"} >Artificial Intelligence</Link>
             <Link href={"/copyright"} >CopyRight</Link>
             <Link href={"/camdmca"} >Com DMCA Content Protection</Link>
-            <Link href={"/createdmca"} >Creator DMCA Content Protection</Link>
+            <Link href={"/creatordmca"} >Creator DMCA Content Protection</Link>
             <Link href={"/catfishing"} >Catifishing & Impersonation</Link>
             <Link href={"/recovery"} >Username History Recovery REmoval</Link>
             <Link href={"/freeanalyse"} >Monthly Analytics & PDF Reports</Link>
