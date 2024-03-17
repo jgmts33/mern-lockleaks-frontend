@@ -51,7 +51,7 @@ export default function Header() {
           </Link>
         </NavbarBrand>
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="pricing">
+          <Link color="foreground" href="/pricing">
             PRICING
           </Link>
         </NavbarItem>
@@ -80,12 +80,12 @@ export default function Header() {
           </Dropdown>
         </NavbarItem>
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="help">
+          <Link color="foreground" href="/help">
             HELP
           </Link>
         </NavbarItem>
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="blog">
+          <Link color="foreground" href="/blog">
             BLOG
           </Link>
         </NavbarItem>
