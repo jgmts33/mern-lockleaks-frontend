@@ -30,7 +30,7 @@ export default function page() {
 
       <div className='flex mt-20 mx-auto gap-10 max-w-[1500px] max-xl:flex-col max-xl:justify-center max-xl:items-center'>
         <div>
-          <Image class="h-72 w-80 mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={Saturn} alt="Modern building architecture" />
+          <Image className="h-72 w-80 mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={Saturn} alt="Modern building architecture" />
         </div>
         <div className='flex flex-col text-center mx-auto -mt-8 max-w-[603px] max-xl:flex-wrap'>
           <p className='font-medium text-5xl max-lg:text-3xl'>FREE ANALYZE</p>
@@ -45,7 +45,7 @@ export default function page() {
           <p className='mt-10'>{freeanalyseContent.thirdDescription}</p>
         </div>
         <div>
-          <Image class="h-72 w-80 mt-2 object-cover max-md:w-full p-2 rounded-[20px]" src={Saturn} alt='saturn' />
+          <Image className="h-72 w-80 mt-2 object-cover max-md:w-full p-2 rounded-[20px]" src={Saturn} alt='saturn' />
         </div>
       </div>
 
@@ -54,14 +54,14 @@ export default function page() {
       <div className='flex w-full px-60 justify-center mt-80 max-xl:flex-col max-xl:hidden'>
         <div className='w-1/2 flex justify-center items-center'>
           <div className=' relative'>
-            <Image class="h-[560px] w-80 object-cover max-md:w-full rounded-[20px]" src={Robertgroup} alt="Modern building architecture" />
+            <Image className="h-[560px] w-80 object-cover max-md:w-full rounded-[20px]" src={Robertgroup} alt="Modern building architecture" />
             <Image src={Chat} width={500} height={370} className="-top-40 left-[115px] -rotate-[45deg] absolute  max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
             <Image src={Chat} width={200} height={170} className="top-14 left-[220px] absolute max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
           </div>
         </div>
         <div className='flex flex-col w-1/2'>
           <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-[350px] bottom-[380px] w-72 h-72'>
-            <Image class="h-[560px] w-52 -mt-[95px] max-md:w-full" src={Reversechat} alt="Modern building architecture" />
+            <Image className="h-[560px] w-52 -mt-[95px] max-md:w-full" src={Reversechat} alt="Modern building architecture" />
           </div>
           <div className="flex bg-white/15 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 cursor-pointer w-[350px] absolute rotate-[12deg] right-56 -mt-[60px]">
             <div className='absolute'>{icons.robertchat}</div>

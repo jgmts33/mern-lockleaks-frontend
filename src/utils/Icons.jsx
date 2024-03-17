@@ -25,8 +25,8 @@ export const ChevronDown = ({ fill, size, height, width, ...props }) => {
 export const ArrowDown = ({ fill, size, height, width, ...props }) => {
     return (
         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_529_5467)">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.293 8.79296C17.3853 8.69745 17.4956 8.62127 17.6176 8.56886C17.7396 8.51645 17.8708 8.48886 18.0036 8.48771C18.1364 8.48655 18.2681 8.51186 18.391 8.56214C18.5139 8.61242 18.6255 8.68667 18.7194 8.78056C18.8133 8.87446 18.8876 8.98611 18.9378 9.10901C18.9881 9.2319 19.0134 9.36358 19.0123 9.49636C19.0111 9.62914 18.9835 9.76036 18.9311 9.88236C18.8787 10.0044 18.8025 10.1147 18.707 10.207L12.707 16.207C12.5248 16.3892 12.2792 16.4941 12.0215 16.4997C11.7639 16.5053 11.514 16.4111 11.324 16.237L5.32401 10.737C5.12855 10.5577 5.01231 10.3081 5.00087 10.0431C4.99521 9.91188 5.01544 9.78084 5.06042 9.65745C5.1054 9.53407 5.17424 9.42074 5.26301 9.32396C5.35178 9.22718 5.45875 9.14882 5.57781 9.09338C5.69686 9.03793 5.82567 9.00648 5.95688 9.00082C6.22187 8.98938 6.48055 9.08367 6.67601 9.26296L11.97 14.116L17.293 8.79296Z" fill="#CCCDD0" fill-opacity="0.46" />
+            <g clipPath="url(#clip0_529_5467)">
+                <path fillRule="evenodd" clipRule="evenodd" d="M17.293 8.79296C17.3853 8.69745 17.4956 8.62127 17.6176 8.56886C17.7396 8.51645 17.8708 8.48886 18.0036 8.48771C18.1364 8.48655 18.2681 8.51186 18.391 8.56214C18.5139 8.61242 18.6255 8.68667 18.7194 8.78056C18.8133 8.87446 18.8876 8.98611 18.9378 9.10901C18.9881 9.2319 19.0134 9.36358 19.0123 9.49636C19.0111 9.62914 18.9835 9.76036 18.9311 9.88236C18.8787 10.0044 18.8025 10.1147 18.707 10.207L12.707 16.207C12.5248 16.3892 12.2792 16.4941 12.0215 16.4997C11.7639 16.5053 11.514 16.4111 11.324 16.237L5.32401 10.737C5.12855 10.5577 5.01231 10.3081 5.00087 10.0431C4.99521 9.91188 5.01544 9.78084 5.06042 9.65745C5.1054 9.53407 5.17424 9.42074 5.26301 9.32396C5.35178 9.22718 5.45875 9.14882 5.57781 9.09338C5.69686 9.03793 5.82567 9.00648 5.95688 9.00082C6.22187 8.98938 6.48055 9.08367 6.67601 9.26296L11.97 14.116L17.293 8.79296Z" fill="#CCCDD0" fillOpacity="0.46" />
             </g>
             <defs>
                 <clipPath id="clip0_529_5467">
@@ -63,13 +63,13 @@ export const Fan = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.594238" y="0.472656" width="35" height="35" rx="5" fill="url(#paint0_linear_220_2105)" />
-            <g clip-path="url(#clip0_220_2105)">
+            <g clipPath="url(#clip0_220_2105)">
                 <path d="M12.8442 13.7226C12.8442 16.634 15.1829 18.9726 18.0942 18.9726V8.47266C15.1829 8.47266 12.8442 10.8113 12.8442 13.7226ZM12.8442 24.2227C15.7556 24.2227 18.0942 21.884 18.0942 18.9727H7.59424C7.59424 21.884 9.93289 24.2227 12.8442 24.2227ZM18.0943 18.9727V29.4727C21.0056 29.4727 23.3442 27.134 23.3442 24.2227C23.3442 21.3113 21.0056 18.9727 18.0943 18.9727ZM23.3442 13.7226C20.4329 13.7226 18.0943 16.0613 18.0943 18.9726H28.5943C28.5942 16.0613 26.2556 13.7226 23.3442 13.7226Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_220_2105" x1="0.594238" y1="11.4472" x2="36.2902" y2="11.6359" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_220_2105">
                     <rect width="21" height="21" fill="white" transform="translate(7.59424 8.47266)" />
@@ -91,14 +91,14 @@ export const Support = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.594238" y="0.472656" width="35" height="35" rx="5" fill="url(#paint0_linear_48_1743)" />
-            <g clip-path="url(#clip0_48_1743)">
+            <g clipPath="url(#clip0_48_1743)">
                 <path d="M14.77 15.862H20.4185C20.7421 15.862 21.0044 15.5996 21.0044 15.276V14.0208C21.0044 13.1544 20.6794 12.3625 20.1451 11.7603C19.5344 12.4896 18.6177 12.9544 17.5942 12.9544C16.5708 12.9544 15.6542 12.4896 15.0434 11.7603C14.5091 12.3625 14.1841 13.1544 14.1841 14.0208V15.276C14.1841 15.5996 14.4464 15.862 14.77 15.862Z" fill="white" />
                 <path d="M17.5942 11.7825C18.7825 11.7825 19.7492 10.8159 19.7492 9.62762C19.7492 8.43937 18.7825 7.47266 17.5942 7.47266C16.406 7.47266 15.4393 8.43937 15.4393 9.62762C15.4393 10.8159 16.406 11.7825 17.5942 11.7825ZM14.3994 17.8421C13.7928 17.2355 12.8093 17.2355 12.2027 17.8421C11.5961 18.4487 11.5961 19.4322 12.2027 20.0388L13.6153 21.4516C13.8441 21.6804 13.8441 22.0514 13.6153 22.2802C13.3865 22.509 13.0154 22.5091 12.7867 22.2802L12.7866 22.2802L10.2763 19.7698C10.1664 19.6599 10.1046 19.5109 10.1046 19.3555V14.3763C10.1046 13.6828 9.54385 13.1211 8.84943 13.1211H8.18018C7.85658 13.1211 7.59424 13.3834 7.59424 13.707V21.2383C7.59424 21.3937 7.65596 21.5427 7.76588 21.6526L11.3599 25.2466V26.8867C11.3599 27.2103 11.6222 27.4727 11.9458 27.4727H16.339C16.6626 27.4727 16.9249 27.2103 16.9249 26.8867V21.9104C16.9249 20.9157 16.5376 19.9806 15.8344 19.2774L14.3994 17.8421ZM27.0083 13.1211H26.339C25.6446 13.1211 25.0838 13.6829 25.0838 14.3763V19.3555C25.0838 19.4324 25.0686 19.5086 25.0392 19.5797C25.0097 19.6508 24.9666 19.7154 24.9122 19.7698L22.4018 22.2802L22.4017 22.2802C22.173 22.5091 21.802 22.509 21.5731 22.2802C21.3443 22.0514 21.3443 21.6804 21.5731 21.4516L22.9857 20.0388C23.5923 19.4322 23.5923 18.4487 22.9857 17.8421C22.3791 17.2355 21.3956 17.2355 20.789 17.8421L19.354 19.2774C18.6508 19.9806 18.2635 20.9157 18.2635 21.9104V26.8867C18.2635 27.2103 18.5258 27.4727 18.8494 27.4727H23.2426C23.5662 27.4727 23.8285 27.2103 23.8285 26.8867V25.2466L27.4226 21.6526C27.5324 21.5427 27.5942 21.3937 27.5942 21.2383V13.707C27.5942 13.3834 27.3319 13.1211 27.0083 13.1211Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_48_1743" x1="0.594238" y1="11.4472" x2="36.2902" y2="11.6359" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_48_1743">
                     <rect width="20" height="20" fill="white" transform="translate(7.59424 7.47266)" />
@@ -120,13 +120,13 @@ export const ThumbUp = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.594238" y="0.472656" width="35" height="35" rx="5" fill="url(#paint0_linear_220_2840)" />
-            <g clip-path="url(#clip0_220_2840)">
+            <g clipPath="url(#clip0_220_2840)">
                 <path d="M18.2399 9.32156C18.464 9.17216 18.7186 9.104 18.986 9.104H19.3579C19.7425 9.104 20.0992 9.23426 20.3608 9.49589C20.6225 9.75755 20.7528 10.1142 20.7528 10.4988V14.6832H25.3091C26.8408 14.6832 27.8696 16.1009 27.5289 17.5774C27.5276 17.583 27.5263 17.5884 27.5248 17.594L25.944 23.4521L25.9419 23.4596L25.9395 23.4677C25.5129 24.8544 24.322 25.8417 22.7985 25.8417H14.7085V15.9683L17.7332 9.91894C17.8537 9.67777 18.0187 9.469 18.2399 9.32156ZM12.8488 16.543H10.5241C10.279 16.543 10.0385 16.6268 9.85827 16.807C9.67798 16.9873 9.59424 17.2277 9.59424 17.4728V24.9118C9.59424 25.1569 9.67798 25.3974 9.85827 25.5777C10.0385 25.7579 10.279 25.8417 10.5241 25.8417H12.8488V16.543Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_220_2840" x1="0.594238" y1="11.4472" x2="36.2902" y2="11.6359" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_220_2840">
                     <rect width="18" height="18" fill="white" transform="translate(9.59424 8.47266)" />
@@ -147,13 +147,13 @@ export const Protect = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.594238" y="0.472656" width="35" height="35" rx="5" fill="url(#paint0_linear_240_603)" />
-            <g clip-path="url(#clip0_240_603)">
+            <g clipPath="url(#clip0_240_603)">
                 <path d="M26.2041 17.3567C26.1518 14.6292 25.7718 12.6175 25.777 12.6156C25.6189 12.3073 25.3417 12.0493 25.0025 11.9176C22.776 11.0541 20.5865 10.2299 18.452 9.52665C18.2338 9.45466 18.0037 9.45466 17.7859 9.52665C15.6517 10.228 13.4626 11.0507 11.2364 11.9132C10.937 12.0293 10.6857 12.2442 10.5221 12.5054C10.5347 12.5069 10.0645 13.9746 9.98436 17.2161C9.93686 20.458 10.3406 21.4291 10.3272 21.4302C10.5458 22.1427 10.9548 22.8675 11.5407 23.6045C12.1957 24.4275 13.0808 25.2777 14.1499 26.1134C15.9196 27.5024 17.5758 28.3326 17.6452 28.3619C17.7955 28.4354 17.9547 28.4728 18.1187 28.4725C18.2831 28.4725 18.4423 28.435 18.5922 28.3611C18.662 28.3318 20.3201 27.4991 22.0891 26.1105C23.1586 25.274 24.0436 24.4238 24.699 23.6011C25.3269 22.8118 25.7514 22.0373 25.9566 21.2766C25.9484 21.2755 26.2453 20.085 26.2041 17.3571V17.3567ZM18.9997 19.4842V21.2124C18.9997 21.6993 18.6052 22.0937 18.1184 22.0941C17.6315 22.0941 17.2366 21.6996 17.2366 21.2128V19.5087C16.6013 19.1929 16.1642 18.5375 16.1642 17.7801C16.1642 16.7144 17.0281 15.8501 18.0939 15.8501C19.1596 15.8501 20.0236 16.714 20.0239 17.7798C20.0239 18.5183 19.609 19.1599 18.9997 19.4842Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_240_603" x1="0.594238" y1="11.4472" x2="36.2902" y2="11.6359" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_240_603">
                     <rect width="19" height="19" fill="white" transform="translate(8.59424 9.47266)" />
@@ -200,7 +200,7 @@ export const Star = ({
 }) => {
     return (
         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99986 1.13928C8.2536 1.13928 8.48535 1.28333 8.59766 1.51087L10.5027 5.37026L14.7629 5.99296C15.014 6.02965 15.2224 6.20566 15.3007 6.44699C15.3789 6.68833 15.3134 6.95317 15.1317 7.13019L12.0495 10.1322L12.7769 14.3733C12.8198 14.6234 12.717 14.8762 12.5117 15.0253C12.3064 15.1745 12.0342 15.1941 11.8096 15.076L7.99986 13.0725L4.19016 15.076C3.96555 15.1941 3.69335 15.1745 3.48803 15.0253C3.28272 14.8762 3.17989 14.6234 3.22278 14.3733L3.95018 10.1322L0.868035 7.13019C0.686289 6.95317 0.620774 6.68833 0.699026 6.44699C0.777278 6.20566 0.985731 6.02965 1.23677 5.99296L5.49701 5.37026L7.40205 1.51087C7.51437 1.28333 7.74611 1.13928 7.99986 1.13928ZM7.99986 3.31212L6.53766 6.27437C6.44064 6.47093 6.25318 6.60724 6.03627 6.63894L2.76546 7.11702L5.13168 9.42171C5.28893 9.57487 5.3607 9.79562 5.3236 10.012L4.76531 13.2671L7.68956 11.7292C7.88381 11.6271 8.1159 11.6271 8.31016 11.7292L11.2344 13.2671L10.6761 10.012C10.639 9.79562 10.7108 9.57487 10.868 9.42171L13.2342 7.11702L9.96344 6.63894C9.74653 6.60724 9.55908 6.47093 9.46205 6.27437L7.99986 3.31212Z" fill="#FFE944" />
+            <path fillRule="evenodd" clipRule="evenodd" d="M7.99986 1.13928C8.2536 1.13928 8.48535 1.28333 8.59766 1.51087L10.5027 5.37026L14.7629 5.99296C15.014 6.02965 15.2224 6.20566 15.3007 6.44699C15.3789 6.68833 15.3134 6.95317 15.1317 7.13019L12.0495 10.1322L12.7769 14.3733C12.8198 14.6234 12.717 14.8762 12.5117 15.0253C12.3064 15.1745 12.0342 15.1941 11.8096 15.076L7.99986 13.0725L4.19016 15.076C3.96555 15.1941 3.69335 15.1745 3.48803 15.0253C3.28272 14.8762 3.17989 14.6234 3.22278 14.3733L3.95018 10.1322L0.868035 7.13019C0.686289 6.95317 0.620774 6.68833 0.699026 6.44699C0.777278 6.20566 0.985731 6.02965 1.23677 5.99296L5.49701 5.37026L7.40205 1.51087C7.51437 1.28333 7.74611 1.13928 7.99986 1.13928ZM7.99986 3.31212L6.53766 6.27437C6.44064 6.47093 6.25318 6.60724 6.03627 6.63894L2.76546 7.11702L5.13168 9.42171C5.28893 9.57487 5.3607 9.79562 5.3236 10.012L4.76531 13.2671L7.68956 11.7292C7.88381 11.6271 8.1159 11.6271 8.31016 11.7292L11.2344 13.2671L10.6761 10.012C10.639 9.79562 10.7108 9.57487 10.868 9.42171L13.2342 7.11702L9.96344 6.63894C9.74653 6.60724 9.55908 6.47093 9.46205 6.27437L7.99986 3.31212Z" fill="#FFE944" />
             <path d="M6.53766 6.27437L7.99986 3.31212L9.46205 6.27437C9.55908 6.47093 9.74653 6.60724 9.96344 6.63894L13.2342 7.11702L10.868 9.42171C10.7108 9.57487 10.639 9.79562 10.6761 10.012L11.2344 13.2671L8.31016 11.7292C8.1159 11.6271 7.88381 11.6271 7.68956 11.7292L4.76531 13.2671L5.3236 10.012C5.3607 9.79562 5.28893 9.57487 5.13168 9.42171L2.76546 7.11702L6.03627 6.63894C6.25318 6.60724 6.44064 6.47093 6.53766 6.27437Z" fill="#FFE944" />
         </svg>
 
@@ -248,7 +248,7 @@ export const LinkedIn = ({
 }) => {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_48_1965)">
+            <g clipPath="url(#clip0_48_1965)">
                 <path d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z" fill="white" />
             </g>
             <defs>
@@ -270,7 +270,7 @@ export const FaceBook = ({
 }) => {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_48_1966)">
+            <g clipPath="url(#clip0_48_1966)">
                 <path d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 17.9895 4.3882 22.954 10.125 23.8542V15.4688H7.07812V12H10.125V9.35625C10.125 6.34875 11.9166 4.6875 14.6576 4.6875C15.9701 4.6875 17.3438 4.92188 17.3438 4.92188V7.875H15.8306C14.34 7.875 13.875 8.80008 13.875 9.75V12H17.2031L16.6711 15.4688H13.875V23.8542C19.6118 22.954 24 17.9895 24 12Z" fill="white" />
             </g>
             <defs>
@@ -309,8 +309,8 @@ export const GradientKey = ({
             <path d="M21.0364 2.85897L21.8065 2.09978C22.0107 1.89555 22.1254 1.61856 22.1254 1.32974C22.1254 1.04092 22.0107 0.763926 21.8065 0.559699C21.6023 0.355472 21.3253 0.240738 21.0364 0.240738C20.7476 0.240738 20.4706 0.355472 20.2664 0.559699L18.748 2.08893L15.6787 5.15825L8.8351 11.991C7.71371 11.2511 6.3576 10.9539 5.02955 11.1568C3.7015 11.3598 2.49607 12.0485 1.64682 13.0895C0.797572 14.1305 0.364977 15.4497 0.432858 16.7914C0.500739 18.1332 1.06426 19.402 2.01424 20.3519C2.96421 21.3019 4.233 21.8654 5.57475 21.9333C6.9165 22.0012 8.23568 21.5686 9.27668 20.7194C10.3177 19.8701 11.0064 18.6647 11.2093 17.3366C11.4123 16.0086 11.115 14.6525 10.3752 13.5311L16.4379 7.45752L18.7372 9.76764C18.8383 9.86805 18.9582 9.94756 19.0901 10.0016C19.2219 10.0557 19.3631 10.0833 19.5056 10.0828C19.6481 10.0823 19.7891 10.0537 19.9206 9.9987C20.0521 9.9437 20.1714 9.86334 20.2718 9.76222C20.3722 9.6611 20.4517 9.54119 20.5058 9.40934C20.5599 9.27748 20.5875 9.13627 20.587 8.99377C20.5864 8.85126 20.5579 8.71025 20.5029 8.57878C20.4479 8.44732 20.3675 8.32797 20.2664 8.22756L17.9671 5.92829L19.5072 4.39905L20.2664 5.15825C20.3668 5.25937 20.4862 5.33973 20.6176 5.39473C20.7491 5.44973 20.8901 5.47829 21.0326 5.4788C21.1751 5.4793 21.3163 5.45173 21.4482 5.39766C21.58 5.34359 21.6999 5.26408 21.8011 5.16367C21.9022 5.06326 21.9825 4.94391 22.0375 4.81245C22.0925 4.68098 22.1211 4.53997 22.1216 4.39747C22.1221 4.25496 22.0945 4.11375 22.0405 3.9819C21.9864 3.85005 21.9069 3.73014 21.8065 3.62901L21.0364 2.85897ZM5.85255 19.7673C5.20904 19.7673 4.57997 19.5765 4.0449 19.219C3.50983 18.8615 3.0928 18.3533 2.84654 17.7588C2.60027 17.1642 2.53584 16.51 2.66138 15.8789C2.78693 15.2477 3.09681 14.668 3.55185 14.2129C4.00689 13.7579 4.58664 13.448 5.21779 13.3225C5.84895 13.1969 6.50315 13.2613 7.09769 13.5076C7.69222 13.7539 8.20038 14.1709 8.5579 14.706C8.91542 15.241 9.10625 15.8701 9.10625 16.5136C9.10625 17.3766 8.76345 18.2041 8.15326 18.8143C7.54308 19.4245 6.71549 19.7673 5.85255 19.7673Z" fill="url(#paint0_linear_264_1474)" />
             <defs>
                 <linearGradient id="paint0_linear_264_1474" x1="0.425926" y1="7.04483" x2="22.557" y2="7.16178" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
             </defs>
         </svg>
@@ -327,15 +327,15 @@ export const Facebook = ({
 }) => {
     return (
         <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_264_2275)">
+            <g clipPath="url(#clip0_264_2275)">
                 <g filter="url(#filter0_d_264_2275)">
                     <circle cx="14.1949" cy="13.6949" r="9.69491" fill="#0A66C2" />
                     <path d="M15.2699 20.1063V14.5284H17.1422L17.4225 12.3546H15.2699V10.9666C15.2699 10.3373 15.4447 9.90836 16.3472 9.90836L17.4983 9.90785V7.96362C17.2992 7.93712 16.6159 7.87793 15.821 7.87793C14.1613 7.87793 13.0251 8.89098 13.0251 10.7514V12.3546H11.1479V14.5284H13.0251V20.1063H15.2699Z" fill="white" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_264_2275" x="1.51695" y="4" width="25.356" height="25.356" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_264_2275" x="1.51695" y="4" width="25.356" height="25.356" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="2.98305" />
                     <feGaussianBlur stdDeviation="1.49153" />
@@ -381,7 +381,7 @@ export const CAPTCHA = ({
 }) => {
     return (
         <svg width="56" height="51" viewBox="0 0 56 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_264_2149)">
+            <g clipPath="url(#clip0_264_2149)">
                 <path d="M40.7549 13.3927C40.7543 13.207 40.75 13.0222 40.7416 12.8383V2.35532L37.818 5.25344C35.4253 2.35008 31.7853 0.495667 27.7081 0.495667C23.4652 0.495667 19.6958 2.5033 17.313 5.61243L22.105 10.4128C22.5747 9.55179 23.2418 8.81229 24.0462 8.25377C24.8828 7.60658 26.0682 7.07742 27.708 7.07742C27.9061 7.07742 28.059 7.10036 28.1713 7.14359C30.203 7.30256 31.9641 8.41404 33.001 10.0273L29.609 13.3898C33.9054 13.3731 38.7591 13.3633 40.7545 13.392" fill="#1C3AA9" />
                 <path d="M27.632 0.496155C27.4446 0.496772 27.2583 0.501058 27.0728 0.509385H16.4978L19.4213 3.40751C16.4925 5.77945 14.6218 9.3878 14.6218 13.4295C14.6218 17.6355 16.6471 21.3721 19.7835 23.7342L24.6259 18.9838C23.7574 18.5183 23.0114 17.857 22.448 17.0595C21.7951 16.2302 21.2613 15.0551 21.2613 13.4296C21.2613 13.2332 21.2845 13.0817 21.3281 12.9703C21.4884 10.9563 22.6097 9.21053 24.2371 8.18261L27.6291 11.5452C27.6122 7.28608 27.6023 2.47464 27.6313 0.496525" fill="#4285F4" />
                 <path d="M14.6223 13.4291C14.6229 13.6149 14.6273 13.7997 14.6357 13.9835V24.4665L17.5592 21.5684C19.952 24.4718 23.592 26.3262 27.6691 26.3262C31.912 26.3262 35.6814 24.3186 38.0642 21.2094L33.2722 16.4091C32.8026 17.2701 32.1354 18.0096 31.331 18.5681C30.4944 19.2153 29.309 19.7445 27.6692 19.7445C27.4711 19.7445 27.3182 19.7215 27.2059 19.6783C25.1742 19.5193 23.4131 18.4078 22.3762 16.7946L25.7682 13.432C21.4718 13.4488 16.6182 13.4586 14.6227 13.4299" fill="#ABABAB" />
@@ -447,13 +447,13 @@ export const SUCCESS = ({
                 <path d="M235.452 118.227L249.982 132.756L276.904 105.834" stroke="white" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
             </g>
             <defs>
-                <filter id="filter0_f_2_6093" x="-69.7046" y="-207.204" width="651.409" height="651.409" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_f_2_6093" x="-69.7046" y="-207.204" width="651.409" height="651.409" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
                     <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur_2_6093" />
                 </filter>
-                <filter id="filter1_d_2_6093" x="136.5" y="29" width="239" height="239" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter1_d_2_6093" x="136.5" y="29" width="239" height="239" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="30" />
                     <feGaussianBlur stdDeviation="25" />
@@ -461,8 +461,8 @@ export const SUCCESS = ({
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_6093" />
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_6093" result="shape" />
                 </filter>
-                <filter id="filter2_df_2_6093" x="117.456" y="-20.8462" width="249.476" height="248.657" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter2_df_2_6093" x="117.456" y="-20.8462" width="249.476" height="248.657" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="30" />
                     <feGaussianBlur stdDeviation="25" />
@@ -471,8 +471,8 @@ export const SUCCESS = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_6093" result="shape" />
                     <feGaussianBlur stdDeviation="0.5" result="effect2_foregroundBlur_2_6093" />
                 </filter>
-                <filter id="filter3_df_2_6093" x="106.97" y="-31.3954" width="218.475" height="245.272" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter3_df_2_6093" x="106.97" y="-31.3954" width="218.475" height="245.272" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="30" />
                     <feGaussianBlur stdDeviation="25" />
@@ -481,8 +481,8 @@ export const SUCCESS = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_6093" result="shape" />
                     <feGaussianBlur stdDeviation="0.5" result="effect2_foregroundBlur_2_6093" />
                 </filter>
-                <filter id="filter4_df_2_6093" x="87.6987" y="-22.272" width="203.002" height="222.056" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter4_df_2_6093" x="87.6987" y="-22.272" width="203.002" height="222.056" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="30" />
                     <feGaussianBlur stdDeviation="25" />
@@ -491,8 +491,8 @@ export const SUCCESS = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_6093" result="shape" />
                     <feGaussianBlur stdDeviation="0.5" result="effect2_foregroundBlur_2_6093" />
                 </filter>
-                <filter id="filter5_ddii_2_6093" x="216.452" y="85.8339" width="87.4517" height="73.9223" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter5_ddii_2_6093" x="216.452" y="85.8339" width="87.4517" height="73.9223" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="-4" />
                     <feGaussianBlur stdDeviation="4" />
@@ -518,12 +518,12 @@ export const SUCCESS = ({
                     <feBlend mode="normal" in2="effect3_innerShadow_2_6093" result="effect4_innerShadow_2_6093" />
                 </filter>
                 <linearGradient id="paint0_linear_2_6093" x1="192.054" y1="-7.20434" x2="308.468" y2="244.204" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#57FF90" />
-                    <stop offset="1" stop-color="#00D354" />
+                    <stop stopColor="#57FF90" />
+                    <stop offset="1" stopColor="#00D354" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_2_6093" x1="220.646" y1="49" x2="285.009" y2="188" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#57FF90" />
-                    <stop offset="1" stop-color="#00D354" />
+                    <stop stopColor="#57FF90" />
+                    <stop offset="1" stopColor="#00D354" />
                 </linearGradient>
             </defs>
         </svg>
@@ -591,15 +591,15 @@ export const PROFILE = ({
         <svg width="75" height="75" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_269_1045)">
                 <rect x="20" y="16" width="35" height="35" rx="5" fill="white" />
-                <g clip-path="url(#clip0_269_1045)">
+                <g clipPath="url(#clip0_269_1045)">
                     <path d="M34.6668 30.6667C36.5078 30.6667 38.0002 29.1743 38.0002 27.3333C38.0002 25.4924 36.5078 24 34.6668 24C32.8259 24 31.3335 25.4924 31.3335 27.3333C31.3335 29.1743 32.8259 30.6667 34.6668 30.6667Z" fill="url(#paint0_linear_269_1045)" />
                     <path d="M47.5116 36.1551C47.1858 35.8292 46.76 35.6667 46.3333 35.6667C45.9066 35.6667 45.4808 35.8292 45.155 36.1551L41.3333 39.9767L40.0116 38.6551C39.6858 38.3292 39.26 38.1667 38.8333 38.1667C38.4066 38.1667 37.9808 38.3292 37.655 38.6551C37.3425 38.9676 37.167 39.3915 37.167 39.8334C37.167 40.2754 37.3425 40.6992 37.655 41.0117L40.155 43.5117C40.4808 43.8376 40.9066 44.0001 41.3333 44.0001C41.76 44.0001 42.1858 43.8376 42.5116 43.5117L47.5116 38.5117C47.8241 38.1992 47.9996 37.7754 47.9996 37.3334C47.9996 36.8915 47.8241 36.4676 47.5116 36.1551Z" fill="url(#paint1_linear_269_1045)" />
                     <path d="M38.8333 36.4999C39.7242 36.4999 40.5608 36.8466 41.1908 37.4766L41.3333 37.6199V35.6666C41.3333 34.7825 40.9821 33.9347 40.357 33.3096C39.7319 32.6844 38.8841 32.3333 38 32.3333H31.3333C30.4493 32.3333 29.6014 32.6844 28.9763 33.3096C28.3512 33.9347 28 34.7825 28 35.6666V40.6666H35.6208C35.3358 39.5616 35.6125 38.3408 36.4758 37.4774C36.7844 37.1664 37.1518 36.9199 37.5565 36.7521C37.9612 36.5843 38.3952 36.4985 38.8333 36.4999Z" fill="url(#paint2_linear_269_1045)" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_269_1045" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_269_1045" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="10" />
@@ -609,16 +609,16 @@ export const PROFILE = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_269_1045" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_269_1045" x1="31.3335" y1="26.0904" x2="38.1327" y2="26.1263" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_269_1045" x1="37.167" y1="38.2797" x2="48.2148" y2="38.3556" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <linearGradient id="paint2_linear_269_1045" x1="28" y1="34.9462" x2="41.5979" y2="35.0612" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_269_1045">
                     <rect width="20" height="20" fill="white" transform="translate(28 24)" />
@@ -642,14 +642,14 @@ export const CHAT = ({
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_269_1446)">
                 <rect x="26.6519" y="15.1013" width="35" height="35" rx="5" transform="rotate(12.036 26.6519 15.1013)" fill="white" />
-                <g clip-path="url(#clip0_269_1446)">
+                <g clipPath="url(#clip0_269_1446)">
                     <path d="M50.8467 35.3735L38.377 32.7148C37.2394 32.4722 36.1167 33.2003 35.8741 34.3379L34.4079 41.2146C34.1653 42.3522 34.8935 43.4749 36.031 43.7175L46.8407 46.0222L48.8463 49.1149C49.0025 49.3558 49.288 49.4755 49.564 49.4238C49.7008 49.3986 49.827 49.3334 49.9267 49.2364C50.0264 49.1395 50.095 49.0151 50.1239 48.879L52.4698 37.8763C52.7124 36.7388 51.9843 35.616 50.8467 35.3735ZM45.7955 42.2047L40.2025 41.0122C39.8224 40.9312 39.5804 40.558 39.6614 40.1779C39.7425 39.7978 40.1156 39.5558 40.4957 39.6369L46.0888 40.8294C46.4689 40.9104 46.7108 41.2836 46.6298 41.6637C46.5488 42.0438 46.1756 42.2858 45.7955 42.2047ZM47.7573 39.7473L39.4136 37.9683C39.0335 37.8873 38.7915 37.5141 38.8726 37.134C38.9536 36.7539 39.3268 36.5119 39.7069 36.593L48.0506 38.372C48.4307 38.453 48.6727 38.8262 48.5916 39.2062C48.5106 39.5863 48.1374 39.8283 47.7573 39.7473Z" fill="url(#paint0_linear_269_1446)" />
                     <path d="M28.1135 39.0988C28.3444 39.2586 28.6539 39.2657 28.8948 39.1095L31.9875 37.1039L33.7658 37.483L34.4989 34.0447C34.9031 32.1489 36.7745 30.9352 38.6703 31.3394L46.3263 32.9718L46.7662 30.9088C47.0091 29.7694 46.2824 28.6489 45.1431 28.406L32.6734 25.7472C31.534 25.5043 30.4134 26.231 30.1705 27.3704L27.8246 38.3731C27.7955 38.5091 27.8074 38.6506 27.8588 38.7798C27.9103 38.909 27.9989 39.0201 28.1135 39.0988Z" fill="url(#paint1_linear_269_1446)" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_269_1446" x="-0.646484" y="-0.898682" width="81.5288" height="81.5291" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_269_1446" x="-0.646484" y="-0.898682" width="81.5288" height="81.5291" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="10" />
@@ -659,12 +659,12 @@ export const CHAT = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_269_1446" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_269_1446" x1="35.3945" y1="36.5874" x2="52.297" y2="40.3041" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_269_1446" x1="29.6909" y1="29.6199" x2="46.5934" y2="33.3366" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_269_1446">
                     <rect width="24" height="24" fill="white" transform="translate(31.0601 23.1985) rotate(12.036)" />
@@ -691,8 +691,8 @@ export const ICON_SUCCESS = ({
                 <path d="M45.8111 28.148C45.7872 27.6218 45.7872 27.1196 45.7872 26.6173C45.7872 26.2108 45.4763 25.8999 45.0697 25.8999C42.0802 25.8999 39.8081 25.0389 37.9187 23.1973C37.6317 22.9342 37.2013 22.9342 36.9143 23.1973C35.0249 25.0389 32.7528 25.8999 29.7633 25.8999C29.3567 25.8999 29.0458 26.2108 29.0458 26.6173C29.0458 27.1196 29.0458 27.6218 29.0219 28.148C28.9262 33.1704 28.7827 40.0583 37.1773 42.9522L37.4165 43L37.6557 42.9522C46.0264 40.0583 45.9068 33.1943 45.8111 28.148ZM36.8425 35.1076C36.699 35.2272 36.5316 35.299 36.3403 35.299H36.3164C36.125 35.299 35.9337 35.2033 35.8141 35.0598L33.5899 32.5964L34.6661 31.6398L36.412 33.577L40.2865 29.8939L41.267 30.9462L36.8425 35.1076Z" fill="url(#paint0_linear_269_1435)" />
             </g>
             <defs>
-                <filter id="filter0_d_269_1435" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_269_1435" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="10" />
@@ -702,8 +702,8 @@ export const ICON_SUCCESS = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_269_1435" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_269_1435" x1="29" y1="29.2712" x2="46.1671" y2="29.3475" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
             </defs>
         </svg>
@@ -737,15 +737,15 @@ export const Complete = ({
 }) => {
     return (
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_275_1739)">
+            <g clipPath="url(#clip0_275_1739)">
                 <path d="M15 28C22.1799 28 28 22.1799 28 15C28 7.8201 22.1799 2 15 2C7.8201 2 2 7.8201 2 15C2 22.1799 7.8201 28 15 28Z" fill="url(#paint0_linear_275_1739)" />
                 <g filter="url(#filter0_d_275_1739)">
                     <path d="M9.11682 15.8405L12.4786 19.2023L20.8832 10.7977" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_275_1739" x="2.11682" y="7.79773" width="25.7664" height="22.4045" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_275_1739" x="2.11682" y="7.79773" width="25.7664" height="22.4045" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -755,8 +755,8 @@ export const Complete = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_1739" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_275_1739" x1="15" y1="2" x2="15" y2="28" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#3BC940" />
-                    <stop offset="1" stop-color="#6CB76F" />
+                    <stop stopColor="#3BC940" />
+                    <stop offset="1" stopColor="#6CB76F" />
                 </linearGradient>
                 <clipPath id="clip0_275_1739">
                     <rect width="26" height="26" fill="white" transform="translate(2 2)" />
@@ -776,15 +776,15 @@ export const Uncomplete = ({
 }) => {
     return (
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_275_1820)">
+            <g clippath="url(#clip0_275_1820)">
                 <path d="M23.339 5.661C18.457 0.778996 10.543 0.778996 5.66101 5.661C0.779012 10.543 0.779012 18.457 5.66101 23.339C10.543 28.221 18.457 28.221 23.339 23.339C28.221 18.457 28.22 10.543 23.339 5.661ZM19.803 18.389C19.9905 18.5765 20.0959 18.8308 20.0959 19.096C20.0959 19.3612 19.9905 19.6155 19.803 19.803C19.6155 19.9905 19.3612 20.0958 19.096 20.0958C18.8308 20.0958 18.5765 19.9905 18.389 19.803L14.5 15.914L10.611 19.803C10.5184 19.8962 10.4082 19.9701 10.2869 20.0206C10.1655 20.0711 10.0354 20.097 9.90401 20.097C9.7726 20.097 9.64249 20.0711 9.52116 20.0206C9.39983 19.9701 9.28966 19.8962 9.19701 19.803C9.10407 19.7102 9.03033 19.6 8.98002 19.4787C8.92971 19.3574 8.90381 19.2273 8.90381 19.096C8.90381 18.9647 8.92971 18.8346 8.98002 18.7133C9.03033 18.592 9.10407 18.4818 9.19701 18.389L13.086 14.5L9.19701 10.611C9.0095 10.4235 8.90416 10.1692 8.90416 9.904C8.90416 9.63882 9.0095 9.3845 9.19701 9.197C9.38452 9.00949 9.63884 8.90415 9.90401 8.90415C10.1692 8.90415 10.4235 9.00949 10.611 9.197L14.5 13.086L18.389 9.197C18.4819 9.10415 18.5921 9.0305 18.7134 8.98026C18.8347 8.93001 18.9647 8.90415 19.096 8.90415C19.2273 8.90415 19.3573 8.93001 19.4786 8.98026C19.5999 9.0305 19.7102 9.10415 19.803 9.197C19.8959 9.28984 19.9695 9.40006 20.0198 9.52137C20.07 9.64268 20.0959 9.7727 20.0959 9.904C20.0959 10.0353 20.07 10.1653 20.0198 10.2866C19.9695 10.4079 19.8959 10.5182 19.803 10.611L15.914 14.5L19.803 18.389Z" fill="url(#paint0_linear_275_1820)" />
                 <g filter="url(#filter0_d_275_1820)">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.86296 8.83639C8.38636 9.29829 8.37443 10.0591 8.83633 10.5357L12.6926 14.5148L8.94439 18.3591C8.48106 18.8343 8.4907 19.5951 8.96591 20.0585C9.44112 20.5218 10.202 20.5122 10.6653 20.037L14.3659 16.2414L17.9689 19.9591C18.4308 20.4357 19.1916 20.4477 19.6682 19.9858C20.1448 19.5239 20.1568 18.7631 19.6949 18.2865L16.0445 14.5198L19.8262 10.6411C20.2896 10.1659 20.2799 9.40504 19.8047 8.94171C19.3295 8.47838 18.5687 8.48801 18.1053 8.96323L14.3711 12.7932L10.5623 8.86302C10.1004 8.38642 9.33957 8.37449 8.86296 8.83639Z" fill="white" />
+                    <path fillRule="evenodd" clipRule="evenodd" d="M8.86296 8.83639C8.38636 9.29829 8.37443 10.0591 8.83633 10.5357L12.6926 14.5148L8.94439 18.3591C8.48106 18.8343 8.4907 19.5951 8.96591 20.0585C9.44112 20.5218 10.202 20.5122 10.6653 20.037L14.3659 16.2414L17.9689 19.9591C18.4308 20.4357 19.1916 20.4477 19.6682 19.9858C20.1448 19.5239 20.1568 18.7631 19.6949 18.2865L16.0445 14.5198L19.8262 10.6411C20.2896 10.1659 20.2799 9.40504 19.8047 8.94171C19.3295 8.47838 18.5687 8.48801 18.1053 8.96323L14.3711 12.7932L10.5623 8.86302C10.1004 8.38642 9.33957 8.37449 8.86296 8.83639Z" fill="white" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_275_1820" x="2.49756" y="6.49762" width="23.6699" height="23.9021" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_275_1820" x="2.49756" y="6.49762" width="23.6699" height="23.9021" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -794,8 +794,8 @@ export const Uncomplete = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_1820" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_275_1820" x1="14.4998" y1="1.9995" x2="14.4998" y2="27.0005" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DD5757" />
-                    <stop offset="1" stop-color="#F77676" />
+                    <stop stopColor="#DD5757" />
+                    <stop offset="1" stopColor="#F77676" />
                 </linearGradient>
                 <clipPath id="clip0_275_1820">
                     <rect width="29" height="29" fill="white" />
@@ -818,8 +818,8 @@ export const Eye = ({
             <path d="M23.0137 7.27219C22.9819 7.19906 22.2019 5.46938 20.46 3.7275C18.8437 2.11313 16.0669 0.1875 12 0.1875C7.93311 0.1875 5.15623 2.11313 3.53998 3.7275C1.79811 5.46938 1.01811 7.19625 0.986235 7.27219C0.954184 7.34419 0.937622 7.42212 0.937622 7.50094C0.937622 7.57975 0.954184 7.65768 0.986235 7.72969C1.01811 7.80187 1.79811 9.53156 3.53998 11.2734C5.15623 12.8878 7.93311 14.8125 12 14.8125C16.0669 14.8125 18.8437 12.8878 20.46 11.2734C22.2019 9.53156 22.9819 7.80469 23.0137 7.72969C23.0458 7.65768 23.0623 7.57975 23.0623 7.50094C23.0623 7.42212 23.0458 7.34419 23.0137 7.27219ZM12 13.6875C9.05811 13.6875 6.48936 12.6169 4.36405 10.5066C3.47312 9.62114 2.7192 8.60781 2.12717 7.5C2.71903 6.39237 3.47297 5.37932 4.36405 4.49438C6.48936 2.38313 9.05811 1.3125 12 1.3125C14.9419 1.3125 17.5106 2.38313 19.6359 4.49438C20.527 5.37932 21.2809 6.39237 21.8728 7.5C21.2756 8.64469 18.2812 13.6875 12 13.6875ZM12 3.1875C11.1471 3.1875 10.3133 3.44042 9.60409 3.91429C8.8949 4.38815 8.34216 5.06167 8.01575 5.84968C7.68935 6.63768 7.60395 7.50478 7.77035 8.34133C7.93675 9.17787 8.34747 9.94628 8.95059 10.5494C9.5537 11.1525 10.3221 11.5632 11.1587 11.7296C11.9952 11.896 12.8623 11.8106 13.6503 11.4842C14.4383 11.1578 15.1118 10.6051 15.5857 9.8959C16.0596 9.18671 16.3125 8.35293 16.3125 7.5C16.311 6.35671 15.8562 5.26067 15.0477 4.45225C14.2393 3.64382 13.1433 3.18899 12 3.1875ZM12 10.6875C11.3696 10.6875 10.7533 10.5006 10.2291 10.1503C9.70492 9.80006 9.29637 9.30224 9.05512 8.7198C8.81387 8.13736 8.75074 7.49646 8.87373 6.87815C8.99672 6.25984 9.3003 5.69188 9.74608 5.2461C10.1919 4.80032 10.7598 4.49674 11.3781 4.37375C11.9964 4.25076 12.6373 4.31388 13.2198 4.55513C13.8022 4.79639 14.3 5.20494 14.6503 5.72912C15.0005 6.2533 15.1875 6.86957 15.1875 7.5C15.1875 8.34538 14.8517 9.15613 14.2539 9.7539C13.6561 10.3517 12.8454 10.6875 12 10.6875Z" fill="url(#paint0_linear_2_5083)" />
             <defs>
                 <linearGradient id="paint0_linear_2_5083" x1="-14.7302" y1="7.5" x2="25.2257" y2="7.0969" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -838,15 +838,15 @@ export const CHATS = ({
     return (
         <svg width="309" height="301" viewBox="0 0 309 301" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_bd_2_5321)">
-                <path d="M83.1219 18.7307C86.9944 8.38608 98.5197 3.13944 108.864 7.01199L214.314 46.4876C224.659 50.3602 229.905 61.8854 226.033 72.23L205.671 126.621C201.799 136.966 190.274 142.212 179.929 138.34L128.718 119.169C127.734 118.8 126.659 118.751 125.645 119.029L82.3114 130.891C77.6229 132.175 74.0455 126.69 77.11 122.916L87.0931 110.624C89.2474 107.971 88.1652 103.987 84.9648 102.789L74.4791 98.864C64.1345 94.9914 58.8879 83.4662 62.7604 73.1215L83.1219 18.7307Z" fill="#919AFF" fill-opacity="0.4" shape-rendering="crispEdges" />
+                <path d="M83.1219 18.7307C86.9944 8.38608 98.5197 3.13944 108.864 7.01199L214.314 46.4876C224.659 50.3602 229.905 61.8854 226.033 72.23L205.671 126.621C201.799 136.966 190.274 142.212 179.929 138.34L128.718 119.169C127.734 118.8 126.659 118.751 125.645 119.029L82.3114 130.891C77.6229 132.175 74.0455 126.69 77.11 122.916L87.0931 110.624C89.2474 107.971 88.1652 103.987 84.9648 102.789L74.4791 98.864C64.1345 94.9914 58.8879 83.4662 62.7604 73.1215L83.1219 18.7307Z" fill="#919AFF" fillOpacity="0.4" shape-rendering="crispEdges" />
                 <path d="M83.1219 18.7307C86.9944 8.38608 98.5197 3.13944 108.864 7.01199L214.314 46.4876C224.659 50.3602 229.905 61.8854 226.033 72.23L205.671 126.621C201.799 136.966 190.274 142.212 179.929 138.34L128.718 119.169C127.734 118.8 126.659 118.751 125.645 119.029L82.3114 130.891C77.6229 132.175 74.0455 126.69 77.11 122.916L87.0931 110.624C89.2474 107.971 88.1652 103.987 84.9648 102.789L74.4791 98.864C64.1345 94.9914 58.8879 83.4662 62.7604 73.1215L83.1219 18.7307Z" stroke="white" stroke-opacity="0.2" stroke-width="2" shape-rendering="crispEdges" />
             </g>
             <rect x="100.286" y="23.4365" width="117.148" height="12.2596" rx="6.12982" transform="rotate(20.5236 100.286 23.4365)" fill="url(#paint0_linear_2_5321)" />
             <rect x="91.6899" y="46.3995" width="117.148" height="12.2596" rx="6.12982" transform="rotate(20.5236 91.6899 46.3995)" fill="url(#paint1_linear_2_5321)" />
             <rect x="83.0936" y="69.3625" width="77.6444" height="12.2596" rx="6.12982" transform="rotate(20.5236 83.0936 69.3625)" fill="url(#paint2_linear_2_5321)" />
             <defs>
-                <filter id="filter0_bd_2_5321" x="0.485291" y="-15.2631" width="307.823" height="315.878" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_bd_2_5321" x="0.485291" y="-15.2631" width="307.823" height="315.878" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feGaussianBlur in="BackgroundImageFix" stdDeviation="10" />
                     <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_2_5321" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
@@ -858,16 +858,16 @@ export const CHATS = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_2_5321" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_2_5321" x1="91.432" y1="29.5664" x2="262.726" y2="26.842" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" />
-                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                    <stop stopColor="white" />
+                    <stop offset="1" stopColor="white" stop-opacity="0" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_2_5321" x1="82.8357" y1="52.5294" x2="254.13" y2="49.805" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" />
-                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                    <stop stopColor="white" />
+                    <stop offset="1" stopColor="white" stop-opacity="0" />
                 </linearGradient>
                 <linearGradient id="paint2_linear_2_5321" x1="77.2251" y1="75.4924" x2="190.774" y2="74.2954" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" />
-                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                    <stop stopColor="white" />
+                    <stop offset="1" stopColor="white" stop-opacity="0" />
                 </linearGradient>
             </defs>
         </svg>
@@ -887,16 +887,16 @@ export const PHOTOS = ({
     return (
         <svg width="350" height="349" viewBox="0 0 350 349" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_bd_2_5327)">
-                <rect x="57" y="47.0739" width="184" height="150" rx="20" transform="rotate(-14.8231 57 47.0739)" fill="#919AFF" fill-opacity="0.4" shape-rendering="crispEdges" />
+                <rect x="57" y="47.0739" width="184" height="150" rx="20" transform="rotate(-14.8231 57 47.0739)" fill="#919AFF" fillOpacity="0.4" shape-rendering="crispEdges" />
                 <rect x="57" y="47.0739" width="184" height="150" rx="20" transform="rotate(-14.8231 57 47.0739)" stroke="white" stroke-opacity="0.2" stroke-width="2" shape-rendering="crispEdges" />
             </g>
             <g opacity="0.7">
                 <path d="M219.663 40.2311C218.25 34.892 212.776 31.7093 207.437 33.1222L97.2311 62.2876C91.892 63.7005 88.7093 69.1741 90.1222 74.5131L110.589 151.851C112.002 157.19 117.476 160.373 122.815 158.96L233.021 129.794C238.36 128.381 241.543 122.908 240.13 117.569L219.663 40.2311Z" fill="white" />
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M211.042 85.0172L234.103 94.7977L219.601 39.9968C218.188 34.6577 212.714 31.475 207.375 32.8879L97.1691 62.0533C91.83 63.4662 88.6473 68.9398 90.0602 74.2788L93.8538 88.6136L137.595 103.422C140.43 104.869 144.083 104.014 146.003 101.454L155.245 89.1259C157.209 86.5061 160.977 85.6811 163.822 87.2481L188.164 100.656C191.343 102.406 195.577 101.151 197.26 97.9595L202.517 87.9903C204.084 85.0183 207.904 83.6862 211.042 85.0172ZM198.674 70.0344C205.489 68.2308 209.673 61.7065 208.021 55.4618C206.368 49.217 199.504 45.6167 192.689 47.4202C185.874 49.2238 181.689 55.7481 183.342 61.9928C184.995 68.2376 191.859 71.8379 198.674 70.0344Z" fill="#0015FF" fill-opacity="0.4" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M211.042 85.0172L234.103 94.7977L219.601 39.9968C218.188 34.6577 212.714 31.475 207.375 32.8879L97.1691 62.0533C91.83 63.4662 88.6473 68.9398 90.0602 74.2788L93.8538 88.6136L137.595 103.422C140.43 104.869 144.083 104.014 146.003 101.454L155.245 89.1259C157.209 86.5061 160.977 85.6811 163.822 87.2481L188.164 100.656C191.343 102.406 195.577 101.151 197.26 97.9595L202.517 87.9903C204.084 85.0183 207.904 83.6862 211.042 85.0172ZM198.674 70.0344C205.489 68.2308 209.673 61.7065 208.021 55.4618C206.368 49.217 199.504 45.6167 192.689 47.4202C185.874 49.2238 181.689 55.7481 183.342 61.9928C184.995 68.2376 191.859 71.8379 198.674 70.0344Z" fill="#0015FF" fillOpacity="0.4" />
             </g>
             <defs>
-                <filter id="filter0_bd_2_5327" x="0.445923" y="-16.5541" width="349.36" height="365.19" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_bd_2_5327" x="0.445923" y="-16.5541" width="349.36" height="365.19" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feGaussianBlur in="BackgroundImageFix" stdDeviation="10" />
                     <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_2_5327" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
@@ -929,8 +929,8 @@ export const GradiantChevronRIGHT = ({
                 <path d="M9.03577 7.14425L13.2017 11.2539L9.09204 15.4199" stroke="#E3796B" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
             </g>
             <defs>
-                <filter id="filter0_d_48_1753" x="-21.4641" y="-19.356" width="65.1658" height="69.2759" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_48_1753" x="-21.4641" y="-19.356" width="65.1658" height="69.2759" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="15" />
@@ -955,14 +955,14 @@ export const ROBERTCHAT = ({
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_269_1446)">
                 <rect x="26.6519" y="15.1013" width="35" height="35" rx="5" transform="rotate(12.036 26.6519 15.1013)" fill="white" />
-                <g clip-path="url(#clip0_269_1446)">
+                <g clipPath="url(#clip0_269_1446)">
                     <path d="M50.8467 35.3735L38.377 32.7148C37.2394 32.4722 36.1167 33.2003 35.8741 34.3379L34.4079 41.2146C34.1653 42.3522 34.8935 43.4749 36.031 43.7175L46.8407 46.0222L48.8463 49.1149C49.0025 49.3558 49.288 49.4755 49.564 49.4238C49.7008 49.3986 49.827 49.3334 49.9267 49.2364C50.0264 49.1395 50.095 49.0151 50.1239 48.879L52.4698 37.8763C52.7124 36.7388 51.9843 35.616 50.8467 35.3735ZM45.7955 42.2047L40.2025 41.0122C39.8224 40.9312 39.5804 40.558 39.6614 40.1779C39.7425 39.7978 40.1156 39.5558 40.4957 39.6369L46.0888 40.8294C46.4689 40.9104 46.7108 41.2836 46.6298 41.6637C46.5488 42.0438 46.1756 42.2858 45.7955 42.2047ZM47.7573 39.7473L39.4136 37.9683C39.0335 37.8873 38.7915 37.5141 38.8726 37.134C38.9536 36.7539 39.3268 36.5119 39.7069 36.593L48.0506 38.372C48.4307 38.453 48.6727 38.8262 48.5916 39.2062C48.5106 39.5863 48.1374 39.8283 47.7573 39.7473Z" fill="url(#paint0_linear_269_1446)" />
                     <path d="M28.1135 39.0988C28.3444 39.2586 28.6539 39.2657 28.8948 39.1095L31.9875 37.1039L33.7658 37.483L34.4989 34.0447C34.9031 32.1489 36.7745 30.9352 38.6703 31.3394L46.3263 32.9718L46.7662 30.9088C47.0091 29.7694 46.2824 28.6489 45.1431 28.406L32.6734 25.7472C31.534 25.5043 30.4134 26.231 30.1705 27.3704L27.8246 38.3731C27.7955 38.5091 27.8074 38.6506 27.8588 38.7798C27.9103 38.909 27.9989 39.0201 28.1135 39.0988Z" fill="url(#paint1_linear_269_1446)" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_269_1446" x="-0.646484" y="-0.898682" width="81.5288" height="81.5291" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_269_1446" x="-0.646484" y="-0.898682" width="81.5288" height="81.5291" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="10" />
@@ -972,12 +972,12 @@ export const ROBERTCHAT = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_269_1446" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_269_1446" x1="35.3945" y1="36.5874" x2="52.297" y2="40.3041" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_269_1446" x1="29.6909" y1="29.6199" x2="46.5934" y2="33.3366" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_269_1446">
                     <rect width="24" height="24" fill="white" transform="translate(31.0601 23.1985) rotate(12.036)" />
@@ -999,15 +999,15 @@ export const SelectSwitch = ({
 }) => {
     return (
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_2_7575)">
+            <g clipPath="url(#clip0_2_7575)">
                 <path d="M15 28C22.1799 28 28 22.1799 28 15C28 7.8201 22.1799 2 15 2C7.8201 2 2 7.8201 2 15C2 22.1799 7.8201 28 15 28Z" fill="url(#paint0_linear_2_7575)" />
                 <g filter="url(#filter0_d_2_7575)">
                     <path d="M9.11682 15.8406L12.4786 19.2024L20.8832 10.7979" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_2_7575" x="2.11682" y="7.79785" width="25.7664" height="22.4045" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_2_7575" x="2.11682" y="7.79785" width="25.7664" height="22.4045" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1017,8 +1017,8 @@ export const SelectSwitch = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_7575" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_2_7575" x1="15" y1="2" x2="15" y2="28" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#3BC940" />
-                    <stop offset="1" stop-color="#6CB76F" />
+                    <stop stopColor="#3BC940" />
+                    <stop offset="1" stopColor="#6CB76F" />
                 </linearGradient>
                 <clipPath id="clip0_2_7575">
                     <rect width="26" height="26" fill="white" transform="translate(2 2)" />
@@ -1038,15 +1038,15 @@ export const UnselectSwitch = ({
 }) => {
     return (
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_2_7580)">
+            <g clipPath="url(#clip0_2_7580)">
                 <path d="M23.339 5.66101C18.457 0.779012 10.543 0.779012 5.66101 5.66101C0.779012 10.543 0.779012 18.457 5.66101 23.339C10.543 28.221 18.457 28.221 23.339 23.339C28.221 18.457 28.22 10.543 23.339 5.66101ZM19.803 18.389C19.9905 18.5765 20.0959 18.8308 20.0959 19.096C20.0959 19.3612 19.9905 19.6155 19.803 19.803C19.6155 19.9905 19.3612 20.0959 19.096 20.0959C18.8308 20.0959 18.5765 19.9905 18.389 19.803L14.5 15.914L10.611 19.803C10.5184 19.8962 10.4082 19.9701 10.2869 20.0206C10.1655 20.0711 10.0354 20.097 9.90401 20.097C9.7726 20.097 9.64249 20.0711 9.52116 20.0206C9.39983 19.9701 9.28966 19.8962 9.19701 19.803C9.10407 19.7102 9.03033 19.6 8.98002 19.4787C8.92971 19.3574 8.90381 19.2273 8.90381 19.096C8.90381 18.9647 8.92971 18.8346 8.98002 18.7133C9.03033 18.592 9.10407 18.4818 9.19701 18.389L13.086 14.5L9.19701 10.611C9.0095 10.4235 8.90416 10.1692 8.90416 9.90401C8.90416 9.63884 9.0095 9.38452 9.19701 9.19701C9.38452 9.0095 9.63884 8.90416 9.90401 8.90416C10.1692 8.90416 10.4235 9.0095 10.611 9.19701L14.5 13.086L18.389 9.19701C18.4819 9.10417 18.5921 9.03052 18.7134 8.98027C18.8347 8.93002 18.9647 8.90416 19.096 8.90416C19.2273 8.90416 19.3573 8.93002 19.4786 8.98027C19.5999 9.03052 19.7102 9.10417 19.803 9.19701C19.8959 9.28986 19.9695 9.40008 20.0198 9.52139C20.07 9.64269 20.0959 9.77271 20.0959 9.90401C20.0959 10.0353 20.07 10.1653 20.0198 10.2866C19.9695 10.4079 19.8959 10.5182 19.803 10.611L15.914 14.5L19.803 18.389Z" fill="url(#paint0_linear_2_7580)" />
                 <g filter="url(#filter0_d_2_7580)">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.86296 8.83633C8.38636 9.29822 8.37443 10.059 8.83633 10.5356L12.6926 14.5147L8.94439 18.359C8.48106 18.8342 8.4907 19.5951 8.96591 20.0584C9.44112 20.5217 10.202 20.5121 10.6653 20.0369L14.3659 16.2413L17.9689 19.9591C18.4308 20.4357 19.1916 20.4476 19.6682 19.9857C20.1448 19.5238 20.1568 18.763 19.6949 18.2864L16.0445 14.5198L19.8262 10.641C20.2896 10.1658 20.2799 9.40498 19.8047 8.94165C19.3295 8.47832 18.5687 8.48795 18.1053 8.96317L14.3711 12.7931L10.5623 8.86296C10.1004 8.38636 9.33957 8.37443 8.86296 8.83633Z" fill="white" />
+                    <path fillRule="evenodd" clipRule="evenodd" d="M8.86296 8.83633C8.38636 9.29822 8.37443 10.059 8.83633 10.5356L12.6926 14.5147L8.94439 18.359C8.48106 18.8342 8.4907 19.5951 8.96591 20.0584C9.44112 20.5217 10.202 20.5121 10.6653 20.0369L14.3659 16.2413L17.9689 19.9591C18.4308 20.4357 19.1916 20.4476 19.6682 19.9857C20.1448 19.5238 20.1568 18.763 19.6949 18.2864L16.0445 14.5198L19.8262 10.641C20.2896 10.1658 20.2799 9.40498 19.8047 8.94165C19.3295 8.47832 18.5687 8.48795 18.1053 8.96317L14.3711 12.7931L10.5623 8.86296C10.1004 8.38636 9.33957 8.37443 8.86296 8.83633Z" fill="white" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_2_7580" x="2.49756" y="6.49756" width="23.67" height="23.9021" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_2_7580" x="2.49756" y="6.49756" width="23.67" height="23.9021" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1056,8 +1056,8 @@ export const UnselectSwitch = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_7580" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_2_7580" x1="14.4998" y1="1.99951" x2="14.4998" y2="27.0005" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#DD5757" />
-                    <stop offset="1" stop-color="#F77676" />
+                    <stop stopColor="#DD5757" />
+                    <stop offset="1" stopColor="#F77676" />
                 </linearGradient>
                 <clipPath id="clip0_2_7580">
                     <rect width="29" height="29" fill="white" />
@@ -1082,8 +1082,8 @@ export const FirstTip = ({
                 <path d="M12.76 11.38V9.71999H16.52V24.18H14.68V11.38H12.76Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_275_5020" x="6.76001" y="7.71997" width="15.76" height="26.46" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_275_5020" x="6.76001" y="7.71997" width="15.76" height="26.46" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1093,8 +1093,8 @@ export const FirstTip = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_5020" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_275_5020" x1="-22.661" y1="16.18" x2="35.1323" y2="15.7946" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1117,8 +1117,8 @@ export const SecondTip = ({
                 <path d="M17.02 26.72C18.7133 25.36 20.04 24.2467 21 23.38C21.96 22.5 22.7667 21.5867 23.42 20.64C24.0867 19.68 24.42 18.74 24.42 17.82C24.42 16.9533 24.2067 16.2733 23.78 15.78C23.3667 15.2733 22.6933 15.02 21.76 15.02C20.8533 15.02 20.1467 15.3067 19.64 15.88C19.1467 16.44 18.88 17.1933 18.84 18.14H17.08C17.1333 16.6467 17.5867 15.4933 18.44 14.68C19.2933 13.8667 20.3933 13.46 21.74 13.46C23.1133 13.46 24.2 13.84 25 14.6C25.8133 15.36 26.22 16.4067 26.22 17.74C26.22 18.8467 25.8867 19.9267 25.22 20.98C24.5667 22.02 23.82 22.94 22.98 23.74C22.14 24.5267 21.0667 25.4467 19.76 26.5H26.64V28.02H17.02V26.72Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_275_4933" x="11.02" y="11.46" width="21.62" height="26.56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_275_4933" x="11.02" y="11.46" width="21.62" height="26.56" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1128,8 +1128,8 @@ export const SecondTip = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_4933" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_275_4933" x1="-17.661" y1="21.18" x2="40.1323" y2="20.7946" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1153,8 +1153,8 @@ export const ThirdTip = ({
                 <path d="M11.2 13.36C11.2933 12.1333 11.7667 11.1733 12.62 10.48C13.4733 9.78666 14.58 9.43999 15.94 9.43999C16.8467 9.43999 17.6267 9.60666 18.28 9.93999C18.9467 10.26 19.4467 10.7 19.78 11.26C20.1267 11.82 20.3 12.4533 20.3 13.16C20.3 13.9867 20.06 14.7 19.58 15.3C19.1133 15.9 18.5 16.2867 17.74 16.46V16.56C18.6067 16.7733 19.2933 17.1933 19.8 17.82C20.3067 18.4467 20.56 19.2667 20.56 20.28C20.56 21.04 20.3867 21.7267 20.04 22.34C19.6933 22.94 19.1733 23.4133 18.48 23.76C17.7867 24.1067 16.9533 24.28 15.98 24.28C14.5667 24.28 13.4067 23.9133 12.5 23.18C11.5933 22.4333 11.0867 21.38 10.98 20.02H12.74C12.8333 20.82 13.16 21.4733 13.72 21.98C14.28 22.4867 15.0267 22.74 15.96 22.74C16.8933 22.74 17.6 22.5 18.08 22.02C18.5733 21.5267 18.82 20.8933 18.82 20.12C18.82 19.12 18.4867 18.4 17.82 17.96C17.1533 17.52 16.1467 17.3 14.8 17.3H14.34V15.78H14.82C16.0467 15.7667 16.9733 15.5667 17.6 15.18C18.2267 14.78 18.54 14.1667 18.54 13.34C18.54 12.6333 18.3067 12.0667 17.84 11.64C17.3867 11.2133 16.7333 11 15.88 11C15.0533 11 14.3867 11.2133 13.88 11.64C13.3733 12.0667 13.0733 12.64 12.98 13.36H11.2Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_275_5084" x="4.97998" y="7.44" width="21.5801" height="26.84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_275_5084" x="4.97998" y="7.44" width="21.5801" height="26.84" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1164,8 +1164,8 @@ export const ThirdTip = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_275_5084" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_275_5084" x1="-22.661" y1="16.18" x2="35.1323" y2="15.7946" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1186,13 +1186,13 @@ export const ProtectKey = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.662354" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_2_10177)" />
-            <g clip-path="url(#clip0_2_10177)">
+            <g clipPath="url(#clip0_2_10177)">
                 <path d="M26.2722 17.1343C26.2199 14.4067 25.8399 12.395 25.8451 12.3932C25.687 12.0848 25.4098 11.8269 25.0706 11.6951C22.8441 10.8316 20.6546 10.0074 18.5201 9.30418C18.3019 9.23219 18.0718 9.23219 17.854 9.30418C15.7198 10.0055 13.5307 10.8283 11.3045 11.6907C11.0051 11.8068 10.7538 12.0217 10.5902 12.2829C10.6028 12.2844 10.1326 13.7521 10.0525 16.9936C10.005 20.2355 10.4087 21.2066 10.3954 21.2078C10.6139 21.9203 11.0229 22.645 11.6088 23.382C12.2638 24.2051 13.1489 25.0553 14.218 25.891C15.9877 27.28 17.6439 28.1101 17.7133 28.1394C17.8636 28.2129 18.0228 28.2504 18.1868 28.25C18.3512 28.25 18.5104 28.2125 18.6604 28.1387C18.7301 28.1094 20.3882 27.2766 22.1572 25.888C23.2267 25.0515 24.1117 24.2014 24.7671 23.3786C25.395 22.5893 25.8195 21.8149 26.0247 21.0541C26.0166 21.053 26.3134 19.8625 26.2722 17.1346V17.1343ZM19.0678 19.2617V20.9899C19.0678 21.4768 18.6734 21.8713 18.1865 21.8716C17.6996 21.8716 17.3048 21.4772 17.3048 20.9903V19.2862C16.6694 18.9704 16.2323 18.3151 16.2323 17.5577C16.2323 16.4919 17.0962 15.6276 18.162 15.6276C19.2278 15.6276 20.0917 16.4915 20.092 17.5573C20.092 18.2958 19.6772 18.9374 19.0678 19.2617Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_2_10177" x1="0.662354" y1="11.2246" x2="36.3584" y2="11.4132" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_2_10177">
                     <rect width="19" height="19" fill="white" transform="translate(8.66235 9.25)" />
@@ -1213,14 +1213,14 @@ export const MotherBoard = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.662354" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5190)" />
-            <g clip-path="url(#clip0_275_5190)">
+            <g clipPath="url(#clip0_275_5190)">
                 <path d="M14.2288 13.8164H22.0959V21.6836H14.2288V13.8164Z" fill="white" />
                 <path d="M27.1057 16.0801C27.4132 16.0801 27.6624 15.8309 27.6624 15.5234C27.6624 15.216 27.4132 14.9668 27.1057 14.9668H25.4358V13.8535H27.1057C27.4132 13.8535 27.6624 13.6043 27.6624 13.2969C27.6624 12.9894 27.4132 12.7402 27.1057 12.7402H25.4358V11.7754C25.4358 11.0592 24.8532 10.4766 24.137 10.4766H23.1721V8.80664C23.1721 8.49919 22.9229 8.25 22.6155 8.25C22.308 8.25 22.0588 8.49919 22.0588 8.80664V10.4766H20.9456V8.80664C20.9456 8.49919 20.6964 8.25 20.3889 8.25C20.0815 8.25 19.8323 8.49919 19.8323 8.80664V10.4766H18.719V8.80664C18.719 8.49919 18.4698 8.25 18.1624 8.25C17.8549 8.25 17.6057 8.49919 17.6057 8.80664V10.4766H16.4924V8.80664C16.4924 8.49919 16.2432 8.25 15.9358 8.25C15.6283 8.25 15.3792 8.49919 15.3792 8.80664V10.4766H14.2659V8.80664C14.2659 8.49919 14.0167 8.25 13.7092 8.25C13.4018 8.25 13.1526 8.49919 13.1526 8.80664V10.4766H12.1877C11.4715 10.4766 10.8889 11.0592 10.8889 11.7754V12.7402H9.21899C8.91154 12.7402 8.66235 12.9894 8.66235 13.2969C8.66235 13.6043 8.91154 13.8535 9.21899 13.8535H10.8889V14.9668H9.21899C8.91154 14.9668 8.66235 15.216 8.66235 15.5234C8.66235 15.8309 8.91154 16.0801 9.21899 16.0801H10.8889V17.1934H9.21899C8.91154 17.1934 8.66235 17.4425 8.66235 17.75C8.66235 18.0575 8.91154 18.3066 9.21899 18.3066H10.8889V19.4199H9.21899C8.91154 19.4199 8.66235 19.6691 8.66235 19.9766C8.66235 20.284 8.91154 20.5332 9.21899 20.5332H10.8889V21.6465H9.21899C8.91154 21.6465 8.66235 21.8957 8.66235 22.2031C8.66235 22.5106 8.91154 22.7598 9.21899 22.7598H10.8889V23.7246C10.8889 24.4408 11.4715 25.0234 12.1877 25.0234H13.1526V26.6934C13.1526 27.0008 13.4018 27.25 13.7092 27.25C14.0167 27.25 14.2659 27.0008 14.2659 26.6934V25.0234H15.3792V26.6934C15.3792 27.0008 15.6283 27.25 15.9358 27.25C16.2432 27.25 16.4924 27.0008 16.4924 26.6934V25.0234H17.6057V26.6934C17.6057 27.0008 17.8549 27.25 18.1624 27.25C18.4698 27.25 18.719 27.0008 18.719 26.6934V25.0234H19.8323V26.6934C19.8323 27.0008 20.0815 27.25 20.3889 27.25C20.6964 27.25 20.9456 27.0008 20.9456 26.6934V25.0234H22.0588V26.6934C22.0588 27.0008 22.308 27.25 22.6155 27.25C22.9229 27.25 23.1721 27.0008 23.1721 26.6934V25.0234H24.137C24.8532 25.0234 25.4358 24.4408 25.4358 23.7246V22.7598H27.1057C27.4132 22.7598 27.6624 22.5106 27.6624 22.2031C27.6624 21.8957 27.4132 21.6465 27.1057 21.6465H25.4358V20.5332H27.1057C27.4132 20.5332 27.6624 20.284 27.6624 19.9766C27.6624 19.6691 27.4132 19.4199 27.1057 19.4199H25.4358V18.3066H27.1057C27.4132 18.3066 27.6624 18.0575 27.6624 17.75C27.6624 17.4425 27.4132 17.1934 27.1057 17.1934H25.4358V16.0801H27.1057ZM23.2092 22.2402C23.2092 22.5477 22.96 22.7969 22.6526 22.7969H13.6721C13.3647 22.7969 13.1155 22.5477 13.1155 22.2402V13.2598C13.1155 12.9523 13.3647 12.7031 13.6721 12.7031H22.6526C22.96 12.7031 23.2092 12.9523 23.2092 13.2598V22.2402Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_275_5190" x1="0.662354" y1="11.2246" x2="36.3584" y2="11.4132" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_275_5190">
                     <rect width="19" height="19" fill="white" transform="translate(8.66235 8.25)" />
@@ -1240,13 +1240,13 @@ export const Locks = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.337769" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5174)" />
-            <g clip-path="url(#clip0_275_5174)">
+            <g clipPath="url(#clip0_275_5174)">
                 <path d="M24.5669 14.375H23.3794V12.7917C23.3794 9.73596 20.8935 7.25 17.8378 7.25C14.782 7.25 12.2961 9.73596 12.2961 12.7917V14.375H11.1086C11.0566 14.375 11.0051 14.3852 10.9571 14.4051C10.909 14.4249 10.8654 14.4541 10.8286 14.4909C10.7919 14.5276 10.7627 14.5713 10.7428 14.6193C10.723 14.6674 10.7127 14.7189 10.7128 14.7708V24.6667C10.7128 25.5399 11.4229 26.25 12.2961 26.25H23.3795C24.2527 26.25 24.9628 25.5399 24.9628 24.6667V14.7708C24.9628 14.7189 24.9526 14.6674 24.9327 14.6193C24.9128 14.5713 24.8837 14.5276 24.8469 14.4909C24.8101 14.4541 24.7665 14.4249 24.7184 14.4051C24.6704 14.3852 24.6189 14.375 24.5669 14.375ZM19.023 22.6438C19.0291 22.6992 19.0235 22.7552 19.0065 22.8082C18.9895 22.8612 18.9615 22.91 18.9244 22.9515C18.8873 22.993 18.8418 23.0262 18.791 23.0489C18.7402 23.0716 18.6851 23.0833 18.6295 23.0833H17.0461C16.9904 23.0833 16.9354 23.0716 16.8846 23.0489C16.8338 23.0262 16.7883 22.993 16.7512 22.9515C16.714 22.91 16.6861 22.8612 16.6691 22.8082C16.6521 22.7552 16.6465 22.6992 16.6526 22.6438L16.9023 20.3983C16.4968 20.1034 16.2545 19.6368 16.2545 19.125C16.2545 18.2518 16.9645 17.5417 17.8378 17.5417C18.7111 17.5417 19.4212 18.2517 19.4212 19.125C19.4212 19.6368 19.1788 20.1034 18.7733 20.3983L19.023 22.6438ZM21.0044 14.375H14.6711V12.7917C14.6711 11.0456 16.0917 9.625 17.8378 9.625C19.5838 9.625 21.0044 11.0456 21.0044 12.7917V14.375Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_275_5174" x1="0.337769" y1="11.2246" x2="36.0338" y2="11.4132" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_275_5174">
                     <rect width="19" height="19" fill="white" transform="translate(8.33777 7.25)" />
@@ -1266,13 +1266,13 @@ export const Hub = ({
     return (
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.337769" y="0.25" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5182)" />
-            <g clip-path="url(#clip0_275_5182)">
+            <g clipPath="url(#clip0_275_5182)">
                 <path d="M25.8541 21.8279H25.3011V21.1296C25.3011 19.4761 23.9559 18.131 22.3025 18.131H18.5187V15.5485H20.1775C20.9956 15.5485 21.6611 14.8829 21.6611 14.0648V10.4634C21.6611 9.64533 20.9956 8.97974 20.1775 8.97974H15.7457C14.9276 8.97974 14.262 9.64529 14.262 10.4634V14.0648C14.262 14.8828 14.9276 15.5484 15.7457 15.5484H17.4044V18.131H13.3978C11.7443 18.131 10.3992 19.4761 10.3992 21.1295V21.8279H9.82144C9.00333 21.8279 8.33777 22.4934 8.33777 23.3116V25.0366C8.33777 25.8547 9.00333 26.5203 9.82144 26.5203H12.0913C12.9093 26.5203 13.5749 25.8547 13.5749 25.0366V23.3116C13.5749 22.4934 12.9093 21.8279 12.0913 21.8279H11.5135V21.1296C11.5135 20.0906 12.3588 19.2453 13.3977 19.2453H17.4044V21.8279H16.8266C16.0085 21.8279 15.343 22.4934 15.343 23.3116V25.0366C15.343 25.8547 16.0085 26.5203 16.8266 26.5203H19.0965C19.9146 26.5203 20.5801 25.8547 20.5801 25.0366V23.3116C20.5801 22.4934 19.9146 21.8279 19.0965 21.8279H18.5187V19.2453H22.3025C23.3415 19.2453 24.1868 20.0906 24.1868 21.1296V21.8279H23.5842C22.7662 21.8279 22.1006 22.4934 22.1006 23.3116V25.0366C22.1006 25.8547 22.7662 26.5203 23.5842 26.5203H25.8541C26.6722 26.5203 27.3377 25.8547 27.3377 25.0366V23.3116C27.3378 22.4934 26.6722 21.8279 25.8541 21.8279Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_275_5182" x1="0.337769" y1="11.2246" x2="36.0338" y2="11.4132" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_275_5182">
                     <rect width="19" height="19" fill="white" transform="translate(8.33777 8.25)" />
@@ -1296,16 +1296,16 @@ export const Tips = ({
             <path d="M15.43 14.228C15.43 14.598 15.726 14.82 16.022 14.82H16.614V14.228C16.614 13.858 16.318 13.636 16.022 13.636C15.726 13.636 15.43 13.932 15.43 14.228ZM23.57 14.228C23.57 13.858 23.274 13.636 22.978 13.636C22.682 13.636 22.386 13.932 22.386 14.228V14.82H22.978C23.274 14.82 23.57 14.598 23.57 14.228Z" fill="url(#paint2_linear_275_5340)" />
             <defs>
                 <linearGradient id="paint0_linear_275_5340" x1="13.506" y1="23.029" x2="25.7326" y2="23.0651" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_275_5340" x1="9.05121" y1="11.3215" x2="30.2749" y2="11.4022" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <linearGradient id="paint2_linear_275_5340" x1="15.43" y1="14.0073" x2="23.7212" y2="14.3085" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1329,8 +1329,8 @@ export const Balance = ({
             <path d="M27.4691 11.5528L18.0551 8.03721C17.9229 7.9876 17.7772 7.9876 17.645 8.03721L8.23097 11.5528C8.00597 11.6348 7.84855 11.8622 7.85011 12.1016C7.85011 15.3989 8.36026 18.2832 9.3669 20.6746C10.1825 22.6125 11.3231 24.2324 12.7567 25.4902C15.2165 27.6476 17.6727 27.982 17.7758 27.9953C17.7793 27.9957 17.7825 27.9957 17.786 27.9961C17.7918 27.9969 17.7977 27.9976 17.804 27.998C17.818 27.9992 17.8321 27.9996 17.8461 28H17.854C17.868 27.9996 17.8821 27.9992 17.8961 27.998C17.902 27.9976 17.9079 27.9969 17.9137 27.9961C17.9172 27.9957 17.9208 27.9957 17.9243 27.9953C18.0274 27.982 20.4836 27.6476 22.9434 25.4902C24.377 24.2324 25.5176 22.6125 26.3332 20.6746C27.3398 18.2832 27.85 15.3989 27.85 12.1016C27.8516 11.8622 27.6941 11.6348 27.4691 11.5528ZM24.2336 19.4242C24.1227 19.5719 23.9492 19.6586 23.7649 19.6586H20.6098C20.425 19.6586 20.2516 19.5719 20.1411 19.4242C20.0864 19.3515 20.0494 19.2671 20.0331 19.1775C20.0168 19.088 20.0217 18.9959 20.0473 18.9086L21.4059 14.2501H19.5071C19.3301 14.7485 18.9344 15.1442 18.436 15.3211V22.1406H20.2907C20.6141 22.1406 20.8766 22.4031 20.8766 22.7266C20.8766 23.05 20.6141 23.3125 20.2907 23.3125H15.4094C15.086 23.3125 14.8235 23.05 14.8235 22.7266C14.8235 22.4031 15.086 22.1406 15.4094 22.1406H17.2641V15.3211C16.7657 15.1442 16.37 14.7485 16.193 14.2501H14.2942L15.6528 18.9086C15.7048 19.0856 15.67 19.2766 15.559 19.4242C15.4485 19.5719 15.2751 19.6586 15.0903 19.6586H11.9352C11.7509 19.6586 11.5774 19.5719 11.4665 19.4242C11.4119 19.3515 11.3751 19.267 11.3589 19.1775C11.3427 19.088 11.3476 18.9959 11.3731 18.9086L12.9505 13.5001C13.0193 13.2549 13.2584 13.0755 13.513 13.0782H16.193C16.4348 12.3962 17.0864 11.9063 17.8501 11.9063C18.6137 11.9063 19.2653 12.3962 19.5071 13.0782H22.1871C22.4417 13.0755 22.6808 13.2549 22.7496 13.5001L24.327 18.9086C24.3789 19.0856 24.3442 19.2766 24.2336 19.4242Z" fill="white" />
             <defs>
                 <linearGradient id="paint0_linear_2_10800" x1="0.350098" y1="10.9746" x2="36.0461" y2="11.1632" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1353,8 +1353,8 @@ export const Banned = ({
             <path d="M24.4634 20.5352C25.5679 20.5352 26.4634 19.6397 26.4634 18.5352V9C26.4634 7.89543 25.5679 7 24.4634 7H11.2368C10.1322 7 9.23682 7.89543 9.23682 9V18.5352C9.23682 19.6397 10.1322 20.5352 11.2368 20.5352H24.4634ZM22.1567 13.7676C22.1567 16.1423 20.2248 18.0742 17.8501 18.0742C15.4754 18.0742 13.5435 16.1423 13.5435 13.7676C13.5435 11.3929 15.4754 9.46094 17.8501 9.46094C20.2248 9.46094 22.1567 11.3929 22.1567 13.7676Z" fill="white" />
             <defs>
                 <linearGradient id="paint0_linear_275_5600" x1="0.350098" y1="10.9746" x2="36.0461" y2="11.1632" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1372,13 +1372,13 @@ export const Law = ({
     return (
         <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="0.350098" width="35" height="35" rx="5" fill="url(#paint0_linear_275_5565)" />
-            <g clip-path="url(#clip0_275_5565)">
+            <g clipPath="url(#clip0_275_5565)">
                 <path d="M19.4227 22.5546H8.92696C8.05648 22.5546 7.3501 23.2609 7.3501 24.1315V26.9988H20.9995V24.1315C20.9995 23.2609 20.2932 22.5546 19.4227 22.5546ZM28.0671 22.777L18.4862 13.1961L20.3368 11.3489C20.6419 11.6179 21.1111 11.6048 21.3999 11.316C21.5449 11.1699 21.6263 10.9723 21.6263 10.7665C21.6263 10.5606 21.5449 10.363 21.3999 10.2169L17.4101 6.23031C17.1082 5.92518 16.616 5.92518 16.3142 6.23031C16.009 6.53219 16.009 7.02436 16.3142 7.32619L16.2814 7.29338L11.2153 12.3561L11.2481 12.3922C10.9462 12.0871 10.454 12.0871 10.1522 12.3922C9.84708 12.6941 9.84708 13.1862 10.1522 13.4881L14.1388 17.4779C14.4439 17.7798 14.9361 17.7798 15.2379 17.4779C15.383 17.3318 15.4644 17.1343 15.4644 16.9284C15.4644 16.7225 15.383 16.525 15.2379 16.3788L15.2707 16.4116L17.1213 14.5643L26.6989 24.1419C27.0762 24.5192 27.6898 24.5192 28.0671 24.1419C28.4444 23.7646 28.4444 23.1543 28.0671 22.777Z" fill="white" />
             </g>
             <defs>
                 <linearGradient id="paint0_linear_275_5565" x1="0.350098" y1="10.9746" x2="36.0461" y2="11.1632" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_275_5565">
                     <rect width="21" height="21" fill="white" transform="translate(7.3501 6)" />
@@ -1404,8 +1404,8 @@ export const FirstRecoveryStep = ({
                 <path d="M13.6789 11.6064V9.94637H17.4389V24.4064H15.5989V11.6064H13.6789Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_367_5539" x="7.67896" y="7.94635" width="15.76" height="26.46" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_367_5539" x="7.67896" y="7.94635" width="15.76" height="26.46" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1415,8 +1415,8 @@ export const FirstRecoveryStep = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5539" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_367_5539" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1437,8 +1437,8 @@ export const SecondRecoveryStep = ({
                 <path d="M12.9389 21.9464C14.6323 20.5864 15.9589 19.473 16.9189 18.6064C17.8789 17.7264 18.6856 16.813 19.3389 15.8664C20.0056 14.9064 20.3389 13.9664 20.3389 13.0464C20.3389 12.1797 20.1256 11.4997 19.6989 11.0064C19.2856 10.4997 18.6123 10.2464 17.6789 10.2464C16.7723 10.2464 16.0656 10.533 15.5589 11.1064C15.0656 11.6664 14.7989 12.4197 14.7589 13.3664H12.9989C13.0523 11.873 13.5056 10.7197 14.3589 9.90637C15.2123 9.09304 16.3123 8.68637 17.6589 8.68637C19.0323 8.68637 20.1189 9.06637 20.9189 9.82637C21.7323 10.5864 22.1389 11.633 22.1389 12.9664C22.1389 14.073 21.8056 15.153 21.1389 16.2064C20.4856 17.2464 19.7389 18.1664 18.8989 18.9664C18.0589 19.753 16.9856 20.673 15.6789 21.7264H22.5589V23.2464H12.9389V21.9464Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_367_5547" x="6.93896" y="6.6864" width="21.62" height="26.56" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_367_5547" x="6.93896" y="6.6864" width="21.62" height="26.56" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1448,8 +1448,8 @@ export const SecondRecoveryStep = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5547" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_367_5547" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1470,8 +1470,8 @@ export const ThirdRecoveryStep = ({
                 <path d="M12.1189 13.5864C12.2123 12.3597 12.6856 11.3997 13.5389 10.7064C14.3923 10.013 15.4989 9.66637 16.8589 9.66637C17.7656 9.66637 18.5456 9.83304 19.1989 10.1664C19.8656 10.4864 20.3656 10.9264 20.6989 11.4864C21.0456 12.0464 21.2189 12.6797 21.2189 13.3864C21.2189 14.213 20.9789 14.9264 20.4989 15.5264C20.0323 16.1264 19.4189 16.513 18.6589 16.6864V16.7864C19.5256 16.9997 20.2123 17.4197 20.7189 18.0464C21.2256 18.673 21.4789 19.493 21.4789 20.5064C21.4789 21.2664 21.3056 21.953 20.9589 22.5664C20.6123 23.1664 20.0923 23.6397 19.3989 23.9864C18.7056 24.333 17.8723 24.5064 16.8989 24.5064C15.4856 24.5064 14.3256 24.1397 13.4189 23.4064C12.5123 22.6597 12.0056 21.6064 11.8989 20.2464H13.6589C13.7523 21.0464 14.0789 21.6997 14.6389 22.2064C15.1989 22.713 15.9456 22.9664 16.8789 22.9664C17.8123 22.9664 18.5189 22.7264 18.9989 22.2464C19.4923 21.753 19.7389 21.1197 19.7389 20.3464C19.7389 19.3464 19.4056 18.6264 18.7389 18.1864C18.0723 17.7464 17.0656 17.5264 15.7189 17.5264H15.2589V16.0064H15.7389C16.9656 15.993 17.8923 15.793 18.5189 15.4064C19.1456 15.0064 19.4589 14.393 19.4589 13.5664C19.4589 12.8597 19.2256 12.293 18.7589 11.8664C18.3056 11.4397 17.6523 11.2264 16.7989 11.2264C15.9723 11.2264 15.3056 11.4397 14.7989 11.8664C14.2923 12.293 13.9923 12.8664 13.8989 13.5864H12.1189Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_367_5550" x="5.89893" y="7.66638" width="21.58" height="26.84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_367_5550" x="5.89893" y="7.66638" width="21.58" height="26.84" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1481,8 +1481,8 @@ export const ThirdRecoveryStep = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5550" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_367_5550" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1503,8 +1503,8 @@ export const FourthRecoveryStep = ({
                 <path d="M11.7189 21.1864V19.8064L18.7389 10.0864H20.9189V19.6064H22.9189V21.1864H20.9189V24.4064H19.1189V21.1864H11.7189ZM19.1989 11.9864L13.8189 19.6064H19.1989V11.9864Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_367_5588" x="5.71893" y="8.08636" width="23.2" height="26.32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_367_5588" x="5.71893" y="8.08636" width="23.2" height="26.32" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1514,8 +1514,8 @@ export const FourthRecoveryStep = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_367_5588" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_367_5588" x1="-21.7421" y1="16.4064" x2="36.0513" y2="16.021" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1533,14 +1533,14 @@ export const RecoveryChat = ({
         <svg width="75" height="76" viewBox="0 0 75 76" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_2_12423)">
                 <rect x="20" y="16.4062" width="35" height="35" rx="5" fill="white" />
-                <g clip-path="url(#clip0_2_12423)">
+                <g clipPath="url(#clip0_2_12423)">
                     <path d="M47.8906 31.1875H35.1406C33.9775 31.1875 33.0312 32.1337 33.0312 33.2969V40.3281C33.0312 41.4913 33.9775 42.4375 35.1406 42.4375H46.1932L48.7997 45.044C49.0027 45.247 49.3069 45.3046 49.566 45.1964C49.6945 45.1433 49.8044 45.0532 49.8816 44.9375C49.9589 44.8219 50.0001 44.6859 50 44.5469V33.2969C50 32.1337 49.0538 31.1875 47.8906 31.1875ZM44.375 38.9219H38.6562C38.2676 38.9219 37.9531 38.6074 37.9531 38.2188C37.9531 37.8301 38.2676 37.5156 38.6562 37.5156H44.375C44.7636 37.5156 45.0781 37.8301 45.0781 38.2188C45.0781 38.6074 44.7636 38.9219 44.375 38.9219ZM45.7812 36.1094H37.25C36.8614 36.1094 36.5469 35.7949 36.5469 35.4062C36.5469 35.0176 36.8614 34.7031 37.25 34.7031H45.7812C46.1699 34.7031 46.4844 35.0176 46.4844 35.4062C46.4844 35.7949 46.1699 36.1094 45.7812 36.1094Z" fill="url(#paint0_linear_2_12423)" />
                     <path d="M26.434 39.5714C26.6931 39.6796 26.9973 39.622 27.2003 39.419L29.8068 36.8125H31.625V33.2969C31.625 31.3585 33.2022 29.7812 35.1406 29.7812H42.9688V27.6719C42.9688 26.5069 42.0244 25.5625 40.8594 25.5625H28.1094C26.9444 25.5625 26 26.5069 26 27.6719V38.9219C25.9999 39.0609 26.0411 39.1969 26.1183 39.3126C26.1956 39.4282 26.3055 39.5183 26.434 39.5714Z" fill="url(#paint1_linear_2_12423)" />
                 </g>
             </g>
             <defs>
-                <filter id="filter0_d_2_12423" x="0" y="0.40625" width="75" height="75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_2_12423" x="0" y="0.40625" width="75" height="75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="10" />
@@ -1550,12 +1550,12 @@ export const RecoveryChat = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_12423" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_2_12423" x1="33.0313" y1="35.5969" x2="50.3372" y2="35.7073" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_2_12423" x1="26" y1="29.9719" x2="43.306" y2="30.0823" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
                 <clipPath id="clip0_2_12423">
                     <rect width="24" height="24" fill="white" transform="translate(26 23.4062)" />
@@ -1580,8 +1580,8 @@ export const ProtectShadow = ({
                 <path d="M45.8111 28.148C45.7872 27.6218 45.7872 27.1196 45.7872 26.6173C45.7872 26.2108 45.4763 25.8999 45.0697 25.8999C42.0802 25.8999 39.8081 25.0389 37.9187 23.1973C37.6317 22.9342 37.2013 22.9342 36.9143 23.1973C35.0249 25.0389 32.7528 25.8999 29.7633 25.8999C29.3567 25.8999 29.0458 26.2108 29.0458 26.6173C29.0458 27.1196 29.0458 27.6218 29.0219 28.148C28.9262 33.1704 28.7827 40.0583 37.1773 42.9522L37.4165 43L37.6557 42.9522C46.0264 40.0583 45.9068 33.1943 45.8111 28.148ZM36.8425 35.1076C36.699 35.2272 36.5316 35.299 36.3403 35.299L36.3164 35.299C36.125 35.299 35.9337 35.2033 35.8141 35.0598L33.5899 32.5964L34.6661 31.6398L36.412 33.577L40.2865 29.8939L41.267 30.9462L36.8425 35.1076Z" fill="url(#paint0_linear_2_12749)" />
             </g>
             <defs>
-                <filter id="filter0_d_2_12749" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_2_12749" x="0" y="0" width="75" height="75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="10" />
@@ -1591,8 +1591,8 @@ export const ProtectShadow = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_12749" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_2_12749" x1="29" y1="29.2712" x2="46.1671" y2="29.3475" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#9C3FE4" />
-                    <stop offset="1" stop-color="#C65647" />
+                    <stop stopColor="#9C3FE4" />
+                    <stop offset="1" stopColor="#C65647" />
                 </linearGradient>
             </defs>
         </svg>

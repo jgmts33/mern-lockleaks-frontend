@@ -105,14 +105,14 @@ export default function ScanTakeDown() {
                 {
                     selectedContent == 'scan' ?
                         <div className='flex w-full justify-center gap-96  items-center mx-auto mt-32 max-lg:flex-col max-lg:text-center max-lg:gap-20'>
-                            <Image alt='scan' class="h-80 w-96 max-lg:-ml-20" src={Scan} />
+                            <Image alt='scan' className="h-80 w-96 max-lg:-ml-20" src={Scan} />
                             <div className='max-w-[563px]'>
                                 <p className='font-normal text-base'>{scanHeaderContent.description}</p>
                             </div>
                         </div>
                         :
                         <div className='flex w-full justify-center gap-72 items-center mx-auto mt-32 max-xl:flex-col max-lg:gap-20'>
-                            <Image class="opacity-80" src={Takedown} alt='warning' width={320} height={384} />
+                            <Image className="opacity-80" src={Takedown} alt='warning' width={320} height={384} />
                             <div className='max-w-[743px] max-xl:text-center'>
                                 <p className='font-normal text-lg'>{takedownHeaderContent.description}</p>
                                 <p className='font-normal text-red-300 text-lg'>{takedownHeaderContent.note}</p>
@@ -146,8 +146,8 @@ export default function ScanTakeDown() {
                         }
                     </div>
                     <div className="relative max-w-[740px] flex flex-wrap">
-                        <Image alt='writetip' class="w-[349px] h-[319px]" src={WriteTip} />
-                        <Image alt='tip' class="" src={TipDocument} />
+                        <Image alt='writetip' className="w-[349px] h-[319px]" src={WriteTip} />
+                        <Image alt='tip' src={TipDocument} />
                     </div>
                 </div>
 

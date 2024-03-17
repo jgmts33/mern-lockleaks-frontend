@@ -411,12 +411,12 @@ export default function HomePage() {
             percentDescription.map((item, index) => {
               return (
                 item.bgColor == true ?
-                  <div>
+                  <div key={index}>
                     <p className='font-medium text-5xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{item.title}</p>
                     <p className='font-normal text-lg'>{item.content}</p>
                   </div>
                   :
-                  <div>
+                  <div key={index}>
                     <p className='font-medium text-5xl'>{item.title}</p>
                     <p className='font-normal text-lg'>{item.content}</p>
                   </div>

@@ -77,17 +77,17 @@ export default function Blog() {
         {
           BlogCardContent.map((blog, index) => {
             return (
-              <div key={index} class="bg-gradient-to-br max-md:max-w-[600px] max-xl:max-w-[1000px] max-lg:max-w-[750px] from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md">
+              <div key={index} className="bg-gradient-to-br max-md:max-w-[600px] max-xl:max-w-[1000px] max-lg:max-w-[750px] from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md">
                 <div className="flex flex-col">
                   <div className="shrink-0 p-3 flex flex-col">
                     <Image className="h-80 w-full mt-2 object-cover p-2 rounded-[20px]" src={blog.photo} alt="Modern building architecture" />
-                    <div class="p-5">
-                      <p class="font-semibold text-xl">{blog.title}</p>
-                      <p class="font-normal text-base mt-5">{blog.description}</p>
+                    <div className="p-5">
+                      <p className="font-semibold text-xl">{blog.title}</p>
+                      <p className="font-normal text-base mt-5">{blog.description}</p>
                     </div>
                     <div className='flex gap-5 mt-5 ml-3 max-lg:mx-auto justify-between'>
                       <div className='flex gap-3'>
-                        <Image class="h-6 w-6" src={Woman} alt="Modern building architecture" />
+                        <Image className="h-6 w-6" src={Woman} alt="Modern building architecture" />
                         <div className='flex flex-col'>
                           <span className='font-light text-sm justify-start'>Fitbit Incorporated</span>
                           <span className='font-light text-xs'>San Diego, California</span>

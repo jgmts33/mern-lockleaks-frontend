@@ -88,11 +88,11 @@ export default function AI() {
                     <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center from-gray-600/40 mt-36 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
                         <div className='max-w-[425px] mx-auto justify-content'><p className='font-normal text-xl '>Our AI tools are deployed across a myriad of social media networks:</p></div>
                         <div className='flex gap-8 justify-center items-center max-lg:flex-col px-5'>
-                            <Image class="h-[95px] w-[196px]" src={Facebook} alt='facebook' />
-                            <Image class="h-[95px] w-[196px]" src={Instagram} alt='instagram' />
-                            <Image class="h-[95px] w-[196px]" src={TikTok} alt='tiktok' />
-                            <Image class="h-[95px] w-[196px]" src={Reddit} alt='reddit' />
-                            <Image class="h-[95px] w-[196px]" src={Ban} alt='ban' />
+                            <Image className="h-[95px] w-[196px]" src={Facebook} alt='facebook' />
+                            <Image className="h-[95px] w-[196px]" src={Instagram} alt='instagram' />
+                            <Image className="h-[95px] w-[196px]" src={TikTok} alt='tiktok' />
+                            <Image className="h-[95px] w-[196px]" src={Reddit} alt='reddit' />
+                            <Image className="h-[95px] w-[196px]" src={Ban} alt='ban' />
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ export default function AI() {
                             }
                         </div>
                         <div>
-                            <Image class="w-80 h-[550px] object-cover" src={Robertgroup} />
+                            <Image className="w-80 h-[550px] object-cover" src={Robertgroup} />
                         </div>
                         <div className='flex flex-col gap-20'>
                             {
@@ -176,7 +176,7 @@ export default function AI() {
                         })
                     }
                 </div>
-                <div><Image class="w-[461px] h-[312px] absolute right-0 -mt-36" src={RobertHand} alt='robert hand' /></div>
+                <div><Image className="w-[461px] h-[312px] absolute right-0 -mt-36" src={RobertHand} alt='robert hand' /></div>
             </div>
             <CustomerReview />
         </>
