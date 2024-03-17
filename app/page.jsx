@@ -48,7 +48,7 @@ export default function HomePage() {
     {
       name: "Delist",
       description: <div className='outline-none px-12 py-20'>
-        <p>CopyrightFixer holds membership in Google’s Trusted Copyright Removal Program, leading to the rapid delisting of any reported infringing content.</p>
+        <p>CopyrightFixer holds membership in Google's Trusted Copyright Removal Program, leading to the rapid delisting of any reported infringing content.</p>
         <p className='mt-10'>Please note, we refrain from reporting referrals, reviews, affiliates, and any content you wish to retain.</p>
         <p>We boast a perfect track record, removing 100% of reported infringing content from Google Search, Google Video, and Google Images, also covering Microsoft Bing</p>
       </div>,

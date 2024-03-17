@@ -78,23 +78,23 @@ export default function MonthlyPdf() {
 
                 {/* This section for define help content*/}
 
-                <div className='flex w-full justify-center mt-32 relative max-xl:w-full max-xl:flex-col max-xl:items-center max-xl:mx-auto max-md:px-3'>
+                <div className='flex w-full justify-center mt-72 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center'>
                     <div className='relative'>
-                    <Image alt='photo' src={Photo} className='absolute ' />
-                    <Image alt='rightchat' src={RightChat} width={230} height={150} className='absolute left- -top-10' />
-                    <span className='font-medium text-md'>How It Helps</span>
+                        <span className='font-medium text-md'>How It Helps</span>
                     </div>
-                    <div className="flex max-w-[422px] z-20 duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 ">
+                    <div className='max-lg:hidden'><Image src={Photo} width={300} height={200} className='absolute left-80 -top-44' alt='right rotate chat' /></div>
+                    <div className="flex max-w-[422px] z-20 duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-2xl:left-0 max-2xl:top-10 mt-6 ">
                         <div>{icons.protect}</div>
                         <p className='font-normal text-lg mt-2'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
                     </div>
-                    <div className="flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-6 top-20 max-xl:right-0 max-xl:top-8 ">
+                    <div className='max-lg:hidden'><Image src={RightChat} width={200} height={100} className='absolute left-60 -top-8' alt='right rotate chat' /></div>
+                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] z-20 p-5 cursor-pointer absolute right-6 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
                         <div>{icons.protect}</div>
                         <div>
                             <p className='font-normal text-lg mt-2'>Comprehensive Analysis:Presents a detailed overview of content evolution and performance metrics.</p>
                         </div>
                     </div>
-                    <div className="flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute -right-12 -top-8 ">
+                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative max-2xl:rotate-0 max-2xl:right-0 max-2xl:top-32 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute -right-12 -top-8 ">
                         <div>{icons.protect}</div>
                         <div>
                             <p className='font-normal text-lg mt-2'>Data Insights: Offers in-depth insights into content performance, interactions,and trends.</p>
@@ -104,32 +104,32 @@ export default function MonthlyPdf() {
 
                 {/* This section for define benefit content*/}
 
-                <div className='flex max-lg:px-5 mt-60 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px]'>
+                <div className='flex max-lg:px-5 mt-80 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px]'>
                     <div className='flex flex-col'>
-                    <div className='p-10'><span className='font-medium text-5xl'>BENEFITS:</span></div>
-                    <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 justify-center items-center p-10'>
-                        {
-                            BenefitContent.map((benefits, index) => {
-                                return (
-                                    <div key={index} className="flex max-w-[407px] rounded-full bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 p-5 cursor-pointer">
-                                        <span className='flex mt-5 font-normal text-base'>{icons.shine}{benefits.content}...</span>
-                                    </div>
-                                )
-                            })
-                        }
+                        <div className='p-10'><span className='font-medium text-5xl'>BENEFITS:</span></div>
+                        <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 gap-7 justify-center items-center p-10'>
+                            {
+                                BenefitContent.map((benefits, index) => {
+                                    return (
+                                        <div key={index} className="flex max-w-[430px] rounded-full bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 p-5 cursor-pointer">
+                                            <span className='flex mt-5 font-normal text-base'>{icons.shine}{benefits.content}...</span>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
+                    <div className='max-lg:hidden relative'>
+                        <Image alt='photo' src={Photo} width={350} height={150} className='absolute -left-52 top-8' />
+                        <Image alt='rightchat' src={RightChat} width={250} height={150} className='absolute bottom-0 -left-24' />
+                        <Image alt='roberthand' src={RobertHand} width={461} height={312} className='mt-20 z-20' />
                     </div>
-                    <div className='flex max-lg:hidden relative'>
-                        <Image alt='photo' src={Photo} className='' />
-                        <Image alt='rightchat' src={RightChat} className='' />
-                    </div>
-                    <div><Image alt='roberthand' src={RobertHand} className='right-0' /></div>
                 </div>
 
                 {/* This section for define tips for monthly pdf*/}
 
                 <span className='font-medium text-5xl text-center mt-32 max-md:mt-32 max-lg:text-3xl'>Tips for Use</span>
-                <div className='flex justify-around mt-10 max-lg:flex-col max-lg:mx-auto'>
+                <div className='flex justify-around mt-10 max-lg:flex-col max-lg:mx-auto max-md:p-3'>
                     {
                         TipContent.map((tips, index) => {
                             return (

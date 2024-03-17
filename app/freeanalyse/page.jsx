@@ -66,7 +66,7 @@ export default function page() {
           <div className="flex bg-white/15 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 cursor-pointer w-[350px] absolute rotate-[12deg] right-56 -mt-[60px]">
             <div className='absolute'>{icons.robertchat}</div>
             <div className='flex justify-start flex-col'>
-              <div className='flex justify-start ml-10'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
+              <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
               <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
             </div>
           </div>

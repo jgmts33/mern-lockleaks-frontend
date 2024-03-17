@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaceBook, LinkedIn, TwitterV2 } from '../utils/Icons';
+import { FaceBook, LinkedIn, TwitterV2 } from '../../src/utils/Icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <div className='w-full bg-black px-10 relative'>
       <div className='max-w-[1512px] mx-auto relative z-30'>
-        <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-md:flex-col gap-10'>
+        <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-lg:flex-col gap-10'>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Services</p>
             <Link href={"/scantakedown"} >Scan & TokeDown</Link>

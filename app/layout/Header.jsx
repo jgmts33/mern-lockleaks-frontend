@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection } from "@nextui-org/react";
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { ArrowDown } from "@/src/utils/Icons";
 
 export default function Header() {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
@@ -15,6 +18,10 @@ export default function Header() {
 
   const icons = {
     arrowDown: <ArrowDown fill="currentColor" size={16} />,
+  };
+
+  const handleMenuItemClick = (url) => {
+    router.push(url);
   };
 
   return (
@@ -55,18 +62,19 @@ export default function Header() {
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6">
               <DropdownSection title="" showDivider></DropdownSection>
-              <DropdownItem key="service"><Link href="/servicees" className="text-white" color="default">Services</Link></DropdownItem>
-              <DropdownItem key="blog format"><Link href="/blog/format" className="text-white" color="default">Blog Fromat</Link></DropdownItem>
-              <DropdownItem key="scantakedown"><Link href="/scantakedown" className="text-white" color="default">Scan&TakeDown</Link></DropdownItem>
-              <DropdownItem key="AI"><Link href="/AI" className="text-white" color="default">Artificial Intelligence</Link></DropdownItem>
-              <DropdownItem key="copyright"><Link href="/copyright" className="text-white" color="default">CopyRight</Link></DropdownItem>
-              <DropdownItem key="checkout"><Link href="/checkout" className="text-white" color="default">Checkout</Link></DropdownItem>
-              <DropdownItem key="dmcaprotection"><Link href="/camdmca" className="text-white" color="default">COM DMCA Protection</Link></DropdownItem>
-              <DropdownItem key="creatordmca"><Link href="/creatordmca" className="text-white" color="default">Creator DMCA Protection</Link></DropdownItem>
-              <DropdownItem key="catfishing"><Link href="/catfishing" className="text-white" color="default">Catfishing</Link></DropdownItem>
-              <DropdownItem key="usernamerecovery"><Link href="/recovery" className="text-white" color="default">Username Recovery</Link></DropdownItem>
-              <DropdownItem key="monthlypdf"><Link href="/monthlypdf" className="text-white" color="default">Monthly Analytics PDF</Link></DropdownItem>
-              <DropdownItem key="dmcabadges"><Link href="/dmcabadges" className="text-white" color="default">Dmca Badges</Link></DropdownItem>
+              <DropdownItem key="service" className="text-white" onClick={() => handleMenuItemClick('/servicees')}>Services</DropdownItem>
+              <DropdownItem key="blog format" className="text-white" onClick={() => handleMenuItemClick('/blog/format')}>Blog Fromat</DropdownItem>
+              <DropdownItem key="scantakedown" className="text-white" onClick={() => handleMenuItemClick('/scantakedown')}>Scan&TakeDown</DropdownItem>
+              <DropdownItem key="AI" className="text-white"  onClick={() => handleMenuItemClick('/AI')}>AI</DropdownItem>
+              <DropdownItem key="copyright" className="text-white" onClick={() => handleMenuItemClick('/copyright')}>CopyRight</DropdownItem>
+              <DropdownItem key="checkout" className="text-white" onClick={() => handleMenuItemClick('/checkout')}>Checkout</DropdownItem>
+              <DropdownItem key="dmcaprotection" className="text-white" onClick={() => handleMenuItemClick('/camdmca')}>COM DMCA Protection</DropdownItem>
+              <DropdownItem key="creatordmca" className="text-white" onClick={() => handleMenuItemClick('/creatordmca')}>Creator DMCA Protection</DropdownItem>
+              <DropdownItem key="catfishing" className="text-white" onClick={() => handleMenuItemClick('/catfishing')}>Catfishing</DropdownItem>
+              <DropdownItem key="usernamerecovery" className="text-white" onClick={() => handleMenuItemClick('/recovery')}>Username Recovery</DropdownItem>
+              <DropdownItem key="monthlypdf" className="text-white" onClick={() => handleMenuItemClick('/monthlypdf')}>Monthly Analytics PDF</DropdownItem>
+              <DropdownItem key="dmcabadges" className="text-white" onClick={() => handleMenuItemClick('/dmcabadges')}>Dmca Badges</DropdownItem>
+              <DropdownItem key="deletedata" className="text-white" onClick={() => handleMenuItemClick('/deletedata')}>Delete Data</DropdownItem>
               <DropdownSection title="" showDivider></DropdownSection>
             </DropdownMenu>
           </Dropdown>
