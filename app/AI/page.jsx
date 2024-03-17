@@ -9,7 +9,7 @@ import Facebook from "@/public/assets/AI/facebook.svg"
 import Instagram from "@/public/assets/AI/instagram.svg"
 import TikTok from "@/public/assets/AI/TikTok.svg"
 import Reddit from "@/public/assets/AI/Reddit.svg"
-import Ban from "@/public/assets/AI/Ban.svg"
+import Twitter from "@/public/assets/AI/twitter.svg"
 import { ProtectKey, MotherBoard, Locks, Hub, Tips, ChevronRight } from "@/src/utils/Icons";
 import Robertgroup from '@/public/assets/robert.svg';
 import CustomerReview from '@/src/components/customerReview';
@@ -87,12 +87,12 @@ export default function AI() {
                 <div className='max-md:px-3'>
                     <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center from-gray-600/40 mt-36 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
                         <div className='max-w-[425px] mx-auto justify-content'><p className='font-normal text-xl '>Our AI tools are deployed across a myriad of social media networks:</p></div>
-                        <div className='flex gap-8 justify-center items-center max-lg:flex-col px-5'>
-                            <Image className="h-[95px] w-[196px]" src={Facebook} alt='facebook' />
-                            <Image className="h-[95px] w-[196px]" src={Instagram} alt='instagram' />
-                            <Image className="h-[95px] w-[196px]" src={TikTok} alt='tiktok' />
-                            <Image className="h-[95px] w-[196px]" src={Reddit} alt='reddit' />
-                            <Image className="h-[95px] w-[196px]" src={Ban} alt='ban' />
+                        <div className='flex gap-10 justify-center items-center max-lg:flex-col px-10'>
+                            <Image src={Facebook} width={150} height={150} alt='facebook' />
+                            <Image src={Instagram} width={150} height={150} alt='instagram' />
+                            <Image src={TikTok} width={150} height={150} alt='tiktok' />
+                            <Image src={Reddit} width={150} height={150} alt='reddit' />
+                            <Image src={Twitter} width={50} height={50} alt='twitter' />
                         </div>
                     </div>
                 </div>

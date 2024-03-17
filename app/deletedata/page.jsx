@@ -218,7 +218,7 @@ export default function DeleteData() {
                         </div>
                     </div>
                     <div className='max-w-[492px]'>
-                        <textarea name="" id="" cols="20" rows="5" className='mt-5 rounded-[10px] w-full bg-white'></textarea>
+                        <textarea name="" id="" cols="20" rows="5" className='mt-5 rounded-[10px] w-full text-black bg-white'></textarea>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,8 @@ import CustomerReview from '@/src/components/customerReview';
 export default function ScanTakeDown() {
 
     const [selectedContent, setSelectedContent] = useState('scan');
-    const [expandedFAQIndex, setExpandedFAQIndex] = useState(-1);
+    const [expandedScanIndex, setExpandedScanIndex] = useState(-1);
+    const [expandedTakeDownIndex, setExpandedTakeDownIndex] = useState(-1);
 
     const icons = {
         firstTip: <FirstTip fill="currentColor" size={16} />,
@@ -78,10 +79,14 @@ export default function ScanTakeDown() {
     const takedownFAQTitle = [
         {
             title: "What is the average turnaround time for content takedowns?",
-            content: ""
+            content: [
+
+            ]
         }, {
             title: "Are there limitations to takedown actions?",
-            content: "Our actions are governed by DMCA compliance regulations, which may impose limitations on certain takedown requests."
+            content: [
+                "Our actions are governed by DMCA compliance regulations, which may impose limitations on certain takedown requests."
+            ]
         }
     ]
 
@@ -104,14 +109,14 @@ export default function ScanTakeDown() {
                 </div>
                 {
                     selectedContent == 'scan' ?
-                        <div className='flex w-full justify-center gap-96  items-center mx-auto mt-32 max-lg:flex-col max-lg:text-center max-lg:gap-20'>
+                        <div className='flex w-full justify-center gap-72  items-center mx-auto mt-32 max-lg:flex-col max-lg:text-center max-lg:gap-20'>
                             <Image alt='scan' className="h-80 w-96 max-lg:-ml-20" src={Scan} />
                             <div className='max-w-[563px]'>
                                 <p className='font-normal text-base'>{scanHeaderContent.description}</p>
                             </div>
                         </div>
                         :
-                        <div className='flex w-full justify-center gap-72 items-center mx-auto mt-32 max-xl:flex-col max-lg:gap-20'>
+                        <div className='flex w-full justify-center gap-72 items-center mx-auto mt-32 mb-10 max-xl:flex-col max-lg:gap-20'>
                             <Image className="opacity-80" src={Takedown} alt='warning' width={320} height={384} />
                             <div className='max-w-[743px] max-xl:text-center'>
                                 <p className='font-normal text-lg'>{takedownHeaderContent.description}</p>
@@ -162,15 +167,15 @@ export default function ScanTakeDown() {
                                     <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
                                         <div className='flex justify-between'>
                                             <p className='font-medium text-4xl max-lg:text-[25px] max-lg:text-center'>{FAQ_content.title}</p>
-                                            <button className={expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
+                                            <button className={expandedScanIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedScanIndex != index ? setExpandedScanIndex(index) : setExpandedScanIndex(-1) }}>
                                                 {icons.arrowtop}
                                             </button>
                                         </div>
-                                        <div className={expandedFAQIndex == index ? 'h-auto' : 'h-0'}>
+                                        <div className={expandedScanIndex == index ? 'h-auto' : 'h-0'}>
                                             {
                                                 FAQ_content.content.map((items, contentIndex) => {
                                                     return (
-                                                        <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedFAQIndex == index ? 'block' : 'hidden'} `}>{items}</p>
+                                                        <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedScanIndex == index ? 'block' : 'hidden'} `}>{items}</p>
                                                     )
                                                 })
                                             }
@@ -179,16 +184,24 @@ export default function ScanTakeDown() {
                                 )
                             })
                             :
-                            takedownFAQTitle.map((items, index) => {
+                            takedownFAQTitle.map((FAQ_content, index) => {
                                 return (
                                     <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
                                         <div className='flex justify-between'>
-                                            <p className='font-medium text-4xl max-lg:text-[25px] max-lg:text-center'>{items.title}</p>
-                                            <button className="rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2 ">
+                                            <p className='font-medium text-4xl max-lg:text-[25px] max-lg:text-center'>{FAQ_content.title}</p>
+                                            <button className={expandedTakeDownIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedTakeDownIndex != index ? setExpandedTakeDownIndex(index) : setExpandedTakeDownIndex(-1) }}>
                                                 {icons.arrowtop}
                                             </button>
                                         </div>
-                                        <p className='font-normal text-base mt-3'>{items.content}</p>
+                                        <div className={expandedTakeDownIndex == index ? 'h-auto' : 'h-0'}>
+                                            {
+                                                FAQ_content.content.map((items, contentIndex) => {
+                                                    return (
+                                                        <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedTakeDownIndex == index ? 'block' : 'hidden'} `}>{items}</p>
+                                                    )
+                                                })
+                                            }
+                                        </div>
                                     </div>
                                 )
                             })

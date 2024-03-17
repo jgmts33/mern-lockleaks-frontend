@@ -10,10 +10,22 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    "Pricing",
-    "Services",
-    "Help",
-    "Blog",
+    "pricing",
+    "servicees",
+    "help",
+    "blog",
+    "blog/format",
+    "scantakedown",
+    "AI",
+    "copyright",
+    "checkout",
+    "camdmca",
+    "creatordmca",
+    "catfishing",
+    "recovery",
+    "monthlypdf",
+    "dmcabadges",
+    "deletedata"
   ];
 
   const icons = {
@@ -63,7 +75,7 @@ export default function Header() {
             <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6">
               <DropdownSection title="" showDivider></DropdownSection>
               <DropdownItem key="service" className="text-white" onClick={() => handleMenuItemClick('/servicees')}>Services</DropdownItem>
-              <DropdownItem key="blog format" className="text-white" onClick={() => handleMenuItemClick('/blog/format')}>Blog Fromat</DropdownItem>
+              <DropdownItem key="blog format" className="text-white" onClick={() => handleMenuItemClick('/blog/format')}>Blog Format</DropdownItem>
               <DropdownItem key="scantakedown" className="text-white" onClick={() => handleMenuItemClick('/scantakedown')}>Scan&TakeDown</DropdownItem>
               <DropdownItem key="AI" className="text-white"  onClick={() => handleMenuItemClick('/AI')}>AI</DropdownItem>
               <DropdownItem key="copyright" className="text-white" onClick={() => handleMenuItemClick('/copyright')}>CopyRight</DropdownItem>
@@ -114,7 +126,7 @@ export default function Header() {
               color={
                 index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
               }
-              href="#"
+              href={"/"+item}
               size="lg"
             >
               {item}

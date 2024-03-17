@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaceBook, LinkedIn, TwitterV2 } from '../../src/utils/Icons';
+import { FaceBook, LinkedIn, TwitterV2, TikTok, Instagram, Redit } from '../../src/utils/Icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -9,9 +9,12 @@ import {
 export default function Footer() {
 
   const icons = {
-    twitter: <TwitterV2 fill="currentColor" size={16} />,
-    linkedin: <LinkedIn fill="currentColor" size={16} />,
-    facebook: <FaceBook fill="currentColor" size={16} />,
+    twitter: <TwitterV2 fill="currentColor" />,
+    linkedin: <LinkedIn fill="currentColor" />,
+    facebook: <FaceBook fill="currentColor" />,
+    tiktok: <TikTok fill="currentColor" />,
+    instagram: <Instagram fill="currentColor" />,
+    redit: <Redit fill="currentColor" />,
   };
 
   return (
@@ -68,10 +71,13 @@ export default function Footer() {
             <Image src="/assets/logo.svg" width={250} height={200} alt="logo" className='-mt-5' />
           </Link>
           <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2023 LockLeaks.</p>
-          <div className='flex gap-5 justify-end mt-0'>
+          <div className='flex gap-7 justify-end mt-0'>
+            <Link href={"#"}>{icons.tiktok}</Link>
+            <Link href={"#"}>{icons.instagram}</Link>
             <Link href={"#"}>{icons.twitter}</Link>
             <Link href={"#"}>{icons.linkedin}</Link>
             <Link href={"#"}>{icons.facebook}</Link>
+            <Link href={"#"}>{icons.redit}</Link>
           </div>
         </div>
       </div>

@@ -101,7 +101,7 @@ export default function Recovery() {
                     <p className='font-medium text-5xl uppercase text-center max-md:text-3xl'>{RecoveryTitle.title}</p>
                     <div className='flex gap-32 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-md:flex-col max-md:gap-10'>
                         <div className='max-w-[612px] mt-10'><p className='font-normal text-base mt-10'>{RecoveryTitle.sub_title}</p></div>
-                        <div className='font-medium text-7xl mt-5'><Image src="/assets/logo.svg" width={500} height={350} alt="logo" /></div>
+                        <div className='font-medium text-7xl mt-5'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
                     </div>
                 </div>
                 <p className='font-medium text-5xl text-center mt-44 max-md:mt-10 max-md:text-3xl'>How It Helps</p>

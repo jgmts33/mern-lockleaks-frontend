@@ -23,7 +23,7 @@ export default function CreatorDmca() {
     };
 
     const CamDmcaTitle = {
-        title: "Cam DMCA Content Protection",
+        title: "DMCA BADGES",
         sub_title: "Our platform provides an advanced DMCA Content Protection service specifically tailored for content creators and models on live streaming platforms. Leveraging cutting-edge technology and a proactive approach, we ensure the highest safety and security for your digital assets. From real-time monitoring to swift actions, our services aim to fortify your online presence and safeguard your valuable content."
     }
 
@@ -49,7 +49,7 @@ export default function CreatorDmca() {
                     <p className='font-bold text-7xl uppercase max-lg:text-[30px]'>{CamDmcaTitle.title}</p>
                     <div className='flex gap-32 max-md:flex-col items-center max-md:gap-10 mt-20'>
                         <div className='max-w-[855px]'><p className='font-normal text-base'>{CamDmcaTitle.sub_title}</p></div>
-                        <p className='font-medium text-7xl max-lg:text-[30px]'>LOGO</p>
+                        <Image src="/assets/logo.svg" width={300} height={150} alt="logo" />
                     </div>
                 </div>
 
