@@ -12,6 +12,32 @@ import Scan from "@/public/assets/services/scan-takedown.svg"
 import Takedown from "@/public/assets/scan/takedown.svg"
 import CustomerReview from '@/src/components/customerReview';
 
+const TipContent = ({targetContent}) => {
+
+    const [selectedTipIndex, setSelectedTipIndex] = useState(0);
+
+    useEffect(() => {
+        setSelectedTipIndex(0);
+    },[targetContent])
+
+    return (
+            <div className='flex items-center justify-between flex-col gap-y-5 cursor-pointer'>
+                {
+                    targetContent.map((tips, index) => {
+                        return (
+                            <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
+                                <div className='flex gap-3 p-7 max-w-[720px]' onClick={() => { setSelectedTipIndex(index) }}>
+                                    <div>{tips.order}</div>
+                                    <div><span className='font-medium text-xl max-lg:text-[20px]'>{tips.content}</span></div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+    )
+}
+
 export default function ScanTakeDown() {
 
     const [selectedContent, setSelectedContent] = useState('scan');
@@ -80,7 +106,7 @@ export default function ScanTakeDown() {
         {
             title: "What is the average turnaround time for content takedowns?",
             content: [
-
+                "Our actions are governed by DMCA compliance regulations, which may impose limitations on certain takedown requests."
             ]
         }, {
             title: "Are there limitations to takedown actions?",
@@ -97,59 +123,34 @@ export default function ScanTakeDown() {
                 {/* This section for define scan&takedown header*/}
 
                 <div>
-                    <p className='font-medium text-7xl text-center mt-20 max-lg:text-[40px]'>SCAN & TAKEDOWN</p>
+                    <p className='font-medium text-huge text-center mt-20 max-lg:text-[40px]'>SCAN & TAKEDOWN</p>
                 </div>
-                <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
-                    <Button radius="full" className={selectedContent == 'scan' ? "bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setSelectedContent('scan')}>
+                <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[680px] gap-2 items-center container'>
+                    <Button radius="full" className={"mx-auto w-1/2 px-7 py-5 text-lg relative z-10 " + (selectedContent == 'scan' ? "bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg" : "bg-transparent")} size='lg' onClick={() => setSelectedContent('scan')}>
                         SCAN
                     </Button>
-                    <Button radius="full" className={selectedContent == 'takedown' ? "bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setSelectedContent('takedown')}>
+                    <Button radius="full" className={"mx-auto w-1/2 px-7 py-5 text-lg relative z-10 " + (selectedContent == 'takedown' ? "bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg" : "bg-transparent")} size='lg' onClick={() => setSelectedContent('takedown')}>
                         TAKEDOWN
                     </Button>
                 </div>
-                {
-                    selectedContent == 'scan' ?
-                        <div className='flex w-full justify-center gap-72  items-center mx-auto mt-32 max-lg:flex-col max-lg:text-center max-lg:gap-20'>
-                            <Image alt='scan' className="h-80 w-96 max-lg:-ml-20" src={Scan} />
-                            <div className='max-w-[563px]'>
-                                <p className='font-normal text-base'>{scanHeaderContent.description}</p>
-                            </div>
-                        </div>
-                        :
-                        <div className='flex w-full justify-center gap-72 items-center mx-auto mt-32 mb-10 max-xl:flex-col max-lg:gap-20'>
-                            <Image className="opacity-80" src={Takedown} alt='warning' width={320} height={384} />
-                            <div className='max-w-[743px] max-xl:text-center'>
-                                <p className='font-normal text-lg'>{takedownHeaderContent.description}</p>
-                                <p className='font-normal text-red-300 text-lg'>{takedownHeaderContent.note}</p>
-                            </div>
-                        </div>
-                }
+                <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-lg:flex-col max-lg:gap-20'>
+                    <div className='w-80 h-96'>
+                        <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "" : "opacity-80"} alt='warning' width={320} height={384} />
+                    </div>
+                    <Image src="assets/bg-shape-purple-green.svg" alt='shape-green' width={503} height={472} className='absolute top-80 left-44 bg-[#58f040] bg-opacity-5 blur-3xl' />
+                    <div className='max-w-[695px] mt-8'>
+                        <p className='font-normal text-medium'>{selectedContent == 'scan' ? scanHeaderContent.description : takedownHeaderContent.description}</p>
+                        <p className='font-normal text-red-300 text-medium mt-5'>{selectedContent == 'scan' ? '' : takedownHeaderContent.note}</p>
+                    </div>
+                </div>
+
 
                 {/* This section for define tips for scan&takedown page*/}
 
-                <div className='flex w-full bg-white/5 mx-auto justify-center mt-10 px-10 py-20 gap-20 max-xl:flex-col max-xl:items-center'>
-                    <div className='flex items-center max-w-[720px] justify-between flex-col gap-y-10'>
-                        {
-                            selectedContent == 'scan' ?
-                                scanTipContent.map((tips, index) => {
-                                    return (
-                                        <div key={index} className='flex gap-8 p-7'>
-                                            <div className='w-10 h-10'>{tips.order}</div>
-                                            <p className='font-medium text-xl max-lg:text-[20px]'>{tips.content}</p>
-                                        </div>
-                                    )
-                                })
-                                :
-                                takeDownTipContent.map((tips, index) => {
-                                    return (
-                                        <div key={index} className='flex gap-8 p-7'>
-                                            <div className='w-10 h-10'>{tips.order}</div>
-                                            <p className='font-medium text-xl max-lg:text-[20px]'>{tips.content}</p>
-                                        </div>
-                                    )
-                                })
-                        }
-                    </div>
+                <div className='flex w-full bg-[#090D1F] mx-auto justify-center mt-10 px-10 py-20 gap-20 max-xl:flex-col max-xl:items-center'>
+
+                    <TipContent targetContent = {selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
+                    
                     <div className="relative max-w-[740px] flex flex-wrap">
                         <Image alt='writetip' className="w-[349px] h-[319px]" src={WriteTip} />
                         <Image alt='tip' src={TipDocument} />

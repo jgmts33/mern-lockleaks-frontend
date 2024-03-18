@@ -103,7 +103,7 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      <NavbarContent className="max-md:hidden" justify="end">
         <NavbarItem>
           <Link href="/auth/login" className="text-white">Login</Link>
         </NavbarItem>

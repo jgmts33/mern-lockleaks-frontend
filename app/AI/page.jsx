@@ -62,7 +62,7 @@ export default function AI() {
     const AIFAQContent = [
         {
             title: "How does the AI software detect copyright infringements?",
-            content: []
+            content: ["Yes, our AI tools are designed to function efficiently on major social media platforms, ensuring comprehensive content protection."]
         }, {
             title: "Is the AI tool effective across all social media networks?",
             content: [
@@ -115,8 +115,9 @@ export default function AI() {
                                 })
                             }
                         </div>
-                        <div>
-                            <Image className="w-80 h-[550px] object-cover" src={Robertgroup} />
+                        <div className='relative'>
+                            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
+                            <Image className="w-80 h-[560px] object-cover mt-10 z-20  relative" src={Robertgroup} />
                         </div>
                         <div className='flex flex-col gap-20'>
                             {

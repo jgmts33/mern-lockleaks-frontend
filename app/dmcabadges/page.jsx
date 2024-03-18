@@ -78,7 +78,7 @@ export default function DmcaBadges() {
                     </div>
                 </div>
 
-                <div className='flex w-full mt-52 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center'>
+                <div className='flex w-full pt-64 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center'>
                     <div className='flex w-1/3 relative'>
                         <Image className='left-0 top-10 z-20' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-40 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
@@ -88,6 +88,7 @@ export default function DmcaBadges() {
                         <span className='font-medium text-xl mx-auto mt-20'>Why Use DMCA Badges?</span>
                     </div>
                     <div className='w-1/3 max-xl:w-full relative max-xl:px-3'>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 top-10 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                         <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute left-0 -top-36 ">
                             <div>
                                 <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Download Legal Protection:</span>

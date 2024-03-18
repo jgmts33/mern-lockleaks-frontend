@@ -62,11 +62,15 @@ export default function AboutUs() {
                         </div>
                     </div>
                 </div>
-
+                <div className='relative'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={542} className='absolute bg-[#935ee9] z-0 -top-96 right-0 bg-opacity-5 blur-3xl' />
+                </div>
                 {/* This section for define Success Stories or Case Studies*/}
 
-                <div className='max-lg:px-3 mt-20'>
-                    <div className='mx-auto text-center max-w-lg uppercase'><span className='font-medium text-5xl max-xl:text-3xl'>Success Stories or Case Studies</span></div>
+                <div className='max-lg:px-3 mt-20 z-20'>
+                    <div className='mx-auto text-center max-w-lg uppercase'>
+                        <span className='font-medium text-5xl max-xl:text-3xl'>Success Stories or Case Studies</span>
+                    </div>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-center items-center bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl '>
                         <Image src="assets/setup/aboutus.svg" width={845} height={311} alt="Service" className='max-xl:w-full max-md:hidden' />
                         <div className='px-20 max-md:text-center max-xl:py-10'>

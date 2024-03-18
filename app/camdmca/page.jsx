@@ -82,8 +82,9 @@ export default function CamDmca() {
 
                 <div className='flex w-full bg-white/5 mx-auto mt-20 justify-center px-10 py-20 gap-32 max-lg:flex-col max-lg:items-center'>
                     <div className="relative max-w-[740px] flex justify-between max-sm:hidden">
-                        <Image src={WriteTip} alt='write tip' />
-                        <Image src={TipDocument} alt='tip document' />
+                        <Image src={WriteTip} alt='write tip' className='relative z-20' />
+                        <Image src={TipDocument} alt='tip document' className='relative z-20' />
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#9458f5] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                     <div className='flex max-w-[570px] justify-center flex-col gap-y-10'>
                         <div className='flex gap-8 p-7'>

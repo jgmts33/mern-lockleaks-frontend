@@ -96,7 +96,7 @@ export default function Recovery() {
             <div className="flex flex-col text-white w-full">
 
             {/* This section for define username recovery header*/}
-
+            
                 <div className='mt-28'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-3xl'>{RecoveryTitle.title}</p>
                     <div className='flex gap-32 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-md:flex-col max-md:gap-10'>
@@ -108,24 +108,25 @@ export default function Recovery() {
                 <div className='flex flex-col mx-auto max-w-[1400px] mt-20 max-xl:px-5'>
                     <div className='flex max-lg:flex-col max-lg:items-center max-lg:text-center'>
                         <div className='max-w-[583px]'>
-                            <p className='font-medium text-5xl max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.first_tip.title}</p>
-                            <p className='font-medium text-3xl mt-5 max-md:text-lg'>{HelpContent.first_tip.content}</p>
+                            <p className='font-medium text-5xl pb-5 max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.first_tip.title}</p>
+                            <p className='font-medium text-3xl max-md:text-lg'>{HelpContent.first_tip.content}</p>
                         </div>
                         <div className='mt-24 max-xl:hidden'>
                             <Image alt='left-chat' src={LeftChat} />
                         </div>
                         <div className='max-w-[673px] mt-32 max-md:mt-10 justify-end max-lg:mt-10'>
-                            <p className='font-medium text-5xl max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.second_tip.title}</p>
-                            <p className='font-medium text-3xl mt-5 max-md:text-lg'>{HelpContent.second_tip.content}</p>
+                            <p className='font-medium text-5xl pb-5 max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.second_tip.title}</p>
+                            <p className='font-medium text-3xl max-md:text-lg'>{HelpContent.second_tip.content}</p>
                         </div>
                     </div>
                     <div className='flex mt-5 max-md:mt-10 max-md:text-center max-md:mx-auto'>
                         <div className='max-w-[623px] ml-20 max-md:ml-0 z-20'>
-                            <p className='font-medium text-5xl max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.third_tip.title}</p>
-                            <p className='font-medium text-3xl mt-5 max-md:text-lg'>{HelpContent.third_tip.content}</p>
+                            <p className='font-medium text-5xl pb-5 max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.third_tip.title}</p>
+                            <p className='font-medium text-3xl max-md:text-lg'>{HelpContent.third_tip.content}</p>
                         </div>
                         <div className='flex relative max-xl:hidden'>
                             <Image alt='right-chat' className='mt-40' src={RightChat} />
+                            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='absolute bg-[#935ee9] z-0 top-0 left-44 bg-opacity-5 blur-3xl' />
                             <Image alt='photo' className='absolute left-40' src={Photo} />
                         </div>
                         <div>

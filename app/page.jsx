@@ -213,7 +213,7 @@ export default function HomePage() {
         <div className='relative flex px-3'>
 
           {/* This section for define homepage header*/}
-
+          
           <div className="flex w-full justify-center items-center flex-col relative z-20">
             <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
               <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center max-md:text-[26px]">
@@ -225,7 +225,7 @@ export default function HomePage() {
                 Protect Content Now!
                 <span>{icons.shine}</span>
               </Button>
-              <div className={"flex max-w-[422px] duration-700 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 mt-6 max-xl:left-0 max-xl:top-0 max-xl:!relative" + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-xl:left-0 max-xl:top-0 max-xl:!relative max-w-[422px] duration-700 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 mt-6" + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
@@ -250,7 +250,7 @@ export default function HomePage() {
 
             {/* This section for define chosen by esteemed industry leaders*/}
 
-            <div className="flex flex-col w-full mt-72 text-center items-center max-md:mt-32">
+            <div className="flex flex-col w-full mt-60 text-center items-center max-md:mt-32">
               <p className="text-center font-normal text-xl max-md:justify-center">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col">
                 <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
@@ -270,7 +270,7 @@ export default function HomePage() {
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3'>
-          <div className='flex w-full relative mt-32 px-3'>
+          <div className='flex w-full relative mt-32'>
             <div className="flex flex-col mx-auto z-20 relative">
               <p className="font-medium text-[50px] uppercase max-lg:text-[30px] max-lg:text-center">We're ready to assist</p>
               <div className="flex justify-center items-center gap-8 max-lg:mt-10">
@@ -346,7 +346,7 @@ export default function HomePage() {
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3'>
-          <div className="flex flex-col w-full p-20 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8 max-md:text-[20px] max-md:p-10 max-sm:p-0">
+          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
             <span className='font-medium text-[50px] mx-auto text-white max-w-[600px] max-lg:text-[40px]'>OUR SERVICES FOR YOUR BENEFIT</span>
             <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
               {
@@ -367,7 +367,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className='max-lg:px-3'>
+        <div className='max-lg:px-3 max-w-[]'>
           {
             services.map((service, index) => {
               return (
@@ -407,7 +407,7 @@ export default function HomePage() {
 
         {/* This section for define we're ready to assist*/}
 
-        <div className="container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24 max-lg:flex-col">
+        <div className="max-lg:flex-col container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24">
           {
             percentDescription.map((item, index) => {
               return (
@@ -432,8 +432,8 @@ export default function HomePage() {
           <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
             <div className='flex justify-start w-full'>
               <div className='px-9 py-6 max-xl:w-full max-xl:text-center'>
-                <p className='font-medium text-5xl max-w-[580px] max-lg:text-[30px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
-                <p className='max-w-[520px] pt-6 '>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
+                <p className='font-medium text-5xl max-lg:text-[30px] max-w-[580px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
+                <p className='max-w-[520px] max-xl:mx-auto pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
               </div>
               <div className='max-xl:hidden'>
                 <Image src="assets/setup/message.svg" alt='message' width={300} height={170} className="top-20 right-[460px] absolute" />

@@ -98,8 +98,8 @@ export default function DeleteData() {
 
             {/* This section for define request data*/}
 
-            <div className='max-lg:px-3'>
-                <div className="flex bg-white/5 shadow-sm shadow-gray-50 mx-auto rounded-[20px] max-w-[730px] w-full flex-col max-md:p-5 gap-4 p-20 text-center ">
+            <div className='max-lg:px-3 relative max-w-[730px] mx-auto'>
+                <div className="flex z-20 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] w-full flex-col max-md:p-5 gap-4 p-20 text-center relative ">
                     <div>
                         <span className='font-medium text-3xl mt-3 max-lg:text-lg'>Your capacity in making this request:</span>
                         <div className="flex w-full flex-col gap-4 mt-10">
@@ -140,8 +140,9 @@ export default function DeleteData() {
                     <div className='mt-10'>
                         <span className='font-medium text-3xl mt-3 max-md:text-lg'>Under which legislation are you making this request?</span>
                         <div className='relative max-xl:hidden'>
-                            <Image src={RightChat} className='absolute -left-96 -top-32 w-[500px] h-[450px] rotate-[-50deg]' alt='right rotate chat' />
+                            <Image src={RightChat} className='absolute -left-96 z-0 -top-32 w-[500px] h-[450px] rotate-[-50deg]' alt='right rotate chat' />
                         </div>
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={842} className='absolute top-0 left-96 bg-[#362666] bg-opacity-5 blur-3xl' />
                         <div className="flex w-full flex-col gap-4 mt-10">
                             {
                                 LegislationMaking.map((legislation, index) => {
@@ -176,9 +177,6 @@ export default function DeleteData() {
                                 })
                             }
                         </div>
-                    </div>
-                    <div className='relative max-xl:hidden'>
-                        <Image src={LeftChat} className='absolute -left-96  rotate-[50deg] w-[430px] h-[240px]' alt='left rotate chat' />
                     </div>
                     <div className='mt-10'>
                         <span className='font-medium text-3xl mt-3 max-md:text-lg'>Do you have a specific request related to your personal data?</span>
@@ -217,15 +215,17 @@ export default function DeleteData() {
                             }
                         </div>
                     </div>
-                    <div className='max-w-[492px]'>
-                        <textarea name="" id="" cols="20" rows="5" className='mt-5 rounded-[10px] w-full text-black bg-white'></textarea>
+                    <div className='w-full flex justify-end'>
+                        <textarea name="" id="" cols="20" rows="5" className='mt-5 rounded-[10px] text-black bg-white max-w-[506px] w-full'></textarea>
                     </div>
+
                 </div>
+                <Image src={LeftChat} className='absolute z-0 rotate-[50deg] w-[430px] h-[240px] top-[calc(50%-10px)] -left-[calc(50%-70px)] ' alt='left rotate chat' />
             </div>
             <div className='relative flex w-full'>
-                <Image src={Photo} className='absolute right-80 -top-44 max-2xl:hidden' alt='photo' />
-                <Image src={RightChat} className='absolute right-[500px] max-2xl:hidden' alt='right rotate chat' />
-                <Image src={RobertHand} className='absolute right-0' alt='robert hand' />
+                <Image src={Photo} className='absolute z-0 right-80 -top-44 max-2xl:hidden' alt='photo' />
+                <Image src={RightChat} className='absolute z-0 right-[510px] -top-8 max-2xl:hidden' alt='right rotate chat' />
+                <Image src={RobertHand} className='absolute z-0 right-0' alt='robert hand' />
             </div>
 
             {/* This section for confirm personal data*/}

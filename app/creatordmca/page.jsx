@@ -59,7 +59,7 @@ export default function CreatorDmca() {
                     <div className='flex bg-white/5 mx-auto mt-24 justify-center rounded-[20px] max-xl:flex-col w-full max-w-[1440px] px-10 py-10 gap-32'>
                         <div className='flex max-md:items-center max-sm:flex-wrap'>
                             <div className='w-1/2 max-sm:w-full'>
-                                <div className='max-md:flex-col flex mx-auto max-sm:items-center'><span className='font-medium text-[63px] max-lg:text-[30px]'>Additional</span><span className='font-medium max-lg:text-[30px] text-[63px] text-[#F68171]'>Elements</span></div>
+                                <div className='max-md:flex-col flex mx-auto max-sm:items-center'><span className='font-medium text-[63px] max-lg:text-[30px]'>DMCA</span><span className='font-medium max-lg:text-[30px] text-[63px] text-[#F68171]'>BADGES</span></div>
                                 <p className='mt-10 max-sm:text-center'>DMCA Badges<br />
                                     To download DMCA badges and learn more about integration, please visit our dedicated DMCA badges page. (reffer link)
                                     These are examples for each category of information you requested for the "Creator DMCA Content Protection" service. If you need more details or any additional information, please let me know!
@@ -105,8 +105,9 @@ export default function CreatorDmca() {
                         </div>
                     </div>
                     <div className="max-w-[740px] relative flex flex-wrap max-xl:items-center max-xl:justify-center">
-                        <Image className="z-20" src={WriteTip} alt='write tip' />
+                        <Image className="z-20 relative" src={WriteTip} alt='write tip' />
                         <Image className="absolute -right-20 bottom-0" src={TipDocument} alt='tip document' />
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#7a56ce] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                 </div>
 
