@@ -134,27 +134,3 @@ export default function DmcaBadges() {
         </>
     )
 }
-// div className="flex py-10 absolute max-w-[466px] max-md:w-full max-xl:left-10 max-xl:w-full h-[170px] bg-gradient-to-br backdrop-blur-sm bg-white/10 shadow-sm border border-gray-500 rounded-[20px] p-5 z-20 cursor-pointer">
-//                             <div className='flex'>
-//                                 <div className='flex flex-col'>
-//                                     <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Download:</span>
-//                                     <span className='font-normal text-lg'>Choose from a range of DMCA Badges available for your platform.</span>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div className="flex py-10 absolute right-20 max-xl:w-full max-xl:top-48 max-xl:left-10 top-28 h-[150px] max-w-[466px] backdrop-blur-sm bg-white/10 border border-gray-500 z-10 rounded-[20px] p-5">
-//                             <div className='flex'>
-//                                 <div className='flex flex-col'>
-//                                     <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Placement:</span>
-//                                     <span className='font-normal text-lg'>Insert the badge on your website, content, or platform to make it visible to users.</span>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div className="flex py-10 absolute bottom-0 max-xl:w-full max-xl:left-10 max-xl:top-80 max-w-[466px] h-[170px] backdrop-blur-sm bg-white/10 bg-opacity-60 border border-gray-500 rounded-[20px] p-5">
-//                             <div className='flex'>
-//                                 <div className='flex flex-col'>
-//                                     <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Visibility:</span>
-//                                     <span className='font-normal text-lg'>Ensure the badges are clearly visible, preferably near the content, to indicate protection against infringement.</span>
-//                                 </div>
-//                             </div>
-//                         </div>

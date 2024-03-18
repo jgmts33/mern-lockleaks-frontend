@@ -71,7 +71,7 @@ export default function Home() {
             <p className="text-[40px] font-medium leading-[60px]">Reset Password</p>
             <p className="text-base font-[300] ">Enter your new password and confirm it below to reset your account password.</p>
           </div>
-          <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-[transparent] '>
+          <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
             <div className='relative w-full'>
               <p className='font-[300] text-white pb-2'>Enter new Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />

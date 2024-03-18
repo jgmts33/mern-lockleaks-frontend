@@ -35,7 +35,7 @@ export default function ForgotPassword() {
             <p className="text-[40px] mt-5 font-medium leading-[60px]">Don't worry</p>
             <p className="text-base font-[300] opacity-80">Enter your email address below, and we'll send you a link to reset your password.</p>
           </div>
-          <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-[transparent] '>
+          <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
             <div className='relative w-full'>
               <p className='font-[300] text-white pb-2'>Provide Your Email Address</p>
               <i className='absolute bottom-3 left-6 h-4'>{icons.envelop}</i>

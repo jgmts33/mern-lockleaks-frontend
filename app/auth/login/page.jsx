@@ -78,7 +78,7 @@ export default function Login() {
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
                         <p className="font-medium text-5xl ">Log in</p>
                     </div>
-                    <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-[transparent] '>
+                    <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
                         <div className='relative w-full'>
                             <p className='font-[300] text-white pb-2'>Email Address</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.envelop}</i>
