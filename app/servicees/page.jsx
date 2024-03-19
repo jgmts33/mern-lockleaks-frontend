@@ -10,7 +10,7 @@ export default function SERVICES() {
     const icons = {
         right: <ChevronRight fill="currentColor" size={16} />,
         eye: <Eye fill="currentColor" size={16} />,
-        chat: <ChatS fill="currentColor" size={16} />,
+        chat: <Chats fill="currentColor" size={16} />,
         photo: <Photos fill="currentColor" size={16} />,
         arrow_right: <GradiantChevronRIGHT fill="currentColor" size={16} />,
     };

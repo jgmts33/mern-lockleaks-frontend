@@ -41,7 +41,7 @@ export default function CookieSettigs() {
                     {
                         cookieSettingContent.map((content, index) => {
                             return (
-                                <div className='flex'>
+                                <div key={index} className='flex'>
                                     <div className='mt-7'>
                                         <Switch
                                             defaultSelected

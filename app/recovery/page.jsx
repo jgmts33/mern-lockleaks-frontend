@@ -140,7 +140,7 @@ export default function Recovery() {
                 <div className='flex flex-col w-full bg-white/5 mx-auto justify-around mt-10 px-10 py-20 gap-20 max-xl:flex-col items-center'>
                     <span className='font-medium text-5xl'>BENEFITS</span>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl'>
-                        <Image src={Moon} width={350} height={150} className='w-1/2' />
+                        <Image src={Moon} width={350} height={150} className='w-1/2' alt='moon' />
                         <div className='flex flex-col mx-auto justify-center'>
                             {
                                 BenefitContent.map((benefit, index) => {

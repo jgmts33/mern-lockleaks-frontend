@@ -117,7 +117,7 @@ export default function AI() {
                         </div>
                         <div className='relative'>
                             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
-                            <Image className="w-80 h-[560px] mt-10 z-20  relative" src={Robertgroup} />
+                            <Image className="w-80 h-[560px] mt-10 z-20  relative" src={Robertgroup} alt='rober-group' />
                         </div>
                         <div className='flex flex-col gap-20'>
                             {

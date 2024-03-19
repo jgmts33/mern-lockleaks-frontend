@@ -205,7 +205,7 @@ export default function HomePage() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [animationCounter]);
 
   return (
     <>

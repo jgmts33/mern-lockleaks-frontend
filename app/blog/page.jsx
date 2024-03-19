@@ -135,7 +135,7 @@ export default function Blog() {
 
   useEffect(() => {
     setAllPagination( Math.ceil(BlogCardContent.length / 9) );
-  }, []);
+  }, [BlogCardContent.length]);
 
   const handlePageChange = (page) => {
     setSelectPagination(page)
