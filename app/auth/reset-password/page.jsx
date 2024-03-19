@@ -60,7 +60,7 @@ export default function Home() {
     {/* This section for define reset password page header*/}
 
     <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-        <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto object-cover object-center' />
+        <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
       </div>
 
       {/* This section for define reset password page content*/}
@@ -111,8 +111,6 @@ export default function Home() {
               Cancel
             </Button>
           </div>
-
-
         </div>
       </div>
     </div>

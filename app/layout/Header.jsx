@@ -10,22 +10,52 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    "pricing",
-    "servicees",
-    "help",
-    "blog",
-    "blog/format",
-    "scantakedown",
-    "AI",
-    "copyright",
-    "checkout",
-    "camdmca",
-    "creatordmca",
-    "catfishing",
-    "recovery",
-    "monthlypdf",
-    "dmcabadges",
-    "deletedata"
+    {
+      content:"Services",
+      path:"/servicees"
+    }, {
+      content:"Blog Format",
+      path:"/blog/format"
+    }, {
+      content:"Scan&Takedown",
+      path:"/scantakedown"
+    }, {
+      content:"AI",
+      path:"/AI"
+    }, {
+      content:"Copyright",
+      path:"/copyright"
+    }, {
+      content:"Chechout",
+      path:"/checkout"
+    }, {
+      content:"COM DMCA Protection",
+      path:"/camdmca"
+    }, {
+      content:"Creator DMCA Protection",
+      path:"/creatordmca"
+    }, {
+      content:"Catfishing",
+      path:"/catfishing"
+    }, {
+      content:"Username Recovery",
+      path:"/recovery"
+    }, {
+      content:"Monthly Analytics PDF",
+      path:"/monthlypdf"
+    },
+    {
+      content:"Monthly Analytics PDF",
+      path:"/monthlypdf"
+    },
+    {
+      content:"Dmca Badges",
+      path:"/dmcabadges"
+    },
+    {
+      content:"Delete Data",
+      path:"/deletedata"
+    },
   ];
 
   const icons = {
@@ -74,19 +104,13 @@ export default function Header() {
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6">
               <DropdownSection title="" showDivider></DropdownSection>
-              <DropdownItem key="service" className="text-white" onClick={() => handleMenuItemClick('/servicees')}>Services</DropdownItem>
-              <DropdownItem key="blog format" className="text-white" onClick={() => handleMenuItemClick('/blog/format')}>Blog Format</DropdownItem>
-              <DropdownItem key="scantakedown" className="text-white" onClick={() => handleMenuItemClick('/scantakedown')}>Scan&TakeDown</DropdownItem>
-              <DropdownItem key="AI" className="text-white"  onClick={() => handleMenuItemClick('/AI')}>AI</DropdownItem>
-              <DropdownItem key="copyright" className="text-white" onClick={() => handleMenuItemClick('/copyright')}>CopyRight</DropdownItem>
-              <DropdownItem key="checkout" className="text-white" onClick={() => handleMenuItemClick('/checkout')}>Checkout</DropdownItem>
-              <DropdownItem key="dmcaprotection" className="text-white" onClick={() => handleMenuItemClick('/camdmca')}>COM DMCA Protection</DropdownItem>
-              <DropdownItem key="creatordmca" className="text-white" onClick={() => handleMenuItemClick('/creatordmca')}>Creator DMCA Protection</DropdownItem>
-              <DropdownItem key="catfishing" className="text-white" onClick={() => handleMenuItemClick('/catfishing')}>Catfishing</DropdownItem>
-              <DropdownItem key="usernamerecovery" className="text-white" onClick={() => handleMenuItemClick('/recovery')}>Username Recovery</DropdownItem>
-              <DropdownItem key="monthlypdf" className="text-white" onClick={() => handleMenuItemClick('/monthlypdf')}>Monthly Analytics PDF</DropdownItem>
-              <DropdownItem key="dmcabadges" className="text-white" onClick={() => handleMenuItemClick('/dmcabadges')}>Dmca Badges</DropdownItem>
-              <DropdownItem key="deletedata" className="text-white" onClick={() => handleMenuItemClick('/deletedata')}>Delete Data</DropdownItem>
+              {
+                menuItems.map((menus,index)=>{
+                  return(
+                    <DropdownItem key={index} className="text-white" onClick={() => handleMenuItemClick(menus.path)}>{menus.content}</DropdownItem>
+                  )
+                })
+              }
               <DropdownSection title="" showDivider></DropdownSection>
             </DropdownMenu>
           </Dropdown>
@@ -113,23 +137,23 @@ export default function Header() {
         </NavbarItem>
         <NavbarItem className="max-lg:hidden">
           <Link href="/freeanalyse">
-            <Button radius="sm" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg" size='lg'>Free Analisis</Button>
+            <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>Free Analisis</Button>
           </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+        {menuItems.map((menu, index) => (
+          <NavbarMenuItem key={index}>
             <Link
               className="w-full"
               color={
                 index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
               }
-              href={"/"+item}
+              href={menu.path}
               size="lg"
             >
-              {item}
+              {menu.content}
             </Link>
           </NavbarMenuItem>
         ))}

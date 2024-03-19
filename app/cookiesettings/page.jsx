@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, SelectItem, Switch
+    Button, Switch
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
@@ -9,7 +9,20 @@ import { SelectSwitch, UnselectSwitch } from "@/src/utils/Icons";
 
 export default function CookieSettigs() {
 
-    const [isSelected, setIsSelected] = React.useState(true)
+    const cookieSettingContent = [
+        {
+            placeholder: "Strictly necessary"
+        },
+        {
+            placeholder: "Perfomance Cookies"
+        },
+        {
+            placeholder: "Functional Cookies"
+        },
+        {
+            placeholder: "Targeting Cookies"
+        },
+    ]
 
     return (
         <div className="flex flex-col text-white w-full">
@@ -25,94 +38,34 @@ export default function CookieSettigs() {
                 {/* This section for define cookie settings content*/}
 
                 <div className='flex flex-col max-w-[337px] mx-auto mb-20'>
-                    <div className='flex'>
-                        <div className='mt-7'>
-                            <Switch
-                                defaultSelected
-                                size="md"
-                                color="default"
-                                thumbIcon={({ isSelected, className }) =>
-                                    isSelected ? (
-                                        <SelectSwitch className={className} />
-                                    ) : (
-                                        <UnselectSwitch className={className} />
-                                    )
-                                }
-                            >
-                            </Switch>
-                        </div>
-                        <div>
-                            <select className="form-select bg-transparent text-white p-3 rounded-lg mt-5 block w-full">
-                                <option>Strictly necessary</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className='flex'>
-                        <div className='mt-7'>
-                            <Switch
-                                defaultSelected
-                                size="md"
-                                color="default"
-                                thumbIcon={({ isSelected, className }) =>
-                                    isSelected ? (
-                                        <SelectSwitch className={className} />
-                                    ) : (
-                                        <UnselectSwitch className={className} />
-                                    )
-                                }
-                            >
-                            </Switch>
-                        </div>
-                        <div>
-                            <select className="form-select bg-transparent text-white p-3 rounded-lg mt-5 block w-full">
-                                <option>Perfomance Cookies</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className='flex'>
-                        <div className='mt-7'>
-                            <Switch
-                                defaultSelected
-                                size="md"
-                                color="default"
-                                thumbIcon={({ isSelected, className }) =>
-                                    isSelected ? (
-                                        <SelectSwitch className={className} />
-                                    ) : (
-                                        <UnselectSwitch className={className} />
-                                    )
-                                }
-                            >
-                            </Switch>
-                        </div>
-                        <div>
-                            <select className="form-select bg-transparent text-white p-3 rounded-lg mt-5 block w-full">
-                                <option>Functional Cookies</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className='flex'>
-                        <div className='mt-7'>
-                            <Switch
-                                defaultSelected
-                                size="md"
-                                color="default"
-                                thumbIcon={({ isSelected, className }) =>
-                                    isSelected ? (
-                                        <SelectSwitch className={className} />
-                                    ) : (
-                                        <UnselectSwitch className={className} />
-                                    )
-                                }
-                            >
-                            </Switch>
-                        </div>
-                        <div>
-                            <select className="form-select bg-transparent text-white p-3 rounded-lg mt-5 block w-full">
-                                <option>Targeting Cookies</option>
-                            </select>
-                        </div>
-                    </div>
+                    {
+                        cookieSettingContent.map((content, index) => {
+                            return (
+                                <div className='flex'>
+                                    <div className='mt-7'>
+                                        <Switch
+                                            defaultSelected
+                                            size="md"
+                                            color="default"
+                                            thumbIcon={({ isSelected, className }) =>
+                                                isSelected ? (
+                                                    <SelectSwitch className={className} />
+                                                ) : (
+                                                    <UnselectSwitch className={className} />
+                                                )
+                                            }
+                                        >
+                                        </Switch>
+                                    </div>
+                                    <div>
+                                        <select className="form-select bg-transparent text-white p-3 rounded-lg mt-5 block w-full">
+                                            <option>{content.placeholder}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
                 <div className='max-lg:px-3'>
                     <div className='bg-gradient-to-tr mx-auto mt-10 mb-20 from-gray-600/40 to-gray-800/40 p-2 border-gray-600 border rounded-[30px] w-full max-w-[890px] flex items-center max-xl:flex-col max-xl:px-3 max-xl:max-w-[750px]'>

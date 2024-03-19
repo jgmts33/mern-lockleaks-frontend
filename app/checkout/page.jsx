@@ -271,7 +271,7 @@ export default function Checkout() {
                         </select>
                     </div>
                 </div>
-                <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] rounded-[20px] p-5 cursor-pointer text-center ">
+                <div className="flex flex-col bg-gradient-to-tr mx-auto from-purple-light to-purple-weight rounded-[20px] p-5 cursor-pointer text-center ">
                     <div className='mt-5'>
                         <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
                             <span className='px-4'>popular</span>
@@ -295,7 +295,7 @@ export default function Checkout() {
                     {
                         ButtonContent.map((item, index) => {
                             return (
-                                <Button key={index} className="rounded-[10px] mt-5 w-[327px] bg-gradient-to-tr mx-auto from-[#9C3FE4] to-[#C65647] text-white text-base" size='md'>
+                                <Button key={index} className="rounded-[10px] mt-5 w-[327px] bg-gradient-to-tr mx-auto from-purple-light to-purple-weight text-white text-base" size='md'>
                                     {item}
                                     <span>{icons.shine}</span>
                                 </Button>
@@ -348,7 +348,7 @@ export default function Checkout() {
                                         </div>
                                     </div>
                                     <div className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
-                                        <Button radius="full" className={username ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setUsername(true)}>
+                                        <Button radius="full" className={username ? "bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setUsername(true)}>
                                             {content.LeftButton}
                                         </Button>
                                         <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
@@ -374,7 +374,7 @@ export default function Checkout() {
                     <Button radius="full" className="mx-auto bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" size='lg'>
                         Pay whith credit card
                     </Button>
-                    <Button radius="full" className=" bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-7 text-lg" size='lg'>
+                    <Button radius="full" className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg" size='lg'>
                         Pay whith paypal
                     </Button>
                     <Button radius="full" className=" bg-transparent mx-auto px-7 py-7 text-lg" size='lg'>

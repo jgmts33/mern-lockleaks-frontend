@@ -67,10 +67,10 @@ export default function CamDmca() {
                 {/* This section for define camdmca title*/}
 
                 <div className='text-center mt-20'>
-                    <p className='font-bold text-7xl max-lg:text-[30px]'>{CamDmcaTitle.title}</p>
+                    <p className='font-bold text-7xl max-lg:text-3xl'>{CamDmcaTitle.title}</p>
                     <div className='max-w-[848px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
                 </div>
-                <div className='font-medium text-5xl mt-56 max-lg:text-[40px] max-md:text-[30px]'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
+                <div className='font-medium text-5xl mt-56 max-lg:text-4xl max-md:text-[30px]'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
                 <div className='flex gap-32 mt-10 max-md:px-3'>
                     <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>
                         {
@@ -102,7 +102,7 @@ export default function CamDmca() {
                             ProtectionContent.map((contents, index) => {
                                 return (
                                     <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
-                                        <div className='flex gap-3 p-7 w-full' onClick={() => { setSelectedTipIndex(index) }}>
+                                        <div className='flex gap-3 p-7 w-full' onClick={() => {setSelectedTipIndex(index) }}>
                                             <div>{contents.icon}</div>
                                             <div className='flex flex-col'><span className='font-medium text-xl max-lg:text-lg'>{contents.title}</span>
                                             <span className='font-medium text-lg max-lg:text-lg'>{contents.content}</span></div>

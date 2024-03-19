@@ -180,7 +180,7 @@ export default function ScanTakeDown() {
                     <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
 
                     <div className="relative max-w-[740px] flex flex-wrap">
-                        <Image src={WriteTip} alt='writetip' className="w-[349px] h-[319px]" />
+                        <Image src={WriteTip} alt='writetip' width={349} height={319} />
                         <Image src={TipDocument} alt='tip' />
                     </div>
                 </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

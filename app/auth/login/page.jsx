@@ -19,55 +19,14 @@ export default function Login() {
 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [passwordStength, setPasswordStength] = useState("");
-
-    const passwordStrengthCheck = (password) => {
-        const passwordLength = password.length;
-        // Checking lower alphabet in string 
-        let hasLower = false;
-        let hasUpper = false;
-        let hasDigit = false;
-        let specialChar = false;
-        const normalChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ";
-
-        for (let i = 0; i < passwordLength; i++) {
-            if (password[i] >= "a" && password[i] <= "z") {
-                hasLower = true;
-            }
-            if (password[i] >= "A" && password[i] <= "Z") {
-                hasUpper = true;
-            }
-            if (password[i] >= "0" && password[i] <= "9") {
-                hasDigit = true;
-            }
-            if (!normalChars.includes(password[i])) {
-                specialChar = true;
-            }
-        }
-
-        // Strength of password 
-        let strength = "Weak";
-        if (hasLower && hasUpper && hasDigit && specialChar && passwordLength >= 16) {
-            strength = "Strong";
-        } else if ((hasLower || hasUpper) && specialChar && passwordLength >= 6) {
-            strength = "Medium";
-        }
-
-        setPasswordStength(strength);
-    }
-
-    useEffect(() => {
-        if (password.length) passwordStrengthCheck(password);
-        else setPasswordStength("");
-    }, [password]);
 
     return (
         <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
 
-            {/* This section for keep Lgoin page image*/}
+            {/* This section for keep Login page image*/}
 
             <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-                <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto object-cover object-center' />
+                <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
             </div>
 
             {/* This section for define Login page content*/}
@@ -80,7 +39,7 @@ export default function Login() {
                     </div>
                     <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
                         <div className='relative w-full'>
-                            <p className='font-[300] text-white pb-2'>Email Address</p>
+                            <p className='font-light text-white pb-2'>Email Address</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.envelop}</i>
                             <input
                                 type="email"
@@ -92,7 +51,7 @@ export default function Login() {
                             />
                         </div>
                         <div className='relative w-full'>
-                            <p className='font-[300] text-white pb-2'>Password</p>
+                            <p className='font-light text-white pb-2'>Password</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.lock}</i>
                             <input
                                 type="password"
@@ -100,17 +59,6 @@ export default function Login() {
                                 onChange={(e) => setPassword(e.target.value)}
                                 className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
                             />
-                            <div className='absolute flex gap-2 items-center bottom-3 right-4'>
-                                {
-                                    passwordStength ? <div className='flex gap-1 items-center'>
-                                        <div className={'w-[11px] h-[2px] rounded-md ' + (passwordStength == "Weak" ? 'bg-red-500' : 'bg-[#6CB76F]')}></div>
-                                        <div className={'w-[11px] h-[2px] rounded-md ' + (passwordStength != "Weak" ? 'bg-[#6CB76F]' : 'bg-[#CCCDD0]')}></div>
-                                        <div className={'w-[11px] h-[2px] rounded-md ' + (passwordStength == "Strong" ? 'bg-[#6CB76F]' : 'bg-[#CCCDD0]')}></div>
-                                    </div> : <></>
-                                }
-
-                                <p className={'text-sm ' + (passwordStength == "Weak" ? '!text-red-500' : passwordStength == "Strong" ? "!text-green-500" : "")}>{passwordStength}</p>
-                            </div>
                         </div>
                         <div className='flex justify-end'>
                             <Link href="/auth/forgot-password" underline="none" className='text-white'><span className='font-light text-sm'>Forgot Password?</span></Link>
@@ -132,7 +80,7 @@ export default function Login() {
                                 {icons.twitter}
                             </Button>
                         </div>
-                        <div className='max-auto text-center'>
+                        <div className='mx-auto text-center'>
                             <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>
                         </div>
                     </div>

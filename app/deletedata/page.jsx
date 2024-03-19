@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { FirstTip, SecondTip, ThirdTip, CHAT } from "@/src/utils/Icons";
+import { FirstTip, SecondTip, ThirdTip} from "@/src/utils/Icons";
 import { SelectSwitch, UnselectSwitch, Shine } from "@/src/utils/Icons";
 import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
@@ -15,7 +15,6 @@ import Photo from '@/public/assets/recovery/photo.svg';
 export default function DeleteData() {
 
     const icons = {
-        chat: <CHAT fill="currentColor" size={16} />,
         FirstTip: <FirstTip fill="currentColor" size={16} />,
         SecondTip: <SecondTip fill="currentColor" size={16} />,
         ThirdTip: <ThirdTip fill="currentColor" size={16} />,

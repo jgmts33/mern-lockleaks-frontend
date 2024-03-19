@@ -75,7 +75,7 @@ export default function CopyRight() {
                 {/* This section for define help content*/}
 
                 <div className='text-center mt-32 max-md:mt-20'>
-                    <p className='font-medium text-5xl max-lg:text-[40px]'>HOW It HELPS</p>
+                    <p className='font-medium text-5xl max-lg:text-4xl'>HOW It HELPS</p>
                 </div>
                 <div className='flex gap-20 mt-20 max-lg:flex-col max-md:-mt-20 max-md:gap-0'>
                     <div className='max-md:-mt-10 relative'>
@@ -101,7 +101,7 @@ export default function CopyRight() {
                 {/* This section for define tips for copyright*/}
 
                 <div className='flex bg-white/10 py-20 w-full justify-center gap-32 mt-24 max-lg:flex-col max-lg:items-center'>
-                    <p className='font-medium text-3xl'>TIPS</p>
+                    <p className='font-medium text-3xl'>TIPS:</p>
                     {
                         AITips.map((item, index) => {
                             return (
@@ -122,7 +122,7 @@ export default function CopyRight() {
                                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
                                     <div className='flex justify-between'>
                                         <p className='font-medium text-3xl max-md:text-base'>{FAQ_content.title}</p>
-                                        <button className={expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
+                                        <button className={("text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             {icons.arrowtop}
                                         </button>
                                     </div>

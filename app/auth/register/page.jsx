@@ -5,9 +5,8 @@ import {
 } from '@nextui-org/react';
 import HeroImg from "@/public/assets/Hero.svg";
 import { useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google, CAPTCHA, ERROR, SUCCESS } from "@/src/utils/Icons";
+import { Lock, Envelop, Twitter, Facebook, Google, Error, Success } from "@/src/utils/Icons";
 import React from "react";
-// import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function Register() {
 
@@ -17,19 +16,17 @@ export default function Register() {
         google: <Google fill="currentColor" size={16} />,
         twitter: <Twitter fill="currentColor" size={16} />,
         facebook: <Facebook fill="currentColor" size={16} />,
-        captcha: <CAPTCHA fill="currentColor" size={16} />,
-        error: <ERROR fill="currentColor" size={16} />,
-        success: <SUCCESS fill="currentColor" size={16} />,
+        error: <Error fill="currentColor" size={16} />,
+        success: <Success fill="currentColor" size={16} />,
     };
 
     const [password, setPassword] = useState("");
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const {isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isagreeSelected, setIsAgreeSelected] = useState(false);
     const [isTermSelected, setIsTermSelected] = useState(false);
     const [email, setEmail] = useState("");
     const [passwordStength, setPasswordStength] = useState("");
     const [repeatpassword, setRepeatPassword] = useState("");
-    const [isCAPTCHASelected, setCAPTCHAIsSelected] = useState(false);
     const [incorrectPassword, setIncorrectPassword] = useState(false);
 
     const passwordStrengthCheck = (password) => {
@@ -74,7 +71,6 @@ export default function Register() {
 
     const handleRegister = () => {
         if (password != repeatpassword) {
-            console.log(password + "," + repeatpassword)
             setIncorrectPassword(true);
         }
         else {
@@ -89,7 +85,7 @@ export default function Register() {
             {/* This section for keep Register page Image*/}
 
             <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-                <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto object-cover object-center' />
+                <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
             </div>
             <div className='w-full lg:w-1/2 flex items-center justify-center'>
                 <div className="w-[562px] flex flex-col items-center text-white">
@@ -155,10 +151,6 @@ export default function Register() {
                                 <span className='font-light text-xs pl-2'>I agree to WEBSITE NAMEr's</span> <Link href='' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                         </div>
-                        {/* <ReCAPTCHA
-                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                            security={process.env.RECAPTCHA_SECRET_KEY}
-                        /> */}
                         <Button radius="lg" onClick={() => handleRegister()} className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
                             Sign Up
                         </Button>
@@ -166,13 +158,13 @@ export default function Register() {
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
                         <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto'>
-                            <Button radius="lg" className="bg-gradient-to-tr from-[#87878b] to-[#1a1818] text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
+                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
                                 {icons.google}
                             </Button>
-                            <Button radius="lg" className="bg-gradient-to-tr from-[#87878b] to-[#1a1818] text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
+                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
                                 {icons.facebook}
                             </Button>
-                            <Button radius="lg" className="bg-gradient-to-tr from-[#87878b] to-[#1a1818] text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
+                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
                                 {icons.twitter}
                             </Button>
                         </div>

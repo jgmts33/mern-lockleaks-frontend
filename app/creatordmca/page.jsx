@@ -65,7 +65,7 @@ export default function CreatorDmca() {
                 {/* This section for define create dmca header*/}
 
                 <div className='text-center mt-28 max-lg:px-3'>
-                    <p className='font-bold text-6xl uppercase max-lg:text-[30px]'>{CamDmcaTitle.title}</p>
+                    <p className='font-bold text-6xl uppercase max-lg:text-3xl'>{CamDmcaTitle.title}</p>
                     <div className='flex gap-32 max-md:flex-col items-center max-md:gap-10 mt-20'>
                         <div className='max-w-[855px]'><p className='font-normal text-base'>{CamDmcaTitle.sub_title}</p></div>
                         <Image src="/assets/logo.svg" width={300} height={150} alt="logo" />
@@ -85,7 +85,7 @@ export default function CreatorDmca() {
                                 </p>
                             </div>
                             <div className='self-end max-sm:mx-auto max-sm:mt-5'>
-                                <Button radius="sm" className="bg-gradient-to-tr from-[#c77fe9] to-[#C65647] text-white shadow-lg" size='lg'>
+                                <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>
                                     Free Analisis
                                 </Button>
                             </div>

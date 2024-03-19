@@ -23,7 +23,7 @@ export default function ForgotPassword() {
       {/* This section for keep forgot password image*/}
 
       <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-        <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto object-cover object-center' />
+        <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
       </div>
 
       {/* This section for define forgot password content*/}
@@ -48,7 +48,7 @@ export default function ForgotPassword() {
               />
             </div>
             <Link href="">
-              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
+              <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4" size='lg'>
                 Send
               </Button>
             </Link>

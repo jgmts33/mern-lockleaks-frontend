@@ -117,7 +117,7 @@ export default function AI() {
                         </div>
                         <div className='relative'>
                             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
-                            <Image className="w-80 h-[560px] object-cover mt-10 z-20  relative" src={Robertgroup} />
+                            <Image className="w-80 h-[560px] mt-10 z-20  relative" src={Robertgroup} />
                         </div>
                         <div className='flex flex-col gap-20'>
                             {
@@ -138,12 +138,12 @@ export default function AI() {
 
                 {/* This section for define tips for AI*/}
 
-                <div className='flex bg-white/10 py-20 w-full justify-center gap-32 max-md:rounded-[10px] mt-36 mx-auto items-center max-xl:flex-col max-xl:px-3'>
-                    <p className='font-medium text-3xl'>TIPS</p>
+                <div className='flex bg-white/10 py-20 w-full justify-center gap-32 max-md:rounded-xl mt-36 mx-auto items-center max-xl:flex-col max-xl:px-3'>
+                    <p className='font-medium text-3xl'>TIPS:</p>
                     {
                         AITips.map((item, index) => {
                             return (
-                                <div key={index} className='max-w-[527px] flex gap-3'>{icons.tip}<p className='font-normal max-xl:text-[18px] text-xl'>{item}</p></div>
+                                <div key={index} className='max-w-[527px] flex gap-3'>{icons.tip}<p className='font-normal max-xl:text-base text-xl'>{item}</p></div>
                             )
                         })
                     }
@@ -159,7 +159,7 @@ export default function AI() {
                                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
                                     <div className='flex justify-between'>
                                         <p className='font-medium text-3xl max-md:text-base'>{contents.title}</p>
-                                        <button className={expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
+                                        <button className={(" mt-50 w-10 h-10 text-white flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             {icons.arrowtop}
                                         </button>
                                     </div>

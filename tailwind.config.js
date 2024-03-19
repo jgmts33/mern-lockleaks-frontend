@@ -12,11 +12,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       fontSize: {
         sm: ['14px', '20px'],
         base: ['16px', '24px'],
@@ -30,11 +25,6 @@ module.exports = {
         'purple-light' : '#B759FF',
         'purple-weight' : '#F68171'
       },
-      extend: {
-        maxWidth: {
-          '355': '32rem',
-        }
-      }
     }
   },
   plugins: [nextui()],

@@ -356,10 +356,10 @@ export default function HomePage() {
                       key={index}
                       radius="full"
                       variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + " outline-none text-white shadow-full mt-4 px-10"}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + " outline-none text-white mt-4 px-10"}
                       onClick={() => setSelectedServiceIndex(index)}
                     >
-                      <span>{icons.shine}</span><span className='max-lg:text-[10px]'>{service.name}</span>
+                      <span>{icons.shine}</span><span className='max-lg:text-end'>{service.name}</span>
                     </Button>
                   )
                 })
@@ -381,8 +381,8 @@ export default function HomePage() {
         </div>
         <div className='max-lg:px-3 mx-auto'>
           <div className="mt-24 max-lg:text-center mx-auto max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative p-10">
-            <div className=' py-8'>
-              <p className='font-medium text-5xl max-lg:text-4xl max-lg:leading-[46px] max-xl:text-4xl uppercase'>Securing Your Brand:</p>
+            <div className='py-8'>
+              <p className='font-medium text-5xl max-lg:text-4xl max-lg:leading-10 max-xl:text-4xl uppercase'>Securing Your Brand:</p>
               <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
               <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full mt-6" size='lg'>
                 Free Analisis

@@ -95,7 +95,7 @@ export default function BlogFormat() {
                                     <div key={index} className="bg-gradient-to-br max-md:max-w-[600px] max-xl:max-w-[1000px] max-lg:max-w-[750px] from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md">
                                         <div className="flex max-md:flex-col">
                                             <div className="shrink-0 w-1/2 p-3 flex flex-col max-md:mx-auto">
-                                                <Image className="h-80 w-full mt-2 object-cover max-md:h-[150px] p-2 rounded-[20px]" src={Saturn} alt="Modern building architecture" />
+                                                <Image className="h-80 w-full mt-2 max-md:h-[150px] p-2 rounded-3xl" src={Saturn} alt="Modern building architecture" />
                                                 <div className='flex gap-2 mt-5 ml-3 max-lg:mx-auto'>
                                                     <Image className="h-6 w-6" src={Woman} alt="Modern building architecture" />
                                                     <div className='flex flex-col'>
@@ -118,10 +118,10 @@ export default function BlogFormat() {
                         {
                             CardRlist.map((item, index) => {
                                 return (
-                                    <div key={index} className=" bg-gradient-to-br max-md:max-w-[700px] max-xl:max-w-[1000px] from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md">
+                                    <div key={index} className="bg-gradient-to-br max-md:max-w-[700px] max-xl:max-w-[1000px] from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md">
                                         <div className="flex max-md:flex-col">
                                             <div className="shrink-0 w-1/2 p-3 flex flex-col max-md:mx-auto">
-                                                <Image className="h-80 w-full mt-2 object-cover p-2 max-md:h-[150px] rounded-[20px]" src={Saturn} alt="Modern building architecture" />
+                                                <Image className="h-80 w-full mt-2 p-2 max-md:h-[150px] rounded-[20px]" src={Saturn} alt="Modern building architecture" />
                                                 <div className='flex gap-2 mt-5 ml-3 max-lg:mx-auto'>
                                                     <Image className="h-6 w-6" src={Woman} alt="Modern building architecture" />
                                                     <div className='flex flex-col'>
