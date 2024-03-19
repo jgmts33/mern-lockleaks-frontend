@@ -23,29 +23,29 @@ export default function Footer() {
         <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-lg:flex-col gap-10'>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Services</p>
-            <Link href={"/homepage/scantakedown"} >Scan & TokeDown</Link>
-            <Link href={"/homepage/AI"} >Artificial Intelligence</Link>
-            <Link href={"/homepage/copyright"} >CopyRight</Link>
-            <Link href={"/homepage/camdmca"} >Com DMCA Content Protection</Link>
-            <Link href={"/homepage/creatordmca"} >Creator DMCA Content Protection</Link>
-            <Link href={"/homepage/catfishing"} >Catifishing & Impersonation</Link>
-            <Link href={"/homepage/recovery"} >Username History Recovery REmoval</Link>
-            <Link href={"/homepage/freeanalyse"} >Monthly Analytics & PDF Reports</Link>
-            <Link href={"/homepage/dmcabadges"} >DMCA BADGES</Link>
+            <Link href={"/scantakedown"} >Scan & TokeDown</Link>
+            <Link href={"/AI"} >Artificial Intelligence</Link>
+            <Link href={"/copyright"} >CopyRight</Link>
+            <Link href={"/camdmca"} >Com DMCA Content Protection</Link>
+            <Link href={"/creatordmca"} >Creator DMCA Content Protection</Link>
+            <Link href={"/catfishing"} >Catifishing & Impersonation</Link>
+            <Link href={"/recovery"} >Username History Recovery REmoval</Link>
+            <Link href={"/freeanalyse"} >Monthly Analytics & PDF Reports</Link>
+            <Link href={"/dmcabadges"} >DMCA BADGES</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Company</p>
-            <Link href={"/homepage/blog"} >Blog</Link>
-            <Link href={"/homepage/aboutus"} >About Us</Link>
-            <Link href={"/homepage/privacypolicy"} >Privacy Policy</Link>
-            <Link href={"/homepage/termservice"} >Terms of SERVICES</Link>
-            <Link href={"/homepage/cookiepolicy"} >Cookie Policy</Link>
-            <Link href={"/homepage/cookiesettings"} >Cookie Settings</Link>
+            <Link href={"/blog"} >Blog</Link>
+            <Link href={"/aboutus"} >About Us</Link>
+            <Link href={"/privacypolicy"} >Privacy Policy</Link>
+            <Link href={"/termservice"} >Terms of SERVICES</Link>
+            <Link href={"/cookiepolicy"} >Cookie Policy</Link>
+            <Link href={"/cookiesettings"} >Cookie Settings</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>SUPPORT</p>
-            <Link href={"/homepage/help"} >Help & Support</Link>
-            <Link href={"/homepage/contactus"} >Contact US</Link>
+            <Link href={"/help"} >Help & Support</Link>
+            <Link href={"/contactus"} >Contact US</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <div className='flex justify-start'>
