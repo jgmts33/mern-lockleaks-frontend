@@ -26,7 +26,7 @@ export default function AboutUs() {
         <>
             <div className="flex flex-col text-white w-full">
 
-                {/* This section for define aboutus header*/}
+                {/* This section for define aboutus page header*/}
 
                 <div className="text-center mt-20">
                     <div className='mx-auto'><p className="font-medium text-huge uppercase max-lg:text-3xl">About us</p></div>
@@ -63,8 +63,9 @@ export default function AboutUs() {
                     </div>
                 </div>
                 <div className='relative'>
-                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={542} className='absolute bg-[#935ee9] z-0 -top-96 right-0 bg-opacity-5 blur-3xl' />
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={542} className='absolute bg-[#935ee9] z-0 -top-96 right-0 bg-opacity-5 blur-3xl' />
                 </div>
+                
                 {/* This section for define Success Stories or Case Studies*/}
 
                 <div className='max-lg:px-3 mt-20 z-20'>

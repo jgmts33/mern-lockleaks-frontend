@@ -79,7 +79,7 @@ export default function AI() {
 
                 <div className='text-center mt-20'>
                     <p className='font-medium text-7xl max-lg:text-[40px]'>{AITitle.title}</p>
-                    <div className='max-w-[820px]'><p className='font-normal text-base mt-10'>{AITitle.sub_title}</p></div>
+                    <div className='max-w-[830px]'><p className='font-normal text-base mt-10'>{AITitle.sub_title}</p></div>
                 </div>
 
                 {/* This section for deplay social media network*/}
@@ -154,18 +154,18 @@ export default function AI() {
                 <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-md:px-3'>
                     <p className='font-medium text-5xl text-center'>FAQ</p>
                     {
-                        AIFAQContent.map((FAQ_content, index) => {
+                        AIFAQContent.map((contents, index) => {
                             return (
                                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
                                     <div className='flex justify-between'>
-                                        <p className='font-medium text-[34px] max-md:text-[18px]'>{FAQ_content.title}</p>
+                                        <p className='font-medium text-3xl max-md:text-base'>{contents.title}</p>
                                         <button className={expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             {icons.arrowtop}
                                         </button>
                                     </div>
                                     <div className={expandedFAQIndex == index ? 'h-auto' : 'h-0'}>
                                         {
-                                            FAQ_content.content.map((items, contentIndex) => {
+                                            contents.content.map((items, contentIndex) => {
                                                 return (
                                                     <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedFAQIndex == index ? 'block' : 'hidden'} `}>{items}</p>
                                                 )

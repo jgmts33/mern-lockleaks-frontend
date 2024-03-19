@@ -2,7 +2,7 @@
 import {
   Button
 } from '@nextui-org/react';
-import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft, ChevronRight, ICON_SUCCESS, PROFILE, CHAT, TIP } from "@/src/utils/Icons";
+import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft, ChevronRight, IconSuccess, Profile, Chat, Tip } from "@/src/utils/Icons";
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CustomerReview from '@/src/components/customerReview';
@@ -19,10 +19,10 @@ export default function HomePage() {
     protect: <Protect fill="currentColor" size={16} />,
     star: <Star fill="currentColor" size={16} />,
     twitter: <Twitter fill="currentColor" size={16} />,
-    success: <ICON_SUCCESS fill="currentColor" size={16} />,
-    chat: <CHAT fill="currentColor" size={16} />,
-    profile: <PROFILE fill="currentColor" size={16} />,
-    tip: <TIP fill="currentColor" size={16} />,
+    success: <IconSuccess fill="currentColor" size={16} />,
+    chat: <Chat fill="currentColor" size={16} />,
+    profile: <Profile fill="currentColor" size={16} />,
+    tip: <Tip fill="currentColor" size={16} />,
   };
 
   const assistSecionItems = [
@@ -213,7 +213,7 @@ export default function HomePage() {
         <div className='relative flex px-3'>
 
           {/* This section for define homepage header*/}
-          
+
           <div className="flex w-full justify-center items-center flex-col relative z-20">
             <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
               <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center max-md:text-[26px]">
@@ -221,25 +221,25 @@ export default function HomePage() {
               </p>
             </div>
             <div className='flex w-full justify-center mt-8 relative max-xl:w-full max-xl:flex-col max-xl:items-center max-xl:mx-auto'>
-              <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-[#9C3FE4] to-[#C65647] text-white shadow-lg px-10 py-7 text-lg" size='lg'>
+              <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg" size='lg'>
                 Protect Content Now!
                 <span>{icons.shine}</span>
               </Button>
-              <div className={"flex max-xl:left-0 max-xl:top-0 max-xl:!relative max-w-[422px] duration-700 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 mt-6" + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
                   <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-12 top-28 max-xl:right-0 max-xl:top-8 max-xl:!relative" + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-12 top-28 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.profile}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>DEFEND YOUR NAME</p>
                   <p className='font-normal text-base mt-2'>Your Brand is Your Legacy, Let Us Be Your Guardians.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute right-0 -top-8 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16" + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute right-0 -top-8 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>ROFESSIONAL SUPPORT</p>
@@ -294,7 +294,7 @@ export default function HomePage() {
                               <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
-                                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                                <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Solution</span>
                                 <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                               </Button>
                             </div>
@@ -323,7 +323,7 @@ export default function HomePage() {
                               <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
-                                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                                <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Solution</span>
                                 <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                               </Button>
                             </div>
@@ -346,8 +346,8 @@ export default function HomePage() {
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3'>
-          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
-            <span className='font-medium text-[50px] mx-auto text-white max-w-[600px] max-lg:text-[40px]'>OUR SERVICES FOR YOUR BENEFIT</span>
+          <div className="flex flex-col w-full py-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-w-[1179px] itmes-center mx-auto justify-between flex-wrap text-center gap-8">
+            <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-4xl'>OUR SERVICES FOR YOUR BENEFIT</span>
             <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
               {
                 services.map((service, index) => {
@@ -356,7 +356,7 @@ export default function HomePage() {
                       key={index}
                       radius="full"
                       variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-[#9C3FE4] to-[#C65647]" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4"}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + " outline-none text-white shadow-full mt-4 px-10"}
                       onClick={() => setSelectedServiceIndex(index)}
                     >
                       <span>{icons.shine}</span><span className='max-lg:text-[10px]'>{service.name}</span>
@@ -367,13 +367,13 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className='max-lg:px-3 max-w-[]'>
+        <div className='max-lg:px-3 max-w-[1076px] mx-auto'>
           {
-            services.map((service, index) => {
+            services.map((service, service_index) => {
               return (
-                <div key={index} className={'flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl ' + (index != selectedServiceIndex ? "hidden" : "")}>
-                  <Image src={service.img} width={675} height={452} alt="Service" className='max-xl:w-full max-md:hidden' />
-                  <span className='max-w-1/2 max-xl:text-center'>{service.description}</span>
+                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between'}>
+                  <div className='flex justify-center items-center '><Image src={service.img} width={144} height={144} alt="Service" className='max-xl:w-full max-md:hidden' /></div>
+                  <div className='max-w-[822px] w-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-e-3xl'><span className='max-w-1/2 max-xl:text-center'>{service.description}</span></div>
                 </div>
               )
             })
@@ -382,9 +382,9 @@ export default function HomePage() {
         <div className='max-lg:px-3 mx-auto'>
           <div className="mt-24 max-lg:text-center mx-auto max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative p-10">
             <div className=' py-8'>
-              <p className='font-medium text-[50px] max-lg:text-[40px] max-lg:leading-[46px] max-xl:text-[40px] uppercase'>Securing Your Brand:</p>
+              <p className='font-medium text-5xl max-lg:text-4xl max-lg:leading-[46px] max-xl:text-4xl uppercase'>Securing Your Brand:</p>
               <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
-              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full mt-6" size='lg'>
+              <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full mt-6" size='lg'>
                 Free Analisis
               </Button>
             </div>
@@ -413,7 +413,7 @@ export default function HomePage() {
               return (
                 item.bgColor == true ?
                   <div key={index}>
-                    <p className='font-medium text-5xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{item.title}</p>
+                    <p className='font-medium text-5xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{item.title}</p>
                     <p className='font-normal text-lg'>{item.content}</p>
                   </div>
                   :
@@ -432,7 +432,7 @@ export default function HomePage() {
           <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
             <div className='flex justify-start w-full'>
               <div className='px-9 py-6 max-xl:w-full max-xl:text-center'>
-                <p className='font-medium text-5xl max-lg:text-[30px] max-w-[580px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
+                <p className='font-medium text-5xl max-lg:text-3xl max-w-[580px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
                 <p className='max-w-[520px] max-xl:mx-auto pt-6'>Experience our rapid service; within just 24 hours, your account will be activated and running smoothly. Get your first comprehensive report highlighting detected copyright infringements delivered directly to your dashboard.</p>
               </div>
               <div className='max-xl:hidden'>
@@ -440,7 +440,7 @@ export default function HomePage() {
                 <Image src="assets/setup/clock-message.svg" alt='clock-message' width={800} height={600} className="top-0 right-0 absolute" />
               </div>
             </div>
-            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-full" size='lg'>
+            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full" size='lg'>
               Free Analisis
             </Button>
           </div>

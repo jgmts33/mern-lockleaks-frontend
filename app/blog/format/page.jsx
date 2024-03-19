@@ -49,20 +49,24 @@ export default function BlogFormat() {
             <Image src={RobertHand} className='absolute right-0 top-[630px]' alt='rober-hand' />
             <div className="text-white container relative flex flex-col">
 
-
-            {/* This section for define Blog Format Page Header*/}
+                {/* This section for define Blog Format Page Header*/}
 
                 <div className='px-3'>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-center items-center bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
                         <Image src={Space} alt="Service" className='max-xl:w-full max-md:hidden' />
                         <div className='flex flex-col p-8'>
+                            <div className='flex justify-end pb-32'>
+                                <Button radius="full" className="bg-gradient-to-tr opacity-60 from-gray-800/80 to-gray-800/40 text-white shadow-lg text-lg max-md:text-[15px]" size='md'>
+                                    Blog+{icons.eye}
+                                </Button>
+                            </div>
                             <span className='max-w-1/2 max-xl:text-center font-medium text-5xl mx-auto'>{ArticleContent.title}</span>
                             <span className='max-w-1/2 max-xl:text-center font-normal text-base mt-5'>{ArticleContent.description}</span>
                         </div>
                     </div>
                 </div>
 
-            {/* This section for define Blog Format Page Actions*/}
+                {/* This section for define Blog Format Page Actions*/}
 
                 <div className='flex justify-start mt-10 gap-5 max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 '>
                     <Button radius="full" className="font-light bg-gradient-to-tr from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg text-lg max-md:text-[15px]" size='md'>
@@ -75,12 +79,9 @@ export default function BlogFormat() {
                         Example post blog( Title){icons.right}
                     </Button>
                 </div>
-                <div className='font-light flex mt-32 gap-5 justify-between max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 max-xl:mt-5'>
+                <div className='font-light flex mt-32 gap-5 justify-start max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 max-xl:mt-5'>
                     <Button radius="full" className="bg-gradient-to-tr from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg text-lg max-md:text-[13px]" size='md'>
                         TAGS (Example interview){icons.right}
-                    </Button>
-                    <Button radius="full" className="bg-gradient-to-tr opacity-60 from-gray-800/80 to-gray-800/40 text-white shadow-lg text-lg max-md:text-[15px]" size='md'>
-                        Blog+{icons.eye}
                     </Button>
                 </div>
 

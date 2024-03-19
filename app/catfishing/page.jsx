@@ -5,15 +5,13 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Balance, FirstTip, SecondTip, ThirdTip, CHAT } from "@/src/utils/Icons";
+import { FirstTip, SecondTip, ThirdTip, Chat } from "@/src/utils/Icons";
 import CustomerReview from '@/src/components/customerReview';
-import Reversechat from '@/public/assets/reverse-chat.svg';
 
 export default function Catfishing() {
 
     const icons = {
-        chat: <CHAT fill="currentColor" size={16} />,
+        chat: <Chat fill="currentColor" size={16} />,
         FirstTip: <FirstTip fill="currentColor" size={16} />,
         SecondTip: <SecondTip fill="currentColor" size={16} />,
         ThirdTip: <ThirdTip fill="currentColor" size={16} />,
@@ -53,6 +51,19 @@ export default function Catfishing() {
         { content: "Swift responses and mitigation strategies to counteract deceptive behavior." },
         { content: "Proactive monitoring across diverse online platforms to safeguard your online presence and brand image." },
         { content: "Expert guidance and personalized strategies to minimize risks associated with catfishing and impersonation." },
+    ]
+
+    const PreventionTips = [
+        {
+            icon: icons.FirstTip,
+            content: "Identity Verification: Encourage verification processes to ensure authenticity on social media platforms."
+        }, {
+            icon: icons.SecondTip,
+            content: "Privacy Settings: Regularly review and adjust privacy settings to control information accessibility."
+        }, {
+            icon: icons.ThirdTip,
+            content: "Vigilant Monitoring: Consistently monitor online activity for any signs of impersonation or fraudulent behavior."
+        }
     ]
 
     return (
@@ -96,25 +107,19 @@ export default function Catfishing() {
                 {/* This section for define tips for catfishing page*/}
 
                 <div className='flex w-full mx-auto mt-20 justify-center px-10 py-20 gap-32'>
-                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={542} className='absolute bg-[#955bf1] right-32 z-0 bg-opacity-5 blur-3xl' />
-                    <div className='flex max-w-[505px] flex-col gap-y-10'>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={542} className='absolute bg-[#955bf1] right-32 z-0 bg-opacity-5 blur-3xl' />
+                    <div className='flex max-w-[705px] flex-col gap-y-10'>
                         <p className='font-medium text-5xl text-center max-lg:text-[30px]'>Tips for Prevention</p>
-                        <div className='flex gap-8 p-7'>
-                            <div>{icons.FirstTip}</div>
-                            <div><p className=''>Identity Verification: Encourage verification processes to ensure authenticity on social media platforms.</p></div>
-                        </div>
-                        <div className='flex gap-8 rounded-lg'>
-                            <div className='ml-5'>{icons.SecondTip}</div>
-                            <div className='flex-col'>
-                                <p className=''>Privacy Settings: Regularly review and adjust privacy settings to control information accessibility.</p>
-                            </div>
-                        </div>
-                        <div className='flex gap-8 mt-5 p-6'>
-                            <div>{icons.ThirdTip}</div>
-                            <div className='flex-col'>
-                                <p className=''>Vigilant Monitoring: Consistently monitor online activity for any signs of impersonation or fraudulent behavior.</p>
-                            </div>
-                        </div>
+                        {
+                            PreventionTips.map((content, index) => {
+                                return (
+                                    <div key={index} className='flex gap-8 p-7'>
+                                        <div>{content.icon}</div>
+                                        <div><span className='font-medium text-xl'>{content.content}</span></div>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
 

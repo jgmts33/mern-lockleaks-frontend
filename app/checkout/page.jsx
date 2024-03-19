@@ -6,16 +6,11 @@ import {
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Lock, Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, SelectSwitch, UnselectSwitch } from "@/src/utils/Icons";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { checkCustomRoutes } from 'next/dist/lib/load-custom-routes';
 
 export default function Checkout() {
 
     const [isSelected, setSelected] = React.useState(true);
     const [username, setUsername] = React.useState(false);
-    const [linkUsername, setLinkUsername] = React.useState(false);
-    const [isRecovery, setRecovery] = React.useState(false);
-    const [isReset, setReset] = React.useState(false);
 
     const icons = {
         lock: <Lock fill="currentColor" size={16} />,
@@ -34,7 +29,10 @@ export default function Checkout() {
     const pricingContent = [
         {
             title: "STARTER",
-            price: "000",
+            monthly_price: "150",
+            yearly_price: "405",
+            discount: "Discount 10%",
+            save_price: "Save $45",
             bg_color: "from-gray-600/40 to-gray-800/40",
             user_name: "1",
             add_propertity: "mt-[72px]",
@@ -63,8 +61,11 @@ export default function Checkout() {
             monthly_analyze_status: false,
             add_content: "px-10"
         }, {
-            title: "STAR",
-            price: "350",
+            title: "PRO",
+            monthly_price: "200",
+            yearly_price: "960",
+            discount: "Discount 15%",
+            save_price: "Save $90",
             bg_color: "from-[#F68171] to-[#B759FF]",
             add_propertity: "",
             user_name: "5",
@@ -95,8 +96,11 @@ export default function Checkout() {
             add_content: "bg-opacity-10 bg-black/20 rounded-[20px] px-10 py-10"
         },
         {
-            title: "PRO",
-            price: "200",
+            title: "STAR",
+            monthly_price: "350",
+            yearly_price: "390",
+            discount: "Discount 20%",
+            save_price: "Save $210",
             bg_color: "from-gray-600/40 to-gray-800/40",
             add_propertity: "mt-[72px]",
             content_property: "",
@@ -129,6 +133,33 @@ export default function Checkout() {
         }
     ]
 
+    const AddUserName = [
+        {
+            title: "ADD NEW USERNAME",
+            description: "We will use your username to identify and report copyright infringements",
+            sub_title: "username:",
+            input: true,
+            LeftButton: "Next",
+            RightButton: "Cancel"
+        },
+        {
+            title: "ADD NEW USERNAME",
+            description: "We will utilize your profile page URL to establish your ownership of this content.",
+            sub_title: "Link:",
+            input: true,
+            LeftButton: "Save",
+            RightButton: "Cancel"
+        },
+        {
+            title: "USERNAMES HISTORY CONTENT RECOVERY & REMOVAL REPORT",
+            description: "+$200",
+            sub_title: "",
+            input: false,
+            LeftButton: "Add",
+            RightButton: "Skip"
+        },
+    ]
+
     return (
         <div className="flex flex-col text-white w-full">
 
@@ -156,7 +187,7 @@ export default function Checkout() {
                                 <div>
                                     <div className='p-10'>
                                         {
-                                            item.title == "STAR" ?
+                                            item.title == "PRO" ?
                                                 <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
                                                     <span className='px-4'>popular</span>
                                                 </Button>
@@ -164,16 +195,21 @@ export default function Checkout() {
                                                 false
                                         }
                                         <p className='text-center font-medium text-6xl mt-10'>{item.title}</p>
-                                        <div className='mt-20 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{item.price}</p><p className='pt-5'>/MO</p></div>
+                                        <div className='mt-20 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{isSelected ? item.monthly_price : item.yearly_price}</p><p className='pt-5'>{isSelected ? "/MO" : "/3 MO"}</p></div>
                                         {
-                                            item.title != "STAR" ?
-                                                <Button radius="lg" className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                                            isSelected != true ?
+                                                <div className='flex flex-col mt-10 text-center'>
+                                                    <span className='font-normal text-3xl'>{item.discount}</span>
+                                                    <span className='font-medium text-5xl'>{item.save_price}</span>
+                                                </div>
+                                                : false
+                                        }
+                                        {
+                                            <Link href="/checkout/buy" className='w-full'>
+                                                <Button radius="lg" className={`w-full mt-10 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg mx-auto " + ${item.title != "PRO" ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-br from-gray-600/40 to-gray-800/40"}`} size='lg'>
                                                     BUY
                                                 </Button>
-                                                :
-                                                <Button radius="lg" className="w-full mt-10 bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
-                                                    BUY
-                                                </Button>
+                                            </Link>
                                         }
                                     </div>
                                     <div className={'flex flex-col gap-y-5 ' + item.add_content}>
@@ -235,7 +271,7 @@ export default function Checkout() {
                         </select>
                     </div>
                 </div>
-                <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] rounded-[20px] z-40 p-5 cursor-pointer text-center ">
+                <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] rounded-[20px] p-5 cursor-pointer text-center ">
                     <div className='mt-5'>
                         <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
                             <span className='px-4'>popular</span>
@@ -252,6 +288,7 @@ export default function Checkout() {
             </div>
 
             {/* This section for add new user name*/}
+
             <div className='mt-20 flex mx-auto justify-center gap-80 max-2xl:gap-0 max-xl:flex-col max-md:px-3'>
                 <div className='flex-col flex mx-auto'>
                     <p className='font-medium text-3xl'>ADD NEW USERNAME</p>
@@ -272,111 +309,59 @@ export default function Checkout() {
                     <Image src="assets/robert.svg" width={320} height={400} alt='robert' className='mt-40 bg-opacity-90' />
                 </div>
                 <div className='flex flex-col gap-5'>
-                    <div className="flex bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 cursor-pointer w-full max-w-[724px] flex-col border border-gray-700 py-20 px-10 ">
-                        <p className='font-medium text-[34px] text-center'>ADD NEW USERNAME</p>
-                        <p className='mt-3'>We will use your username to identify and report copyright infringements</p>
-                        <div className="flex w-full flex-col gap-4 mt-10">
-                            <p className='flex justify-start'>username:</p>
-                            <div className='flex'>
-                                <div className="flex flex-col gap-2">
-                                    <Switch
-                                        defaultSelected
-                                        size="lg"
-                                        color="default"
-                                        thumbIcon={({ isSelected, className }) =>
-                                            isSelected ? (
-                                                <SelectSwitch className={className} />
-                                            ) : (
-                                                <UnselectSwitch className={className} />
-                                            )
-                                        }
-                                    >
-                                    </Switch>
+                    {
+                        AddUserName.map((content, index) => {
+                            return (
+                                <div key={index} className="flex bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 cursor-pointer w-full max-w-[724px] flex-col border border-gray-700 py-20 px-10 ">
+                                    <p className='font-medium text-[34px] text-center'>{content.title}</p>
+                                    <p className={content.input == true ? 'mt-3' : "text-center"}>{content.description}</p>
+                                    <div className="flex w-full flex-col gap-4 mt-10">
+                                        <p className='flex justify-start'>{content.sub_title}</p>
+                                        <div className='flex'>
+                                            {
+                                                <div className={content.input != true ? 'hidden' : "w-full flex"}>
+                                                    <div className="flex flex-col gap-2">
+                                                        <Switch
+                                                            defaultSelected
+                                                            size="lg"
+                                                            color="default"
+                                                            thumbIcon={({ isSelected, className }) =>
+                                                                isSelected ? (
+                                                                    <SelectSwitch className={className} />
+                                                                ) : (
+                                                                    <UnselectSwitch className={className} />
+                                                                )
+                                                            }
+                                                        >
+                                                        </Switch>
+                                                    </div>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        placeholder='Type here'
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        className='w-full outline-none p-2 pr-28 rounded-lg bg-white text-black'
+                                                        required
+                                                    />
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
+                                        <Button radius="full" className={username ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setUsername(true)}>
+                                            {content.LeftButton}
+                                        </Button>
+                                        <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
+                                            {content.RightButton}
+                                        </Button>
+                                    </div>
                                 </div>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder='Type here'
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className='w-full outline-none p-2 pr-28 rounded-lg bg-white text-black'
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
-                            <Button radius="full" className={username ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setUsername(true)}>
-                                Next
-                            </Button>
-                            <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
-                                Cancel
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="flex bg-gradient-to-br max-xl:mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col cursor-pointer border border-gray-700 w-full max-w-[724px] py-20 px-10">
-                        <p className='font-medium text-[34px] text-center'>ADD NEWUSERNAME</p>
-                        <p className='mt-3'>We will utilize your profile page URL to establish your ownership of this content.</p>
-                        <div className="flex w-full flex-col gap-4 mt-10">
-                            <p className='flex justify-start'>Link:</p>
-                            <div className='flex'>
-                                <div className="flex flex-col gap-2">
-                                    <Switch
-                                        defaultSelected
-                                        size="lg"
-                                        color="default"
-                                        thumbIcon={({ isSelected, className }) =>
-                                            isSelected ? (
-                                                <SelectSwitch className={className} />
-                                            ) : (
-                                                <UnselectSwitch className={className} />
-                                            )
-                                        }
-                                    >
-                                    </Switch>
-                                </div>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder='Type here'
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className='w-full outline-none p-2 pr-28 rounded-lg bg-white text-black'
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[676px] gap-2 items-center container'>
-                            <Button radius="full" className={linkUsername ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-700 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setLinkUsername(true)}>
-                                Save
-                            </Button>
-                            <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
-                                Cancel
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="flex bg-gradient-to-br text-center from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col w-full max-w-[724px] cursor-pointer border border-gray-700 py-20 px-10">
-                        <p className='font-medium text-[34px]'>USERNAMES HISTORY CONTENT RECOVERY & REMOVAL REPORT</p>
-                        <p>+$200</p>
-                        <div className="flex w-full flex-wrap md:flex-nowrap gap-4 bg-white">
-                        </div>
-                        <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[676px] gap-2 items-center container'>
-                            <Button radius="full" className={isRecovery ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setRecovery(true)}>
-                                Add
-                            </Button>
-                            <Button radius="full" className={!isRecovery ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setRecovery(false)}>
-                                Skip
-                            </Button>
-                        </div>
-                    </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
-            <div className='bg-gradient-to-tr w-1/2 mx-auto mt-28 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container max-md:text-center'>
-                <Button radius="full" className={isReset ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={()=>setReset(true)}>
-                    Reset
-                </Button>
-                <Button radius="full" className={!isReset ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={()=>setReset(false)}>
-                    NEXT
-                </Button>
-            </div>
-
+            
             {/* This section for define payment*/}
 
             <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">

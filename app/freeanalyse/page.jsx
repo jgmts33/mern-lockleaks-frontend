@@ -10,7 +10,7 @@ import Reversechat from '@/public/assets/reverse-chat.svg';
 import { Shine, ROBERTCHAT } from "@/src/utils/Icons";
 
 
-export default function page() {
+export default function FreeAnalyse() {
 
   const icons = {
     shine: <Shine fill="currentColor" size={16} />,
@@ -61,9 +61,9 @@ export default function page() {
         </div>
         <div className='flex flex-col w-1/2'>
           <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-[350px] bottom-[380px] w-72 h-72'>
-            <Image className="h-[560px] w-52 -mt-[95px] max-md:w-full" src={Reversechat} alt="Modern building architecture" />
+            <Image src={Reversechat} className="mt-24 max-md:w-full" width={200} height={150} alt="Modern building architecture" />
           </div>
-          <div className="flex bg-white/15 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 cursor-pointer w-[350px] absolute rotate-[12deg] right-56 -mt-[60px]">
+          <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 cursor-pointer w-[350px] absolute rotate-[12deg] right-56 -mt-[60px]">
             <div className='absolute'>{icons.robertchat}</div>
             <div className='flex justify-start flex-col'>
               <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>

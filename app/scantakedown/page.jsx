@@ -12,44 +12,73 @@ import Scan from "@/public/assets/services/scan-takedown.svg"
 import Takedown from "@/public/assets/scan/takedown.svg"
 import CustomerReview from '@/src/components/customerReview';
 
-const TipContent = ({targetContent}) => {
+const TipContent = ({ targetContent }) => {
 
     const [selectedTipIndex, setSelectedTipIndex] = useState(0);
 
     useEffect(() => {
         setSelectedTipIndex(0);
-    },[targetContent])
+    }, [targetContent])
 
     return (
-            <div className='flex items-center justify-between flex-col gap-y-5 cursor-pointer'>
-                {
-                    targetContent.map((tips, index) => {
-                        return (
-                            <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
-                                <div className='flex gap-3 p-7 max-w-[720px]' onClick={() => { setSelectedTipIndex(index) }}>
-                                    <div>{tips.order}</div>
-                                    <div><span className='font-medium text-xl max-lg:text-[20px]'>{tips.content}</span></div>
-                                </div>
+        <div className='flex items-center justify-between flex-col gap-y-5 cursor-pointer'>
+            {
+                targetContent.map((tips, index) => {
+                    return (
+                        <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
+                            <div className='flex gap-3 p-7 max-w-[720px]' onClick={() => { setSelectedTipIndex(index) }}>
+                                <div>{tips.order}</div>
+                                <div><span className='font-medium text-xl max-lg:text-[20px]'>{tips.content}</span></div>
                             </div>
-                        )
-                    })
-                }
-            </div>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    )
+}
+
+const FAQContent = ({ targetContent }) => {
+    const icons = {
+        arrowtop: <ChevronRight fill="currentColor" size={16} />,
+    };
+
+    const [expandedIndex, setExpandedIndex] = useState(-1);
+
+    return (
+        targetContent.map((contents, index) => {
+            return (
+                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
+                    <div className='flex justify-between'>
+                        <p className='font-medium text-2xl max-lg:text-2xl max-lg:text-center'>{contents.title}</p>
+                        <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1) }}>
+                            {icons.arrowtop}
+                        </button>
+                    </div>
+                    <div className={expandedIndex == index ? 'h-auto' : 'h-0'}>
+                        {
+                            contents.content.map((items, contentIndex) => {
+                                return (
+                                    <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedIndex == index ? 'block' : 'hidden'} `}>{items}</p>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        })
     )
 }
 
 export default function ScanTakeDown() {
 
-    const [selectedContent, setSelectedContent] = useState('scan');
-    const [expandedScanIndex, setExpandedScanIndex] = useState(-1);
-    const [expandedTakeDownIndex, setExpandedTakeDownIndex] = useState(-1);
-
     const icons = {
         firstTip: <FirstTip fill="currentColor" size={16} />,
         secondTip: <SecondTip fill="currentColor" size={16} />,
         thirdTip: <ThirdTip fill="currentColor" size={16} />,
-        arrowtop: <ChevronRight fill="currentColor" size={16} />,
     };
+
+    const [selectedContent, setSelectedContent] = useState('scan');
 
     const scanHeaderContent = {
         img_path: Scan,
@@ -144,69 +173,25 @@ export default function ScanTakeDown() {
                     </div>
                 </div>
 
-
                 {/* This section for define tips for scan&takedown page*/}
 
                 <div className='flex w-full bg-[#090D1F] mx-auto justify-center mt-10 px-10 py-20 gap-20 max-xl:flex-col max-xl:items-center'>
 
-                    <TipContent targetContent = {selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
-                    
+                    <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
+
                     <div className="relative max-w-[740px] flex flex-wrap">
-                        <Image alt='writetip' className="w-[349px] h-[319px]" src={WriteTip} />
-                        <Image alt='tip' src={TipDocument} />
+                        <Image src={WriteTip} alt='writetip' className="w-[349px] h-[319px]" />
+                        <Image src={TipDocument} alt='tip' />
                     </div>
-                </div>
+                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
                 {/* This section for define FAQ*/}
 
                 <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full'>
                     <p className='font-medium text-5xl text-center max-lg:text-[40px]'>FAQ</p>
-                    {
-                        selectedContent == 'scan' ?
-                            scanFAQTitle.map((FAQ_content, index) => {
-                                return (
-                                    <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                                        <div className='flex justify-between'>
-                                            <p className='font-medium text-4xl max-lg:text-[25px] max-lg:text-center'>{FAQ_content.title}</p>
-                                            <button className={expandedScanIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedScanIndex != index ? setExpandedScanIndex(index) : setExpandedScanIndex(-1) }}>
-                                                {icons.arrowtop}
-                                            </button>
-                                        </div>
-                                        <div className={expandedScanIndex == index ? 'h-auto' : 'h-0'}>
-                                            {
-                                                FAQ_content.content.map((items, contentIndex) => {
-                                                    return (
-                                                        <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedScanIndex == index ? 'block' : 'hidden'} `}>{items}</p>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    </div>
-                                )
-                            })
-                            :
-                            takedownFAQTitle.map((FAQ_content, index) => {
-                                return (
-                                    <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                                        <div className='flex justify-between'>
-                                            <p className='font-medium text-4xl max-lg:text-[25px] max-lg:text-center'>{FAQ_content.title}</p>
-                                            <button className={expandedTakeDownIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedTakeDownIndex != index ? setExpandedTakeDownIndex(index) : setExpandedTakeDownIndex(-1) }}>
-                                                {icons.arrowtop}
-                                            </button>
-                                        </div>
-                                        <div className={expandedTakeDownIndex == index ? 'h-auto' : 'h-0'}>
-                                            {
-                                                FAQ_content.content.map((items, contentIndex) => {
-                                                    return (
-                                                        <p key={contentIndex} className={`font-normal text-base mt-3 duration-500 ' + ${expandedTakeDownIndex == index ? 'block' : 'hidden'} `}>{items}</p>
-                                                    )
-                                                })
-                                            }
-                                        </div>
-                                    </div>
-                                )
-                            })
-                    }
+
+                    <FAQContent targetContent={selectedContent == 'scan' ? scanFAQTitle : takedownFAQTitle} />
+
                 </div>
             </div>
             <CustomerReview />

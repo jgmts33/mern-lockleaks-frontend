@@ -629,7 +629,7 @@ export const SATURN = ({
     );
 };
 
-export const PROFILE = ({
+export const Profile = ({
     fill = "currentColor",
     size,
     height,
@@ -680,7 +680,7 @@ export const PROFILE = ({
     );
 };
 
-export const CHAT = ({
+export const Chat = ({
     fill = "currentColor",
     size,
     height,
@@ -726,7 +726,7 @@ export const CHAT = ({
     );
 };
 
-export const ICON_SUCCESS = ({
+export const IconSuccess = ({
     fill = "currentColor",
     size,
     height,
@@ -763,7 +763,7 @@ export const ICON_SUCCESS = ({
 };
 
 
-export const TIP = ({
+export const Tip = ({
     fill = "currentColor",
     size,
     height,
@@ -1131,8 +1131,8 @@ export const FirstTip = ({
                 <path d="M17.76 16.88V15.22H21.52V29.68H19.68V16.88H17.76Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_628_1478" x="11.76" y="13.22" width="15.76" height="26.46" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_628_1478" x="11.76" y="13.22" width="15.76" height="26.46" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1142,8 +1142,8 @@ export const FirstTip = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_628_1478" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_628_1478" x1="-17.661" y1="21.68" x2="40.1323" y2="21.2946" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>
@@ -1203,8 +1203,8 @@ export const ThirdTip = ({
                 <path d="M16.2 18.86C16.2933 17.6333 16.7667 16.6733 17.62 15.98C18.4733 15.2867 19.58 14.94 20.94 14.94C21.8467 14.94 22.6267 15.1067 23.28 15.44C23.9467 15.76 24.4467 16.2 24.78 16.76C25.1267 17.32 25.3 17.9533 25.3 18.66C25.3 19.4867 25.06 20.2 24.58 20.8C24.1133 21.4 23.5 21.7867 22.74 21.96V22.06C23.6067 22.2733 24.2933 22.6933 24.8 23.32C25.3067 23.9467 25.56 24.7667 25.56 25.78C25.56 26.54 25.3867 27.2267 25.04 27.84C24.6933 28.44 24.1733 28.9133 23.48 29.26C22.7867 29.6067 21.9533 29.78 20.98 29.78C19.5667 29.78 18.4067 29.4133 17.5 28.68C16.5933 27.9333 16.0867 26.88 15.98 25.52H17.74C17.8333 26.32 18.16 26.9733 18.72 27.48C19.28 27.9867 20.0267 28.24 20.96 28.24C21.8933 28.24 22.6 28 23.08 27.52C23.5733 27.0267 23.82 26.3933 23.82 25.62C23.82 24.62 23.4867 23.9 22.82 23.46C22.1533 23.02 21.1467 22.8 19.8 22.8H19.34V21.28H19.82C21.0467 21.2667 21.9733 21.0667 22.6 20.68C23.2267 20.28 23.54 19.6667 23.54 18.84C23.54 18.1333 23.3067 17.5667 22.84 17.14C22.3867 16.7133 21.7333 16.5 20.88 16.5C20.0533 16.5 19.3867 16.7133 18.88 17.14C18.3733 17.5667 18.0733 18.14 17.98 18.86H16.2Z" fill="white" />
             </g>
             <defs>
-                <filter id="filter0_d_628_1483" x="9.97998" y="12.94" width="21.58" height="26.84" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <filter id="filter0_d_628_1483" x="9.97998" y="12.94" width="21.58" height="26.84" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset dy="4" />
                     <feGaussianBlur stdDeviation="3" />
@@ -1214,8 +1214,8 @@ export const ThirdTip = ({
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_628_1483" result="shape" />
                 </filter>
                 <linearGradient id="paint0_linear_628_1483" x1="-17.661" y1="21.68" x2="40.1323" y2="21.2946" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#B759FF" />
-                    <stop offset="0.815566" stop-color="#F78171" />
+                    <stop stopColor="#B759FF" />
+                    <stop offset="0.815566" stopColor="#F78171" />
                 </linearGradient>
             </defs>
         </svg>

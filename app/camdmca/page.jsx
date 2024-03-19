@@ -1,14 +1,7 @@
 "use client";
 import Image from 'next/image';
-import {
-    Button, Link,
-} from '@nextui-org/react';
 import React from 'react';
-// import WriteTip from "@/public/assets/scan/write-tip.svg";
-// import TipDocument from "@/public/assets/scan/tip-document.svg";
-import { success } from "@/src/utils/Icons";
 import { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import WriteTip from "@/public/assets/scan/camdcma.svg";
 import TipDocument from "@/public/assets/scan/tip-document.svg";
 import { Balance, Banned, Law, ChevronRight, Tips, FirstTip, SecondTip, ThirdTip } from "@/src/utils/Icons";
@@ -26,6 +19,8 @@ export default function CamDmca() {
         SecondTip: <SecondTip fill="currentColor" size={16} />,
         ThirdTip: <ThirdTip fill="currentColor" size={16} />,
     };
+
+    const [selectedTipIndex, setSelectedTipIndex] = useState(0);
 
     const CamDmcaTitle = {
         title: "Cam DMCA Content Protection",
@@ -49,6 +44,22 @@ export default function CamDmca() {
         }
     ]
 
+    const ProtectionContent = [
+        {
+            icon: icons.FirstTip,
+            title: "Regular Monitoring:",
+            content: "Perform routine checks to ensure the integrity and exclusivity of your uploaded content."
+        }, {
+            icon: icons.SecondTip,
+            title: "Enhanced Security Measures:",
+            content: "Implement two-factor authentication and regularly update your security settings to prevent unauthorized access to your accounts."
+        }, {
+            icon: icons.ThirdTip,
+            title: "Cautious Information Sharing:",
+            content: "Be mindful of sharing personal information online to reduce potential vulnerabilities."
+        }
+    ]
+
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
@@ -68,8 +79,8 @@ export default function CamDmca() {
                                     <div key={index} className="flex max-w-[480px] py-10 bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer top-6 mt-6">
                                         <div className='flex flex-col'>
                                             {item.icon}
-                                            <p className='font-medium text-2xl mt-5 max-md:text-[20px]'>{item.title}</p>
-                                            <p className='mt-5 font-normal text-xl max-md:text-[15px]'>{item.content}</p>
+                                            <p className='font-medium text-2xl mt-5 max-md:text-lg'>{item.title}</p>
+                                            <p className='mt-5 font-normal text-lg max-md:text-base'>{item.content}</p>
                                         </div>
                                     </div>
                                 )
@@ -87,30 +98,23 @@ export default function CamDmca() {
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#9458f5] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                     <div className='flex max-w-[570px] justify-center flex-col gap-y-10'>
-                        <div className='flex gap-8 p-7'>
-                            <div>{icons.FirstTip}</div>
-                            <div className='flex flex-col'>
-                            <p className='font-medium text-xl max-lg:text-[20px]'>Regular Monitoring:</p>
-                            <p className='mt-5'>Perform routine checks to ensure the integrity and exclusivity of your uploaded content.</p>
-                            </div>
-                        </div>
-                        <div className='flex gap-8 rounded-lg'>
-                            <div className='ml-5'>{icons.SecondTip}</div>
-                            <div className='flex-col'>
-                            <p className='font-medium text-xl max-lg:text-[20px]'>Enhanced Security Measures: </p>
-                            <p className='mt-5'>Implement two-factor authentication and regularly update your security settings to prevent unauthorized access to your accounts.</p>
-                            </div>
-                        </div>
-                        <div className='flex gap-8 mt-5 p-6'>
-                            <div>{icons.ThirdTip}</div>
-                            <div className='flex-col'>
-                            <p className='font-medium text-xl max-lg:text-[20px]'>Cautious Information Sharing:</p>
-                            <p className='mt-5'>Be mindful of sharing personal information online to reduce potential vulnerabilities.</p>
-                            </div>
-                        </div>
+                        {
+                            ProtectionContent.map((contents, index) => {
+                                return (
+                                    <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
+                                        <div className='flex gap-3 p-7 w-full' onClick={() => { setSelectedTipIndex(index) }}>
+                                            <div>{contents.icon}</div>
+                                            <div className='flex flex-col'><span className='font-medium text-xl max-lg:text-lg'>{contents.title}</span>
+                                            <span className='font-medium text-lg max-lg:text-lg'>{contents.content}</span></div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
+
             <CustomerReview />
         </>
     )

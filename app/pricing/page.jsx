@@ -21,10 +21,6 @@ export default function Pricing() {
         uncomplete: <Uncomplete fill="currentColor" size={16} />,
     };
 
-    const ButtonContent = [
-        "1 ( included)", "2 (+$40)", "3 (+$80)", "4 (+$120)", "CUSTOM ( CONTACT US )", "USERNAME "
-    ]
-
     const pricingContent = [
         {
             title: "STARTER",
@@ -125,14 +121,34 @@ export default function Pricing() {
 
     return (
         <>
-            <div className="flex flex-col text-white w-full">
+            <div className="flex flex-col text-white w-full container">
 
-                {/* This section for define chechout page header*/}
+                {/* This section for define pricing page header*/}
 
                 <div className="text-center gap-10 mt-20">
                     <p className="font-bold text-7xl max-lg:text-[40px] max-md:justify-center">PRICING</p>
                 </div>
-                <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-28 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
+                
+                {/* This section for define pricing page content*/}
+
+                <div className='flex justify-between'>
+                    <div className='flex flex-col'>
+                        <span className='text-center font-medium text-xl'>special offer for agency and business</span>
+                        <Button radius="lg" className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white mt-5 shadow-lg px-5 py-3 text-sm" size='md'>
+                            Access Special offer!{icons.shine}
+                        </Button>
+                    </div>
+                    <div className='flex flex-col'>
+                        <span className='text-center font-medium text-xl'>how can fans gift you a plan</span>
+                        <Button radius="lg" className="bg-gradient-to-tr bg-transparent from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border mx-auto px-7 py-5 text-sm mt-5" size='md'>
+                            Request fan support{icons.shine}
+                        </Button>
+                    </div>
+                </div>
+                <div className='flex justify-start mt-32'>
+                    <sapn className="font-medium text-5xl">PRICING TABLE</sapn>
+                </div>
+                <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
                     <Button radius="full" className={isPricingSelected ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} onClick={() => setPricingSelected(true)} size='lg'>
                         Bill Monthly
                     </Button>

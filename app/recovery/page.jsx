@@ -9,7 +9,7 @@ import { FirstRecoveryStep, SecondRecoveryStep, ThirdRecoveryStep, FourthRecover
 import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
-
+import Moon from '@/public/assets//blog/moon.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
 import CustomerReview from '@/src/components/customerReview';
 
@@ -137,14 +137,15 @@ export default function Recovery() {
 
                 {/* This section for define benefit content*/}
 
-                <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-10 py-20 gap-20 max-xl:flex-col items-center'>
+                <div className='flex flex-col w-full bg-white/5 mx-auto justify-around mt-10 px-10 py-20 gap-20 max-xl:flex-col items-center'>
+                    <span className='font-medium text-5xl'>BENEFITS</span>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl'>
-                        <img src="assets/services/takedown.svg" alt="Service" className='max-xl:w-full max-md:hidden' />
+                        <Image src={Moon} width={350} height={150} className='w-1/2' />
                         <div className='flex flex-col mx-auto justify-center'>
                             {
                                 BenefitContent.map((benefit, index) => {
                                     return (
-                                        <div key={index} className='flex items-center py-5 max-w-[512px] gap-2'>
+                                        <div key={index} className='flex items-center py-5 max-w-[512px] gap-3'>
                                             <span>{benefit.step}</span>
                                             <span className='font-medium'>{benefit.content}</span>
                                         </div>

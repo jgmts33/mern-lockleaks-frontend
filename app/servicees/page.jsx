@@ -21,7 +21,8 @@ export default function SERVICES() {
     }
 
     const ServicesContent = [
-        [{
+        [
+        {
             title: "Scan & Takedown",
             content: "Utilizing cutting-edge tech and thorough manual checks, we identify potential copyright issues across various online platforms, including Google Search, Images, Videos, file hosting services, and numerous websites. Our scan covers 100,000+ websites and social platforms, allowing us to promptly issue DMCA takedown notices for content protection."
         },
@@ -90,7 +91,7 @@ export default function SERVICES() {
                                                         <p className='font-semibold text-xl mt-3'>{service_content.title}</p>
                                                         <p className='font-normal text-base mt-5'>{service_content.content}</p>
                                                         <Button radius="lg" className="bg-transparent justify-start text-white mt-4" size='lg'>
-                                                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
+                                                            <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Solution</span>
                                                             {icons.arrow_right}
                                                         </Button>
                                                     </div>
