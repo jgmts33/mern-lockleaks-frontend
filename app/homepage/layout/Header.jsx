@@ -12,49 +12,49 @@ export default function Header() {
   const menuItems = [
     {
       content:"Services",
-      path:"/servicees"
+      path:"/homepage/servicees"
     }, {
       content:"Blog Format",
-      path:"/blog/format"
+      path:"/homepage/blog/format"
     }, {
       content:"Scan&Takedown",
-      path:"/scantakedown"
+      path:"/homepage/scantakedown"
     }, {
       content:"AI",
-      path:"/AI"
+      path:"/homepage/AI"
     }, {
       content:"Copyright",
-      path:"/copyright"
+      path:"/homepage/copyright"
     }, {
       content:"Chechout",
-      path:"/checkout"
+      path:"/homepage/checkout"
     }, {
       content:"COM DMCA Protection",
-      path:"/camdmca"
+      path:"/homepage/camdmca"
     }, {
       content:"Creator DMCA Protection",
-      path:"/creatordmca"
+      path:"/homepage/creatordmca"
     }, {
       content:"Catfishing",
-      path:"/catfishing"
+      path:"/homepage/catfishing"
     }, {
       content:"Username Recovery",
-      path:"/recovery"
+      path:"/homepage/recovery"
     }, {
       content:"Monthly Analytics PDF",
-      path:"/monthlypdf"
+      path:"/homepage/monthlypdf"
     },
     {
       content:"Monthly Analytics PDF",
-      path:"/monthlypdf"
+      path:"/homepage/monthlypdf"
     },
     {
       content:"Dmca Badges",
-      path:"/dmcabadges"
+      path:"/homepage/dmcabadges"
     },
     {
       content:"Delete Data",
-      path:"/deletedata"
+      path:"/homepage/deletedata"
     },
   ];
 
@@ -93,7 +93,7 @@ export default function Header() {
           </Link>
         </NavbarBrand>
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="/pricing">
+          <Link color="foreground" href="/homepage/pricing">
             PRICING
           </Link>
         </NavbarItem>
@@ -116,12 +116,12 @@ export default function Header() {
           </Dropdown>
         </NavbarItem>
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="/help">
+          <Link color="foreground" href="/homepage/help">
             HELP
           </Link>
         </NavbarItem>
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="/blog">
+          <Link color="foreground" href="/homepage/blog">
             BLOG
           </Link>
         </NavbarItem>

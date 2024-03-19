@@ -37,15 +37,15 @@ export default function DmcaBadges() {
         }
     ]
 
-    const DmcaBadges = [
-        {
-            title: "Download Legal Protection:",
-            content: "Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse."
-        }, {
-            title: "Visual Deterrent:",
-            content: "These badges act as a deterrent to potential violators, signaling that your content is monitored and protected by copyright laws. Badges"
-        }
-    ]
+    // const DmcaBadges = [
+    //     {
+    //         title: "Download Legal Protection:",
+    //         content: "Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse."
+    //     }, {
+    //         title: "Visual Deterrent:",
+    //         content: "These badges act as a deterrent to potential violators, signaling that your content is monitored and protected by copyright laws. Badges"
+    //     }
+    // ]
 
     return (
         <>

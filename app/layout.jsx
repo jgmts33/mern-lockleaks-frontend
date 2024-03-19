@@ -2,8 +2,8 @@
 // import { NextUIProvider } from "@nextui-org/react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "@/app/layout/Header";
-import Footer from "@/app/layout/Footer";
+import Header from "@/app/homepage/layout/Header";
+import Footer from "@/app/homepage/layout/Footer";
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
 import Image from 'next/image';
