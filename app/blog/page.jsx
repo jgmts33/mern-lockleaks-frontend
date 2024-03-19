@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image';
 import {
-  Button
+  Button, Pagination, PaginationItemType
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { ChevronRight } from "@/src/utils/Icons";
@@ -15,6 +15,10 @@ export default function Blog() {
   const icons = {
     right: <ChevronRight fill="currentColor" size={16} />,
   };
+
+  const [seletedBlog, setSelectBlog] = useState(0);
+  const [selectedPagination, setSelectPagination] = useState(1);
+  const [allPagination, setAllPagination] = useState(0)
 
   const BlogCardContent = [
     {
@@ -62,7 +66,106 @@ export default function Blog() {
       description: "Losing money and respect due to pirated content.",
       photo: Moon
     },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Moon
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Mars
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Saturn
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Moon
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Mars
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Saturn
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Moon
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Mars
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Saturn
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Moon
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Mars
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Saturn
+    },
+    {
+      title: "Popular  admain template you can use for your business",
+      description: "Losing money and respect due to pirated content.",
+      photo: Moon
+    }
   ]
+
+  useEffect(() => {
+    setAllPagination( Math.ceil(BlogCardContent.length / 9) );
+  }, []);
+
+  const handlePageChange = (page) => {
+    console.log("page:", page)
+    setSelectPagination(page)
+  }
+
+  const renderItem = ({
+    ref,
+    key,
+    value,
+    isActive,
+    setPage,
+    className,
+  }) => {
+    
+    if (value === PaginationItemType.DOTS) {
+      return <button key={key} className={className}>...</button>;
+    }
+
+    return (
+      <button
+        key={key}
+        ref={ref}
+        className={ className + ( isActive ? " text-white bg-gradient-to-br from-indigo-500 to-pink-500 font-bold" : "")}
+        onClick={() => setPage(value)}
+      >
+        {value}
+      </button>
+    );
+  }
 
   return (
     <div className="text-white relative container flex flex-col pb-20 mt-10">
@@ -71,11 +174,11 @@ export default function Blog() {
 
       <span className='font-medium text-5xl text-center'>BLOG</span>
 
-      {/* This section for define blog title*/}
+      {/* This section for define blog content*/}
 
       <div className='grid grid-cols-3 gap-6 z-20 max-lg:flex-wrap max-lg:justify-center mt-10 max-xl:grid-cols-2 max-lg:grid-cols-1'>
         {
-          BlogCardContent.map((blog, index) => {
+          BlogCardContent.slice((selectedPagination - 1) * 9, selectedPagination * 9).map((blog, index) => {
             return (
               <div key={index} className="bg-gradient-to-br max-md:max-w-[600px] max-xl:max-w-[1000px] max-lg:max-w-[750px] from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md">
                 <div className="flex flex-col">
@@ -95,7 +198,7 @@ export default function Blog() {
                       </div>
                       <div className='flex'>
                         <Button radius="lg" className="bg-transparent text-white" size='lg'>
-                          <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Article</span>
+                          <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Article</span>
                           <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                         </Button>
                       </div>
@@ -107,7 +210,40 @@ export default function Blog() {
           })
         }
       </div>
-      
+      <div className='flex justify-between pt-16'>
+        <div>
+          <Button
+            radius="full"
+            className="font-light bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg text-lg max-md:text-[15px]" size='md'
+            onClick={() => setSelectPagination(p => (p > 1 ? p - 1 : p))}
+          >
+            <div className='rotate-[-180deg]'>{icons.right}</div>
+            <span>Back</span>
+          </Button>
+        </div>
+        <div>
+          <Pagination
+            disableCursorAnimation
+            onChange={handlePageChange}
+            total={allPagination}
+            initialPage={1}
+            page={selectedPagination}
+            renderItem={renderItem}
+            variant="light"
+          />
+        </div>
+        <div>
+          <Button
+            radius="full"
+            className="font-light bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg text-lg max-md:text-[15px]"
+            size='md'
+            onClick={() => setSelectPagination(p => (p < allPagination ? p + 1 : p))}
+          >
+            <span>Next</span>
+            <div>{icons.right}</div>
+          </Button>
+        </div>
+      </div>
     </div >
   )
 }
