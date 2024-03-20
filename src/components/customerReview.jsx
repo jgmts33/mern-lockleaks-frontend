@@ -78,10 +78,10 @@ export default function CustomerReview() {
                     </div></SwiperSlide>)}
                 </Swiper>
             </div>
-            <button className="swiper-custom-prev max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg absolute z-50 bottom-[calc(50%-80px)] left-2">
+            <button className="swiper-custom-prev max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg absolute z-10 bottom-[calc(50%-80px)] left-2">
                 {icons.left}
             </button>
-            <button className="swiper-custom-next max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg  absolute z-50 bottom-[calc(50%-80px)] right-2">
+            <button className="swiper-custom-next max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg  absolute z-10 bottom-[calc(50%-80px)] right-2">
                 {icons.right}
             </button>
         </div>

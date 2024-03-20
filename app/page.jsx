@@ -214,18 +214,18 @@ export default function HomePage() {
 
           {/* This section for define homepage header*/}
 
-          <div className="flex w-full justify-center items-center flex-col relative z-20">
-            <div className="max-w-[1100px] justify-center items-center text-center gap-10 mt-20">
-              <p className="font-medium text-[70px] max-lg:text-[40px] max-md:justify-center max-md:text-[26px]">
+          <div className="flex w-full justify-center items-center flex-col relative">
+            <div className="max-w-[1100px] text-center gap-10 mt-20">
+              <p className="font-medium text-7xl max-lg:text-4xl max-md:justify-center">
                 INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION
               </p>
             </div>
-            <div className='flex w-full justify-center mt-8 relative max-xl:w-full max-xl:flex-col max-xl:items-center max-xl:mx-auto'>
-              <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg" size='lg'>
-                Protect Content Now!
-                <span>{icons.shine}</span>
-              </Button>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
+            <div className='flex w-full justify-center mt-8 relative max-xl:flex-col max-xl:items-center max-xl:mx-auto max-lg:pb-10'>
+                <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg" size='lg'>
+                  Protect Content Now!
+                  <span>{icons.shine}</span>
+                </Button>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
@@ -239,7 +239,7 @@ export default function HomePage() {
                   <p className='font-normal text-base mt-2'>Your Brand is Your Legacy, Let Us Be Your Guardians.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute right-0 -top-8 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-0 -top-8 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
                   <p className='font-semibold text-xl mt-3'>ROFESSIONAL SUPPORT</p>
@@ -250,7 +250,7 @@ export default function HomePage() {
 
             {/* This section for define chosen by esteemed industry leaders*/}
 
-            <div className="flex flex-col w-full mt-60 text-center items-center max-md:mt-32">
+            <div className="flex flex-col w-full pt-80 text-center items-center max-xl:pt-36">
               <p className="text-center font-normal text-xl max-md:justify-center">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col">
                 <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
@@ -271,7 +271,7 @@ export default function HomePage() {
 
         <div className='max-lg:px-3'>
           <div className='flex w-full relative mt-32'>
-            <div className="flex flex-col mx-auto z-20 relative">
+            <div className="flex flex-col mx-auto relative">
               <p className="font-medium text-[50px] uppercase max-lg:text-[30px] max-lg:text-center">We're ready to assist</p>
               <div className="flex justify-center items-center gap-8 max-lg:mt-10">
                 <div className="flex justify-center items-center max-xl:hidden max-lg:hidden w-full">
@@ -307,13 +307,13 @@ export default function HomePage() {
                       })
                     }
                   </div>
-                  <div className="flex flex-col top-36 max-lg:top-10 relative gap-8">
-                    {
+                  <div className="flex flex-col top-36 max-lg:top-10 relative gap-8 z-10">
+                  {
                       assistSecionItems[1].map((item, index) => {
                         return (
                           <div
                             key={index}
-                            className='card w-[365px] relative h-[315px] cursor-pointer max-md:w-[320px]'
+                            className='card w-[365px] max-md:w-[320px] relative h-[315px] cursor-pointer'
                             onMouseEnter={() => setIsFlipped(index + 2)}
                             onMouseLeave={() => setIsFlipped(-1)}
                           >
@@ -323,7 +323,7 @@ export default function HomePage() {
                               <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
-                                <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Solution</span>
+                                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
                                 <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                               </Button>
                             </div>
@@ -339,15 +339,15 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='absolute z-10 top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-md:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
           </div>
         </div>
 
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3'>
-          <div className="flex flex-col w-full py-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-w-[1179px] itmes-center mx-auto justify-between flex-wrap text-center gap-8">
-            <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-4xl'>OUR SERVICES FOR YOUR BENEFIT</span>
+          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
+            <span className='font-medium text-[50px] mx-auto text-white max-w-[600px] max-lg:text-[40px]'>OUR SERVICES FOR YOUR BENEFIT</span>
             <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
               {
                 services.map((service, index) => {
@@ -356,10 +356,10 @@ export default function HomePage() {
                       key={index}
                       radius="full"
                       variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + " outline-none text-white mt-4 px-10"}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4"}
                       onClick={() => setSelectedServiceIndex(index)}
                     >
-                      <span>{icons.shine}</span><span className='max-lg:text-end'>{service.name}</span>
+                      <span>{icons.shine}</span><span className='max-lg:text-[10px]'>{service.name}</span>
                     </Button>
                   )
                 })
@@ -367,13 +367,13 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className='max-lg:px-3 max-w-[1076px] mx-auto'>
+        <div className='max-lg:px-3 max-w-[1076px] mx-auto max-lg:pt-20'>
           {
             services.map((service, service_index) => {
               return (
-                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between'}>
-                  <div className='flex justify-center items-center '><Image src={service.img} width={144} height={144} alt="Service" className='max-xl:w-full max-md:hidden' /></div>
-                  <div className='max-w-[822px] w-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-e-3xl'><span className='max-w-1/2 max-xl:text-center'>{service.description}</span></div>
+                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between max-lg:flex-col gap-10'}>
+                  <div className='flex justify-center items-center '><Image src={service.img} width={144} height={144} alt="Service" /></div>
+                  <div className='max-w-[822px] w-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-e-3xl'><span className='max-xl:text-center'>{service.description}</span></div>
                 </div>
               )
             })
@@ -413,12 +413,12 @@ export default function HomePage() {
               return (
                 item.bgColor == true ?
                   <div key={index}>
-                    <p className='font-medium text-5xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{item.title}</p>
+                    <p className='font-medium text-5xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-lg:text-4xl'>{item.title}</p>
                     <p className='font-normal text-lg'>{item.content}</p>
                   </div>
                   :
                   <div key={index}>
-                    <p className='font-medium text-5xl'>{item.title}</p>
+                    <p className='font-medium text-5xl max-lg:text-4xl'>{item.title}</p>
                     <p className='font-normal text-lg'>{item.content}</p>
                   </div>
               )

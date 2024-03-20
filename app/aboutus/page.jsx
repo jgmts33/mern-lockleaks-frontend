@@ -29,16 +29,16 @@ export default function AboutUs() {
                 {/* This section for define aboutus page header*/}
 
                 <div className="text-center mt-20">
-                    <div className='mx-auto'><p className="font-medium text-huge uppercase max-lg:text-3xl">About us</p></div>
+                    <div className='mx-auto'><p className="font-medium text-huge uppercase max-lg:text-4xl">About us</p></div>
                 </div>
-                <div className="flex mt-10 max-xl:mx-auto max-md:px-3">
-                    <div className='flex w-full justify-around max-xl:flex-col max-xl:mx-auto'>
+                <div className="flex mt-10 max-xl:mx-auto max-xl:px-3">
+                    <div className='flex w-full justify-around max-lg:flex-col max-xl:gap-5'>
                         {
                             AboutUsHeader.map((description, index) => {
                                 return (
                                     <div key={index} className='flex flex-col max-w-sm text-center mt-5'>
-                                        <span className='font-medium text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{description.title}</span>
-                                        <span className='font-normal text-base mt-5'>{description.content}</span>
+                                        <span className='font-medium flex-wrap text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{description.title}</span>
+                                        <span className='font-normal flex-wrap text-base mt-5'>{description.content}</span>
                                     </div>
                                 )
                             })
@@ -49,14 +49,14 @@ export default function AboutUs() {
                 {/* This section for define Innovation and Progress*/}
 
                 <div className='max-lg:px-3'>
-                    <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center relative px-10 py-20 mx-auto">
-                        <div className='flex justify-start w-full'>
-                            <div className='px-9 py-6 max-xl:w-full max-xl:text-center'>
-                                <div className='max-xl:text-3xl'><span className='font-medium text-5xl mt-3 max-md:text-3xl'>Innovation and</span><p className='bg-gradient-to-r font-medium text-5xl from-purple-light to-purple-weight bg-clip-text text-transparent max-md:text-3xl !leading-normal'>Progress</p></div>
+                    <div className="mt-24 flex flex-col rounded-3xl bg-[#0E142B] container relative px-10 py-20 mx-auto">
+                        <div className='flex w-full'>
+                            <div className='px-9 py-6 max-lg:w-full max-xl:text-center max-xl:px-0 max-xl:w-1/3'>
+                                <div><span className='font-medium text-5xl mt-3 max-xl:text-4xl'>Innovation and</span><p className='bg-gradient-to-r font-medium text-5xl from-purple-light to-purple-weight bg-clip-text text-transparent max-md:text-4xl !leading-normal'>Progress</p></div>
                                 <div><p className='max-w-[539px] max-xl:mx-auto mt-5'>We focus on constant innovation and progress, continuously adapting to changes in the digital protection field. We are committed to staying updated with the latest technologies and methods to provide efficient and competitive solutions for our clients.</p></div>
                             </div>
-                            <div className='max-xl:hidden'>
-                                <Image src="assets/setup/message.svg" alt='message' width={300} height={170} className="top-20 right-[460px] absolute" />
+                            <div className='max-lg:hidden max-xl:w-2/3'>
+                                <Image src="assets/setup/message.svg" alt='message' width={300} height={170} className="top-20 right-[460px] max-xl:right-80 absolute" />
                                 <Image src="assets/setup/bubble.svg" alt='bubble' width={443} height={404} className="top-0 right-0 absolute" />
                             </div>
                         </div>
@@ -70,12 +70,12 @@ export default function AboutUs() {
 
                 <div className='max-lg:px-3 mt-20 z-20'>
                     <div className='mx-auto text-center max-w-lg uppercase'>
-                        <span className='font-medium text-5xl max-xl:text-3xl'>Success Stories or Case Studies</span>
+                        <span className='font-medium text-5xl max-xl:text-4xl'>Success Stories or Case Studies</span>
                     </div>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-center items-center bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl '>
-                        <Image src="assets/setup/aboutus.svg" width={845} height={311} alt="Service" className='max-xl:w-full max-md:hidden' />
-                        <div className='px-20 max-md:text-center max-xl:py-10'>
-                            <span className='max-w-1/2 justify-center font-normal  text-base max-xl:text-center'>We have had several successful projects where we managed to eliminate pirated content from various platforms, thereby contributing to protecting our clients' image and digital assets. Case studies demonstrate the effectiveness of our solutions and how we addressed specific client needs.</span>
+                        <Image src="assets/setup/aboutus.svg" width={845} height={311} alt="Service" className='max-xl:w-full' />
+                        <div className='px-20 max-md:text-center max-xl:py-10 max-md:px-5'>
+                            <span className='max-w-1/2 font-normal text-base max-xl:text-center'>We have had several successful projects where we managed to eliminate pirated content from various platforms, thereby contributing to protecting our clients' image and digital assets. Case studies demonstrate the effectiveness of our solutions and how we addressed specific client needs.</span>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ export default function AboutUs() {
                 {/* This section for define Team information */}
 
                 <div className='max-lg:px-3 mt-20 text-center'>
-                    <div className='mx-auto'><span className='font-medium text-5xl max-xl:text-3xl'>The Team</span></div>
+                    <div className='mx-auto'><span className='font-medium text-5xl max-xl:text-4xl'>The Team</span></div>
                     <div className='max-w-3xl mx-auto mt-5'><span className='font-normal text-base max-xl:text-center'>Our team comprises dedicated professionals with extensive experience in the digital protection industry. Each member brings a unique set of skills and expertise, contributing to our success and excellence in serving clients.</span></div>
                 </div>
             </div>

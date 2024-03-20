@@ -161,7 +161,7 @@ export default function Checkout() {
     ]
 
     return (
-        <div className="flex flex-col text-white w-full">
+        <div className="flex flex-col text-white w-full max-sm:px-3">
 
             {/* This section for define chechout page header*/}
 
@@ -194,13 +194,13 @@ export default function Checkout() {
                                                 :
                                                 false
                                         }
-                                        <p className='text-center font-medium text-6xl mt-10'>{item.title}</p>
+                                        <p className='text-center font-medium text-6xl mt-10 max-sm:text-5xl'>{item.title}</p>
                                         <div className='mt-20 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{isSelected ? item.monthly_price : item.yearly_price}</p><p className='pt-5'>{isSelected ? "/MO" : "/3 MO"}</p></div>
                                         {
                                             isSelected != true ?
                                                 <div className='flex flex-col mt-10 text-center'>
                                                     <span className='font-normal text-3xl'>{item.discount}</span>
-                                                    <span className='font-medium text-5xl'>{item.save_price}</span>
+                                                    <span className='font-medium text-5xl max-sm:text-4xl'>{item.save_price}</span>
                                                 </div>
                                                 : false
                                         }
@@ -250,7 +250,7 @@ export default function Checkout() {
             {/* This section for define select user name*/}
 
             <div className='flex justify-center mx-auto mt-32 gap-10 max-xl:flex-col max-md:mx-auto max-md:px-3'>
-                <div className="flex bg-white/5 shadow-sm rounded-[20px] max-w-[720px] w-full flex-col gap-4 p-20">
+                <div className="flex bg-white/5 shadow-sm rounded-[20px] max-w-[720px] w-full flex-col gap-4 p-20 max-sm:p-10">
                     <p className='font-medium text-6xl mt-3'>ORDER</p>
                     <div className='flex flex-col'>
                         <p>Tell Us Jow Many Usernames You're Using.</p>
@@ -271,7 +271,7 @@ export default function Checkout() {
                         </select>
                     </div>
                 </div>
-                <div className="flex flex-col bg-gradient-to-tr mx-auto from-purple-light to-purple-weight rounded-[20px] p-5 cursor-pointer text-center ">
+                <div className="flex flex-col bg-gradient-to-tr mx-auto from-purple-light to-purple-weight rounded-[20px] p-5 cursor-pointer text-center max-lg:mx-auto">
                     <div className='mt-5'>
                         <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
                             <span className='px-4'>popular</span>
@@ -312,7 +312,7 @@ export default function Checkout() {
                     {
                         AddUserName.map((content, index) => {
                             return (
-                                <div key={index} className="flex bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 cursor-pointer w-full max-w-[724px] flex-col border border-gray-700 py-20 px-10 ">
+                                <div key={index} className="flex bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 cursor-pointer w-full max-w-[724px] flex-col border border-gray-700 py-20 px-10 ">
                                     <p className='font-medium text-[34px] text-center'>{content.title}</p>
                                     <p className={content.input == true ? 'mt-3' : "text-center"}>{content.description}</p>
                                     <div className="flex w-full flex-col gap-4 mt-10">
@@ -364,7 +364,7 @@ export default function Checkout() {
             
             {/* This section for define payment*/}
 
-            <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-40 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">
+            <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">
                 <p className='font-medium text-[34px] text-center'>PAYMENT</p>
                 <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
                     Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.

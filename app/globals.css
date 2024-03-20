@@ -31,11 +31,15 @@ body {
 
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #26304e;
+  border-width: 30px;
+  border-style: solid;
+  border-image: initial;
 }
 
 /* Handle */

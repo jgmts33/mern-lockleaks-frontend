@@ -45,10 +45,6 @@ export default function Header() {
       path:"/monthlypdf"
     },
     {
-      content:"Monthly Analytics PDF",
-      path:"/monthlypdf"
-    },
-    {
       content:"Dmca Badges",
       path:"/dmcabadges"
     },
@@ -71,7 +67,7 @@ export default function Header() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-transparent sm:p-1"
+      className="bg-transparent sm:p-1 z-20"
       maxWidth="2xl"
     >
       <NavbarContent className="md:hidden text-white" justify="start">

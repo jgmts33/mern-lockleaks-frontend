@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
 
     return (
         <>
-            <div className="flex flex-col mx-auto items-center max-w-[1470px] justify-center text-white w-full font-normal text-base max-xl:px-3 max-xl:text-center">
+            <div className="flex flex-col mx-auto items-center max-w-[1470px] justify-center text-white w-full font-normal text-base max-xl:px-3">
 
                 {/* This section for define privacy policy header*/}
             

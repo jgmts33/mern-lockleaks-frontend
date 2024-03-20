@@ -51,10 +51,10 @@ export default function FreeAnalyse() {
 
       {/* This section for define show photos for freeanalyse*/}
 
-      <div className='flex w-full px-60 justify-center mt-80 max-xl:flex-col max-xl:hidden'>
+      <div className='flex w-full px-60 justify-center mt-80 max-xl:hidden'>
         <div className='w-1/2 flex justify-center items-center'>
           <div className=' relative'>
-            <Image className="h-[560px] w-80 object-cover max-md:w-full rounded-[20px]" src={Robertgroup} alt="Modern building architecture" />
+            <Image className="h-[560px] w-80 max-md:w-full rounded-[20px]" src={Robertgroup} alt="Modern building architecture" />
             <Image src={Chat} width={500} height={370} className="-top-40 left-[115px] -rotate-[45deg] absolute  max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
             <Image src={Chat} width={200} height={170} className="top-14 left-[220px] absolute max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
           </div>

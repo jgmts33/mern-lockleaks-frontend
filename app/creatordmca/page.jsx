@@ -89,7 +89,7 @@ export default function CreatorDmca() {
                                     Free Analisis
                                 </Button>
                             </div>
-                            <div className='relative w-1/2 flex max-xl:flex-col max-sm:hidden'>
+                            <div className='relative w-1/2 flex max-xl:flex-col max-md:hidden'>
                                 <Image className='right-0 absolute' src={Envelop} alt='chat' />
                                 <Image className='left-0 mt-32' src={Reversechat} alt='reverse chat' />
                             </div>
@@ -99,17 +99,17 @@ export default function CreatorDmca() {
 
                 {/* This section for define tips for creator dmca page*/}
 
-                <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-20 py-20 max-xl:flex-col items-center'>
+                <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-20 py-20 max-xl:flex-col items-center max-sm:px-5'>
                     <div className='flex max-w-[720px] justify-center flex-col gap-y-10'>
                         {
                             TipContent.map((content, index) => {
                                 return (
                                     <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
-                                        <div className='flex gap-8 p-7' onClick={() => { setSelectedTipIndex(index) }}>
+                                        <div className='flex gap-8 p-5 max-sm:flex-col' onClick={() => { setSelectedTipIndex(index) }}>
                                             <div>{content.icon}</div>
                                             <div className='flex flex-col'>
-                                                <p className='font-medium text-xl'>{content.title}</p>
-                                                <p className='mt-5'>{content.content}</p>
+                                                <p className='font-medium text-xl max-sm:text-lg'>{content.title}</p>
+                                                <p className='mt-5 text-lg max-sm:text-sm'>{content.content}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -118,15 +118,17 @@ export default function CreatorDmca() {
                         }
                     </div>
                     <div className="max-w-[740px] relative flex flex-wrap max-xl:items-center max-xl:justify-center">
-                        <Image className="z-20 relative" src={WriteTip} alt='write tip' />
-                        <Image className="absolute -right-20 bottom-0" src={TipDocument} alt='tip document' />
+                    <div className='flex flex-wrap items-center justify-center'>
+                                <Image src={WriteTip} alt='write tip' className='relative z-0' />
+                                <Image src={TipDocument} alt='tip document' className='relative z-0' />
+                            </div>
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#7a56ce] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                 </div>
 
                 {/* This section for define FAQ for creator dmca page*/}
 
-                <div className='font-medium text-5xl mt-56'><p className='font-medium text-5x center'>FAQ</p></div>
+                <div className='font-medium text-5xl mt-32'><p className='font-medium text-5x center'>FAQ</p></div>
                 <div className='flex gap-32 mt-10 max-lg:px-3'>
                     <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>
                         {

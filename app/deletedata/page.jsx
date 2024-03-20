@@ -72,7 +72,7 @@ export default function DeleteData() {
 
             {/* This section for request personal data*/}
 
-            <div className="text-center gap-10 mt-20">
+            <div className="text-center gap-10 mt-20 max-xl:px-3">
                 <div className='max-w-[600px] mx-auto'><p className="font-medium text-[50px] max-lg:text-3xl">{DeleteDataTitle.title}</p></div>
                 <div className='max-w-[980px] mx-auto mt-5'><span className='font-normal text-base'>{DeleteDataTitle.sub_title}</span></div>
             </div>
@@ -98,7 +98,7 @@ export default function DeleteData() {
             {/* This section for define request data*/}
 
             <div className='max-lg:px-3 relative max-w-[730px] mx-auto'>
-                <div className="flex z-20 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] w-full flex-col max-md:p-5 gap-4 p-20 text-center relative ">
+                <div className="flex z-10 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] w-full flex-col max-md:p-5 gap-4 p-20 text-center relative ">
                     <div>
                         <span className='font-medium text-3xl mt-3 max-lg:text-lg'>Your capacity in making this request:</span>
                         <div className="flex w-full flex-col gap-4 mt-10">
@@ -141,7 +141,7 @@ export default function DeleteData() {
                         <div className='relative max-xl:hidden'>
                             <Image src={RightChat} className='absolute -left-96 z-0 -top-32 w-[500px] h-[450px] rotate-[-50deg]' alt='right rotate chat' />
                         </div>
-                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={842} className='absolute top-0 left-96 bg-[#362666] bg-opacity-5 blur-3xl' />
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={842} className='max-md:hidden absolute top-0 left-96 bg-[#362666] bg-opacity-5 blur-3xl max-2xl:hidden' />
                         <div className="flex w-full flex-col gap-4 mt-10">
                             {
                                 LegislationMaking.map((legislation, index) => {
@@ -219,17 +219,17 @@ export default function DeleteData() {
                     </div>
 
                 </div>
-                <Image src={LeftChat} className='absolute z-0 rotate-[50deg] w-[430px] h-[240px] top-[calc(50%-10px)] -left-[calc(50%-70px)] ' alt='left rotate chat' />
+                <Image src={LeftChat} className='max-xl:hidden absolute rotate-[50deg] w-[430px] h-[240px] top-[calc(50%-10px)] -left-[calc(50%-70px)] ' alt='left rotate chat' />
             </div>
             <div className='relative flex w-full'>
-                <Image src={Photo} className='absolute z-0 right-80 -top-44 max-2xl:hidden' alt='photo' />
-                <Image src={RightChat} className='absolute z-0 right-[510px] -top-8 max-2xl:hidden' alt='right rotate chat' />
-                <Image src={RobertHand} className='absolute z-0 right-0' alt='robert hand' />
+                <Image src={Photo} className='absolute right-80 -top-48 max-2xl:hidden' alt='photo' />
+                <Image src={RightChat} className='absolute right-[510px] -top-8 max-2xl:hidden' alt='right rotate chat' />
+                <Image src={RobertHand} className='absolute right-0 -mt-32 max-xl:-mt-5' alt='robert hand' />
             </div>
 
             {/* This section for confirm personal data*/}
 
-            <div className='mt-24 mx-auto max-md:px-3 z-20'>
+            <div className='mt-24 mx-auto max-md:px-3 z-10'>
                 <div className="text-center">
                     <div className='mx-auto'><p className="font-medium text-[50px] max-md:text-4xl uppercase">I confirm that:</p></div>
                 </div>

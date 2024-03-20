@@ -53,7 +53,7 @@ export default function BlogFormat() {
 
                 <div className='px-3'>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-center items-center bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
-                        <Image src={Space} alt="Service" className='max-xl:w-full max-md:hidden' />
+                        <Image src={Space} alt="Service" className='max-xl:w-full' />
                         <div className='flex flex-col p-8'>
                             <div className='flex justify-end pb-32'>
                                 <Button radius="full" className="bg-gradient-to-tr opacity-60 from-gray-800/80 to-gray-800/40 text-white shadow-lg text-lg max-md:text-[15px]" size='md'>

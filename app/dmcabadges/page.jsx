@@ -10,6 +10,9 @@ import RobertHand from '@/public/assets/dmcabadge/robert-hand.svg';
 import PhotoRight from '@/public/assets/dmcabadge/photo-right.svg';
 import PhotoLeft from '@/public/assets/dmcabadge/photo-left.svg';
 import Robert from '@/public/assets/dmcabadge/robert.svg';
+import Saturn from '@/public/assets//blog/saturn.svg';
+import Moon from '@/public/assets//blog/moon.svg';
+import Mars from '@/public/assets//blog/mars.svg'
 
 export default function DmcaBadges() {
 
@@ -23,29 +26,19 @@ export default function DmcaBadges() {
     }
     const DmcaBadgesContent = [
         {
-            content: "@/public/assets/saturn.svg"
+            content: Saturn
         }, {
-            content: "@/public/assets/saturn.svg"
+            content: Moon
         }, {
-            content: "@/public/assets/saturn.svg"
+            content: Mars
         }, {
-            content: "@/public/assets/saturn.svg"
+            content: Saturn
         }, {
-            content: "@/public/assets/saturn.svg"
+            content: Moon
         }, {
-            content: "@/public/assets/saturn.svg"
+            content: Mars
         }
     ]
-
-    // const DmcaBadges = [
-    //     {
-    //         title: "Download Legal Protection:",
-    //         content: "Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse."
-    //     }, {
-    //         title: "Visual Deterrent:",
-    //         content: "These badges act as a deterrent to potential violators, signaling that your content is monitored and protected by copyright laws. Badges"
-    //     }
-    // ]
 
     return (
         <>
@@ -78,52 +71,52 @@ export default function DmcaBadges() {
                     </div>
                 </div>
 
-                <div className='flex w-full pt-64 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center'>
+                <div className='flex w-full pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
                     <div className='flex w-1/3 relative'>
-                        <Image className='left-0 top-10 z-20' src={RobertHand} alt='robert-hand' />
+                        <Image className='z-20' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-40 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
                     </div>
-                    <div className='w-1/3 text-center mt-32 relative z-20 max-xl:mt-0'>
+                    <div className='w-1/3 text-center mt-32 relative z-20 max-xl:mt-0 max-xl:w-full'>
                         <Image className='-top-40 absolute max-xl:hidden' src={PhotoLeft} alt='photo rotate left' />
-                        <span className='font-medium text-xl mx-auto mt-20'>Why Use DMCA Badges?</span>
+                        <span className='font-medium text-md mx-auto mt-20 max-xl:text-3xl'>Why Use DMCA Badges?</span>
                     </div>
                     <div className='w-1/3 max-xl:w-full relative max-xl:px-3'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 top-10 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                         <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute left-0 -top-36 ">
                             <div>
-                                <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Download Legal Protection:</span>
-                                <span className='font-normal text-lg'>Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse.</span>
+                                <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-xl:text-base'>Download Legal Protection:</span>
+                                <span className='font-normal text-lg max-sm:text-base'>Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse.</span>
                             </div>
                         </div>
                         <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-24 mt-6 ">
                             <div>
-                                <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Visual Deterrent:</span>
-                                <span className='font-normal text-lg'>These badges act as a deterrent to potential violators, signaling that your content is monitored and protected by copyright laws. Badges</span>
+                                <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-sm:text-base'>Visual Deterrent:</span>
+                                <span className='font-normal text-lg max-sm:text-base'>These badges act as a deterrent to potential violators, signaling that your content is monitored and protected by copyright laws. Badges</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className='flex w-full mt-36 max-w-[1400px] max-xl:flex-col max-xl:items-center mb-96'>
-                    <div className='flex w-1/4 items-center'>
-                        <span className='font-medium text-2xl max-xl:text-center'>How to Use DMCA Badges?</span>
+                <div className='flex w-full mt-36 max-w-[1400px] max-xl:flex-col max-xl:items-center mb-40 max-sm:px-3 max-sm:mt-44'>
+                    <div className='flex w-1/4 items-center max-sm:w-full'>
+                        <span className='font-medium max-md:mx-auto text-md max-xl:text-3xl'>How to Use DMCA Badges?</span>
                     </div>
-                    <div className='relative flex w-1/2 max-xl:mt-5 max-xl:flex-col max-md:w-full max-md:px-3'>
-                        <div className="flex max-w-[462px] max-xl:w-full duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-8 cursor-pointer absolute left-0 top-6 max-xl:left-0 max-xl:top-24 mt-6 ">
+                    <div className='relative flex w-1/2 max-xl:flex-col max-md:w-full max-md:px-3'>
+                        <div className="flex max-w-[462px] max-xl:w-full duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-8 cursor-pointer absolute left-0 top-6 max-xl:left-0 max-xl:top-5 mt-6 ">
                             <div className='flex flex-col'>
-                                <span className='font-medium text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Download:</span>
-                                <span className='font-normal text-lg'>Choose from a range of DMCA Badges available for your platform.</span>
+                                <span className='font-medium text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-sm:text-lg'>Download:</span>
+                                <span className='font-normal text-lg max-sm:text-base'>Choose from a range of DMCA Badges available for your platform.</span>
                             </div>
                         </div>
-                        <div className="flex max-w-[462px] max-xl:mt-5 max-xl:w-full duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-8 cursor-pointer absolute left-48 top-44 max-xl:left-0 max-xl:top-24">
+                        <div className="flex max-w-[462px] max-xl:mt-5 max-xl:w-full duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-8 cursor-pointer absolute left-48 top-44 max-xl:left-0 max-xl:top-10">
                             <div className='flex flex-col'>
-                                <span className='font-medium text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Placement:</span>
-                                <span className='font-normal text-lg'>Insert the badge on your website, content, or platform to make it visible to users.</span>
+                                <span className='font-medium text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-sm:text-lg'>Placement:</span>
+                                <span className='font-normal text-lg max-sm:text-base'>Insert the badge on your website, content, or platform to make it visible to users.</span>
                             </div>
                         </div>
-                        <div className="flex max-w-[462px] max-xl:w-full duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-8 cursor-pointer absolute left-0 top-80 max-xl:left-0 max-xl:top-24 mt-6 ">
+                        <div className="flex max-w-[462px] max-xl:w-full duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-8 cursor-pointer absolute left-0 top-80 max-xl:left-0 max-xl:top-16 mt-6 ">
                             <div className='flex flex-col'>
-                                <span className='font-medium text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Visibility:</span>
-                                <span className='font-normal text-lg'>Ensure the badges are clearly visible, preferably near the content, to indicate protection against infringement.</span>
+                                <span className='font-medium text-md bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-sm:text-lg'>Visibility:</span>
+                                <span className='font-normal text-lg max-sm:text-base'>Ensure the badges are clearly visible, preferably near the content, to indicate protection against infringement.</span>
                             </div>
                         </div>
                     </div>

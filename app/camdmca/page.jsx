@@ -70,9 +70,9 @@ export default function CamDmca() {
                     <p className='font-bold text-7xl max-lg:text-3xl'>{CamDmcaTitle.title}</p>
                     <div className='max-w-[848px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
                 </div>
-                <div className='font-medium text-5xl mt-56 max-lg:text-4xl max-md:text-[30px]'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
-                <div className='flex gap-32 mt-10 max-md:px-3'>
-                    <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>
+                <div className='font-medium text-5xl mt-32 max-lg:text-4xl'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
+                <div className='flex  mt-10 max-md:px-3'>
+                    <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col max-xl:px-3'>
                         {
                             CamDmcaContent.map((item, index) => {
                                 return (
@@ -91,21 +91,27 @@ export default function CamDmca() {
 
                 {/* This section for define tips for camdmca page*/}
 
-                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-center px-10 py-20 gap-32 max-lg:flex-col max-lg:items-center'>
-                    <div className="relative max-w-[740px] flex justify-between max-sm:hidden">
-                        <Image src={WriteTip} alt='write tip' className='relative z-20' />
-                        <Image src={TipDocument} alt='tip document' className='relative z-20' />
+                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-around px-10 py-20 max-lg:flex-col max-lg:items-center'>
+                    <div className="relative max-w-[740px] flex justify-between">
+                        <div className='max-w-[500px] text-center'><span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>
+                            <div className='flex flex-wrap items-center justify-center'>
+                                <Image src={WriteTip} alt='write tip' className='relative z-0' />
+                                <Image src={TipDocument} alt='tip document' className='relative z-0' />
+                            </div>
+                        </div>
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#9458f5] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
-                    <div className='flex max-w-[570px] justify-center flex-col gap-y-10'>
+                    <div className='flex max-w-[570px] justify-center flex-col gap-y-10 z-10'>
                         {
                             ProtectionContent.map((contents, index) => {
                                 return (
                                     <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
-                                        <div className='flex gap-3 p-7 w-full' onClick={() => {setSelectedTipIndex(index) }}>
+                                        <div className='flex gap-3 p-5 w-full max-sm:p-3' onClick={() => { setSelectedTipIndex(index) }}>
                                             <div>{contents.icon}</div>
-                                            <div className='flex flex-col'><span className='font-medium text-xl max-lg:text-lg'>{contents.title}</span>
-                                            <span className='font-medium text-lg max-lg:text-lg'>{contents.content}</span></div>
+                                            <div className='flex flex-col'>
+                                                <span className='font-medium text-xl max-lg:text-lg'>{contents.title}</span>
+                                                <span className='font-medium text-lg pt-3 max-lg:text-base'>{contents.content}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 )

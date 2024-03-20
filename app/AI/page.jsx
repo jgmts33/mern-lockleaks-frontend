@@ -100,15 +100,15 @@ export default function AI() {
                 {/* This section for define help content*/}
 
                 <div className='flex justify-center mt-20 max-md:px-3 '>
-                    <div className='flex grid-cols-3 gap-20 z-20 max-xl:flex-wrap max-xl:justify-center max-xl:flex-col'>
-                        <div className='flex flex-col gap-20'>
+                    <div className='flex grid-cols-3 gap-20 z-10 max-xl:flex-wrap max-xl:justify-center max-xl:flex-col'>
+                        <div className='flex flex-col gap-10'>
                             {
                                 ProtectHelpContent.map((item, index) => {
                                     return (
                                         <div key={index} className="flex max-w-[480px] py-10 bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer top-6 mt-6">
                                             <div className='flex flex-col'>
                                                 {item.icon}
-                                                <p className='mt-5 font-normal text-xl'>{item.content}</p>
+                                                <p className='mt-5 font-normal text-xl max-sm:text-base'>{item.content}</p>
                                             </div>
                                         </div>
                                     )
@@ -117,16 +117,16 @@ export default function AI() {
                         </div>
                         <div className='relative'>
                             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
-                            <Image className="w-80 h-[560px] mt-10 z-20  relative" src={Robertgroup} alt='rober-group' />
+                            <Image className="w-80 h-[560px] mt-10 z-10  relative" src={Robertgroup} alt='rober-group' />
                         </div>
-                        <div className='flex flex-col gap-20'>
+                        <div className='flex flex-col gap-10'>
                             {
                                 HubHelpContent.map((item, index) => {
                                     return (
                                         <div key={index} className="flex max-w-[480px] py-10 bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer top-6 mt-6">
                                             <div className='flex flex-col'>
                                                 {item.icon}
-                                                <p className='mt-5 font-normal text-xl'>{item.content}</p>
+                                                <p className='mt-5 font-normal text-xl max-sm:text-base'>{item.content}</p>
                                             </div>
                                         </div>
                                     )
@@ -159,7 +159,7 @@ export default function AI() {
                                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
                                     <div className='flex justify-between'>
                                         <p className='font-medium text-3xl max-md:text-base'>{contents.title}</p>
-                                        <button className={(" mt-50 w-10 h-10 text-white flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
+                                        <button className={(" mt-50 w-10 h-10 text-white flex items-center justify-center rounded-lg z-10 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             {icons.arrowtop}
                                         </button>
                                     </div>

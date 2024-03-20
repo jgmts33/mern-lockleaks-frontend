@@ -69,49 +69,49 @@ export default function MonthlyPdf() {
                 {/* This section for define monthly pdf header*/}
 
                 <div className='mt-28 max-md:px-3 max-md:text-center'>
-                    <p className='font-medium text-5xl uppercase text-center'>{MonthlyTitle.title}</p>
-                    <div className='flex items-center justify-between mx-auto max-xl:justify-center max-md:flex-col'>
+                    <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{MonthlyTitle.title}</p>
+                    <div className='flex items-center justify-between mx-auto max-2xl:justify-around max-md:flex-col'>
                         <div className='max-w-[653px] mt-10'><p className='font-normal text-lg mt-10'>{MonthlyTitle.content}</p></div>
-                        <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
+                        <Image src="/assets/logo.svg" width={190} height={50} className='mt-20' alt="logo" />
                     </div>
                 </div>
 
                 {/* This section for define help content*/}
 
-                <div className='flex w-full justify-center mt-72 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center'>
+                <div className='flex w-full justify-center mt-72 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center max-xl:mt-20'>
                     <div className='relative'>
                         <span className='font-medium text-md'>How It Helps</span>
                     </div>
                     <div className='max-lg:hidden'><Image src={Photo} width={300} height={200} className='absolute left-80 -top-44' alt='right rotate chat' /></div>
-                    <div className="flex max-w-[422px] z-20 duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-2xl:left-0 max-2xl:top-10 mt-6 ">
+                    <div className="flex max-w-[422px] z-10 duration-700 max-2xl:!relative backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-2xl:left-0 max-2xl:top-10 mt-6">
                         <div>{icons.protect}</div>
-                        <p className='font-normal text-lg mt-2'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
+                        <p className='font-normal text-lg mt-2 max-sm:text-base'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
                     </div>
                     <div className='max-lg:hidden'><Image src={RightChat} width={200} height={100} className='absolute left-60 -top-8' alt='right rotate chat' /></div>
-                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] z-20 p-5 cursor-pointer absolute right-6 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
+                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-6 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
                         <div>{icons.protect}</div>
                         <div>
-                            <p className='font-normal text-lg mt-2'>Comprehensive Analysis:Presents a detailed overview of content evolution and performance metrics.</p>
+                            <p className='font-normal text-lg mt-2 max-sm:text-base'>Comprehensive Analysis:Presents a detailed overview of content evolution and performance metrics.</p>
                         </div>
                     </div>
-                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative max-2xl:rotate-0 max-2xl:right-0 max-2xl:top-32 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute -right-12 -top-8 ">
+                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative max-2xl:rotate-0 max-2xl:right-0 max-2xl:top-32 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute -right-12 -top-16 ">
                         <div>{icons.protect}</div>
                         <div>
-                            <p className='font-normal text-lg mt-2'>Data Insights: Offers in-depth insights into content performance, interactions,and trends.</p>
+                            <p className='font-normal text-lg mt-2 max-sm:text-base'>Data Insights: Offers in-depth insights into content performance, interactions,and trends.</p>
                         </div>
                     </div>
                 </div>
 
                 {/* This section for define benefit content*/}
 
-                <div className='flex max-lg:px-5 mt-80 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px]'>
+                <div className='flex max-lg:px-5 mt-80 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px] max-md:mt-60 max-sm:pb-10'>
                     <div className='flex flex-col'>
-                        <div className='p-10'><span className='font-medium text-5xl'>BENEFITS:</span></div>
-                        <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 gap-7 justify-center items-center p-10'>
+                        <div className='p-10'><span className='font-medium text-5xl max-lg:text-4xl'>BENEFITS:</span></div>
+                        <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 gap-7 justify-center items-center p-10 max-sm:p-0'>
                             {
                                 BenefitContent.map((benefits, index) => {
                                     return (
-                                        <div key={index} className="flex max-w-[430px] rounded-full bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 p-5 cursor-pointer">
+                                        <div key={index} className="flex max-w-[430px] rounded-full backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 border border-gray-500 p-5 cursor-pointer">
                                             <span className='flex mt-5 font-normal text-base'>{icons.shine}{benefits.content}...</span>
                                         </div>
                                     )
@@ -129,14 +129,14 @@ export default function MonthlyPdf() {
                 {/* This section for define tips for monthly pdf*/}
 
                 <span className='font-medium text-5xl text-center mt-32 max-md:mt-32 max-lg:text-3xl'>Tips for Use</span>
-                <div className='flex justify-around mt-10 max-lg:flex-col max-lg:mx-auto max-md:p-3'>
+                <div className='flex justify-around mt-10 max-lg:flex-col max-lg:mx-auto max-lg:p-3 max-xl:gap-5'>
                     {
                         TipContent.map((tips, index) => {
                             return (
                                 <div key={index} className="flex max-w-[407px] bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 rounded-[30px] p-5 cursor-pointer top-6 mt-6">
                                     <div className='flex flex-col'>
                                         <span>{icons.shine}</span>
-                                        <span className='font-medium text-3xl mt-3 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{tips.title}</span>
+                                        <span className='font-medium text-3xl mt-3 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-sm:text-xl'>{tips.title}</span>
                                         <span className='font-normal text-base mt-3'>{tips.content}</span>
                                     </div>
                                 </div>
@@ -147,7 +147,9 @@ export default function MonthlyPdf() {
 
                 {/* This section for define FAQ content*/}
 
-                <div className='font-medium text-5xl mt-56'><p className='font-medium text-5x text-center'>FAQ</p></div>
+                <div className='font-medium text-5xl mt-32 max-sm:mt-28'>
+                    <p className='font-medium text-5x text-center'>FAQ</p>
+                </div>
                 <div className='flex'>
                     <div className='flex mt-10 gap-5 max-lg:flex-col max-lg:mx-auto max-lg:px-3'>
                         {
