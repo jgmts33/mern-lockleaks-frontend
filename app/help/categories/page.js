@@ -81,9 +81,7 @@ export default function Categories() {
             {/* This section for define Help Page content*/}
 
             <div className="flex z-10 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] w-full flex-col max-md:p-5 gap-4 p-20 text-center relative ">
-                {
-
-                }
+                
             </div>
         </div>
     )
