@@ -197,7 +197,7 @@ export default function HomePage() {
   const [isFlipped, setIsFlipped] = useState(-1);
 
   useEffect(() => {
-    if(screen.width >= 440){
+    if(screen.width >= 470){
       const timer = setInterval(() => {
         if (animationCounter === 7) {
           clearInterval(timer);
@@ -209,7 +209,7 @@ export default function HomePage() {
     else{
       setAnimationCounter(7)
     }
-  }, [animationCounter]);
+  }, []);
 
   return (
     <>
