@@ -219,8 +219,8 @@ export default function HomePage() {
           {/* This section for define homepage header*/}
 
           <div className="flex w-full justify-center items-center flex-col relative">
-            <div className="max-w-[1100px] text-center gap-10 mt-20">
-              <p className="font-medium text-5xl max-lg:text-4xl max-md:mx-auto uppercase">
+            <div className="text-center gap-10 mt-20">
+              <p className="font-medium text-4xl max-lg:text-3xl max-md:mx-auto uppercase">
                 increase your online success with professional copyright protection
               </p>
             </div>

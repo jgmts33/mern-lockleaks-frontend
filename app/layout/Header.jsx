@@ -150,7 +150,12 @@ export default function Header() {
           <Link href="/auth/login" className="text-white">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="/auth/register" className="text-white">Register</Link>
+          <Link href="/auth/register" className="text-white mt-5">Register</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="/freeanalyse" className="mt-5">
+            <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='md'>Free Analisis</Button>
+          </Link>
         </NavbarItem>
       </NavbarMenu>
     </Navbar>

@@ -1,5 +1,4 @@
 'use client'
-// import { NextUIProvider } from "@nextui-org/react";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/layout/Header";
@@ -17,7 +16,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className + " dark"}>
         <div className="flex items-center flex-col min-h-screen">
-          {/* <NextUIProvider> */}
           {
             !currentPath.includes("/auth")
               ?
@@ -35,7 +33,6 @@ export default function RootLayout({ children }) {
               :
               false
           }
-          {/* </NextUIProvider> */}
         </div>
       </body>
     </html>
