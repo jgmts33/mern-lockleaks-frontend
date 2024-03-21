@@ -17,9 +17,6 @@ export default function Details() {
 
     return (
         <div className="text-white relative container flex flex-col max-md:px-3" >
-
-            {/* This section for define Help Page Title*/}
-
             <div className='mt-28 max-md:px-3 max-md:text-center'>
                 <p className='font-medium text-7xl text-center max-xl:text-5xl'>HELP CENTER</p>
             </div>

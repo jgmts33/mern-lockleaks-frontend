@@ -48,9 +48,6 @@ export default function BlogFormat() {
         <>
             <Image src={RobertHand} className='max-2xl:hidden absolute right-0 top-[630px]' alt='rober-hand' />
             <div className="text-white container relative flex flex-col">
-
-                {/* This section for define Blog Format Page Header*/}
-
                 <div className='px-3'>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-center items-center bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
                         <Image src={Space} alt="Service" className='max-xl:w-full' />
@@ -65,9 +62,6 @@ export default function BlogFormat() {
                         </div>
                     </div>
                 </div>
-
-                {/* This section for define Blog Format Page Actions*/}
-
                 <div className='flex justify-start mt-10 gap-5 max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 '>
                     <Button radius="full" className="font-light bg-gradient-to-tr from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg text-lg max-md:text-[15px]" size='md'>
                         Lockleaks{icons.right}
@@ -84,9 +78,6 @@ export default function BlogFormat() {
                         TAGS (Example interview){icons.right}
                     </Button>
                 </div>
-
-                {/* This section for define Blog Format Page Cards*/}
-
                 <div className='w-full flex mx-auto gap-5 max-lg:flex-col max-xl:flex-col max-md:px-3'>
                     <div className='flex flex-col top-24 w-full mt-32 gap-10 max-md:mx-auto' >
                         {

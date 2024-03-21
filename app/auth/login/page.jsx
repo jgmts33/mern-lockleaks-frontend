@@ -22,15 +22,9 @@ export default function Login() {
 
     return (
         <div className='px-10 max-sm:px-3 flex w-full min-h-[calc(100vh-80px)]'>
-
-            {/* This section for keep Login page image*/}
-
             <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
                 <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
             </div>
-
-            {/* This section for define Login page content*/}
-
             <div className='w-full lg:w-1/2 flex items-center justify-center'>
                 <div className="w-[562px] flex flex-col items-center gap-10 text-white">
                     <div className='text-center max-w-[354px] mb-4'>

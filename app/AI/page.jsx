@@ -74,16 +74,10 @@ export default function AI() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full max-xl:px-3">
-
-                {/* This section for define AI page header*/}
-
                 <div className='text-center mt-20'>
                     <p className='font-medium text-7xl max-lg:text-[40px]'>{AITitle.title}</p>
                     <div className='max-w-[830px]'><p className='font-normal text-base mt-10'>{AITitle.sub_title}</p></div>
                 </div>
-
-                {/* This section for deplay social media network*/}
-
                 <div className='max-md:px-3'>
                     <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center from-gray-600/40 mt-36 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
                         <div className='max-w-[425px] mx-auto justify-content'><p className='font-normal text-xl '>Our AI tools are deployed across a myriad of social media networks:</p></div>
@@ -96,9 +90,6 @@ export default function AI() {
                         </div>
                     </div>
                 </div>
-
-                {/* This section for define help content*/}
-
                 <div className='flex justify-center mt-20'>
                     <div className='flex grid-cols-3 gap-20 z-10 max-xl:flex-wrap max-xl:justify-center max-xl:flex-col'>
                         <div className='flex flex-col gap-10'>
@@ -135,9 +126,6 @@ export default function AI() {
                         </div>
                     </div>
                 </div>
-
-                {/* This section for define tips for AI*/}
-
                 <div className='flex bg-white/10 py-20 w-full justify-center gap-32 max-md:rounded-xl mt-36 mx-auto items-center max-xl:flex-col max-xl:px-3'>
                     <p className='font-medium text-3xl'>TIPS:</p>
                     {
@@ -148,9 +136,6 @@ export default function AI() {
                         })
                     }
                 </div>
-
-                {/* This section for define FAQ for AI page*/}
-
                 <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-2xl:px-3'>
                     <p className='font-medium text-5xl text-center'>FAQ</p>
                     {

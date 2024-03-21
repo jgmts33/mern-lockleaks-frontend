@@ -70,15 +70,9 @@ export default function TermService() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center max-w-[1470px] justify-center text-white w-full font-normal text-base">
-
-            {/* This section for define term service header*/}
-
                 <div className='text-center mt-28'>
                     <p className='font-medium text-5xl uppercase max-lg:text-[30px]'>{PravicyPolicy.title}</p>
                 </div>
-
-            {/* This section for define term service content*/}
-
                 <div className='mt-20 grid grid-cols-3 gap-10 mb-20 max-xl:px-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
                     {
                         TermServiceContent.map((termservice, index) => {

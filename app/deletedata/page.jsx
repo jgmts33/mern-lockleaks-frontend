@@ -69,9 +69,6 @@ export default function DeleteData() {
 
     return (
         <div className="flex flex-col text-white w-full">
-
-            {/* This section for request personal data*/}
-
             <div className="text-center gap-10 mt-20 max-xl:px-3">
                 <div className='max-w-[600px] mx-auto'><p className="font-medium text-[50px] max-lg:text-3xl">{DeleteDataTitle.title}</p></div>
                 <div className='max-w-[980px] mx-auto mt-5'><span className='font-normal text-base'>{DeleteDataTitle.sub_title}</span></div>
@@ -94,9 +91,6 @@ export default function DeleteData() {
                     <Image src={LeftChat} className='absolute -right-72 -top-52 rotate-[50deg]' alt='left lotate chat' />
                 </div>
             </div>
-
-            {/* This section for define request data*/}
-
             <div className='max-lg:px-3 relative max-w-[730px] mx-auto'>
                 <div className="flex z-10 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] w-full flex-col max-md:p-5 gap-4 p-20 text-center relative ">
                     <div>
@@ -226,9 +220,6 @@ export default function DeleteData() {
                 <Image src={RightChat} className='absolute right-[510px] -top-8 max-2xl:hidden' alt='right rotate chat' />
                 <Image src={RobertHand} className='absolute right-0 -mt-32 max-xl:-mt-5 max-xl:hidden' alt='robert hand' />
             </div>
-
-            {/* This section for confirm personal data*/}
-
             <div className='mt-24 mx-auto max-md:px-3 z-10'>
                 <div className="text-center">
                     <div className='mx-auto'><p className="font-medium text-[50px] max-md:text-4xl uppercase">I confirm that:</p></div>
@@ -258,9 +249,6 @@ export default function DeleteData() {
                             )
                         })
                     }
-
-                    {/* This section for define submit request content*/}
-
                     <div className='mt-5 items-center mx-auto mb-20'>
                         <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-[#9C3FE4] to-[#C65647] text-white shadow-lg px-10 py-6 text-lg" size='md'>
                             Submit Request

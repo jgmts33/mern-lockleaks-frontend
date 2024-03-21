@@ -61,9 +61,6 @@ export default function CreatorDmca() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
-
-                {/* This section for define create dmca header*/}
-
                 <div className='text-center mt-28 max-lg:px-3'>
                     <p className='font-bold text-6xl uppercase max-lg:text-3xl'>{CamDmcaTitle.title}</p>
                     <div className='flex gap-32 max-md:flex-col items-center max-md:gap-10 mt-20'>
@@ -71,9 +68,6 @@ export default function CreatorDmca() {
                         <Image src="/assets/logo.svg" width={300} height={150} alt="logo" />
                     </div>
                 </div>
-
-                {/* This section for define additional element*/}
-
                 <div className='max-xl:px-3'>
                     <div className='flex bg-white/5 mx-auto mt-24 justify-center rounded-[20px] max-xl:flex-col w-full max-w-[1440px] px-10 py-10 gap-32'>
                         <div className='flex max-md:items-center max-lg:flex-wrap max-lg:flex-col'>
@@ -96,9 +90,6 @@ export default function CreatorDmca() {
                         </div>
                     </div>
                 </div>
-
-                {/* This section for define tips for creator dmca page*/}
-
                 <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-20 py-10 max-xl:flex-col items-center max-sm:px-5'>
                     <div className='flex max-w-[720px] justify-center flex-col gap-y-5'>
                         {
@@ -125,9 +116,6 @@ export default function CreatorDmca() {
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#7a56ce] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                 </div>
-
-                {/* This section for define FAQ for creator dmca page*/}
-
                 <div className='font-medium text-5xl mt-32'><p className='font-medium text-5x center'>FAQ</p></div>
                 <div className='flex gap-32 mt-10 max-lg:px-3'>
                     <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>

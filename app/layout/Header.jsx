@@ -25,10 +25,7 @@ export default function Header() {
     }, {
       content: "Copyright",
       path: "/copyright"
-    }, {
-      content: "Chechout",
-      path: "/checkout"
-    }, {
+    },{
       content: "CAM DMCA Protection",
       path: "/camdmca"
     }, {
@@ -47,10 +44,6 @@ export default function Header() {
     {
       content: "Dmca Badges",
       path: "/dmcabadges"
-    },
-    {
-      content: "Delete Data",
-      path: "/deletedata"
     },
   ];
 

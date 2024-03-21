@@ -25,9 +25,6 @@ export default function AboutUs() {
     return (
         <>
             <div className="flex flex-col text-white w-full">
-
-                {/* This section for define aboutus page header*/}
-
                 <div className="text-center mt-20">
                     <div className='mx-auto'><p className="font-medium text-huge uppercase max-lg:text-4xl">About us</p></div>
                 </div>
@@ -45,9 +42,6 @@ export default function AboutUs() {
                         }
                     </div>
                 </div>
-
-                {/* This section for define Innovation and Progress*/}
-
                 <div className='max-lg:px-3'>
                     <div className="mt-24 flex flex-col rounded-3xl bg-[#0E142B] container relative px-10 py-20 mx-auto">
                         <div className='flex w-full'>
@@ -66,8 +60,6 @@ export default function AboutUs() {
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={542} className='absolute bg-[#935ee9] z-0 -top-96 right-0 bg-opacity-5 blur-3xl' />
                 </div>
                 
-                {/* This section for define Success Stories or Case Studies*/}
-
                 <div className='max-lg:px-3 mt-20 z-20'>
                     <div className='mx-auto text-center max-w-lg uppercase'>
                         <span className='font-medium text-5xl max-xl:text-4xl'>Success Stories or Case Studies</span>
@@ -79,9 +71,6 @@ export default function AboutUs() {
                         </div>
                     </div>
                 </div>
-
-                {/* This section for define Team information */}
-
                 <div className='max-lg:px-3 mt-20 text-center'>
                     <div className='mx-auto'><span className='font-medium text-5xl max-xl:text-4xl'>The Team</span></div>
                     <div className='max-w-3xl mx-auto mt-5'><span className='font-normal text-base max-xl:text-center'>Our team comprises dedicated professionals with extensive experience in the digital protection industry. Each member brings a unique set of skills and expertise, contributing to our success and excellence in serving clients.</span></div>

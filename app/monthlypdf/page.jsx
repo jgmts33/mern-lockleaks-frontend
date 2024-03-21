@@ -65,9 +65,6 @@ export default function MonthlyPdf() {
     return (
         <>
             <div className="flex flex-col text-white w-full max-w-[1400px]">
-
-                {/* This section for define monthly pdf header*/}
-
                 <div className='mt-28 max-md:px-3 max-md:text-center'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{MonthlyTitle.title}</p>
                     <div className='flex items-center justify-between mx-auto max-2xl:justify-around max-md:flex-col'>
@@ -75,9 +72,6 @@ export default function MonthlyPdf() {
                         <Image src="/assets/logo.svg" width={190} height={50} className='mt-20' alt="logo" />
                     </div>
                 </div>
-
-                {/* This section for define help content*/}
-
                 <div className='flex w-full justify-center mt-72 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center max-xl:mt-20'>
                     <div className='relative'>
                         <span className='font-medium text-md'>How It Helps</span>
@@ -101,9 +95,6 @@ export default function MonthlyPdf() {
                         </div>
                     </div>
                 </div>
-
-                {/* This section for define benefit content*/}
-
                 <div className='flex max-lg:px-5 mt-80 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px] max-md:mt-60 max-sm:pb-10'>
                     <div className='flex flex-col'>
                         <div className='p-10'><span className='font-medium text-5xl max-lg:text-4xl'>BENEFITS:</span></div>
@@ -125,9 +116,6 @@ export default function MonthlyPdf() {
                         <Image alt='roberthand' src={RobertHand} width={461} height={312} className='mt-20 z-20' />
                     </div>
                 </div>
-
-                {/* This section for define tips for monthly pdf*/}
-
                 <span className='font-medium text-5xl text-center mt-32 max-md:mt-32 max-lg:text-3xl'>Tips for Use</span>
                 <div className='flex justify-around mt-10 max-lg:flex-col max-lg:mx-auto max-lg:p-3 max-xl:gap-5'>
                     {
@@ -144,9 +132,6 @@ export default function MonthlyPdf() {
                         })
                     }
                 </div>
-
-                {/* This section for define FAQ content*/}
-
                 <div className='font-medium text-5xl mt-32 max-sm:mt-28'>
                     <p className='font-medium text-5x text-center'>FAQ</p>
                 </div>

@@ -131,15 +131,9 @@ export default function Pricing() {
     return (
         <>
             <div className="flex flex-col text-white w-full container max-md:px-3">
-
-                {/* This section for define pricing page header*/}
-
                 <div className="text-center gap-10 mt-20">
                     <p className="font-bold text-7xl max-lg:text-4xl max-md:justify-center">PRICING</p>
                 </div>
-
-                {/* This section for define pricing page content*/}
-
                 <div className='flex justify-between max-md:justify-center max-sm:flex-col gap-5 mt-10'>
                     <div className='flex flex-col'>
                         <span className='text-center font-medium text-xl'>special offer for agency and business</span>
@@ -165,9 +159,6 @@ export default function Pricing() {
                         Bill Yearly
                     </Button>
                 </div>
-
-                {/* This section for define chechout page content*/}
-
                 <div className='flex mt-28 w-full gap-3 relative max-xl:flex-col mx-auto justify-center'>
                     {
                         pricingContent.map((item, index) => {

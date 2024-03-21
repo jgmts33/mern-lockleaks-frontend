@@ -64,16 +64,10 @@ export default function CopyRight() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
-
-                {/* This section for define copyright title*/}
-
                 <div className='text-center mt-20'>
                     <p className='font-bold text-7xl max-lg:text-[40px]'>{CopyrightTitle.title}</p>
                     <div className='max-w-[1100px]'><p className='font-normal text-base mt-10'>{CopyrightTitle.sub_title}</p></div>
                 </div>
-
-                {/* This section for define help content*/}
-
                 <div className='text-center mt-32 max-md:mt-20'>
                     <p className='font-medium text-5xl max-lg:text-4xl'>HOW It HELPS</p>
                 </div>
@@ -97,9 +91,6 @@ export default function CopyRight() {
                         }
                     </div>
                 </div>
-
-                {/* This section for define tips for copyright*/}
-
                 <div className='flex bg-white/10 py-20 w-full justify-center gap-32 mt-24 max-lg:flex-col max-lg:items-center max-sm:px-3'>
                     <p className='font-medium text-3xl'>TIPS:</p>
                     {
@@ -111,9 +102,6 @@ export default function CopyRight() {
                     }
                     <Image className="w-[461px] h-[312px] absolute right-0 max-xl:hidden" src={RobertHand} alt='robert hand' />
                 </div>
-
-                {/* This section for define FAQ for copyright*/}
-
                 <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-md:px-3'>
                     <p className='font-medium text-5xl text-center'>FAQ</p>
                     {

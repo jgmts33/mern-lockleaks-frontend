@@ -81,9 +81,6 @@ export default function Register() {
 
     return (
         <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
-
-            {/* This section for keep Register page Image*/}
-
             <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
                 <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
             </div>
