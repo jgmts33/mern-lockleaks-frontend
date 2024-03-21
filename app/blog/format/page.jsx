@@ -104,7 +104,7 @@ export default function BlogFormat() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="p-5 w-1/2 max-lg:mx-auto max-md:w-full max-lg:text-center ">
+                                            <div className="p-5 w-1/2 max-lg:mx-auto max-md:w-full max-lg:text-center pt-12">
                                                 <p className="font-semibold text-xl">{item.title}</p>
                                                 <p className="font-normal text-base mt-5">{item.description}</p>
                                             </div>
@@ -114,7 +114,7 @@ export default function BlogFormat() {
                             })
                         }
                     </div>
-                    <div className='flex flex-col mt-80 w-full gap-10 max-xl:mt-8 max-md:mx-auto max-md:px-3'>
+                    <div className='flex flex-col mt-80 w-full gap-10 max-xl:mt-8 max-md:mx-auto max-md:px-3 mb-10'>
                         {
                             CardRlist.map((item, index) => {
                                 return (
@@ -130,7 +130,7 @@ export default function BlogFormat() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="p-5 w-1/2 max-lg:text-center max-md:w-full max-lg:mx-auto">
+                                            <div className="p-5 w-1/2 max-lg:text-center max-md:w-full max-lg:mx-auto pt-12">
                                                 <p className="font-semibold text-xl">{item.title}</p>
                                                 <p className="font-normal text-base mt-5">{item.description}</p>
                                             </div>

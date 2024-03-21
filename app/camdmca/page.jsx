@@ -67,7 +67,7 @@ export default function CamDmca() {
                 {/* This section for define camdmca title*/}
 
                 <div className='text-center mt-20'>
-                    <p className='font-bold text-7xl max-lg:text-3xl'>{CamDmcaTitle.title}</p>
+                    <p className='font-bold text-7xl max-lg:text-3xl uppercase'>{CamDmcaTitle.title}</p>
                     <div className='max-w-[848px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
                 </div>
                 <div className='font-medium text-5xl mt-32 max-lg:text-4xl'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
@@ -91,17 +91,17 @@ export default function CamDmca() {
 
                 {/* This section for define tips for camdmca page*/}
 
-                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-around px-10 py-20 max-lg:flex-col max-lg:items-center'>
+                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center'>
                     <div className="relative max-w-[740px] flex justify-between">
                         <div className='max-w-[500px] text-center'><span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>
-                            <div className='flex flex-wrap items-center justify-center'>
-                                <Image src={WriteTip} alt='write tip' className='relative z-0' />
-                                <Image src={TipDocument} alt='tip document' className='relative z-0' />
+                            <div className='flex items-center justify-center z-10 max-sm:flex-col mt-5'>
+                                <Image src={WriteTip} width={349} height={150} alt='write tip' className='relative z-10 max-sm:w-64 max-sm:h-44' />
+                                <Image src={TipDocument} width={349} height={150} alt='tip document' className='relative z-10 max-sm:w-64 max-sm:h-44' />
                             </div>
                         </div>
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#9458f5] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
-                    <div className='flex max-w-[570px] justify-center flex-col gap-y-10 z-10'>
+                    <div className='flex max-w-[720px] justify-center flex-col gap-y-10 z-10 max-sm:mt-10'>
                         {
                             ProtectionContent.map((contents, index) => {
                                 return (

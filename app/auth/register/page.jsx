@@ -157,7 +157,7 @@ export default function Register() {
                         <div className='flex justify-center'>
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
-                        <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto'>
+                        <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto max-sm:w-60  max-sm:justify-center max-sm:items-center'>
                             <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
                                 {icons.google}
                             </Button>
@@ -168,7 +168,7 @@ export default function Register() {
                                 {icons.twitter}
                             </Button>
                         </div>
-                        <div className='max-auto text-center'>
+                        <div className='max-auto text-center mb-10'>
                             <span className='font-light text-sm'>Already have an account</span> <Link href='/auth/login' underline='always' className='text-white'><span className='font-medium text-sm'>Login</span></Link>
                         </div>
                     </div>

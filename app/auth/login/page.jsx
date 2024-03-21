@@ -21,7 +21,7 @@ export default function Login() {
     const [email, setEmail] = useState("");
 
     return (
-        <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
+        <div className='px-10 max-sm:px-3 flex w-full min-h-[calc(100vh-80px)]'>
 
             {/* This section for keep Login page image*/}
 
@@ -69,7 +69,7 @@ export default function Login() {
                         <div className='flex justify-center'>
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
-                        <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto'>
+                        <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto max-sm:w-60'>
                             <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
                                 {icons.google}
                             </Button>
@@ -80,7 +80,7 @@ export default function Login() {
                                 {icons.twitter}
                             </Button>
                         </div>
-                        <div className='mx-auto text-center'>
+                        <div className='mx-auto text-center mb-10'>
                             <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>
                         </div>
                     </div>

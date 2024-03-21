@@ -76,22 +76,22 @@ export default function CreatorDmca() {
 
                 <div className='max-xl:px-3'>
                     <div className='flex bg-white/5 mx-auto mt-24 justify-center rounded-[20px] max-xl:flex-col w-full max-w-[1440px] px-10 py-10 gap-32'>
-                        <div className='flex max-md:items-center max-sm:flex-wrap'>
-                            <div className='w-1/2 max-sm:w-full'>
-                                <div className='max-md:flex-col flex mx-auto max-sm:items-center'><span className='font-medium text-[63px] max-lg:text-[30px]'>DMCA</span><span className='font-medium max-lg:text-[30px] text-[63px] text-[#F68171]'>BADGES</span></div>
+                        <div className='flex max-md:items-center max-lg:flex-wrap max-lg:flex-col'>
+                            <div className='w-1/2 max-sm:w-full max-lg:text-center max-lg:mx-auto'>
+                                <div className='max-md:flex-col flex mx-auto max-sm:items-center max-lg:items-center max-lg:justify-center'><span className='font-medium text-[63px] max-lg:text-[30px]'>DMCA</span><span className='font-medium max-lg:text-[30px] text-[63px] text-[#F68171]'>BADGES</span></div>
                                 <p className='mt-10 max-sm:text-center'>DMCA Badges<br />
                                     To download DMCA badges and learn more about integration, please visit our dedicated DMCA badges page. (reffer link)
                                     These are examples for each category of information you requested for the "Creator DMCA Content Protection" service. If you need more details or any additional information, please let me know!
                                 </p>
                             </div>
-                            <div className='self-end max-sm:mx-auto max-sm:mt-5'>
+                            <div className='self-end max-sm:mx-auto max-sm:mt-5 max-lg:mx-auto mt-5'>
                                 <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>
                                     Free Analisis
                                 </Button>
                             </div>
-                            <div className='relative w-1/2 flex max-xl:flex-col max-md:hidden'>
-                                <Image className='right-0 absolute' src={Envelop} alt='chat' />
-                                <Image className='left-0 mt-32' src={Reversechat} alt='reverse chat' />
+                            <div className='relative w-1/2 flex max-xl:flex-col max-lg:hidden'>
+                                <Image className='right-0 absolute max-2xl:right-10 max-xl:-right-10 ' width={350} height={200} src={Envelop} alt='chat' />
+                                <Image className='left-0 mt-32' width={250} height={150} src={Reversechat} alt='reverse chat' />
                             </div>
                         </div>
                     </div>
@@ -99,17 +99,17 @@ export default function CreatorDmca() {
 
                 {/* This section for define tips for creator dmca page*/}
 
-                <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-20 py-20 max-xl:flex-col items-center max-sm:px-5'>
-                    <div className='flex max-w-[720px] justify-center flex-col gap-y-10'>
+                <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-20 py-10 max-xl:flex-col items-center max-sm:px-5'>
+                    <div className='flex max-w-[720px] justify-center flex-col gap-y-5'>
                         {
                             TipContent.map((content, index) => {
                                 return (
                                     <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
-                                        <div className='flex gap-8 p-5 max-sm:flex-col' onClick={() => { setSelectedTipIndex(index) }}>
+                                        <div className='flex gap-6 p-5 max-sm:flex-col' onClick={() => { setSelectedTipIndex(index) }}>
                                             <div>{content.icon}</div>
                                             <div className='flex flex-col'>
                                                 <p className='font-medium text-xl max-sm:text-lg'>{content.title}</p>
-                                                <p className='mt-5 text-lg max-sm:text-sm'>{content.content}</p>
+                                                <p className='mt-3 text-lg max-sm:text-sm'>{content.content}</p>
                                             </div>
                                         </div>
                                     </div>

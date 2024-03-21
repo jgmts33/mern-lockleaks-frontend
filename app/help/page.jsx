@@ -5,8 +5,8 @@ import {
     Button, Link
 } from '@nextui-org/react';
 import { Search, Collobation, RecoveryChat, ArrowRight } from "@/src/utils/Icons";
-import RightChat from '@/public/assets/recovery/right-chat.svg';
-import LeftChat from '@/public/assets/recovery/left-chat.svg';
+import RightChat from '@/public/assets/setup/rightchat.svg';
+import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter } from 'next/navigation';
 
 export default function Help() {
@@ -67,33 +67,31 @@ export default function Help() {
         }
     ]
 
-    const handleGoCategory = () =>{
+    const handleGoCategory = () => {
         router.push("/help/categories")
     }
 
     return (
-        <div className="text-white relative container flex flex-col" >
+        <div className="text-white container flex flex-col max-sm:px-3" >
 
             {/* This section for define Help Page Title*/}
 
             <div className='mt-28 max-md:px-3 max-md:text-center'>
-                <p className='font-medium text-7xl text-center'>HELP CENTER</p>
+                <p className='font-medium text-7xl text-center max-lg:text-5xl'>HELP CENTER</p>
             </div>
-            <div className='flex mx-auto justify-around gap-5 mt-20 w-full items-center max-w-[1050px]'>
-                <div className='justify-center items-center w-3/4'>
+            <div className='flex mx-auto justify-center gap-5 w-full mt-20 items-center max-w-[1050px] max-sm:flex-col'>
+                <div className='w-full'>
                     <input
                         type="text"
                         name="search"
                         placeholder='Type your questions here'
-                        className='w-full outline-none p-2 pr-28 rounded-lg bg-white text-black'
+                        className='w-full outline-none p-3 rounded-lg bg-white text-black'
                         required
                     />
                 </div>
-                <div className='w-1/4'>
-                    <Button radius="lg" className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-5 py-5 text-sm" size='md'>
-                        Search{icons.search}
-                    </Button>
-                </div>
+                <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
+                    Search{icons.search}
+                </Button>
             </div>
             <div className='flex mx-auto mt-20'>
                 <span className='font-medium text-5xl'>CATEGORIES</span>
@@ -101,18 +99,18 @@ export default function Help() {
 
             {/* This section for define Help Page content*/}
 
-            <div className='grid grid-cols-2 gap-10 mx-auto mt-20'>
+            <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10 mx-auto mt-20'>
                 {
                     CategoriesContent.map((category, index) => {
                         return (
-                            <div key={index} className="flex max-w-[537px] bg-white/10 bg-opacity-20 shadow-sm rounded-sm p-5 cursor-pointer" onClick={() => handleGoCategory()}>
+                            <div key={index} className="flex max-w-[597px] bg-white/10 bg-opacity-20 shadow-sm rounded-lg px-8 py-5 cursor-pointer" onClick={() => handleGoCategory()}>
                                 <div className='flex flex-col w-full'>
-                                    <div className='flex items-center gap-5'>
+                                    <div className='flex items-start gap-5'>
                                         <span>{category.icon}</span>
-                                        <span className='font-medium text-3xl mt-3 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{category.title}</span>
+                                        <span className='font-medium text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-md:text-lg'>{category.title}</span>
                                     </div>
                                     <div className='pt-3'>
-                                        <span className='font-normal text-base mt-3'>{category.content}</span>
+                                        <span className='font-normal text-base mt-3 max-md:text-xs'>{category.content}</span>
                                     </div>
                                 </div>
                             </div>
@@ -121,25 +119,25 @@ export default function Help() {
                 }
             </div>
             <div className='flex mx-auto mt-32'>
-                <Button radius="lg" className="bg-gradient-to-tr mx-auto w-full from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-5 py-5 text-sm" size='md'>
+                <Button radius="lg" className="bg-gradient-to-tr mx-auto w-full z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-5 py-5 text-sm" size='md'>
                     Contact Support
                 </Button>
             </div>
-            <div className='relative'>
-                <Image src={RightChat} width={190} height={50} alt="right-chat" className='absolute right-28 top-28 -rotate-[40deg]' />
-                <Image src={LeftChat} width={350} height={150} alt="right-chat" className='absolute right-0 -top-32 rotate-[50deg]' />
+            <div className='relative max-md:hidden'>
+                <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute right-0 -top-20' />
+                <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-32 top-32' />
             </div>
             <div className='mt-32 mx-auto max-w-[600px] text-center'>
-                <span className='font-medium text-5xl'>Frequently Asked Questions</span>
+                <span className='font-medium text-5xl max-md:text-4xl'>Frequently Asked Questions</span>
             </div>
-            <div className='grid grid-cols-3 gap-10 mx-auto mt-32 mb-10'>
+            <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-10 mx-auto mt-32 mb-10'>
                 {
                     QuestionContent.map((items, index) => {
                         return (
-                            <div key={index} className="flex max-w-[466px] bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-lg p-5 cursor-pointer">
+                            <div key={index} className="flex max-w-[466px] bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-5 cursor-pointer">
                                 <div className='flex flex-col w-full'>
                                     <div className='flex items-center gap-5'>
-                                        <span>{icons.chat}</span>
+                                        <span className='-ml-5'>{icons.chat}</span>
                                         <span className='font-medium text-3xl mt-3 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{items.title}</span>
                                     </div>
                                     <div className='pt-3'>
@@ -154,26 +152,26 @@ export default function Help() {
                     })
                 }
             </div>
-            <div className='flex justify-between mt-20'>
-                <div className='flex flex-col'>
-                    <span className='font-medium text-4xl'>Need further assistance? </span>
+            <div className='flex justify-between mt-20 max-xl:justify-around max-sm:flex-col'>
+                <div className='flex flex-col max-sm:mx-auto'>
+                    <span className='font-medium text-4xl max-sm:text-center'>Need further assistance? </span>
                     <span>Contact our customer support team now.</span>
                 </div>
-                <div>
-                    <Button radius="lg" className="bg-gradient-to-tr mx-auto w-full from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>
+                <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
+                    <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>
                         Chat Now
                     </Button>
                 </div>
             </div>
-            <div className='flex justify-between mb-20 mt-44'>
-                <div>
+            <div className='flex justify-between mb-20 mt-32 max-xl:justify-around max-sm:flex-col max-sm:mx-auto'>
+                <div className='max-sm:mx-auto'>
                     <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
                 </div>
                 <div>
-                    <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rotate-[10deg] rounded-[20px] p-2 cursor-pointer w-[350px]">
+                    <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rotate-[10deg] rounded-[20px] p-2 cursor-pointer w-[350px] max-sm:rotate-0 max-sm:mt-5">
                         <div className='absolute'>{icons.chat}</div>
-                        <div className='flex justify-start flex-col'>
-                            <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
+                        <div className='flex justify-start flex-col '>
+                            <div className='flex justify-center git ml-20 '><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
                             <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
                         </div>
                     </div>

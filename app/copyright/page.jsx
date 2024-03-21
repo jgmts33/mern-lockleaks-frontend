@@ -120,7 +120,7 @@ export default function CopyRight() {
                         CopyrightFAQContent.map((FAQ_content, index) => {
                             return (
                                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                                    <div className='flex justify-between gap-5'>
+                                    <div className='flex justify-between max-sm:flex-col'>
                                         <p className='font-medium text-3xl max-md:text-base'>{FAQ_content.title}</p>
                                         <button className={("text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             {icons.arrowtop}

@@ -49,7 +49,7 @@ const FAQContent = ({ targetContent }) => {
         targetContent.map((contents, index) => {
             return (
                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                    <div className='flex justify-between'>
+                    <div className='flex justify-between max-sm:flex-col max-sm:mx-auto'>
                         <p className='font-medium text-2xl max-lg:text-lg'>{contents.title}</p>
                         <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1)}}>
                             {icons.arrowtop}
@@ -175,19 +175,19 @@ export default function ScanTakeDown() {
 
                 {/* This section for define tips for scan&takedown page*/}
 
-                <div className='flex w-full bg-[#090D1F] mx-auto justify-center mt-10 px-10 py-20 gap-20 max-xl:flex-col max-xl:items-center'>
+                <div className='flex w-full bg-[#090D1F] mx-auto justify-around mt-10 py-20 gap-20 max-xl:flex-col max-xl:items-center'>
 
                     <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
 
-                    <div className="relative max-w-[740px] flex flex-wrap">
-                        <Image src={WriteTip} alt='writetip' width={349} height={319} />
-                        <Image src={TipDocument} alt='tip' />
+                    <div className="relative max-w-[740px] flex flex-wrap max-md:justify-center max-md:items-center">
+                        <Image src={WriteTip} alt='writetip' width={349} height={319} className='' />
+                        <Image src={TipDocument} alt='tip' width={349} height={150} className='max-sm:w-64 max-sm:h-44' />
                     </div>
                 </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
                 {/* This section for define FAQ*/}
 
-                <div className='flex flex-col mt-44 max-w-[1500px] mx-auto w-full'>
+                <div className='flex flex-col mt-44 max-w-[1500px] mx-auto w-full max-xl:px-3'>
                     <p className='font-medium text-5xl text-center max-md:text-4xl'>FAQ</p>
 
                     <FAQContent targetContent={selectedContent == 'scan' ? scanFAQTitle : takedownFAQTitle} />

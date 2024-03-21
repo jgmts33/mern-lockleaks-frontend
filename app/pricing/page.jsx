@@ -24,7 +24,10 @@ export default function Pricing() {
     const pricingContent = [
         {
             title: "STARTER",
-            price: "000",
+            monthly_price: "150",
+            yearly_price: "405",
+            discount: "Discount 10%",
+            save_price: "Save $45",
             bg_color: "from-gray-600/40 to-gray-800/40",
             user_name: "1",
             add_propertity: "mt-[72px]",
@@ -54,7 +57,10 @@ export default function Pricing() {
             add_content: "px-10"
         }, {
             title: "STAR",
-            price: "350",
+            monthly_price: "200",
+            yearly_price: "960",
+            discount: "Discount 15%",
+            save_price: "Save $90",
             bg_color: "from-[#F68171] to-[#B759FF]",
             add_propertity: "",
             user_name: "5",
@@ -86,7 +92,10 @@ export default function Pricing() {
         },
         {
             title: "PRO",
-            price: "200",
+            monthly_price: "350",
+            yearly_price: "390",
+            discount: "Discount 20%",
+            save_price: "Save $210",
             bg_color: "from-gray-600/40 to-gray-800/40",
             add_propertity: "mt-[72px]",
             content_property: "",
@@ -128,7 +137,7 @@ export default function Pricing() {
                 <div className="text-center gap-10 mt-20">
                     <p className="font-bold text-7xl max-lg:text-4xl max-md:justify-center">PRICING</p>
                 </div>
-                
+
                 {/* This section for define pricing page content*/}
 
                 <div className='flex justify-between max-md:justify-center max-sm:flex-col gap-5 mt-10'>
@@ -175,10 +184,15 @@ export default function Pricing() {
                                                     false
                                             }
                                             <p className='text-center font-medium text-6xl mt-10'>{item.title}</p>
-                                            <div className='mt-20 flex text-center justify-center'>
-                                                <p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{item.price}</p>
-                                                <p className='pt-5'>{isPricingSelected ? "/MO" : "/YE"}</p>
-                                            </div>
+                                            <div className='mt-10 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{isPricingSelected ? item.monthly_price : item.yearly_price}</p><p className='pt-5'>{isPricingSelected ? "/MO" : "/3 MO"}</p></div>
+                                            {
+                                                isPricingSelected != true ?
+                                                    <div className='flex flex-col mt-10 text-center'>
+                                                        <span className='font-normal text-3xl'>{item.discount}</span>
+                                                        <span className='font-medium text-5xl max-sm:text-4xl'>{item.save_price}</span>
+                                                    </div>
+                                                    : false
+                                            }
                                             {
                                                 item.title != "STAR" ?
                                                     <Button radius="lg" className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
@@ -190,7 +204,7 @@ export default function Pricing() {
                                                     </Button>
                                             }
                                         </div>
-                                        <div className={'flex flex-col gap-y-5 ' + item.add_content}>
+                                        <div className={'flex flex-col gap-y-5 mb-10 ' + item.add_content}>
                                             <div className={'flex justify-between items-center z-10 '}>
                                                 <p className='font-semibold text-xl'>USERNAMES : {item.user_name}</p>
                                                 <Button radius="full" className="w-1/3 bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2" size='md'>

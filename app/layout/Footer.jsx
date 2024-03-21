@@ -23,29 +23,29 @@ export default function Footer() {
         <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-lg:flex-col gap-10'>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Services</p>
-            <Link href={"/scantakedown"} >Scan & TokeDown</Link>
+            <Link href={"/scantakedown"} >Scan & TakeDown</Link>
             <Link href={"/AI"} >Artificial Intelligence</Link>
-            <Link href={"/copyright"} >CopyRight</Link>
+            <Link href={"/copyright"} >Copyright</Link>
             <Link href={"/camdmca"} >Com DMCA Content Protection</Link>
             <Link href={"/creatordmca"} >Creator DMCA Content Protection</Link>
             <Link href={"/catfishing"} >Catifishing & Impersonation</Link>
-            <Link href={"/recovery"} >Username History Recovery REmoval</Link>
+            <Link href={"/recovery"} >Username History Recovery Removal</Link>
             <Link href={"/freeanalyse"} >Monthly Analytics & PDF Reports</Link>
-            <Link href={"/dmcabadges"} >DMCA BADGES</Link>
+            <Link href={"/dmcabadges"} >Dmca Badges</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Company</p>
             <Link href={"/blog"} >Blog</Link>
             <Link href={"/aboutus"} >About Us</Link>
             <Link href={"/privacypolicy"} >Privacy Policy</Link>
-            <Link href={"/termservice"} >Terms of SERVICES</Link>
+            <Link href={"/termservice"} >Terms of Services</Link>
             <Link href={"/cookiepolicy"} >Cookie Policy</Link>
             <Link href={"/cookiesettings"} >Cookie Settings</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
-            <p className='font-semibold text-xl pb-4'>SUPPORT</p>
+            <p className='font-semibold text-xl pb-4'>Support</p>
             <Link href={"/help"} >Help & Support</Link>
-            <Link href={"/contactus"} >Contact US</Link>
+            <Link href={"/contactus"} >Contact Us</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <div className='flex justify-start'>
@@ -71,7 +71,7 @@ export default function Footer() {
             <Image src="/assets/logo.svg" width={250} height={200} alt="logo" className='-mt-5' />
           </Link>
           <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2023 LockLeaks.</p>
-          <div className='flex gap-7 justify-end mt-0'>
+          <div className='flex gap-7 justify-end mt-0 mb-10'>
             <Link href={"#"}>{icons.tiktok}</Link>
             <Link href={"#"}>{icons.instagram}</Link>
             <Link href={"#"}>{icons.twitter}</Link>

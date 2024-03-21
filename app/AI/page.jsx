@@ -99,7 +99,7 @@ export default function AI() {
 
                 {/* This section for define help content*/}
 
-                <div className='flex justify-center mt-20 max-md:px-3 '>
+                <div className='flex justify-center mt-20'>
                     <div className='flex grid-cols-3 gap-20 z-10 max-xl:flex-wrap max-xl:justify-center max-xl:flex-col'>
                         <div className='flex flex-col gap-10'>
                             {
@@ -151,13 +151,13 @@ export default function AI() {
 
                 {/* This section for define FAQ for AI page*/}
 
-                <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-md:px-3'>
+                <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-2xl:px-3'>
                     <p className='font-medium text-5xl text-center'>FAQ</p>
                     {
                         AIFAQContent.map((contents, index) => {
                             return (
                                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                                    <div className='flex justify-between'>
+                                    <div className='flex justify-between max-sm:flex-col'>
                                         <p className='font-medium text-3xl max-md:text-base'>{contents.title}</p>
                                         <button className={(" mt-50 w-10 h-10 text-white flex items-center justify-center rounded-lg z-10 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             {icons.arrowtop}

@@ -76,7 +76,7 @@ export default function DmcaBadges() {
                         <Image className='z-20' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-40 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
                     </div>
-                    <div className='w-1/3 text-center mt-32 relative z-20 max-xl:mt-0 max-xl:w-full'>
+                    <div className='w-1/3 text-center mt-32 relative z-10 max-xl:mt-0 max-xl:w-full'>
                         <Image className='-top-40 absolute max-xl:hidden' src={PhotoLeft} alt='photo rotate left' />
                         <span className='font-medium text-md mx-auto mt-20 max-xl:text-3xl'>Why Use DMCA Badges?</span>
                     </div>
@@ -121,7 +121,7 @@ export default function DmcaBadges() {
                         </div>
                     </div>
                     <div className='flex w-1/4 items-center max-xl:hidden'>
-                        <Image className='w-[318px] h-[409px]' src={Robert} alt='robert hand' />
+                        <Image className='w-[318px] h-[409px] max-xl:hidden' src={Robert} alt='robert hand' />
                     </div>
                 </div>
             </div >

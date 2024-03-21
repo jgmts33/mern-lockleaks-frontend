@@ -212,7 +212,7 @@ export default function Checkout() {
                                             </Link>
                                         }
                                     </div>
-                                    <div className={'flex flex-col gap-y-5 ' + item.add_content}>
+                                    <div className={'flex flex-col gap-y-5 mb-10 ' + item.add_content}>
                                         <div className={'flex justify-between items-center z-10 '}>
                                             <p className='font-semibold text-xl'>USERNAMES : {item.user_name}</p>
                                             <Button radius="full" className="w-1/3 bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2" size='md'>
@@ -361,7 +361,7 @@ export default function Checkout() {
                     }
                 </div>
             </div>
-            
+
             {/* This section for define payment*/}
 
             <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">
