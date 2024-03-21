@@ -152,7 +152,7 @@ export default function Help() {
                     })
                 }
             </div>
-            <div className='flex justify-between mt-20 max-xl:justify-around max-sm:flex-col'>
+            <div className='flex justify-between mt-20 max-xl:justify-around max-sm:flex-col mb-10'>
                 <div className='flex flex-col max-sm:mx-auto'>
                     <span className='font-medium text-4xl max-sm:text-center'>Need further assistance? </span>
                     <span>Contact our customer support team now.</span>
@@ -163,7 +163,7 @@ export default function Help() {
                     </Button>
                 </div>
             </div>
-            <div className='flex justify-between mb-20 mt-32 max-xl:justify-around max-sm:flex-col max-sm:mx-auto'>
+            {/* <div className='flex justify-between mb-20 mt-32 max-xl:justify-around max-sm:flex-col max-sm:mx-auto'>
                 <div className='max-sm:mx-auto'>
                     <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
                 </div>
@@ -176,7 +176,7 @@ export default function Help() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

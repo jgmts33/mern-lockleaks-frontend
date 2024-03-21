@@ -59,7 +59,7 @@ export default function Details() {
                     </Button>
                 </div>
             </div>
-            <div className='flex justify-between mt-20 max-xl:justify-around max-sm:flex-col mb-10'>
+            {/* <div className='flex justify-between mt-20 max-xl:justify-around max-sm:flex-col mb-10'>
                 <div className='flex flex-col max-sm:mx-auto'>
                     <span className='font-medium text-4xl max-sm:text-center'>Need further assistance? </span>
                     <span>Contact our customer support team now.</span>
@@ -69,7 +69,7 @@ export default function Details() {
                         Chat Now
                     </Button>
                 </div>
-            </div> 
+            </div>  */}
         </div>
     )
 }

@@ -105,7 +105,7 @@ export default function Categories() {
                     {
                         CatagoryButtons.map((items, index) => {
                             return (
-                                <div className='mt-3'>
+                                <div key={index} className='mt-3'>
                                     {
                                         selectedCategory == index ?
                                             <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white px-10 py-5 shadow-lg text-xl max-sm:text-base" size='md' onClick={() => setSelectCatecory(index)}>
@@ -149,7 +149,7 @@ export default function Categories() {
                 <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute -right-32 -top-44' />
                 <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-0 -top-8' />
             </div>
-            <div className='flex justify-between mt-32 max-xl:justify-around max-md:flex-col'>
+            <div className='flex justify-between mt-32 max-xl:justify-around max-md:flex-col mb-10'>
                 <div className='flex flex-col max-sm:mx-auto'>
                     <span className='font-medium text-4xl max-sm:text-center'>Need further assistance? </span>
                     <span>Contact our customer support team now.</span>
@@ -160,7 +160,7 @@ export default function Categories() {
                     </Button>
                 </div>
             </div> 
-            <div className='flex justify-between mb-20 mt-32 max-xl:justify-around max-md:flex-col max-sm:mx-auto'>
+            {/* <div className='flex justify-between mb-20 mt-32 max-xl:justify-around max-md:flex-col max-sm:mx-auto'>
                 <div className='max-sm:mx-auto'>
                     <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
                 </div>
@@ -173,7 +173,7 @@ export default function Categories() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
