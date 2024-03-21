@@ -219,8 +219,8 @@ export default function HomePage() {
           {/* This section for define homepage header*/}
 
           <div className="flex w-full justify-center items-center flex-col relative">
-            <div className="text-center gap-10 mt-20">
-              <p className="font-medium text-4xl max-lg:text-3xl max-md:mx-auto uppercase">
+            <div className="text-center max-w-[900px] gap-10 mt-20 max-md:mt-10">
+              <p className="font-medium text-5xl max-lg:text-4xl max-md:mx-auto uppercase">
                 increase your online success with professional copyright protection
               </p>
             </div>
@@ -232,21 +232,21 @@ export default function HomePage() {
               <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
-                  <p className='font-semibold text-xl mt-3'>Protect Your Content</p>
+                  <p className='font-semibold text-lg mt-3'>Protect Your Content</p>
                   <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-12 top-28 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-12 top-32 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.profile}</div>
                 <div>
-                  <p className='font-semibold text-xl mt-3'>DEFEND YOUR NAME</p>
+                  <p className='font-semibold text-lg mt-3'>DEFEND YOUR NAME</p>
                   <p className='font-normal text-base mt-2'>Your Brand is Your Legacy, Let Us Be Your Guardians.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-0 -top-8 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-0 -top-3 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
-                  <p className='font-semibold text-xl mt-3'>ROFESSIONAL SUPPORT</p>
+                  <p className='font-semibold text-lg mt-3'>ROFESSIONAL SUPPORT</p>
                   <p className='font-normal text-base mt-2'>Live Support at Your Fingertips - We're Just a Click Away.</p>
                 </div>
               </div>

@@ -971,7 +971,7 @@ export const GradiantChevronRIGHT = ({
     return (
         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_48_1753)">
-                <path d="M9.03577 7.14425L13.2017 11.2539L9.09204 15.4199" stroke="#E3796B" stroke-miterlimit="10" strokeLinecap="round" strokeLinejoin="round" shapeRendering="crispEdges" />
+                <path d="M9.03577 7.14425L13.2017 11.2539L9.09204 15.4199" stroke="#E3796B" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" shapeRendering="crispEdges" />
             </g>
             <defs>
                 <filter id="filter0_d_48_1753" x="-21.4641" y="-19.356" width="65.1658" height="69.2759" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">

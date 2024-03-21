@@ -87,7 +87,7 @@ export default function Register() {
             <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
                 <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
             </div>
-            <div className='w-full lg:w-1/2 flex items-center justify-center'>
+            <div className='w-full lg:w-1/2 flex items-center justify-center max-lg:pt-10'>
                 <div className="w-[562px] flex flex-col items-center text-white">
                     <div className='text-center max-w-[354px]'>
                         <p className="font-medium text-5xl ">Sign up</p>
