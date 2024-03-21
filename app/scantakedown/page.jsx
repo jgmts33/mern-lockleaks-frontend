@@ -14,60 +14,60 @@ import CustomerReview from '@/src/components/customerReview';
 
 const TipContent = ({ targetContent }) => {
 
-    const [selectedTipIndex, setSelectedTipIndex] = useState(0);
+    // const [selectedTipIndex, setSelectedTipIndex] = useState(0);
 
-    useEffect(() => {
-        setSelectedTipIndex(0);
-    }, [targetContent])
+    // useEffect(() => {
+    //     setSelectedTipIndex(0);
+    // }, [targetContent])
 
-    return (
-        <div className='flex items-center justify-between flex-col gap-y-5 cursor-pointer'>
-            {
-                targetContent.map((tips, index) => {
-                    return (
-                        <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
-                            <div className='flex gap-3 p-7 max-w-[720px] max-sm:flex-col' onClick={() => { setSelectedTipIndex(index) }}>
-                                <div>{tips.order}</div>
-                                <div><span className='font-medium text-xl max-md:text-base'>{tips.content}</span></div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-        </div>
-    )
+    // return (
+    //     <div className='flex items-center justify-between flex-col gap-y-5 cursor-pointer'>
+    //         {
+    //             targetContent.map((tips, index) => {
+    //                 return (
+    //                     <div key={index} className={selectedTipIndex == index ? 'bg-white/10 shadow-sm rounded-[20px]' : ""} >
+    //                         <div className='flex gap-3 p-7 max-w-[720px] max-sm:flex-col' onClick={() => { setSelectedTipIndex(index) }}>
+    //                             <div>{tips.order}</div>
+    //                             <div><span className='font-medium text-xl max-md:text-base'>{tips.content}</span></div>
+    //                         </div>
+    //                     </div>
+    //                 )
+    //             })
+    //         }
+    //     </div>
+    // )
 }
 
 const FAQContent = ({ targetContent }) => {
-    const icons = {
-        arrowtop: <ChevronRight fill="currentColor" size={16} />,
-    };
+    // const icons = {
+    //     arrowtop: <ChevronRight fill="currentColor" size={16} />,
+    // };
 
-    const [expandedIndex, setExpandedIndex] = useState(-1);
+    // const [expandedIndex, setExpandedIndex] = useState(-1);
 
-    return (
-        targetContent.map((contents, index) => {
-            return (
-                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                    <div className='flex justify-between max-sm:flex-col max-sm:mx-auto'>
-                        <p className='font-medium text-2xl max-lg:text-lg'>{contents.title}</p>
-                        <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1)}}>
-                            {icons.arrowtop}
-                        </button>
-                    </div>
-                    <div className={expandedIndex == index ? 'h-auto' : 'h-0'}>
-                        {
-                            contents.content.map((items, contentIndex) => {
-                                return (
-                                    <p key={contentIndex} className={`font-normal text-base mt-3 duration-500' + ${expandedIndex == index ? 'block' : 'hidden'} `}>{items}</p>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-            )
-        })
-    )
+    // return (
+    //     targetContent.map((contents, index) => {
+    //         return (
+    //             <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
+    //                 <div className='flex justify-between max-sm:flex-col max-sm:mx-auto'>
+    //                     <p className='font-medium text-2xl max-lg:text-lg'>{contents.title}</p>
+    //                     <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1)}}>
+    //                         {icons.arrowtop}
+    //                     </button>
+    //                 </div>
+    //                 <div className={expandedIndex == index ? 'h-auto' : 'h-0'}>
+    //                     {
+    //                         contents.content.map((items, contentIndex) => {
+    //                             return (
+    //                                 <p key={contentIndex} className={`font-normal text-base mt-3 duration-500' + ${expandedIndex == index ? 'block' : 'hidden'} `}>{items}</p>
+    //                             )
+    //                         })
+    //                     }
+    //                 </div>
+    //             </div>
+    //         )
+    //     })
+    // )
 }
 
 export default function ScanTakeDown() {

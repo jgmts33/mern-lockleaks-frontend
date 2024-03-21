@@ -71,7 +71,7 @@ export default function FreeAnalyse() {
             </div>
           </div>
           <div className='mx-auto mt-28'>
-            <Link href="/aboutus"><Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm " size='md'>
+            <Link href="/aboutus"><Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm " title='contactus' size='md'>
               CONTACT US
             </Button></Link>
           </div>

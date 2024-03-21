@@ -102,7 +102,7 @@ export default function Home() {
                 className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
               />
             </div>
-            <Link href="">
+            <Link href="/" title='confirm'>
               <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
                 Confirm
               </Button>

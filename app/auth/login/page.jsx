@@ -61,7 +61,7 @@ export default function Login() {
                             />
                         </div>
                         <div className='flex justify-end'>
-                            <Link href="/auth/forgot-password" underline="none" className='text-white'><span className='font-light text-sm'>Forgot Password?</span></Link>
+                            <Link href="/auth/forgot-password" title='forgot-password' underline="none" className='text-white'><span className='font-light text-sm'>Forgot Password?</span></Link>
                         </div>
                         <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
                             Log in
@@ -81,7 +81,7 @@ export default function Login() {
                             </Button>
                         </div>
                         <div className='mx-auto text-center mb-10'>
-                            <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>
+                            <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' title='register' className='text-white'>Sign up</Link>
                         </div>
                     </div>
                 </div>

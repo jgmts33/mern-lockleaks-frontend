@@ -47,11 +47,9 @@ export default function ForgotPassword() {
                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
               />
             </div>
-            <Link href="">
-              <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4" size='lg'>
-                Send
-              </Button>
-            </Link>
+            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4" size='lg'>
+              Send
+            </Button>
             <Button radius="lg" className="bg-transparent text-white shadow-lg w-full" size='lg'>
               Cancel
             </Button>

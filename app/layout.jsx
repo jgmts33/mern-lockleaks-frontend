@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
               <Header />
               :
               <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10'>
-                <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
+                <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" title="logo" /></Link>
               </div>
           }
           {children}
