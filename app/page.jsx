@@ -197,14 +197,18 @@ export default function HomePage() {
   const [isFlipped, setIsFlipped] = useState(-1);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (animationCounter === 7) {
-        clearInterval(timer);
-      }
-      setAnimationCounter(p => p + 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
+    if(screen.width >= 440){
+      const timer = setInterval(() => {
+        if (animationCounter === 7) {
+          clearInterval(timer);
+        }
+        setAnimationCounter(p => p + 1);
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+    else{
+      setAnimationCounter(7)
+    }
   }, [animationCounter]);
 
   return (

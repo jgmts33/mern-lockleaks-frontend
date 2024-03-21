@@ -46,7 +46,7 @@ export default function BlogFormat() {
 
     return (
         <>
-            <Image src={RobertHand} className='absolute right-0 top-[630px]' alt='rober-hand' />
+            <Image src={RobertHand} className='max-2xl:hidden absolute right-0 top-[630px]' alt='rober-hand' />
             <div className="text-white container relative flex flex-col">
 
                 {/* This section for define Blog Format Page Header*/}

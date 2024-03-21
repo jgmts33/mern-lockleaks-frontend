@@ -79,7 +79,7 @@ export default function CopyRight() {
                 </div>
                 <div className='flex gap-20 mt-20 max-lg:flex-col max-md:-mt-20 max-md:gap-0'>
                     <div className='max-md:-mt-10 relative'>
-                        <Image className="w-[606px] mt-5 h-[550px] z-20 relative" src={CopyrightHelp} alt='copyright' />
+                        <Image className="w-[606px] mt-5 h-[550px] z-10 relative" src={CopyrightHelp} alt='copyright' />
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={442} className='absolute bg-[#6748a1] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                     <div className='flex flex-col max-xl:items-center max-xl:px-3 max-md:-mt-20'>
@@ -105,11 +105,11 @@ export default function CopyRight() {
                     {
                         AITips.map((item, index) => {
                             return (
-                                <div key={index} className='max-w-[527px] flex gap-3 z-20'>{icons.tip}<p className='font-normal text-xl max-sm:text-base'>{item}</p></div>
+                                <div key={index} className='max-w-[527px] flex gap-3 z-10'>{icons.tip}<p className='font-normal text-xl max-sm:text-base'>{item}</p></div>
                             )
                         })
                     }
-                    <Image className="w-[461px] h-[312px] absolute right-0" src={RobertHand} alt='robert hand' />
+                    <Image className="w-[461px] h-[312px] absolute right-0 max-xl:hidden" src={RobertHand} alt='robert hand' />
                 </div>
 
                 {/* This section for define FAQ for copyright*/}
@@ -122,7 +122,7 @@ export default function CopyRight() {
                                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
                                     <div className='flex justify-between max-sm:flex-col'>
                                         <p className='font-medium text-3xl max-md:text-base'>{FAQ_content.title}</p>
-                                        <button className={("text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
+                                        <button className={("text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-10 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             {icons.arrowtop}
                                         </button>
                                     </div>

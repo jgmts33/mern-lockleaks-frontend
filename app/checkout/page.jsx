@@ -63,7 +63,7 @@ export default function Checkout() {
         }, {
             title: "PRO",
             monthly_price: "200",
-            yearly_price: "960",
+            yearly_price: "510",
             discount: "Discount 15%",
             save_price: "Save $90",
             bg_color: "from-[#F68171] to-[#B759FF]",
@@ -98,7 +98,7 @@ export default function Checkout() {
         {
             title: "STAR",
             monthly_price: "350",
-            yearly_price: "390",
+            yearly_price: "840",
             discount: "Discount 20%",
             save_price: "Save $210",
             bg_color: "from-gray-600/40 to-gray-800/40",

@@ -57,10 +57,10 @@ export default function Pricing() {
             add_content: "px-10"
         }, {
             title: "STAR",
-            monthly_price: "200",
-            yearly_price: "960",
+            monthly_price: "350",
+            yearly_price: "840",
             discount: "Discount 15%",
-            save_price: "Save $90",
+            save_price: "Save $210",
             bg_color: "from-[#F68171] to-[#B759FF]",
             add_propertity: "",
             user_name: "5",
@@ -92,10 +92,10 @@ export default function Pricing() {
         },
         {
             title: "PRO",
-            monthly_price: "350",
-            yearly_price: "390",
+            monthly_price: "200",
+            yearly_price: "510",
             discount: "Discount 20%",
-            save_price: "Save $210",
+            save_price: "Save $90",
             bg_color: "from-gray-600/40 to-gray-800/40",
             add_propertity: "mt-[72px]",
             content_property: "",

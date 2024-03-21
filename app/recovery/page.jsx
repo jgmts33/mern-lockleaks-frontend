@@ -130,7 +130,7 @@ export default function Recovery() {
                             <Image alt='photo' className='absolute left-40' src={Photo} />
                         </div>
                         <div>
-                            <Image alt='robert-hand' className='right-0 absolute' src={RobertHand} />
+                            <Image alt='robert-hand' className='right-0 absolute max-xl:hidden' src={RobertHand} />
                         </div>
                     </div>
                 </div>

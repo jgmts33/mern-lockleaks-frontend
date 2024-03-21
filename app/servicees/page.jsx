@@ -66,13 +66,13 @@ export default function SERVICES() {
 
     return (
         <div className="text-white flex flex-col pb-20">
-            <Image src="assets/safeground/robot-hand-finger.svg" alt='robert-hand' width={600} height={170} className="mt-72 absolute right-0 max-xl:hidden" />
-            <div className='flex mt-32 relative justify-center max-sm:px-3'>
+            <Image src="assets/safeground/robot-hand-finger.svg" alt='robert-hand' width={600} height={170} className="mt-72 absolute right-0 max-2xl:hidden" />
+            <div className='flex mt-20 relative justify-center max-sm:px-3'>
                 <div className='left-0 top-0'>
                     <div className='mb-0 absolute left-40 -top-28 max-2xl:w-[100px] max-xl:hidden'>{icons.photo}</div>
                     <div className='absolute left-6 top-12 max-2xl:-left-6 max-2xl:top-2 max-xl:hidden'>{icons.chat}</div>
                 </div>
-                <div className='max-w-[670px] flex flex-col justify-center text-center max-2xl:z-20'>
+                <div className='max-w-[670px] flex flex-col justify-center text-center max-2xl:z-10'>
                     <p className='font-medium text-5xl max-md:text-4xl'>{ServicesTitle.title}</p>
                     <p className='font-normal text-xl mt-5 max-md:text-lg'>{ServicesTitle.content}</p>
                 </div>

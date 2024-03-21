@@ -82,7 +82,6 @@ export default function Footer() {
         </div>
       </div>
       <div className='w-full h-52 bg-[#362666] blur-3xl absolute bottom-0 left-0 bg-opacity-35 rounded-t-3xl z-10'>
-        <Image src="assets/bg-footer.svg" width={300} height={150} className='absolute bottom-0' alt='bg-footer' />
       </div>
     </div>
   )

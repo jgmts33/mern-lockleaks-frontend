@@ -11,46 +11,46 @@ export default function Header() {
 
   const menuItems = [
     {
-      content:"Services",
-      path:"/servicees"
+      content: "Services",
+      path: "/servicees"
     }, {
-      content:"Blog Format",
-      path:"/blog/format"
+      content: "Blog Format",
+      path: "/blog/format"
     }, {
-      content:"Scan&Takedown",
-      path:"/scantakedown"
+      content: "Scan&Takedown",
+      path: "/scantakedown"
     }, {
-      content:"AI",
-      path:"/AI"
+      content: "AI",
+      path: "/AI"
     }, {
-      content:"Copyright",
-      path:"/copyright"
+      content: "Copyright",
+      path: "/copyright"
     }, {
-      content:"Chechout",
-      path:"/checkout"
+      content: "Chechout",
+      path: "/checkout"
     }, {
-      content:"COM DMCA Protection",
-      path:"/camdmca"
+      content: "CAM DMCA Protection",
+      path: "/camdmca"
     }, {
-      content:"Creator DMCA Protection",
-      path:"/creatordmca"
+      content: "Creator DMCA Protection",
+      path: "/creatordmca"
     }, {
-      content:"Catfishing",
-      path:"/catfishing"
+      content: "Catfishing",
+      path: "/catfishing"
     }, {
-      content:"Username Recovery",
-      path:"/recovery"
+      content: "Username Recovery",
+      path: "/recovery"
     }, {
-      content:"Monthly Analytics PDF",
-      path:"/monthlypdf"
+      content: "Monthly Analytics PDF",
+      path: "/monthlypdf"
     },
     {
-      content:"Dmca Badges",
-      path:"/dmcabadges"
+      content: "Dmca Badges",
+      path: "/dmcabadges"
     },
     {
-      content:"Delete Data",
-      path:"/deletedata"
+      content: "Delete Data",
+      path: "/deletedata"
     },
   ];
 
@@ -101,8 +101,8 @@ export default function Header() {
             <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6">
               <DropdownSection title="" showDivider></DropdownSection>
               {
-                menuItems.map((menus,index)=>{
-                  return(
+                menuItems.map((menus, index) => {
+                  return (
                     <DropdownItem key={index} className="text-white" onClick={() => handleMenuItemClick(menus.path)}>{menus.content}</DropdownItem>
                   )
                 })
@@ -138,14 +138,13 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
 
+      <NavbarContent className="max-md:block hidden"></NavbarContent>
+
       <NavbarMenu>
         {menuItems.map((menu, index) => (
           <NavbarMenuItem key={index}>
             <Link
-              className="w-full"
-              color={
-                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
-              }
+              className="w-full text-white mt-3"
               href={menu.path}
               size="lg"
             >
@@ -153,6 +152,13 @@ export default function Header() {
             </Link>
           </NavbarMenuItem>
         ))}
+        <hr className="w-56 bg-gray-400 mt-5"></hr>
+        <NavbarItem className="mt-5">
+          <Link href="/auth/login" className="text-white">Login</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="/auth/register" className="text-white">Register</Link>
+        </NavbarItem>
       </NavbarMenu>
     </Navbar>
   );

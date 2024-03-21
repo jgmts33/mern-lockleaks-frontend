@@ -67,10 +67,6 @@ export default function Categories() {
         "other",
     ]
 
-    const handleGoDetail = () => {
-        router.push("/help/details")
-    }
-
     return (
         <div className="text-white relative container flex flex-col max-2xl:px-3" >
 
@@ -123,7 +119,7 @@ export default function Categories() {
                     {
                         CategoriesContent.map((category, index) => {
                             return (
-                                <div key={index} className="flex bg-white/10 bg-opacity-20 shadow-sm rounded-lg p-5 cursor-pointer" onClick={()=>handleGoDetail()}>
+                                <div key={index} className="flex bg-white/10 bg-opacity-20 shadow-sm rounded-lg p-5 cursor-pointer">
                                     <div className='flex flex-col w-full'>
                                         <div className='flex justify-between'>
                                             <div className='flex gap-5'>

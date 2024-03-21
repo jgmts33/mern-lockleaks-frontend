@@ -224,7 +224,7 @@ export default function DeleteData() {
             <div className='relative flex w-full'>
                 <Image src={Photo} className='absolute right-80 -top-48 max-2xl:hidden' alt='photo' />
                 <Image src={RightChat} className='absolute right-[510px] -top-8 max-2xl:hidden' alt='right rotate chat' />
-                <Image src={RobertHand} className='absolute right-0 -mt-32 max-xl:-mt-5' alt='robert hand' />
+                <Image src={RobertHand} className='absolute right-0 -mt-32 max-xl:-mt-5 max-xl:hidden' alt='robert hand' />
             </div>
 
             {/* This section for confirm personal data*/}

@@ -71,6 +71,10 @@ export default function Help() {
         router.push("/help/categories")
     }
 
+    const handleGoDetail = () => {
+        router.push("/help/details")
+    }
+
     return (
         <div className="text-white container flex flex-col max-sm:px-3" >
 
@@ -134,7 +138,7 @@ export default function Help() {
                 {
                     QuestionContent.map((items, index) => {
                         return (
-                            <div key={index} className="flex max-w-[466px] bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-5 cursor-pointer">
+                            <div key={index} className="flex max-w-[466px] bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-5 cursor-pointer" onClick={()=>handleGoDetail()}>
                                 <div className='flex flex-col w-full'>
                                     <div className='flex items-center gap-5'>
                                         <span className='-ml-5'>{icons.chat}</span>

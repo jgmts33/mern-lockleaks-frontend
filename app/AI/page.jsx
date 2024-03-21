@@ -73,7 +73,7 @@ export default function AI() {
 
     return (
         <>
-            <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
+            <div className="flex flex-col mx-auto items-center justify-center text-white w-full max-xl:px-3">
 
                 {/* This section for define AI page header*/}
 
@@ -115,11 +115,11 @@ export default function AI() {
                                 })
                             }
                         </div>
-                        <div className='relative'>
+                        <div className='relative max-xl:hidden'>
                             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                             <Image className="w-80 h-[560px] mt-10 z-10  relative" src={Robertgroup} alt='rober-group' />
                         </div>
-                        <div className='flex flex-col gap-10'>
+                        <div className='flex flex-col gap-10 max-xl:-mt-10'>
                             {
                                 HubHelpContent.map((item, index) => {
                                     return (
