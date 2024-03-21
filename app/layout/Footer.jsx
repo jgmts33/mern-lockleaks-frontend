@@ -19,7 +19,7 @@ export default function Footer() {
 
   return (
     <div className='w-full bg-black px-10 relative'>
-      <div className='max-w-[1512px] mx-auto relative z-30'>
+      <div className='max-w-[1512px] mx-auto relative z-10'>
         <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-lg:flex-col gap-10'>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Services</p>
@@ -81,7 +81,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className='w-full h-52 bg-[#362666] blur-3xl absolute bottom-0 left-0 bg-opacity-35 rounded-t-3xl z-20'>
+      <div className='w-full h-52 bg-[#362666] blur-3xl absolute bottom-0 left-0 bg-opacity-35 rounded-t-3xl z-10'>
         <Image src="assets/bg-footer.svg" width={300} height={150} className='absolute bottom-0' alt='bg-footer' />
       </div>
     </div>

@@ -74,10 +74,10 @@ export default function Header() {
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
 
-      <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarBrand>
+      <NavbarContent className="sm:hidden pr-3 mx-auto flex" justify="center">
+        <NavbarBrand className="w-full">
           <Link href="/">
-            <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
+            <Image src="/assets/logo.svg" width={190} height={50} alt="logo" className="justify-starter" />
           </Link>
         </NavbarBrand>
       </NavbarContent>

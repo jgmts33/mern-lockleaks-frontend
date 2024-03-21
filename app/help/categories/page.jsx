@@ -149,7 +149,7 @@ export default function Categories() {
                 <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute -right-32 -top-44' />
                 <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-0 -top-8' />
             </div>
-            <div className='flex justify-between mt-32 max-xl:justify-around max-md:flex-col mb-10'>
+            <div className='flex justify-between mt-32 max-xl:justify-around max-md:flex-col mb-20'>
                 <div className='flex flex-col max-sm:mx-auto'>
                     <span className='font-medium text-4xl max-sm:text-center'>Need further assistance? </span>
                     <span>Contact our customer support team now.</span>
