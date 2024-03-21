@@ -7,14 +7,14 @@ import Saturn from '@/public/assets/saturn.svg';
 import Robertgroup from '@/public/assets/robert.svg';
 import Chat from '@/public/assets/services/chat.svg';
 import Reversechat from '@/public/assets/reverse-chat.svg';
-import { Shine, ROBERTCHAT } from "@/src/utils/Icons";
+import { Shine, Robertchat } from "@/src/utils/Icons";
 
 
 export default function FreeAnalyse() {
 
   const icons = {
     shine: <Shine fill="currentColor" size={16} />,
-    robertchat: <ROBERTCHAT fill="currentColor" size={16} />,
+    robertchat: <Robertchat fill="currentColor" size={16} />,
   };
 
   const freeanalyseContent = {
@@ -71,7 +71,7 @@ export default function FreeAnalyse() {
             </div>
           </div>
           <div className='mx-auto mt-28'>
-            <Link href="/aboutus"><Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm " title='contactus' size='md'>
+            <Link href="/aboutus"><Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm " size='md'>
               CONTACT US
             </Button></Link>
           </div>

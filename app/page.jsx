@@ -220,8 +220,8 @@ export default function HomePage() {
 
           <div className="flex w-full justify-center items-center flex-col relative">
             <div className="max-w-[1100px] text-center gap-10 mt-20">
-              <p className="font-medium text-5xl max-lg:text-4xl max-md:justify-center">
-                INCREASE YOUR ONLINE SUCCESS WITH PROFESSIONAL COPYRIGHT PROTECTION
+              <p className="font-medium text-5xl max-lg:text-4xl max-md:mx-auto uppercase">
+                increase your online success with professional copyright protection
               </p>
             </div>
             <div className='flex w-full justify-center mt-8 relative max-xl:flex-col max-xl:items-center max-xl:mx-auto max-lg:pb-10'>

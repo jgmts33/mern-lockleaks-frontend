@@ -148,7 +148,7 @@ export default function Register() {
                                 <p className='font-light text-xs pt-3 pl-2'>I consent to receive valuable updates from WEBSITE NAME and acknowledge that I can unsubscribe at any time. No spam, guaranteed.</p>
                             </Checkbox>
                             <Checkbox isSelected={isTermSelected} onValueChange={setIsTermSelected} radius="none">
-                                <span className='font-light text-xs pl-2'>I agree to WEBSITE NAMEr's</span> <Link href='/' title='termsservice' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
+                                <span className='font-light text-xs pl-2'>I agree to WEBSITE NAMEr's</span> <Link href='/' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                         </div>
                         <Button radius="lg" onClick={() => handleRegister()} className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
@@ -169,7 +169,7 @@ export default function Register() {
                             </Button>
                         </div>
                         <div className='max-auto text-center mb-10'>
-                            <span className='font-light text-sm'>Already have an account</span> <Link href='/auth/login' title='login' underline='always' className='text-white'><span className='font-medium text-sm'>Login</span></Link>
+                            <span className='font-light text-sm'>Already have an account</span> <Link href='/auth/login' underline='always' className='text-white'><span className='font-medium text-sm'>Login</span></Link>
                         </div>
                     </div>
                 </div>

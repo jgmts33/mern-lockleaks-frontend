@@ -81,7 +81,7 @@ export default function Login() {
                             </Button>
                         </div>
                         <div className='mx-auto text-center mb-10'>
-                            <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' title='register' className='text-white'>Sign up</Link>
+                            <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>
                         </div>
                     </div>
                 </div>

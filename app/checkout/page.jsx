@@ -205,7 +205,7 @@ export default function Checkout() {
                                                 : false
                                         }
                                         {
-                                            <Link href="/checkout/buy" className='w-full' title='checkout'>
+                                            <Link href="/checkout/buy" className='w-full'>
                                                 <Button radius="lg" className={`w-full mt-10 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg mx-auto " + ${item.title != "PRO" ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-br from-gray-600/40 to-gray-800/40"}`} size='lg'>
                                                     BUY
                                                 </Button>
