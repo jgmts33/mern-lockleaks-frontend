@@ -37,17 +37,10 @@ body {
 /* Track */
 ::-webkit-scrollbar-track {
   background: #26304e;
-  border-width: 30px;
-  border-style: solid;
-  border-image: initial;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(#aa7fe2,#ee4613);
   border-radius: 5px;
-}
-
-.panel{
-  display: none;
 }
