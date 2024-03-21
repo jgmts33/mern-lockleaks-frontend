@@ -69,6 +69,9 @@ export default function Catfishing() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full max-md:px-3">
+
+                {/* This section for define catifishing header*/}
+
                 <div className='text-center mt-28'>
                     <p className='font-medium text-5xl uppercase max-lg:text-4xl'>{CamDmcaTitle.title}</p>
                     <div className='max-lg:px-3'><p className='font-normal text-base mt-10 max-w-[1100px]'>{CamDmcaTitle.sub_title}</p></div>
@@ -100,6 +103,9 @@ export default function Catfishing() {
                         </ul>
                     </div>
                 </div>
+
+                {/* This section for define tips for catfishing page*/}
+
                 <div className='flex w-full mx-auto mt-20 justify-center px-10 py-20 gap-32 max-sm:px-0'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={542} className='absolute bg-[#955bf1] right-32 z-0 bg-opacity-5 blur-3xl' />
                     <div className='flex max-w-[705px] flex-col gap-y-10 max-sm:gap-y-0'>
@@ -116,6 +122,9 @@ export default function Catfishing() {
                         }
                     </div>
                 </div>
+
+                {/* This section for define FAQ for creator dmca page*/}
+
                 <div className='font-medium text-5xl'><p className='font-medium text-5x center'>FAQ</p></div>
                 <div className='flex gap-32 mt-10 max-w-[1480px]'>
                     <div className='flex mt-10 gap-10 max-xl:flex-col max-md:px-3'>

@@ -25,6 +25,9 @@ export default function FreeAnalyse() {
 
   return (
     <div className="text-white relative container flex flex-col" >
+
+      {/* This section for define Freeanalyse Content*/}
+
       <div className='flex mt-20 mx-auto gap-10 max-w-[1500px] max-xl:flex-col max-xl:justify-center max-xl:items-center'>
         <div>
           <Image className="h-72 w-80 mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={Saturn} alt="Modern building architecture" />
@@ -45,6 +48,9 @@ export default function FreeAnalyse() {
           <Image className="h-72 w-80 mt-2 object-cover max-md:w-full p-2 rounded-[20px]" src={Saturn} alt='saturn' />
         </div>
       </div>
+
+      {/* This section for define show photos for freeanalyse*/}
+
       <div className='flex w-full px-60 justify-center mt-80 max-xl:hidden'>
         <div className='w-1/2 flex justify-center items-center'>
           <div className=' relative'>

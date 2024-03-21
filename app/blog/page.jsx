@@ -168,7 +168,13 @@ export default function Blog() {
 
   return (
     <div className="text-white relative container flex flex-col pb-20 mt-10 max-sm:px-3">
+
+      {/* This section for define blog title*/}
+
       <span className='font-medium text-5xl text-center'>BLOG</span>
+
+      {/* This section for define blog content*/}
+
       <div className='grid grid-cols-3 gap-6 max-lg:flex-wrap max-lg:justify-center mt-10 max-xl:grid-cols-2 max-lg:grid-cols-1'>
         {          
           BlogCardContent.slice((selectedPagination - 1) * 9, selectedPagination * 9).map((blog, index) => {

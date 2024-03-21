@@ -19,9 +19,15 @@ export default function ForgotPassword() {
 
   return (
     <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
+
+      {/* This section for keep forgot password image*/}
+
       <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
         <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
       </div>
+
+      {/* This section for define forgot password content*/}
+
       <div className='w-full lg:w-1/2 flex items-center justify-center'>
         <div className="w-[562px] flex flex-col items-center gap-10 text-white">
           <div className='text-center max-w-[354px]'>
@@ -41,13 +47,15 @@ export default function ForgotPassword() {
                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
               />
             </div>
-            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4" size='lg'>
-              Send
-            </Button>
+              <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4" size='lg'>
+                Send
+              </Button>
             <Button radius="lg" className="bg-transparent text-white shadow-lg w-full" size='lg'>
               Cancel
             </Button>
           </div>
+
+
         </div>
       </div>
     </div>

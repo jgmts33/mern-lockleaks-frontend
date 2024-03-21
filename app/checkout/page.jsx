@@ -162,6 +162,9 @@ export default function Checkout() {
 
     return (
         <div className="flex flex-col text-white w-full max-sm:px-3">
+
+            {/* This section for define chechout page header*/}
+
             <div className="text-center gap-10 mt-20">
                 <p className="font-bold text-7xl max-lg:text-[40px] max-md:justify-center">CHECKOUT</p>
             </div>
@@ -173,6 +176,9 @@ export default function Checkout() {
                     Bill Yearly
                 </Button>
             </div>
+
+            {/* This section for define chechout page content*/}
+
             <div className='flex mt-28 w-full gap-3 relative max-xl:flex-col mx-auto justify-center'>
                 {
                     pricingContent.map((item, index) => {
@@ -240,6 +246,9 @@ export default function Checkout() {
                     })
                 }
             </div>
+
+            {/* This section for define select user name*/}
+
             <div className='flex justify-center mx-auto mt-32 gap-10 max-xl:flex-col max-md:mx-auto max-md:px-3'>
                 <div className="flex bg-white/5 shadow-sm rounded-[20px] max-w-[720px] w-full flex-col gap-4 p-20 max-sm:p-10">
                     <p className='font-medium text-6xl mt-3'>ORDER</p>
@@ -277,6 +286,9 @@ export default function Checkout() {
                     </div>
                 </div>
             </div>
+
+            {/* This section for add new user name*/}
+
             <div className='mt-20 flex mx-auto justify-center gap-80 max-2xl:gap-0 max-xl:flex-col max-md:px-3'>
                 <div className='flex-col flex mx-auto'>
                     <p className='font-medium text-3xl'>ADD NEW USERNAME</p>
@@ -349,6 +361,9 @@ export default function Checkout() {
                     }
                 </div>
             </div>
+
+            {/* This section for define payment*/}
+
             <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">
                 <p className='font-medium text-[34px] text-center'>PAYMENT</p>
                 <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.

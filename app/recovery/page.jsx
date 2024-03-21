@@ -93,7 +93,10 @@ export default function Recovery() {
 
     return (
         <>
-            <div className="flex flex-col text-white w-full">            
+            <div className="flex flex-col text-white w-full">
+
+            {/* This section for define username recovery header*/}
+            
                 <div className='mt-28'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{RecoveryTitle.title}</p>
                     <div className='flex gap-32 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-lg:flex-col max-md:gap-10'>
@@ -131,6 +134,9 @@ export default function Recovery() {
                         </div>
                     </div>
                 </div>
+
+                {/* This section for define benefit content*/}
+
                 <div className='flex flex-col w-full bg-white/5 mx-auto justify-around mt-20 px-3 py-20 gap-20 max-xl:flex-col items-center'>
                     <span className='font-medium text-5xl max-md:text-4xl'>BENEFITS</span>
                     <div className='flex max-xl:flex-col max-xl:mx-auto max-xl:items-center max-xl:justify-center max-xl:p-8 mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl'>
@@ -149,6 +155,9 @@ export default function Recovery() {
                         </div>
                     </div>
                 </div>
+                
+                {/* This section for define  username recovery header*/}
+
                 <div className='flex flex-col justify-center mx-auto mt-20 max-sm:px-3'>
                     <span className='font-medium text-5xl text-center max-sm:text-4xl'>Tips for Use</span>
                     {
@@ -165,6 +174,9 @@ export default function Recovery() {
                         })
                     }
                 </div>
+
+                {/* This section for define FAQ for username recovery*/}
+
                 <div className='font-medium text-5xl mt-32'><p className='font-medium text-5x text-center'>FAQ</p></div>
                 <div className='flex gap-32 mt-10 max-lg:px-3'>
                     <div className='flex mt-10 gap-10 mx-auto justify-center max-xl:flex-col'>

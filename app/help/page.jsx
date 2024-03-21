@@ -77,6 +77,9 @@ export default function Help() {
 
     return (
         <div className="text-white container flex flex-col max-sm:px-3" >
+
+            {/* This section for define Help Page Title*/}
+
             <div className='mt-28 max-md:px-3 max-md:text-center'>
                 <p className='font-medium text-7xl text-center max-lg:text-5xl'>HELP CENTER</p>
             </div>
@@ -97,6 +100,9 @@ export default function Help() {
             <div className='flex mx-auto mt-20'>
                 <span className='font-medium text-5xl'>CATEGORIES</span>
             </div>
+
+            {/* This section for define Help Page content*/}
+
             <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10 mx-auto mt-20'>
                 {
                     CategoriesContent.map((category, index) => {

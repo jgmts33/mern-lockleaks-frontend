@@ -149,6 +149,8 @@ export default function ScanTakeDown() {
         <>
             <div className="flex flex-col text-white w-full max-md:px-3">
 
+                {/* This section for define scan&takedown header*/}
+
                 <div>
                     <p className='font-medium text-huge text-center mt-20 max-lg:text-4xl '>SCAN & TAKEDOWN</p>
                 </div>
@@ -171,6 +173,8 @@ export default function ScanTakeDown() {
                     </div>
                 </div>
 
+                {/* This section for define tips for scan&takedown page*/}
+
                 <div className='flex w-full bg-[#090D1F] mx-auto justify-around mt-10 py-20 gap-20 max-xl:flex-col max-xl:items-center'>
 
                     <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
@@ -180,6 +184,8 @@ export default function ScanTakeDown() {
                         <Image src={TipDocument} alt='tip' width={349} height={150} className='max-sm:w-64 max-sm:h-44' />
                     </div>
                 </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+                {/* This section for define FAQ*/}
 
                 <div className='flex flex-col mt-44 max-w-[1500px] mx-auto w-full max-xl:px-3'>
                     <p className='font-medium text-5xl text-center max-md:text-4xl'>FAQ</p>

@@ -63,6 +63,9 @@ export default function CamDmca() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
+
+                {/* This section for define camdmca title*/}
+
                 <div className='text-center mt-20'>
                     <p className='font-bold text-7xl max-lg:text-3xl uppercase'>{CamDmcaTitle.title}</p>
                     <div className='max-w-[848px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
@@ -85,6 +88,9 @@ export default function CamDmca() {
                         }
                     </div>
                 </div>
+
+                {/* This section for define tips for camdmca page*/}
+
                 <div className='flex w-full bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center'>
                     <div className="relative max-w-[740px] flex justify-between">
                         <div className='max-w-[500px] text-center'><span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>
@@ -114,6 +120,7 @@ export default function CamDmca() {
                     </div>
                 </div>
             </div>
+
             <CustomerReview />
         </>
     )

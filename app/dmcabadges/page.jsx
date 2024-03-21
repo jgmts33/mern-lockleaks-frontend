@@ -43,6 +43,9 @@ export default function DmcaBadges() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
+
+            {/* This section for define dmcabadges title*/}
+
                 <div className='text-center mt-20'>
                     <p className='font-medium text-5xl max-lg:text-[30px]'>{DmcaBadgesTitle.title}</p>
                     <div className='max-w-[716px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{DmcaBadgesTitle.content}</p></div>
@@ -50,6 +53,9 @@ export default function DmcaBadges() {
                 <div className='mt-20 max-md:text-center max-md:mx-auto'>
                     <span className='font-medium text-md'>Download DMCA Badges</span>
                 </div>
+
+            {/* This section for define dmcabadges title*/}
+
                 <div className='flex gap-32 mt-10 max-md:px-3'>
                     <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1'>
                         {

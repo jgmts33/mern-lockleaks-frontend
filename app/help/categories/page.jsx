@@ -69,6 +69,9 @@ export default function Categories() {
 
     return (
         <div className="text-white relative container flex flex-col max-2xl:px-3" >
+
+            {/* This section for define Help Page Title*/}
+
             <div className='mt-28 max-md:px-3 max-md:text-center'>
                 <p className='font-medium text-7xl text-center max-md:text-4xl'>HELP CENTER</p>
             </div>
@@ -89,6 +92,9 @@ export default function Categories() {
             <div className='flex mx-auto mt-20'>
                 <span className='font-medium text-5xl max-md:text-4xl'>CATEGORIES</span>
             </div>
+
+            {/* This section for define Help Page content*/}
+
             <div className="flex z-10 backdrop-blur-sm bg-white/5 shadow-sm rounded-[20px] w-full p-20 max-xl:p-0 mt-20 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center">
                 <div className='flex flex-col w-1/3 gap-3 max-md:mx-auto max-md:justify-center max-md:items-center max-md:w-full text-center'>
                     <div><span className='font-medium text-3xl'>Categories</span></div>
