@@ -48,7 +48,7 @@ export default function Details() {
             <div className="flex z-10 backdrop-blur-sm bg-white/5 shadow-sm rounded-[20px] w-full flex-col max-md:p-5 gap-4 text-center mt-20">
                 <Image src={Help} width={200} height={150} className='w-full h-full' alt="Modern building architecture" />
             </div>
-            <div className='max-w-[432px] mx-auto mt-20'>
+            <div className='max-w-[432px] mx-auto mt-20 mb-20'>
                 <div className='flex'><span className='font-medium text-3xl text-center'>Was the article helpful?</span></div>
                 <div className='flex justify-around mt-5'>
                     <Button radius="lg" className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg " size='lg'>

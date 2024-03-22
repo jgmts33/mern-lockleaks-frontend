@@ -65,7 +65,7 @@ export default function SERVICES() {
     ]
 
     return (
-        <div className="text-white flex flex-col pb-20">
+        <div className="text-white flex flex-col mt-20 pb-20">
             <Image src="assets/safeground/robot-hand-finger.svg" alt='robert-hand' width={600} height={170} className="mt-72 absolute right-0 max-2xl:hidden" />
             <div className='flex mt-10 relative justify-center max-sm:px-3'>
                 <div className='left-0 top-0'>

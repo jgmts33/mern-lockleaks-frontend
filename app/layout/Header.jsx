@@ -45,6 +45,10 @@ export default function Header() {
       content: "Dmca Badges",
       path: "/dmcabadges"
     },
+    {
+      content: "Delete Data",
+      path: "/deletedata"
+    },
   ];
 
   const icons = {

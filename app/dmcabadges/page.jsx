@@ -78,7 +78,7 @@ export default function DmcaBadges() {
                 </div>
                 <div className='flex w-full pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
                     <div className='flex w-1/3 relative'>
-                        <Image className='z-20' src={RobertHand} alt='robert-hand' />
+                        <Image className='z-20 max-xl:hidden' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-40 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
                     </div>
                     <div className='w-1/3 text-center mt-32 relative z-10 max-xl:mt-0 max-xl:w-full'>

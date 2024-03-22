@@ -97,7 +97,7 @@ export default function Categories() {
 
             <div className="flex z-10 backdrop-blur-sm bg-white/5 shadow-sm rounded-[20px] w-full p-20 max-xl:p-0 mt-20 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center">
                 <div className='flex flex-col w-1/3 gap-3 max-md:mx-auto max-md:justify-center max-md:items-center max-md:w-full text-center'>
-                    <div><span className='font-medium text-3xl'>Categories</span></div>
+                    <div className='max-xl:pt-10'><span className='font-medium text-3xl'>Categories</span></div>
                     {
                         CatagoryButtons.map((items, index) => {
                             return (
