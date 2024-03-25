@@ -26,7 +26,7 @@ export default function CustomerReview() {
     ]
 
     return (
-        <div className='my-20 container relative text-white max-md:max-w-[650px] mx-auto w-screen'>
+        <div className='my-20 container relative text-white max-md:max-w-[650px] mx-auto w-[calc(100vw-50px)]'>
             <p className='font-medium text-5xl max-xl:text-[30px] max-xl:text-center'>Customer Reviews</p>
             <div className="mt-16 relative">
                 <Swiper
@@ -77,10 +77,10 @@ export default function CustomerReview() {
                     </div></SwiperSlide>)}
                 </Swiper>
             </div>
-            <button className="swiper-custom-prev max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg absolute z-10 bottom-[calc(50%-80px)] left-2">
+            <button className="swiper-custom-prev bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg absolute z-10 bottom-[calc(50%-80px)] left-2">
                 {icons.left}
             </button>
-            <button className="swiper-custom-next max-md:hidden bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg  absolute z-10 bottom-[calc(50%-80px)] right-2">
+            <button className="swiper-custom-next bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg  absolute z-10 bottom-[calc(50%-80px)] right-2">
                 {icons.right}
             </button>
         </div>

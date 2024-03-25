@@ -138,12 +138,15 @@ export default function AI() {
 
                 {/* This section for define tips for AI*/}
 
-                <div className='flex bg-white/10 py-20 w-full justify-center gap-32 max-md:rounded-xl mt-36 mx-auto items-center max-xl:flex-col max-xl:px-3'>
+                <div className='flex bg-white/10 py-20 w-[calc(100vw-30px)] items-center gap-10 px-20 max-md:rounded-xl mt-36 max-2xl:w-full max-2xl:flex-col'>
                     <p className='font-medium text-3xl'>TIPS:</p>
                     {
                         AITips.map((item, index) => {
                             return (
-                                <div key={index} className='max-w-[527px] flex gap-3'>{icons.tip}<p className='font-normal max-md:text-base text-xl'>{item}</p></div>
+                                <div key={index} className='max-w-[700px] flex gap-5'>
+                                    <div>{icons.tip}</div>
+                                    <div><p className='font-normal max-md:text-base text-xl'>{item}</p></div>
+                                </div>
                             )
                         })
                     }

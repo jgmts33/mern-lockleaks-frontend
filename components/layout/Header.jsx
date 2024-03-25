@@ -62,7 +62,15 @@ export default function Header() {
       content: "Dmca Badges",
       path: "/dmcabadges"
     },{
-      content: "Delete Data",
+      content: "Free E-Books",
+      path: "/deletedata"
+    },
+    {
+      content: "Donate",
+      path: "/deletedata"
+    },
+    {
+      content: "Delete data",
       path: "/deletedata"
     },
   ] 

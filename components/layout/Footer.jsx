@@ -72,9 +72,9 @@ export default function Footer() {
           </Link>
           <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2024 LockLeaks.</p>
           <div className='flex gap-7 justify-end mt-0 mb-10'>
-            <Link href={"https://twitter.com/lockleaks"}>{icons.tiktok}</Link>
+            <Link href={"https://tiktok.com/lockleaks"}>{icons.tiktok}</Link>
             <Link href={"https://www.instagram.com/lockleaks/"}>{icons.instagram}</Link>
-            <Link href={" https://www.tiktok.com/@lockleaks"}>{icons.twitter}</Link>
+            <Link href={" https://www.twitter.com/@lockleaks"}>{icons.twitter}</Link>
             <Link href={"https://linkedin.com/@lockleaks"}>{icons.linkedin}</Link>
             <Link href={"https://www.facebook.com/lockleaks/"}>{icons.facebook}</Link>
             <Link href={"https://www.reddit.com/r/LockLeaks/"}>{icons.redit}</Link>

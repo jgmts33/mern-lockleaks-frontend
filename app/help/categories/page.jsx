@@ -145,10 +145,10 @@ export default function Categories() {
                 <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute -right-32 -top-44' />
                 <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-0 -top-8' />
             </div>
-            <div className='flex justify-between mt-32 max-xl:justify-around max-md:flex-col mb-20'>
-                <div className='flex flex-col max-sm:mx-auto'>
+            <div className='flex justify-between max-sm:justify-center max-sm:mx-auto mt-32 max-xl:justify-around max-md:flex-col mb-20'>
+                <div className='flex flex-col max-sm:items-center'>
                     <span className='font-medium text-4xl text-center max-sm:text-center'>Need further assistance? </span>
-                    <span className='max-md:text-center'>Contact our customer support team now.</span>
+                    <span className='max-sm:text-center max-md:mx-auto'>Contact our customer support team now.</span>
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
                     <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>

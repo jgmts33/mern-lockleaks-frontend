@@ -99,7 +99,7 @@ export default function CreatorDmca() {
 
                 {/* This section for define tips for creator dmca page*/}
 
-                <div className='flex w-full bg-white/5 mx-auto justify-around mt-10 px-20 py-10 max-xl:flex-col items-center max-sm:px-5'>
+                <div className='flex bg-white/5 mx-auto justify-around mt-10 px-20 w-[calc(100vw-20px)] max-2xl:w-full py-10 max-xl:flex-col items-center max-sm:px-5'>
                     <div className='flex max-w-[720px] justify-center flex-col gap-y-5'>
                         {
                             TipContent.map((content, index) => {
@@ -117,12 +117,11 @@ export default function CreatorDmca() {
                             })
                         }
                     </div>
-                    <div className="max-w-[740px] relative flex flex-wrap max-xl:items-center max-xl:justify-center">
-                    <div className='flex flex-wrap items-center justify-center'>
-                                <Image src={WriteTip} alt='write tip' className='relative z-0' />
-                                <Image src={TipDocument} alt='tip document' className='relative z-0' />
-                            </div>
-                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#7a56ce] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
+                    <div className="max-w-[540px] relative flex flex-wrap max-xl:items-center max-xl:justify-center">
+                        <div className='flex max-md:flex-wrap items-center justify-center'>
+                            <Image src={WriteTip} alt='write tip' className='relative z-0' />
+                            <Image src={TipDocument} alt='tip document' className='relative z-0' />
+                        </div>
                     </div>
                 </div>
 
