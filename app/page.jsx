@@ -225,7 +225,7 @@ export default function HomePage() {
                 increase your online success with professional copyright protection
               </p>
             </div>
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-md:hidden absolute -top-44 -right-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-44 -right-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
             <div className='flex w-full justify-center mt-8 relative max-xl:flex-col max-xl:items-center max-xl:mx-auto max-lg:pb-10'>
               <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg" size='lg'>
                 Protect Content Now!
@@ -257,7 +257,7 @@ export default function HomePage() {
             {/* This section for define chosen by esteemed industry leaders*/}
 
             <div className="flex flex-col w-full pt-72 text-center items-center max-xl:pt-36">
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-md:hidden absolute top-56 -left-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-56 -left-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
               <p className="text-center font-normal text-xl max-md:justify-center z-10">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col z-10">
                 <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
