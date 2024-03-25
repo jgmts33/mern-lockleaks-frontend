@@ -21,9 +21,9 @@ export default function CreateTicket() {
                 <div className='flex flex-col mx-auto gap-10'>
                     <span>Need Assistance?</span>
                     <span>Click to Chat with Your Personal Agent</span> 
-                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto" size='sm' onClick={()=>handleCreateTicket()}>
+                    {/* <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto" size='sm' onClick={()=>handleCreateTicket()}>
                         Download
-                    </Button>
+                    </Button> */}
                 </div>
         </div>   
     ) 
