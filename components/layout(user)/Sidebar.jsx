@@ -114,6 +114,10 @@ export default function Sidebar() {
         setSelectSidebar(index);
     }
 
+    const handleLogout = () =>{
+        router.push("/auth/login")
+    }
+
     return (
         <div className="flex flex-col bg-[#000001] text-white w-80 h-screen justify-start px-3 py-10">
             <div className="mx-auto">
@@ -132,7 +136,7 @@ export default function Sidebar() {
                 }
             </div>
             <div className="flex mt-10 mx-auto">
-                <Button radius="lg" className="bg-transparent text-white text-base p-5 w-full" size='sm'>
+                <Button radius="lg" className="bg-transparent text-white text-base p-5 w-full" size='sm' onClick={()=>handleLogout()}>
                 {icons.logout}
                 </Button>
             </div>

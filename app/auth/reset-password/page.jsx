@@ -4,7 +4,7 @@ import {
   Button
 } from '@nextui-org/react';
 import Link from "next/link";
-import HeroImg from "@/public/assets/Hero.svg";
+import HeroImg from "@/public/assets/Hero.png";
 import KeyIcon from "@/public/assets/Key.svg";
 import { useEffect, useState } from 'react';
 

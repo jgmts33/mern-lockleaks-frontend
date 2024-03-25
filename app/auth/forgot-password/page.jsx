@@ -4,7 +4,7 @@ import {
   Button
 } from '@nextui-org/react';
 import Link from "next/link";
-import HeroImg from "@/public/assets/Hero.svg";
+import HeroImg from "@/public/assets/Hero.png";
 import { useEffect, useState } from 'react';
 import { GradientKey, Envelop } from "@/components/utils/Icons";
 
@@ -23,7 +23,7 @@ export default function ForgotPassword() {
       {/* This section for keep forgot password image*/}
 
       <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-        <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
+        <Image src={HeroImg} alt="Hero Image" width={400} height={400} />
       </div>
 
       {/* This section for define forgot password content*/}
