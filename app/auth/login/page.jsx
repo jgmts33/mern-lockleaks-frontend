@@ -5,10 +5,11 @@ import {
 } from '@nextui-org/react';
 import HeroImg from "@/public/assets/Hero.svg";
 import { useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google } from "@/src/utils/Icons";
+import { Lock, Envelop, Twitter, Facebook, Google } from "@/components/utils/Icons";
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
-
+    const router = useRouter();
     const icons = {
         lock: <Lock fill="currentColor" size={16} />,
         envelop: <Envelop fill="currentColor" size={16} />,
@@ -20,8 +21,12 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
 
+    const handleLogin = () =>{  
+        router.push("/userpanel/dashboard");
+    }
+
     return (
-        <div className='px-10 max-sm:px-3 flex w-full min-h-[calc(100vh-80px)]'>
+        <div className='px-10 max-sm:px-3 flex min-h-[calc(100vh-80px)] w-screen'>
 
             {/* This section for keep Login page image*/}
 
@@ -44,7 +49,7 @@ export default function Login() {
                             <input
                                 type="email"
                                 name="email"
-                                placeholder='yourname@gmail.com'
+                                placeholder='youremail@example.com'
                                 onChange={(e) => setEmail(e.target.value)}
                                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
                                 required
@@ -63,13 +68,13 @@ export default function Login() {
                         <div className='flex justify-end'>
                             <Link href="/auth/forgot-password" title='forgot-password' underline="none" className='text-white'><span className='font-light text-sm'>Forgot Password?</span></Link>
                         </div>
-                        <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4" size='lg' onClick={()=>handleLogin()}>
                             Log in
                         </Button>
                         <div className='flex justify-center'>
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
-                        <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto max-sm:w-60'>
+                        <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto max-sm:justify-center max-sm:w-60'>
                             <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600" size='md'>
                                 {icons.google}
                             </Button>

@@ -5,7 +5,7 @@ import {
     Button
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
-import { ChevronRight, Eye } from "@/src/utils/Icons";
+import { ChevronRight, Eye } from "@/components/utils/Icons";
 import Space from '@/public/assets/space.svg';
 import Saturn from '@/public/assets/saturn.svg';
 import Woman from '@/public/assets/woman.svg';
@@ -47,7 +47,7 @@ export default function BlogFormat() {
     return (
         <>
             <Image src={RobertHand} className='max-2xl:hidden absolute right-0 top-[630px]' alt='rober-hand' />
-            <div className="text-white container relative flex flex-col">
+            <div className="text-white container relative flex flex-col mx-auto">
 
                 {/* This section for define Blog Format Page Header*/}
 
@@ -55,7 +55,7 @@ export default function BlogFormat() {
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container justify-center items-center bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
                         <Image src={Space} alt="Service" className='max-xl:w-full' />
                         <div className='flex flex-col p-8'>
-                            <div className='flex justify-end pb-32'>
+                            <div className='flex justify-end pb-20'>
                                 <Button radius="full" className="bg-gradient-to-tr opacity-60 from-gray-800/80 to-gray-800/40 text-white shadow-lg text-lg max-md:text-[15px]" size='md'>
                                     Blog+{icons.eye}
                                 </Button>

@@ -6,11 +6,11 @@ import {
 import React from 'react';
 import WriteTip from "@/public/assets/scan/write-tip.svg";
 import TipDocument from "@/public/assets/scan/tip-document.svg";
-import { FirstTip, SecondTip, ThirdTip, ChevronRight } from "@/src/utils/Icons";
+import { FirstTip, SecondTip, ThirdTip, ChevronRight } from "@/components/utils/Icons";
 import { useEffect, useState } from 'react';
 import Scan from "@/public/assets/scan/scan.svg"
 import Takedown from "@/public/assets/scan/takedown.svg"
-import CustomerReview from '@/src/components/customerReview';
+import CustomerReview from '@/components/customerReview';
 
 const TipContent = ({ targetContent }) => {
 
@@ -164,7 +164,7 @@ export default function ScanTakeDown() {
                 </div>
                 <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
                     <div className='w-80 h-96'>
-                        <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "w-72 h-56 mx-auto" : "w-96 h-80 mx-auto"} alt='warning' width={500} height={250} />
+                        <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "w-72 h-52 max-lg:w-60 max-lg:mt-16 max-lg:h-44 mx-auto" : "w-96 h-80 mx-auto"} alt='warning' width={500} height={250} />
                     </div>
                     <Image src="assets/bg-shape-purple-green.svg" alt='shape-green' width={503} height={472} className='max-md:hidden absolute top-80 left-44 bg-[#58f040] bg-opacity-5 blur-3xl' />
                     <div className='max-w-[695px] max-lg:text-center'>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {
     Button, Link
 } from '@nextui-org/react';
-import { Search, Collobation, RedStar, RecoveryChat } from "@/src/utils/Icons";
+import { Search, Collobation, RedStar, RecoveryChat } from "@/components/utils/Icons";
 import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter } from 'next/navigation';
@@ -68,11 +68,11 @@ export default function Categories() {
     ]
 
     return (
-        <div className="text-white relative container flex flex-col max-2xl:px-3" >
+        <div className="text-white relative container flex flex-col max-2xl:px-3 mx-auto" >
 
             {/* This section for define Help Page Title*/}
 
-            <div className='mt-28 max-md:px-3 max-md:text-center'>
+            <div className='mt-16 max-md:px-3 max-md:text-center'>
                 <p className='font-medium text-7xl text-center max-md:text-4xl'>HELP CENTER</p>
             </div>
             <div className='flex mx-auto justify-center gap-5 w-full mt-20 items-center max-w-[1050px] max-md:flex-col'>
@@ -147,8 +147,8 @@ export default function Categories() {
             </div>
             <div className='flex justify-between mt-32 max-xl:justify-around max-md:flex-col mb-20'>
                 <div className='flex flex-col max-sm:mx-auto'>
-                    <span className='font-medium text-4xl max-sm:text-center'>Need further assistance? </span>
-                    <span>Contact our customer support team now.</span>
+                    <span className='font-medium text-4xl text-center max-sm:text-center'>Need further assistance? </span>
+                    <span className='max-md:text-center'>Contact our customer support team now.</span>
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
                     <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>
@@ -156,20 +156,6 @@ export default function Categories() {
                     </Button>
                 </div>
             </div> 
-            {/* <div className='flex justify-between mb-20 mt-32 max-xl:justify-around max-md:flex-col max-sm:mx-auto'>
-                <div className='max-sm:mx-auto'>
-                    <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
-                </div>
-                <div>
-                    <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rotate-[10deg] rounded-[20px] p-2 cursor-pointer w-[350px] max-sm:rotate-0 max-sm:mt-5">
-                        <div className='absolute'>{icons.chat}</div>
-                        <div className='flex justify-start flex-col '>
-                            <div className='flex justify-center git ml-20 '><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
-                            <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </div>
     )
 }

@@ -5,8 +5,8 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { FirstTip, SecondTip, ThirdTip} from "@/src/utils/Icons";
-import { SelectSwitch, UnselectSwitch, Shine } from "@/src/utils/Icons";
+import { FirstTip, SecondTip, ThirdTip} from "@/components/utils/Icons";
+import { SelectSwitch, UnselectSwitch, Shine } from "@/components/utils/Icons";
 import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
@@ -221,7 +221,7 @@ export default function DeleteData() {
                 </div>
                 <Image src={LeftChat} className='max-xl:hidden absolute rotate-[50deg] w-[430px] h-[240px] top-[calc(50%-10px)] -left-[calc(50%-70px)] ' alt='left rotate chat' />
             </div>
-            <div className='relative flex w-full'>
+            <div className='relative flex w-[calc(100vw-20px)]'>
                 <Image src={Photo} className='absolute right-80 -top-48 max-2xl:hidden' alt='photo' />
                 <Image src={RightChat} className='absolute right-[510px] -top-8 max-2xl:hidden' alt='right rotate chat' />
                 <Image src={RobertHand} className='absolute right-0 -mt-32 max-xl:-mt-5 max-xl:hidden' alt='robert hand' />

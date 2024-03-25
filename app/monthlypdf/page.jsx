@@ -5,11 +5,11 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Shine, ProtectShadow, RecoveryChat } from "@/src/utils/Icons";
+import { Shine, ProtectShadow, RecoveryChat } from "@/components/utils/Icons";
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
-import CustomerReview from '@/src/components/customerReview';
+import CustomerReview from '@/components/customerReview';
 
 export default function MonthlyPdf() {
 
@@ -64,11 +64,11 @@ export default function MonthlyPdf() {
 
     return (
         <>
-            <div className="flex flex-col text-white w-full max-w-[1400px]">
+            <div className="flex flex-col text-white">
 
                 {/* This section for define monthly pdf header*/}
 
-                <div className='mt-28 max-md:px-3 max-md:text-center'>
+                <div className='mt-20 max-md:px-3 max-md:text-center'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{MonthlyTitle.title}</p>
                     <div className='flex items-center justify-between mx-auto max-2xl:justify-around max-md:flex-col'>
                         <div className='max-w-[653px] mt-10'><p className='font-normal text-lg mt-10'>{MonthlyTitle.content}</p></div>
@@ -83,18 +83,18 @@ export default function MonthlyPdf() {
                         <span className='font-medium text-md'>How It Helps</span>
                     </div>
                     <div className='max-lg:hidden'><Image src={Photo} width={300} height={200} className='absolute left-80 -top-44' alt='right rotate chat' /></div>
-                    <div className="flex max-w-[422px] z-10 duration-700 max-2xl:!relative backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-2xl:left-0 max-2xl:top-10 mt-6">
+                    <div className="flex max-w-[422px] z-10 duration-700 max-2xl:!relative backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute left-0 top-6 max-2xl:left-0 max-2xl:top-10 mt-6">
                         <div>{icons.protect}</div>
                         <p className='font-normal text-lg mt-2 max-sm:text-base'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
                     </div>
                     <div className='max-lg:hidden'><Image src={RightChat} width={200} height={100} className='absolute left-60 -top-8' alt='right rotate chat' /></div>
-                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-6 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
+                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
                         <div>{icons.protect}</div>
                         <div>
                             <p className='font-normal text-lg mt-2 max-sm:text-base'>Comprehensive Analysis:Presents a detailed overview of content evolution and performance metrics.</p>
                         </div>
                     </div>
-                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative max-2xl:rotate-0 max-2xl:right-0 max-2xl:top-32 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute -right-12 -top-16 ">
+                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative max-2xl:rotate-0 max-2xl:right-0 max-2xl:top-32 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-8 -top-16 ">
                         <div>{icons.protect}</div>
                         <div>
                             <p className='font-normal text-lg mt-2 max-sm:text-base'>Data Insights: Offers in-depth insights into content performance, interactions,and trends.</p>
@@ -150,12 +150,12 @@ export default function MonthlyPdf() {
                 <div className='font-medium text-5xl mt-32 max-sm:mt-28'>
                     <p className='font-medium text-5x text-center'>FAQ</p>
                 </div>
-                <div className='flex'>
+                <div className='flex mx-auto'>
                     <div className='flex mt-10 gap-5 max-lg:flex-col max-lg:mx-auto max-lg:px-3'>
                         {
                             FAQContent.map((cards, index) => {
                                 return (
-                                    <div key={index} className="flex max-w-[466px] w-full bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer">
+                                    <div key={index} className="flex max-w-[450px] w-full bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer">
                                         <div className='flex flex-col'>
                                             <span>{icons.chat}</span>
                                             <p className='font-semibold text-lg mt-2'>{cards.title}</p>

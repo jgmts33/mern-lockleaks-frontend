@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {
     Button, Link
 } from '@nextui-org/react';
-import { Search, Collobation, RecoveryChat, ArrowRight } from "@/src/utils/Icons";
+import { Search, Collobation, RecoveryChat, ArrowRight } from "@/components/utils/Icons";
 import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter } from 'next/navigation';
@@ -76,7 +76,7 @@ export default function Help() {
     }
 
     return (
-        <div className="text-white container flex flex-col max-sm:px-3" >
+        <div className="text-white container flex flex-col max-sm:px-3 mx-auto" >
 
             {/* This section for define Help Page Title*/}
 
@@ -94,7 +94,7 @@ export default function Help() {
                     />
                 </div>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
-                    Search{icons.search}
+                    Search<span className='w-5 h-5'>{icons.search}</span>
                 </Button>
             </div>
             <div className='flex mx-auto mt-20'>

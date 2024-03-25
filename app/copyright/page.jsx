@@ -5,10 +5,10 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Balance, Banned, Law, ChevronRight, Tips } from "@/src/utils/Icons";
+import { Balance, Banned, Law, ChevronRight, Tips } from "@/components/utils/Icons";
 import CopyrightHelp from '@/public/assets/copyright/copyright.svg';
 import RobertHand from '@/public/assets/copyright/robert-hand.svg';
-import CustomerReview from '@/src/components/customerReview';
+import CustomerReview from '@/components/customerReview';
 
 export default function CopyRight() {
 
@@ -64,7 +64,7 @@ export default function CopyRight() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
-                <div className='text-center mt-20'>
+                <div className='text-center mt-20 px-3'>
                     <p className='font-bold text-7xl max-lg:text-[40px]'>{CopyrightTitle.title}</p>
                     <div className='max-w-[1100px]'><p className='font-normal text-base mt-10'>{CopyrightTitle.sub_title}</p></div>
                 </div>

@@ -7,7 +7,7 @@ import Saturn from '@/public/assets/saturn.svg';
 import Robertgroup from '@/public/assets/robert.svg';
 import Chat from '@/public/assets/services/chat.svg';
 import Reversechat from '@/public/assets/reverse-chat.svg';
-import { Shine, Robertchat } from "@/src/utils/Icons";
+import { Shine, Robertchat } from "@/components/utils/Icons";
 
 
 export default function FreeAnalyse() {
@@ -24,11 +24,11 @@ export default function FreeAnalyse() {
   }
 
   return (
-    <div className="text-white relative container flex flex-col" >
+    <div className="text-white relative container flex flex-col mx-auto" >
 
       {/* This section for define Freeanalyse Content*/}
 
-      <div className='flex mt-20 mx-auto gap-10 max-w-[1500px] max-xl:flex-col max-xl:justify-center max-xl:items-center'>
+      <div className='flex mt-10 pb-10 mx-auto gap-10 max-w-[1500px] max-xl:flex-col max-xl:justify-center max-xl:items-center'>
         <div>
           <Image className="h-72 w-80 mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={Saturn} alt="Modern building architecture" />
         </div>

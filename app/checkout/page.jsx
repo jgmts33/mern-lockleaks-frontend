@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Lock, Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, SelectSwitch, UnselectSwitch } from "@/src/utils/Icons";
+import { Lock, Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, SelectSwitch, UnselectSwitch } from "@/components/utils/Icons";
 
 export default function Checkout() {
 

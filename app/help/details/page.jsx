@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button, Link
 } from '@nextui-org/react';
-import { Search, Collobation, RecoveryChat, ArrowRight } from "@/src/utils/Icons";
+import { Search, Collobation, RecoveryChat, ArrowRight } from "@/components/utils/Icons";
 import Help from '@/public/assets/help.svg';
 
 export default function Details() {
@@ -16,7 +16,7 @@ export default function Details() {
     };
 
     return (
-        <div className="text-white relative container flex flex-col max-md:px-3" >
+        <div className="text-white relative container flex flex-col max-md:px-3 mx-auto" >
 
             {/* This section for define Help Page Title*/}
 

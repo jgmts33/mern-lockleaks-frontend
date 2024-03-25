@@ -2,10 +2,10 @@
 import {
   Button
 } from '@nextui-org/react';
-import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft, ChevronRight, IconSuccess, Profile, Chat, Tip } from "@/src/utils/Icons";
+import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft, ChevronRight, IconSuccess, Profile, Chat, Tip } from "@/components/utils/Icons";
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import CustomerReview from '@/src/components/customerReview';
+import CustomerReview from '@/components/customerReview';
 
 export default function HomePage() {
   const icons = {
@@ -213,14 +213,14 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="text-white max-w-[1480px]">
+      <div className="text-white max-w-[1480px] mx-auto">
         <div className='relative flex px-3'>
 
           {/* This section for define homepage header*/}
 
           <div className="flex w-full justify-center items-center flex-col relative">
-            <div className="text-center max-w-[900px] gap-10 mt-20 max-md:mt-10">
-              <p className="font-medium text-5xl max-lg:text-3xl max-md:mx-auto uppercase whitespace-normal">
+            <div className="text-center max-w-[950px] gap-10 mt-20 max-md:mt-10">
+              <p className="font-bold text-6xl max-lg:text-3xl max-md:mx-auto uppercase whitespace-normal">
                 increase your online success with professional copyright protection
               </p>
             </div>
@@ -236,14 +236,14 @@ export default function HomePage() {
                   <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-12 top-32 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-28 max-xl:right-0 max-xl:top-8 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.profile}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>DEFEND YOUR NAME</p>
                   <p className='font-normal text-base mt-2'>Your Brand is Your Legacy, Let Us Be Your Guardians.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-0 -top-3 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-10 -top-5 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>ROFESSIONAL SUPPORT</p>
@@ -254,7 +254,7 @@ export default function HomePage() {
 
             {/* This section for define chosen by esteemed industry leaders*/}
 
-            <div className="flex flex-col w-full pt-80 text-center items-center max-xl:pt-36">
+            <div className="flex flex-col w-full pt-72 text-center items-center max-xl:pt-36">
               <p className="text-center font-normal text-xl max-md:justify-center">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col">
                 <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />

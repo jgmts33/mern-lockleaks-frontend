@@ -5,13 +5,13 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { FirstRecoveryStep, SecondRecoveryStep, ThirdRecoveryStep, FourthRecoveryStep, RecoveryChat } from "@/src/utils/Icons";
+import { FirstRecoveryStep, SecondRecoveryStep, ThirdRecoveryStep, FourthRecoveryStep, RecoveryChat } from "@/components/utils/Icons";
 import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
 import Moon from '@/public/assets//blog/moon.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
-import CustomerReview from '@/src/components/customerReview';
+import CustomerReview from '@/components/customerReview';
 
 export default function Recovery() {
 
@@ -137,7 +137,7 @@ export default function Recovery() {
 
                 {/* This section for define benefit content*/}
 
-                <div className='flex flex-col w-full bg-white/5 mx-auto justify-around mt-20 px-3 py-20 gap-20 max-xl:flex-col items-center'>
+                <div className='flex flex-col w-[calc(100vw-20px)] bg-white/5 mx-auto justify-around mt-20 px-3 py-20 gap-20 max-xl:flex-col items-center'>
                     <span className='font-medium text-5xl max-md:text-4xl'>BENEFITS</span>
                     <div className='flex max-xl:flex-col max-xl:mx-auto max-xl:items-center max-xl:justify-center max-xl:p-8 mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl'>
                         <Image src={Moon} width={350} height={150} className='w-1/2 max-xl:w-full' alt='moon' />

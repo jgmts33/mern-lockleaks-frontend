@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button
 } from '@nextui-org/react';
-import { ChevronRight, Eye, Chats, Photos, GradiantChevronRIGHT } from "@/src/utils/Icons";
+import { ChevronRight, Eye, Chats, Photos, GradiantChevronRIGHT } from "@/components/utils/Icons";
 
 export default function SERVICES() {
 
@@ -65,20 +65,20 @@ export default function SERVICES() {
     ]
 
     return (
-        <div className="text-white flex flex-col mt-20 pb-20">
-            <Image src="assets/safeground/robot-hand-finger.svg" alt='robert-hand' width={600} height={170} className="mt-72 absolute right-0 max-2xl:hidden" />
+        <div className="text-white flex flex-col pb-20 mx-auto">
+            <Image src="assets/safeground/robot-hand-finger.svg" alt='robert-hand' width={600} height={170} className="mt-52 absolute right-0 max-2xl:hidden" />
             <div className='flex mt-10 relative justify-center max-sm:px-3'>
-                <div className='left-0 top-0'>
-                    <div className='mb-0 absolute left-40 -top-28 max-2xl:w-[100px] max-xl:hidden'>{icons.photo}</div>
-                    <div className='absolute left-6 top-12 max-2xl:-left-6 max-2xl:top-2 max-xl:hidden'>{icons.chat}</div>
+                <div className='left-0 top-0  max-2xl:hidden'>
+                    <div className='mb-0 absolute left-40 -top-10 max-2xl:w-[100px]'>{icons.photo}</div>
+                    <div className='absolute left-6 top-32 max-2xl:-left-6 max-2xl:top-2'>{icons.chat}</div>
                 </div>
                 <div className='max-w-[670px] flex flex-col justify-center text-center max-2xl:z-10'>
                     <p className='font-medium text-5xl max-md:text-4xl'>{ServicesTitle.title}</p>
                     <p className='font-normal text-xl mt-5 max-md:text-lg'>{ServicesTitle.content}</p>
                 </div>
             </div>
-            <div className='flex mt-20 px-3'>
-                <div className='flex grid-cols-3 gap-6 z-20 max-lg:flex-wrap max-lg:justify-center '>
+            <div className='flex mt-20 px-3 mx-auto'>
+                <div className='flex grid-cols-3 gap-6 z-10 max-lg:flex-wrap max-lg:justify-center '>
                     {
                         ServicesContent.map((item, index) => {
                             return (

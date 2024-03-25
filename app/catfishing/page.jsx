@@ -5,8 +5,8 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { FirstTip, SecondTip, ThirdTip, Chat } from "@/src/utils/Icons";
-import CustomerReview from '@/src/components/customerReview';
+import { FirstTip, SecondTip, ThirdTip, Chat } from "@/components/utils/Icons";
+import CustomerReview from '@/components/customerReview';
 
 export default function Catfishing() {
 
@@ -113,7 +113,7 @@ export default function Catfishing() {
                         {
                             PreventionTips.map((content, index) => {
                                 return (
-                                    <div key={index} className='flex gap-8 p-5 z-20 mt-5'>
+                                    <div key={index} className='flex gap-8 p-5 z-10 mt-5'>
                                         <div>{content.icon}</div>
                                         <div><span className='font-medium text-xl max-sm:text-base'>{content.content}</span></div>
                                     </div>
@@ -126,7 +126,7 @@ export default function Catfishing() {
                 {/* This section for define FAQ for creator dmca page*/}
 
                 <div className='font-medium text-5xl'><p className='font-medium text-5x center'>FAQ</p></div>
-                <div className='flex gap-32 mt-10 max-w-[1480px]'>
+                <div className='flex gap-32 mt-10 max-w-[1480px] mx-auto'>
                     <div className='flex mt-10 gap-10 max-xl:flex-col max-md:px-3'>
                         {
                             CamDmcaContent.map((camdmca, index) => {

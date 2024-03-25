@@ -5,8 +5,8 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight } from "@/src/utils/Icons";
-import CustomerReview from '@/src/components/customerReview';
+import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight } from "@/components/utils/Icons";
+import CustomerReview from '@/components/customerReview';
 
 export default function Pricing() {
 
@@ -130,7 +130,7 @@ export default function Pricing() {
 
     return (
         <>
-            <div className="flex flex-col text-white w-full container max-md:px-3">
+            <div className="flex flex-col text-white w-full container max-md:px-3 mx-auto">
 
                 {/* This section for define pricing page header*/}
 

@@ -5,7 +5,7 @@ import {
   Button, Pagination, PaginationItemType
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
-import { ChevronRight } from "@/src/utils/Icons";
+import { ChevronRight } from "@/components/utils/Icons";
 import Saturn from '@/public/assets//blog/saturn.svg';
 import Moon from '@/public/assets//blog/moon.svg';
 import Mars from '@/public/assets//blog/mars.svg';
@@ -167,7 +167,7 @@ export default function Blog() {
   }
 
   return (
-    <div className="text-white relative container flex flex-col pb-20 mt-10 max-sm:px-3">
+    <div className="text-white relative container flex flex-col pb-20 mt-10 max-sm:px-3 mx-auto">
 
       {/* This section for define blog title*/}
 

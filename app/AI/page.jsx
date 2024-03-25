@@ -10,9 +10,9 @@ import Instagram from "@/public/assets/AI/instagram.svg"
 import TikTok from "@/public/assets/AI/TikTok.svg"
 import Reddit from "@/public/assets/AI/Reddit.svg"
 import Twitter from "@/public/assets/AI/twitter.svg"
-import { ProtectKey, MotherBoard, Locks, Hub, Tips, ChevronRight } from "@/src/utils/Icons";
+import { ProtectKey, MotherBoard, Locks, Hub, Tips, ChevronRight } from "@/components/utils/Icons";
 import Robertgroup from '@/public/assets/robert.svg';
-import CustomerReview from '@/src/components/customerReview';
+import CustomerReview from '@/components/customerReview';
 import RobertHand from '@/public/assets/copyright/robert-hand.svg';
 
 
@@ -143,7 +143,7 @@ export default function AI() {
                     {
                         AITips.map((item, index) => {
                             return (
-                                <div key={index} className='max-w-[527px] flex gap-3'>{icons.tip}<p className='font-normal max-xl:text-base text-xl'>{item}</p></div>
+                                <div key={index} className='max-w-[527px] flex gap-3'>{icons.tip}<p className='font-normal max-md:text-base text-xl'>{item}</p></div>
                             )
                         })
                     }
@@ -177,7 +177,7 @@ export default function AI() {
                         })
                     }
                 </div>
-                <div><Image className="w-[461px] h-[312px] absolute right-0 -mt-36" src={RobertHand} alt='robert hand' /></div>
+                <div><Image className="w-[461px] h-[312px] absolute right-0 -mt-36 max-lg:hidden" src={RobertHand} alt='robert hand' /></div>
             </div>
             <CustomerReview />
         </>

@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { SelectSwitch, UnselectSwitch } from "@/src/utils/Icons";
+import { SelectSwitch, UnselectSwitch } from "@/components/utils/Icons";
 
 export default function CookieSettigs() {
 

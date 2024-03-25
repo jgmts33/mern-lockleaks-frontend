@@ -4,8 +4,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import WriteTip from "@/public/assets/scan/camdcma.svg";
 import TipDocument from "@/public/assets/scan/tip-document.svg";
-import { Balance, Banned, Law, ChevronRight, Tips, FirstTip, SecondTip, ThirdTip } from "@/src/utils/Icons";
-import CustomerReview from '@/src/components/customerReview';
+import { Balance, Banned, Law, ChevronRight, Tips, FirstTip, SecondTip, ThirdTip } from "@/components/utils/Icons";
+import CustomerReview from '@/components/customerReview';
 
 export default function CamDmca() {
 

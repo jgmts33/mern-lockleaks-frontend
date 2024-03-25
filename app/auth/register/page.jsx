@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import HeroImg from "@/public/assets/Hero.svg";
 import { useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google, Error, Success } from "@/src/utils/Icons";
+import { Lock, Envelop, Twitter, Facebook, Google, Error, Success } from "@/components/utils/Icons";
 import React from "react";
 
 export default function Register() {
@@ -80,7 +80,7 @@ export default function Register() {
     }
 
     return (
-        <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
+        <div className='px-10 max-sm:px-2 flex w-screen min-h-[calc(100vh-80px)]'>
 
             {/* This section for keep Register page Image*/}
 
@@ -100,7 +100,7 @@ export default function Register() {
                             <input
                                 type="email"
                                 name="email"
-                                placeholder='yourname@gmail.com'
+                                placeholder='youremail@gmail.com'
                                 onChange={(e) => setEmail(e.target.value)}
                                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
                                 required

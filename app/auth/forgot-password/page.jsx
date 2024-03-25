@@ -6,7 +6,7 @@ import {
 import Link from "next/link";
 import HeroImg from "@/public/assets/Hero.svg";
 import { useEffect, useState } from 'react';
-import { GradientKey, Envelop } from "@/src/utils/Icons";
+import { GradientKey, Envelop } from "@/components/utils/Icons";
 
 export default function ForgotPassword() {
 
@@ -18,7 +18,7 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
+    <div className='px-10 max-sm:px-2 mx-auto flex w-screen min-h-[calc(100vh-80px)]'>
 
       {/* This section for keep forgot password image*/}
 
@@ -42,7 +42,7 @@ export default function ForgotPassword() {
               <input
                 type="email"
                 name="email"
-                placeholder='yourname@gmail.com'
+                placeholder='youremail@gmail.com'
                 onChange={(e) => setEmail(e.target.value)}
                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
               />
@@ -54,8 +54,6 @@ export default function ForgotPassword() {
               Cancel
             </Button>
           </div>
-
-
         </div>
       </div>
     </div>

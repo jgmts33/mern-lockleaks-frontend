@@ -44,3 +44,7 @@ body {
   background: linear-gradient(#aa7fe2,#ee4613);
   border-radius: 5px;
 }
+
+.gradiant-background{
+  background-image: radial-gradient(#2e213b 5%, #261c36 25%, #020615 60%);
+}
