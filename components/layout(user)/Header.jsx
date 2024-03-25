@@ -30,7 +30,7 @@ export default function UserHeader() {
       </div>
       <div className="flex px-5 text-white gap-5 items-center">
         <div className="flex">
-          <Image src={Flag} width={15} height={15} />
+          <Image src={Flag} width={15} height={15} alt="flag" />
           <span>En</span>
         </div>
         <div className="flex">
@@ -45,7 +45,7 @@ export default function UserHeader() {
           <span className="font-normal text-xs">EC@gmail.com</span>
         </div>
         <div>
-          <Image src={Avatar} width={40} height={40} />
+          <Image src={Avatar} width={40} height={40} alt="avatar" />
           <span className="absolute right-6 top-9">{icons.dot}</span>
         </div>
       </div>

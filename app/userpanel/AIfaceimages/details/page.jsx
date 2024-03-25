@@ -90,8 +90,8 @@ export default function AIImageDetails() {
                                         {
                                             AIImageLists.map((items, index) => {
                                                 return (
-                                                    <div className='flex mt-5 items-center px-5 gap-10'>
-                                                        <div key={index} className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-center gap-3 rounded-[16px]'>
+                                                    <div key={index} className='flex mt-5 items-center px-5 gap-10'>
+                                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-center gap-3 rounded-[16px]'>
                                                             {items.icon}
                                                             <span>{items.content}</span>
                                                         </div>
@@ -128,7 +128,7 @@ export default function AIImageDetails() {
                     {
                         scanResults.map((items, index) => {
                             return (
-                                <div className='flex flex-col p-3'>
+                                <div key={index} className='flex flex-col p-3'>
                                     <div className='flex gap-5 p-3'>
                                         <div>{items.icon}</div>
                                         <div>{items.content}</div>

@@ -54,7 +54,7 @@ export default function Dashbaord() {
                     {
                         DashboardOverview.map((items, index) => {
                             return (
-                                <div className="flex flex-col max-w-[480px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 cursor-pointer">
+                                <div key={index} className="flex flex-col max-w-[480px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 cursor-pointer">
                                     <div className='flex justify-between px-3 py-3'>
                                         <div><span className='font-medium text-lg'>{items.title}</span></div>
                                         <div>{icons.moredetails}</div>

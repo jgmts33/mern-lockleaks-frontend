@@ -44,8 +44,8 @@ export default function DownloadData() {
                         {
                             NotificationContent.map((items, index) => {
                                 return (
-                                    <div className='flex items-center gap-10'>
-                                        <div key={index} className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
+                                    <div key={index} className='flex items-center gap-10'>
+                                        <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
                                             {items}
                                         </div>
                                         <div>

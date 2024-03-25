@@ -68,7 +68,7 @@ export default function Bing() {
                         })
                     }
                     <div className='mt-10 mx-auto'>
-                    <Image src={BingIcon} width={100} height={100}></Image>
+                    <Image src={BingIcon} width={100} height={100} alt='bing'></Image>
                     </div>
                 </div>
                 <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 cursor-pointer">

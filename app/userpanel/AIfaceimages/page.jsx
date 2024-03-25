@@ -71,8 +71,8 @@ export default function AIFaceImages() {
                         {
                             AIImageLists.map((items, index) => {
                                 return (
-                                    <div className='flex mt-5 items-center gap-10'>
-                                        <div key={index} className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-center gap-3 rounded-[16px]'>
+                                    <div key={index} className='flex mt-5 items-center gap-10'>
+                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-center gap-3 rounded-[16px]'>
                                             {items.icon}
                                             <span>{items.content}</span>
                                         </div>
