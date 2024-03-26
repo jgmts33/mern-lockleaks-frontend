@@ -3,7 +3,6 @@ import Image from 'next/image';
 import {
     Button, Link, Checkbox, Chip, cn, useDisclosure, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,
 } from '@nextui-org/react';
-import HeroImg from "@/public/assets/Hero.png";
 import { useEffect, useState } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google, Error, Success } from "@/components/utils/Icons";
 import React from "react";
@@ -82,12 +81,9 @@ export default function Register() {
     return (
         <div className='px-10 max-sm:px-2 flex w-screen min-h-[calc(100vh-80px)]'>
 
-            {/* This section for keep Register page Image*/}
+            {/* This section for keep Register Content*/}
 
-            <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-                <Image src={HeroImg} alt="Hero Image" width={400} height={400} />
-            </div>
-            <div className='w-full lg:w-1/2 flex items-center justify-center max-lg:pt-10'>
+            <div className='w-full flex items-center justify-center max-lg:pt-10'>
                 <div className="w-[562px] flex flex-col items-center text-white">
                     <div className='text-center max-w-[354px]'>
                         <p className="font-medium text-5xl ">Sign up</p>
@@ -148,7 +144,7 @@ export default function Register() {
                                 <p className='font-light text-xs pt-3 pl-2'>I consent to receive valuable updates from WEBSITE NAME and acknowledge that I can unsubscribe at any time. No spam, guaranteed.</p>
                             </Checkbox>
                             <Checkbox isSelected={isTermSelected} onValueChange={setIsTermSelected} radius="none">
-                                <span className='font-light text-xs pl-2'>I agree to WEBSITE NAMEr's</span> <Link href='/' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
+                                <span className='font-light text-xs pl-2'>I agree to WEBSITE NAMEr's</span> <Link href='/termservice' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                         </div>
                         <Button radius="lg" onClick={() => handleRegister()} className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>

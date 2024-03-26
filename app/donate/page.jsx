@@ -8,21 +8,20 @@ import { useEffect, useState } from 'react';
 
 export default function Donate() {
 
-    const AboutUsHeader = [
+    const [selectedAccount, setSelectAccount] = useState(true)
+
+    const DonateContent = [
         {
-            title: "Mission and Vision",
-            content: "LockLeaks is committed to the protection and promotion of creative digital content. We endeavor to provide innovative solutions and high-quality services that guarantee the safety and security of our clients' online content. Our primary goal is to be a trusted partner devoted to safeguarding creativity and copyright rights."
+            content: "Donation is a way to support a project or organization through financial donations. Your contribution will help us develop and improve our activities, making them more accessible and of higher quality for our users."
         }, {
-            title: "Experience and Expertise",
-            content: "Our team comprises experts with extensive experience in the copyright protection and digital security industry. We are dedicated to using our knowledge to find personalized and effective solutions for each client. Our expertise allows us to quickly identify and manage copyright infringements."
+            content: "We thank everyone who is ready to provide us with help and support. Your generosity will help us continue to work and develop, making the world a better and brighter place. Any donation, be it large or small, is appreciated by us and will be well spent for everyone."
         }, {
-            title: "Values and Principles",
-            content: "Our values are based on integrity, transparency, and commitment to clients. We respect confidentiality and individual rights, offering personalized and tailored solutions to meet each client's needs. We are dedicated to maintaining high standards of quality and professionalism."
+            content: "If you want to contribute to our activities, you can make a donation through various payment systems or bank transfer. We guarantee transparency and responsible use of all funds received."
         },
     ]
 
     return (
-        <div className="flex flex-col text-white w-full">
+        <div className="flex flex-col text-white max-sm:px-3">
 
             {/* This section for define aboutus page header*/}
 
@@ -33,25 +32,49 @@ export default function Donate() {
             {/* This section for define Innovation and Progress*/}
 
             <div className='max-lg:px-3'>
-                <div className="mt-24 flex flex-col rounded-3xl bg-[#0E142B] container relative px-10 py-20 mx-auto">
-                    <div className='flex w-full'>
-                        <div className='w-full max-w-[1050px]'>
-                            <div className='gap-5'><span className='font-medium text-5xl max-xl:text-4xl'>DONATE</span><span className='bg-gradient-to-r font-medium text-5xl from-purple-light to-purple-weight bg-clip-text text-transparent'>PAGE</span></div>
-                            <div><p className='max-w-[539px] max-xl:mx-auto mt-5'>We focus on constant innovation and progress, continuously adapting to changes in the digital protection field. We are committed to staying updated with the latest technologies and methods to provide efficient and competitive solutions for our clients.</p></div>
+                <div className="mt-10 flex flex-col rounded-3xl bg-[#0E142B] container relative px-10 py-20 mx-auto max-w-[calc(100vw-50px)]">
+                    <div className='w-[calc(100vw-600px)] max-lg:w-full'>
+                        <div className='w-full max-w-[1050px] max-lg:mx-auto'>
+                            <div className='flex gap-5'>
+                                <div><span className='bg-gradient-to-r font-medium text-5xl from-purple-light to-purple-weight bg-clip-text text-transparent max-xl:text-4xl'>DONATE</span></div>
+                                <div><span className='font-medium text-5xl max-xl:text-4xl'>PAGE</span></div>
+                            </div>
+                            <div className='flex max-w-[588px] py-5'>
+                                <ul className='flex flex-col space-y-4'>
+                                    {
+                                        DonateContent.map((items, index) => {
+                                            return (
+                                                <li key={index}>{items.content}</li>
+                                            )
+                                        })
+                                    }
+                                </ul>
+                            </div>
                         </div>
-                        <div className='max-lg:hidden w-full max-w-[553px]'>
-                            <Image src="assets/setup/message.svg" alt='message' width={300} height={170} className="top-20 right-[460px] max-xl:right-80 absolute" />
-                            <Image src="assets/setup/bubble.svg" alt='bubble' width={443} height={404} className="top-0 right-0 absolute" />
+                        <div className='static max-lg:hidden w-full max-w-[553px]'>
+                            <Image src="assets/setup/message.svg" alt='message' width={300} height={170} className="top-20 right-96 max-xl:right-80 absolute" />
+                            <Image src="assets/setup/bubble.svg" alt='bubble' width={443} height={404} className="absolute top-10 right-10" />
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* This section for define Team information */}
+            {/* This section for define Support information */}
 
-            <div className='max-lg:px-3 mt-20 text-center'>
-                <div className='mx-auto'><span className='font-medium text-5xl max-xl:text-4xl'>The Team</span></div>
-                <div className='max-w-3xl mx-auto mt-5'><span className='font-normal text-base max-xl:text-center'>Our team comprises dedicated professionals with extensive experience in the digital protection industry. Each member brings a unique set of skills and expertise, contributing to our success and excellence in serving clients.</span></div>
+            <div className='mt-20 text-center max-sm:px-3'>
+                <div className='mx-auto'><span className='font-medium text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-sm:text-2xl'>Thank you for your support and trust! </span></div>
+                <div className='mx-auto max-w-[1100px]'><span className='font-medium text-3xl max-sm:text-2xl'>Together we can achieve great success and change the world for the better</span></div>
+                <div className='flex mx-auto justify-center mt-10'>
+                    <Image src="assets/donate/lock.svg" alt='message' width={150} height={150} />
+                </div>
+            </div>
+            <div className='bg-gradient-to-tr max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container mb-20'>
+                <Button radius="full" className={selectedAccount ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg max-sm:text-base" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg max-sm:text-base"} onClick={() => setSelectAccount(true)} size='lg'>
+                    PayPal Reddirect
+                </Button>
+                <Button radius="full" className={selectedAccount ? "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg max-sm:text-base" : "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg max-sm:text-base"} onClick={() => setSelectAccount(false)} size='lg'>
+                    Buym Ecoffe
+                </Button>
             </div>
         </div>
     )

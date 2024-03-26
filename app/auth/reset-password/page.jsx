@@ -4,7 +4,6 @@ import {
   Button
 } from '@nextui-org/react';
 import Link from "next/link";
-import HeroImg from "@/public/assets/Hero.png";
 import KeyIcon from "@/public/assets/Key.svg";
 import { useEffect, useState } from 'react';
 
@@ -57,15 +56,9 @@ export default function Home() {
   return (
     <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
 
-    {/* This section for define reset password page header*/}
-
-    <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-        <Image src={HeroImg} alt="Hero Image" className='w-full max-w-[878px] h-auto' />
-      </div>
-
       {/* This section for define reset password page content*/}
 
-      <div className='w-full lg:w-1/2 flex items-center justify-center'>
+      <div className='w-full flex items-center justify-center'>
         <div className="w-[562px] flex flex-col items-center gap-10 text-white">
           <div className='text-center max-w-[354px] mb-4'>
             <p className="text-[40px] font-medium leading-[60px]">Reset Password</p>

@@ -4,7 +4,6 @@ import {
   Button
 } from '@nextui-org/react';
 import Link from "next/link";
-import HeroImg from "@/public/assets/Hero.png";
 import { useEffect, useState } from 'react';
 import { GradientKey, Envelop } from "@/components/utils/Icons";
 
@@ -20,15 +19,9 @@ export default function ForgotPassword() {
   return (
     <div className='px-10 max-sm:px-2 mx-auto flex w-screen min-h-[calc(100vh-80px)]'>
 
-      {/* This section for keep forgot password image*/}
-
-      <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-        <Image src={HeroImg} alt="Hero Image" width={400} height={400} />
-      </div>
-
       {/* This section for define forgot password content*/}
 
-      <div className='w-full lg:w-1/2 flex items-center justify-center'>
+      <div className='w-full flex items-center justify-center'>
         <div className="w-[562px] flex flex-col items-center gap-10 text-white">
           <div className='text-center max-w-[354px]'>
             <div className='rounded-full mx-auto bg-gradient-to-br from-gray-800 to-gray-900 p-3 w-12'>{icons.gradiant_key}</div>

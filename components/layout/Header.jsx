@@ -63,11 +63,11 @@ export default function Header() {
       path: "/dmcabadges"
     },{
       content: "Free E-Books",
-      path: "/deletedata"
+      path: "/freeebooks"
     },
     {
       content: "Donate",
-      path: "/deletedata"
+      path: "/donate"
     },
   ] 
 

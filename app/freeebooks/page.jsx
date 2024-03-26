@@ -5,11 +5,12 @@ import {
     Button, Pagination, PaginationItemType
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
-import { ChevronRight, Search, Shine, Star } from "@/components/utils/Icons";
+import { ChevronLeft, ChevronRight, Search, Shine, Star } from "@/components/utils/Icons";
 import Ebook from '@/public/assets/ebooks/ebooks.svg';
 
 export default function FreeEBooks() {
     const icons = {
+        left: <ChevronLeft fill="currentColor" size={16} />,
         right: <ChevronRight fill="currentColor" size={16} />,
         search: <Search fill="currentColor" size={16} />,
         shine: <Shine fill='currentColor' size={16} />,
@@ -17,99 +18,80 @@ export default function FreeEBooks() {
     };
 
     const [selectedPagination, setSelectPagination] = useState(1);
-    const [allPagination, setAllPagination] = useState(0)
+    const [allPagination, setAllPagination] = useState(0);
+    const [selectPaginationBtn, setSelectPaginationBtn] = useState(false);
 
     const EbooksCardContent = [
         {
             photo: Ebook,
-            name: "",
-            version: 5.0,            
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 4.7,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 3.0
+            name: "E-Book Name",        
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
         }, {
             photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
-        }, {
-            photo: Ebook,
-            name: "",
-            version: 5.0,
-            order:122
+            name: "E-Book Name",
+        }
+    ]
+
+    const Reviews = [
+        {
+            stars: icons.star
         },
+        {
+            stars: icons.star
+        },
+        {
+            stars: icons.star
+        },
+        {
+            stars: icons.star
+        },
+        {
+            stars: icons.star
+        }
     ]
 
     useEffect(() => {
@@ -143,6 +125,16 @@ export default function FreeEBooks() {
                 {value}
             </button>
         );
+    }
+
+    const handlePaginationLeftBtnClick = () => {
+        setSelectPaginationBtn(false);
+        setSelectPagination(p => (p > 1 ? p - 1 : p));
+    }
+
+    const handlePaginationRightBtnClick = () =>{
+        setSelectPaginationBtn(true);
+        setSelectPagination(p => (p < allPagination ? p + 1 : p));
     }
 
     return (
@@ -186,28 +178,12 @@ export default function FreeEBooks() {
                                 <div className="flex flex-col">
                                     <div className="flex flex-col">
                                         <div className='relative'>
-                                            <div>
-                                                <Button radius="lg" className="absolute font-medium backdrop-blur-sm bg-white/10 shadow-gray-50 text-white px-12 py-5 text-base" size='md'>
-                                                    <div>
-                                                        <span className='font-medium text-base'>{books.version}</span>
-                                                    </div>
-                                                    <div className='flex gap-1'>
-                                                        <span>{icons.star}</span>
-                                                        <span>{icons.star}</span>
-                                                        <span>{icons.star}</span>
-                                                        <span>{icons.star}</span>
-                                                        <span>{icons.star}</span>
-                                                    </div>
-                                                    <div>
-                                                        <span className='font-medium text-base'>{books.order}</span>
-                                                    </div>
-                                                </Button>
-                                            </div>
                                             <Image className="h-52 pt-6 rounded-[20px]" src={books.photo} alt="Modern building architecture" />
                                         </div>
                                         <div className='flex p-2'>
                                             <Button radius="lg" className="font-medium backdrop-blur-sm max-md:text-xs bg-white/10 border border-gray-500 shadow-gray-50 text-white w-full px-12 py-5 text-base" size='md'>
-                                                <span>{icons.shine}</span>E-Book Name
+                                                <span>{icons.shine}</span>
+                                                <span>{books.name}</span>
                                             </Button>
                                             <Button radius="lg" className="font-medium bg-gradient-to-tr max-md:text-xs from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg w-full py-5 text-base" size='md'>
                                                 <span>{icons.shine}</span>Download pdf
@@ -220,15 +196,10 @@ export default function FreeEBooks() {
                     })
                 }
             </div>
-            <div className='flex justify-between pt-16'>
+            <div className='flex justify-center gap-32 pt-16 max-sm:gap-20'>
                 <div>
-                    <Button
-                        radius="full"
-                        className="font-light bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg text-lg max-md:text-[15px]" size='md'
-                        onClick={() => setSelectPagination(p => (p > 1 ? p - 1 : p))}
-                    >
-                        <div className='rotate-[-180deg]'>{icons.right}</div>
-                        <span>Back</span>
+                    <Button isIconOnly className={selectPaginationBtn == false ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "backdrop-blur-sm bg-white/10"} aria-label="Like" onClick={() => handlePaginationLeftBtnClick()}>
+                        {icons.left}
                     </Button>
                 </div>
                 <div>
@@ -243,13 +214,7 @@ export default function FreeEBooks() {
                     />
                 </div>
                 <div>
-                    <Button
-                        radius="full"
-                        className="font-light bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg text-lg max-md:text-[15px]"
-                        size='md'
-                        onClick={() => setSelectPagination(p => (p < allPagination ? p + 1 : p))}
-                    >
-                        <span>Next</span>
+                    <Button isIconOnly className={selectPaginationBtn == true  ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "backdrop-blur-sm bg-white/10"} aria-label="Like" onClick={() => handlePaginationRightBtnClick()}>
                         <div>{icons.right}</div>
                     </Button>
                 </div>

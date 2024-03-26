@@ -3,7 +3,6 @@ import Image from 'next/image';
 import {
     Button, Link
 } from '@nextui-org/react';
-import HeroImg from "@/public/assets/Hero.png";
 import { useEffect, useState } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google } from "@/components/utils/Icons";
 import { useRouter } from 'next/navigation';
@@ -28,15 +27,9 @@ export default function Login() {
     return (
         <div className='px-10 max-sm:px-3 flex min-h-[calc(100vh-80px)] w-screen'>
 
-            {/* This section for keep Login page image*/}
-
-            <div className='w-1/2 justify-center items-center px-16 hidden lg:flex'>
-                <Image src={HeroImg} alt="Hero Image" width={400} height={400} className='' />
-            </div>
-
             {/* This section for define Login page content*/}
 
-            <div className='w-full lg:w-1/2 flex items-center justify-center'>
+            <div className='w-full flex items-center justify-center'>
                 <div className="w-[562px] flex flex-col items-center gap-10 text-white">
                     <div className='text-center max-w-[354px] mb-4'>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
