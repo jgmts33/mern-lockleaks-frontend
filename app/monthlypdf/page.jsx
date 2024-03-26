@@ -104,15 +104,16 @@ export default function MonthlyPdf() {
 
                 {/* This section for define benefit content*/}
 
-                <div className='flex max-lg:px-5 mt-80 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px] max-md:mt-60 max-sm:pb-10'>
+                <div className='flex max-lg:px-5 mt-80 py-2 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px] max-md:mt-60 max-sm:pb-10'>
                     <div className='flex flex-col'>
-                        <div className='p-10'><span className='font-medium text-5xl max-lg:text-4xl'>BENEFITS:</span></div>
-                        <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 gap-7 justify-center items-center p-10 max-sm:p-0'>
+                        <div className='py-10 px-12'><span className='font-medium text-5xl max-lg:text-4xl'>BENEFITS:</span></div>
+                        <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 gap-8 justify-center items-center px-10 py-10 max-sm:p-0'>
                             {
                                 BenefitContent.map((benefits, index) => {
                                     return (
-                                        <div key={index} className="flex max-w-[430px] rounded-full backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 border border-gray-500 p-5 cursor-pointer">
-                                            <span className='flex mt-5 font-normal text-base'>{icons.shine}{benefits.content}...</span>
+                                        <div key={index} className="flex max-w-[480px] rounded-full items-center gap-5 backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 z-10 border border-gray-500 px-5 py-7 cursor-pointer">
+                                            <div>{icons.shine}</div>
+                                            <div><span className='flex font-normal text-base'>{benefits.content}...</span></div>
                                         </div>
                                     )
                                 })
@@ -120,9 +121,9 @@ export default function MonthlyPdf() {
                         </div>
                     </div>
                     <div className='max-lg:hidden relative'>
-                        <Image alt='photo' src={Photo} width={350} height={150} className='absolute -left-52 top-8' />
-                        <Image alt='rightchat' src={RightChat} width={250} height={150} className='absolute bottom-0 -left-24' />
-                        <Image alt='roberthand' src={RobertHand} width={461} height={312} className='mt-20 z-20' />
+                        <Image alt='photo' src={Photo} width={350} height={150} className='absolute -left-48 top-1' />
+                        <Image alt='rightchat' src={RightChat} width={250} height={150} className='absolute -bottom-10 -left-24' />
+                        <Image alt='roberthand' src={RobertHand} width={461} height={312} className='mt-20 z-10' />
                     </div>
                 </div>
 

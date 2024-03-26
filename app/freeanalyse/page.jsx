@@ -45,7 +45,7 @@ export default function FreeAnalyse() {
           <p className='mt-10'>{freeanalyseContent.thirdDescription}</p>
         </div>
         <div>
-          <Image className="h-72 w-80 mt-2 object-cover max-md:w-full p-2 rounded-[20px]" src={Saturn} alt='saturn' />
+          <Image className="h-72 w-80 mt-2 object-cover p-2 rounded-[20px] max-xl:hidden" src={Saturn} alt='saturn' />
         </div>
       </div>
 

@@ -183,6 +183,37 @@ export const Protect = ({
     );
 };
 
+export const UpDownScroll = ({
+    fill = "currentColor",
+    size,
+    height,
+    width,
+    ...props
+}) => {
+    return (
+        <svg width="20" height="113" viewBox="0 0 20 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.3776 14.126L10.5 98.8757" stroke="#EBE9F1" strokeLinecap="square" />
+            <g clipPath="url(#clip0_157_1300)">
+                <circle cx="10" cy="10" r="10" fill="#7367F0" fillOpacity="0.12" />
+                <circle cx="10" cy="10" r="6" fill="#7367F0" />
+            </g>
+            <g clip-path="url(#clip1_157_1300)">
+                <circle cx="10" cy="103" r="10" fill="#E567F0" fillOpacity="0.12" />
+                <circle cx="10" cy="103" r="6" fill="#ED67F0" />
+            </g>
+            <defs>
+                <clipPath id="clip0_157_1300">
+                    <rect width="20" height="20" fill="white" />
+                </clipPath>
+                <clipPath id="clip1_157_1300">
+                    <rect width="20" height="20" fill="white" transform="translate(0 93)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+    );
+}
+
 export const Lock = ({
     fill = "currentColor",
     size,

@@ -91,9 +91,9 @@ export default function CamDmca() {
 
                 {/* This section for define tips for camdmca page*/}
 
-                <div className='flex w-full bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center'>
+                <div className='flex w-[calc(100vw-20px)] bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center'>
                     <div className="relative max-w-[740px] flex justify-between">
-                        <div className='max-w-[500px] text-center'><span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>
+                        <div className='max-w-[500px]'><span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>
                             <div className='flex items-center justify-center z-10 max-sm:flex-col mt-5'>
                                 <Image src={WriteTip} width={349} height={150} alt='write tip' className='relative z-10 max-sm:w-64 max-sm:h-44' />
                                 <Image src={TipDocument} width={349} height={150} alt='tip document' className='relative z-10 max-sm:w-64 max-sm:h-44' />

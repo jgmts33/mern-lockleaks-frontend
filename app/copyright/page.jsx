@@ -97,7 +97,7 @@ export default function CopyRight() {
 
                 {/* This section for define tips for copyright*/}
 
-                <div className='flex bg-white/10 py-20 w-full justify-center gap-32 mt-24 max-lg:flex-col max-lg:items-center max-sm:px-3'>
+                <div className='flex bg-white/10 py-16 w-[calc(100vw-20px)] justify-center gap-32 max-xl:gap-10 max-md:py-5 px-5 mt-24 max-lg:flex-col max-lg:items-center max-sm:px-3'>
                     <p className='font-medium text-3xl'>TIPS:</p>
                     {
                         AITips.map((item, index) => {
@@ -111,7 +111,7 @@ export default function CopyRight() {
 
                 {/* This section for define FAQ for copyright*/}
 
-                <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-md:px-3'>
+                <div className='flex flex-col mt-44 max-xl:mt-20 max-w-[1500px] mx-auto mb-56 w-full max-md:px-3'>
                     <p className='font-medium text-5xl text-center'>FAQ</p>
                     {
                         CopyrightFAQContent.map((FAQ_content, index) => {

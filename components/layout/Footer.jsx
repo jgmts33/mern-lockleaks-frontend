@@ -23,15 +23,16 @@ export default function Footer() {
         <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-lg:flex-col gap-10'>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Services</p>
-            <Link href={"/scantakedown"}>Scan & TakeDown</Link>
+            <Link href={"/scantakedown"}>Scan & Takedown</Link>
             <Link href={"/AI"}>Artificial Intelligence</Link>
             <Link href={"/copyright"}>Copyright</Link>
-            <Link href={"/camdmca"}>Com DMCA Content Protection</Link>
+            <Link href={"/camdmca"}>Cam DMCA Content Protection</Link>
             <Link href={"/creatordmca"}>Creator DMCA Content Protection</Link>
             <Link href={"/catfishing"}>Catifishing & Impersonation</Link>
             <Link href={"/recovery"}>Username History Recovery Removal</Link>
             <Link href={"/freeanalyse"}>Monthly Analytics & PDF Reports</Link>
             <Link href={"/dmcabadges"} className='z-10'>Dmca Badges</Link>
+            <Link href={"/dmcabadges"} className='z-10'>Free E-Books</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Company</p>
@@ -46,6 +47,7 @@ export default function Footer() {
             <p className='font-semibold text-xl pb-4'>Support</p>
             <Link href={"/help"}>Help & Support</Link>
             <Link href={"/contactus"}>Contact Us</Link>
+            <Link href={"/deletedata"}>Delete Data</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <div className='flex justify-start'>

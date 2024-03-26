@@ -46,8 +46,8 @@ export default function Header() {
       path: "/dmcabadges"
     },
     {
-      content: "Delete Data",
-      path: "/deletedata"
+      content: "Free E-Books",
+      path: "/freeebooks"
     },
   ];
 
@@ -67,10 +67,6 @@ export default function Header() {
     },
     {
       content: "Donate",
-      path: "/deletedata"
-    },
-    {
-      content: "Delete data",
       path: "/deletedata"
     },
   ] 
@@ -140,6 +136,11 @@ export default function Header() {
         <NavbarItem className="max-md:hidden">
           <Link color="foreground" href="/blog">
             BLOG
+          </Link>
+        </NavbarItem>
+        <NavbarItem className="max-md:hidden">
+          <Link color="foreground" href="/donate">
+            Donate
           </Link>
         </NavbarItem>
       </NavbarContent>

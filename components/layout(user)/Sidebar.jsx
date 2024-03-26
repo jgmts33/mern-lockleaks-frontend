@@ -123,11 +123,11 @@ export default function Sidebar() {
             <div className="mx-auto">
                 <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link>
             </div>
-            <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-10 py-5 w-full gap-2">
+            <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 w-full gap-2">
                 {
                     SidebarButtons.map((items, index) => {
                         return (
-                            <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-1 gap-5") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                            <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-10 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                 {items.icon}
                                 <span className="font-light text-sm">{items.title}</span>
                             </Button>

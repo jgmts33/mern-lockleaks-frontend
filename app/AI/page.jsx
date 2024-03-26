@@ -73,7 +73,7 @@ export default function AI() {
 
     return (
         <>
-            <div className="flex flex-col mx-auto items-center justify-center text-white w-full max-xl:px-3">
+            <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
 
                 {/* This section for define AI page header*/}
 
@@ -99,7 +99,7 @@ export default function AI() {
 
                 {/* This section for define help content*/}
 
-                <div className='flex justify-center mt-20'>
+                <div className='flex justify-center mt-20 max-xl:px-3'>
                     <div className='flex grid-cols-3 gap-20 z-10 max-xl:flex-wrap max-xl:justify-center max-xl:flex-col'>
                         <div className='flex flex-col gap-10'>
                             {
@@ -138,15 +138,12 @@ export default function AI() {
 
                 {/* This section for define tips for AI*/}
 
-                <div className='flex bg-white/10 py-20 w-[calc(100vw-30px)] items-center gap-10 px-20 max-md:rounded-xl mt-36 max-2xl:w-full max-2xl:flex-col'>
+                <div className='flex bg-white/10 py-16 w-[calc(100vw-20px)] justify-center gap-32 max-xl:gap-10 max-md:py-5 px-5 mt-24 max-lg:flex-col max-lg:items-center max-sm:px-3'>
                     <p className='font-medium text-3xl'>TIPS:</p>
                     {
                         AITips.map((item, index) => {
                             return (
-                                <div key={index} className='max-w-[700px] flex gap-5'>
-                                    <div>{icons.tip}</div>
-                                    <div><p className='font-normal max-md:text-base text-xl'>{item}</p></div>
-                                </div>
+                                <div key={index} className='max-w-[527px] flex gap-3 z-10'>{icons.tip}<p className='font-normal text-xl max-sm:text-base'>{item}</p></div>
                             )
                         })
                     }
@@ -154,7 +151,7 @@ export default function AI() {
 
                 {/* This section for define FAQ for AI page*/}
 
-                <div className='flex flex-col mt-44 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-2xl:px-3'>
+                <div className='flex flex-col mt-44 max-xl:mt-20 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-2xl:px-3'>
                     <p className='font-medium text-5xl text-center'>FAQ</p>
                     {
                         AIFAQContent.map((contents, index) => {

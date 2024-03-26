@@ -61,17 +61,17 @@ export default function Scanner() {
                         value={value}
                     />
                 </div>
-                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 cursor-pointer">
+                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
                     {
                         ScannerContent.map((items, index) => {
                             return (
                                 <div key={index} className='flex flex-col px-5'>
-                                    <div className='flex justify-between p-4'>
+                                    <div className='flex px-4 py-5'>
                                         <div className='flex px-5 gap-5'>
-                                            {items.icon}
-                                            <span className='font-semibold text-sm'>{items.title}</span>
+                                            <div>{items.icon}</div>
+                                            <div className='flex'><span className='font-semibold text-sm'>{items.title}</span></div>
                                         </div>
-                                        <div className='px-20'>
+                                        <div className='px-20 justify-start'>
                                             <span className='font-normal text-xs'>{items.content}</span>
                                         </div>
                                     </div>
