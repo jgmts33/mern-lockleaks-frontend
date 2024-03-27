@@ -24,19 +24,19 @@ export default function Login() {
     const { addAlert } = useAlert();
 
     const handleLogin = () => {
-        if(email == ""){
-            addAlert("Warning", "Type your email", "warning", () => {   
-            });
-        }
-        else if(password == ""){
-            addAlert("Warning", "Type your password", "warning", () => {   
-            });
-        }
-        else{
-            addAlert("Success", "Welcome to visit our lockleaks site", "success", () => {   
-            });
-            router.push("/userpanel/dashboard");
-        }
+        // if(email == ""){
+        //     addAlert("Warning", "Type your email", "warning", () => {   
+        //     });
+        // }
+        // else if(password == ""){
+        //     addAlert("Warning", "Type your password", "warning", () => {   
+        //     });
+        // }
+        // else{
+        //     addAlert("Success", "Welcome to visit our lockleaks site", "success", () => {   
+        //     });
+        //     router.push("/userpanel/dashboard");
+        // }
     }
 
 
@@ -45,13 +45,13 @@ export default function Login() {
 
             {/* This section for define Login page content*/}
 
-            <Alerts
+            {/* <Alerts
 				position="top-right"
 				direction="right"
 				timer={5000}
 				className="rounded-md relative z-30 !w-80 !opacity-90"
 			>
-            </Alerts>
+            </Alerts> */}
 
             <div className='w-full flex items-center justify-center'>
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
