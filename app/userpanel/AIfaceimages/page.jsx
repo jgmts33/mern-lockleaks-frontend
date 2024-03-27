@@ -62,7 +62,6 @@ export default function AIFaceImages() {
             </div>
             <div className='grid grid-cols-3 gap-10'>
                 <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 py-32 px-10 w-full'>
-
                 </div>
                 <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
                 </div>

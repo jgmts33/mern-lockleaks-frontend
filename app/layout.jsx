@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         <AlertProvider>
           <div className="flex flex-col min-h-screen">
             {
-              currentPath.includes("/userpanel")
+              currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
                 ?
                 <div className="flex w-screen">
                   <Sidebar />

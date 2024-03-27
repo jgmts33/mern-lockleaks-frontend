@@ -128,11 +128,6 @@ export default function Header() {
             BLOG
           </Link>
         </NavbarItem>
-        <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="/dmcabadges">
-            DMCA Badges
-          </Link>
-        </NavbarItem>
       </NavbarContent>
       <NavbarContent className="max-md:hidden" justify="end">
         <NavbarItem>

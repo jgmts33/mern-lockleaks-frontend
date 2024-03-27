@@ -214,7 +214,10 @@ export default function Pricing() {
                                                 </Button>
                                             </div>
                                             <Button radius="lg" className="w-full bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2 gap-5 hidden max-sm:block" size='md' onClick={() => {selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1)}}>
-                                                <span className='flex items-center justify-center '>SERVICES DEFAULTS{icons.arrowDown}</span>
+                                                <div className='flex items-center justify-center'>
+                                                <span className='flex items-center justify-center '>SERVICES DEFAULTS</span>
+                                                <span className={selectServiceList == index ? 'rotate-[180deg]' : ''}>{icons.arrowDown}</span>
+                                                </div>
                                             </Button>
                                             <div className='flex items-center max-xl:justify-content'>
                                                 <div className='flex gap-7'><p>10/DAY</p> {icons.complete}{item.agent_request}</div>
