@@ -176,7 +176,7 @@ export default function HomePage() {
     },
     {
       description: "With our assistance, free yourself from piracy-induced stress. Focus on what you do best - creating quality content.",
-      bg_color: "[#2E2650]"
+      bg_color: "from-[#24233F] to-[#1c1342]"
     }
   ]
 
@@ -298,7 +298,7 @@ export default function HomePage() {
                             <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index ? "hidden" : "flex flex-col items-start")}>
                               <div className='mb-2'> {item.icon} </div>
                               <p className='font-semibold text-xl'>{item.title}</p>
-                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
                                 <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Solution</span>
@@ -327,7 +327,7 @@ export default function HomePage() {
                             <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index + 2 ? "hidden" : "flex flex-col items-start")}>
                               <div className='mb-2'> {item.icon} </div>
                               <p className='font-semibold text-xl'>{item.title}</p>
-                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
                                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>

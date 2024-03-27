@@ -213,7 +213,7 @@ export default function Pricing() {
                                                     ADD EXTRA
                                                 </Button>
                                             </div>
-                                            <Button radius="lg" className="w-full bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2 gap-5 hidden max-sm:block" size='md' onClick={() => setSelectServiceList(index)}>
+                                            <Button radius="lg" className="w-full bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2 gap-5 hidden max-sm:block" size='md' onClick={() => {selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1)}}>
                                                 <span className='flex items-center justify-center '>SERVICES DEFAULTS{icons.arrowDown}</span>
                                             </Button>
                                             <div className='flex items-center max-xl:justify-content'>

@@ -9,7 +9,7 @@ import { FirstRecoveryStep, SecondRecoveryStep, ThirdRecoveryStep, FourthRecover
 import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
-import Moon from '@/public/assets//blog/moon.svg';
+import Shape from '@/public/assets/recovery/shape.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
 import CustomerReview from '@/components/customerReview';
 
@@ -95,8 +95,8 @@ export default function Recovery() {
         <>
             <div className="flex flex-col text-white w-full">
 
-            {/* This section for define username recovery header*/}
-            
+                {/* This section for define username recovery header*/}
+
                 <div className='mt-28'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{RecoveryTitle.title}</p>
                     <div className='flex gap-32 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-lg:flex-col max-md:gap-10'>
@@ -136,26 +136,28 @@ export default function Recovery() {
                 </div>
 
                 {/* This section for define benefit content*/}
-
+                
                 <div className='flex flex-col w-[calc(100vw-20px)] bg-white/5 mx-auto justify-around mt-20 px-3 py-20 gap-20 max-xl:flex-col items-center'>
                     <span className='font-medium text-5xl max-md:text-4xl'>BENEFITS</span>
-                    <div className='flex max-xl:flex-col max-xl:mx-auto max-xl:items-center max-xl:justify-center max-xl:p-8 mx-auto mt-10 container justify-between bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-3xl'>
-                        <Image src={Moon} width={350} height={150} className='w-1/2 max-xl:w-full' alt='moon' />
-                        <div className='flex flex-col mx-auto justify-center'>
-                            {
-                                BenefitContent.map((benefit, index) => {
-                                    return (
-                                        <div key={index} className='flex items-center py-5 max-w-[512px] gap-3 max-xl:pt-10'>
-                                            <span>{benefit.step}</span>
-                                            <span className='font-medium'>{benefit.content}</span>
-                                        </div>
-                                    )
-                                })
-                            }
+                    <div className='flex max-lg:px-3 max-w-[1076px] justify-between w-full max-md:flex-col mx-auto max-lg:pt-20'>
+                        <div className='flex'><Image src={Shape} width={200} height={200} className='mx-auto mb-10' alt='moon' /></div>
+                        <div className='flex p-5 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-e-3xl'>
+                            <div className='flex flex-col mx-auto justify-center'>
+                                {
+                                    BenefitContent.map((benefit, index) => {
+                                        return (
+                                            <div key={index} className='flex items-center py-3 max-w-[512px] gap-3 max-xl:pt-10'>
+                                                <span>{benefit.step}</span>
+                                                <span className='font-medium'>{benefit.content}</span>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
-                
+
                 {/* This section for define  username recovery header*/}
 
                 <div className='flex flex-col justify-center mx-auto mt-20 max-sm:px-3'>

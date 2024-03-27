@@ -14,9 +14,6 @@ export default function Header() {
       content: "Services",
       path: "/servicees"
     }, {
-      content: "Blog Format",
-      path: "/blog/format"
-    }, {
       content: "Scan&Takedown",
       path: "/scantakedown"
     }, {
@@ -40,10 +37,6 @@ export default function Header() {
     }, {
       content: "Monthly Analytics PDF",
       path: "/monthlypdf"
-    },
-    {
-      content: "Dmca Badges",
-      path: "/dmcabadges"
     },
   ];
 
@@ -96,7 +89,6 @@ export default function Header() {
           </Link>
         </NavbarBrand>
       </NavbarContent>
-
       <NavbarContent className="hidden sm:flex gap-8" justify="center">
         <NavbarBrand>
           <Link href="/">
@@ -134,6 +126,11 @@ export default function Header() {
         <NavbarItem className="max-md:hidden">
           <Link color="foreground" href="/blog">
             BLOG
+          </Link>
+        </NavbarItem>
+        <NavbarItem className="max-md:hidden">
+          <Link color="foreground" href="/dmcabadges">
+            DMCA Badges
           </Link>
         </NavbarItem>
       </NavbarContent>

@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google } from "@/components/utils/Icons";
 import { useRouter } from 'next/navigation';
 import { useAlert } from "next-alert";
-import { Alerts } from "next-alert";
 
 export default function Login() {
     const router = useRouter();
@@ -24,19 +23,7 @@ export default function Login() {
     const { addAlert } = useAlert();
 
     const handleLogin = () => {
-        // if(email == ""){
-        //     addAlert("Warning", "Type your email", "warning", () => {   
-        //     });
-        // }
-        // else if(password == ""){
-        //     addAlert("Warning", "Type your password", "warning", () => {   
-        //     });
-        // }
-        // else{
-        //     addAlert("Success", "Welcome to visit our lockleaks site", "success", () => {   
-        //     });
-        //     router.push("/userpanel/dashboard");
-        // }
+            router.push("/userpanel/dashboard");
     }
 
 
@@ -44,14 +31,6 @@ export default function Login() {
         <div className='px-10 max-sm:px-3 flex min-h-[calc(100vh-80px)] w-screen'>
 
             {/* This section for define Login page content*/}
-
-            {/* <Alerts
-				position="top-right"
-				direction="right"
-				timer={5000}
-				className="rounded-md relative z-30 !w-80 !opacity-90"
-			>
-            </Alerts> */}
 
             <div className='w-full flex items-center justify-center'>
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />

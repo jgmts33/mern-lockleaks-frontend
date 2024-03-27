@@ -31,8 +31,7 @@ export default function Footer() {
             <Link href={"/catfishing"}>Catifishing & Impersonation</Link>
             <Link href={"/recovery"}>Username History Recovery Removal</Link>
             <Link href={"/freeanalyse"}>Monthly Analytics & PDF Reports</Link>
-            <Link href={"/dmcabadges"} className='z-10'>Dmca Badges</Link>
-            <Link href={"/dmcabadges"} className='z-10'>Free E-Books</Link>
+            <Link href={"/dmcabadges"} className='z-10'>DMCA Badges</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Company</p>
