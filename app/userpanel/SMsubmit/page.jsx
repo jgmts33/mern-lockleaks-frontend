@@ -25,15 +25,15 @@ export default function SMsubmit() {
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SUBMIT</span></div>
                 </div>
                 <div className='grid grid-cols-3 gap-10'>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 cursor-pointer">
-                        <div className='flex'>
-                            <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
+                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
+                        <div className='flex max-w-[330px]'>
+                            <span className='font-normal text-[18px]'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
                         </div>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
                             Upload ID
                         </Button>
                     </div>
-                    <div className="flex flex-col max-w-[462px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 cursor-pointer">
+                    <div className="flex flex-col max-w-[462px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base'>Select the platform icon where you want to report the profile.</span>
                             <div className='flex justify-around mt-5'>
@@ -49,16 +49,16 @@ export default function SMsubmit() {
                             </Button>
                         </div>
                     </div>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 cursor-pointer">
+                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex flex-col'>
                             <span className='font-normal text-[18px] text-center'>How Doew It Works?</span>
                             <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 cursor-pointer">
+                <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
                     <div className='flex gap-10 items-center'>
-                        {icons.components}
+                        <div>{icons.components}</div>
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>
                     </div>
                     <div className='px-20'>

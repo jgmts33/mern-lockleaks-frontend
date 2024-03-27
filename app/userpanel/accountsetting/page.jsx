@@ -41,12 +41,12 @@ export default function AccountSetting() {
                 </div>
                 <div className='flex flex-col bg-gradient-to-br bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] mt-5 w-full'>
                     <div className='mx-auto'>
-                        <span className='font-semibold text-base'>SUBSCRIPTION INFO</span>
+                        <span className='font-semibold text-base'>Subscription info</span>
                     </div>
                     <div className='flex flex-col px-10 gap-5'>
                         <div className='mt-10'>
                             <Button radius="lg" className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full" size='sm'>
-                                ACTVE UNTIL 22.02.2024
+                                Actve until 22.02.2024
                             </Button>
                         </div>
                         <div>
@@ -56,9 +56,9 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 px-10 py-5 rounded-[16px] mt-5 w-full'>
                     <div className='mx-auto'>
-                        <span className='font-semibold text-base'>CONTRACT LOCKLEAKS</span>
+                        <span className='font-semibold text-base'>Contract Lockleaks</span>
                     </div>
                     <div className='flex flex-col px-10 gap-5'>
                         <div className='mt-10'>
@@ -68,7 +68,7 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 px-10 py-5 rounded-[16px] mt-5 w-full'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Tutorials</span>
                     </div>

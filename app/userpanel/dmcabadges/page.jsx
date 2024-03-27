@@ -4,7 +4,7 @@ import {
     Button, Link
 } from '@nextui-org/react';
 import React from 'react';
-import Saturn from '@/public/assets/background/space.svg';
+import Saturn from '@/public/assets/background/saturn.svg';
 import Fire from '@/public/assets/background/fire.svg';
 import Multicolor from '@/public/assets/background/multicolor.svg';
 

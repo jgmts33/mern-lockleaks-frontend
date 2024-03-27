@@ -51,10 +51,11 @@ export default function SMscanner() {
                         className="max-w-2xl"
                         color='secondary'
                         value={value}
+                        showValueLabel={true}
                     />
                 </div>
                 <div className='grid grid-cols-3 gap-10'>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 cursor-pointer">
+                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex'>
                             <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
                         </div>
@@ -62,7 +63,7 @@ export default function SMscanner() {
                             Upload ID
                         </Button>
                     </div>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 cursor-pointer">
+                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base text-center'>How Doew It Works?</span>
                             <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
@@ -74,7 +75,7 @@ export default function SMscanner() {
                         ScanList.map((items,index)=>{
                             return(
                                 <div key={index} className='flex flex-col'>
-                                    <div className='flex gap-3 py-6 px-5'>
+                                    <div className='flex gap-3 py-7 px-5'>
                                     {icons.components}
                                     <span className='font-normal text-base'>{items}</span>
                                     </div>
@@ -84,7 +85,7 @@ export default function SMscanner() {
                         })
                     }
                 </div>
-                <div className="flex items-center px-20 py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5 cursor-pointer">
+                <div className="flex items-center px-20 py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5">
                     <div className='flex gap-10 items-center'>
                         {icons.components}
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>

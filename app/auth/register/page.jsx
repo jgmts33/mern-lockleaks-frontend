@@ -84,7 +84,8 @@ export default function Register() {
             {/* This section for keep Register Content*/}
 
             <div className='w-full flex items-center justify-center max-lg:pt-10'>
-                <div className="w-[562px] flex flex-col items-center text-white">
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+                <div className="w-[562px] flex flex-col items-center text-white z-30">
                     <div className='text-center max-w-[354px]'>
                         <p className="font-medium text-5xl ">Sign up</p>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
@@ -195,6 +196,7 @@ export default function Register() {
                     )}
                 </ModalContent>
             </Modal>
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-52 bg-[#532a88] bg-opacity-50 blur-3xl' />
         </div>
     );
 }

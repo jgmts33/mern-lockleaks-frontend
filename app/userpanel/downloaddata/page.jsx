@@ -3,10 +3,12 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { Warning } from "@/components/utils/Icons";
 
 export default function DownloadData() {
+
+    const [selectDownload , setSelectDownload] = useState(0)
 
     const icons = {
         warning: <Warning fill="currentColor" size={16} />,
@@ -49,7 +51,7 @@ export default function DownloadData() {
                                             {items}
                                         </div>
                                         <div>
-                                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" size='sm'>
+                                            <Button radius="lg" className={selectDownload == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={()=>setSelectDownload(index)}>
                                                 Download
                                             </Button>
                                         </div>
@@ -64,7 +66,7 @@ export default function DownloadData() {
                 <div>{icons.warning}</div>
                 <div className='flex gap-16'>
                     <span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Scan name February 27, 2024</span>
-                    <span className='font-semibold text-base '>Date has expired</span>
+                    <span className='font-semibold text-base '>Date Has Expired</span>
                 </div>
             </div>
         </div>

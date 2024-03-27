@@ -20,10 +20,10 @@ export default function RecoveryUser() {
                 </div>
                 <div className='flex justify-between'>
                     <div className='mt-10 font-extrabold text-lg'><span>Recovery Usernames</span></div>
-                    <div className='mt-10 font-extrabold text-lg'><span>Profile Content Removal</span></div>
+                    <div className='mt-10 font-extrabold text-lg mr-24'><span>Profile Content Removal</span></div>
                 </div>
                 <div className='flex gap-10'>
-                    <div className="flex flex-col max-w-[460px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-5 cursor-pointer">
+                    <div className="flex flex-col max-w-[460px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-5">
                         <div className='flex max-w-[250px] text-center mx-auto'>
                             <span className='font-normal text-sm'>To Start the Scanning Process, Please Begin by Uploading a Photo of Yourself</span>
                         </div>
@@ -35,13 +35,13 @@ export default function RecoveryUser() {
                         </Button>
                     </div>
                     <div className='flex items-center pt-12'><span className='text-white font-extrabold text-lg'>Or</span></div>
-                    <div className="flex flex-col max-w-[460px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10 cursor-pointer">
+                    <div className="flex flex-col max-w-[460px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10">
                         <div className='flex max-w-[250px] text-center mx-auto'>
                             <span className='font-normal text-sm'>To Begin the Scanning Process,Please Provide Any Known Usernames You Have Used.</span>
                         </div>
                         <input
-                            type="password"
-                            name="password"
+                            type="text"
+                            name="content"
                             className='w-full outline-none p-3 rounded-lg mt-7 bg-white/15 border border-gray-700'
                             placeholder='Type here'
                         />
@@ -49,7 +49,7 @@ export default function RecoveryUser() {
                             Start
                         </Button>
                     </div>
-                    <div className="flex flex-col max-w-[460px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10 cursor-pointer">
+                    <div className="flex flex-col max-w-[460px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10">
                         <div className='flex max-w-[200px] text-center mx-auto'>
                             <span className='font-normal text-sm'>Upload a Picture Of Yourself While Holding a Sign That Reads  “CGF”</span>
                         </div>
@@ -61,7 +61,7 @@ export default function RecoveryUser() {
                         </Button>
                     </div>
                 </div>
-                <div className="flex flex-col items-center py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full cursor-pointer">
+                <div className="flex flex-col items-center py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full">
                     <div className='flex items-center'>
                         <span className='font-normal text-base'>How does it work?</span>
                     </div>
@@ -69,7 +69,7 @@ export default function RecoveryUser() {
                         <span className='font-normal text-sm'>Upload a picture of yourself to 'Profile Content Removal', then choose whether you want to upload a picture of yourself for automatic facial scanning or if you want to use your username.</span>
                     </div>
                 </div>
-                <div className="flex items-center justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10 cursor-pointer">
+                <div className="flex items-center justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10">
                     <div className='flex gap-10 max-w-[350px] w-full items-center'>
                         {icons.components}
                         <span className='font-normal text-base'>HISTORICAL PROFILE RESULTS</span>

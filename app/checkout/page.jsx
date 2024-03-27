@@ -222,23 +222,23 @@ export default function Checkout() {
                                         <div className='flex items-center max-xl:justify-content'>
                                             <div className='flex gap-7'><p>10/DAY</p> {icons.complete}{item.agent_request}</div>
                                         </div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.agent_request}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.takedowns}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.daily_report}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.badges}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.pdf_report}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.candidential_takedown}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.analyzer_tool}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.reverify_tool}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.google_removal_report}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.bing_removal_report}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{item.social_analyze_status ? icons.complete : icons.uncomplete}</div>{item.social_analyze}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{item.adult_analyze_status ? icons.complete : icons.uncomplete}</div>{item.adult_analyze}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{item.forum_analyze_status ? icons.complete : icons.uncomplete}</div>{item.forum_analyze}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{item.file_analyze_status ? icons.complete : icons.uncomplete}</div>{item.file_analyze}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{item.AI_analyze_status ? icons.complete : icons.uncomplete}</div>{item.AI_analyze}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{item.monthly_analyze_status ? icons.complete : icons.uncomplete}</div>{item.monthly_analyze}</div>
-                                        <div className='flex gap-7 max-sm:flex-col'><div>{icons.complete}</div>{item.history_content}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.agent_request}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.takedowns}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.daily_report}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.badges}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.pdf_report}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.candidential_takedown}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.analyzer_tool}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.reverify_tool}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.google_removal_report}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.bing_removal_report}</div>
+                                        <div className='flex gap-7'><div>{item.social_analyze_status ? icons.complete : icons.uncomplete}</div>{item.social_analyze}</div>
+                                        <div className='flex gap-7'><div>{item.adult_analyze_status ? icons.complete : icons.uncomplete}</div>{item.adult_analyze}</div>
+                                        <div className='flex gap-7'><div>{item.forum_analyze_status ? icons.complete : icons.uncomplete}</div>{item.forum_analyze}</div>
+                                        <div className='flex gap-7'><div>{item.file_analyze_status ? icons.complete : icons.uncomplete}</div>{item.file_analyze}</div>
+                                        <div className='flex gap-7'><div>{item.AI_analyze_status ? icons.complete : icons.uncomplete}</div>{item.AI_analyze}</div>
+                                        <div className='flex gap-7'><div>{item.monthly_analyze_status ? icons.complete : icons.uncomplete}</div>{item.monthly_analyze}</div>
+                                        <div className='flex gap-7'><div>{icons.complete}</div>{item.history_content}</div>
                                     </div>
                                 </div>
                             </div>

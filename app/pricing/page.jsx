@@ -5,12 +5,13 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight } from "@/components/utils/Icons";
+import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, ArrowDown } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customerReview';
 
 export default function Pricing() {
 
     const [isPricingSelected, setPricingSelected] = React.useState(true);
+    const [selectServiceList, setSelectServiceList] = React.useState(-1);
 
     const icons = {
         left: <ChevronLeft fill="currentColor" size={16} />,
@@ -19,6 +20,7 @@ export default function Pricing() {
         complete: <Complete fill="currentColor" size={16} />,
         star: <Star fill="currentColor" size={16} />,
         uncomplete: <Uncomplete fill="currentColor" size={16} />,
+        arrowDown: <ArrowDown fill="currentColor" size={16} />,
     };
 
     const pricingContent = [
@@ -211,26 +213,31 @@ export default function Pricing() {
                                                     ADD EXTRA
                                                 </Button>
                                             </div>
+                                            <Button radius="lg" className="w-full bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2 gap-5 hidden max-sm:block" size='md' onClick={() => setSelectServiceList(index)}>
+                                                <span className='flex items-center justify-center '>SERVICES DEFAULTS{icons.arrowDown}</span>
+                                            </Button>
                                             <div className='flex items-center max-xl:justify-content'>
                                                 <div className='flex gap-7'><p>10/DAY</p> {icons.complete}{item.agent_request}</div>
                                             </div>
-                                            <div className='flex flex-wrap gap-7 max-md:flex-col'>{icons.complete}{item.agent_request}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.takedowns}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.daily_report}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.badges}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.pdf_report}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.candidential_takedown}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.analyzer_tool}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.reverify_tool}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.google_removal_report}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.bing_removal_report}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{item.social_analyze_status ? icons.complete : icons.uncomplete}</div>{item.social_analyze}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{item.adult_analyze_status ? icons.complete : icons.uncomplete}</div>{item.adult_analyze}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{item.forum_analyze_status ? icons.complete : icons.uncomplete}</div>{item.forum_analyze}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{item.file_analyze_status ? icons.complete : icons.uncomplete}</div>{item.file_analyze}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{item.AI_analyze_status ? icons.complete : icons.uncomplete}</div>{item.AI_analyze}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{item.monthly_analyze_status ? icons.complete : icons.uncomplete}</div>{item.monthly_analyze}</div>
-                                            <div className='flex gap-7 max-md:flex-col'><div>{icons.complete}</div>{item.history_content}</div>
+                                            <div className={("flex flex-col gap-y-5 mb-10 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
+                                                <div className='flex flex-wrap gap-7'><div>{icons.complete}</div><div>{item.agent_request}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.takedowns}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.daily_report}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.badges}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.pdf_report}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.candidential_takedown}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.analyzer_tool}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.reverify_tool}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.google_removal_report}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.bing_removal_report}</div></div>
+                                                <div className='flex gap-7'><div>{item.social_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.social_analyze}</div></div>
+                                                <div className='flex gap-7'><div>{item.adult_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.adult_analyze}</div></div>
+                                                <div className='flex gap-7'><div>{item.forum_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.forum_analyze}</div></div>
+                                                <div className='flex gap-7'><div>{item.file_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.file_analyze}</div></div>
+                                                <div className='flex gap-7'><div>{item.AI_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.AI_analyze}</div></div>
+                                                <div className='flex gap-7'><div>{item.monthly_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.monthly_analyze}</div></div>
+                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.history_content}</div></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

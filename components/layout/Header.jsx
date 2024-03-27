@@ -25,7 +25,7 @@ export default function Header() {
     }, {
       content: "Copyright",
       path: "/copyright"
-    },{
+    }, {
       content: "Cam DMCA Protection",
       path: "/camdmca"
     }, {
@@ -45,31 +45,29 @@ export default function Header() {
       content: "Dmca Badges",
       path: "/dmcabadges"
     },
-    {
-      content: "Free E-Books",
-      path: "/freeebooks"
-    },
   ];
 
   const ToggleMenuItems = [
     {
+      content: "Pricing",
+      path: "/pricing"
+    },{
       content: "Services",
       path: "/servicees"
     }, {
       content: "Blog",
       path: "/blog"
-    },{
+    }, {
       content: "Dmca Badges",
       path: "/dmcabadges"
     },{
-      content: "Free E-Books",
-      path: "/freeebooks"
+      content: "Help",
+      path: "/help"
+    },{
+      content: "Delete Data",
+      path: "/deletedata"
     },
-    {
-      content: "Donate",
-      path: "/donate"
-    },
-  ] 
+  ]
 
   const icons = {
     arrowDown: <ArrowDown fill="currentColor" size={16} />,
@@ -138,13 +136,7 @@ export default function Header() {
             BLOG
           </Link>
         </NavbarItem>
-        <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="/donate">
-            Donate
-          </Link>
-        </NavbarItem>
       </NavbarContent>
-
       <NavbarContent className="max-md:hidden" justify="end">
         <NavbarItem>
           <Link href="/auth/login" className="text-white">Login</Link>

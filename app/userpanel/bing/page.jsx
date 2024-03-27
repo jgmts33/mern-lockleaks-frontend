@@ -48,17 +48,17 @@ export default function Bing() {
                         value={value}
                     />
                 </div>
-                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-3 pb-16 cursor-pointer">
+                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-3 pb-10 cursor-pointer">
                     {
                         ScannerContent.map((items, index) => {
                             return (
                                 <div key={index} className='flex flex-col px-5'>
-                                    <div className='flex justify-between p-5'>
-                                        <div className='flex px-5 gap-5'>
+                                    <div className='flex justify-between p-6'>
+                                        <div className='flex px-5 gap-5 w-1/4'>
                                             {items.icon}
                                             <span className='font-semibold text-sm'>{items.title}</span>
                                         </div>
-                                        <div className='px-20 flex justify-start'>
+                                        <div className='px-20 flex justify-start w-3/4'>
                                             <span className='font-normal text-xs'>{items.content}</span>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@ export default function Bing() {
                         })
                     }
                     <div className='mt-10 mx-auto'>
-                    <Image src={BingIcon} width={100} height={100} alt='bing'></Image>
+                    <Image src={BingIcon} width={80} height={80} alt='bing'></Image>
                     </div>
                 </div>
                 <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 cursor-pointer">

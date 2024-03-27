@@ -48,10 +48,10 @@ const FAQContent = ({ targetContent }) => {
     return (
         targetContent.map((contents, index) => {
             return (
-                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 border border-gray-600'>
-                    <div className='flex justify-between max-sm:flex-col max-sm:mx-auto'>
+                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 max-sm:p-5 border border-gray-600'>
+                    <div className='flex justify-between max-sm:mx-auto max-sm:gap-3'>
                         <p className='font-medium text-2xl max-lg:text-lg'>{contents.title}</p>
-                        <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0" : "rotate-[90deg] mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1)}}>
+                        <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr aspect-square from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0 max-sm:w-8 max-sm:h-8" : "rotate-[90deg] aspect-square mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2 max-sm:w-8 max-sm:h-8"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1)}}>
                             {icons.arrowtop}
                         </button>
                     </div>
@@ -187,7 +187,7 @@ export default function ScanTakeDown() {
 
                 {/* This section for define FAQ*/}
 
-                <div className='flex flex-col mt-44 max-w-[1500px] mx-auto w-full max-xl:px-3'>
+                <div className='flex flex-col mt-32 max-w-[1500px] mx-auto w-full max-xl:px-3'>
                     <p className='font-medium text-5xl text-center max-md:text-4xl'>FAQ</p>
 
                     <FAQContent targetContent={selectedContent == 'scan' ? scanFAQTitle : takedownFAQTitle} />

@@ -20,7 +20,7 @@ export default function DataReport() {
                     <span className='font-extrabold text-lg'>DATA REPORT</span>
                 </div>
                 <div className='flex gap-10'>
-                    <div className="flex flex-col max-w-[400px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 cursor-pointer">
+                    <div className="flex flex-col max-w-[400px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10">
                         <div className='mx-auto'>
                             <span className='font-extrabold text-lg'>Data Report PDF</span>
                         </div>
@@ -31,7 +31,7 @@ export default function DataReport() {
                             Download
                         </Button>
                     </div>
-                    <div className="flex flex-col max-w-[960px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 px-16 py-10 pb-20 cursor-pointer">
+                    <div className="flex flex-col max-w-[960px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 px-16 py-10 pb-20">
                         <div className='flex gap-5'>
                             <div>{icons.warning}</div>
                             <div>
@@ -39,16 +39,16 @@ export default function DataReport() {
                             </div>
                         </div>
                         <div className='flex mt-10 gap-5 pt-20'>
-                            <div className='flex items-center'>{icons.paperclip}</div>
-                            <div className='flex justify-between max-w-[960px] w-full bg-white/10 rounded-[16px] p-10 items-center'>
-                                <div>
-                                    <span>Lorem ipsum dolor sit amet consectetur. Risus dolor ut curabitur aliquet. Eu su...</span>
+                                <div className='flex items-center'>{icons.paperclip}</div>
+                                <div className='flex justify-between max-w-[960px] w-full bg-white/10 rounded-[16px] p-2 items-center'>
+                                    <div className='w-full'>
+                                    <textarea className='bg-transparent w-full rounded-lg h-20' placeholder='Type Here'></textarea>
+                                    </div>
+                                    <div>{icons.paperplane}</div>
                                 </div>
-                                <div>{icons.paperplane}</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    )
+                    </div> 
+                </div> 
+            </div> 
+    ) 
 }

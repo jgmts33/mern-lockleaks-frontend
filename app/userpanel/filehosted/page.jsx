@@ -52,9 +52,9 @@ export default function FileHosted() {
                 </div>
                 <div className='flex flex-col mt-10 gap-3'>
                     <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
-                    <span className='font-bold text-lg text-white/50'>Scanning 10 websites using Specified keywords and Usernames</span>
+                    <span className='font-medium text-lg text-white/50'>Scanning 10 websites using Specified keywords and Usernames</span>
                 </div>
-                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 cursor-pointer pb-20">
+                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 pb-20">
                     {
                         ScannerContent.map((items, index) => {
                             return (
@@ -62,9 +62,9 @@ export default function FileHosted() {
                                     <div className='flex justify-between p-7'>
                                         <div className='flex px-5 gap-4'>
                                             <div>{items.icon}</div>
-                                            <div className='flex items-center'>
-                                                <span className='font-normal text-xs bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{items.title}</span>
-                                                <span className={index != 1 ?' font-semibold text-smfont-normal text-xs': " font-normal text-xs"}>{items.content}</span>
+                                            <div className='flex max-w-[820px]'>
+                                                <span className='font-normal text-sm bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{items.title}</span>
+                                                <span className={index != 1 ?' font-semibold text-smfont-normal text-sm': " font-normal text-sm"}>{items.content}</span>
                                             </div>
                                         </div>
                                     </div>

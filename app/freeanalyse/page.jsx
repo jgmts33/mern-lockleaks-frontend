@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import {
-  Button,Link
+  Button, Link
 } from '@nextui-org/react';
 import AI from '@/public/assets/services/artifical-intelligence.svg';
 import SCAN from '@/public/assets/services/scan.svg';
@@ -30,10 +30,12 @@ export default function FreeAnalyse() {
       {/* This section for define Freeanalyse Content*/}
 
       <div className='flex mt-10 pb-10 mx-auto gap-10 max-w-[1500px] items-center max-xl:flex-col max-xl:justify-center max-xl:items-center'>
-        <div>
-          <Image className="mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={AI} width={250} height={250} alt="Modern building architecture" />
+        <div className='flex items-center gap-5 max-sm:px-3'>
+          <div className='hidden max-xl:block'><Image src="/assets/logo.svg" width={190} height={50} alt="logo1" /></div>
+          <div><Image className="mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={AI} width={250} height={250} alt="Modern building architecture" /></div>
+          <div className='hidden max-xl:block'><Image src="/assets/logo.svg" width={190} height={50} alt="logo2" /></div>
         </div>
-        <div className='flex flex-col text-center mx-auto -mt-8 max-w-[603px] max-xl:flex-wrap'>
+        <div className='flex flex-col text-center mx-auto mt-0 max-w-[603px] max-xl:flex-wrap'>
           <p className='font-medium text-5xl max-lg:text-3xl'>FREE ANALYZE</p>
           <div className='mt-5'>
             <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
@@ -61,10 +63,10 @@ export default function FreeAnalyse() {
           </div>
         </div>
         <div className='flex flex-col'>
-          <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-32 bottom-[380px] w-72 h-72'>
+          <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-36 bottom-[380px] w-72 h-72'>
             <Image src={Reversechat} className="mt-24 max-md:w-full" width={200} height={150} alt="Modern building architecture" />
           </div>
-          <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 right-0 cursor-pointer w-[350px] absolute rotate-[12deg] -mt-[60px]">
+          <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 right-4 cursor-pointer w-[350px] absolute rotate-[12deg] -mt-[60px]">
             <div className='absolute'>{icons.robertchat}</div>
             <div className='flex justify-start flex-col'>
               <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
@@ -72,6 +74,11 @@ export default function FreeAnalyse() {
             </div>
           </div>
         </div>
+        <div className='flex flex-col mt-28'>
+            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
+              Contact Us
+            </Button>
+          </div>
       </div>
     </div>
   )
