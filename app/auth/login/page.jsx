@@ -26,6 +26,11 @@ export default function Login() {
     const [emailerror, setEmailError] = useState("");
     const [passworderror, setPasswordError] = useState("");
 
+    useEffect(() => {
+        setEmailError("");
+        setPasswordError("")
+    }, [email, password])
+
     const handleLogin = () => {
         if (email == "") {
             setEmailError("You must type email");
@@ -34,9 +39,9 @@ export default function Login() {
             setEmailError("Email must be contain @ and .**");
         }
         else if (password == "") {
-            setPasswordError("You must type passoword but it must be 6~12 chacteracters");
+            setPasswordError("You must type password");
         }
-        else if (password != "" && password.length > 6 && password.length < 12) {
+        else if ((password.length < 6 || password.length > 12)) {
             setPasswordError("You must type 6~12 characters.");
         }
         // router.push("/userpanel/dashboard");
@@ -68,9 +73,7 @@ export default function Login() {
                                 required
                             />
                         </div>
-                        {
-                            emailerror != "" ? <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs'>{icons.error}&nbsp;{emailerror}</div> : false
-                        }
+                        <div className={('text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs ') + (emailerror != "" ? "block" : "hidden")}><span>{icons.error}</span>&nbsp;<span>{emailerror}</span></div>
                         <div className='relative w-full'>
                             <p className='font-light text-white pb-2'>Password</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.lock}</i>
@@ -82,9 +85,7 @@ export default function Login() {
                                 required
                             />
                         </div>
-                        {
-                            passworderror != "" ? <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs'>{icons.error}&nbsp;{passworderror}</div> : false
-                        }
+                        <div className={('text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs ') + (passworderror != "" ? "block" : "hidden")}><span>{icons.error}</span>&nbsp;<span>{passworderror}</span></div>
                         <div className='flex justify-end'>
                             <Link href="/auth/forgot-password" title='forgot-password' underline="none" className='text-white z-30'><span className='font-light text-sm'>Forgot Password?</span></Link>
                         </div>

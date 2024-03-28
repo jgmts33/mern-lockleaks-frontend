@@ -20,7 +20,7 @@ export default function Register() {
     };
 
     const [password, setPassword] = useState("");
-    const {isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isagreeSelected, setIsAgreeSelected] = useState(false);
     const [isTermSelected, setIsTermSelected] = useState(false);
     const [email, setEmail] = useState("");
@@ -84,7 +84,7 @@ export default function Register() {
             {/* This section for keep Register Content*/}
 
             <div className='w-full flex items-center justify-center max-lg:pt-10'>
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                 <div className="w-[562px] flex flex-col items-center text-white z-30">
                     <div className='text-center max-w-[354px]'>
                         <p className="font-medium text-5xl ">Sign up</p>
@@ -110,7 +110,7 @@ export default function Register() {
                                 type="password"
                                 name="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                                className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
+                                className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 px-3'
                             />
                             <div className='absolute flex gap-2 items-center bottom-3 right-4'>
                                 {
