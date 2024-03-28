@@ -64,7 +64,7 @@ export default function MonthlyPdf() {
 
     return (
         <>
-            <div className="flex flex-col text-white">
+            <div className="flex flex-col text-white px-3">
 
                 {/* This section for define monthly pdf header*/}
 
@@ -82,12 +82,12 @@ export default function MonthlyPdf() {
                     <div className='relative'>
                         <span className='font-medium text-md'>How It Helps</span>
                     </div>
-                    <div className='max-lg:hidden'><Image src={Photo} width={300} height={200} className='absolute left-80 -top-44' alt='right rotate chat' /></div>
+                    <div className='max-xl:hidden'><Image src={Photo} width={300} height={200} className='absolute left-80 -top-44' alt='right rotate chat' /></div>
                     <div className="flex max-w-[422px] z-10 duration-700 max-2xl:!relative backdrop-blur-sm bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute left-0 top-6 max-2xl:left-0 max-2xl:top-10 mt-6">
                         <div>{icons.protect}</div>
                         <p className='font-normal text-lg mt-2 max-sm:text-base'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
                     </div>
-                    <div className='max-lg:hidden'><Image src={RightChat} width={200} height={100} className='absolute left-60 -top-8' alt='right rotate chat' /></div>
+                    <div className='max-xl:hidden'><Image src={RightChat} width={200} height={100} className='absolute left-60 -top-8' alt='right rotate chat' /></div>
                     <div className="flex max-w-[422px] duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
                         <div>{icons.protect}</div>
                         <div>
@@ -120,7 +120,7 @@ export default function MonthlyPdf() {
                             }
                         </div>
                     </div>
-                    <div className='max-lg:hidden relative'>
+                    <div className='max-xl:hidden relative'>
                         <Image alt='photo' src={Photo} width={350} height={150} className='absolute -left-48 top-1' />
                         <Image alt='rightchat' src={RightChat} width={250} height={150} className='absolute -bottom-10 -left-24' />
                         <Image alt='roberthand' src={RobertHand} width={461} height={312} className='mt-20 z-10' />

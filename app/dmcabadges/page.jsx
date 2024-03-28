@@ -46,11 +46,11 @@ export default function DmcaBadges() {
 
             {/* This section for define dmcabadges title*/}
 
-                <div className='text-center mt-20'>
+                <div className='text-center mt-10'>
                     <p className='font-medium text-5xl max-lg:text-[30px]'>{DmcaBadgesTitle.title}</p>
-                    <div className='max-w-[716px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{DmcaBadgesTitle.content}</p></div>
+                    <div className='max-w-[716px] mx-auto max-md:px-3'><p className='font-normal text-base mt-10'>{DmcaBadgesTitle.content}</p></div>
                 </div>
-                <div className='mt-20 max-md:text-center max-md:mx-auto'>
+                <div className='mt-20 max-sm:mt-10 max-md:text-center max-md:mx-auto'>
                     <span className='font-medium text-md'>Download DMCA Badges</span>
                 </div>
 
@@ -101,7 +101,7 @@ export default function DmcaBadges() {
                         </div>
                     </div>
                 </div>
-                <div className='flex w-full mt-36 max-w-[1400px] max-xl:flex-col max-xl:items-center mb-40 max-sm:px-3 max-sm:mt-44'>
+                <div className='flex w-full mt-36 max-w-[1400px] max-xl:flex-col max-xl:items-center mb-44 max-sm:mb-32 max-sm:px-3 max-sm:mt-44'>
                     <div className='flex w-1/4 items-center max-sm:w-full'>
                         <span className='font-medium max-md:mx-auto text-md max-xl:text-3xl'>How to Use DMCA Badges?</span>
                     </div>

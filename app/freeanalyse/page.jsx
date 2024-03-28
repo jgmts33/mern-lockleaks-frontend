@@ -29,14 +29,17 @@ export default function FreeAnalyse() {
 
       {/* This section for define Freeanalyse Content*/}
 
-      <div className='flex mt-10 pb-10 mx-auto gap-10 max-w-[1500px] items-center max-xl:flex-col max-xl:justify-center max-xl:items-center'>
+      <div className='flex mt-10 pb-10 mx-auto gap-10 max-w-[1500px] items-center max-xl:justify-center max-xl:items-center'>
         <div className='flex items-center gap-5 max-sm:px-3'>
-          <div className='hidden max-xl:block'><Image src="/assets/logo.svg" width={190} height={50} alt="logo1" /></div>
-          <div><Image className="mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={AI} width={250} height={250} alt="Modern building architecture" /></div>
-          <div className='hidden max-xl:block'><Image src="/assets/logo.svg" width={190} height={50} alt="logo2" /></div>
+          <Image className="max-xl:hidden mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={AI} width={250} height={250} alt="Modern building architecture" />
         </div>
         <div className='flex flex-col text-center mx-auto mt-0 max-w-[603px] max-xl:flex-wrap'>
-          <p className='font-medium text-5xl max-lg:text-3xl'>FREE ANALYZE</p>
+          <div className='flex justify-between items-center max-sm:gap-3'>
+            <div className='hidden max-xl:block'><Image className="mt-2 object-cover rounded-[20px]" src={AI} width={150} height={150} alt="Modern building architecture" /></div>
+            <div className='mx-auto'><p className='font-medium text-5xl max-lg:text-3xl'>FREE ANALYZE</p></div>
+            <div className='hidden max-xl:block'><Image className="mt-2 object-cover p-2 rounded-[20px]" src={SCAN} width={150} height={150} alt='saturn' /></div>
+          </div>
+          <div className='flex flex-col mt-10'>
           <div className='mt-5'>
             <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
               Click for support
@@ -46,9 +49,10 @@ export default function FreeAnalyse() {
           <p className='mt-10'>{freeanalyseContent.firstDescription}</p>
           <p className='mt-10'>{freeanalyseContent.secondDescription}</p>
           <p className='mt-10'>{freeanalyseContent.thirdDescription}</p>
+          </div>
         </div>
         <div>
-          <Image className="mt-2 object-cover p-2 rounded-[20px] max-xl:hidden" src={SCAN} width={200} height={200} alt='saturn' />
+          <Image className="max-xl:hidden mt-2 object-cover p-2 rounded-[20px]" src={SCAN} width={200} height={200} alt='saturn' />
         </div>
       </div>
 
@@ -75,10 +79,10 @@ export default function FreeAnalyse() {
           </div>
         </div>
         <div className='flex flex-col mt-28'>
-            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
-              Contact Us
-            </Button>
-          </div>
+          <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
+            Contact Us
+          </Button>
+        </div>
       </div>
     </div>
   )

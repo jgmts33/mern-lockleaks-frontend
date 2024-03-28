@@ -48,14 +48,14 @@ const FAQContent = ({ targetContent }) => {
     return (
         targetContent.map((contents, index) => {
             return (
-                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 max-sm:p-5 border border-gray-600'>
-                    <div className='flex justify-between max-sm:mx-auto max-sm:gap-3'>
+                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 max-md:p-5 border border-gray-600'>
+                    <div className='flex justify-between max-sm:mx-auto gap-5'>
                         <p className='font-medium text-2xl max-lg:text-lg'>{contents.title}</p>
                         <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr aspect-square from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0 max-sm:w-8 max-sm:h-8" : "rotate-[90deg] aspect-square mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2 max-sm:w-8 max-sm:h-8"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1)}}>
                             {icons.arrowtop}
                         </button>
                     </div>
-                    <div className={expandedIndex == index ? 'h-auto' : 'h-0'}>
+                    <div className={expandedIndex == index ? 'h-auto max-xl:max-w-[600px]' : 'h-0'}>
                         {
                             contents.content.map((items, contentIndex) => {
                                 return (
@@ -152,7 +152,7 @@ export default function ScanTakeDown() {
                 {/* This section for define scan&takedown header*/}
 
                 <div>
-                    <p className='font-medium text-huge text-center mt-20 max-lg:text-4xl '>SCAN & TAKEDOWN</p>
+                    <p className='font-medium text-huge text-center mt-10 max-lg:text-4xl '>SCAN & TAKEDOWN</p>
                 </div>
                 <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[680px] gap-2 items-center container'>
                     <Button radius="full" className={"mx-auto w-1/2 px-7 py-5 text-lg relative z-10 " + (selectedContent == 'scan' ? "bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg" : "bg-transparent")} size='lg' onClick={() => setSelectedContent('scan')}>
@@ -162,12 +162,12 @@ export default function ScanTakeDown() {
                         TAKEDOWN
                     </Button>
                 </div>
-                <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
-                    <div className='w-80 h-96'>
-                        <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "w-72 h-52 mt-2 max-lg:w-60 max-lg:mt-16 max-lg:h-44 mx-auto" : "w-96 h-80 -mt-10 mx-auto"} alt='warning' width={500} height={250} />
+                <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-md: max-lg:flex-col max-lg:justify-center items-center'>
+                    <div className='flex items-center w-64 h-64'>
+                        <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "mx-auto w-44 h-44" : "mx-auto w-full h-full"} alt='warning' width={250} height={250} />
                     </div>
-                    <Image src="assets/bg-shape-purple-green.svg" alt='shape-green' width={503} height={472} className='max-md:hidden absolute top-80 left-44 bg-[#58f040] bg-opacity-5 blur-3xl' />
-                    <div className='max-w-[695px] max-lg:text-center'>
+                    <Image src="assets/bg-shape-purple-green.svg" alt='shape-green' width={503} height={372} className='max-lg:hidden absolute top-80 left-44 bg-[#58f040] bg-opacity-5 blur-3xl' />
+                    <div className='max-w-[695px] max-lg:text-center max-lg:mt-10'>
                         <p className='font-normal text-medium'>{selectedContent == 'scan' ? scanHeaderContent.description : takedownHeaderContent.description}</p>
                         <p className='font-normal text-red-300 text-medium mt-5'>{selectedContent == 'scan' ? '' : takedownHeaderContent.note}</p>
                     </div>
@@ -175,7 +175,7 @@ export default function ScanTakeDown() {
 
                 {/* This section for define tips for scan&takedown page*/}
 
-                <div className='flex w-full bg-[#090D1F] mx-auto justify-around mt-10 py-20 gap-20 max-xl:flex-col max-xl:items-center'>
+                <div className='flex bg-[#090D1F] mx-auto justify-between mt-20 py-20 gap-20 max-xl:flex-col w-[calc(100vw-40px)] max-xl:items-center'>
 
                     <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
 
@@ -187,7 +187,7 @@ export default function ScanTakeDown() {
 
                 {/* This section for define FAQ*/}
 
-                <div className='flex flex-col mt-32 max-w-[1500px] mx-auto w-full max-xl:px-3'>
+                <div className='flex flex-col mt-32 max-md:mt-20 max-w-[1500px] mx-auto w-full'>
                     <p className='font-medium text-5xl text-center max-md:text-4xl'>FAQ</p>
 
                     <FAQContent targetContent={selectedContent == 'scan' ? scanFAQTitle : takedownFAQTitle} />

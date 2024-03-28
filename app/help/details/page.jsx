@@ -20,10 +20,10 @@ export default function Details() {
 
             {/* This section for define Help Page Title*/}
 
-            <div className='mt-28 max-md:px-3 max-md:text-center'>
+            <div className='mt-10 max-md:px-3 max-md:text-center'>
                 <p className='font-medium text-7xl text-center max-xl:text-5xl'>HELP CENTER</p>
             </div>
-            <div className='flex mx-auto justify-center gap-5 w-full mt-20 items-center max-w-[1050px] max-md:flex-col'>
+            <div className='flex mx-auto justify-center gap-5 w-full mt-10 items-center max-w-[1050px] max-md:flex-col'>
                 <div className='w-full'>
                     <input
                         type="text"
@@ -37,7 +37,7 @@ export default function Details() {
                     Search{icons.search}
                 </Button>
             </div>
-            <div className='flex mx-auto mt-20 max-w-[868px] text-center'>
+            <div className='flex mx-auto mt-10 max-w-[868px] text-center'>
                 <span className='font-medium text-5xl max-xl:text-4xl'>I just purchased a plan. What happens now?</span>
             </div>
             <div className='max-w-[1242px] mx-auto mt-20'>

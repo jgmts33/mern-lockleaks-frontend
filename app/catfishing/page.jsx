@@ -72,12 +72,12 @@ export default function Catfishing() {
 
                 {/* This section for define catifishing header*/}
 
-                <div className='text-center mt-28'>
+                <div className='text-center mt-10'>
                     <p className='font-medium text-5xl uppercase max-lg:text-4xl'>{CamDmcaTitle.title}</p>
                     <div className='max-lg:px-3'><p className='font-normal text-base mt-10 max-w-[1100px]'>{CamDmcaTitle.sub_title}</p></div>
                 </div>
-                <div className='font-medium text-7xl mt-32 max-lg:text-[40px]'><Image src="/assets/logo.svg" width={500} height={350} alt="logo" /></div>
-                <div className='flex justify-around mt-20 w-full max-xl:px-5 max-md:flex-col max-md:items-center max-md:text-center'>
+                <div className='font-medium text-7xl mt-20 max-sm:mt-10 max-lg:text-[40px] max-md:w-64 max-md:h-24'><Image src="/assets/logo.svg" width={350} height={350} alt="logo" /></div>
+                <div className='flex justify-around mt-20 max-md:mt-0 max-sm:mt-10 w-full max-xl:px-5 max-md:flex-col max-md:items-center max-md:text-center'>
                     <div>
                         <p className='font-medium text-5xl text-center max-lg:text-[30px]'>HOW IT HELPS</p>
                         <ul className='mt-10 list-disc'>
@@ -106,8 +106,8 @@ export default function Catfishing() {
 
                 {/* This section for define tips for catfishing page*/}
 
-                <div className='flex w-full mx-auto mt-20 justify-center px-10 py-20 gap-32 max-sm:px-0'>
-                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={542} className='absolute bg-[#955bf1] right-32 z-0 bg-opacity-5 blur-3xl' />
+                <div className='flex w-full mx-auto mt-20 max-sm:mt-10 max-sm:!py-10 justify-center px-10 py-20 gap-32 max-sm:px-0'>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={542} className='max-md:hidden absolute bg-[#955bf1] right-32 z-0 bg-opacity-5 blur-3xl' />
                     <div className='flex max-w-[705px] flex-col gap-y-10 max-sm:gap-y-0'>
                         <p className='font-medium text-5xl text-center max-lg:text-3xl'>Tips for Prevention</p>
                         {
@@ -125,8 +125,8 @@ export default function Catfishing() {
 
                 {/* This section for define FAQ for creator dmca page*/}
 
-                <div className='font-medium text-5xl'><p className='font-medium text-5x center'>FAQ</p></div>
-                <div className='flex gap-32 mt-10 max-w-[1480px] mx-auto'>
+                <div className='font-medium text-5xl'><p className='font-medium text-5xl center max-sm:text-4xl'>FAQ</p></div>
+                <div className='flex gap-32 mt-10 max-w-[1480px] mx-auto max-sm:mt-0'>
                     <div className='flex mt-10 gap-10 max-xl:flex-col max-md:px-3'>
                         {
                             CamDmcaContent.map((camdmca, index) => {

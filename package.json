@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
+    "formik": "^2.4.5",
     "framer-motion": "^11.0.22",
     "jquery": "^3.7.1",
     "next": "14.1.1",
@@ -18,7 +19,8 @@
     "react-alice-carousel": "^2.8.0",
     "react-dom": "^18",
     "react-google-recaptcha": "^3.1.0",
-    "swiper": "^11.0.7"
+    "swiper": "^11.0.7",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

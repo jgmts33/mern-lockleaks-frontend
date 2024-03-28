@@ -77,12 +77,12 @@ export default function SERVICES() {
                     <p className='font-normal text-xl mt-5 max-md:text-lg'>{ServicesTitle.content}</p>
                 </div>
             </div>
-            <div className='flex mt-20 px-3 mx-auto'>
+            <div className='flex mt-20 max-lg:mt-10 px-3 mx-auto'>
                 <div className='flex grid-cols-3 gap-6 z-10 max-lg:flex-wrap max-lg:justify-center '>
                     {
                         ServicesContent.map((item, index) => {
                             return (
-                                <div key={index} className={(index == 1 ? 'mt-20 pt-10 max-sm:-mt-10 max-sm:-pt-5' : "") + " max-w-[480px] max-lg:mt-1 flex flex-col gap-4" }>
+                                <div key={index} className={(index == 1 ? 'mt-20 pt-10 max-lg:-mt-10 max-sm:-pt-5' : "") + " max-w-[480px] max-lg:mt-1 flex flex-col gap-4" }>
                                     {
                                         item.map((service_content, count) => {
                                             return (

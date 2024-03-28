@@ -62,16 +62,16 @@ export default function CamDmca() {
 
     return (
         <>
-            <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
+            <div className="flex flex-col mx-auto items-center justify-center text-white w-full max-md:px-3">
 
                 {/* This section for define camdmca title*/}
 
-                <div className='text-center mt-20'>
+                <div className='text-center mt-10'>
                     <p className='font-bold text-7xl max-lg:text-3xl uppercase'>{CamDmcaTitle.title}</p>
                     <div className='max-w-[848px] mx-auto max-md:'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
                 </div>
-                <div className='font-medium text-5xl mt-32 max-lg:text-4xl'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
-                <div className='flex  mt-10 max-md:px-3'>
+                <div className='font-medium text-5xl mt-20 max-sm:mt-10 max-lg:text-4xl'><p className='font-medium text-5x center'>HOW It HELPS</p></div>
+                <div className='flex  max-2xl:px-3'>
                     <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col max-xl:px-3'>
                         {
                             CamDmcaContent.map((item, index) => {
@@ -91,7 +91,7 @@ export default function CamDmca() {
 
                 {/* This section for define tips for camdmca page*/}
 
-                <div className='flex w-[calc(100vw-20px)] bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center'>
+                <div className='flex w-[calc(100vw-40px)] bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center px-3'>
                     <div className="relative max-w-[740px] flex justify-between">
                         <div className='max-w-[500px]'><span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>
                             <div className='flex items-center justify-center z-10 max-sm:flex-col mt-5'>

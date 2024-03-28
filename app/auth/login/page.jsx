@@ -1,12 +1,12 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link
+    Button, Link, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google } from "@/components/utils/Icons";
+import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error } from "@/components/utils/Icons";
 import { useRouter } from 'next/navigation';
-import { useAlert } from "next-alert";
+import * as yup from "yup";
 
 export default function Login() {
     const router = useRouter();
@@ -16,14 +16,30 @@ export default function Login() {
         google: <Google fill="currentColor" size={16} />,
         twitter: <Twitter fill="currentColor" size={16} />,
         facebook: <Facebook fill="currentColor" size={16} />,
+        warningmodal: <WarningModal fill="currentColor" size={16} />,
+        error: <Error fill="currentColor" size={16} />,
     };
 
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const { addAlert } = useAlert();
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [emailerror, setEmailError] = useState("");
+    const [passworderror, setPasswordError] = useState("");
 
     const handleLogin = () => {
-            router.push("/userpanel/dashboard");
+        if (email == "") {
+            setEmailError("You must type email");
+        }
+        else if (email != "" && !/\S+@\S+\.\S+/.test(email)) {
+            setEmailError("Email must be contain @ and .**");
+        }
+        else if (password == "") {
+            setPasswordError("You must type passoword but it must be 6~12 chacteracters");
+        }
+        else if (password != "" && password.length > 6 && password.length < 12) {
+            setPasswordError("You must type 6~12 characters.");
+        }
+        // router.push("/userpanel/dashboard");
     }
 
 
@@ -33,7 +49,7 @@ export default function Login() {
             {/* This section for define Login page content*/}
 
             <div className='w-full flex items-center justify-center'>
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                 <div className="w-[562px] flex flex-col items-center gap-10 text-white z-30">
                     <div className='text-center max-w-[354px] mb-4'>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
@@ -52,6 +68,9 @@ export default function Login() {
                                 required
                             />
                         </div>
+                        {
+                            emailerror != "" ? <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs'>{icons.error}&nbsp;{emailerror}</div> : false
+                        }
                         <div className='relative w-full'>
                             <p className='font-light text-white pb-2'>Password</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.lock}</i>
@@ -63,6 +82,9 @@ export default function Login() {
                                 required
                             />
                         </div>
+                        {
+                            passworderror != "" ? <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs'>{icons.error}&nbsp;{passworderror}</div> : false
+                        }
                         <div className='flex justify-end'>
                             <Link href="/auth/forgot-password" title='forgot-password' underline="none" className='text-white z-30'><span className='font-light text-sm'>Forgot Password?</span></Link>
                         </div>
@@ -89,6 +111,31 @@ export default function Login() {
                     </div>
                 </div>
             </div>
+            <Modal
+                backdrop="opaque"
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                classNames={{
+                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+                }}
+            >
+                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center'>
+                    {(onClose) => (
+                        <>
+                            <ModalBody>
+                                <div className='mx-auto flex items-center justify-center -mb-20'>{icons.warningmodal}</div>
+                                <span className='font-medium text-5xl text-center'>Warning</span>
+                                <span className='font-light text-xl'></span>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight mt-4 w-full" size='md'>
+                                    Success
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-52 bg-[#532a88] bg-opacity-50 blur-3xl' />
         </div>
     );

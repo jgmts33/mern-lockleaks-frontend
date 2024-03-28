@@ -72,10 +72,10 @@ export default function Categories() {
 
             {/* This section for define Help Page Title*/}
 
-            <div className='mt-16 max-md:px-3 max-md:text-center'>
+            <div className='mt-10 max-md:px-3 max-md:text-center'>
                 <p className='font-medium text-7xl text-center max-md:text-4xl'>HELP CENTER</p>
             </div>
-            <div className='flex mx-auto justify-center gap-5 w-full mt-20 items-center max-w-[1050px] max-md:flex-col'>
+            <div className='flex mx-auto justify-center gap-5 w-full mt-10 items-center max-w-[1050px] max-md:flex-col'>
                 <div className='w-full'>
                     <input
                         type="text"
@@ -89,7 +89,7 @@ export default function Categories() {
                     Search{icons.search}
                 </Button>
             </div>
-            <div className='flex mx-auto mt-20'>
+            <div className='flex mx-auto mt-10'>
                 <span className='font-medium text-5xl max-md:text-4xl'>CATEGORIES</span>
             </div>
 
@@ -101,10 +101,10 @@ export default function Categories() {
                     {
                         CatagoryButtons.map((items, index) => {
                             return (
-                                <div key={index} className='mt-3'>
+                                <div key={index} className='mt-3 mx-auto'>
                                     {
                                         selectedCategory == index ?
-                                            <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white px-10 py-5 shadow-lg text-xl max-sm:text-base" size='md' onClick={() => setSelectCatecory(index)}>
+                                            <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white px-5 py-5 shadow-lg text-xl max-sm:text-base" size='md' onClick={() => setSelectCatecory(index)}>
                                                 {items}
                                             </Button>
                                             :
@@ -115,7 +115,7 @@ export default function Categories() {
                         })
                     }
                 </div>
-                <div className='flex flex-col w-2/3 gap-5 max-md:mx-auto max-md:text-lg max-xl:mt-10 mb-10 max-sm:w-full max-sm:px-3'>
+                <div className='flex flex-col w-2/3 gap-5 max-xl:w-full max-xl:px-5 max-md:mx-auto max-md:text-lg max-xl:mt-10 mb-10 max-sm:w-full max-sm:px-3'>
                     {
                         CategoriesContent.map((category, index) => {
                             return (
@@ -145,8 +145,8 @@ export default function Categories() {
                 <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute -right-32 -top-44' />
                 <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-0 -top-8' />
             </div>
-            <div className='flex justify-between max-sm:justify-center max-sm:mx-auto mt-32 max-xl:justify-around max-md:flex-col mb-20'>
-                <div className='flex flex-col max-sm:items-center'>
+            <div className='flex justify-between max-sm:justify-center max-sm:mx-auto mt-32 max-md:space-y-5 max-md:mt-16 max-xl:justify-around max-md:flex-col mb-20'>
+                <div className='flex flex-col max-sm:items-center max-md:space-y-3'>
                     <span className='font-medium text-4xl text-center max-sm:text-center'>Need further assistance? </span>
                     <span className='max-sm:text-center max-md:mx-auto'>Contact our customer support team now.</span>
                 </div>

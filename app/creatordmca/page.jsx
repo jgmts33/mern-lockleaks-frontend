@@ -64,21 +64,21 @@ export default function CreatorDmca() {
 
                 {/* This section for define create dmca header*/}
 
-                <div className='text-center mt-28 max-lg:px-3'>
+                <div className='text-center mt-10 max-lg:px-3'>
                     <p className='font-bold text-6xl uppercase max-lg:text-3xl'>{CamDmcaTitle.title}</p>
-                    <div className='flex gap-32 max-md:flex-col items-center max-md:gap-10 mt-20'>
-                        <div className='max-w-[855px]'><p className='font-normal text-base'>{CamDmcaTitle.sub_title}</p></div>
-                        <Image src="/assets/logo.svg" width={300} height={150} alt="logo" />
+                    <div className='flex gap-32 max-xl:gap-20 max-lg:flex-col items-center max-md:gap-10 mt-20 max-lg:gap-10 max-sm:mt-10 max-xl:px-3'>
+                        <div className='max-w-[805px]'><p className='font-normal text-base'>{CamDmcaTitle.sub_title}</p></div>
+                        <div className='max-lg:w-56 max-lg:h-24'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
                     </div>
                 </div>
 
                 {/* This section for define additional element*/}
 
-                <div className='max-xl:px-3'>
-                    <div className='flex bg-white/5 mx-auto mt-24 justify-center rounded-[20px] max-xl:flex-col w-full max-w-[1440px] px-10 py-10 gap-32'>
+                <div className='px-3'>
+                    <div className='flex bg-white/5 mx-auto mt-24 max-lg:mt-5 justify-center rounded-[20px] max-xl:flex-col w-full max-w-[1440px] px-10 py-10 gap-32'>
                         <div className='flex max-md:items-center max-lg:flex-wrap max-lg:flex-col'>
-                            <div className='w-1/2 max-sm:w-full max-lg:text-center max-lg:mx-auto'>
-                                <div className='max-md:flex-col flex mx-auto max-sm:items-center max-lg:items-center max-lg:justify-center'><span className='font-medium text-[63px] max-lg:text-[30px]'>DMCA</span><span className='font-medium max-lg:text-[30px] text-[63px] text-[#F68171]'>BADGES</span></div>
+                            <div className='w-1/2 max-lg:w-full max-lg:mx-auto'>
+                                <div className='max-md:flex-col flex max-sm:items-center max-lg:items-center max-lg:justify-center'><span className='font-medium text-[63px] max-lg:text-[30px]'>DMCA</span><span className='font-medium max-lg:text-[30px] text-[63px] text-[#F68171]'>BADGES</span></div>
                                 <p className='mt-10 max-sm:text-center'>DMCA Badges<br />
                                     To download DMCA badges and learn more about integration, please visit our dedicated DMCA badges page. (reffer link)
                                     These are examples for each category of information you requested for the "Creator DMCA Content Protection" service. If you need more details or any additional information, please let me know!
@@ -99,7 +99,7 @@ export default function CreatorDmca() {
 
                 {/* This section for define tips for creator dmca page*/}
 
-                <div className='flex bg-white/5 mx-auto justify-around mt-10 px-20 w-[calc(100vw-20px)] max-2xl:w-full py-10 max-xl:flex-col items-center max-sm:px-5'>
+                <div className='flex bg-white/5 mx-auto justify-around mt-10 px-10 w-[calc(100vw-20px)] max-2xl:w-full py-10 max-xl:flex-col items-center max-sm:px-5'>
                     <div className='flex max-w-[720px] justify-center flex-col gap-y-5'>
                         {
                             TipContent.map((content, index) => {
@@ -127,8 +127,8 @@ export default function CreatorDmca() {
 
                 {/* This section for define FAQ for creator dmca page*/}
 
-                <div className='font-medium text-5xl mt-32'><p className='font-medium text-5x center'>FAQ</p></div>
-                <div className='flex gap-32 mt-10 max-lg:px-3'>
+                <div className='font-medium text-5xl mt-32 max-sm:mt-16'><p className='font-medium text-5x center max-sm:text-4xl'>FAQ</p></div>
+                <div className='flex gap-32 mt-10 max-sm:mt-0 px-3'>
                     <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>
                         {
                             CamDmcaContent.map((item, index) => {

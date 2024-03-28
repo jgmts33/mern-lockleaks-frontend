@@ -77,7 +77,7 @@ export default function AI() {
 
                 {/* This section for define AI page header*/}
 
-                <div className='text-center mt-20'>
+                <div className='text-center mt-10'>
                     <p className='font-medium text-7xl max-lg:text-[40px]'>{AITitle.title}</p>
                     <div className='max-w-[830px]'><p className='font-normal text-base mt-10'>{AITitle.sub_title}</p></div>
                 </div>
@@ -85,7 +85,7 @@ export default function AI() {
                 {/* This section for deplay social media network*/}
 
                 <div className='max-md:px-3'>
-                    <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center from-gray-600/40 mt-36 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
+                    <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center from-gray-600/40 mt-20 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
                         <div className='max-w-[425px] mx-auto justify-content'><p className='font-normal text-xl '>Our AI tools are deployed across a myriad of social media networks:</p></div>
                         <div className='flex gap-10 justify-center items-center max-lg:flex-col px-10'>
                             <Image src={Facebook} width={150} height={150} alt='facebook' />
@@ -143,7 +143,10 @@ export default function AI() {
                     {
                         AITips.map((item, index) => {
                             return (
-                                <div key={index} className='max-w-[527px] flex gap-3 z-10'>{icons.tip}<p className='font-normal text-xl max-sm:text-base'>{item}</p></div>
+                                <div key={index} className='max-w-[527px] flex gap-3 z-10 w-full max-lg:max-w-[1000px]'>
+                                    <span>{icons.tip}</span>
+                                    <span className='font-normal text-xl max-sm:text-base'>{item}</span>
+                                </div>
                             )
                         })
                     }
@@ -151,19 +154,19 @@ export default function AI() {
 
                 {/* This section for define FAQ for AI page*/}
 
-                <div className='flex flex-col mt-44 max-xl:mt-20 max-w-[1500px] mx-auto mb-56 w-full max-xl:flex-col max-2xl:px-3'>
-                    <p className='font-medium text-5xl text-center'>FAQ</p>
+                <div className='flex flex-col mt-32 max-xl:mt-20 max-w-[1500px] mx-auto w-full max-xl:flex-col max-2xl:px-3 z-10'>
+                    <p className='font-medium text-5xl text-center max-sm:text-4xl'>FAQ</p>
                     {
                         AIFAQContent.map((contents, index) => {
                             return (
-                                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 max-sm:p-8 border border-gray-600'>
+                                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 max-sm:p-5 border border-gray-600'>
                                     <div className='flex justify-between gap-3'>
-                                        <p className='font-medium text-3xl max-md:text-base'>{contents.title}</p>
-                                        <button className={(" mt-50 w-10 h-10 text-white aspect-square max-sm:w-8 max-sm:h-8 flex items-center justify-center rounded-lg z-10 bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
+                                        <p className='font-medium text-3xl max-lg:text-lg'>{contents.title}</p>
+                                        <button className={("mt-50 w-10 h-10 text-white aspect-square max-sm:w-8 max-sm:h-8 flex items-center justify-center rounded-lg bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             <div>{icons.arrowtop}</div>
                                         </button>
                                     </div>
-                                    <div className={expandedFAQIndex == index ? 'h-auto' : 'h-0'}>
+                                    <div className={expandedFAQIndex == index ? 'h-auto max-xl:max-w-[800px] max-lg:max-w-[600px] max-md:max-w-[450px]' : 'h-0'}>
                                         {
                                             contents.content.map((items, contentIndex) => {
                                                 return (
@@ -177,7 +180,7 @@ export default function AI() {
                         })
                     }
                 </div>
-                <div><Image className="w-[461px] h-[312px] absolute right-0 -mt-36 max-lg:hidden" src={RobertHand} alt='robert hand' /></div>
+                <div className='mt-20 max-xl:mt-0'><Image className="w-[461px] h-[312px] absolute right-0 -mt-36 max-lg:hidden max-2xl:hidden" src={RobertHand} alt='robert hand' /></div>
             </div>
             <CustomerReview />
         </>

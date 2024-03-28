@@ -28,10 +28,10 @@ export default function AboutUs() {
 
                 {/* This section for define aboutus page header*/}
 
-                <div className="text-center mt-20">
+                <div className="text-center mt-10">
                     <div className='mx-auto'><p className="font-medium text-huge uppercase max-lg:text-4xl">About us</p></div>
                 </div>
-                <div className="flex mt-10 max-xl:mx-auto max-xl:px-3">
+                <div className="flex mt-10 max-sm:mt-5 max-xl:mx-auto max-xl:px-3">
                     <div className='flex w-full justify-around max-lg:flex-col max-xl:gap-5'>
                         {
                             AboutUsHeader.map((description, index) => {
@@ -49,7 +49,7 @@ export default function AboutUs() {
                 {/* This section for define Innovation and Progress*/}
 
                 <div className='max-lg:px-3'>
-                    <div className="mt-24 flex flex-col rounded-3xl bg-[#0E142B] container relative px-10 py-20 mx-auto">
+                    <div className="mt-24 max-sm:mt-16 flex flex-col rounded-3xl bg-[#0E142B] container relative px-10 py-20 max-sm:py-5 mx-auto">
                         <div className='flex w-full'>
                             <div className='px-9 py-6 max-lg:w-full max-xl:text-center max-xl:px-0 max-xl:w-1/3'>
                                 <div><span className='font-medium text-5xl mt-3 max-xl:text-4xl'>Innovation and</span><p className='bg-gradient-to-r font-medium text-5xl from-purple-light to-purple-weight bg-clip-text text-transparent max-md:text-4xl !leading-normal'>Progress</p></div>

@@ -93,18 +93,18 @@ export default function Recovery() {
 
     return (
         <>
-            <div className="flex flex-col text-white w-full">
+            <div className="flex flex-col text-white w-full max-2xl:px-3">
 
                 {/* This section for define username recovery header*/}
 
-                <div className='mt-28'>
+                <div className='mt-10'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{RecoveryTitle.title}</p>
-                    <div className='flex gap-32 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-lg:flex-col max-md:gap-10'>
-                        <div className='max-w-[612px] mt-20'><p className='font-normal text-base'>{RecoveryTitle.sub_title}</p></div>
-                        <div className='font-medium text-7xl mt-5'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
+                    <div className='flex gap-20 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-lg:flex-col max-md:gap-10'>
+                        <div className='max-w-[612px] mt-20 max-sm:mt-10'><p className='font-normal text-base'>{RecoveryTitle.sub_title}</p></div>
+                        <div className='font-medium text-7xl mt-0 max-md:w-52 max-md:h-24'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
                     </div>
                 </div>
-                <p className='font-medium text-5xl text-center mt-44 max-lg:mt-10 max-md:text-3xl'>How It Helps</p>
+                <p className='font-medium text-5xl text-center mt-36 max-md:mt-5 max-lg:mt-10 max-md:text-3xl'>How It Helps</p>
                 <div className='flex flex-col mx-auto max-w-[1400px] mt-20 max-xl:px-5'>
                     <div className='flex max-lg:flex-col max-lg:items-center max-lg:text-center'>
                         <div className='max-w-[583px]'>
@@ -120,7 +120,7 @@ export default function Recovery() {
                         </div>
                     </div>
                     <div className='flex mt-5 max-md:mt-10 max-md:text-center max-md:mx-auto'>
-                        <div className='max-w-[623px] ml-20 max-md:ml-0 z-20'>
+                        <div className='max-w-[623px] ml-20 max-md:ml-0 z-10'>
                             <p className='font-medium text-5xl max-sm:text-3xl pb-5 max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.third_tip.title}</p>
                             <p className='font-medium text-3xl max-sm:text-base'>{HelpContent.third_tip.content}</p>
                         </div>
@@ -137,9 +137,9 @@ export default function Recovery() {
 
                 {/* This section for define benefit content*/}
                 
-                <div className='flex flex-col w-[calc(100vw-20px)] bg-white/5 mx-auto justify-around mt-20 px-3 py-20 gap-20 max-xl:flex-col items-center'>
+                <div className='flex flex-col w-[calc(100vw-30px)] bg-white/5 mx-auto justify-around mt-10 px-3 py-20 gap-20 max-xl:flex-col items-center'>
                     <span className='font-medium text-5xl max-md:text-4xl'>BENEFITS</span>
-                    <div className='flex max-lg:px-3 max-w-[1076px] justify-between w-full max-md:flex-col mx-auto max-lg:pt-20'>
+                    <div className='flex max-lg:px-3 max-w-[1076px] justify-between w-full max-md:flex-col mx-auto'>
                         <div className='flex'><Image src={Shape} width={200} height={200} className='mx-auto mb-10' alt='moon' /></div>
                         <div className='flex p-5 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-e-3xl'>
                             <div className='flex flex-col mx-auto justify-center'>
@@ -165,7 +165,7 @@ export default function Recovery() {
                     {
                         TipContent.map((tips, index) => {
                             return (
-                                <div key={index} className='flex max-w-[612px] mt-20 gap-2'>
+                                <div key={index} className='flex max-w-[612px] mt-20 max-sm:mt-8 gap-2'>
                                     <span>{tips.step}</span>
                                     <div className=''>
                                         <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent font-medium text-lg max-sm:text-base'>{tips.title}</span>
@@ -179,9 +179,9 @@ export default function Recovery() {
 
                 {/* This section for define FAQ for username recovery*/}
 
-                <div className='font-medium text-5xl mt-32'><p className='font-medium text-5x text-center'>FAQ</p></div>
+                <div className='font-medium text-5xl mt-32 max-sm:text-4xl max-sm:mt-20'><p className='font-medium text-5x text-center'>FAQ</p></div>
                 <div className='flex gap-32 mt-10 max-lg:px-3'>
-                    <div className='flex mt-10 gap-10 mx-auto justify-center max-xl:flex-col'>
+                    <div className='flex mt-10 max-sm:mt-0 gap-10 mx-auto justify-center max-xl:flex-col'>
                         {
                             FAQContent.map((cards, index) => {
                                 return (

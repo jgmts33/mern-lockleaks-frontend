@@ -197,7 +197,7 @@ export default function HomePage() {
   const [isFlipped, setIsFlipped] = useState(-1);
 
   useEffect(() => {
-    if (screen.width >= 470) {
+    if (screen.width >= 600) {
       const timer = setInterval(() => {
         if (animationCounter === 7) {
           clearInterval(timer);
@@ -214,14 +214,14 @@ export default function HomePage() {
   return (
     <>
       <div className="text-white max-w-[1480px] mx-auto">
-        <div className='relative flex px-3'>
+        <div className='relative flex px-5'>
 
           {/* This section for define homepage header*/}
 
           <div className="flex w-full justify-center items-center flex-col relative">
-            <div className="text-center max-w-[950px] gap-10 mt-20 max-md:mt-10">
+            <div className="text-center max-w-[950px] gap-10 mt-10">
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-44 -left-64 bg-[#0d091a] bg-opacity-5 blur-3xl' />
-              <p className="font-bold text-6xl max-lg:text-3xl max-md:mx-auto uppercase whitespace-normal z-10">
+              <p className="font-bold text-6xl max-lg:text-2xl max-md:mx-auto uppercase whitespace-normal z-10">
                 increase your online success with professional copyright protection
               </p>
             </div>
@@ -256,7 +256,7 @@ export default function HomePage() {
 
             {/* This section for define chosen by esteemed industry leaders*/}
 
-            <div className="flex flex-col w-full pt-72 text-center items-center max-xl:pt-36">
+            <div className="flex flex-col w-full pt-72 text-center items-center max-xl:pt-24">
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-56 -left-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
               <p className="text-center font-normal text-xl max-md:justify-center z-10">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col z-10">
@@ -277,10 +277,10 @@ export default function HomePage() {
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3'>
-          <div className='flex w-full relative mt-32'>
+          <div className='flex w-full relative mt-32 max-sm:mt-20'>
             <div className="flex flex-col mx-auto relative">
               <p className="font-medium text-[50px] uppercase max-lg:text-[30px] max-lg:text-center">We're ready to assist</p>
-              <div className="flex justify-center items-center gap-8 max-lg:mt-10">
+              <div className="flex justify-center items-center gap-8 max-md:mt-0">
                 <div className="flex justify-center items-center max-xl:hidden max-lg:hidden w-full">
                   <Image src="assets/robert.svg" alt='robert' width={320} height={680} className='mt-20 bg-opacity-90' />
                 </div>
@@ -346,15 +346,15 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-md:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
           </div>
         </div>
 
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3'>
-          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
-            <span className='font-medium text-[50px] mx-auto text-white max-w-[600px] max-lg:text-[40px]'>OUR SERVICES FOR YOUR BENEFIT</span>
+          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-sm:mt-24 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
+            <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-3xl'>OUR SERVICES FOR YOUR BENEFIT</span>
             <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
               {
                 services.map((service, index) => {
@@ -405,7 +405,7 @@ export default function HomePage() {
 
         {/* This section for define support video*/}
 
-        <div className="mt-32 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
+        <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
           <video controls preload="none" className='rounded-xl w-full'>
             <source src="/path/to/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -414,7 +414,7 @@ export default function HomePage() {
 
         {/* This section for define we're ready to assist*/}
 
-        <div className="max-lg:flex-col container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24">
+        <div className="max-lg:flex-col container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24 max-sm:mt-20">
           {
             percentDescription.map((item, index) => {
               return (
@@ -436,7 +436,7 @@ export default function HomePage() {
         {/* This section for define experience our rapid service*/}
 
         <div className='max-lg:px-3'>
-          <div className="mt-24 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
+          <div className="mt-24 max-sm:mt-20 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
             <div className='flex justify-start w-full'>
               <div className='px-9 py-6 max-xl:w-full max-xl:text-center'>
                 <p className='font-medium text-5xl max-lg:text-3xl max-w-[580px] max-xl:mx-auto'>Quick Setup in Less Than 24 Hours!</p>
