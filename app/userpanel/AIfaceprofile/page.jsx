@@ -93,7 +93,7 @@ export default function AIfaceprofile() {
                                         AIImageLists.map((items, index) => {
                                             return (
                                                 <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full'>
-                                                    <div className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-center items-center gap-3 rounded-[16px]'>
+                                                    <div className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-start px-10 items-center gap-3 rounded-[16px]'>
                                                         {items.icon}
                                                         <span>{items.content}</span>
                                                     </div>

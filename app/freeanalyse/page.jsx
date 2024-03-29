@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Image from 'next/image';
 import {
@@ -9,7 +10,7 @@ import Robertgroup from '@/public/assets/robert.svg';
 import Chat from '@/public/assets/services/chat.svg';
 import Reversechat from '@/public/assets/reverse-chat.svg';
 import { Shine, Robertchat } from "@/components/utils/Icons";
-
+import CustomerReview from '@/components/customerReview';
 
 export default function FreeAnalyse() {
 
@@ -25,65 +26,65 @@ export default function FreeAnalyse() {
   }
 
   return (
-    <div className="text-white relative container flex flex-col mx-auto" >
+    <>
+      <div className="text-white relative container flex flex-col mx-auto" >
 
-      {/* This section for define Freeanalyse Content*/}
+        {/* This section for define Freeanalyse Content*/}
 
-      <div className='flex mt-10 pb-10 mx-auto gap-10 max-w-[1500px] items-center max-xl:justify-center max-xl:items-center'>
-        <div className='flex items-center gap-5 max-sm:px-3'>
-          <Image className="max-xl:hidden mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={AI} width={250} height={250} alt="Modern building architecture" />
-        </div>
-        <div className='flex flex-col text-center mx-auto mt-0 max-w-[603px] max-xl:flex-wrap'>
-          <div className='flex justify-between items-center max-sm:gap-3'>
-            <div className='hidden max-xl:block'><Image className="mt-2 object-cover rounded-[20px]" src={AI} width={150} height={150} alt="Modern building architecture" /></div>
-            <div className='mx-auto'><p className='font-medium text-5xl max-lg:text-3xl'>FREE ANALYZE</p></div>
-            <div className='hidden max-xl:block'><Image className="mt-2 object-cover p-2 rounded-[20px]" src={SCAN} width={150} height={150} alt='saturn' /></div>
+        <div className='flex mt-10 mx-auto gap-10 max-w-[1500px] items-center max-xl:justify-center max-xl:items-center'>
+          <div className='flex items-center gap-5 max-sm:px-3'>
+            <Image className="max-xl:hidden mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={AI} width={250} height={250} alt="Modern building architecture" />
           </div>
-          <div className='flex flex-col mt-10'>
-          <div className='mt-5'>
-            <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
-              Click for support
-              <span>{icons.shine}</span>
-            </Button>
+          <div className='flex flex-col text-center mx-auto mt-0 max-w-[603px] max-xl:flex-wrap'>
+            <div className='flex justify-between items-center max-sm:gap-3'>
+              <div className='mx-auto'><p className='font-medium text-5xl max-lg:text-3xl'>FREE ANALYZE</p></div>
+            </div>
+            <div className='flex flex-col mt-5'>
+              <div className='mt-5'>
+                <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
+                  Click for support
+                  <span>{icons.shine}</span>
+                </Button>
+              </div>
+              <p className='mt-10'>{freeanalyseContent.firstDescription}</p>
+              <p className='mt-10'>{freeanalyseContent.secondDescription}</p>
+              <p className='mt-10'>{freeanalyseContent.thirdDescription}</p>
+              <div className='flex items-center justify-around mt-10 max-sm:gap-5'>
+                <div className='hidden max-xl:block'><Image className="mt-2 object-cover rounded-[20px]" src={AI} width={150} height={150} alt="Modern building architecture" /></div>
+                <div className='hidden max-xl:block'><Image className="mt-2 object-cover p-2 rounded-[20px]" src={SCAN} width={150} height={150} alt='saturn' /></div>
+              </div>
+            </div>
           </div>
-          <p className='mt-10'>{freeanalyseContent.firstDescription}</p>
-          <p className='mt-10'>{freeanalyseContent.secondDescription}</p>
-          <p className='mt-10'>{freeanalyseContent.thirdDescription}</p>
-          </div>
-        </div>
-        <div>
-          <Image className="max-xl:hidden mt-2 object-cover p-2 rounded-[20px]" src={SCAN} width={200} height={200} alt='saturn' />
-        </div>
-      </div>
-
-      {/* This section for define show photos for freeanalyse*/}
-
-      <div className='flex w-full px-60 justify-between mt-52 max-xl:hidden'>
-        <div className='flex justify-center items-center'>
-          <div className=' relative'>
-            <Image className="h-[560px] w-80 max-md:w-full rounded-[20px]" src={Robertgroup} alt="Modern building architecture" />
-            <Image src={Chat} width={500} height={370} className="-top-40 left-[115px] -rotate-[45deg] absolute  max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
-            <Image src={Chat} width={200} height={170} className="top-14 left-[220px] absolute max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
+          <div>
+            <Image className="max-xl:hidden mt-2 object-cover p-2 rounded-[20px]" src={SCAN} width={200} height={200} alt='saturn' />
           </div>
         </div>
-        <div className='flex flex-col'>
-          <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-36 bottom-[380px] w-72 h-72'>
-            <Image src={Reversechat} className="mt-24 max-md:w-full" width={200} height={150} alt="Modern building architecture" />
+
+        {/* This section for define show photos for freeanalyse*/}
+
+        <div className='flex w-full px-60 justify-between mt-32 max-xl:hidden'>
+          <div className='flex justify-center items-center '>
+            <div className=' relative'>
+              <Image className="h-[560px] w-80 max-md:w-full rounded-[20px]" src={Robertgroup} alt="Modern building architecture" />
+              <Image src={Chat} width={500} height={370} className="-top-40 left-[115px] -rotate-[45deg] absolute  max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
+              <Image src={Chat} width={200} height={170} className="top-14 left-[220px] absolute max-xl:!w-[200px] max-xl:right-[320px]" alt='chat' />
+            </div>
           </div>
-          <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 right-4 cursor-pointer w-[350px] absolute rotate-[12deg] -mt-[60px]">
-            <div className='absolute'>{icons.robertchat}</div>
-            <div className='flex justify-start flex-col'>
-              <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
-              <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
+          <div className='flex flex-col'>
+            <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-64 bottom-[380px] w-72 h-72'>
+              <Image src={Reversechat} className="mt-24 max-md:w-full" width={200} height={150} alt="Modern building architecture" />
+            </div>
+            <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 right-32 cursor-pointer w-[350px] absolute rotate-[12deg] -mt-[60px]">
+              <div className='absolute'>{icons.robertchat}</div>
+              <div className='flex justify-start flex-col'>
+                <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
+                <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
+              </div>
             </div>
           </div>
         </div>
-        <div className='flex flex-col mt-28'>
-          <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
-            Contact Us
-          </Button>
-        </div>
       </div>
-    </div>
+      <CustomerReview />
+    </>
   )
 }

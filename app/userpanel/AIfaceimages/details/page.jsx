@@ -87,24 +87,24 @@ export default function AIImageDetails() {
                             <div className='flex w-full'>
                                 <Image src={Saturn} width={300} height={100} className='' alt='saturn' />
                             </div>
-                            <div className='flex w-full px-5'> 
-                            <ScrollShadow className="h-[220px] w-[500px]">
-                                {
-                                    AIImageLists.map((items, index) => {
-                                        return (
-                                            <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full'>
-                                                <div className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-center items-center gap-3 rounded-[16px]'>
-                                                    {items.icon}
-                                                    <span>{items.content}</span>
+                            <div className='flex w-full px-5'>
+                                <ScrollShadow className="h-[220px] w-[500px]">
+                                    {
+                                        AIImageLists.map((items, index) => {
+                                            return (
+                                                <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full'>
+                                                    <div className='flex bg-gradient-to-br justify-start bg-white/10 shadow-sm py-3 px-10 w-full items-center gap-3 rounded-[16px]'>
+                                                        {items.icon}
+                                                        <span>{items.content}</span>
+                                                    </div>
+                                                    <div>
+                                                        <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </ScrollShadow>
+                                            )
+                                        })
+                                    }
+                                </ScrollShadow>
                             </div>
                         </div>
                     </div>

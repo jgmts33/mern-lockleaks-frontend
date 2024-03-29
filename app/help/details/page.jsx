@@ -52,10 +52,10 @@ export default function Details() {
                 <div className='flex'><span className='font-medium text-3xl text-center'>Was the article helpful?</span></div>
                 <div className='flex justify-around mt-5'>
                     <Button radius="lg" className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg " size='lg'>
-                        Bill Monthly
+                        Yes
                     </Button>
                     <Button radius="lg" className="from-gray-800 to-gray-900 border border-gray-950 mx-auto px-7 py-5 text-lg text-white shadow-lg" size='lg'>
-                        Bill Yearly
+                        No
                     </Button>
                 </div>
             </div>

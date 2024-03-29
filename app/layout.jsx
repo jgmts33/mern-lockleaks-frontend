@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
             {
               currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
                 ?
-                <div className="flex w-screen">
+                <div className="flex w-full">
                   <Sidebar />
                   <div className="flex flex-col">
                     <UserHeader />

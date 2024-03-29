@@ -51,7 +51,7 @@ const FAQContent = ({ targetContent }) => {
                 <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 max-md:p-5 border border-gray-600'>
                     <div className='flex justify-between max-sm:mx-auto gap-5'>
                         <p className='font-medium text-2xl max-lg:text-lg'>{contents.title}</p>
-                        <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr aspect-square from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0 max-sm:w-8 max-sm:h-8" : "rotate-[90deg] aspect-square mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2 max-sm:w-8 max-sm:h-8"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1)}}>
+                        <button className={expandedIndex == index ? "-rotate-[90deg] bg-gradient-to-tr aspect-square from-purple-light to-purple-weight border-gray-600 border text-white mt-50 w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-0 max-sm:w-8 max-sm:h-8" : "rotate-[90deg] aspect-square mt-50 bg-gradient-to-tr from-gray-600/40 to-gray-800/40 mt-0 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg z-50 bottom-[calc(50%-80px)] right-2 max-sm:w-8 max-sm:h-8"} onClick={() => { expandedIndex != index ? setExpandedIndex(index) : setExpandedIndex(-1) }}>
                             {icons.arrowtop}
                         </button>
                     </div>
@@ -175,15 +175,15 @@ export default function ScanTakeDown() {
 
                 {/* This section for define tips for scan&takedown page*/}
 
-                <div className='flex bg-[#090D1F] mx-auto justify-around mt-20 py-20 gap-20 max-xl:flex-col w-[calc(100vw-40px)] max-xl:items-center'>
+                <div className='flex bg-[#090D1F] mx-auto justify-center mt-20 py-20 gap-20 max-lg:flex-col w-[calc(100vw-40px)] max-xl:items-center max-2xl:px-3'>
 
-                    <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
-
-                    <div className="relative max-w-[740px] max-sm:px-3 flex justify-center items-center max-md:justify-center max-md:items-center">
+                    <div className="relative flex max-sm:px-3 justify-center max-xl:flex items-center max-md:justify-center max-md:items-center">
                         <div><Image src={WriteTip} alt='writetip' width={349} height={319} className='max-md:w-56 max-md:h-44' /></div>
                         <div><Image src={TipDocument} alt='tip' width={349} height={150} className='max-md:w-44 max-md:h-44' /></div>
                     </div>
-                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+                    <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
+                </div>
 
                 {/* This section for define FAQ*/}
 

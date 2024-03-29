@@ -12,7 +12,7 @@ export default function Header() {
   const menuItems = [
     {
       content: "Services",
-      path: "/servicees"
+      path: "/services"
     }, {
       content: "Scan&Takedown",
       path: "/scantakedown"
@@ -46,7 +46,7 @@ export default function Header() {
       path: "/pricing"
     },{
       content: "Services",
-      path: "/servicees"
+      path: "/services"
     }, {
       content: "Blog",
       path: "/blog"

@@ -46,6 +46,7 @@ export default function Bing() {
                         className="max-w-2xl"
                         color='secondary'
                         value={value}
+                        showValueLabel={true}
                     />
                 </div>
                 <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-3 pb-10 cursor-pointer">

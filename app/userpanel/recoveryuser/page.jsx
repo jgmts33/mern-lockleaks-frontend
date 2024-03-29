@@ -57,7 +57,7 @@ export default function RecoveryUser() {
                             + Upload
                         </Button>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                            Start
+                            Submit
                         </Button>
                     </div>
                 </div>
