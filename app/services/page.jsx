@@ -82,7 +82,7 @@ export default function SERVICES() {
                     {
                         ServicesContent.map((item, index) => {
                             return (
-                                <div key={index} className={(index == 1 ? 'mt-20 pt-10 max-lg:-mt-12' : "") + " max-w-[480px] max-lg:mt-1 flex flex-col gap-4" }>
+                                <div key={index} className={(index == 1 ? 'mt-20 pt-10 max-lg:-mt-10' : "") + " max-w-[480px] max-lg:mt-1 flex flex-col gap-4" }>
                                     {
                                         item.map((service_content, count) => {
                                             return (
