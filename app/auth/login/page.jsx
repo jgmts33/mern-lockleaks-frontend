@@ -29,7 +29,7 @@ export default function Login() {
     useEffect(() => {
         setEmailError("");
         setPasswordError("")
-    }, [email, password])
+    }, [email])
 
     const handleLogin = () => {
         if (email == "") {
