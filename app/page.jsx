@@ -39,16 +39,16 @@ export default function HomePage() {
   const services = [
     {
       name: "Protect Content Now!",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>Upon detecting any infringing content, our expert agents act promptly by issuing DMCA takedown notices to the relevant internet authorities.We diligently remove any* illicit copies of your content identified through both software and manual scans.</p>
         <p className='mt-10'>Our strong affiliations with file hosting sites ensure swift consideration of our DMCA takedown notices, aligning with our clients business policies.*Limited by DMCA compliance</p>
       </div>,
       img: "assets/services/takedown.svg"
     },
     {
-      name: "Delist",
-      description: <div className='outline-none px-12 py-20'>
-        <p>CopyrightFixer holds membership in Google's Trusted Copyright Removal Program, leading to the rapid delisting of any reported infringing content.</p>
+      name: "LockLeaks",
+      description: <div className='outline-none px-10 py-10'>
+        <p>LockLeaks holds membership in Google's Trusted Copyright Removal Program, leading to the rapid delisting of any reported infringing content.</p>
         <p className='mt-10'>Please note, we refrain from reporting referrals, reviews, affiliates, and any content you wish to retain.</p>
         <p>We boast a perfect track record, removing 100% of reported infringing content from Google Search, Google Video, and Google Images, also covering Microsoft Bing</p>
       </div>,
@@ -56,7 +56,7 @@ export default function HomePage() {
     },
     {
       name: "Artificial Intelligence",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>Incorporating facial recognition software, machine learning, optical character recognition, and an array of algorithms developed by our experts, we fortify content protection against copyright infringements on:</p>
         <ul className='mt-10 list-disc pl-4'>
           <li>Google Images</li>
@@ -67,7 +67,7 @@ export default function HomePage() {
     },
     {
       name: "Personal Agent",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>Our adept agents conduct manual scans for copyright infringements utilizing your specified usernames and chosen keywords on multiple platforms:</p>
         <ul className='mt-10 list-disc pl-4'>
           <li>Google Search, Images & Videos</li>
@@ -84,7 +84,7 @@ export default function HomePage() {
     },
     {
       name: "Impersonation",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>Your brand is shielded from fraudulent accounts, impersonators, and harassment on various platforms including:</p>
         <ul className='mt-10 list-disc pl-4'>
           <li>Reddit</li>
@@ -102,7 +102,7 @@ export default function HomePage() {
     },
     {
       name: "Scan",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>Our proprietary software scours the internet, uncovering brand copyright infringements, complemented by meticulous manual scans performed by our adept agents. We meticulously scrutinize:</p>
         <ul className='mt-10 list-disc pl-4'>
           <li>Results from Google Search, Images, and Videos</li>
@@ -115,7 +115,7 @@ export default function HomePage() {
     },
     {
       name: "DMCA BADGES",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>This service involves providing DMCA badges that can be integrated into clients' websites or platforms to indicate that the respective content is protected by copyright and is subject to DMCA (Digital Millennium Copyright Act) policies.</p>
         <p className='mt-10'> These badges offer a visual notification and signal to potential users that the content is protected, highlighting the presence of legal measures for any copyright violations.</p>
       </div>,
@@ -123,7 +123,7 @@ export default function HomePage() {
     },
     {
       name: "Anonymity",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>"Filing a DMCA complaint often necessitates divulging personal information like real names, contact numbers, and addresses. Protecting your anonymity is our top priority; hence, we utilize our company’s contact information to lodge DMCA complaints on your behalf.</p>
         <p className='mt-10'> Several internet companies store personal information in publicly accessible databases like the Lumen database used by Twitter and Google. Rulta takes extra precautions to safeguard your identity.</p>
       </div>,
@@ -131,7 +131,7 @@ export default function HomePage() {
     },
     {
       name: "Specialists in Content Creator and Cam Model",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>This service entails providing DMCA badges that can be integrated into clients' websites or platforms to indicate that the respective content is protected by copyright and adheres to DMCA (Digital Millennium Copyright Act) policies. </p>
         <p className='mt-10'> These badges serve as visual notifications and signals to potential users that the content is protected, and legal actions will be taken in case of copyright violations.</p>
       </div>,
@@ -139,14 +139,14 @@ export default function HomePage() {
     },
     {
       name: "Reverify & Reanalyzer",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>This functionality involves repetitive scans and periodic updates to identify and evaluate any new copyright infringements or reintroduced content. It ensures constant monitoring of illegal activities and helps rediscover previously undetected content, ensuring all violations are appropriately managed and eliminated, maintaining high-security standards for copyrighted content.</p>
       </div>,
       img: "assets/services/reverify-reanalyzer.svg"
     },
     {
       name: "Username History Recovery & Removal",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>This service is specially designed for models on cam platforms but can also be adapted and used for models on OnlyFans. The function is intended for recovering and removing content associated with multiple usernames used by the same individuals.</p>
         <p className='mt-10'>  This service provides a historical perspective on content associated with various online identities of a user and helps in removing unauthorized or unwanted content associated with these identities, thereby safeguarding the model's online image and security.</p>
       </div>,
@@ -154,7 +154,7 @@ export default function HomePage() {
     },
     {
       name: "Monthly Analytics & PDF Reports",
-      description: <div className='outline-none px-12 py-20'>
+      description: <div className='outline-none px-10 py-10'>
         <p>This service entails generating detailed monthly reports in PDF format that provide analysis and perspectives on data. These reports offer a comprehensive view of content performance, analyzing trends, interactions, and other relevant data, providing clients with a detailed overview of their content's evolution and potential future strategies.</p>
       </div>,
       img: "assets/services/analytics.svg"
@@ -220,7 +220,7 @@ export default function HomePage() {
 
           <div className="flex w-full justify-center items-center flex-col relative">
             <div className="text-center max-w-[950px] gap-10 mt-10">
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-44 -left-64 bg-[#0d091a] bg-opacity-5 blur-3xl' />
+              <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-44 -left-64 bg-[#0d091a] bg-opacity-5 blur-3xl' />
               <p className="font-bold text-6xl max-lg:text-2xl max-md:mx-auto uppercase whitespace-normal z-10">
                 increase your online success with professional copyright protection
               </p>
@@ -257,7 +257,7 @@ export default function HomePage() {
             {/* This section for define chosen by esteemed industry leaders*/}
 
             <div className="flex flex-col w-full pt-72 text-center items-center max-xl:pt-24">
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-56 -left-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
+              <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-56 -left-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
               <p className="text-center font-normal text-xl max-md:justify-center z-10">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col z-10">
                 <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
@@ -355,18 +355,18 @@ export default function HomePage() {
         <div className='max-lg:px-3'>
           <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-sm:mt-24 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
             <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-3xl'>OUR SERVICES FOR YOUR BENEFIT</span>
-            <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col">
+            <div className="grid grid-cols-4 gap-x-3 max-lg:flex-col max-w-[700px] mx-auto">
               {
                 services.map((service, index) => {
                   return (
                     <Button
                       key={index}
-                      radius="full"
+                      radius="lg"
                       variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4"}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-transparent border border-white/5 bg-opacity-20") + "  outline-none text-white shadow-full p-8 mt-4"}
                       onClick={() => setSelectedServiceIndex(index)}
                     >
-                      <span>{icons.shine}</span><span className='max-lg:text-[10px]'>{service.name}</span>
+                      <Image src={service.img} width={30} height={30} />
                     </Button>
                   )
                 })
@@ -378,9 +378,11 @@ export default function HomePage() {
           {
             services.map((service, service_index) => {
               return (
-                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between max-lg:flex-col gap-10'}>
-                  <div className='flex justify-center items-center '><Image src={service.img} width={144} height={144} alt="Service" /></div>
-                  <div className='max-w-[822px] w-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 bg-opacity-60 rounded-e-3xl'><span className='max-xl:text-center'>{service.description}</span></div>
+                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-center max-lg:flex-col'}>
+                  <div className='max-w-[822px] w-full bg-transparent border border-gray-600 bg-opacity-60 rounded-3xl pt-10'>
+                    <div className='flex justify-center items-center'><span className='font-medium text-3xl text-center'>{service.name}</span></div>
+                    <span className='font-medium text-lg'>{service.description}</span>
+                  </div>
                 </div>
               )
             })

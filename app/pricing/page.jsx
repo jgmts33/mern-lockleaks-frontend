@@ -7,6 +7,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, ArrowDown } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customerReview';
+import UncompleteIcon from "@/public/assets/background/uncomplete.svg"
+import CompleteIcon from "@/public/assets/background/complete.svg"
 
 export default function Pricing() {
 
@@ -29,6 +31,7 @@ export default function Pricing() {
             monthly_price: "150",
             yearly_price: "405",
             discount: "Discount 10%",
+            plan_deadline: 1,
             save_price: "Save $45",
             bg_color: "from-gray-600/40 to-gray-800/40",
             user_name: "1",
@@ -56,11 +59,13 @@ export default function Pricing() {
             file_analyze_status: false,
             AI_analyze_status: false,
             monthly_analyze_status: false,
+            recovery_report_status: false,
             add_content: "px-10"
         }, {
             title: "STAR",
             monthly_price: "350",
             yearly_price: "840",
+            plan_deadline: 5,
             discount: "Discount 15%",
             save_price: "Save $210",
             bg_color: "from-[#F68171] to-[#B759FF]",
@@ -90,6 +95,7 @@ export default function Pricing() {
             file_analyze_status: true,
             AI_analyze_status: true,
             monthly_analyze_status: true,
+            recovery_report_status: true,
             add_content: "bg-opacity-10 bg-black/20 rounded-[20px] px-10 py-10"
         },
         {
@@ -97,11 +103,12 @@ export default function Pricing() {
             monthly_price: "200",
             yearly_price: "510",
             discount: "Discount 20%",
+            plan_deadline: 3,
             save_price: "Save $90",
             bg_color: "from-gray-600/40 to-gray-800/40",
             add_propertity: "mt-[72px]",
             content_property: "",
-            user_name: "1",
+            user_name: "3",
             agent_request: "Personal Agent Requests",
             takedowns: "Unlimited Takedowns",
             daily_report: "Daily Repports",
@@ -122,10 +129,11 @@ export default function Pricing() {
             bing_removal_report_status: true,
             social_analyze_status: true,
             adult_analyze_status: true,
-            forum_analyze_status: false,
+            forum_analyze_status: true,
             file_analyze_status: false,
             AI_analyze_status: false,
             monthly_analyze_status: false,
+            recovery_report_status: false,
             add_content: "px-10"
         }
     ]
@@ -213,16 +221,16 @@ export default function Pricing() {
                                                     ADD EXTRA
                                                 </Button>
                                             </div>
-                                            <Button radius="lg" className="w-full bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2 gap-5 hidden max-sm:block" size='md' onClick={() => {selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1)}}>
+                                            <Button radius="lg" className="w-full bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2 gap-5 hidden max-sm:block" size='md' onClick={() => { selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1) }}>
                                                 <div className='flex items-center justify-center'>
-                                                <span className='flex items-center justify-center '>SERVICES DEFAULTS</span>
-                                                <span className={selectServiceList == index ? 'rotate-[180deg]' : ''}>{icons.arrowDown}</span>
+                                                    <span className='flex items-center justify-center '>Plan Details</span>
+                                                    <span className={selectServiceList == index ? 'rotate-[180deg]' : ''}>{icons.arrowDown}</span>
                                                 </div>
                                             </Button>
                                             <div className='flex items-center max-xl:justify-content'>
-                                                <div className='flex gap-7'><p>10/DAY</p> {icons.complete}{item.agent_request}</div>
+                                                <div className='flex gap-7'><p>{item.plan_deadline}/DAY</p> {icons.complete}{item.agent_request}</div>
                                             </div>
-                                            <div className={("flex flex-col gap-y-5 mb-10 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
+                                            <div className={("flex flex-col gap-y-5 mb-10 max-sm:space-y-2 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
                                                 <div className='flex flex-wrap gap-7'><div>{icons.complete}</div><div>{item.agent_request}</div></div>
                                                 <div className='flex gap-7'><div>{icons.complete}</div><div>{item.takedowns}</div></div>
                                                 <div className='flex gap-7'><div>{icons.complete}</div><div>{item.daily_report}</div></div>
@@ -236,10 +244,10 @@ export default function Pricing() {
                                                 <div className='flex gap-7'><div>{item.social_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.social_analyze}</div></div>
                                                 <div className='flex gap-7'><div>{item.adult_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.adult_analyze}</div></div>
                                                 <div className='flex gap-7'><div>{item.forum_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.forum_analyze}</div></div>
-                                                <div className='flex gap-7'><div>{item.file_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.file_analyze}</div></div>
-                                                <div className='flex gap-7'><div>{item.AI_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.AI_analyze}</div></div>
-                                                <div className='flex gap-7'><div>{item.monthly_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.monthly_analyze}</div></div>
-                                                <div className='flex gap-7'><div>{icons.complete}</div><div>{item.history_content}</div></div>
+                                                <div className='flex gap-7'><div className='w-9 h-9'>{item.file_analyze_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.file_analyze}</div></div>
+                                                <div className='flex gap-7'><div className='w-9 h-9'>{item.AI_analyze_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.AI_analyze}</div></div>
+                                                <div className='flex gap-7'><div className='w-9 h-9'>{item.monthly_analyze_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.monthly_analyze}</div></div>
+                                                <div className='flex gap-7'><div className='w-10 h-10'>{item.recovery_report_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.history_content}</div></div>
                                             </div>
                                         </div>
                                     </div>
