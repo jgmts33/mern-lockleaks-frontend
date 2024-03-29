@@ -12,7 +12,7 @@ export default function Header() {
   const menuItems = [
     {
       content: "Services",
-      path: "/services"
+      path: "/servise"
     }, {
       content: "Scan&Takedown",
       path: "/scantakedown"
