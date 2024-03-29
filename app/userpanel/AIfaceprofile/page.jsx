@@ -83,29 +83,27 @@ export default function AIfaceprofile() {
                 </div>
                 <div className='flex gap-10'>
                     <div className="flex flex-col w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5">
-                        <div className='flex p-10 justify-center gap-10'>
-                            <div>
-                                <Image src={Woman} width={300} height={150} className='w-full h-full' alt='saturn' />
+                        <div className='flex p-10 justify-around gap-10'>
+                            <div className='flex w-full h-96'>
+                                <Image src={Woman} width={200} height={100} className='w-full h-full' alt='saturn' />
                             </div>
-                            <div>
-                                <ScrollShadow className="h-[220px]">
-                                    <div className='mx-auto'>
-                                        {
-                                            AIImageLists.map((items, index) => {
-                                                return (
-                                                    <div key={index} className='flex mt-5 items-center px-5 gap-10'>
-                                                        <div key={index} className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 justify-center gap-3 rounded-[16px]'>
-                                                            {items.icon}
-                                                            <span>{items.content}</span>
-                                                        </div>
-                                                        <div>
-                                                            <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
-                                                        </div>
+                            <div className='flex w-full px-5'>
+                                <ScrollShadow className="h-[220px] w-[500px]">
+                                    {
+                                        AIImageLists.map((items, index) => {
+                                            return (
+                                                <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full'>
+                                                    <div className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-center items-center gap-3 rounded-[16px]'>
+                                                        {items.icon}
+                                                        <span>{items.content}</span>
                                                     </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
+                                                    <div>
+                                                        <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </ScrollShadow>
                             </div>
                         </div>
@@ -142,12 +140,12 @@ export default function AIfaceprofile() {
                         })
                     }
                 </div>
-                <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5">
-                    <div className='flex gap-10 items-center'>
+                <div className="flex items-center px-20 py-8 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5">
+                    <div className='flex gap-5 items-center'>
                         {icons.components}
                         <span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20'>
+                    <div className='px-20 max-w-[1000px]'>
                         <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
                     </div>
                 </div>

@@ -72,11 +72,11 @@ export default function DeleteData() {
 
             {/* This section for request personal data*/}
 
-            <div className="text-center gap-10 mt-20 max-xl:px-3">
+            <div className="text-center gap-10 mt-10 max-xl:px-3">
                 <div className='max-w-[600px] mx-auto'><p className="font-medium text-[50px] max-lg:text-3xl">{DeleteDataTitle.title}</p></div>
                 <div className='max-w-[980px] mx-auto mt-5'><span className='font-normal text-base'>{DeleteDataTitle.sub_title}</span></div>
             </div>
-            <div className="flex max-w-[752px] mx-auto w-full flex-col gap-4 p-20 max-md:p-10">
+            <div className="flex max-w-[752px] mx-auto w-full flex-col gap-4 p-10 max-md:p-10">
                 <div className='flex flex-col'>
                     <p>Full name:</p>
                     <input type='text' placeholder='Type here' className="form-select bg-white text-black p-2 rounded-lg mt-5 block w-full" />
@@ -229,7 +229,7 @@ export default function DeleteData() {
 
             {/* This section for confirm personal data*/}
 
-            <div className='mt-24 mx-auto max-md:px-3 z-10'>
+            <div className='mt-24 max-xl:mt-10 mx-auto max-md:px-3 z-10'>
                 <div className="text-center">
                     <div className='mx-auto'><p className="font-medium text-[50px] max-md:text-4xl uppercase">I confirm that:</p></div>
                 </div>

@@ -51,7 +51,7 @@ export default function Dashbaord() {
             <div>
                 <span className='font-extrabold text-lg'>OVERVIEW OF INFIRNGEMENT</span>
             </div>
-            <div className='grid grid-cols-3 gap-10 py-10'>
+            <div className='grid grid-cols-3 gap-10 py-10 max-xl:grid-cols-2 max-lg:grid-cols-1'>
                 {
                     DashboardOverview.map((items, index) => {
                         return (

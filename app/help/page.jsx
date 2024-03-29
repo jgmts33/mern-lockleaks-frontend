@@ -103,7 +103,7 @@ export default function Help() {
 
             {/* This section for define Help Page content*/}
 
-            <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10 mx-auto mt-20'>
+            <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10 mx-auto mt-20 max-xl:mt-10'>
                 {
                     CategoriesContent.map((category, index) => {
                         return (
@@ -122,7 +122,7 @@ export default function Help() {
                     })
                 }
             </div>
-            <div className='flex mx-auto mt-32 max-lg:mt-16'>
+            <div className='flex mx-auto mt-20 max-xl:mt-10'>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto w-full z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-5 py-5 text-sm" size='md'>
                     Contact Support
                 </Button>
@@ -131,10 +131,10 @@ export default function Help() {
                 <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute right-0 -top-20' />
                 <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-32 top-32' />
             </div>
-            <div className='mt-32 mx-auto max-w-[600px] text-center max-lg:mt-16'>
+            <div className='mt-20 mx-auto max-w-[600px] text-center max-xl:mt-10'>
                 <span className='font-medium text-5xl max-md:text-4xl'>Frequently Asked Questions</span>
             </div>
-            <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-10 mx-auto mt-32 max-lg:mt-10 mb-10'>
+            <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-10 mx-auto mt-20 max-xl:mt-10 max-lg:mt-10 mb-10'>
                 {
                     QuestionContent.map((items, index) => {
                         return (
@@ -156,7 +156,7 @@ export default function Help() {
                     })
                 }
             </div>
-            <div className='flex justify-between mt-20 max-md:mt-10 max-xl:justify-around max-sm:flex-col mb-10'>
+            <div className='flex justify-between mt-16 max-xl:mt-5 max-xl:justify-around max-sm:flex-col mb-10'>
                 <div className='flex flex-col max-sm:items-center'>
                     <span className='font-medium text-4xl max-sm:text-center'>Need further assistance? </span>
                     <span>Contact our customer support team now.</span>

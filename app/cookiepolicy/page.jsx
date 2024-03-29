@@ -14,10 +14,10 @@ export default function CookiePolicy() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center max-w-[1470px] justify-center text-white w-full font-normal text-base">
-                <div className='text-center mt-28'>
+                <div className='text-center mt-10'>
                     <p className='font-medium text-5xl uppercase'>{PravicyPolicy.title}</p>
                 </div>
-                <div className='mt-20 max-xl:px-3'>
+                <div className='mt-5 max-xl:px-3 mb-5'>
                     <p className='font-normal text-base mt-5'>This Cookie Policy explains how Company ("Company", "we", "us", and "our") uses cookies and similar technologies to recognize you when you visit our websites at https://www.rulta.co</p>
                     <p className='font-normal text-base'>("Websites"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
                     <p className='font-normal text-base mt-5'>In some cases we may use cookies to collect personal information, or that becomes personal information if we combine it with other information.</p>

@@ -71,44 +71,44 @@ export default function AIImageDetails() {
                     <Progress
                         size="md"
                         aria-label="Loading..."
-                        className="max-w-2xl"
+                        className="max-w-[900px]"
                         color='secondary'
                         value={value}
                         showValueLabel={true}
                     />
                 </div>
-                <div className='flex max-w-[700px] w-full justify-between mt-10'>
+                <div className='flex max-w-[750px] w-full justify-between mt-10'>
                     <span className='font-extrabold text-lg'>Upload Photo for Removal</span>
                     <span className='font-extrabold text-lg'>Photo for Removal Refference</span>
                 </div>
                 <div className='flex gap-10'>
-                    <div className="flex flex-col w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5">
-                        <div className='flex p-10 justify-center gap-10'>
-                            <Image src={Saturn} width={300} height={150} className='' alt='saturn' />
-                            <div>
-                                <ScrollShadow className="h-[220px]">
-                                    <div className='mx-auto'>
-                                        {
-                                            AIImageLists.map((items, index) => {
-                                                return (
-                                                    <div key={index} className='flex mt-5 items-center px-5 gap-10'>
-                                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-center gap-3 rounded-[16px]'>
-                                                            {items.icon}
-                                                            <span>{items.content}</span>
-                                                        </div>
-                                                        <div>
-                                                            <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                </ScrollShadow>
+                    <div className="flex flex-col w-full justify-center items-center bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5">
+                        <div className='flex p-10 justify-around gap-10 w-full'>
+                            <div className='flex w-full'>
+                                <Image src={Saturn} width={300} height={100} className='' alt='saturn' />
+                            </div>
+                            <div className='flex w-full px-5'> 
+                            <ScrollShadow className="h-[220px] w-[500px]">
+                                {
+                                    AIImageLists.map((items, index) => {
+                                        return (
+                                            <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full'>
+                                                <div className='flex bg-gradient-to-br bg-white/10 shadow-sm py-3 px-10 w-full justify-center items-center gap-3 rounded-[16px]'>
+                                                    {items.icon}
+                                                    <span>{items.content}</span>
+                                                </div>
+                                                <div>
+                                                    <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </ScrollShadow>
                             </div>
                         </div>
                     </div>
-                    <div className='max-w-[400px] w-full'>
+                    <div className='max-w-[450px] w-full'>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-10">
                             <div className='flex'>
                                 <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
@@ -141,7 +141,7 @@ export default function AIImageDetails() {
                     }
                 </div>
                 <div className="flex items-center px-20 py-8 gap-20 bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5">
-                    <div className='flex gap-10 items-center'>
+                    <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <div><span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span></div>
                     </div>

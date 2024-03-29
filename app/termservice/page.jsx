@@ -61,13 +61,13 @@ export default function TermService() {
 
                 {/* This section for define term service header*/}
 
-                <div className='text-center mt-28'>
+                <div className='text-center mt-10'>
                     <p className='font-medium text-5xl uppercase max-lg:text-[30px]'>{PravicyPolicy.title}</p>
                 </div>
 
                 {/* This section for define term service content*/}
 
-                <div className='mt-10 grid grid-cols-3 gap-10 mb-20 max-xl:px-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
+                <div className='mt-8 max-2xl:mt-2 grid grid-cols-3 gap-10 max-md:gap-2 mb-10 max-xl:px-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
                     {
                         TermServiceContent.map((termservice, index) => {
                             return (

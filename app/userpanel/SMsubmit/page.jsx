@@ -57,7 +57,7 @@ export default function SMsubmit() {
                     </div>
                 </div>
                 <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
-                    <div className='flex gap-10 items-center'>
+                    <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>
                     </div>

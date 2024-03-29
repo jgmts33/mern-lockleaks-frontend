@@ -118,7 +118,7 @@ export default function CreatorDmca() {
                         }
                     </div>
                     <div className="max-w-[540px] relative flex max-xl:flex-col max-xl:items-center max-xl:justify-center">
-                        <div className='flex max-md:flex-wrap items-center justify-center'>
+                        <div className='flex max-sm:px-3 items-center justify-center'>
                             <div><Image src={WriteTip} alt='write tip' className='relative z-0 max-md:w-80' /></div>
                             <div><Image src={TipDocument} alt='tip document' className='relative z-0 max-md:80' /></div>
                         </div>

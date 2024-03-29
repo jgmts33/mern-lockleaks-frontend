@@ -175,13 +175,13 @@ export default function ScanTakeDown() {
 
                 {/* This section for define tips for scan&takedown page*/}
 
-                <div className='flex bg-[#090D1F] mx-auto justify-between mt-20 py-20 gap-20 max-xl:flex-col w-[calc(100vw-40px)] max-xl:items-center'>
+                <div className='flex bg-[#090D1F] mx-auto justify-around mt-20 py-20 gap-20 max-xl:flex-col w-[calc(100vw-40px)] max-xl:items-center'>
 
                     <TipContent targetContent={selectedContent == 'scan' ? scanTipContent : takeDownTipContent} />
 
-                    <div className="relative max-w-[740px] flex flex-wrap max-md:justify-center max-md:items-center">
-                        <Image src={WriteTip} alt='writetip' width={349} height={319} className='' />
-                        <Image src={TipDocument} alt='tip' width={349} height={150} className='max-sm:w-64 max-sm:h-44' />
+                    <div className="relative max-w-[740px] max-sm:px-3 flex justify-center items-center max-md:justify-center max-md:items-center">
+                        <div><Image src={WriteTip} alt='writetip' width={349} height={319} className='max-md:w-56 max-md:h-44' /></div>
+                        <div><Image src={TipDocument} alt='tip' width={349} height={150} className='max-md:w-44 max-md:h-44' /></div>
                     </div>
                 </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 

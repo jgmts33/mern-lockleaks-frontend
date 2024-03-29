@@ -4,9 +4,8 @@ import {
     Button, Link, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error } from "@/components/utils/Icons";
+import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success } from "@/components/utils/Icons";
 import { useRouter } from 'next/navigation';
-import * as yup from "yup";
 
 export default function Login() {
     const router = useRouter();
@@ -18,6 +17,7 @@ export default function Login() {
         facebook: <Facebook fill="currentColor" size={16} />,
         warningmodal: <WarningModal fill="currentColor" size={16} />,
         error: <Error fill="currentColor" size={16} />,
+        success: <Success fill="currentColor" size={16} />,
     };
 
     const [password, setPassword] = useState("");
@@ -44,7 +44,13 @@ export default function Login() {
         else if ((password.length < 6 || password.length > 12)) {
             setPasswordError("You must type 6~12 characters.");
         }
-        // router.push("/userpanel/dashboard");
+        else {
+            onOpenChange(!isOpen)
+            onOpen()
+        }
+    }
+    const handleConfirmClick = () => {
+        router.push("/userpanel/dashboard");
     }
 
 
@@ -124,13 +130,13 @@ export default function Login() {
                     {(onClose) => (
                         <>
                             <ModalBody>
-                                <div className='mx-auto flex items-center justify-center -mb-20'>{icons.warningmodal}</div>
-                                <span className='font-medium text-5xl text-center'>Warning</span>
-                                <span className='font-light text-xl'></span>
+                                <div className='mx-auto flex items-center justify-center -mb-32'>{icons.success}</div>
+                                <span className='font-medium text-5xl text-center'>Success</span>
+                                <span className='font-light text-xl'>Congratulations!, welcome to visit our lockleaks site</span>
                             </ModalBody>
                             <ModalFooter>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight mt-4 w-full" size='md'>
-                                    Success
+                                <Button radius="lg" className="bg-gradient-to-tr from-[#84e584] to-[#35d35c] mt-4 w-full text-lg mb-5" size='md' onClick={() => handleConfirmClick()}>
+                                    Confirm
                                 </Button>
                             </ModalFooter>
                         </>

@@ -53,7 +53,7 @@ export default function Bing() {
                         ScannerContent.map((items, index) => {
                             return (
                                 <div key={index} className='flex flex-col px-5'>
-                                    <div className='flex justify-between p-6'>
+                                    <div className='flex justify-between p-7'>
                                         <div className='flex px-5 gap-5 w-1/4'>
                                             {items.icon}
                                             <span className='font-semibold text-sm'>{items.title}</span>
@@ -71,8 +71,8 @@ export default function Bing() {
                     <Image src={BingIcon} width={80} height={80} alt='bing'></Image>
                     </div>
                 </div>
-                <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 cursor-pointer">
-                    <div className='flex gap-10 items-center'>
+                <div className="flex items-center px-20 py-8 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 cursor-pointer">
+                    <div className='flex gap-5 items-center'>
                         {icons.components}
                         <span className='font-normal text-base'>SEARCH RESULTS REMOVAL MODULE</span>
                     </div>

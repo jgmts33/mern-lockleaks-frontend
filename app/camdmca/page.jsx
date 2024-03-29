@@ -94,12 +94,12 @@ export default function CamDmca() {
                 <div className='flex w-[calc(100vw-40px)] bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center px-3'>
                     <div className="relative max-w-[740px] flex justify-between">
                         <div className='max-w-[500px]'><span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>
-                            <div className='flex items-center justify-center z-10 max-sm:flex-col mt-5'>
-                                <Image src={WriteTip} width={349} height={150} alt='write tip' className='relative z-10 max-sm:w-64 max-sm:h-44' />
-                                <Image src={TipDocument} width={349} height={150} alt='tip document' className='relative z-10 max-sm:w-64 max-sm:h-44' />
+                            <div className='flex items-center justify-center z-10 mt-5'>
+                                <div><Image src={WriteTip} width={349} height={150} alt='write tip' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
+                                <div><Image src={TipDocument} width={349} height={150} alt='tip document' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
                             </div>
                         </div>
-                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute bg-[#9458f5] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='max-md:hidden absolute bg-[#9458f5] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                     <div className='flex max-w-[720px] justify-center flex-col gap-y-10 z-10 max-sm:mt-10'>
                         {

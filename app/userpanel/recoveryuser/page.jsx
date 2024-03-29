@@ -42,7 +42,7 @@ export default function RecoveryUser() {
                         <input
                             type="text"
                             name="content"
-                            className='w-full outline-none p-3 rounded-lg mt-7 bg-white/15 border border-gray-700'
+                            className='w-full outline-none p-3 rounded-2xl mt-7 bg-white/15 border border-gray-700'
                             placeholder='Type here'
                         />
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
@@ -61,7 +61,7 @@ export default function RecoveryUser() {
                         </Button>
                     </div>
                 </div>
-                <div className="flex flex-col items-center py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full">
+                <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full">
                     <div className='flex items-center'>
                         <span className='font-normal text-base'>How does it work?</span>
                     </div>
@@ -70,7 +70,7 @@ export default function RecoveryUser() {
                     </div>
                 </div>
                 <div className="flex items-center justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10">
-                    <div className='flex gap-10 max-w-[350px] w-full items-center'>
+                    <div className='flex gap-5 max-w-[350px] w-full items-center'>
                         {icons.components}
                         <span className='font-normal text-base'>HISTORICAL PROFILE RESULTS</span>
                     </div>

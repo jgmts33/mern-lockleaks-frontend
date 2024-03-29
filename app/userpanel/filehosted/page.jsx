@@ -60,9 +60,9 @@ export default function FileHosted() {
                             return (
                                 <div key={index} className='flex flex-col px-5'>
                                     <div className='flex justify-between p-7'>
-                                        <div className='flex px-5 gap-4'>
-                                            <div>{items.icon}</div>
-                                            <div className='flex max-w-[820px]'>
+                                        <div className='flex px-2 gap-4'>
+                                            <div className={items.icon ? 'block' : 'hidden'}>{items.icon}</div>
+                                            <div className='flex max-w-[820px] gap-2'>
                                                 <span className='font-normal text-sm bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{items.title}</span>
                                                 <span className={index != 1 ?' font-semibold text-smfont-normal text-sm': " font-normal text-sm"}>{items.content}</span>
                                             </div>

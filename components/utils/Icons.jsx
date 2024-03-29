@@ -197,7 +197,7 @@ export const UpDownScroll = ({
                 <circle cx="10" cy="10" r="10" fill="#7367F0" fillOpacity="0.12" />
                 <circle cx="10" cy="10" r="6" fill="#7367F0" />
             </g>
-            <g clip-path="url(#clip1_157_1300)">
+            <g clipPath="url(#clip1_157_1300)">
                 <circle cx="10" cy="103" r="10" fill="#E567F0" fillOpacity="0.12" />
                 <circle cx="10" cy="103" r="6" fill="#ED67F0" />
             </g>
