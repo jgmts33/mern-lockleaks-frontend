@@ -145,7 +145,7 @@ export default function Categories() {
                 <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute -right-32 -top-44' />
                 <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-0 -top-8' />
             </div>
-            <div className='flex justify-between max-sm:justify-center max-sm:mx-auto mt-32 max-md:space-y-5 max-md:mt-16 max-xl:justify-around max-md:flex-col mb-20'>
+            <div className='flex justify-between max-sm:justify-center max-sm:mx-auto mt-28 max-md:space-y-5 max-xl:mt-16 max-xl:justify-around max-md:flex-col mb-20'>
                 <div className='flex flex-col max-sm:items-center max-md:space-y-3'>
                     <span className='font-medium text-4xl text-center max-sm:text-center'>Need further assistance? </span>
                     <span className='max-sm:text-center max-md:mx-auto'>Contact our customer support team now.</span>
