@@ -300,9 +300,9 @@ export default function HomePage() {
                               <p className='font-semibold text-xl'>{item.title}</p>
                               <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
-                              <Button radius="lg" className="bg-transparent text-white mt-4 flex gap-2 items-center" size='lg'>
+                              <Button radius="lg" className="bg-transparent text-white mt-3 flex gap-2 items-center" size='lg'>
                                 <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Solution</span>
-                                <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
+                                <Image src="assets/vector.svg" width={28} height={28} className='' alt='vector' />
                               </Button>
                             </div>
                             <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index].bg_color + (isFlipped != index ? " hidden" : " flex")}>
@@ -329,9 +329,9 @@ export default function HomePage() {
                               <p className='font-semibold text-xl'>{item.title}</p>
                               <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
-                              <Button radius="lg" className="bg-transparent text-white mt-4" size='lg'>
+                              <Button radius="lg" className="bg-transparent text-white mt-3" size='lg'>
                                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
-                                <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
+                                <Image src="assets/vector.svg" width={28} height={28} className='' alt='vector' />
                               </Button>
                             </div>
                             <div className={"flex-col p-10 bg-gradient-to-br absolute w-full h-full border outline-none rounded-2xl border-gray-600 " + hoverContent[index + 2].bg_color + (isFlipped != index + 2 ? " hidden" : " flex")}>

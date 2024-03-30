@@ -1,5 +1,6 @@
 'use client'
 import { Poppins } from "next/font/google";
+import { useEffect, useState } from 'react';
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import UserHeader from "@/components/layout(user)/Header";
@@ -8,14 +9,16 @@ import Footer from "@/components/layout/Footer";
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import {
-  Link, ScrollShadow
+  Link
 } from '@nextui-org/react';
-import { AlertProvider } from "next-alert";
+
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   const currentPath = usePathname();
+  const [ isSidebarOpen, setIsSidebarOpen ] = useState(false);
+
 
   return (
     <html lang="en">
@@ -25,10 +28,10 @@ export default function RootLayout({ children }) {
             currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
               ?
               <div className="flex w-full">
-                <Sidebar />
-                <div className="flex flex-col gradiant-background">
-                  <UserHeader />
-                  {children}
+                <Sidebar isSidebarOpen = {isSidebarOpen} setIsSidebarOpen = { setIsSidebarOpen } />
+                <div className="flex flex-col w-full gradiant-background">
+                  <UserHeader setIsSidebarOpen = { setIsSidebarOpen } isSidebarOpen = {isSidebarOpen} />
+                    {children}
                 </div>
               </div>
               :

@@ -9,7 +9,7 @@ import {
 import Flag from '@/public/assets/background/download.svg';
 import UserAvatar from '@/public/assets/background/Avatar.svg'
 
-export default function UserHeader() {
+const UserHeader = ({setIsSidebarOpen, isSidebarOpen}) => {
 
   const icons = {
     yellowstar: <YellowStar fill="currentColor" size={16} />,
@@ -18,22 +18,27 @@ export default function UserHeader() {
   };
 
   return (
-    <div className="flex bg-[#0a0a0a] items-center w-[calc(100vw-320px)] justify-between h-14">
+    <div className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
       <div className="flex px-5 items-center">
-        <Button radius="lg" className="bg-transparent text-white flex items-center" size='sm'>
+        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" ariaHidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </Button>
+        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm'>
           {icons.yellowstar}
         </Button>
-        <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-white"></div>
-        <Button radius="lg" className="bg-transparent text-white flex items-center" size='sm'>
+        <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-white max-sm:hidden"></div>
+        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm'>
           {icons.search}
         </Button>
       </div>
       <div className="flex px-5 text-white gap-5 items-center">
-        <div className="flex">
+        <div className="flex max-sm:hidden">
           <Image src={Flag} width={15} height={15} alt="flag" />
           <span>En</span>
         </div>
-        <div className="flex">
+        <div className="flex max-md:hidden">
           <div>
             <Badge color="danger" content={5} shape="circle">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -55,3 +60,5 @@ export default function UserHeader() {
     </div>
   );
 }
+
+export default UserHeader;

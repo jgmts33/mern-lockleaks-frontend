@@ -82,7 +82,7 @@ export default function FreeAnalyse() {
               </div>
             </div>
           </div>
-          <div className='flex flex-col mt-28'>
+          <div className='flex flex-col mt-28 max-2xl:mr-12'>
             <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
               Contact Us
             </Button>
@@ -97,8 +97,7 @@ export default function FreeAnalyse() {
                 <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
               </div>
             </div>
-            <Image src={Reversechat} className="" width={200} height={150} alt="Modern building architecture" />
-            <div className='flex justify-center items-center'>
+            <div className='flex justify-center items-center mt-10'>
               <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg  text-sm" size='md'>
                 Contact Us
               </Button>

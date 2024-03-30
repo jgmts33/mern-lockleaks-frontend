@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FileHost, CalendarCheck, Category, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, Notification, Scanner, Photo, ProfileSquare, WarningCircle, LogOut } from "@/components/utils/Icons";
+import { FileHost, CalendarCheck, Category, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData,SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, LogOut } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
@@ -8,7 +8,7 @@ import {
     Button
 } from '@nextui-org/react';
 
-export default function Sidebar() {
+const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
     const router = useRouter();
     const [selectSidebar, setSelectSidebar] = useState(0);
 
@@ -31,6 +31,7 @@ export default function Sidebar() {
         warningcircle: <WarningCircle fill="currentColor" size={16} />,
         logout: <LogOut fill="currentColor" size={16} />,
         search: <Search fill="currentColor" size={16} />,
+        sidebarclose: <SidebarClose fill="currentColor" size={16} />,
     };
 
     const SidebarButtons = [
@@ -119,17 +120,22 @@ export default function Sidebar() {
     }
 
     return (
-        <div className="flex flex-col bg-[#000001] text-white w-80 h-screen justify-start px-3 py-10 max-md:w-28">
-            <div className="mx-auto">
-                <Link href="/" className="text-white text-xl font-semibold "><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link>
+        <div className={`flex flex-col bg-[#000001] text-white w-80 max-lg:h-[calc(100vh+60px)] max-lg:rounded-3xl justify-start px-3 py-10 z-10 max-lg:absolute duration-500 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+            <div className="mx-auto flex items-center justify-around w-full">
+                <div className="flex"><Link href="/" className="text-white text-xl font-semibold "><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
+                <div className="flex items-center">
+                <Button radius="lg" className="bg-transparent text-white text-base w-full" size='sm' onClick={() => setIsSidebarOpen(false)}>
+                    {icons.sidebarclose}
+                </Button>
+                </div>
             </div>
             <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 max-md:px-0 w-full gap-2">
                 {
                     SidebarButtons.map((items, index) => {
                         return (
-                            <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-6 gap-5 max-md:mx-auto rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start max-md:justify-center")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                            <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 max-lg:mx-auto rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                 <span>{items.icon}</span>
-                                <span className="max-md:hidden font-light text-sm">{items.title}</span>
+                                <span className="font-light text-sm">{items.title}</span>
                             </Button>
                         )
                     })
@@ -143,3 +149,5 @@ export default function Sidebar() {
         </div>
     );
 }
+
+export default Sidebar;
