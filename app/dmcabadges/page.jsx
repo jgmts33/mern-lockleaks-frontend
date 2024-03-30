@@ -57,7 +57,7 @@ export default function DmcaBadges() {
 
             {/* This section for define dmcabadges title*/}
 
-                <div className='flex gap-32 mt-10 max-md:px-3'>
+                <div className='flex gap-32 mt-10'>
                     <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1'>
                         {
                             DmcaBadgesContent.map((dmcabadge, index) => {
@@ -87,8 +87,8 @@ export default function DmcaBadges() {
                         <span className='font-medium text-md mx-auto mt-20 max-xl:text-3xl'>Why Use DMCA Badges?</span>
                     </div>
                     <div className='w-1/3 max-xl:w-full relative max-xl:px-3'>
-                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute left-0 top-10 bg-[#a189f8] bg-opacity-5 blur-3xl' />
-                        <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 cursor-pointer absolute left-0 -top-36 ">
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute max-xl:hidden left-0 top-10 bg-[#a189f8] bg-opacity-5 blur-3xl' />
+                        <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 absolute left-0 -top-36 ">
                             <div>
                                 <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-xl:text-base'>Download Legal Protection:</span>
                                 <span className='font-normal text-lg max-sm:text-base'>Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse.</span>
@@ -102,8 +102,8 @@ export default function DmcaBadges() {
                         </div>
                     </div>
                 </div>
-                <div className='flex w-full mt-36 max-w-[1400px] max-xl:flex-col max-xl:items-center mb-44 max-sm:mb-32 max-sm:px-3 max-sm:mt-44'>
-                    <div className='flex w-1/4 items-center max-sm:w-full'>
+                <div className='flex w-full mt-36 max-w-[1400px] max-xl:flex-col max-xl:items-center mb-32 max-sm:mb-10 max-sm:px-3 max-sm:mt-44'>
+                    <div className='flex w-1/4 max-md:w-full items-center max-lg:text-center'>
                         <span className='font-medium max-md:mx-auto text-md max-xl:text-3xl'>How to Use DMCA Badges?</span>
                     </div>
                     <div className='relative flex w-1/2 max-xl:flex-col max-md:w-full max-md:px-3'>

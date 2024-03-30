@@ -99,7 +99,13 @@ export default function CreatorDmca() {
 
                 {/* This section for define tips for creator dmca page*/}
 
-                <div className='flex bg-white/5 mx-auto justify-around mt-10 px-10 w-[calc(100vw-20px)] max-2xl:w-full py-10 max-xl:flex-col items-center max-sm:px-5'>
+                <div className='flex bg-white/5 mx-auto justify-around mt-10 px-10 w-[calc(100vw-20px)] max-2xl:w-full py-10 max-xl:py-7 max-xl:flex-col items-center max-sm:px-5'>
+                <div className='max-w-[650px] flex flex-col items-center max-xl:mt-0'>
+                            <div className='flex items-center z-10 mt-5'>
+                                <div><Image src={WriteTip} width={559} height={150} alt='write tip' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
+                                <div><Image src={TipDocument} width={409} height={150} alt='tip document' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
+                            </div>
+                        </div>
                     <div className='flex max-w-[720px] justify-center flex-col gap-y-5'>
                         {
                             TipContent.map((content, index) => {
@@ -117,12 +123,6 @@ export default function CreatorDmca() {
                             })
                         }
                     </div>
-                    <div className='max-w-[650px] flex flex-col items-center max-xl:mt-0'>
-                            <div className='flex items-center z-10 mt-5'>
-                                <div><Image src={WriteTip} width={559} height={150} alt='write tip' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
-                                <div><Image src={TipDocument} width={409} height={150} alt='tip document' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
-                            </div>
-                        </div>
                 </div>
 
                 {/* This section for define FAQ for creator dmca page*/}

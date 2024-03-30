@@ -120,7 +120,7 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
     }
 
     return (
-        <div className={`flex flex-col bg-[#000001] text-white w-80 max-lg:h-[calc(100vh+60px)] max-lg:rounded-3xl justify-start px-3 py-10 z-10 max-lg:absolute duration-500 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+        <div className={`flex flex-col bg-[#000001] text-white w-80 max-lg:h-[calc(100vh+60px)] max-lg:rounded-3xl justify-start px-3 py-10 z-10 max-lg:absolute duration-1000 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
             <div className="mx-auto flex items-center justify-around w-full">
                 <div className="flex"><Link href="/" className="text-white text-xl font-semibold "><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
                 <div className="flex items-center">
@@ -129,11 +129,11 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
                 </Button>
                 </div>
             </div>
-            <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 max-md:px-0 w-full gap-2">
+            <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 w-full gap-2">
                 {
                     SidebarButtons.map((items, index) => {
                         return (
-                            <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 max-lg:mx-auto rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                            <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                 <span>{items.icon}</span>
                                 <span className="font-light text-sm">{items.title}</span>
                             </Button>

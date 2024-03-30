@@ -162,7 +162,7 @@ export default function ScanTakeDown() {
                         TAKEDOWN
                     </Button>
                 </div>
-                <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-md: max-lg:flex-col max-lg:justify-center items-center'>
+                <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-lg:flex-col max-lg:justify-center items-center'>
                     <div className='flex items-center w-64 h-64'>
                         <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "mx-auto w-44 h-44" : "mx-auto w-full h-full"} alt='warning' width={250} height={250} />
                     </div>
@@ -175,7 +175,7 @@ export default function ScanTakeDown() {
 
                 {/* This section for define tips for scan&takedown page*/}
 
-                <div className='flex bg-[#090D1F] mx-auto justify-center mt-20 py-20 gap-20 max-lg:flex-col w-[calc(100vw-40px)] max-xl:items-center max-2xl:px-3'>
+                <div className='flex bg-[#090D1F] mx-auto justify-center mt-20 py-20 gap-20 max-sm:py-5 max-lg:flex-col w-[calc(100vw-40px)] max-xl:items-center max-2xl:px-3'>
 
                     <div className='max-w-[550px] flex flex-col items-center'>
                         <div className='flex items-center z-10 mt-5'>

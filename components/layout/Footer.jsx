@@ -38,7 +38,7 @@ export default function Footer() {
             <Link href={"/blog"}>Blog</Link>
             <Link href={"/aboutus"}>About Us</Link>
             <Link href={"/privacypolicy"}>Privacy Policy</Link>
-            <Link href={"/termservice"}>Terms of Services</Link>
+            <Link href={"/termsofservices"}>Terms of Services</Link>
             <Link href={"/cookiepolicy"}>Cookie Policy</Link>
             <Link href={"/cookiesettings"}>Cookie Settings</Link>
           </div>

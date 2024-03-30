@@ -46,8 +46,8 @@ export default function Scanner() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
-                <div className='flex gap-16 items-center'>
+            <div className="flex flex-col bg-gradient-to-tr w-full mx-auto px-10 max-lg:px-0 py-10 container text-white max-md:px-3">
+                <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     <div><Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
                         START
@@ -66,13 +66,13 @@ export default function Scanner() {
                     {
                         ScannerContent.map((items, index) => {
                             return (
-                                <div key={index} className='flex flex-col px-5'>
-                                    <div className='flex px-4 py-5'>
-                                        <div className='flex px-5 gap-5 w-1/4'>
+                                <div key={index} className='flex flex-col px-5 max-md:px-0'>
+                                    <div className='flex px-4 py-5 max-md:flex-col'>
+                                        <div className='flex px-5 gap-5 w-1/4 max-md:w-full'>
                                             <div>{items.icon}</div>
                                             <div className='flex'><span className='font-semibold text-sm'>{items.title}</span></div>
                                         </div>
-                                        <div className='px-20 justify-start w-3/4'>
+                                        <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2'>
                                             <span className='font-normal text-xs'>{items.content}</span>
                                         </div>
                                     </div>
@@ -82,12 +82,12 @@ export default function Scanner() {
                         })
                     }
                 </div>
-                <div className="flex items-center px-20 py-8 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
+                <div className="flex items-center px-20 max-lg:px-10 py-8 max-md:flex-col justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
                     <div className='flex gap-5 items-center'>
                         {icons.complete}
                         <span className='font-normal text-base'>SEARCH RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20'>
+                    <div className='px-20 max-md:px-5'>
                         <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements and forwarded it to Search Engines.</span>
                     </div>
                 </div>

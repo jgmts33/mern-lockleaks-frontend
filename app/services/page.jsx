@@ -16,7 +16,7 @@ export default function SERVICES() {
     };
 
     const ServicesTitle = {
-        title: "SERVICE",
+        title: "SERVICES",
         content: "Discover how our specialized services can assist in safeguarding your digital content, maintaining confidentiality, and enhancing your online management. We offer efficient and tailored solutions, crafted to meet the unique needs of each client. From securing digital content to periodic analyses and personalized options, we're here to provide the necessary support."
     }
 
@@ -82,7 +82,7 @@ export default function SERVICES() {
                     {
                         ServicesContent.map((item, index) => {
                             return (
-                                <div key={index} className={(index == 1 ? ' mt-20 pt-10 max-xl:-mt-10' : "") + " max-w-[480px] flex flex-col gap-4" }>
+                                <div key={index} className={(index == 1 ? ' mt-20 pt-10 max-xl:-mt-10' : "") + " max-w-[480px] flex flex-col gap-6" }>
                                     {
                                         item.map((service_content, count) => {
                                             return (

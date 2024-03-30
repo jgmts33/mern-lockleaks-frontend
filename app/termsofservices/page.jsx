@@ -13,7 +13,7 @@ export default function TermService() {
     };
 
     const PravicyPolicy = {
-        title: "Terms of Service",
+        title: "Terms of Services",
     }
 
     const TermServiceContent = [

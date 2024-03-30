@@ -91,7 +91,7 @@ export default function CamDmca() {
 
                 {/* This section for define tips for camdmca page*/}
 
-                <div className='flex w-[calc(100vw-40px)] bg-white/5 mx-auto mt-20 justify-around py-20 max-xl:flex-col max-xl:items-center px-3'>
+                <div className='flex w-[calc(100vw-40px)] bg-white/5 mx-auto mt-20 justify-around py-20 max-lg:py-8 max-xl:flex-col max-xl:items-center px-3'>
                     <div className="relative max-w-[940px] flex justify-center">
                         <div className='max-w-[550px] flex flex-col items-center mt-20 max-xl:mt-0'>
                             <span className='font-medium text-4xl uppercase max-sm:text-lg'>Tips for Content Protection:</span>

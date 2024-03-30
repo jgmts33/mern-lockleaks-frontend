@@ -164,15 +164,15 @@ export default function Pricing() {
                         </Button>
                     </div>
                 </div>
-                <div className='flex justify-start mt-32 max-md:mt-20'>
-                    <sapn className="font-medium text-5xl max-lg:text-4xl max-lg:mx-auto">PRICING TABLE</sapn>
+                <div className='flex mx-auto mt-32 max-md:mt-20'>
+                    <sapn className="font-medium text-5xl max-lg:text-4xl">PRICING TABLE</sapn>
                 </div>
                 <div className='bg-gradient-to-tr w-1/2 max-lg:w-full max-lg:mt-16 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
                     <Button radius="full" className={isPricingSelected ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} onClick={() => setPricingSelected(true)} size='lg'>
                         Bill Monthly
                     </Button>
                     <Button radius="full" className={isPricingSelected ? "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" : "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"} onClick={() => setPricingSelected(false)} size='lg'>
-                        Bill Yearly
+                        Bill Quarterly 
                     </Button>
                 </div>
 

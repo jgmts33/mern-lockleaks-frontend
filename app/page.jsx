@@ -355,7 +355,7 @@ export default function HomePage() {
         <div className='max-lg:px-3'>
           <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-sm:mt-24 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
             <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-3xl'>OUR SERVICES FOR YOUR BENEFIT</span>
-            <div className="grid grid-cols-4 gap-x-3 max-lg:flex-col max-w-[700px] mx-auto">
+            <div className="grid grid-cols-4 gap-x-3 max-lg:flex-col max-w-[700px] mx-auto lg:hidden">
               {
                 services.map((service, index) => {
                   return (
@@ -372,13 +372,31 @@ export default function HomePage() {
                 })
               }
             </div>
+            <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col max-lg:hidden">
+              {
+                services.map((service, index) => {
+                  return (
+                    <Button
+                      key={index}
+                      radius="full"
+                      variant={selectedServiceIndex == index ? 'solid' : 'faded'}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-tr from-[#a09f9f31] to-[#1414141e] bg-opacity-20") + "  outline-none text-white shadow-full mt-4"}
+                      onClick={() => setSelectedServiceIndex(index)}
+                    >
+                      <span>{icons.shine}</span><span className='max-lg:text-[10px]'>{service.name}</span>
+                    </Button>
+                  )
+                })
+              }
+            </div>
           </div>
         </div>
-        <div className='max-lg:px-3 max-w-[1076px] mx-auto max-lg:pt-20'>
+        <div className='max-xl:px-3 max-w-[1076px] mx-auto max-lg:pt-20'>
           {
             services.map((service, service_index) => {
               return (
-                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-center max-lg:flex-col'}>
+                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between max-lg:flex-col'}>
+                  <Image src={service.img} width={150} height={150} alt='services' className='max-lg:hidden' />
                   <div className='max-w-[822px] w-full bg-transparent border border-gray-600 bg-opacity-60 rounded-3xl pt-10'>
                     <div className='flex justify-center items-center'><span className='font-medium text-3xl text-center'>{service.name}</span></div>
                     <span className='font-medium text-lg'>{service.description}</span>
