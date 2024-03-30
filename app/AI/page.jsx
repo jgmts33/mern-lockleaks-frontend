@@ -159,9 +159,9 @@ export default function AI() {
                     {
                         AIFAQContent.map((contents, index) => {
                             return (
-                                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-12 max-sm:p-5 border border-gray-600'>
+                                <div key={index} className='flex mt-20 gap-2 flex-col bg-gradient-to-br from-gray-600/40 to-gray-800/40 rounded-lg p-8 max-sm:p-5 border border-gray-600'>
                                     <div className='flex justify-between gap-3'>
-                                        <p className='font-medium text-3xl max-lg:text-lg'>{contents.title}</p>
+                                        <p className='font-medium text-xl max-lg:text-lg'>{contents.title}</p>
                                         <button className={("mt-50 w-10 h-10 text-white aspect-square max-sm:w-8 max-sm:h-8 flex items-center justify-center rounded-lg bottom-[calc(50%-80px)] ") + (expandedFAQIndex == index ? "-rotate-[90deg] bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border right-0" : "rotate-[90deg] bg-gradient-to-tr from-gray-600/40 to-gray-800/40 right-2")} onClick={() => { expandedFAQIndex != index ? setExpandedFAQIndex(index) : setExpandedFAQIndex(-1) }}>
                                             <div>{icons.arrowtop}</div>
                                         </button>

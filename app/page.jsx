@@ -46,9 +46,9 @@ export default function HomePage() {
       img: "assets/services/takedown.svg"
     },
     {
-      name: "LockLeaks",
+      name: "Delist",
       description: <div className='outline-none px-10 py-10'>
-        <p>LockLeaks holds membership in Google's Trusted Copyright Removal Program, leading to the rapid delisting of any reported infringing content.</p>
+        <p>Delist holds membership in Google's Trusted Copyright Removal Program, leading to the rapid delisting of any reported infringing content.</p>
         <p className='mt-10'>Please note, we refrain from reporting referrals, reviews, affiliates, and any content you wish to retain.</p>
         <p>We boast a perfect track record, removing 100% of reported infringing content from Google Search, Google Video, and Google Images, also covering Microsoft Bing</p>
       </div>,
@@ -363,7 +363,7 @@ export default function HomePage() {
                       key={index}
                       radius="lg"
                       variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-transparent border border-white/5 bg-opacity-20") + "  outline-none text-white shadow-full p-8 mt-4"}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-transparent border border-white/10 bg-opacity-20") + "  outline-none text-white shadow-full p-8 mt-4"}
                       onClick={() => setSelectedServiceIndex(index)}
                     >
                       <Image src={service.img} width={30} height={30} />

@@ -117,12 +117,12 @@ export default function CreatorDmca() {
                             })
                         }
                     </div>
-                    <div className="max-w-[540px] relative flex max-xl:flex-col max-xl:items-center max-xl:justify-center">
-                        <div className='flex max-sm:px-3 items-center justify-center'>
-                            <div><Image src={WriteTip} alt='write tip' className='relative z-0 max-md:w-80' /></div>
-                            <div><Image src={TipDocument} alt='tip document' className='relative z-0 max-md:80' /></div>
+                    <div className='max-w-[650px] flex flex-col items-center max-xl:mt-0'>
+                            <div className='flex items-center z-10 mt-5'>
+                                <div><Image src={WriteTip} width={559} height={150} alt='write tip' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
+                                <div><Image src={TipDocument} width={409} height={150} alt='tip document' className='relative z-10 max-sm:w-64 max-sm:h-44' /></div>
+                            </div>
                         </div>
-                    </div>
                 </div>
 
                 {/* This section for define FAQ for creator dmca page*/}
