@@ -20,49 +20,43 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className + " dark"}>
-        <AlertProvider>
-          <div className="flex flex-col min-h-screen">
-            {
-              currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
-                ?
+        <div className="flex flex-col min-h-screen">
+          {
+            currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
+              ?
+              <div className="flex w-full">
+                <Sidebar />
+                <div className="flex flex-col gradiant-background">
+                  <UserHeader />
+                  {children}
+                </div>
+              </div>
+              :
+              <div className="">
+                {
+                  !currentPath.includes("/auth")
+                    ?
+                    <Header />
+                    :
+                    <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center'>
+                      <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
+                    </div>
+                }
                 <div className="flex w-full">
-                  <Sidebar />
-                  <div className="flex flex-col">
-                    <UserHeader />
-                    <div className="h-[calc(100vh-58px)] gradiant-background">
-                      <ScrollShadow className="h-[890px]">
-                        {children}
-                      </ScrollShadow>
-                    </div>
+                  <div className="mx-auto">
+                    {children}
                   </div>
                 </div>
-                :
-                <div className="">
-                  {
-                    !currentPath.includes("/auth")
-                      ?
-                      <Header />
-                      :
-                      <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center'>
-                        <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
-                      </div>
-                  }
-                  <div className="flex w-full">
-                    <div className="mx-auto">
-                      {children}
-                    </div>
-                  </div>
-                  {
-                    !currentPath.includes("/auth")
-                      ?
-                      <Footer />
-                      :
-                      false
-                  }
-                </div>
-            }
-          </div>
-        </AlertProvider>
+                {
+                  !currentPath.includes("/auth")
+                    ?
+                    <Footer />
+                    :
+                    false
+                }
+              </div>
+          }
+        </div>
       </body>
     </html>
   );

@@ -110,7 +110,7 @@ export default function Register() {
                                 type="password"
                                 name="password"
                                 onChange={(e) => setPassword(e.target.value)}
-                                className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 px-3'
+                                className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 px-3'
                             />
                             <div className='absolute flex gap-2 items-center bottom-3 right-4'>
                                 {
