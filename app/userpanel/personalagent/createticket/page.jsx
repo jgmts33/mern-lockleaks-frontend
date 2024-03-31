@@ -27,7 +27,7 @@ export default function CreateTicket() {
                 <div><span>New Ticket</span></div>
                 <div>{icons.cancel}</div>
             </div>
-            <div className="flex flex-col px-10 py-5 mt-10 mx-auto max-w-[750px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] p-5">
+            <div className="flex flex-col px-10 py-5 mt-10 mx-auto max-w-[750px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] p-5 max-md:px-3">
                 <div className='flex flex-col w-full p-5'>
                     <label>Subject</label>
                     <input

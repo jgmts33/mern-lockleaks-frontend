@@ -127,7 +127,7 @@ export default function CreatorDmca() {
 
                 {/* This section for define FAQ for creator dmca page*/}
 
-                <div className='font-medium text-5xl mt-32 max-sm:mt-16'><p className='font-medium text-5x center max-sm:text-4xl'>FAQ</p></div>
+                <div className='font-medium text-5xl mt-16 max-xl:mt-10'><p className='font-medium text-5x center max-sm:text-4xl'>FAQ</p></div>
                 <div className='flex gap-32 mt-10 max-sm:mt-0 px-3'>
                     <div className='flex mt-10 gap-10 mx-auto justify-center max-lg:flex-col'>
                         {

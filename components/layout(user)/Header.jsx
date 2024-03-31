@@ -21,7 +21,7 @@ const UserHeader = ({setIsSidebarOpen, isSidebarOpen}) => {
     <div className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
       <div className="flex px-5 items-center">
         <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-          <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" ariaHidden="true">
+          <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </Button>

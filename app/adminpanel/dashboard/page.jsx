@@ -7,7 +7,7 @@ import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-export default function Dashbaord() {
+export default function AdminDashbaord() {
 
     const icons = {
         moredetails: <MoreDetails fill="currentColor" size={16} />,
@@ -16,32 +16,50 @@ export default function Dashbaord() {
 
     const DashboardOverview = [
         {
-            title: "Search engines",
+            title: "Search Engines",
+            subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
         },
         {
-            title: "Unauthorized Content Upload",
+            title: "Unauthorized content upload",
+            subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
         },
         {
             title: "Adult tube sites",
+            subtitle:"total last scan",
+            lastscan: 123456,
+            total: 123456
+        },
+        {
+            title: "Total users",
+            subtitle:"total users last 7 days",
             lastscan: 123456,
             total: 123456
         },
         {
             title: "Social media",
+            subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
         },
         {
-            title: "Personal Agent",
+            title: "Personal agent",
+            subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
         },
         {
             title: "Forums",
+            subtitle:"total last scan",
+            lastscan: 123456,
+            total: 123456
+        },
+        {
+            title: "Total orders",
+            subtitle:"total orders last 7 days",
             lastscan: 123456,
             total: 123456
         },
@@ -52,7 +70,7 @@ export default function Dashbaord() {
             <div>
                 <span className='font-extrabold text-lg'>OVERVIEW OF INFIRNGEMENT</span>
             </div>
-            <div className='grid grid-cols-3 gap-10 py-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:justify-center max-lg:items-center max-lg:mx-auto'>
+            <div className='grid grid-cols-4 gap-10 py-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:justify-center max-lg:items-center max-lg:mx-auto'>
                 {
                     DashboardOverview.map((items, index) => {
                         return (
@@ -64,7 +82,7 @@ export default function Dashbaord() {
                                 <div className='flex gap-5'>
                                     <div>{icons.updownscroll}</div>
                                     <div className='flex flex-col'>
-                                        <span className='text-[#A29EB1]'>last scan:</span>
+                                        <span className='text-[#A29EB1]'>{items.subtitle}</span>
                                         <span className='py-1'>{items.lastscan}</span>
                                         <div className='flex gap-5 py-5 items-center'>
                                             <div><span className='gap-5 font-medium text-lg text-[#A29EB1]'>ToTal:</span></div>

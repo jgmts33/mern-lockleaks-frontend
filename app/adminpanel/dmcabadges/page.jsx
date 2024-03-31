@@ -14,7 +14,8 @@ export default function Dmcabadges() {
         chain: <Chain fill="currentColor" size={16} />,
     };
 
-    const [selectedimage,setSelectImage] = useState(0)
+    const [selectedimage, setSelectImage] = useState(0);
+    const [file, setFile] = useState();
 
     const AIImageLists = [
         {
@@ -41,37 +42,46 @@ export default function Dmcabadges() {
         }
     ]
 
-    const handleGoDetails = () =>{
+    const handleGoDetails = () => {
         router.push("/userpanel/AIfaceimages/details");
     }
 
+    const handleChange = (e) => {
+        setFile(URL.createObjectURL(e[0]));
+    }
+
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
-            <div className='flex mt-5 gap-20'>
-                <span className='font-extrabold text-lg'>AI FACE IMAGES</span>
-                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" size='sm'>
-                    START
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className='flex'>
+                <span className='font-extrabold text-lg'>DMCA BADGES</span>
+            </div>
+            <div className='flex justify-between max-w-[450px] mt-10'>
+                <Button radius="md" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" size='md'>
+                    Choose file
+                </Button>
+                <Button radius="md" className="bg-gradient-to-tr from-gray-800 to-gray-600 text-white shadow-lg text-base" size='md'>
+                    Upload image
                 </Button>
             </div>
-            <div className='mt-10'>
-                <span className='font-semibold text-base'>Upload a reference photo</span>
-            </div>
-            <div className='flex max-w-[700px] justify-between mt-5'>
-                <span className='font-extrabold text-lg'>Upload Photo for Removal</span>
-                <span className='font-extrabold text-lg'>Photo for Removal Refference</span>
-            </div>
-            <div className='grid grid-cols-3 gap-10'>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 py-32 px-10 w-full'>
+            <div className='grid grid-cols-3 gap-10 max-lg:flex-col max-lg:flex'>
+                <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+                    <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
+                        <div className="flex items-center justify-center pt-5 pb-6">
+                            <span className="font-light text-lg text-white">+ Upload Photo</span>
+                        </div>
+                        <input type="file" className="hidden" onChange={(e) => handleChange(e.target.files)} />
+                    </label>
                 </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+                    <Image src={file} width={100} height={100} alt='uploaded_photo' className={file ? 'block w-full h-full rounded-[16px]' : 'hidden'}></Image>
                 </div>
-                <ScrollShadow className="h-[350px]">
+                <ScrollShadow className="h-[383px]">
                     <div className='mx-auto'>
                         {
                             AIImageLists.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex mt-5 items-center gap-10'>
-                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-center gap-3 rounded-[16px]'>
+                                    <div key={index} className='flex mt-5 items-center gap-10 max-md:flex-col max-md:gap-5 max-md:items-start'>
+                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-start px-7 items-center gap-3 rounded-[16px]'>
                                             {items.icon}
                                             <span>{items.content}</span>
                                         </div>
@@ -86,7 +96,7 @@ export default function Dmcabadges() {
                 </ScrollShadow>
             </div>
             <div className='flex mt-10 justify-end'>
-                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-10 text-base" size='md' onClick={()=>handleGoDetails()}>
+                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-10 text-base" size='md' onClick={() => handleGoDetails()}>
                     Next
                 </Button>
             </div>

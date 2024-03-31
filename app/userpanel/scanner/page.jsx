@@ -87,7 +87,7 @@ export default function Scanner() {
                         {icons.complete}
                         <span className='font-normal text-base'>SEARCH RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20 max-md:px-5'>
+                    <div className='px-20 max-md:px-0'>
                         <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements and forwarded it to Search Engines.</span>
                     </div>
                 </div>

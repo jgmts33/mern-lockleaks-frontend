@@ -9,6 +9,8 @@ import { SelectSwitch, UnselectSwitch } from "@/components/utils/Icons";
 
 export default function CookieSettigs() {
 
+    const [isselected, setSelectBtn] = useState(1);
+
     const cookieSettingContent = [
         {
             placeholder: "Strictly necessary"
@@ -22,6 +24,12 @@ export default function CookieSettigs() {
         {
             placeholder: "Targeting Cookies"
         },
+    ]
+
+    const cookieSettingButtons = [
+        "Confirm Selection",
+        "Accept All",
+        "Cancel"
     ]
 
     return (
@@ -69,15 +77,15 @@ export default function CookieSettigs() {
                 </div>
                 <div className='max-lg:px-3'>
                     <div className='bg-gradient-to-tr mx-auto mb-10 from-gray-600/40 to-gray-800/40 p-2 border-gray-600 border rounded-[30px] w-full max-w-[890px] flex items-center max-xl:flex-col max-xl:px-3 max-xl:max-w-[750px]'>
-                        <Button radius="full" className="mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" size='lg'>
-                            Confirm Selection 
-                        </Button>
-                        <Button radius="full" className="w-1/3 max-xl:w-full bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-7 text-lg" size='lg'>
-                            Accept All
-                        </Button>
-                        <Button radius="full" className="w-1/3 max-xl:w-full bg-transparent mx-auto px-7 py-7 text-lg" size='lg'>
-                            Cancel
-                        </Button>
+                        {
+                            cookieSettingButtons.map((items,index) => {
+                                return (
+                                    <Button radius="full" className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg"} size='lg' onClick={()=>setSelectBtn(index)}>
+                                        {items}
+                                    </Button>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>

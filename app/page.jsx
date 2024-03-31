@@ -6,8 +6,11 @@ import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CustomerReview from '@/components/customerReview';
+import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
+  const router = useRouter();
+
   const icons = {
     left: <ChevronLeft fill="currentColor" size={16} />,
     right: <ChevronRight fill="currentColor" size={16} />,
@@ -195,6 +198,7 @@ export default function HomePage() {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
   const [animationCounter, setAnimationCounter] = useState(0);
   const [isFlipped, setIsFlipped] = useState(-1);
+  const [selectCookie, setSlectCookie] = useState(false);
 
   useEffect(() => {
     if (screen.width >= 600) {
@@ -211,8 +215,34 @@ export default function HomePage() {
     }
   }, []);
 
+  const handleSettingCookie = () => {
+    router.push("/cookiesettings")
+  }
+
+  const CookieSetting = () => {
+    setSlectCookie(true);
+  }
+
   return (
     <>
+      {/* This section for define cookie setting*/}
+      {
+        selectCookie == false ?
+          <div className="flex fixed text-white items-center bg-[#2b136944] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-10 max-w-[700px]">
+            <div>
+              <span>Your privacy</span>
+              <span>By clicking "Accept All" you can store cookies on your website and disclose information in accordance with our cookie policy</span>
+            </div>
+            <div>
+              <Button radius="lg" className="border border-white/10" color="danger" onClick={() => handleSettingCookie()}>Customize</Button>
+            </div>
+            <div>
+              <Button radius="lg" className="border border-white/10" color="primary" onClick={() => CookieSetting()}>Accept All</Button>
+            </div>
+          </div>
+          :
+          false
+      }
       <div className="text-white max-w-[1480px] mx-auto">
         <div className='relative flex px-5'>
 

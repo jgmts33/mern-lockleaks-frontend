@@ -15,12 +15,12 @@ export default function DataAnalytics() {
     };
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
-            <div className='mt-5'>
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
-            <div className='flex gap-10'>
-                <div className="flex flex-col max-w-[400px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
+            <div className='flex gap-10 max-lg:flex-col max-lg:gap-0'>
+                <div className="flex flex-col max-w-[400px] max-lg:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                     <div className='mx-auto'>
                         <span className='font-extrabold text-lg'>Data analytics and insights</span>
                     </div>
@@ -34,7 +34,7 @@ export default function DataAnalytics() {
                         Download
                     </Button>
                 </div>
-                <div className="flex flex-col max-w-[960px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 px-16 py-10 pb-20">
+                <div className="flex flex-col max-w-[960px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 px-16 py-10 pb-20 max-md:px-5">
                     <div className='flex gap-5'>
                         <div>{icons.warning}</div>
                         <div>

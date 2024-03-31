@@ -71,7 +71,7 @@ export default function Scanner() {
                         </div>
                     </ScrollShadow>
                 </div>
-                <div className="flex flex-col w-full h-1/2 mt-5 max-w-[500px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5">
+                <div className="flex flex-col w-full h-1/2 mt-5 max-w-[500px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-2">
                     <div className='flex justify-between px-3 py-3'>
                         <div className='px-5 cursor-pointer'><span className='font-medium text-lg'>{ScannerDetails.title}</span></div>
                         <div>{icons.moredetails}</div>

@@ -71,9 +71,10 @@ export default function FreeAnalyse() {
             </div>
           </div>
           <div className='flex flex-col'>
-            <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-64 bottom-[380px] w-72 h-72'>
+            <div className='bg-white/5 shadow-sm rounded-[30px] absolute right-64 bottom-[380px] w-72 h-72 z-10'>
               <Image src={Reversechat} className="mt-24 max-md:w-full" width={200} height={150} alt="Modern building architecture" />
             </div>
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-94 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
             <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 right-32 cursor-pointer w-[350px] absolute rotate-[12deg] -mt-[60px]">
               <div className='absolute'>{icons.robertchat}</div>
               <div className='flex justify-start flex-col'>

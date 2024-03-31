@@ -36,17 +36,17 @@ export default function DownloadData() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
-            <div className='mt-5'>
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DOWNLOAD DATA</span>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4'>
                 <ScrollShadow className="h-[350px]">
-                    <div className='flex flex-col scroll px-8 gap-5 scroll-y'>
+                    <div className='flex flex-col scroll px-8 gap-5 scroll-y max-md:px-4'>
                         {
                             NotificationContent.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex items-center gap-10'>
+                                    <div key={index} className='flex items-center gap-10 max-md:flex-col max-xl:gap-5 max-md:items-start'>
                                         <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
                                             {items}
                                         </div>
@@ -64,7 +64,7 @@ export default function DownloadData() {
             </div>
             <div className='flex bg-white/10 shadow-sm py-5 px-16 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full'>
                 <div>{icons.warning}</div>
-                <div className='flex gap-16'>
+                <div className='flex gap-16 max-md:flex-col max-md:gap-1'>
                     <span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Scan name February 27, 2024</span>
                     <span className='font-semibold text-base '>Date Has Expired</span>
                 </div>

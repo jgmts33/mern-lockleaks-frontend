@@ -93,7 +93,7 @@ export default function Recovery() {
 
     return (
         <>
-            <div className="flex flex-col text-white w-full max-2xl:px-3">
+            <div className="flex flex-col text-white w-full">
 
                 {/* This section for define username recovery header*/}
 
@@ -104,7 +104,10 @@ export default function Recovery() {
                         <div className='font-medium text-7xl mt-0 max-md:w-52 max-md:h-24'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
                     </div>
                 </div>
-                <p className='font-medium text-5xl text-center mt-36 max-md:mt-5 max-lg:mt-10 max-md:text-3xl'>How It Helps</p>
+                <div className='flex relative mx-auto'>
+                    <p className='font-medium text-5xl text-center mt-36 max-md:mt-5 max-lg:mt-10 max-md:text-3xl'>How It Helps</p>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-0 left-72 bg-opacity-5 blur-3xl' />
+                </div>
                 <div className='flex flex-col mx-auto max-w-[1400px] mt-20 max-xl:px-5'>
                     <div className='flex max-lg:flex-col max-lg:items-center max-lg:text-center'>
                         <div className='max-w-[583px]'>
@@ -120,16 +123,17 @@ export default function Recovery() {
                         </div>
                     </div>
                     <div className='flex mt-5 max-md:mt-10 max-md:text-center max-md:mx-auto'>
-                        <div className='max-w-[623px] ml-20 max-md:ml-0 z-10'>
-                            <p className='font-medium text-5xl max-sm:text-3xl pb-5 max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.third_tip.title}</p>
-                            <p className='font-medium text-3xl max-sm:text-base'>{HelpContent.third_tip.content}</p>
+                        <div className='relative max-w-[623px] ml-20 max-md:ml-0 z-10'>
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8d51ee] z-0 top-0 -left-10 bg-opacity-5 blur-3xl' />
+                            <p className='z-10 font-medium text-5xl max-sm:text-3xl pb-5 max-md:text-3xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{HelpContent.third_tip.title}</p>
+                            <p className='z-10 font-medium text-3xl max-sm:text-base'>{HelpContent.third_tip.content}</p>
                         </div>
                         <div className='flex relative max-xl:hidden'>
                             <Image alt='right-chat' className='mt-40' src={RightChat} />
-                            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='absolute bg-[#935ee9] z-0 top-0 left-44 bg-opacity-5 blur-3xl' />
+                            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8b4cf1] z-0 top-0 left-44 bg-opacity-5 blur-3xl' />
                             <Image alt='photo' className='absolute left-40' src={Photo} />
                         </div>
-                        <div>
+                        <div className='flex'>
                             <Image alt='robert-hand' className='right-0 absolute max-xl:hidden' src={RobertHand} />
                         </div>
                     </div>
@@ -160,7 +164,8 @@ export default function Recovery() {
 
                 {/* This section for define  username recovery header*/}
 
-                <div className='flex flex-col justify-center mx-auto mt-20 max-sm:px-3'>
+                <div className='flex flex-col justify-center mx-auto mt-20 max-sm:px-3 relative'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={250} className='max-2xl:hidden absolute bg-[#935ee9] z-0 top-0 -right-96 bg-opacity-5 blur-3xl' />
                     <span className='font-medium text-5xl text-center max-sm:text-4xl'>Tips for Use</span>
                     {
                         TipContent.map((tips, index) => {
@@ -179,7 +184,7 @@ export default function Recovery() {
 
                 {/* This section for define FAQ for username recovery*/}
 
-                <div className='font-medium text-5xl mt-32 max-sm:text-4xl max-sm:mt-20'><p className='font-medium text-5x text-center'>FAQ</p></div>
+                <div className='font-medium text-5xl mt-16 max-sm:text-4xl max-sm:mt-10'><p className='font-medium text-5x text-center'>FAQ</p></div>
                 <div className='flex gap-32 mt-10 max-lg:px-3'>
                     <div className='flex mt-10 max-sm:mt-0 gap-10 mx-auto justify-center max-xl:flex-col'>
                         {

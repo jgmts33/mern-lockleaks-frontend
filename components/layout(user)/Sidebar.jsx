@@ -1,16 +1,18 @@
 "use client";
 import React, { useState } from "react";
-import { FileHost, CalendarCheck, Category, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData,SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, LogOut } from "@/components/utils/Icons";
+import { FileHost, CalendarCheck, Users, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, LogOut, TestBots } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import {
     Button
 } from '@nextui-org/react';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const router = useRouter();
     const [selectSidebar, setSelectSidebar] = useState(0);
+    const userData = useSelector((state) => state.auth)
 
     const icons = {
         filehost: <FileHost fill="currentColor" size={16} />,
@@ -32,9 +34,16 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
         logout: <LogOut fill="currentColor" size={16} />,
         search: <Search fill="currentColor" size={16} />,
         sidebarclose: <SidebarClose fill="currentColor" size={16} />,
+        testbots: <TestBots fill="currentColor" size={16} />,
+        users: <Users fill="currentColor" size={16} />,
+        proxybots: <Proxybots fill="currentColor" size={16} />,
+        management: <Management fill="currentColor" size={16} />,
+        pingmodels: <PingModels fill="currentColor" size={16} />,
+        autocontract: <AutoContract fill="currentColor" size={16} />,
+        bing: <Bing fill="currentColor" size={16} />,
     };
 
-    const SidebarButtons = [
+    const UserSidebarButtons = [
         {
             icon: icons.category,
             title: "DASHBOARD",
@@ -110,6 +119,86 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
         }
     ]
 
+    const AdminSidebarButtons = [
+        {
+            icon: icons.category,
+            title: "DASHBOARD",
+            path: "/adminpanel/dashboard"
+        }, {
+            icon: icons.scanner,
+            title: "SCANNER",
+            path: "/adminpanel/scanner"
+        }, {
+            icon: icons.search,
+            title: "GOOGLE & BING",
+            path: "/adminpanel/googlebing"
+        }, {
+            icon: icons.AIProfile,
+            title: "AI FACE",
+            path: "/adminpanel/AIface"
+        }, {
+            icon: icons.submit,
+            title: "SOCIAL MEDIA",
+            path: "/adminpanel/socialmedia"
+        }, {
+            icon: icons.AIProfile,
+            title: "PERSONAL AGENT",
+            path: "/adminpanel/bing"
+        }, {
+            icon: icons.usercontent,
+            title: "R&R OF USER CONTENT",
+            path: "/adminpanel/rusercontent"
+        }, {
+            icon: icons.AIProfile,
+            title: "DMCA BADGES",
+            path: "/adminpanel/dmcabadges"
+        }, {
+            icon: icons.calendarcheck,
+            title: "DATA ANALYTICS",
+            path: "/adminpanel/SMscanner"
+        }, {
+            icon: icons.DataReport,
+            title: "DATA REPORT",
+            path: "/adminpanel/SMsubmit"
+        }, {
+            icon: icons.testbots,
+            title: "TEST BOTS",
+            path: "/adminpanel/recoveryuser"
+        }, {
+            icon: icons.users,
+            title: "USERS",
+            path: "/adminpanel/dmcabadges"
+        }, {
+            icon: icons.proxybots,
+            title: "PROXIES BOTS",
+            path: "/adminpanel/datareport"
+        }, {
+            icon: icons.management,
+            title: "VPS MANAGEMENT",
+            path: "/adminpanel/dataanalytics"
+        }, {
+            icon: icons.management,
+            title: "REPORTS MANAGEMENT",
+            path: "/adminpanel/personalagent"
+        }, {
+            icon: icons.pingmodels,
+            title: "PING MODELS",
+            path: "/adminpanel/accountsetting"
+        }, {
+            icon: icons.notification,
+            title: "NOTIFICATION",
+            path: "/adminpanel/downloaddata"
+        }, {
+            icon: icons.autocontract,
+            title: "AUTO-CONTRACT",
+            path: "/adminpanel/notification"
+        }, {
+            icon: icons.bing,
+            title: "BLOG",
+            path: "/adminpanel/notification"
+        }
+    ]
+
     const handleSidebarClick = (path, index) => {
         router.push(path);
         setSelectSidebar(index);
@@ -120,27 +209,44 @@ const Sidebar = ({isSidebarOpen, setIsSidebarOpen}) => {
     }
 
     return (
-        <div className={`flex flex-col bg-[#000001] text-white w-80 max-lg:h-[calc(100vh+60px)] max-lg:rounded-3xl justify-start px-3 py-10 z-10 max-lg:absolute duration-1000 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+        <div className={`flex flex-col bg-[#000001] text-white w-80 max-sm:min-h-full max-lg:rounded-3xl justify-start px-3 py-10 z-10 max-lg:absolute duration-1000 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
             <div className="mx-auto flex items-center justify-around w-full">
                 <div className="flex"><Link href="/" className="text-white text-xl font-semibold "><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
-                <div className="flex items-center">
-                <Button radius="lg" className="bg-transparent text-white text-base w-full" size='sm' onClick={() => setIsSidebarOpen(false)}>
-                    {icons.sidebarclose}
-                </Button>
+                <div className="flex items-center lg:hidden">
+                    <Button radius="lg" className="bg-transparent text-white text-base w-full" size='sm' onClick={() => setIsSidebarOpen(false)}>
+                        {icons.sidebarclose}
+                    </Button>
                 </div>
             </div>
-            <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 w-full gap-2">
-                {
-                    SidebarButtons.map((items, index) => {
-                        return (
-                            <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
-                                <span>{items.icon}</span>
-                                <span className="font-light text-sm">{items.title}</span>
-                            </Button>
-                        )
-                    })
-                }
-            </div>
+            {
+                userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                    ?
+                    <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 w-full gap-2">
+                        {
+                            AdminSidebarButtons.map((items, index) => {
+                                return (
+                                    <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                        <span>{items.icon}</span>
+                                        <span className="font-light text-sm">{items.title}</span>
+                                    </Button>
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 w-full gap-2">
+                        {
+                            UserSidebarButtons.map((items, index) => {
+                                return (
+                                    <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                        <span>{items.icon}</span>
+                                        <span className="font-light text-sm">{items.title}</span>
+                                    </Button>
+                                )
+                            })
+                        }
+                    </div>
+            }
             <div className="flex mt-10 mx-auto">
                 <Button radius="lg" className="bg-transparent text-white text-base p-5 w-full" size='sm' onClick={() => handleLogout()}>
                     {icons.logout}

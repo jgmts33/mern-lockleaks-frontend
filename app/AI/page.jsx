@@ -154,7 +154,7 @@ export default function AI() {
 
                 {/* This section for define FAQ for AI page*/}
 
-                <div className='flex flex-col mt-32 max-xl:mt-20 max-w-[1500px] mx-auto w-full max-xl:flex-col max-2xl:px-3 z-10'>
+                <div className='flex flex-col mt-16 max-xl:mt-10 max-w-[1500px] mx-auto w-full max-xl:flex-col max-2xl:px-3 z-10'>
                     <p className='font-medium text-5xl text-center max-sm:text-4xl'>FAQ</p>
                     {
                         AIFAQContent.map((contents, index) => {

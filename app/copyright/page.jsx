@@ -114,7 +114,7 @@ export default function CopyRight() {
 
                 {/* This section for define FAQ for copyright*/}
 
-                <div className='flex flex-col mt-20 max-xl:mt-20 max-w-[1500px] mx-auto w-full max-lg:px-3'>
+                <div className='flex flex-col mt-16 max-xl:mt-10 max-w-[1500px] mx-auto w-full max-lg:px-3'>
                     <p className='font-medium text-5xl max-md:text-4xl text-center'>FAQ</p>
                     {
                         CopyrightFAQContent.map((FAQ_content, index) => {

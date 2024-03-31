@@ -9,29 +9,30 @@ import Footer from "@/components/layout/Footer";
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import {
-  Link
+  Link, Button
 } from '@nextui-org/react';
-
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   const currentPath = usePathname();
-  const [ isSidebarOpen, setIsSidebarOpen ] = useState(false);
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <html lang="en">
       <body className={poppins.className + " dark"}>
+      <Provider store={store}>
         <div className="flex flex-col min-h-screen">
           {
             currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
               ?
               <div className="flex w-full">
-                <Sidebar isSidebarOpen = {isSidebarOpen} setIsSidebarOpen = { setIsSidebarOpen } />
+                <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
                 <div className="flex flex-col w-full gradiant-background">
-                  <UserHeader setIsSidebarOpen = { setIsSidebarOpen } isSidebarOpen = {isSidebarOpen} />
-                    {children}
+                  <UserHeader setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
+                  {children}
                 </div>
               </div>
               :
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
               </div>
           }
         </div>
+        </Provider>
       </body>
     </html>
   );

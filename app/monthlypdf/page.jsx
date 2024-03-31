@@ -129,7 +129,7 @@ export default function MonthlyPdf() {
 
                 {/* This section for define tips for monthly pdf*/}
 
-                <span className='font-medium text-5xl text-center mt-32 max-md:mt-32 max-lg:text-3xl'>Tips for Use</span>
+                <span className='font-medium text-5xl text-center mt-20 max-md:mt-32 max-lg:text-3xl'>Tips for Use</span>
                 <div className='flex justify-around mt-10 max-lg:flex-col max-lg:mx-auto max-lg:p-3 max-xl:gap-5'>
                     {
                         TipContent.map((tips, index) => {

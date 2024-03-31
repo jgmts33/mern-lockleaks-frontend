@@ -59,8 +59,8 @@ export default function AIImageDetails() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
-                <div className='flex gap-16 items-center'>
+            <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+                <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     </div>
@@ -77,14 +77,14 @@ export default function AIImageDetails() {
                         showValueLabel={true}
                     />
                 </div>
-                <div className='flex max-w-[750px] w-full justify-between mt-10'>
-                    <span className='font-extrabold text-lg'>Upload Photo for Removal</span>
-                    <span className='font-extrabold text-lg'>Photo for Removal Refference</span>
+                <div className='flex max-w-[750px] w-full justify-between mt-10 max-lg:gap-20'>
+                    <div><span className='font-extrabold text-lg max-lg:text-base'>Upload Photo for Removal</span></div>
+                    <div><span className='font-extrabold text-lg max-lg:text-base'>Photo for Removal Refference</span></div>
                 </div>
-                <div className='flex gap-10'>
+                <div className='flex gap-10 max-lg:flex-col max-md:gap-5'>
                     <div className="flex flex-col w-full justify-center items-center bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5">
-                        <div className='flex p-10 justify-around gap-10 w-full'>
-                            <div className='flex w-full'>
+                        <div className='flex p-10 justify-around gap-10 w-full max-2xl:flex-col max-2xl:justify-center max-2xl:items-center max-md:p-1'>
+                            <div className='flex w-full max-2xl:w-1/2'>
                                 <Image src={Saturn} width={300} height={100} className='' alt='saturn' />
                             </div>
                             <div className='flex w-full px-5'>
@@ -92,9 +92,9 @@ export default function AIImageDetails() {
                                     {
                                         AIImageLists.map((items, index) => {
                                             return (
-                                                <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full'>
-                                                    <div className='flex bg-gradient-to-br justify-start bg-white/10 shadow-sm py-3 px-10 w-full items-center gap-3 rounded-[16px]'>
-                                                        {items.icon}
+                                                <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full max-lg:flex-col max-lg:gap-5 max-lg:items-start'>
+                                                    <div className='flex bg-gradient-to-br justify-start bg-white/10 shadow-sm py-3 px-10 w-full items-center gap-3 rounded-[16px] max-md:items-start max-sm:px-2 max-sm:py-2'>
+                                                        <div>{items.icon}</div>
                                                         <span>{items.content}</span>
                                                     </div>
                                                     <div>
@@ -108,7 +108,7 @@ export default function AIImageDetails() {
                             </div>
                         </div>
                     </div>
-                    <div className='max-w-[450px] w-full'>
+                    <div className='max-w-[450px] w-full max-lg:flex max-lg:max-w-[700px] max-lg:gap-5 max-md:flex-col max-md:gap-0'>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-10">
                             <div className='flex'>
                                 <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
@@ -140,7 +140,7 @@ export default function AIImageDetails() {
                         })
                     }
                 </div>
-                <div className="flex items-center px-20 py-8 gap-20 bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5">
+                <div className="flex items-center px-20 py-8 gap-20 bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full max-lg:px-5 p-5 max-lg:py-5 max-md:flex-col max-md:gap-5">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <div><span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span></div>

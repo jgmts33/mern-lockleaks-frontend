@@ -47,27 +47,26 @@ export default function AIFaceImages() {
     }
 
     const handleChange = (e) => {
-        console.log(e)
         setFile(URL.createObjectURL(e[0]));
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
-            <div className='flex mt-5 gap-20'>
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className='flex mt-5 gap-20 max-md:flex-col max-md:gap-5 max-md:text-center max-md:mx-auto'>
                 <span className='font-extrabold text-lg'>AI FACE IMAGES</span>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" size='sm'>
                     START
                 </Button>
             </div>
-            <div className='mt-10'>
-                <span className='font-semibold text-base'>Upload a reference photo</span>
+            <div className='mt-10 max-md:text-center'>
+                <span className='font-semibold text-base max-md:text-sm'>Upload a reference photo</span>
             </div>
-            <div className='flex max-w-[770px] justify-between mt-5'>
-                <span className='font-extrabold text-lg'>Upload Photo for Removal</span>
-                <span className='font-extrabold text-lg'>Photo for Removal Refference</span>
+            <div className='flex max-w-[770px] justify-between mt-5 max-lg:flex-col max-lg:gap-3 max-md:text-center'>
+                <span className='font-extrabold text-lg max-md:text-base'>Upload Photo for Removal</span>
+                <span className='font-extrabold text-lg max-md:text-base'>Photo for Removal Refference</span>
             </div>
-            <div className='grid grid-cols-3 gap-10'>
-                <div className='flex flex-col w-full h-[383px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+            <div className='grid grid-cols-3 gap-10 max-lg:flex-col max-lg:flex'>
+                <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                     <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                         <div className="flex items-center justify-center pt-5 pb-6">
                             <span className="font-light text-lg text-white">+ Upload Photo</span>
@@ -75,7 +74,7 @@ export default function AIFaceImages() {
                         <input type="file" className="hidden" onChange={(e)=>handleChange(e.target.files)} />
                     </label>
                 </div>
-                <div className='flex flex-col w-full h-[383px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+                <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                     <Image src={file} width={100} height={100} alt='uploaded_photo' className={file ? 'block w-full h-full rounded-[16px]' : 'hidden'}></Image>
                 </div>
                 <ScrollShadow className="h-[383px]">
@@ -83,7 +82,7 @@ export default function AIFaceImages() {
                         {
                             AIImageLists.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex mt-5 items-center gap-10'>
+                                    <div key={index} className='flex mt-5 items-center gap-10 max-md:flex-col max-md:gap-5 max-md:items-start'>
                                         <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-start px-7 items-center gap-3 rounded-[16px]'>
                                             {items.icon}
                                             <span>{items.content}</span>

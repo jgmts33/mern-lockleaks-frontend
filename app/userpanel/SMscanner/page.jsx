@@ -37,8 +37,8 @@ export default function SMscanner() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
-                <div className='flex gap-16 items-center'>
+            <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+                <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SCANNER</span></div>
                     <div>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
@@ -54,7 +54,7 @@ export default function SMscanner() {
                         showValueLabel={true}
                     />
                 </div>
-                <div className='grid grid-cols-3 gap-10'>
+                <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:flex-col max-md:flex max-md:gap-0'>
                     <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex'>
                             <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
@@ -85,12 +85,12 @@ export default function SMscanner() {
                         })
                     }
                 </div>
-                <div className="flex items-center px-20 py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5">
+                <div className="flex items-center px-20 py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5 max-lg:flex-col max-lg:px-5">
                     <div className='flex gap-5 items-center'>
-                        {icons.components}
+                        <div>{icons.components}</div>
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20'>
+                    <div className='px-20 max-lg:px-0'>
                         <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>

@@ -189,7 +189,7 @@ export default function ScanTakeDown() {
 
                 {/* This section for define FAQ*/}
 
-                <div className='flex flex-col mt-32 max-md:mt-20 max-w-[1500px] mx-auto w-full'>
+                <div className='flex flex-col mt-16 max-md:mt-10 max-w-[1500px] mx-auto w-full'>
                     <p className='font-medium text-5xl text-center max-md:text-4xl'>FAQ</p>
 
                     <FAQContent targetContent={selectedContent == 'scan' ? scanFAQTitle : takedownFAQTitle} />
