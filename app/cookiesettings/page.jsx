@@ -80,7 +80,7 @@ export default function CookieSettigs() {
                         {
                             cookieSettingButtons.map((items,index) => {
                                 return (
-                                    <Button radius="full" className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg"} size='lg' onClick={()=>setSelectBtn(index)}>
+                                    <Button key={index} radius="full" className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg"} size='lg' onClick={()=>setSelectBtn(index)}>
                                         {items}
                                     </Button>
                                 )
