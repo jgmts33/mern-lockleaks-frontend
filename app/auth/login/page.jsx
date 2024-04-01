@@ -53,12 +53,12 @@ export default function Login() {
         }
     }
     const handleConfirmClick = () => {
-        if(email == "cosmin@gmail.com" && password == "admin123"){
-            // router.push("/adminpanel/dashboard");
-        }
-        else{
-            // router.push("/userpanel/dashboard");
-        }
+        // if(email == "cosmin@gmail.com" && password == "admin123"){
+        //     router.push("/adminpanel/dashboard");
+        // }
+        // else{
+        //     router.push("/userpanel/dashboard");
+        // }
     }
 
 

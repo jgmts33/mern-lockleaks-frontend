@@ -1,30 +1,58 @@
 "use client";
 import React from "react";
 import Image from 'next/image';
-import { YellowStar, Search, Dot } from "@/components/utils/Icons";
+import { YellowStar, Search, Dot, Pencil, Trash, Control, Window } from "@/components/utils/Icons";
 import { useCallback, useEffect, useState } from 'react';
 import {
   Button, Badge, Avatar
 } from '@nextui-org/react';
 import Flag from '@/public/assets/background/download.svg';
-import UserAvatar from '@/public/assets/background/Avatar.svg'
+import UserAvatar from '@/public/assets/background/Avatar.svg';
+import { useSelector, useDispatch } from 'react-redux';
 
-const UserHeader = ({setIsSidebarOpen, isSidebarOpen}) => {
+
+const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
+
+  const userData = useSelector((state) => state.auth)
 
   const icons = {
     yellowstar: <YellowStar fill="currentColor" size={16} />,
     search: <Search fill="currentColor" size={8} />,
     dot: <Dot fill="currentColor" size={16} />,
+    pencil: <Pencil fill="currentColor" size={16} />,
+    trash: <Trash fill="currentColor" size={16} />,
+    control: <Control fill="currentColor" size={16} />,
+    window: <Window fill="currentColor" size={16} />,
   };
 
   return (
     <div className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
-      <div className="flex px-5 items-center">
+      <div className="flex px-2 items-center">
         <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </Button>
+        {
+          userData.email == "cosmin@gmail.com" && userData.password == "admin123" 
+          ?
+          <div>
+            <div className="px-2 max-md:hidden">
+              <span>{icons.pencil}</span>
+            </div>
+            <div className="px-2 max-md:hidden">
+              <span>{icons.trash}</span>
+            </div>
+            <div className="px-2 max-md:hidden">
+              <span>{icons.window}</span>
+            </div>
+            <div className="px-2 max-md:hidden">
+              <span>{icons.control}</span>
+            </div>
+          </div>
+          : 
+          false
+        }
         <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm'>
           {icons.yellowstar}
         </Button>
@@ -53,7 +81,7 @@ const UserHeader = ({setIsSidebarOpen, isSidebarOpen}) => {
         </div>
         <div>
           <Badge content="" color="success" shape="circle" placement="bottom-right">
-            <Image src={UserAvatar} width={35} height={35} className="" />
+            <Image src={UserAvatar} width={35} height={35} className="" alt="useravatar" />
           </Badge>
         </div>
       </div>

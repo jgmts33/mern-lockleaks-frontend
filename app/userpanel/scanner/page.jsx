@@ -46,7 +46,7 @@ export default function Scanner() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr w-full mx-auto px-10 max-lg:px-0 py-10 container text-white max-md:px-3">
+            <div className="flex flex-col bg-gradient-to-tr w-full mx-auto max-2xl:px-3 py-10 container text-white">
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     <div><Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>

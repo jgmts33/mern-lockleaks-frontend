@@ -33,7 +33,7 @@ export default function CookieSettigs() {
     ]
 
     return (
-        <div className="flex flex-col text-white w-full">
+        <div className="flex flex-col text-white w-full max-xl:px-3">
             <div className='flex flex-col mt-10 bg-transparent bg-opacity-20 shadow-sm shadow-gray-50 border border-gray-500 p-5 mb-20 rounded-[20px] max-w-[1400px] mx-auto cursor-pointer'>
 
                 {/* This section for define cookie settings header*/}
@@ -80,7 +80,7 @@ export default function CookieSettigs() {
                         {
                             cookieSettingButtons.map((items,index) => {
                                 return (
-                                    <Button key={index} radius="full" className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg"} size='lg' onClick={()=>setSelectBtn(index)}>
+                                    <Button key={index} radius="full" className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 text-lg"} size='lg' onClick={()=>setSelectBtn(index)}>
                                         {items}
                                     </Button>
                                 )

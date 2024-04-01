@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={poppins.className + " dark"}>
       <Provider store={store}>
+      <body className={poppins.className + " dark"}>
         <div className="flex flex-col min-h-screen">
           {
             currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
@@ -61,8 +61,8 @@ export default function RootLayout({ children }) {
               </div>
           }
         </div>
-        </Provider>
       </body>
+      </Provider>
     </html>
   );
 }

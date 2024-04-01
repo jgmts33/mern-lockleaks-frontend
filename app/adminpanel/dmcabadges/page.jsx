@@ -43,7 +43,7 @@ export default function Dmcabadges() {
     ]
 
     const handleGoDetails = () => {
-        router.push("/userpanel/AIfaceimages/details");
+        router.push("/adminpanel/dmcabadges/details");
     }
 
     const handleChange = (e) => {

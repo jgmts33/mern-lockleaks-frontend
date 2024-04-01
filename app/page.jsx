@@ -226,24 +226,26 @@ export default function HomePage() {
   return (
     <>
       {/* This section for define cookie setting*/}
-      {
-        selectCookie == false ?
-          <div className="flex fixed text-white items-center bg-[#2b136944] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-10 max-w-[700px]">
-            <div>
-              <span>Your privacy</span>
-              <span>By clicking "Accept All" you can store cookies on your website and disclose information in accordance with our cookie policy</span>
-            </div>
-            <div>
-              <Button radius="lg" className="border border-white/10" color="danger" onClick={() => handleSettingCookie()}>Customize</Button>
-            </div>
-            <div>
-              <Button radius="lg" className="border border-white/10" color="primary" onClick={() => CookieSetting()}>Accept All</Button>
-            </div>
-          </div>
-          :
-          false
-      }
       <div className="text-white max-w-[1480px] mx-auto">
+        {
+          selectCookie == false ?
+            <div className="flex fixed text-white items-center bg-gradient-to-tr backdrop-blur bg-[#403f4244] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-20 max-w-[700px] max-md:left-0 max-md:flex-col">
+              <div>
+                <span>Your privacy</span>
+                <span>By clicking "Accept All" you can store cookies on your website and disclose information in accordance with our cookie policy</span>
+              </div>
+              <div className='flex space-x-5'>
+                <div>
+                  <Button radius="lg" className="border border-white/10" color="danger" onClick={() => handleSettingCookie()}>Customize</Button>
+                </div>
+                <div>
+                  <Button radius="lg" className="border border-white/10" color="primary" onClick={() => CookieSetting()}>Accept All</Button>
+                </div>
+              </div>
+            </div>
+            :
+            false
+        }
         <div className='relative flex px-5'>
 
           {/* This section for define homepage header*/}
@@ -393,10 +395,10 @@ export default function HomePage() {
                       key={index}
                       radius="lg"
                       variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-transparent border border-white/10 bg-opacity-20") + "  outline-none text-white shadow-full p-8 mt-4"}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-transparent border border-white/10 bg-opacity-20") + "  outline-none text-white shadow-full p-8 max-md:px-7 mt-4"}
                       onClick={() => setSelectedServiceIndex(index)}
                     >
-                      <Image src={service.img} width={30} height={30} />
+                      <Image src={service.img} width={30} height={30} alt='service' />
                     </Button>
                   )
                 })
