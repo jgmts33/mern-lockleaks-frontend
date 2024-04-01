@@ -21,8 +21,8 @@ export default function RootLayout({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
+    <Provider store={store}>
     <html lang="en">
-      <Provider store={store}>
       <body className={poppins.className + " dark"}>
         <div className="flex flex-col min-h-screen">
           {
@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
           }
         </div>
       </body>
-      </Provider>
     </html>
+    </Provider>
   );
 }
