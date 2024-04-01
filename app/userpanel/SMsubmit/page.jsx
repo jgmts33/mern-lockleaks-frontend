@@ -24,7 +24,7 @@ export default function SMsubmit() {
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SUBMIT</span></div>
                 </div>
-                <div className='grid grid-cols-3 gap-10 max-xl:flex-col max-xl:flex max-xl:gap-0'>
+                <div className='grid grid-cols-3 gap-10 max-2xl:gap-2 max-xl:flex-col max-xl:flex max-xl:gap-0'>
                     <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex max-w-[330px] max-xl:max-w-full'>
                             <span className='font-normal text-[18px]'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
@@ -36,12 +36,12 @@ export default function SMsubmit() {
                     <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base'>Select the platform icon where you want to report the profile.</span>
-                            <div className='flex justify-around mt-5 max-xl:justify-center max-xl:gap-10 max-sm:gap-5'>
-                                <span>{icons.SMfacebook}</span>
-                                <span>{icons.SMinstagram}</span>
-                                <span>{icons.SMtwitter}</span>
-                                <span>{icons.SMtelegram}</span>
-                                <span>{icons.SMreddit}</span>
+                            <div className='flex justify-center mt-5 max-xl:justify-center px-2 max-xl:gap-6 max-sm:gap-5'>
+                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'>{icons.SMfacebook}</Button>
+                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMinstagram}</span></Button>
+                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMtwitter}</span></Button>
+                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMtelegram}</span></Button>
+                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMreddit}</span></Button>
                             </div>
                             <textarea className='bg-white/15 shadow-sm shadow-gray-50 rounded-lg mt-3 h-20'></textarea>
                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-5 text-sm mx-auto mt-7" size='sm'>

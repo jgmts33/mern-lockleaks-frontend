@@ -63,7 +63,7 @@ export default function RUserContent() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white">
             <ScrollShadow className="h-[1220px]">
                 <div className='flex gap-16 items-center'>
                     <div><span className='font-extrabold text-lg'>R & R User Content Orders</span></div>

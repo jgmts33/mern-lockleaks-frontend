@@ -18,6 +18,10 @@ export default function CreateTicket() {
         router.push("/userpanel/personalagent/ticketdetail")
     }
 
+    const handlePreviousPage = () => {
+        history.back()
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
             <div className='mt-5'>
@@ -25,7 +29,9 @@ export default function CreateTicket() {
             </div>
             <div className="flex items-center px-10 py-5 mt-10 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5">
                 <div><span>New Ticket</span></div>
-                <div>{icons.cancel}</div>
+                <div>
+                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
+                </div>
             </div>
             <div className="flex flex-col px-10 py-5 mt-10 mx-auto max-w-[750px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] p-5 max-md:px-3">
                 <div className='flex flex-col w-full p-5'>

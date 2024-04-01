@@ -8,6 +8,7 @@ import {
     Button
 } from '@nextui-org/react';
 import { useSelector, useDispatch } from 'react-redux';
+import UserHeader from "./Header";
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const router = useRouter();
@@ -123,85 +124,86 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         {
             icon: icons.category,
             title: "DASHBOARD",
-            path: "/adminpanel/dashboard"
+            path: "/jdieij83dklxosoehfjf/dashboard"
         }, {
             icon: icons.scanner,
             title: "SCANNER",
-            path: "/adminpanel/scanner"
+            path: "/jdieij83dklxosoehfjf/scanner"
         }, {
             icon: icons.search,
             title: "GOOGLE & BING",
-            path: "/adminpanel/googlebing"
+            path: "/jdieij83dklxosoehfjf/googlebing"
         }, {
             icon: icons.AIProfile,
             title: "AI FACE",
-            path: "/adminpanel/AIface"
+            path: "/jdieij83dklxosoehfjf/AIface"
         }, {
             icon: icons.submit,
             title: "SOCIAL MEDIA",
-            path: "/adminpanel/socialmedia"
+            path: "/jdieij83dklxosoehfjf/socialmedia"
         }, {
             icon: icons.AIProfile,
             title: "PERSONAL AGENT",
-            path: "/adminpanel/bing"
+            path: "/jdieij83dklxosoehfjf/bing"
         }, {
             icon: icons.usercontent,
             title: "R&R OF USER CONTENT",
-            path: "/adminpanel/rusercontent"
+            path: "/jdieij83dklxosoehfjf/rusercontent"
         }, {
             icon: icons.AIProfile,
             title: "DMCA BADGES",
-            path: "/adminpanel/dmcabadges"
+            path: "/jdieij83dklxosoehfjf/dmcabadges"
         }, {
             icon: icons.calendarcheck,
             title: "DATA ANALYTICS",
-            path: "/adminpanel/SMscanner"
+            path: "/jdieij83dklxosoehfjf/analytics"
         }, {
             icon: icons.DataReport,
             title: "DATA REPORT",
-            path: "/adminpanel/SMsubmit"
+            path: "/jdieij83dklxosoehfjf/SMsubmit"
         }, {
             icon: icons.testbots,
             title: "TEST BOTS",
-            path: "/adminpanel/recoveryuser"
+            path: "/jdieij83dklxosoehfjf/recoveryuser"
         }, {
             icon: icons.users,
             title: "USERS",
-            path: "/adminpanel/dmcabadges"
+            path: "/jdieij83dklxosoehfjf/dmcabadges"
         }, {
             icon: icons.proxybots,
             title: "PROXIES BOTS",
-            path: "/adminpanel/datareport"
+            path: "/jdieij83dklxosoehfjf/datareport"
         }, {
             icon: icons.management,
             title: "VPS MANAGEMENT",
-            path: "/adminpanel/dataanalytics"
+            path: "/jdieij83dklxosoehfjf/dataanalytics"
         }, {
             icon: icons.management,
             title: "REPORTS MANAGEMENT",
-            path: "/adminpanel/personalagent"
+            path: "/jdieij83dklxosoehfjf/personalagent"
         }, {
             icon: icons.pingmodels,
             title: "PING MODELS",
-            path: "/adminpanel/accountsetting"
+            path: "/jdieij83dklxosoehfjf/accountsetting"
         }, {
             icon: icons.notification,
             title: "NOTIFICATION",
-            path: "/adminpanel/downloaddata"
+            path: "/jdieij83dklxosoehfjf/downloaddata"
         }, {
             icon: icons.autocontract,
             title: "AUTO-CONTRACT",
-            path: "/adminpanel/notification"
+            path: "/jdieij83dklxosoehfjf/notification"
         }, {
             icon: icons.bing,
             title: "BLOG",
-            path: "/adminpanel/notification"
+            path: "/jdieij83dklxosoehfjf/notification"
         }
     ]
 
-    const handleSidebarClick = (path, index) => {
-        router.push(path);
+    const handleSidebarClick = (path, index, title, icon) => {
         setSelectSidebar(index);
+        sessionStorage.setItem("star",false);
+        router.push(path);
     }
 
     const handleLogout = () => {
@@ -238,7 +240,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                         {
                             UserSidebarButtons.map((items, index) => {
                                 return (
-                                    <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                    <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index, items.title, items.icon)}>
                                         <span>{items.icon}</span>
                                         <span className="font-light text-sm">{items.title}</span>
                                     </Button>

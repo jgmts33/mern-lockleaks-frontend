@@ -54,7 +54,7 @@ export default function Login() {
     }
     const handleConfirmClick = () => {
         if(email == "cosmin@gmail.com" && password == "admin123"){
-            router.push("/adminpanel/dashboard");
+            router.push("/jdieij83dklxosoehfjf/dashboard");
         }
         else{
             router.push("/userpanel/dashboard");

@@ -20,13 +20,17 @@ export default function RootLayout({ children }) {
   const currentPath = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  useEffect(()=>{
+    
+  })
+
   return (
     <Provider store={store}>
     <html lang="en">
       <body className={poppins.className + " dark"}>
         <div className="flex flex-col min-h-screen">
           {
-            currentPath.includes("/userpanel") || currentPath.includes("/adminpanel")
+            currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
               ?
               <div className="flex w-full">
                 <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />

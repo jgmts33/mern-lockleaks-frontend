@@ -14,7 +14,7 @@ export default function RecoveryUser() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr mx-auto px-2 py-10 container text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
@@ -65,7 +65,7 @@ export default function RecoveryUser() {
                     <div className='flex items-center'>
                         <span className='font-normal text-base'>How does it work?</span>
                     </div>
-                    <div className='max-xl:px-3'>
+                    <div className='max-2xl:px-3'>
                         <span className='font-normal text-sm'>Upload a picture of yourself to 'Profile Content Removal', then choose whether you want to upload a picture of yourself for automatic facial scanning or if you want to use your username.</span>
                     </div>
                 </div>

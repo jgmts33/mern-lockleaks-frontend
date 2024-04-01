@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, Checkbox
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
 import React from 'react';
@@ -61,7 +61,7 @@ export default function FileHosted() {
                                 <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                     <div className='flex justify-between p-7'>
                                         <div className='flex px-2 gap-4'>
-                                            <div className={items.icon ? 'block max-sm:mt-2' : 'hidden'}>{items.icon}</div>
+                                            <div className={items.icon ? 'block max-sm:mt-2' : 'hidden'}><Checkbox color='success' radius='full' /></div>
                                             <div className='flex max-w-[820px] gap-2 max-sm:flex-col'>
                                                 <span className='font-normal text-sm bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{items.title}</span>
                                                 <span className={index != 1 ?' font-semibold text-smfont-normal text-sm': " font-normal text-sm"}>{items.content}</span>

@@ -19,6 +19,10 @@ export default function SetProperty() {
         paperplane: <PaperPlane fill="currentColor" size={16} />,
     };
 
+    const handlePreviousPage = () =>{
+        history.back()
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white max-lg:mx-auto">
             <div className='flex flex-col space-y-5 max-md:mx-auto'>
@@ -29,7 +33,7 @@ export default function SetProperty() {
                 <div className="flex flex-col max-w-[400px] w-full h-[650px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
                     <div className='flex justify-between mt-5'>
                         <span className='font-semibold text-[18px]'>Ticket Name</span>
-                        {icons.shape}
+                        <Button radius="sm" className='bg-transparent' size='sm' onClick={()=>handlePreviousPage()}>{icons.shape}</Button>
                     </div>
                     <div className='flex flex-col pt-10 space-y-3'>
                         <span className='font-semibold text-base'>Data created</span>
@@ -64,7 +68,9 @@ export default function SetProperty() {
                                 <span className='font-normal text-sm'>#10 / February 27, 2024</span>
                                 <span className='font-semibold text-base mt-2'>Ticket Title</span>
                             </div>
-                            <div>{icons.cancel}</div>
+                            <div>
+                            <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
+                            </div>
                         </div>
                     </div>
                     <div className='flex flex-col'>

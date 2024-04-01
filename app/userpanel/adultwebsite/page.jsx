@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, Checkbox
 } from '@nextui-org/react';
 import {Components,Checkboxs } from "@/components/utils/Icons";
 import React from 'react';
@@ -61,7 +61,7 @@ export default function AdultWesite() {
                                 <div key={index} className='flex flex-col px-5 max-sm:px-2'>
                                     <div className='flex justify-between p-6 max-sm:p-5'>
                                         <div className='flex px-5 gap-5'>
-                                            <span>{items.icon}</span>
+                                            <Checkbox color='success' radius='full' />
                                             <span className='font-semibold text-sm'>{items.content}</span>
                                         </div>
                                     </div>
