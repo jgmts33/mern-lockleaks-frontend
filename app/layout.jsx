@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
   const currentPath = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-
   return (
     <html lang="en">
       <body className={poppins.className + " dark"}>

@@ -28,20 +28,9 @@ export default function Login() {
     const [emailerror, setEmailError] = useState("");
     const [passworderror, setPasswordError] = useState("");
 
-    useEffect(() => {
-        setEmailError("");
-        setPasswordError("")
-    }, [email])
-
     const handleLogin = () => {
-        if (email == "") {
-            setEmailError("You must type email");
-        }
-        else if (email != "" && !/\S+@\S+\.\S+/.test(email)) {
+       if (email != "" && !/\S+@\S+\.\S+/.test(email)) {
             setEmailError("Email must be contain @ and .**");
-        }
-        else if (password == "") {
-            setPasswordError("You must type password");
         }
         else if ((password.length < 6 || password.length > 12)) {
             setPasswordError("You must type 6~12 characters.");

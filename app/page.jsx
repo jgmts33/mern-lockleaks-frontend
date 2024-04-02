@@ -199,16 +199,19 @@ export default function HomePage() {
   const [animationCounter, setAnimationCounter] = useState(0);
   const [isFlipped, setIsFlipped] = useState(-1);
   const [selectCookie, setSlectCookie] = useState(false);
-
+  
   useEffect(() => {
-    if (window.screen.width >= 700) {
+    if (screen.width >= 650) {
       const timer = setInterval(() => {
-        if (animationCounter === 3) {
+        if (animationCounter === 7) {
           clearInterval(timer);
         }
         setAnimationCounter(p => p + 1);
       }, 1000);
       return () => clearInterval(timer);
+    }
+    else{
+      setAnimationCounter(3)
     }
   }, []);
 
@@ -260,21 +263,21 @@ export default function HomePage() {
                 Protect Content Now!
                 <span>{icons.shine}</span>
               </Button>
-              <div className={"flex max-w-[422px] md:duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 " + (window.screen.width >= 700 ? animationCounter >= 1 ? "opacity-100" : "opacity-0" : "opacity-100")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 max-sm:opacity-100 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>Protect Your Content</p>
                   <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] md:duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-28 max-xl:right-0 max-xl:top-8 " + (window.screen.width >= 700 ? animationCounter >= 2 ? "opacity-100" : "opacity-0" : "opacity-100")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-28 max-xl:right-0 max-xl:top-8 max-sm:opacity-100 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.profile}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>DEFEND YOUR NAME</p>
                   <p className='font-normal text-base mt-2'>Your Brand is Your Legacy, Let Us Be Your Guardians.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] max-sm:duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-10 -top-5 " + (window.screen.width >= 700 ? animationCounter >= 3 ? "opacity-100" : "opacity-0" : "opacity-100")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-10 -top-5 max-sm:opacity-100 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>ROFESSIONAL SUPPORT</p>
