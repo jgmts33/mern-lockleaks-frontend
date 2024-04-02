@@ -22,48 +22,48 @@ export default function RootLayout({ children }) {
 
 
   return (
-    <Provider store={store}>
     <html lang="en">
       <body className={poppins.className + " dark"}>
-        <div className="flex flex-col min-h-screen">
-          {
-            currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
-              ?
-              <div className="flex w-full">
-                <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-                <div className="flex flex-col w-full gradiant-background">
-                  <UserHeader setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
-                  {children}
-                </div>
-              </div>
-              :
-              <div className="">
-                {
-                  !currentPath.includes("/auth")
-                    ?
-                    <Header />
-                    :
-                    <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center'>
-                      <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
-                    </div>
-                }
+        <Provider store={store}>
+          <div className="flex flex-col min-h-screen">
+            {
+              currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
+                ?
                 <div className="flex w-full">
-                  <div className="mx-auto">
+                  <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+                  <div className="flex flex-col w-full gradiant-background">
+                    <UserHeader setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
                     {children}
                   </div>
                 </div>
-                {
-                  !currentPath.includes("/auth")
-                    ?
-                    <Footer />
-                    :
-                    false
-                }
-              </div>
-          }
-        </div>
+                :
+                <div className="">
+                  {
+                    !currentPath.includes("/auth")
+                      ?
+                      <Header />
+                      :
+                      <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center'>
+                        <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
+                      </div>
+                  }
+                  <div className="flex w-full">
+                    <div className="mx-auto">
+                      {children}
+                    </div>
+                  </div>
+                  {
+                    !currentPath.includes("/auth")
+                      ?
+                      <Footer />
+                      :
+                      false
+                  }
+                </div>
+            }
+          </div>
+        </Provider>
       </body>
     </html>
-    </Provider>
   );
 }
