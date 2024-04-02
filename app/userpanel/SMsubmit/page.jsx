@@ -4,10 +4,11 @@ import {
     Button, Link, Progress
 } from '@nextui-org/react';
 import { Components, SMfacebook, SMinstagram, SMtwitter, SMtelegram, SMreddit } from "@/components/utils/Icons";
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function SMsubmit() {
     const [value, setValue] = React.useState(25);
+    const [isselect, setSelect] = useState(0)
 
     const icons = {
         components: <Components fill="currentColor" size={16} />,
@@ -18,9 +19,23 @@ export default function SMsubmit() {
         SMreddit: <SMreddit fill="currentColor" size={16} />,
     };
 
+    const SOcialMediaButtons = [
+        {
+            icon: icons.SMfacebook
+        }, {
+            icon: icons.SMinstagram
+        }, {
+            icon: icons.SMtwitter
+        }, {
+            icon: icons.SMtelegram
+        }, {
+            icon: icons.SMreddit
+        }
+    ]
+
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white max-lg:mx-auto max-lg:px-3">
+            <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto max-lg:px-3">
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SUBMIT</span></div>
                 </div>
@@ -36,12 +51,14 @@ export default function SMsubmit() {
                     <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base'>Select the platform icon where you want to report the profile.</span>
-                            <div className='flex justify-center mt-5 max-xl:justify-center px-2 max-xl:gap-6 max-sm:gap-5'>
-                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'>{icons.SMfacebook}</Button>
-                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMinstagram}</span></Button>
-                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMtwitter}</span></Button>
-                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMtelegram}</span></Button>
-                                <Button radius="md" className='py-5 px-0 bg-transparent' size='sm'><span>{icons.SMreddit}</span></Button>
+                            <div className='flex justify-around mt-5 max-xl:justify-center px-2 max-xl:gap-6 max-sm:gap-5'>
+                                {
+                                    SOcialMediaButtons.map((items, index) => {
+                                        return (
+                                            <Button key={index} isIconOnly className={('bg-transparent rounded-full ') + (isselect == index ? "bg-cyan-600 shadow-xl shadow-cyan-200/50" : "")} onClick={() => setSelect(index)}><span>{items.icon}</span></Button>
+                                        )
+                                    })
+                                }
                             </div>
                             <textarea className='bg-white/15 shadow-sm shadow-gray-50 rounded-lg mt-3 h-20'></textarea>
                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-5 text-sm mx-auto mt-7" size='sm'>
@@ -61,8 +78,10 @@ export default function SMsubmit() {
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20 max-xl:px-5'>
-                        <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
+                    <div className='px-20 max-xl:px-5 space-x-1'>
+                        <span className='font-normal text-xs'>Generated a removal report with</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span className='font-normal text-xs'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>
             </div>

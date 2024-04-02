@@ -46,27 +46,45 @@ export default function AIImageDetails() {
     const scanResults = [
         {
             icon: icons.components,
-            content: "Scanning on 10 websites. "
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>Scanning on</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span>websites.</span>
+            </div>
         },
         {
             icon: icons.components,
-            content: "Photos Matched: 10  "
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>"Photos Matched</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+            </div>
         }, {
             icon: icons.components,
-            content: "Profiles Matched: 10"
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>Profiles Matched:</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+            </div>
         },
     ]
 
+    const handlePreviousPage = () => {
+        history.back()
+    }
+
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     </div>
-                    <div><Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>
-                        START
-                    </Button>
+                    <div className='space-x-5'>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>
+                            START
+                        </Button>
+                        <Button radius="lg" className="bg-gradient-to-tr bg-gray-800 text-white shadow-lg px-5 text-lg" size='sm' onClick={() => handlePreviousPage()}>
+                            Back
+                        </Button>
                     </div>
                     <Progress
                         size="md"
@@ -145,8 +163,10 @@ export default function AIImageDetails() {
                         <div>{icons.components}</div>
                         <div><span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span></div>
                     </div>
-                    <div className='flex max-w-[671px]'>
-                        <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
+                    <div className='flex items-center space-x-1'>
+                        <span className='font-normal text-xs'>Generated a removal report with</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span className='font-normal text-xs'>copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
                     </div>
                 </div>
             </div>

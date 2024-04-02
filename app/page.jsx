@@ -201,9 +201,9 @@ export default function HomePage() {
   const [selectCookie, setSlectCookie] = useState(false);
 
   useEffect(() => {
-    if (screen.width >= 600) {
+    if (screen.width >= 700) {
       const timer = setInterval(() => {
-        if (animationCounter === 7) {
+        if (animationCounter === 3) {
           clearInterval(timer);
         }
         setAnimationCounter(p => p + 1);
@@ -211,7 +211,7 @@ export default function HomePage() {
       return () => clearInterval(timer);
     }
     else {
-      setAnimationCounter(7)
+      setAnimationCounter(3)
     }
   }, []);
 

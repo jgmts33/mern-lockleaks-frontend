@@ -6,7 +6,7 @@ import {
 import { Components, SMfacebook, SMinstagram, SMtwitter, SMtelegram, SMreddit } from "@/components/utils/Icons";
 import React from 'react';
 
-export default function RecoveryUser() {
+export default function RecoveryUsers() {
 
     const icons = {
         components: <Components fill="currentColor" size={16} />,
@@ -14,7 +14,7 @@ export default function RecoveryUser() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr mx-auto px-2 py-10 container text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr py-10 px-5 text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
@@ -74,8 +74,10 @@ export default function RecoveryUser() {
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>HISTORICAL PROFILE RESULTS</span>
                     </div>
-                    <div className='px-20 max-lg:px-3'>
-                        <span className='font-normal text-xs'>Generated a removal report for 10 copyright infringements, encompassing AI results, matched photos & profiles, and manually forwarded it to Recovery Usernames Platforms.</span>
+                    <div className='px-20 max-lg:px-3 items-center space-x-1'>
+                        <span className='font-normal text-xs'>Generated a removal report for</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span className='font-normal text-xs'>copyright infringements, encompassing AI results, matched photos & profiles, and manually forwarded it to Recovery Usernames Platforms.</span>
                     </div>
                 </div>
             </div>

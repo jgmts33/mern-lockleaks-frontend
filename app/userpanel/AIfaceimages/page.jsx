@@ -51,7 +51,7 @@ export default function AIFaceImages() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
             <div className='flex mt-5 gap-20 max-md:flex-col max-md:gap-5 max-md:text-center max-md:mx-auto'>
                 <span className='font-extrabold text-lg'>AI FACE IMAGES</span>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" size='sm'>
@@ -65,7 +65,7 @@ export default function AIFaceImages() {
                 <span className='font-extrabold text-lg max-md:text-base'>Upload Photo for Removal</span>
                 <span className='font-extrabold text-lg max-md:text-base'>Photo for Removal Refference</span>
             </div>
-            <div className='grid grid-cols-3 gap-10 max-lg:flex-col max-lg:flex'>
+            <div className='grid grid-cols-3 gap-10 max-2xl:flex-col max-lg:flex'>
                 <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                     <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                         <div className="flex items-center justify-center pt-5 pb-6">

@@ -19,34 +19,53 @@ export default function Scanner() {
         {
             icon: icons.googlesearch,
             title: "GOOGLE SEARCH",
-            content: "Initiated an automated Google search, resulting in the detection of 10 new copyright infringements."
+            content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
+                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='font-normal text-xs'>new copyright infringements.</span>
+            </div>
         },
         {
             icon: icons.googlesearch,
             title: "GOOGLE IMAGES SEARCH",
-            content: "Initiated an automated Google Images search, resulting in the detection of 10 new copyright infringements"
-        }, {
-            icon: icons.googlesearch,
-            title: "GOOGLE VIDEOS SEARCH",
-            content: "Initiated an automated Google Images search, resulting in the detection of 10 new copyright infringements."
-        }, {
+            content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
+                <span className='font-normal text-xs'>Initiated an automated Google Images search, resulting in the detection of</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='font-normal text-xs'>new copyright infringements</span>
+            </div>
+        },
+        {
             icon: icons.bingsearch,
-            title: "BING SEARCH",
-            content: "Initiated automated searches on Bing Search, resulting in the detection of 10 new copyright infringements."
-        }, {
+            title: "GOOGLE SEARCH",
+            content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
+                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='font-normal text-xs'>new copyright infringements.</span>
+            </div>
+        },
+        {
             icon: icons.bingsearch,
-            title: "BING IMAGES SEARCH",
-            content: "Initiated automated searches on Bing Images Search, resulting in the detection of 10 new copyright infringements."
-        }, {
+            title: "GOOGLE SEARCH",
+            content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
+                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='font-normal text-xs'>new copyright infringements.</span>
+            </div>
+        },
+        {
             icon: icons.bingsearch,
-            title: "BING VIDEO SEARCH",
-            content: "Initiated automated searches on Bing Video Search, resulting in the detection of 10 new copyright infringements."
+            title: "GOOGLE SEARCH",
+            content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
+                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='font-normal text-xs'>new copyright infringements.</span>
+            </div>
         },
     ]
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr w-full mx-auto max-2xl:px-3 py-10 container text-white">
+            <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     <div><Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
@@ -72,9 +91,7 @@ export default function Scanner() {
                                             <div>{items.icon}</div>
                                             <div className='flex'><span className='font-semibold text-sm'>{items.title}</span></div>
                                         </div>
-                                        <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2'>
-                                            <span className='font-normal text-xs'>{items.content}</span>
-                                        </div>
+                                       {items.content}
                                     </div>
                                     <hr className='w-full' />
                                 </div>
@@ -82,13 +99,15 @@ export default function Scanner() {
                         })
                     }
                 </div>
-                <div className="flex items-center px-20 max-lg:px-10 py-8 max-md:flex-col justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
+                <div className="flex items-center px-20 max-lg:px-3 max-lg:flex-col py-8 max-md:flex-col justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5">
                     <div className='flex gap-5 items-center'>
-                        {icons.complete}
+                        <div>{icons.complete}</div>
                         <span className='font-normal text-base'>SEARCH RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20 max-md:px-0'>
-                        <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements and forwarded it to Search Engines.</span>
+                    <div className='px-20 max-md:px-0 font-normal text-xs space-x-1 max-sm:text-clip'>
+                        <span className='font-normal text-xs'>Generated a removal report with</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span>copyright infringements and forwarded it to Search Engines.</span>
                     </div>
                 </div>
             </div>

@@ -104,7 +104,6 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
             </DropdownTrigger>
             <DropdownMenu
               aria-label="Action event example"
-              onAction={(key) => alert(key)}
               className="text-white max-w-full"
             >
               {

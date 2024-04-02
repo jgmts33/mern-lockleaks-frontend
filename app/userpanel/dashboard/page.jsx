@@ -48,7 +48,7 @@ export default function Dashbaord() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 text-white">
             <div>
                 <span className='font-extrabold text-lg'>OVERVIEW OF INFIRNGEMENT</span>
             </div>

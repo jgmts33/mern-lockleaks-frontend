@@ -31,13 +31,25 @@ export default function SMscanner() {
     ]
 
     const ScanList = [
-        "Scanning on 10 websites. ",
-        "Profiles Matched: 10"
+        {
+            icon: icons.components,
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>Scanning on</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span>websites.</span>
+            </div>
+        }, {
+            icon: icons.components,
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>Profiles Matched:</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+            </div>
+        },
     ]
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SCANNER</span></div>
                     <div>
@@ -77,7 +89,7 @@ export default function SMscanner() {
                                 <div key={index} className='flex flex-col'>
                                     <div className='flex gap-3 py-7 px-5'>
                                     {icons.components}
-                                    <span className='font-normal text-base'>{items}</span>
+                                    {items.content}
                                     </div>
                                     <hr className='w-full'></hr>
                                 </div>
@@ -90,8 +102,10 @@ export default function SMscanner() {
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20 max-lg:px-0'>
-                        <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
+                    <div className='px-20 max-lg:px-0 space-x-1 items-center'>
+                        <span className='font-normal text-xs'>Generated a removal report with</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>10</span> 
+                        <span className='font-normal text-sm'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>
             </div>

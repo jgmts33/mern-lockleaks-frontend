@@ -46,20 +46,30 @@ export default function AIfaceprofile() {
     const scanResults = [
         {
             icon: icons.components,
-            content: "Scanning on 10 websites. "
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>Scanning on</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span>websites.</span>
+            </div>
         },
         {
             icon: icons.components,
-            content: "Photos Matched: 10  "
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>"Photos Matched</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+            </div>
         }, {
             icon: icons.components,
-            content: "Profiles Matched: 10"
+            content: <div className='flex items-center space-x-1 font-normal text-base'>
+                <span>Profiles Matched:</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+            </div>
         },
     ]
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>AIFACE PROFILES</span></div>
@@ -140,13 +150,15 @@ export default function AIfaceprofile() {
                         })
                     }
                 </div>
-                <div className="flex items-center px-20 py-8 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5 max-lg:py-5 max-lg:px-5 max-md:flex-col">
+                <div className="flex items-center px-16 py-5 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5 max-lg:py-5 max-lg:px-5 max-md:flex-col">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span>
                     </div>
-                    <div className='px-20 max-w-[1000px] max-md:px-5'>
-                        <span className='font-normal text-xs'>Generated a removal report with 10 copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
+                    <div className='px-20 max-w-[1000px] max-md:px-5 items-center space-x-1'>
+                        <span className='font-normal text-xs'>Generated a removal report with</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                        <span className='font-normal text-xs'>copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
                     </div>
                 </div>
             </div>

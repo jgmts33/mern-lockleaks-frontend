@@ -5,10 +5,10 @@ import {
 } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { Warning, Search } from "@/components/utils/Icons";
+import { useRouter } from 'next/navigation';
 
 export default function Analytics() {
-
-    const [selectDownload, setSelectDownload] = useState(0)
+    const router = useRouter();
     const [value, setValue] = React.useState(25);
 
     const icons = {
@@ -17,25 +17,24 @@ export default function Analytics() {
     };
 
     const NotificationContent = [
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
+        "domain.com",
+        "domain.to ",
+        "etc... ",
+        "domain.com",
+        "domain.to ",
+        "etc... ",
+        "domain.com",
+        "domain.to ",
+        "etc... ",
+        "domain.com",
+        "domain.to ",
+        "etc... ",
     ]
+
+    const handleGoAddAnalytics = () => {
+        router.push("/")
+    }
+
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
@@ -43,7 +42,7 @@ export default function Analytics() {
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
             <div className='mt-10'>
-                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm'>
+                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm' onClick={()=>handleGoAddAnalytics()}>
                     Add
                 </Button>
             </div>

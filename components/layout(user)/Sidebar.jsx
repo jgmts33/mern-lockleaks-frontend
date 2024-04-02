@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FileHost, CalendarCheck, Users, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, LogOut, TestBots } from "@/components/utils/Icons";
+import { FileHost, CalendarCheck,ChevronRight, Users, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, LogOut, TestBots, ArrowRight } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
@@ -42,6 +42,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         pingmodels: <PingModels fill="currentColor" size={16} />,
         autocontract: <AutoContract fill="currentColor" size={16} />,
         bing: <Bing fill="currentColor" size={16} />,
+        arrowright: <ArrowRight fill="currentColor" size={16} />,
     };
 
     const UserSidebarButtons = [
@@ -211,19 +212,17 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     }
 
     return (
-        <div className={`flex flex-col bg-[#000001] text-white w-80 max-sm:min-h-full max-lg:rounded-3xl justify-start px-3 py-10 z-10 max-lg:absolute duration-1000 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+        <div className={`flex flex-col bg-[#000001] text-white w-[335px] max-sm:w-[70px] max-sm:min-h-full max-sm:bg-white/10 max-sm:backdrop-blur-sm max-lg:rounded-3xl max-sm:rounded-md justify-start px-3 py-10 z-10 max-lg:absolute duration-1000 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
             <div className="mx-auto flex items-center justify-around w-full">
                 <div className="flex"><Link href="/" className="text-white text-xl font-semibold "><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
-                <div className="flex items-center lg:hidden">
-                    <Button radius="lg" className="bg-transparent text-white text-base w-full" size='sm' onClick={() => setIsSidebarOpen(false)}>
-                        {icons.sidebarclose}
-                    </Button>
-                </div>
+            </div>
+            <div className="absolute -right-4 top-4 text-white w-8 h-8 flex justify-center items-center rounded-full bg-[#3e4bff] cursor-pointer">
+                {icons.arrow}
             </div>
             {
                 userData.email == "cosmin@gmail.com" && userData.password == "admin123"
                     ?
-                    <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 w-full gap-2">
+                    <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 py-5 w-full gap-2">
                         {
                             AdminSidebarButtons.map((items, index) => {
                                 return (
@@ -236,13 +235,13 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                         }
                     </div>
                     :
-                    <div className="flex flex-col mt-3 bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-6 py-5 w-full gap-2">
+                    <div className="flex flex-col mt-3 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 max-sm:px-0 py-5 w-full gap-2">
                         {
                             UserSidebarButtons.map((items, index) => {
                                 return (
                                     <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index, items.title, items.icon)}>
                                         <span>{items.icon}</span>
-                                        <span className="font-light text-sm">{items.title}</span>
+                                        <span className="font-light text-xs max-sm:hidden">{items.title}</span>
                                     </Button>
                                 )
                             })

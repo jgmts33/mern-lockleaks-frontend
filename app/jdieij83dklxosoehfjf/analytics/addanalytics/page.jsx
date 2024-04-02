@@ -6,7 +6,7 @@ import {
 import React, { useState } from 'react';
 import { Warning } from "@/components/utils/Icons";
 
-export default function DownloadData() {
+export default function AddAnalytics() {
 
     const [selectDownload , setSelectDownload] = useState(0)
 
@@ -36,7 +36,7 @@ export default function DownloadData() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DOWNLOAD DATA</span>
             </div>

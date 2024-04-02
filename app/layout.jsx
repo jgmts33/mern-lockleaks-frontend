@@ -20,9 +20,6 @@ export default function RootLayout({ children }) {
   const currentPath = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  useEffect(()=>{
-    
-  })
 
   return (
     <Provider store={store}>
