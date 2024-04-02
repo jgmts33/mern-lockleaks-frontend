@@ -91,7 +91,7 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
           <Image src={Flag} width={15} height={15} alt="flag" />
           <span>En</span>
         </div>
-        <div className="flex max-md:hidden text-white">
+        <div className="flex max-md:hidden text-white cursor-pointer">
           <Dropdown>
             <DropdownTrigger>
               <div>
@@ -124,7 +124,7 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
           <span className="font-semibold text-sm">Emilia Clarke</span>
           <span className="font-normal text-xs">EC@gmail.com</span>
         </div>
-        <div onClick={() => { handleUserSetting() }}>
+        <div onClick={() => { handleUserSetting() }} className="cursor-pointer">
           <Badge content="" color="success" shape="circle" placement="bottom-right">
             <Image src={UserAvatar} width={35} height={35} className="" alt="useravatar" />
           </Badge>

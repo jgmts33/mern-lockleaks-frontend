@@ -9,7 +9,7 @@ import Footer from "@/components/layout/Footer";
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import {
-  Link, Button
+  Link, Button,ScrollShadow
 } from '@nextui-org/react';
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -32,7 +32,9 @@ export default function RootLayout({ children }) {
                   <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
                   <div className="flex flex-col w-full gradiant-background">
                     <UserHeader setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
-                    {children}
+                    <ScrollShadow className="h-520px">
+                      {children}
+                    </ScrollShadow>
                   </div>
                 </div>
                 :
