@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation';
 
 export default function ProxyBot() {
     const router = useRouter();
-    const { isvpsOpen, onvpsOpen, onvpsOpenChange } = useDisclosure();
-    
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
     const proxybotContent = [
         {
             vpsname: "VPS1",
