@@ -86,7 +86,7 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
           <Input type="text" label="Search" className="h-7" />
         </div>
       </div>
-      <div className="flex px-5 text-white gap-5 items-center">
+      <div className="flex px-5 text-white gap-7 items-center">
         <div className="flex max-sm:hidden">
           <Image src={Flag} width={15} height={15} alt="flag" />
           <span>En</span>

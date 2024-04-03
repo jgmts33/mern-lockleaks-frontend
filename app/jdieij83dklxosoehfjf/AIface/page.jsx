@@ -64,7 +64,7 @@ export default function AIface() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white">
             <ScrollShadow className="h-[1220px]">
                 <div className='flex gap-16 items-center'>
                     <div><span className='font-extrabold text-lg'>AI FACE ORDERS</span></div>
@@ -86,7 +86,9 @@ export default function AIface() {
                                                     <span className='font-bold text-base'>{items.content}</span>
                                                 </div>
                                             </div>
-                                            <hr className='w-full' />
+                                            <div className='flex px-5'>
+                                                <hr className='w-full' />
+                                            </div>
                                         </div>
                                     )
                                 })
@@ -109,7 +111,9 @@ export default function AIface() {
                                                     <span className='font-bold text-base'>{items.content}</span>
                                                 </div>
                                             </div>
+                                            <div className='flex px-5'>
                                             <hr className='w-full' />
+                                            </div>
                                         </div>
                                     )
                                 })

@@ -66,11 +66,11 @@ export default function AdminDashbaord() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 text-white">
             <div>
                 <span className='font-extrabold text-lg'>OVERVIEW OF INFIRNGEMENT</span>
             </div>
-            <div className='grid grid-cols-4 gap-10 py-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:justify-center max-lg:items-center max-lg:mx-auto'>
+            <div className='grid grid-cols-4 gap-5 py-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:justify-center max-lg:items-center max-lg:mx-auto'>
                 {
                     DashboardOverview.map((items, index) => {
                         return (

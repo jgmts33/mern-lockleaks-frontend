@@ -44,14 +44,14 @@ export default function Scanner() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-10 py-10 container text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 w-full text-white">
             <div className='mt-5'>
                 <span className='font-extrabold text-lg'>SCANNER ORDERS</span>
             </div> 
-            <div className='flex w-full gap-10'>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+            <div className='flex w-full gap-5'>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 px-5 py-10 rounded-[16px] mt-5 w-full'>
                     <ScrollShadow className="h-[320px]">
-                        <div className='flex flex-col scroll px-8 gap-5 scroll-y'>
+                        <div className='flex flex-col scroll px-5 gap-5 scroll-y'>
                             {
                                 ScannerContent.map((items, index) => {
                                     return (

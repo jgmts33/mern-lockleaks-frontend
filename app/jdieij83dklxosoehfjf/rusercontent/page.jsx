@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import { Components} from "@/components/utils/Icons";
+import { Components } from "@/components/utils/Icons";
 import React, { useState } from 'react';
 import GoogleIcon from '@/public/assets/background/Google.svg';
 
@@ -85,7 +85,11 @@ export default function RUserContent() {
                                                     <span className='font-bold text-base'>{items.content}</span>
                                                 </div>
                                             </div>
-                                            <hr className='w-full' />
+                                            <div>
+                                                <div className='flex px-5'>
+                                                    <hr className='w-full' />
+                                                </div>
+                                            </div>
                                         </div>
                                     )
                                 })
@@ -108,7 +112,9 @@ export default function RUserContent() {
                                                     <span className='font-bold text-base'>{items.content}</span>
                                                 </div>
                                             </div>
+                                            <div className='flex px-5'>
                                             <hr className='w-full' />
+                                            </div>
                                         </div>
                                     )
                                 })

@@ -203,7 +203,7 @@ export default function HomePage() {
   useEffect(() => {
     if (screen.width >= 650) {
       const timer = setInterval(() => {
-        if (animationCounter === 7) {
+        if (animationCounter === 2) {
           clearInterval(timer);
         }
         setAnimationCounter(p => p + 1);

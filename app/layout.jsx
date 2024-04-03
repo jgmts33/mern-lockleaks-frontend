@@ -9,7 +9,7 @@ import Footer from "@/components/layout/Footer";
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import {
-  Link, Button,ScrollShadow
+  Link, Button
 } from '@nextui-org/react';
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -24,17 +24,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className + " dark"}>
         <Provider store={store}>
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col">
             {
               currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
                 ?
-                <div className="flex w-full">
+                <div className="flex ">
                   <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-                  <div className="flex flex-col w-full gradiant-background">
+                  <div className="flex flex-col w-full gradiant-background min-h-screen sm:overflow-y-auto">
                     <UserHeader setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
-                    <ScrollShadow className="h-520px">
+                    <div className="h-[calc(100vh-65px)] overflow-y-auto">
                       {children}
-                    </ScrollShadow>
+                      </div>
                   </div>
                 </div>
                 :
