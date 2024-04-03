@@ -72,7 +72,7 @@ export default function VPSManagement() {
                     {
                         UsersData.map((items, index) => {
                             return (
-                                <div className='flex font-semibold text-lg justify-between w-full'>
+                                <div key={index} className='flex font-semibold text-lg justify-between w-full'>
                                     <div className='flex items-center justify-center'><span>{items.vpsip}</span></div>
                                     <div className='flex items-center justify-center'>
                                         <span>{items.users}</span>/

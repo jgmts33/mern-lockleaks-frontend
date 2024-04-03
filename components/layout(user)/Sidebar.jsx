@@ -203,7 +203,6 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const handleSidebarClick = (path, index, title, icon) => {
         setSelectSidebar(index);
         setIsSidebarOpen(false)
-        sessionStorage.setItem("star", false);
         router.push(path);
     }
 
