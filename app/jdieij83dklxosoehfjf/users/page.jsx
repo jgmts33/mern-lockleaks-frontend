@@ -130,7 +130,7 @@ export default function Users() {
                             {
                                 UsersData.map((items, index) => {
                                     return (
-                                        <tr className=''>
+                                        <tr className='' key={index}>
                                             <td className='mt-5 py-7'><span className='flex justify-center'>{items.email}</span></td>
                                             <td className='mt-10 py-7'><span className='flex justify-center'>{items.username}</span></td>
                                             <td className='mt-10 py-7'><span className='flex justify-center'>{items.plan}</span></td>
