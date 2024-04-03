@@ -172,7 +172,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         }, {
             icon: icons.proxybots,
             title: "PROXIES BOTS",
-            path: "/jdieij83dklxosoehfjf/datareport"
+            path: "/jdieij83dklxosoehfjf/proxybot"
         }, {
             icon: icons.management,
             title: "VPS MANAGEMENT",
@@ -180,7 +180,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         }, {
             icon: icons.management,
             title: "REPORTS MANAGEMENT",
-            path: "/jdieij83dklxosoehfjf/personalagent"
+            path: "/jdieij83dklxosoehfjf/profitmanagement"
         }, {
             icon: icons.pingmodels,
             title: "PING MODELS",
@@ -188,11 +188,11 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         }, {
             icon: icons.notification,
             title: "NOTIFICATION",
-            path: "/jdieij83dklxosoehfjf/downloaddata"
+            path: "/jdieij83dklxosoehfjf/notifications"
         }, {
             icon: icons.autocontract,
             title: "AUTO-CONTRACT",
-            path: "/jdieij83dklxosoehfjf/notification"
+            path: "/jdieij83dklxosoehfjf/autocontract"
         }, {
             icon: icons.bing,
             title: "BLOG",
@@ -212,8 +212,8 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     }
 
     return (
-        <div className={`flex flex-col bg-[#000001] text-white max-sm:min-w-full overflow-y-auto min-h-screen max-w-72 w-full max-sm:bg-gradient-to-tr max-sm:from-[#422d57] max-sm:to-[#202741] max-lg:rounded-3xl max-sm:rounded-md justify-start px-3 py-10 max-sm:py-5 z-30 max-md:absolute duration-1000 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
-            <div className="flex">
+        <div className={`flex flex-col bg-[#000001] text-white max-sm:min-w-1/4 overflow-y-auto min-h-screen max-w-72 w-full max-sm:bg-gradient-to-tr max-sm:from-[#422d57] max-sm:to-[#202741] max-lg:rounded-3xl max-sm:rounded-md justify-start px-3 py-10 z-30 max-md:absolute duration-1000 ${isSidebarOpen ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+            <div className="flex w-full">
                 <div className="mx-auto flex items-center justify-around w-full">
                     <div className="flex"><Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
                 </div>
@@ -226,7 +226,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             {
                 userData.email == "cosmin@gmail.com" && userData.password == "admin123"
                     ?
-                    <div className="flex flex-col mt-3 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 py-5 w-full space-y-2">
+                    <div className="flex flex-col mt-3 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 max-sm:py-0 py-5 max-sm:px-0 w-full space-y-2">
                         {
                             AdminSidebarButtons.map((items, index) => {
                                 return (
@@ -239,11 +239,11 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                         }
                     </div>
                     :
-                    <div className="flex flex-col mt-3 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 max-sm:px-0 py-5 w-full gap-2">
+                    <div className="flex flex-col mt-3 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 max-sm:py-0 py-5 w-full gap-2">
                         {
                             UserSidebarButtons.map((items, index) => {
                                 return (
-                                    <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 max-sm:pl-10 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start max-sm:pl-10")} size='sm' onClick={() => handleSidebarClick(items.path, index, items.title, items.icon)}>
+                                    <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index, items.title, items.icon)}>
                                         <span>{items.icon}</span>
                                         <span className="font-light text-xs">{items.title}</span>
                                     </Button>
@@ -252,7 +252,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                         }
                     </div>
             }
-            <div className="flex mx-auto">
+            <div className="flex mt-3 max-sm:mt-0 mx-auto">
                 <Button radius="lg" className="bg-transparent text-white text-base p-5 w-full" size='sm' onClick={() => handleLogout()}>
                     {icons.logout}
                 </Button>

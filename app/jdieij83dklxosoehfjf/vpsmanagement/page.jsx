@@ -61,11 +61,11 @@ export default function VPSManagement() {
                     CONNECT VPS
                 </Button>
             </div>
-            <div className='flex font-semibold text-sm w-full justify-around max-w-[1400px]'>
-                <div><span>VPS IP</span></div>
-                <div><span>USERS</span></div>
-                <div><span>FREE SPACE</span></div>
-                <div><span>STATUS</span></div>
+            <div className='flex font-semibold text-sm w-full justify-between max-w-[1400px] mt-10'>
+                <div className='flex justify-items-start mx-auto'><span>VPS IP</span></div>
+                <div className='grid justify-items-start mx-auto'><span>USERS</span></div>
+                <div className='grid justify-items-start mx-auto'><span>FREE SPACE</span></div>
+                <div className='grid justify-items-start mx-auto'><span>STATUS</span></div>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 w-full'>
                 <ScrollShadow className="h-[300px]">
@@ -73,12 +73,12 @@ export default function VPSManagement() {
                         UsersData.map((items, index) => {
                             return (
                                 <div className='flex font-semibold text-lg justify-between w-full'>
-                                    <div className='flex'><span>{items.vpsip}</span></div>
-                                    <div className='flex'>
+                                    <div className='flex items-center justify-center'><span>{items.vpsip}</span></div>
+                                    <div className='flex items-center justify-center'>
                                         <span>{items.users}</span>/
                                         <span>{items.total_users}</span>
                                     </div>
-                                    <div className='flex space-x-5'>
+                                    <div className='flex items-center justify-center space-x-5'>
                                         <div className='flex'>
                                             <span>{items.first_freespace}</span>/
                                             <span>{items.second_freespace}</span>
@@ -89,8 +89,8 @@ export default function VPSManagement() {
                                             </Button>
                                         </div>
                                     </div>
-                                    <div>
-
+                                    <div className='flex items-center justify-center'>
+                                        <span>{items.status}</span>
                                     </div>
                                 </div>
                             )

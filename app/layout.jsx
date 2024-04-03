@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
                   <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
                   <div className="flex flex-col w-full gradiant-background min-h-screen sm:overflow-y-auto">
                     <UserHeader setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
-                    <div className="h-[calc(100vh-65px)] overflow-y-auto">
+                    <div className="h-[calc(100vh-40px)] overflow-y-auto">
                       {children}
                       </div>
                   </div>
