@@ -237,7 +237,7 @@ const Sidebar = ({ show, setter }) => {
                         }
                     </div>
                     :
-                    <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 py-10 w-full gap-2 max-sm:gap-0 max-sm:py-0 max-lg:py-3">
+                    <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 py-10 w-full gap-2 max-sm:gap-0 max-sm:py-0 max-lg:py-3 cursor-pointer">
                         {
                             UserSidebarButtons.map((items, index) => {
                                 return (
