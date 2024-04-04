@@ -35,7 +35,7 @@ export default function SMscanner() {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
                 <span>Scanning on</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>websites.</span>
             </div>
         }, {
@@ -104,7 +104,7 @@ export default function SMscanner() {
                     </div>
                     <div className='px-20 max-lg:px-0 space-x-1 items-center'>
                         <span className='font-normal text-xs'>Generated a removal report with</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>10.</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>10</span> 
                         <span className='font-normal text-sm'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>

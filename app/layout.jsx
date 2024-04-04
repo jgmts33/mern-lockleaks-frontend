@@ -28,11 +28,11 @@ export default function RootLayout({ children }) {
             {
               currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
                 ?
-                <div className="flex min-h-screen">
+                <div className="flex">
                   <Sidebar show={showSidebar} setter={setShowSidebar} />
                   <div className="flex flex-col w-full gradiant-background">
                     <UserHeader setter={setShowSidebar} />
-                    <div className="flex flex-col flex-grow w-screen md:w-full min-h-screen h-[calc(100vh-50px)] overflow-y-auto">
+                    <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-56px)] overflow-y-auto">
                       {children}
                     </div>
                   </div>

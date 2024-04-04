@@ -20,7 +20,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span className='font-semibold text-sm'>MATCHES WITH SPECIFIED KEYWORDS AND USERNAMES  IN URLs.</span>
                 </div>
             </div>
@@ -31,7 +31,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span className='font-semibold text-sm'>POTENTIAL MATCHES.</span>
                 </div>
             </div>
@@ -42,7 +42,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span className='font-semibold text-sm'>NON-COMPLIANT WEBSITES REGARDING DMCA POLICY.</span>
                 </div>
             </div>
@@ -53,7 +53,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span className='font-semibold text-sm'>WEBSITES COMPLYING WITH DMCA POLICY.</span>
                 </div>
             </div>
@@ -64,7 +64,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>Generated a removal report for</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span className='font-semibold text-sm'>websites in compliance with DMCA policy and forwarded it for removal.</span>
                 </div>
             </div>

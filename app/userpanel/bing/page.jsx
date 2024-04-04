@@ -22,7 +22,7 @@ export default function Bing() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                 <span>Initiated an automated Google search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -33,7 +33,7 @@ export default function Bing() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                 <span>Initiated an automated Google search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -43,7 +43,7 @@ export default function Bing() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                 <span>Initiated an automated Google search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -97,7 +97,7 @@ export default function Bing() {
                 </div>
                 <div className='px-20 max-md:px-5 font-normal text-xs space-x-1'>
                     <span className='font-normal text-xs'>Generated a removal report with </span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span> 
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
                     <span>copyright infringements and forwarded it to Search Engines.</span>
                 </div>
             </div>

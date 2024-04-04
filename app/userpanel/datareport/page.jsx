@@ -23,7 +23,7 @@ export default function DataReport() {
                             <span className='font-extrabold text-lg'>Data Report PDF</span>
                         </div>
                         <div className='mt-10 text-center space-x-1 items-center'>
-                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                             <span className='font-normal text-xs'>Days Remaining Until The Data Report Is Ready For Viewing</span>
                         </div>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto mt-20" size='sm'>
@@ -34,7 +34,7 @@ export default function DataReport() {
                         <div className='flex gap-5'>
                             <div>{icons.warning}</div>
                             <div>
-                                <span className='font-normal text-xs'>THIS 'DATA REPORT' IS A COMPREHENSIVE REPORT OF ALL THE FUNCTIONS USED, ALL THE REMOVALS MADE, AND THE REPORTS SENT FOR REMOVAL. HOWEVER, IT IS IN PDF FORMAT FOR EASIER VIEWING AND ACCESSIBILITY, ALLOWING CLIENTS TO DOWNLOAD THE REPORT IN PDF FORMAT TO KEEP IT ON THEIR DEVICE/COMPUTER AND REVIEW OUR WORK  AND THE EFFORTS OF OUR AUTOMATED PROGRAM.</span>
+                                <span className='font-normal text-xs'>THIS 'DATA REPORT' IS A COMPREHENSIVE REPORT OF ALL THE FUNCTIONS USED, ALL THE REMOVALS MADE, AND THE REPORTS SENT FOR REMOVAL. HOWEVER, IT IS IN PDF FORMAT FOR EASIER VIEWING AND ACCESSIBILITY, ALLOWING CLIENTS TO DOWNLOAD THE REPORT IN PDF FORMAT TO KEEP IT ON THEIR DEVICE/COMPUTER AND REVIEW OUR WORK AND THE EFFORTS OF OUR AUTOMATED PROGRAM.</span>
                             </div>
                         </div>
                     </div> 

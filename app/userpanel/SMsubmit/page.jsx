@@ -51,11 +51,11 @@ export default function SMsubmit() {
                     <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base'>Select the platform icon where you want to report the profile.</span>
-                            <div className='flex justify-around mt-5 max-xl:justify-center px-2 max-xl:gap-6 max-sm:gap-5'>
+                            <div className='flex justify-around mt-5 max-lg:justify-between px-2 max-xl:gap-0 max-sm:gap-5'>
                                 {
                                     SOcialMediaButtons.map((items, index) => {
                                         return (
-                                            <Button key={index} radius="sm" size='md' className={('bg-transparent ') + (isselect == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "")} onClick={() => setSelect(index)}><span>{items.icon}</span></Button>
+                                            <Button key={index} radius="sm" size='md' isIconOnly className={('bg-transparent p-6 ') + (isselect == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "")} onClick={() => setSelect(index)}><span>{items.icon}</span></Button>
                                         )
                                     })
                                 }
@@ -80,7 +80,7 @@ export default function SMsubmit() {
                     </div>
                     <div className='px-20 max-xl:px-5 space-x-1'>
                         <span className='font-normal text-xs'>Generated a removal report with</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
                         <span className='font-normal text-xs'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>

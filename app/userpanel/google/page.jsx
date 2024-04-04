@@ -22,7 +22,7 @@ export default function Google() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated an automated Google search, resulting in the detection of </span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -33,7 +33,7 @@ export default function Google() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated an automated Google Images search, resulting in the detection of</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -43,7 +43,7 @@ export default function Google() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated an automated Google Images search, resulting in the detection of</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>

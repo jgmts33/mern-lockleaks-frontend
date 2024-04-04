@@ -48,7 +48,7 @@ export default function AIfaceprofile() {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
                 <span>Scanning on</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>websites.</span>
             </div>
         },
@@ -157,7 +157,7 @@ export default function AIfaceprofile() {
                     </div>
                     <div className='px-20 max-w-[1000px] max-md:px-5 items-center space-x-1'>
                         <span className='font-normal text-xs'>Generated a removal report with</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                         <span className='font-normal text-xs'>copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
                     </div>
                 </div>

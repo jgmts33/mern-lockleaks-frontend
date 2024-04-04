@@ -9,6 +9,7 @@ import { Cancel, Shape, PaperClip, PaperPlane } from "@/components/utils/Icons";
 
 export default function TicketDetail() {
     const [value, setValue] = React.useState(100);
+    const [selectticket, setSelectTicket] = React.useState(-1);
     const router = useRouter();
 
     const icons = {
@@ -25,6 +26,13 @@ export default function TicketDetail() {
     const handleGoPreviousPage = () => {
         history.back()
     }
+
+    const TicketTitle = [
+        {
+            date: "#10 / February 27, 2024",
+            title: "Ticket Title"
+        }
+    ]
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
@@ -49,8 +57,16 @@ export default function TicketDetail() {
                         </Button>
                     </div>
                     <div className='flex flex-col pt-10 space-y-3'>
-                        <span className='font-normal text-sm'>#10 / February 27, 2024</span>
-                        <span className='font-semibold text-[18px]'>Ticket Title</span>
+                        {
+                            TicketTitle.map((item, index) => {
+                                return (
+                                    <div key={index} className={selectticket == index ? 'flex flex-col bg-gradient-to-tr from-purple-light to-purple-weight p-2 rounded-lg' : "flex flex-col"} onClick={()=>setSelectTicket(index)}>
+                                        <span className='font-normal text-sm'>{item.date}</span>
+                                        <span className='font-semibold text-[18px]'>{item.title}</span>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                     <Progress
                         size="md"

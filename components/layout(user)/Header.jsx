@@ -143,13 +143,13 @@ const UserHeader = ({ setter }) => {
               <DropdownItem>
                 <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
                   <span>{icons.accountsetting}</span>
-                  <span>account settings</span>
+                  <span>Account Settings</span>
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <div className="flex w-full space-x-1 mx-auto pl-1" onClick={() => handleLogOut()}>
+                <div className="flex w-full space-x-2 mx-auto pl-1" onClick={() => handleLogOut()}>
                   <span>{icons.logout}</span>
-                  <span>log out</span>
+                  <span>Log out</span>
                 </div>
               </DropdownItem>
             </DropdownMenu>
