@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from 'next/image';
-import { YellowStar, Search, Dot, Pencil, Trash, Control, Window,LogOut } from "@/components/utils/Icons";
+import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, AccountSetting } from "@/components/utils/Icons";
 import { useCallback, useEffect, useState } from 'react';
 import {
   Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input
@@ -25,6 +25,7 @@ const UserHeader = ({ setter }) => {
     control: <Control fill="currentColor" size={16} />,
     window: <Window fill="currentColor" size={16} />,
     logout: <LogOut fill="currentColor" size={16} />,
+    accountsetting: <AccountSetting fill="currentColor" size={16} />,
   };
 
   const handleUserSetting = () => {
@@ -52,7 +53,7 @@ const UserHeader = ({ setter }) => {
   return (
     <div className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
       <div className="flex px-2 items-center max-sm:justify-center max-sm:px-0">
-        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-md:block" size='sm' onClick={() => {setter(oldVal => !oldVal);}}>
+        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-md:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -122,7 +123,7 @@ const UserHeader = ({ setter }) => {
             </DropdownMenu>
           </Dropdown>
         </div>
-        <div className="flex flex-col max-sm:hidden">
+        <div className="flex flex-col max-sm:hidden" >
           <span className="font-semibold text-sm">Emilia Clarke</span>
           <span className="font-normal text-xs">EC@gmail.com</span>
         </div>
@@ -137,18 +138,18 @@ const UserHeader = ({ setter }) => {
             </DropdownTrigger>
             <DropdownMenu
               aria-label="Action event example"
-              className="text-white max-w-full"
+              className="text-white"
             >
               <DropdownItem>
-                <div className="flex w-full">
-                  <div onClick={()=>handleUserSetting()}><span>account settings</span></div>
+                <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
+                  <span>{icons.accountsetting}</span>
+                  <span>account settings</span>
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <div className="flex mx-auto">
-                  <Button radius="lg" className="bg-transparent text-white text-base p-5 w-full" size='sm' onClick={()=>handleLogOut()}>
-                    {icons.logout}
-                  </Button>
+                <div className="flex w-full space-x-1 mx-auto pl-1" onClick={() => handleLogOut()}>
+                  <span>{icons.logout}</span>
+                  <span>log out</span>
                 </div>
               </DropdownItem>
             </DropdownMenu>
