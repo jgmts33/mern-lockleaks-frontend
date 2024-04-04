@@ -44,7 +44,7 @@ export default function Scanner() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 w-full text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 w-full container text-white">
             <div className='mt-5'>
                 <span className='font-extrabold text-lg'>SCANNER ORDERS</span>
             </div> 

@@ -199,14 +199,14 @@ const Sidebar = ({ show, setter }) => {
     ]
 
     const handleSidebarClick = (path, index, title, icon) => {
+        setter(false)
         setSelectSidebar(index);
-        setIsSidebarOpen(false)
         router.push(path);
     }
 
     const ModalOverlay = () => (
         <div
-            className={`flex md:hidden fixed top-0 right-0 bottom-0 left-0 bg-black/50 z-10`}
+            className={`flex md:hidden fixed top-0 right-0 bottom-0 left-0 bg-black/80 z-10`}
             onClick={() => {
                 setter(oldVal => !oldVal);
             }}

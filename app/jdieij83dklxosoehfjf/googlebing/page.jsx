@@ -76,7 +76,6 @@ export default function GoogleBing() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white">
-            <ScrollShadow className="h-[1220px]">
                 <div className='flex gap-16 items-center'>
                     <div><span className='font-extrabold text-lg'>GOOGLE & BING ORDERS</span></div>
                 </div>
@@ -172,7 +171,6 @@ export default function GoogleBing() {
                         </ScrollShadow>
                     </div>
                 </div>
-            </ScrollShadow>
         </div>
     )
 }

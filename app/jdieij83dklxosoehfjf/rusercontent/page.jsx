@@ -11,7 +11,6 @@ export default function RUserContent() {
     const [selectUserPhoto, setSelectUserPhoto] = useState(0)
     const [selectContentUser, setSelectContentUser] = useState(0)
 
-
     const icons = {
         components: <Components fill="currentColor" size={16} />,
     };
@@ -64,7 +63,6 @@ export default function RUserContent() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white">
-            <ScrollShadow className="h-[1220px]">
                 <div className='flex gap-16 items-center'>
                     <div><span className='font-extrabold text-lg'>R & R User Content Orders</span></div>
                 </div>
@@ -168,7 +166,6 @@ export default function RUserContent() {
                         </ScrollShadow>
                     </div>
                 </div>
-            </ScrollShadow>
         </div>
     )
 }
