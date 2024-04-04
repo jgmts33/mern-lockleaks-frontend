@@ -18,7 +18,7 @@ export default function RecoveryUsers() {
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
-                <div className='flex justify-between '>
+                <div className='flex justify-center space-x-10'>
                     <div className='mt-10 font-extrabold text-lg max-sm:text-base max-sm:mt-5'><span>Recovery Usernames</span></div>
                     <div className='mt-10 font-extrabold text-lg mr-24 max-lg:mr-0 max-sm:text-base max-sm:mt-5'><span>Profile Content Removal</span></div>
                 </div>
@@ -76,7 +76,7 @@ export default function RecoveryUsers() {
                     </div>
                     <div className='px-20 max-lg:px-3 items-center space-x-1'>
                         <span className='font-normal text-xs'>Generated a removal report for</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span> 
                         <span className='font-normal text-xs'>copyright infringements, encompassing AI results, matched photos & profiles, and manually forwarded it to Recovery Usernames Platforms.</span>
                     </div>
                 </div>

@@ -23,7 +23,7 @@ export default function DataReport() {
                             <span className='font-extrabold text-lg'>Data Report PDF</span>
                         </div>
                         <div className='mt-10 text-center space-x-1 items-center'>
-                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
                             <span className='font-normal text-xs'>Days Remaining Until The Data Report Is Ready For Viewing</span>
                         </div>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto mt-20" size='sm'>

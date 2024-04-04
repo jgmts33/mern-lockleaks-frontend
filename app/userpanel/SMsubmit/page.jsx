@@ -55,7 +55,7 @@ export default function SMsubmit() {
                                 {
                                     SOcialMediaButtons.map((items, index) => {
                                         return (
-                                            <Button key={index} isIconOnly className={('bg-transparent rounded-full ') + (isselect == index ? "bg-cyan-600 shadow-xl shadow-cyan-200/50" : "")} onClick={() => setSelect(index)}><span>{items.icon}</span></Button>
+                                            <Button key={index} radius="sm" size='md' className={('bg-transparent ') + (isselect == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "")} onClick={() => setSelect(index)}><span>{items.icon}</span></Button>
                                         )
                                     })
                                 }
@@ -80,7 +80,7 @@ export default function SMsubmit() {
                     </div>
                     <div className='px-20 max-xl:px-5 space-x-1'>
                         <span className='font-normal text-xs'>Generated a removal report with</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span> 
                         <span className='font-normal text-xs'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>

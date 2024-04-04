@@ -113,7 +113,7 @@ export default function RUserContent() {
                                                 </div>
                                             </div>
                                             <div className='flex px-5'>
-                                            <hr className='w-full' />
+                                                <hr className='w-full' />
                                             </div>
                                         </div>
                                     )
@@ -134,7 +134,7 @@ export default function RUserContent() {
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <div className='px-4'>
-                                                    <Button radius="lg" className={selectUserPhoto == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={() => setSelectUserPhoto(index)}>
+                                                    <Button radius="lg" className={("border border-white/40 ") + (selectUserPhoto == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectUserPhoto(index)}>
                                                         Accept
                                                     </Button>
                                                 </div>
@@ -156,7 +156,7 @@ export default function RUserContent() {
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <div className='px-4'>
-                                                    <Button radius="lg" className={selectContentUser == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={() => setSelectContentUser(index)}>
+                                                    <Button radius="lg" className={("border border-white/40 ") + (selectContentUser == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectContentUser(index)}>
                                                         Accept
                                                     </Button>
                                                 </div>

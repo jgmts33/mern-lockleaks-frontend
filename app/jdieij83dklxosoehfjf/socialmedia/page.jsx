@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import { Components} from "@/components/utils/Icons";
+import { Components } from "@/components/utils/Icons";
 import React, { useState } from 'react';
 import GoogleIcon from '@/public/assets/background/Google.svg';
 
@@ -86,7 +86,7 @@ export default function SocialMedia() {
                                                 </div>
                                             </div>
                                             <div className='flex px-5'>
-                                            <hr className='w-full' />
+                                                <hr className='w-full' />
                                             </div>
                                         </div>
                                     )
@@ -111,7 +111,7 @@ export default function SocialMedia() {
                                                 </div>
                                             </div>
                                             <div className='flex px-5'>
-                                            <hr className='w-full' />
+                                                <hr className='w-full' />
                                             </div>
                                         </div>
                                     )
@@ -132,7 +132,7 @@ export default function SocialMedia() {
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <div className='px-4'>
-                                                    <Button radius="lg" className={selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={() => setSelectGoogleAccept(index)}>
+                                                    <Button radius="lg" className={("border border-white/40 ") + (selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectGoogleAccept(index)}>
                                                         Accept
                                                     </Button>
                                                 </div>
@@ -154,7 +154,7 @@ export default function SocialMedia() {
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <div className='px-4'>
-                                                    <Button radius="lg" className={selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={() => setSelectBingAccept(index)}>
+                                                    <Button radius="lg" className={("border border-white/40 ") + (selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectBingAccept(index)}>
                                                         Accept
                                                     </Button>
                                                 </div>

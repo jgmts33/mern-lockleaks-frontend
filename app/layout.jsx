@@ -18,7 +18,7 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   const currentPath = usePathname();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <html lang="en">
@@ -29,9 +29,9 @@ export default function RootLayout({ children }) {
               currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
                 ?
                 <div className="flex ">
-                  <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+                  <Sidebar show={showSidebar} setter={setShowSidebar} />
                   <div className="flex flex-col w-full gradiant-background min-h-screen sm:overflow-y-auto">
-                    <UserHeader setIsSidebarOpen={setIsSidebarOpen} isSidebarOpen={isSidebarOpen} />
+                    <UserHeader setter={setShowSidebar} />
                     <div className="h-[calc(100vh-40px)] overflow-y-auto">
                       {children}
                       </div>

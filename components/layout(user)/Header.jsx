@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from 'next/image';
-import { YellowStar, Search, Dot, Pencil, Trash, Control, Window } from "@/components/utils/Icons";
+import { YellowStar, Search, Dot, Pencil, Trash, Control, Window,LogOut } from "@/components/utils/Icons";
 import { useCallback, useEffect, useState } from 'react';
 import {
   Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input
@@ -11,7 +11,7 @@ import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
-const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
+const UserHeader = ({ setter }) => {
   const router = useRouter();
   const userData = useSelector((state) => state.auth);
   const [isSearch, setSearch] = useState(false)
@@ -24,6 +24,7 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
     trash: <Trash fill="currentColor" size={16} />,
     control: <Control fill="currentColor" size={16} />,
     window: <Window fill="currentColor" size={16} />,
+    logout: <LogOut fill="currentColor" size={16} />,
   };
 
   const handleUserSetting = () => {
@@ -44,13 +45,14 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
     }
   ]
 
-  const handleSelectSidebar = () => {
+  const handleLogOut = () => {
+    router.push("/auth/login")
   }
 
   return (
     <div className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
       <div className="flex px-2 items-center max-sm:justify-center max-sm:px-0">
-        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-md:block" size='sm' onClick={() => {setter(oldVal => !oldVal);}}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -75,7 +77,7 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
             :
             false
         }
-        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={()=>handleSelectSidebar()}>
+        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => handleSelectSidebar()}>
           {icons.yellowstar}
         </Button>
         <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-white max-sm:hidden"></div>
@@ -124,10 +126,33 @@ const UserHeader = ({ setIsSidebarOpen, isSidebarOpen }) => {
           <span className="font-semibold text-sm">Emilia Clarke</span>
           <span className="font-normal text-xs">EC@gmail.com</span>
         </div>
-        <div onClick={() => { handleUserSetting() }} className="cursor-pointer">
-          <Badge content="" color="success" shape="circle" placement="bottom-right">
-            <Image src={UserAvatar} width={35} height={35} className="" alt="useravatar" />
-          </Badge>
+        <div className="cursor-pointer">
+          <Dropdown>
+            <DropdownTrigger>
+              <div>
+                <Badge content="" color="success" shape="circle" placement="bottom-right">
+                  <Image src={UserAvatar} width={35} height={35} className="" alt="useravatar" />
+                </Badge>
+              </div>
+            </DropdownTrigger>
+            <DropdownMenu
+              aria-label="Action event example"
+              className="text-white max-w-full"
+            >
+              <DropdownItem>
+                <div className="flex w-full">
+                  <div onClick={()=>handleUserSetting()}><span>account settings</span></div>
+                </div>
+              </DropdownItem>
+              <DropdownItem>
+                <div className="flex mx-auto">
+                  <Button radius="lg" className="bg-transparent text-white text-base p-5 w-full" size='sm' onClick={()=>handleLogOut()}>
+                    {icons.logout}
+                  </Button>
+                </div>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </div>
       </div>
     </div>

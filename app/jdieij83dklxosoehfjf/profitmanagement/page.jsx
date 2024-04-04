@@ -31,6 +31,9 @@ export default function ProfitManagement() {
             <div><span className=''>INFO</span></div>
             <div className='flex items-center justify-between max-w-[1100px]'>
                 <div>
+                    
+                </div>
+                <div>
                     <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm' onClick={() => handleAddProxy()}>
                         Add
                     </Button>

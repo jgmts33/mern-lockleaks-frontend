@@ -32,7 +32,7 @@ export default function Analytics() {
     ]
 
     const handleGoAddAnalytics = () => {
-        router.push("/")
+        router.push("/jdieij83dklxosoehfjf/analytics/addanalytics")
     }
 
 
@@ -42,7 +42,7 @@ export default function Analytics() {
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
             <div className='mt-10'>
-                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm' onClick={()=>handleGoAddAnalytics()}>
+                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm' onClick={()=>handleGoAddAnalytics()}>
                     Add
                 </Button>
             </div>

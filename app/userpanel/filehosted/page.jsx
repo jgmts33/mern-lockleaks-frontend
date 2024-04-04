@@ -17,10 +17,10 @@ export default function FileHosted() {
             icon: icons.components,
             title: "",
             content: 
-            <div className='flex items-center space-x-2'>
-                <div>
+            <div className='flex items-center'>
+                <div className='flex space-x-1 items-center'>
                 <span>FOUND</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'> 10 </span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
                 <span>DOWNLOAD URLs.</span>
                 </div>
             </div>
@@ -32,9 +32,9 @@ export default function FileHosted() {
         }, {
             icon: icons.components,
             content: 
-            <div className='flex items-center space-x-2'>
-                <div><span>Generated a removal report for</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'> 10 </span>
+            <div className='flex items-center space-x-1'>
+                <div className='flex space-x-1 items-center'><span>Generated a removal report for</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
                 <span>FileHosts in compliance with DMCA policy and forwarded it for removal.</span></div>
             </div>
         }
