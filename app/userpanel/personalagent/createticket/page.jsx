@@ -24,6 +24,9 @@ export default function CreateTicket() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+            {/* This section for define create ticket header?*/}
+
             <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
             </div>
@@ -33,6 +36,9 @@ export default function CreateTicket() {
                 <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
                 </div>
             </div>
+
+            {/* This section for define create ticket content?*/}
+
             <div className="flex flex-col px-10 py-5 mt-10 mx-auto max-w-[750px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] p-5 max-md:px-3">
                 <div className='flex flex-col w-full p-5'>
                     <label>Subject</label>

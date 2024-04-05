@@ -73,6 +73,9 @@ export default function AdultWesite() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+            {/* This section for define Adult Website*/}
+
             <div className='flex gap-10 items-center max-md:flex-col max-md:gap-5'>
                 <div>
                     <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-sm" size='sm'>
@@ -92,6 +95,9 @@ export default function AdultWesite() {
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
                 <span className='font-medium text-lg text-white/50'>Scanning 10 websites using Specified keywords and Usernames</span>
             </div>
+
+            {/* This section for define Adult Website Content*/}
+
             <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-md:p-0 pb-20">
                 {
                     ScannerContent.map((items, index) => {

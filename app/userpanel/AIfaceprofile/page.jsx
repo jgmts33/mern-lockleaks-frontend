@@ -72,6 +72,9 @@ export default function AIfaceprofile() {
     return (
         <>
             <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+                {/* This section for define AI face profile page*/}
+
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>AIFACE PROFILES</span></div>
@@ -89,6 +92,9 @@ export default function AIfaceprofile() {
                         showValueLabel={true}
                     />
                 </div>
+
+                {/* This section for define AI face profile content*/}
+
                 <div className='flex max-w-[700px] w-full justify-between mt-10 max-md:flex-col max-md:gap-2'>
                     <span className='font-extrabold text-lg max-md:text-base'>Photo for Removal Refference</span>
                 </div>
@@ -160,6 +166,9 @@ export default function AIfaceprofile() {
                         })
                     }
                 </div>
+
+                {/* This section for define AI face profile footer*/}
+
                 <div className="flex items-center px-16 py-5 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5 max-lg:py-5 max-lg:px-5 max-md:flex-col">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>

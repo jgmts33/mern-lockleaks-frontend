@@ -9,10 +9,16 @@ export default function AccountSetting() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+            {/* This section for define Account Settings header*/}
+
             <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>ACCOUNT SETTINGS</span>
             </div>
             <div className='grid grid-cols-4 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-md:gap-3'>
+
+                {/* This section for define Personal Details*/}
+
                 <div className='flex flex-col bg-gradient-to-br bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Personal Details</span>
@@ -39,6 +45,9 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
+
+                {/* This section for define Subscription info*/}
+
                 <div className='flex flex-col bg-gradient-to-br bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Subscription info</span>
@@ -56,6 +65,9 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
+
+                {/* This section for define Contract Lockleaks*/}
+
                 <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Contract Lockleaks</span>
@@ -68,6 +80,9 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
+
+                {/* This section for define Tutorials*/}
+
                 <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Tutorials</span>

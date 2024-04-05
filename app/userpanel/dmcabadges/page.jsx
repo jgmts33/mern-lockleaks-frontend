@@ -12,6 +12,9 @@ export default function DmcaBadges() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+            {/* This section for define dmcabadges header?*/}
+
             <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
@@ -19,6 +22,9 @@ export default function DmcaBadges() {
                 <span className='font-normal text-xs text-white/65'>Click the "Download Badge" button to download the DMCA badge.</span>
                 <span className='font-normal text-xs text-white/65'>Press the "Embed Your Badge" button to automatically copy the embed code for your website.</span>
             </div>
+
+            {/* This section for define dmcabadges content?*/}
+
             <div className='grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 gap-10 max-xl:mx-auto max-xl:justify-center max-xl:items-center max-lg:gap-0'>
                 <div className='flex flex-col'>
                     <div className="flex border max-w-[450px] max-md:min-w-full border-gray-500 rounded-[23px] mt-10 cursor-pointer">

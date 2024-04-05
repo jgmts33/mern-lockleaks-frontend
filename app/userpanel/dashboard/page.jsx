@@ -49,9 +49,15 @@ export default function Dashbaord() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white">
+
+            {/* This section for define dashboard header*/}
+
             <div className='flex max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>OVERVIEW OF INFIRNGEMENT</span>
             </div>
+
+            {/* This section for define dashboard content*/}
+
             <div className='grid grid-cols-3 gap-10 py-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:justify-center max-lg:items-center max-lg:mx-auto'>
                 {
                     DashboardOverview.map((items, index) => {

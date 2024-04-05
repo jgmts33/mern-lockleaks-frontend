@@ -14,9 +14,15 @@ export default function DataAnalytics() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+        {/* This section for define dataanalytics header?*/}
+
             <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
+
+            {/* This section for define dataanalytics content?*/}
+
             <div className='flex gap-10 max-xl:flex-col max-lg:gap-0'>
                 <div className="flex flex-col max-w-[400px] max-xl:mx-auto max-lg:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                     <div className='mx-auto'>

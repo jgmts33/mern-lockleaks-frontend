@@ -36,9 +36,15 @@ export default function SMsubmit() {
     return (
         <>
             <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto max-lg:px-3">
+
+                {/* This section for define Social Submit header*/}
+
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SUBMIT</span></div>
                 </div>
+
+                {/* This section for define Social Submit content*/}
+
                 <div className='grid grid-cols-3 gap-10 max-2xl:gap-2 max-xl:flex-col max-xl:flex max-xl:gap-0'>
                     <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
                         <div className='flex max-w-[330px] max-xl:max-w-full'>
@@ -73,6 +79,9 @@ export default function SMsubmit() {
                         </div>
                     </div>
                 </div>
+
+                {/* This section for define Social Media Submit result*/}
+
                 <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-xl:flex-col max-xl:px-3">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>

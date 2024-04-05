@@ -76,6 +76,9 @@ export default function AIImage() {
     return (
         <>
             <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+                {/* This section for define AI face images header*/}
+
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>SCANNER</span></div>
@@ -94,6 +97,9 @@ export default function AIImage() {
                         showValueLabel={true}
                     />
                 </div>
+
+                {/* This section for define AI face images upload*/}
+
                 <div className='flex max-w-[750px] w-full mt-10 max-lg:gap-20'>
                     <div><span className='font-extrabold text-lg max-lg:text-base'>Photo for Removal Refference</span></div>
                 </div>
@@ -150,6 +156,9 @@ export default function AIImage() {
                         </div>
                     </div>
                 </div>
+
+                {/* This section for define AI face images scan list*/}
+
                 <div className='flex flex-col mt-5'>
                     {
                         scanResults.map((items, index) => {

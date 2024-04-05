@@ -15,9 +15,15 @@ export default function RecoveryUsers() {
     return (
         <>
             <div className="flex flex-col bg-gradient-to-tr py-5 px-5 text-white max-lg:mx-auto">
+
+                {/* This section for define rusercontent header*/}
+
                 <div className='flex gap-16 items-center max-lg:mx-auto max-lg:text-center'>
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
+
+                {/* This section for define rusercontent content*/}
+
                 <div className='flex mt-10 max-sm:mt-0 w-full max-2xl:space-x-10 max-lg:space-x-0 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
                     <div className='flex flex-col w-2/3 max-lg:w-full'>
                         <div className='text-center justify-center items-center font-extrabold text-lg max-sm:text-base max-sm:mt-5'><span>Recovery Usernames</span></div>
@@ -65,6 +71,9 @@ export default function RecoveryUsers() {
                         </div>
                     </div>
                 </div>
+
+                {/* This section for define how does it work?*/}
+
                 <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full">
                     <div className='flex items-center'>
                         <span className='font-normal text-base'>How does it work?</span>
@@ -73,6 +82,9 @@ export default function RecoveryUsers() {
                         <span className='font-normal text-sm'>Upload a picture of yourself to 'Profile Content Removal', then choose whether you want to upload a picture of yourself for automatic facial scanning or if you want to use your username.</span>
                     </div>
                 </div>
+
+                {/* This section for define HISTORICAL PROFILE RESULTS?*/}
+
                 <div className="flex items-center justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10 max-lg:flex-col max-lg:px-3">
                     <div className='flex gap-5 max-w-[350px] w-full items-center'>
                         <div>{icons.components}</div>

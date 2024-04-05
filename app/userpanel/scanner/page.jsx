@@ -66,6 +66,9 @@ export default function Scanner() {
     return (
         <>
             <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+            {/* This section for define scanner header*/}
+
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     <div>
@@ -82,6 +85,9 @@ export default function Scanner() {
                         showValueLabel={true}
                     />
                 </div>
+
+                {/* This section for define scanner content*/}
+
                 <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
                     {
                         ScannerContent.map((items, index) => {
@@ -100,6 +106,9 @@ export default function Scanner() {
                         })
                     }
                 </div>
+
+                {/* This section for define scanner footer*/}
+
                 <div className="flex items-center px-20 max-lg:px-3 max-lg:flex-col py-8 max-md:flex-col justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.complete}</div>

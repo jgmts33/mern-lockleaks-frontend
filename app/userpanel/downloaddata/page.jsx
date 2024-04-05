@@ -37,6 +37,9 @@ export default function DownloadData() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+            {/* This section for define download data header?*/}
+
             <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>DOWNLOAD DATA</span>
             </div>
@@ -62,6 +65,9 @@ export default function DownloadData() {
                     </div>
                 </ScrollShadow>
             </div>
+
+            {/* This section for define download data warning?*/}
+
             <div className='flex bg-white/10 shadow-sm py-5 px-16 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full'>
                 <div>{icons.warning}</div>
                 <div className='flex gap-16 max-md:flex-col max-md:gap-1'>
