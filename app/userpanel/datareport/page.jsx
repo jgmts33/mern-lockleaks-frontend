@@ -31,7 +31,7 @@ export default function DataReport() {
                         </Button>
                     </div>
                     <div className="flex flex-col max-w-[960px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 max-xl:mt-0 px-16 py-10 pb-20">
-                        <div className='flex gap-5'>
+                        <div className='flex gap-5 max-md:flex-col'>
                             <div>{icons.warning}</div>
                             <div>
                                 <span className='font-normal text-xs'>THIS 'DATA REPORT' IS A COMPREHENSIVE REPORT OF ALL THE FUNCTIONS USED, ALL THE REMOVALS MADE, AND THE REPORTS SENT FOR REMOVAL. HOWEVER, IT IS IN PDF FORMAT FOR EASIER VIEWING AND ACCESSIBILITY, ALLOWING CLIENTS TO DOWNLOAD THE REPORT IN PDF FORMAT TO KEEP IT ON THEIR DEVICE/COMPUTER AND REVIEW OUR WORK AND THE EFFORTS OF OUR AUTOMATED PROGRAM.</span>

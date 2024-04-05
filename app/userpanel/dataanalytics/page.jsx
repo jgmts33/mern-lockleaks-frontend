@@ -30,7 +30,7 @@ export default function DataAnalytics() {
                     </Button>
                 </div>
                 <div className="flex flex-col max-w-[960px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 px-16 py-10 pb-20 max-md:px-5 max-xl:mt-0 max-lg:mt-5">
-                    <div className='flex gap-5'>
+                    <div className='flex gap-5 max-md:flex-col'>
                         <div>{icons.warning}</div>
                         <div>
                             <span className='font-normal text-xs'>This Data Analystic And INSIGHTS REPORT ENCOMPASSES ALL THE DATA COLLECTED OVER A MONTH, METICULOUSLY PROCESSED BY OUR TEAM OF AGENTS. WE CONDUCT COMPREHENSIVE DATA COLLECTION, SCANNING, AND VERIFICATION PROCESSES TO UNDERSTAND THE REASONS BEHIND CONTENT LEAKS OR ITS USE BY OTHER PARTIES, ESPECIALLY IN CASES OF CATFISHING. WE INVESTIGATE WHETHER THERE HAVE BEEN INSTANCES OF DECEPTION INVOLVING CONTENT OR MODEL PROFILE,AS WELL AS ANY SUSPICIONS RELATED TO FRAUDULENT ACTIVITIES OR SIMPLE IMPERSONATION THAT LED TO CONTENT LEAKS. THIS REPORT PROVIDES A DETAILED ANALYSIS ACCOMPANIED BY ILLUSTRATIONS TO GIVE YOU A COMPREHENSIVE UNDERSTANDING OF THE FINDINGS.</span>

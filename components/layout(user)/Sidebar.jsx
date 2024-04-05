@@ -233,7 +233,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                             {
                                 AdminSidebarButtons.map((items, index) => {
                                     return (
-                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 gap-1 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                             {
                                                 selectstar && index == selectSidebar ?
                                                     <span>{icons.yellowstar}</span>
