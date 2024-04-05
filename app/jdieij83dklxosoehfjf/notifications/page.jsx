@@ -15,7 +15,7 @@ export default function Notifications() {
             <div>
                 <span className='font-extrabold text-lg'>NOTIFICATIONS</span>
             </div>
-            <div className='flex space-x-5'>
+            <div className='flex space-x-5 mt-10'>
                 <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] w-1/2'>
                     <ScrollShadow className='flex h-[400px] justify-between'>
                         <span className='font-semibold text-base'>NOTIFICATION FROM ALL MODULES</span>

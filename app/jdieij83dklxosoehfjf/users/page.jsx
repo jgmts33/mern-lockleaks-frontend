@@ -48,7 +48,7 @@ export default function Users() {
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
-            <div className='flex max-w-[1232px] justify-between'>
+            <div className='flex max-w-[1232px] justify-between mt-10'>
                 <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: 10</span>
                 <span className='font-semibold text-base'>TOTAL USERS: 10</span>
                 <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: 10</span>
@@ -115,48 +115,56 @@ export default function Users() {
                 />
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 w-full'>
-                <ScrollShadow className="h-[300px]">
-                    <table class="table-auto w-full items-center">
-                        <thead>
-                            <tr>
-                                <th><span>Email</span></th>
-                                <th><span>Username</span></th>
-                                <th><span>Plan</span></th>
-                                <th><span>Ban</span></th>
-                                <th><span>Data</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                UsersData.map((items, index) => {
-                                    return (
-                                        <tr className='' key={index}>
-                                            <td className='mt-5 py-7'><span className='flex justify-center'>{items.email}</span></td>
-                                            <td className='mt-10 py-7'><span className='flex justify-center'>{items.username}</span></td>
-                                            <td className='mt-10 py-7'><span className='flex justify-center'>{items.plan}</span></td>
-                                            <td className='mt-10 py-7'>
-                                                <div className='flex justify-center space-x-5'>
-                                                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
-                                                        Yes
-                                                    </Button>
-                                                    <Button radius="lg" className="bg-gradient-to-tr from-gray-600 to-gray-800 text-white shadow-lg px-7 text-lg" size='sm'>
-                                                        No
-                                                    </Button>
-                                                </div>
-                                            </td>
-                                            <td className='mt-10 py-7'>
-                                                <div className='flex justify-center'>
-                                                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm' onClick={() => handleShowMoreDetails()}>
-                                                        View
-                                                    </Button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
+                <ScrollShadow className='h-[400px]'>
+                    <div className='grid grid-cols-5 w-full'>
+                        <div>
+                            <span>Email</span>
+                        </div>
+                        <div>
+                            <span>Username</span>
+                        </div>
+                        <div>
+                            <span>Plan</span>
+                        </div>
+                        <div>
+                            <span>Ban</span>
+                        </div>
+                        <div>
+                            <span>Data</span>
+                        </div>
+                    </div>
+                    <div className='w-full'>
+                        {
+                            UsersData.map((items, index) => {
+                                return (
+                                    <div className='grid grid-cols-5 space-y-5 font-normal text-sm items-center'>
+                                        <div className='flex mt-5'>
+                                            <span>{items.email}</span>
+                                        </div>
+                                        <div className='flex'>
+                                            <span>{items.username}</span>
+                                        </div>
+                                        <div className='flex'>
+                                            <span>{items.plan}</span>
+                                        </div>
+                                        <div className='flex gap-2'>
+                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
+                                                Yes
+                                            </Button>
+                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} size='sm'>
+                                                No
+                                            </Button>
+                                        </div>
+                                        <div className='flex'>
+                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
+                                                View
+                                            </Button>                                        
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </ScrollShadow>
             </div>
         </div>

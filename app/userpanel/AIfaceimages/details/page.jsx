@@ -55,14 +55,16 @@ export default function AIImageDetails() {
         {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
-                <span>"Photos Matched</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span>Photos Matched</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span>.</span>
             </div>
         }, {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
                 <span>Profiles Matched:</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span>.</span>
             </div>
         },
     ]
@@ -78,12 +80,9 @@ export default function AIImageDetails() {
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     </div>
-                    <div className='space-x-5'>
+                    <div className='flex space-x-5'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>
                             START
-                        </Button>
-                        <Button radius="lg" className="bg-gradient-to-tr bg-gray-800 text-white shadow-lg px-5 text-lg" size='sm' onClick={() => handlePreviousPage()}>
-                            Back
                         </Button>
                     </div>
                     <Progress
@@ -94,6 +93,11 @@ export default function AIImageDetails() {
                         value={value}
                         showValueLabel={true}
                     />
+                    <div className='flex'>
+                        <Button radius="lg" className="bg-gradient-to-tr bg-gray-800 text-white shadow-lg px-5 text-lg" size='sm' onClick={() => handlePreviousPage()}>
+                            Back
+                        </Button>
+                    </div>
                 </div>
                 <div className='flex max-w-[750px] w-full justify-between mt-10 max-lg:gap-20'>
                     <div><span className='font-extrabold text-lg max-lg:text-base'>Upload Photo for Removal</span></div>
@@ -164,8 +168,8 @@ export default function AIImageDetails() {
                         <div><span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span></div>
                     </div>
                     <div className='flex items-center space-x-1'>
-                        <span className='font-normal text-xs'>Generated a removal report with</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span className='font-normal text-xs'>Generated a removal report with</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                         <span className='font-normal text-xs'>copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
                     </div>
                 </div>

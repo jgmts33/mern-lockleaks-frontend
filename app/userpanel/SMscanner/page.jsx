@@ -42,7 +42,8 @@ export default function SMscanner() {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
                 <span>Profiles Matched:</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10.</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span>.</span>
             </div>
         },
     ]

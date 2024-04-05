@@ -51,7 +51,7 @@ const UserHeader = ({ setter }) => {
   }
 
   return (
-    <div className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
+    <nav className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
       <div className="flex px-2 items-center max-sm:justify-center max-sm:px-0">
         <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-md:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -156,7 +156,7 @@ const UserHeader = ({ setter }) => {
           </Dropdown>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

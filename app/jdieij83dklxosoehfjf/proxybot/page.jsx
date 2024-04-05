@@ -5,6 +5,7 @@ import {
 } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { tuple } from 'yup';
 
 export default function ProxyBot() {
     const router = useRouter();
@@ -13,12 +14,17 @@ export default function ProxyBot() {
     const proxybotContent = [
         {
             vpsname: "VPS1",
-            proxynumber: 0,
+            proxynumber: 2,
             expiredate: "02.08.2024",
         }
     ]
 
     const handleAddProxy = () => {
+        onOpenChange(!isOpen)
+        onOpen();
+    }
+
+    const handleCredential = () => {
         onOpenChange(!isOpen)
         onOpen();
     }
@@ -36,7 +42,7 @@ export default function ProxyBot() {
                     </Button>
                 </div>
             </div>
-            <div className='flex max-w-[1232px] justify-start space-x-20'>
+            <div className='flex max-w-[650px] justify-between px-5'>
                 <span className='font-semibold text-base'>VPS NAME</span>
                 <span className='font-semibold text-base'>PROXIES NUMBER</span>
                 <span className='font-semibold text-base'>EXPIRE DATE</span>
@@ -63,7 +69,7 @@ export default function ProxyBot() {
                                         <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm'>
                                             Delete
                                         </Button>
-                                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm'>
+                                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm' onClick={() => handleCredential()}>
                                             View Credentials
                                         </Button>
                                     </div>
@@ -110,8 +116,8 @@ export default function ProxyBot() {
                                             credentials
                                         </Button>
                                     </div>
-                                    <div className='flex mt-5'>
-                                        <Input type="email" label="Type Here" />
+                                    <div className='flex mt-5 w-1/2'>
+                                        <Input type="text" label="Type Here" />
                                     </div>
                                     <div className='mt-5 flex items-start'>
                                         <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-5 text-base" size='sm'>
