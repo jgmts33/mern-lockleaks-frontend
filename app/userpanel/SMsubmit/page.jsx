@@ -48,10 +48,10 @@ export default function SMsubmit() {
                             Upload ID
                         </Button>
                     </div>
-                    <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
+                    <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base'>Select the platform icon where you want to report the profile.</span>
-                            <div className='flex justify-around mt-5 max-lg:justify-between px-2 max-xl:gap-0 max-sm:gap-5'>
+                            <div className='flex justify-around mt-5 max-lg:justify-between px-2 max-xl:gap-0 max-sm:gap-2'>
                                 {
                                     SOcialMediaButtons.map((items, index) => {
                                         return (

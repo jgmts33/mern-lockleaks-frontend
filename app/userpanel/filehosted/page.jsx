@@ -66,15 +66,15 @@ export default function FileHosted() {
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
                 <span className='font-medium text-lg text-white/50'>Scanning 10 websites using Specified keywords and Usernames</span>
             </div>
-            <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 pb-20">
+            <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-sm:p-2 pb-20">
                 {
                     ScannerContent.map((items, index) => {
                         return (
                             <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                 <div className='flex justify-between p-7'>
-                                    <div className='flex px-2 gap-4'>
+                                    <div className='flex gap-4'>
                                         <div className={items.icon ? 'block max-sm:mt-2' : 'hidden'}><Checkbox color='success' radius='full' isDisabled /></div>
-                                        <div className='flex max-w-[820px] gap-2 max-sm:flex-col'>
+                                        <div className='flex max-w-[820px] gap-2 max-sm:flex-col max-sm:flex-wrap'>
                                             <span className='font-normal text-sm bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{items.title}</span>
                                             <div className={index != 1 ? ' font-semibold text-smfont-normal text-sm' : " font-normal text-sm"}>{items.content}</div>
                                         </div>

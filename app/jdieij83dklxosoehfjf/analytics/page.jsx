@@ -37,11 +37,11 @@ export default function Analytics() {
 
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-5 container text-white max-lg:mx-auto">
             <div className='max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
-            <div className='mt-10'>
+            <div className='mt-10 max-lg:mx-auto'>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm' onClick={()=>handleGoAddAnalytics()}>
                     Add
                 </Button>

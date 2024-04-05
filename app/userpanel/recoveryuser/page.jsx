@@ -15,10 +15,10 @@ export default function RecoveryUsers() {
     return (
         <>
             <div className="flex flex-col bg-gradient-to-tr py-5 px-5 text-white max-lg:mx-auto">
-                <div className='flex gap-16 items-center max-lg:mx-auto'>
+                <div className='flex gap-16 items-center max-lg:mx-auto max-lg:text-center'>
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
-                <div className='flex mt-10 w-full max-2xl:space-x-10 max-lg:space-x-0 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
+                <div className='flex mt-10 max-sm:mt-0 w-full max-2xl:space-x-10 max-lg:space-x-0 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
                     <div className='flex flex-col w-2/3 max-lg:w-full'>
                         <div className='text-center justify-center items-center font-extrabold text-lg max-sm:text-base max-sm:mt-5'><span>Recovery Usernames</span></div>
                         <div className='flex space-x-10 max-2xl:space-x-0 max-2xl:flex-col'>

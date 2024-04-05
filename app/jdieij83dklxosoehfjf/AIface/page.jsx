@@ -68,7 +68,7 @@ export default function AIface() {
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>AI FACE ORDERS</span></div>
                 </div>
-                <div className='grid grid-cols-2 gap-5 mt-10'>
+                <div className='grid grid-cols-2 gap-5 mt-10 max-lg:grid-cols-1'>
                     <div className='flex flex-col w-full'>
                         <span className='font-semibold text-base max-lg:text-center'>AI FACE IMAGES</span>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
@@ -120,14 +120,14 @@ export default function AIface() {
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 gap-5'>
+                <div className='grid grid-cols-2 gap-5 max-lg:grid-cols-1'>
                     <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
                         <ScrollShadow className="h-[320px]">
-                            <div className='flex flex-col gap-5 scroll-y'>
+                            <div className='flex flex-col gap-5 px-2'>
                                 {
                                     GoogleScanContent.map((items, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10'>
+                                            <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-3'>
                                                 <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
@@ -143,13 +143,13 @@ export default function AIface() {
                             </div>
                         </ScrollShadow>
                     </div>
-                    <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                    <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full max-lg:mt-0'>
                         <ScrollShadow className="h-[320px]">
-                            <div className='flex flex-col gap-5 scroll-y'>
+                            <div className='flex flex-col gap-5 px-2'>
                                 {
                                     GoogleScanContent.map((items, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10'>
+                                            <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-3'>
                                                 <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>

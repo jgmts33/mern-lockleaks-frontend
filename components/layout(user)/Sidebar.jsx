@@ -220,7 +220,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
 
     return (
         <>
-            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 max-lg:max-w-64 w-full max-sm:bg-[#020615]/80 py-3 max-lg:h-screen max-md:py-10 justify-start px-3 z-40 max-sm:py-5 max-lg:absolute duration-1000 ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 w-full max-sm:bg-[#020615]/80 py-3 max-lg:h-screen max-md:py-10 justify-start px-3 z-40 max-sm:py-5 max-lg:absolute duration-1000 ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full">
                     <div className="mx-auto flex items-center justify-around w-full">
                         <div className="flex"><Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
@@ -233,7 +233,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                             {
                                 AdminSidebarButtons.map((items, index) => {
                                     return (
-                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 gap-1 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                             {
                                                 selectstar && index == selectSidebar ?
                                                     <span>{icons.yellowstar}</span>

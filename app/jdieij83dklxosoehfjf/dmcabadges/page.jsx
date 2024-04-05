@@ -52,10 +52,10 @@ export default function Dmcabadges() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
-            <div className='flex'>
+            <div className='flex max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
-            <div className='flex justify-between max-w-[450px] mt-10'>
+            <div className='flex justify-between max-w-[450px] mt-10 max-lg:max-w-full max-lg:justify-around'>
                 <Button radius="md" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base border border-white/40" size='md' onClick={()=>handleGoDetails()}>
                     Choose file
                 </Button>
@@ -63,7 +63,7 @@ export default function Dmcabadges() {
                     Upload image
                 </Button>
             </div>
-            <div className='grid grid-cols-3 gap-10 max-lg:flex-col max-lg:flex'>
+            <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1'>
                 <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                     <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                         <div className="flex items-center justify-center pt-5 pb-6">
@@ -72,7 +72,7 @@ export default function Dmcabadges() {
                         <input type="file" className="hidden" onChange={(e) => handleChange(e.target.files)} />
                     </label>
                 </div>
-                <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+                <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 max-md:mt-0'>
                     <Image src={file} width={100} height={100} alt='uploaded_photo' className={file ? 'block w-full h-full rounded-[16px]' : 'hidden'}></Image>
                 </div>
                 <ScrollShadow className="h-[383px]">

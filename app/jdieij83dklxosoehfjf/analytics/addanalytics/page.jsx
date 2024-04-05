@@ -22,12 +22,12 @@ export default function AddAnalytics() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='flex flex-col space-y-5 max-md:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white">
+            <div className='flex flex-col space-y-5 max-lg:mx-auto max-lg:text-center'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
-            <div className='flex gap-10 mt-5 max-md:flex-col'>
+            <div className='flex gap-10 mt-5 max-2xl:flex-col max-lg:justify-center max-lg:items-center'>
                 <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
                     <div className='flex justify-between'>
                         <div>{icons.turnleft}</div>
@@ -95,7 +95,7 @@ export default function AddAnalytics() {
                     </div>
                 </div>
                 <div className='flex flex-col w-full gap-5'>
-                    <div className='grid grid-cols-3'>
+                    <div className='grid grid-cols-3 gap-2 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
                         <div className="flex flex-col w-full bg-white/15 max-w-[330px] shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 space-y-7 text-white">
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'>Hosting Revenue</span>
@@ -149,7 +149,7 @@ export default function AddAnalytics() {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3'>
+                    <div className='grid grid-cols-3 gap-2 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
                         <div className="flex flex-col w-full bg-white/15 max-w-[330px] shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5">
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'> Advertisement Revenue</span>
@@ -171,7 +171,7 @@ export default function AddAnalytics() {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3'>
+                    <div className='grid grid-cols-3 max-lg:grid-cols-1 max-lg:mx-auto max-sm:w-full'>
                     <div className="flex flex-col w-full bg-white/15 max-w-[330px] shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5">
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'>Archive Websites</span>
