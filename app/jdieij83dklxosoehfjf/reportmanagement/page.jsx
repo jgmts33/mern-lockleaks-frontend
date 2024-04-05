@@ -101,7 +101,7 @@ export default function ReportManagement() {
                         {
                             ReportsContent.map((items, index) => {
                                 return (
-                                    <div className='grid grid-cols-4 py-6 font-semibold text-lg items-center'>
+                                    <div key={index} className='grid grid-cols-4 py-6 font-semibold text-lg items-center'>
                                         <div>
                                             <span>{items.domain}</span>
                                         </div>

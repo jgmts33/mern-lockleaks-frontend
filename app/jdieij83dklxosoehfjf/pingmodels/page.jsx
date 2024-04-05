@@ -115,7 +115,7 @@ export default function PingModels() {
                         {
                             PingModelContent.map((items, index) => {
                                 return (
-                                    <div className='grid grid-cols-5 py-6 font-semibold text-lg items-center px-5'>
+                                    <div key={index} className='grid grid-cols-5 py-6 font-semibold text-lg items-center px-5'>
                                         <div>
                                             <span>{items.name}</span>
                                         </div>

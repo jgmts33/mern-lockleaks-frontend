@@ -137,7 +137,7 @@ export default function Users() {
                         {
                             UsersData.map((items, index) => {
                                 return (
-                                    <div className='grid grid-cols-5 space-y-5 font-normal text-sm items-center'>
+                                    <div key={index} className='grid grid-cols-5 space-y-5 font-normal text-sm items-center'>
                                         <div className='flex mt-5'>
                                             <span>{items.email}</span>
                                         </div>

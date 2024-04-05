@@ -11,6 +11,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "@reduxjs/toolkit": "^2.2.2",
+    "@tinymce/tinymce-react": "^5.0.1",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.22",
     "jquery": "^3.7.1",
