@@ -33,7 +33,7 @@ export default function AddAnalytics() {
                         <div>{icons.turnleft}</div>
                         <div>{icons.turnright}</div>
                     </div>
-                    <div className='grid grid-cols-3 space-x-5 mt-8'>
+                    <div className='grid grid-cols-3 space-x-5 mt-8 max-sm:grid-cols-2'>
                         <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm" size='sm'>
                             IN PROGRESS
                         </Button>
@@ -95,7 +95,7 @@ export default function AddAnalytics() {
                     </div>
                 </div>
                 <div className='flex flex-col w-full gap-5'>
-                    <div className='grid grid-cols-3 gap-2 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
+                    <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
                         <div className="flex flex-col w-full bg-white/15 max-w-[330px] shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 space-y-7 text-white">
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'>Hosting Revenue</span>
@@ -149,7 +149,7 @@ export default function AddAnalytics() {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 gap-2 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
+                    <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
                         <div className="flex flex-col w-full bg-white/15 max-w-[330px] shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5">
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'> Advertisement Revenue</span>

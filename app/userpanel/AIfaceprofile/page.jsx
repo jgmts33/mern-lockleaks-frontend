@@ -83,14 +83,13 @@ export default function AIfaceprofile() {
                     <Progress
                         size="md"
                         aria-label="Loading..."
-                        className="max-w-2xl"
+                        className="w-full"
                         color='secondary'
                         value={value}
                         showValueLabel={true}
                     />
                 </div>
                 <div className='flex max-w-[700px] w-full justify-between mt-10 max-md:flex-col max-md:gap-2'>
-                    <span className='font-extrabold text-lg max-md:text-base'>Upload Photo for Removal</span>
                     <span className='font-extrabold text-lg max-md:text-base'>Photo for Removal Refference</span>
                 </div>
                 <div className='flex gap-10 max-xl:flex-col max-md:gap-5'>
@@ -118,13 +117,16 @@ export default function AIfaceprofile() {
                             </ScrollShadow>
                         </div>
                     </div>
-                    <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+                    <div className='flex flex-col py-10 w-full'>
+                    <span className='font-extrabold text-lg max-md:text-base'>Upload Photo for Removal</span>
+                    <div className='flex flex-col w-full h-[400px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                         <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                             <div className="flex items-center justify-center pt-5 pb-6">
                                 <span className="font-light text-lg text-white">+ Upload Photo</span>
                             </div>
                             <input type="file" className="hidden" />
                         </label>
+                    </div>
                     </div>
                     <div className='max-w-[400px] w-full max-lg:flex max-lg:max-w-[700px] max-lg:gap-5 max-md:flex-col max-md:gap-0'>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-10">

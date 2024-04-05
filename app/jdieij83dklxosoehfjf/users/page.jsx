@@ -44,16 +44,16 @@ export default function Users() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
-            <div className='flex max-w-[1232px] justify-between mt-10'>
+            <div className='flex max-w-[1232px] justify-between mt-10 max-sm:mt-5 max-sm:'>
                 <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: 10</span>
                 <span className='font-semibold text-base'>TOTAL USERS: 10</span>
                 <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: 10</span>
             </div>
-            <div className='flex max-w-[1232px] justify-between mt-16'>
+            <div className='flex max-w-[1232px] justify-between mt-16 max-sm:mt-5 max-md:flex-col max-sm:gap-2 max-sm:mx-auto'>
                 <Input
                     isClearable
                     radius="lg"
@@ -114,8 +114,8 @@ export default function Users() {
                     }
                 />
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 w-full'>
-                <ScrollShadow className='h-[400px]'>
+            {/* <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1400px] mt-10 max-md:w-full'>     */}
+                <ScrollShadow className='h-[400px] overflow-x-auto flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1400px] mt-10 max-md:w-full'>
                     <div className='grid grid-cols-5 w-full'>
                         <div>
                             <span>Email</span>
@@ -166,7 +166,7 @@ export default function Users() {
                         }
                     </div>
                 </ScrollShadow>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

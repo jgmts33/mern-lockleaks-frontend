@@ -28,7 +28,7 @@ export default function Blog() {
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>BLOG</span>
             </div>
-            <div className='flex items-center space-x-20'> 
+            <div className='flex items-center space-x-20 max-lg:justify-between'> 
                 <Button radius="lg" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base" size='md' onClick={()=>handleCreatePost()}>
                     Create post
                 </Button>
@@ -41,7 +41,7 @@ export default function Blog() {
                     {
                         blogContent.map((items, index) => {
                             return (
-                                <div key={index} className='flex flex-col px-5'>
+                                <div key={index} className='flex flex-col px-5 max-md:px-0'>
                                     <div className='flex justify-between p-7 items-center'>
                                         <div className='flex'>
                                             <span className={'font-semibold text-base'}>{items.title}</span>

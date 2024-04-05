@@ -56,7 +56,7 @@ export default function Analytics() {
                                     Add
                                 </Button></div>
                         </div>
-                        <div className='px-3 w-1/2'>
+                        <div className='px-3 w-1/2 max-md:w-full'>
                             <div>
                                 <Input
                                     isClearable

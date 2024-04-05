@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const Sidebar = ({ show, setter, selectstar, setstar }) => {
     const router = useRouter();
     const [selectSidebar, setSelectSidebar] = useState(0);
-    const userData = useSelector((state) => state.auth)
+    const userData = useSelector((state) => state.auth);
 
     const icons = {
         filehost: <FileHost fill="currentColor" size={16} />,

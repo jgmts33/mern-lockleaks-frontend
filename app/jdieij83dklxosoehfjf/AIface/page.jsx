@@ -68,14 +68,14 @@ export default function AIface() {
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>AI FACE ORDERS</span></div>
                 </div>
-                <div className='grid grid-cols-2 gap-5 mt-10 max-lg:grid-cols-1'>
+                <div className='grid grid-cols-2 gap-5 mt-10 max-lg:grid-cols-1 max-md:mt-5'>
                     <div className='flex flex-col w-full'>
                         <span className='font-semibold text-base max-lg:text-center'>AI FACE IMAGES</span>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                             {
                                 GoogleScannerContent.map((items, index) => {
                                     return (
-                                        <div key={index} className='flex flex-col px-5'>
+                                        <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                             <div className='flex justify-between p-7'>
                                                 <div className='flex px-5 gap-5 w-1/2'>
                                                     <div>{items.icon}</div>
@@ -100,7 +100,7 @@ export default function AIface() {
                             {
                                 BingScannerContent.map((items, index) => {
                                     return (
-                                        <div key={index} className='flex flex-col px-5'>
+                                        <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                             <div className='flex justify-between p-7'>
                                                 <div className='flex px-5 gap-5 w-1/2'>
                                                     <div>{items.icon}</div>

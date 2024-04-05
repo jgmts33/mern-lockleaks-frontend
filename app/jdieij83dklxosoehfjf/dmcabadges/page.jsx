@@ -51,7 +51,7 @@ export default function Dmcabadges() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-3 py-10 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-5 container text-white max-lg:mx-auto">
             <div className='flex max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
@@ -76,11 +76,11 @@ export default function Dmcabadges() {
                     <Image src={file} width={100} height={100} alt='uploaded_photo' className={file ? 'block w-full h-full rounded-[16px]' : 'hidden'}></Image>
                 </div>
                 <ScrollShadow className="h-[383px]">
-                    <div className='mx-auto'>
+                    <div className='mx-auto px-2'>
                         {
                             AIImageLists.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex mt-5 items-center gap-10 max-md:flex-col max-md:gap-5 max-md:items-start'>
+                                    <div key={index} className='flex mt-5 items-center gap-10 max-md:gap-5 max-md:items-start'>
                                         <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-start px-7 items-center gap-3 rounded-[16px]'>
                                             {items.icon}
                                             <span>{items.content}</span>

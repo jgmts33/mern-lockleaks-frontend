@@ -33,7 +33,7 @@ export default function PersonalAgent() {
                         <div>{icons.turnleft}</div>
                         <div>{icons.turnright}</div>
                     </div>
-                    <div className='flex space-x-5 mt-8'>
+                    <div className='flex space-x-5 mt-8 max-sm:flex-col max-sm:space-x-0 max-sm:gap-3'>
                         <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-700 text-white shadow-lg text-sm px-5" size='sm' onClick={()=>handleShowDetails()}>
                             NEW
                         </Button>

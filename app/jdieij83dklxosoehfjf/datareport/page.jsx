@@ -44,7 +44,7 @@ export default function DataReport() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA PDF REPORT</span>
             </div>
@@ -53,7 +53,7 @@ export default function DataReport() {
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4'>
                 <ScrollShadow className="h-[350px]">
-                    <div className='flex flex-col scroll px-3 gap-5 scroll-y max-md:px-4'>
+                    <div className='flex flex-col scroll px-3 gap-3 max-md:px-4'>
                         {
                             NotificationContent.map((items, index) => {
                                 return (

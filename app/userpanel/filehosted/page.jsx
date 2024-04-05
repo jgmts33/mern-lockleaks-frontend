@@ -49,7 +49,7 @@ export default function FileHosted() {
                     </Button>
                 </div>
                 <div>
-                    <Button radius="lg" className="bg-white/10 bg-opacity-20 text-white border border-gray-600 shadow-lg px-7 text-sm" size='sm'>
+                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight bg-opacity-20 text-white border border-gray-600 shadow-lg px-7 text-sm" size='sm'>
                         STATISTICS
                     </Button>
                 </div>
@@ -72,7 +72,7 @@ export default function FileHosted() {
                         return (
                             <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                 <div className='flex justify-between p-7'>
-                                    <div className='flex gap-4'>
+                                    <div className='flex px-2 gap-4'>
                                         <div className={items.icon ? 'block max-sm:mt-2' : 'hidden'}><Checkbox color='success' radius='full' isDisabled /></div>
                                         <div className='flex max-w-[820px] gap-2 max-sm:flex-col max-sm:flex-wrap'>
                                             <span className='font-normal text-sm bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>{items.title}</span>

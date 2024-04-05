@@ -84,7 +84,7 @@ export default function GoogleBing() {
                         {
                             GoogleScannerContent.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex flex-col px-5'>
+                                    <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                         <div className='flex justify-between p-7'>
                                             <div className='flex px-5 gap-5 w-1/2'>
                                                 <div>{items.icon}</div>
@@ -106,7 +106,7 @@ export default function GoogleBing() {
                         {
                             BingScannerContent.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex flex-col px-5'>
+                                    <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                         <div className='flex justify-between p-7'>
                                             <div className='flex px-5 gap-5 w-1/2'>
                                                 <div>{items.icon}</div>

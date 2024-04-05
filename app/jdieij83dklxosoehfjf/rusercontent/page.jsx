@@ -66,14 +66,14 @@ export default function RUserContent() {
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>R & R User Content Orders</span></div>
                 </div>
-                <div className='grid grid-cols-2 gap-5 mt-10 max-md:grid-cols-1'>
+                <div className='grid grid-cols-2 gap-5 mt-10 max-md:grid-cols-1 max-sm:mt-5'>
                     <div className='flex flex-col w-full'>
                         <span className='font-semibold text-base max-lg:text-center'>R & R User Content Photo</span>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                             {
                                 UserContentPhoto.map((items, index) => {
                                     return (
-                                        <div key={index} className='flex flex-col px-5'>
+                                        <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                             <div className='flex justify-between p-7'>
                                                 <div className='flex px-5 gap-5 w-1/2'>
                                                     <div>{items.icon}</div>
@@ -100,7 +100,7 @@ export default function RUserContent() {
                             {
                                 UserContentUser.map((items, index) => {
                                     return (
-                                        <div key={index} className='flex flex-col px-5'>
+                                        <div key={index} className='flex flex-col px-5 max-sm:px-0'>
                                             <div className='flex justify-between p-7'>
                                                 <div className='flex px-5 gap-5 w-1/2'>
                                                     <div>{items.icon}</div>
@@ -128,7 +128,7 @@ export default function RUserContent() {
                                     GoogleScanContent.map((items, index) => {
                                         return (
                                             <div key={index} className='flex items-center gap-10 max-2xl:flex-col max-2xl:gap-2'>
-                                                <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44'>
+                                                <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44 max-lg:pr-0'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <div className='px-4'>
@@ -150,7 +150,7 @@ export default function RUserContent() {
                                     GoogleScanContent.map((items, index) => {
                                         return (
                                             <div key={index} className='flex items-center gap-10 max-2xl:flex-col max-2xl:gap-2'>
-                                                <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44'>
+                                                <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44 max-lg:pr-0'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <div className='px-4'>
