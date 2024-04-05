@@ -23,8 +23,8 @@ export default function CreateTicket() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
             </div>
             <div className="flex items-center px-10 py-5 mt-10 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5">

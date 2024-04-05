@@ -75,7 +75,7 @@ export default function AIImageDetails() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>SCANNER</span></div>
@@ -103,32 +103,38 @@ export default function AIImageDetails() {
                     <div><span className='font-extrabold text-lg max-lg:text-base'>Upload Photo for Removal</span></div>
                     <div><span className='font-extrabold text-lg max-lg:text-base'>Photo for Removal Refference</span></div>
                 </div>
-                <div className='flex gap-10 max-lg:flex-col max-md:gap-5'>
-                    <div className="flex flex-col w-full justify-center items-center bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5">
-                        <div className='flex p-10 justify-around gap-10 w-full max-2xl:flex-col max-2xl:justify-center max-2xl:items-center max-md:p-1'>
-                            <div className='flex w-full max-2xl:w-1/2'>
-                                <Image src={Saturn} width={300} height={100} className='' alt='saturn' />
-                            </div>
-                            <div className='flex w-full px-5'>
-                                <ScrollShadow className="h-[220px] w-[500px]">
-                                    {
-                                        AIImageLists.map((items, index) => {
-                                            return (
-                                                <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full max-lg:flex-col max-lg:gap-5 max-lg:items-start'>
-                                                    <div className='flex bg-gradient-to-br justify-start bg-white/10 shadow-sm py-3 px-10 w-full items-center gap-3 rounded-[16px] max-md:items-start max-sm:px-2 max-sm:py-2'>
-                                                        <div>{items.icon}</div>
-                                                        <span>{items.content}</span>
-                                                    </div>
-                                                    <div>
-                                                        <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </ScrollShadow>
-                            </div>
+                <div className='flex gap-10 max-xl:flex-col max-md:gap-5'>
+                    <div className="flex flex-col w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 p-5 rounded-[16px] mt-5">
+                        <div className='flex mx-auto'>
+                            <Image src={Saturn} width={200} height={100} className='' alt='saturn' />
                         </div>
+                        <div>
+                            <ScrollShadow className="h-[220px]">
+                                {
+                                    AIImageLists.map((items, index) => {
+                                        return (
+                                            <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full max-lg:gap-5 max-lg:items-start'>
+                                                <div className='flex bg-gradient-to-br justify-start bg-white/10 shadow-sm py-3 px-10 w-full items-center gap-3 rounded-[16px] max-md:items-start max-sm:px-2 max-sm:py-2'>
+                                                    <div>{items.icon}</div>
+                                                    <span>{items.content}</span>
+                                                </div>
+                                                <div>
+                                                    <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </ScrollShadow>
+                        </div>
+                    </div>
+                    <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+                        <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
+                            <div className="flex items-center justify-center pt-5 pb-6">
+                                <span className="font-light text-lg text-white">+ Upload Photo</span>
+                            </div>
+                            <input type="file" className="hidden" />
+                        </label>
                     </div>
                     <div className='max-w-[450px] w-full max-lg:flex max-lg:max-w-[700px] max-lg:gap-5 max-md:flex-col max-md:gap-0'>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-10">
@@ -167,7 +173,7 @@ export default function AIImageDetails() {
                         <div>{icons.components}</div>
                         <div><span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span></div>
                     </div>
-                    <div className='flex items-center space-x-1'>
+                    <div className='flex items-center space-x-1 max-lg:flex-wrap'>
                         <span className='font-normal text-xs'>Generated a removal report with</span>
                         <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                         <span className='font-normal text-xs'>copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>

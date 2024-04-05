@@ -64,13 +64,13 @@ export default function AIface() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white">
-                <div className='flex gap-16 items-center'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto max-lg:px-3">
+                <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>AI FACE ORDERS</span></div>
                 </div>
-                <div className='flex gap-5 mt-10'>
+                <div className='grid grid-cols-2 gap-5 mt-10'>
                     <div className='flex flex-col w-full'>
-                        <span className='font-semibold text-base'>AI FACE IMAGES</span>
+                        <span className='font-semibold text-base max-lg:text-center'>AI FACE IMAGES</span>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                             {
                                 GoogleScannerContent.map((items, index) => {
@@ -95,7 +95,7 @@ export default function AIface() {
                         </div>
                     </div>
                     <div className='flex flex-col w-full'>
-                        <span className='font-semibold text-base'>AI FACE PROFILES</span>
+                        <span className='font-semibold text-base max-lg:mx-auto'>AI FACE PROFILES</span>
                         <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                             {
                                 BingScannerContent.map((items, index) => {
@@ -120,7 +120,7 @@ export default function AIface() {
                         </div>
                     </div>
                 </div>
-                <div className='flex gap-5'>
+                <div className='grid grid-cols-2 gap-5'>
                     <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
                         <ScrollShadow className="h-[320px]">
                             <div className='flex flex-col gap-5 scroll-y'>

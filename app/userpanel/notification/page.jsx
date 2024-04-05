@@ -34,8 +34,8 @@ export default function Notification() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-xl:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-xl:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>NOTIFICATION</span>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-3 rounded-[16px] max-w-[1100px] mt-5 w-full'>

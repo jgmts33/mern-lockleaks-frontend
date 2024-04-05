@@ -14,7 +14,7 @@ export default function RecoveryUsers() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr py-10 px-5 text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr py-5 px-5 text-white max-lg:mx-auto">
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
@@ -26,11 +26,11 @@ export default function RecoveryUsers() {
                                 <div className='flex max-w-[250px] text-center mx-auto'>
                                     <span className='font-normal text-sm'>To Start the Scanning Process, Please Begin by Uploading a Photo of Yourself</span>
                                 </div>
-                                <Button radius="lg" className="bg-gradient-to-tr bg-transparent text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
+                                <Button radius="lg" className="bg-gradient-to-tr bg-white/10 text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
                                     + Upload
                                 </Button>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    Start
+                                    Submit
                                 </Button>
                             </div>
                             <div className='flex items-center pt-12 max-2xl:mx-auto max-2xl:hidden'><span className='text-white font-extrabold text-lg'>Or</span></div>
@@ -45,7 +45,7 @@ export default function RecoveryUsers() {
                                     placeholder='Type here'
                                 />
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    Start
+                                    Submit
                                 </Button>
                             </div>
                         </div>
@@ -56,11 +56,11 @@ export default function RecoveryUsers() {
                             <div className='flex max-w-[200px] text-center mx-auto'>
                                 <span className='font-normal text-sm'>Upload a Picture Of Yourself While Holding a Sign That Reads  “CGF”</span>
                             </div>
-                            <Button radius="lg" className="bg-gradient-to-tr bg-transparent text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
+                            <Button radius="lg" className="bg-gradient-to-tr bg-white/10 text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
                                 + Upload
                             </Button>
                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                Submit
+                                Start
                             </Button>
                         </div>
                     </div>

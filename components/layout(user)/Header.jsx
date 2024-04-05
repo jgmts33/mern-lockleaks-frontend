@@ -11,7 +11,7 @@ import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
-const UserHeader = ({ setter }) => {
+const UserHeader = ({ setter, setstar }) => {
   const router = useRouter();
   const userData = useSelector((state) => state.auth);
   const [isSearch, setSearch] = useState(false)
@@ -53,7 +53,7 @@ const UserHeader = ({ setter }) => {
   return (
     <nav className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
       <div className="flex px-2 items-center max-sm:justify-center max-sm:px-0">
-        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-md:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
+        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -78,11 +78,11 @@ const UserHeader = ({ setter }) => {
             :
             false
         }
-        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => handleSelectSidebar()}>
+        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => setstar(true)}>
           {icons.yellowstar}
         </Button>
         <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-white max-sm:hidden"></div>
-        <Button radius="lg" className="bg-transparent text-white flex items-center" size='sm' onClick={() => { setSearch(isSearch ? false : true) }}>
+        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => { setSearch(isSearch ? false : true) }}>
           {icons.search}
         </Button>
         <div className={("flex duration-1000 pb-2 ") + (!isSearch ? "opacity-0" : "opacity-100")}>
@@ -90,11 +90,11 @@ const UserHeader = ({ setter }) => {
         </div>
       </div>
       <div className="flex px-5 text-white gap-7 items-center">
-        <div className="flex max-sm:hidden">
+        <div className="flex">
           <Image src={Flag} width={15} height={15} alt="flag" />
           <span>En</span>
         </div>
-        <div className="flex max-md:hidden text-white cursor-pointer">
+        <div className="flex text-white cursor-pointer z-0">
           <Dropdown>
             <DropdownTrigger>
               <div>
@@ -123,11 +123,34 @@ const UserHeader = ({ setter }) => {
             </DropdownMenu>
           </Dropdown>
         </div>
-        <div className="flex flex-col max-sm:hidden" >
-          <span className="font-semibold text-sm">Emilia Clarke</span>
-          <span className="font-normal text-xs">EC@gmail.com</span>
+        <div className="flex max-sm:hidden cursor-pointer z-0" >
+          <Dropdown>
+            <DropdownTrigger>
+              <div className="flex flex-col">
+                <span className="font-semibold text-sm">Emilia Clarke</span>
+                <span className="font-normal text-xs">EC@gmail.com</span>
+              </div>
+            </DropdownTrigger>
+            <DropdownMenu
+              aria-label="Action event example"
+              className="text-white"
+            >
+              <DropdownItem>
+                <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
+                  <span>{icons.accountsetting}</span>
+                  <span>Account Settings</span>
+                </div>
+              </DropdownItem>
+              <DropdownItem>
+                <div className="flex w-full space-x-2 mx-auto pl-1" onClick={() => handleLogOut()}>
+                  <span>{icons.logout}</span>
+                  <span>Log out</span>
+                </div>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </div>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer z-0">
           <Dropdown>
             <DropdownTrigger>
               <div>

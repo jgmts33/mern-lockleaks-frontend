@@ -15,7 +15,7 @@ export default function AIFaceImages() {
     };
 
     const [selectedimage, setSelectImage] = useState(0);
-    const [file, setFile] = useState();
+    const [file, setFile] = useState("");
 
     const AIImageLists = [
         {
@@ -51,8 +51,8 @@ export default function AIFaceImages() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='flex mt-5 gap-20 max-md:flex-col max-md:gap-5 max-md:text-center max-md:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='flex mt-5 gap-20 max-md:flex-col max-md:gap-5 max-md:text-center max-md:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>AI FACE IMAGES</span>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" size='sm'>
                     START
@@ -77,13 +77,13 @@ export default function AIFaceImages() {
                 <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                     <Image src={file} width={100} height={100} alt='uploaded_photo' className={file ? 'block w-full h-full rounded-[16px]' : 'hidden'}></Image>
                 </div>
+                <div className='px-5'>
                 <ScrollShadow className="h-[383px]">
-                    <div className='mx-auto'>
                         {
                             AIImageLists.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex mt-5 items-center gap-10 max-md:flex-col max-md:gap-5 max-md:items-start'>
-                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-start px-7 items-center gap-3 rounded-[16px]'>
+                                    <div key={index} className='flex mt-5 items-center gap-10 max-md:gap-5'>
+                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 justify-start items-center gap-3 rounded-[16px]'>
                                             {items.icon}
                                             <span>{items.content}</span>
                                         </div>
@@ -94,8 +94,8 @@ export default function AIFaceImages() {
                                 )
                             })
                         }
-                    </div>
                 </ScrollShadow>
+                </div>
             </div>
             <div className='flex mt-10 justify-end'>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-10 text-base" size='md' onClick={() => handleGoDetails()}>

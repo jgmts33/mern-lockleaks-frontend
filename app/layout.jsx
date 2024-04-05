@@ -19,7 +19,8 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 export default function RootLayout({ children }) {
   const currentPath = usePathname();
   const [showSidebar, setShowSidebar] = useState(false);
-
+  const [selectStar,setSelectStar] = useState(false);
+  
   return (
     <html lang="en">
       <body className={poppins.className + " dark"}>
@@ -29,9 +30,9 @@ export default function RootLayout({ children }) {
               currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
                 ?
                 <div className="flex">
-                  <Sidebar show={showSidebar} setter={setShowSidebar} />
+                  <Sidebar show={showSidebar} setter={setShowSidebar} selectstar={selectStar} setstar={setSelectStar} />
                   <div className="flex flex-col w-full gradiant-background">
-                    <UserHeader setter={setShowSidebar} />
+                    <UserHeader setter={setShowSidebar} setstar={setSelectStar} />
                     <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-56px)] overflow-y-auto">
                       {children}
                     </div>

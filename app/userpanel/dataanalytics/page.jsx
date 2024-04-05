@@ -13,8 +13,8 @@ export default function DataAnalytics() {
     };
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
             <div className='flex gap-10 max-xl:flex-col max-lg:gap-0'>
