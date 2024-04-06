@@ -201,18 +201,16 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
 
     useEffect(() => {
         if (selectstar) {
-        const elementoMove = sidebarList[selectSidebar];
-        for (let i = selectSidebar; i > 0; i--) {
-            sidebarList[i] = sidebarList[i - 1];
-        }
-        sidebarList[0] = elementoMove;
-        setSidebarList([...sidebarList]);
-            setSelectSidebar(0)
+            const elementoMove = sidebarList[selectSidebar];
+            for (let i = selectSidebar; i > 0; i--) {
+                sidebarList[i] = sidebarList[i - 1];
+            }
+            sidebarList[0] = elementoMove;
+            setSidebarList([...sidebarList]);
         }
     }, [selectSidebar])
 
     const handleSidebarClick = (path, index) => {
-        console.log(index)
         setSelectSidebar(index)
         setter(false)
         router.push(path);
@@ -231,9 +229,17 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
         <>
             <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 py-3 w-full max-sm:bg-[#020615]/80 max-lg:h-screen justify-start px-3 max-sm:px-0 z-40 max-lg:absolute duration-1000 ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full">
-                    <div className="mx-auto flex items-center justify-around w-full">
-                        <div className="flex"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></div>
-                    </div>
+                    {
+                        userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                            ?
+                            <div className="mx-auto flex items-center justify-around w-full">
+                                <div className="flex"><Link className="text-white cursor-pointer" href="/jdieij83dklxosoehfjf/dashboard"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
+                            </div>
+                            :
+                            <div className="mx-auto flex items-center justify-around w-full">
+                                <div className="flex"><Link className="text-white cursor-pointer" href="/userpanel/dashboard"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
+                            </div>
+                    }
                 </div>
                 {
                     userData.email == "cosmin@gmail.com" && userData.password == "admin123"
@@ -242,7 +248,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                             {
                                 AdminSidebarButtons.map((items, index) => {
                                     return (
-                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path,index)}>
+                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                             {
                                                 selectstar && index == selectSidebar ?
                                                     <span>{icons.yellowstar}</span>

@@ -77,7 +77,7 @@ export default function AIfaceprofile() {
 
                 <div className='flex gap-10 items-center max-md:flex-col max-md:gap-5'>
                     <div className='flex'>
-                        <span className='font-extrabold text-lg'>AIFACE PROFILES</span>
+                        <span className='font-extrabold text-lg'>AI FACE PROFILES</span>
                     </div>
                     <div className='flex max-sm:hidden'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>

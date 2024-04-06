@@ -20,16 +20,16 @@ export default function AIface() {
     const GoogleScannerContent = [
         {
             icon: icons.components,
-            title: "GOOGLE SEARCH",
+            title: "TOTAL ORDERS:",
             content: "12345"
         },
         {
             icon: icons.components,
-            title: "GOOGLE IMAGES SEARCH",
+            title: "ACCEPTED ORDERS:",
             content: "12345"
         }, {
             icon: icons.components,
-            title: "GOOGLE VIDEOS SEARCH",
+            title: "PENDING ORDERS:",
             content: "12345"
         }
     ]
@@ -37,16 +37,16 @@ export default function AIface() {
     const BingScannerContent = [
         {
             icon: icons.components,
-            title: "GOOGLE SEARCH",
+            title: "TOTAL ORDERS:",
             content: "12345"
         },
         {
             icon: icons.components,
-            title: "GOOGLE IMAGES SEARCH",
+            title: "ACCEPTED ORDERS:",
             content: "12345"
         }, {
             icon: icons.components,
-            title: "GOOGLE VIDEOS SEARCH",
+            title: "PENDING ORDERS:",
             content: "12345"
         }
     ]

@@ -18,10 +18,10 @@ export default function Bing() {
     const ScannerContent = [
         {
             icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
+            title: "BING SEARCH",
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
-                <span>Initiated an automated Google search, resulting in the detection of</span>
+                <span>Initiated automated searches on Bing Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>new copyright infringements.</span>
                 </div>
@@ -29,20 +29,20 @@ export default function Bing() {
         },
         {
             icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
+            title: "BING IMAGES SEARCH",
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
-                <span>Initiated an automated Google search, resulting in the detection of</span>
+                <span>Initiated automated searches on Bing Images Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>new copyright infringements.</span>
                 </div>
             </div>
         }, {
             icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
+            title: "BING VIDEO SEARCH",
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
-                <span>Initiated an automated Google search, resulting in the detection of</span>
+                <span>Initiated automated searches on Bing Video Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>new copyright infringements.</span>
                 </div>

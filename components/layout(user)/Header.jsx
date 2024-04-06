@@ -51,7 +51,7 @@ const UserHeader = ({ setter, setstar }) => {
   }
 
   return (
-    <nav className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14">
+    <nav className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14 z-30">
       <div className="flex px-2 items-center max-sm:justify-center max-sm:px-0">
         <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -78,7 +78,7 @@ const UserHeader = ({ setter, setstar }) => {
             :
             false
         }
-        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => setstar(true)}>
+        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => setstar(!true)}>
           {icons.yellowstar}
         </Button>
         <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-white max-sm:hidden"></div>

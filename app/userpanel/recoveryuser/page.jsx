@@ -35,7 +35,7 @@ export default function RecoveryUsers() {
 
                 <div className='flex mt-10 max-sm:mt-0 w-full max-2xl:space-x-10 max-lg:space-x-0 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
                     <div className='flex flex-col w-2/3 max-lg:w-full'>
-                        <div className='text-center justify-center items-center font-extrabold text-lg max-sm:text-base max-sm:mt-5'><span>Recovery Usernames</span></div>
+                        <div className='text-center justify-center items-center font-extrabold text-lg max-sm:text-base max-sm:mt-5 pr-10'><span>Recovery Usernames</span></div>
                         <div className='flex space-x-10 max-2xl:space-x-0 max-2xl:flex-col'>
                             <div className="flex flex-col max-w-[480px] max-xl:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-5">
                                 <div className='flex max-w-[250px] text-center mx-auto'>

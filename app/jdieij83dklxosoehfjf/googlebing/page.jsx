@@ -22,16 +22,16 @@ export default function GoogleBing() {
     const GoogleScannerContent = [
         {
             icon: icons.googlesearch,
-            title: "GOOGLE SEARCH",
+            title: "TOTAL ORDERS:",
             content: "12345"
         },
         {
             icon: icons.googlesearch,
-            title: "GOOGLE IMAGES SEARCH",
+            title: "ACCEPTED ORDERS:",
             content: "12345"
         }, {
             icon: icons.googlesearch,
-            title: "GOOGLE VIDEOS SEARCH",
+            title: "PENDING ORDERS:",
             content: "12345"
         }
     ]
@@ -39,16 +39,16 @@ export default function GoogleBing() {
     const BingScannerContent = [
         {
             icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
+            title: "TOTAL ORDERS:",
             content: "12345"
         },
         {
             icon: icons.bingsearch,
-            title: "GOOGLE IMAGES SEARCH",
+            title: "ACCEPTED ORDERS:",
             content: "12345"
         }, {
             icon: icons.bingsearch,
-            title: "GOOGLE VIDEOS SEARCH",
+            title: "PENDING ORDERS:",
             content: "12345"
         }
     ]
