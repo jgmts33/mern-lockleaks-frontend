@@ -1,0 +1,2 @@
+python camgirl.py -u "username,username"
+python camgirl.py -p "image.jpg"

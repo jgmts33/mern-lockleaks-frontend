@@ -1,11 +1,11 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, Link, ScrollShadow, Input
 } from '@nextui-org/react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { Cancel, Shape, PaperClip, PaperPlane } from "@/components/utils/Icons";
+import { Cancel, Shape, PaperClip, PaperPlane, Search } from "@/components/utils/Icons";
 
 export default function TicketDetail() {
     const [value, setValue] = React.useState(100);
@@ -17,6 +17,7 @@ export default function TicketDetail() {
         shape: <Shape fill="currentColor" size={16} />,
         paperclip: <PaperClip fill="currentColor" size={16} />,
         paperplane: <PaperPlane fill="currentColor" size={16} />,
+        search: <Search fill="currentColor" size={16} />,
     };
 
     const handleGoSettings = () => {
@@ -30,7 +31,16 @@ export default function TicketDetail() {
     const TicketTitle = [
         {
             date: "#10 / February 27, 2024",
-            title: "Ticket Title"
+            title: "Ticket Title",
+            status: "solved"
+        }, {
+            date: "#10 / February 27, 2024",
+            title: "Ticket Title",
+            status: "progress"
+        }, {
+            date: "#10 / February 27, 2024",
+            title: "Ticket Title",
+            status: "progress"
         }
     ]
 
@@ -41,44 +51,58 @@ export default function TicketDetail() {
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
             <div className='flex gap-5 mt-5 max-md:flex-col'>
-                <div className="flex flex-col max-w-[400px] w-full h-[550px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
-                    <div className='flex justify-between mt-5'>
-                        <span className='font-semibold text-[18px]'>Ticket Name</span>
-                        <Button radius="sm" className="bg-gradient-to-tr bg-transparent border border-gray-700 text-white shadow-lg text-lg" size='sm' onClick={() => handleGoSettings()}>
-                            {icons.shape}
-                        </Button>
+                <div className="flex flex-col max-w-[400px] w-full h-[650px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
+                    <div className='flex flex-col justify-between mt-5 items-center'>
+                        <div className='flex justify-between w-full'>
+                            <div className='flex items-center'>
+                                <span className='font-semibold text-[18px]'>Ticket name</span>
+                            </div>
+                            <div>
+                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={() => handleGoSettings()}>
+                                    {icons.shape}
+                                </Button>
+                            </div>
+                        </div>
+                        <div className='flex justify-around mt-5 w-full'>
+                            <div>
+                                <Button radius="full" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-600 text-white shadow-sm text-base" size='sm' onClick={() => handleGoSettings()}>
+                                    IN PROGRESS
+                                </Button>
+                            </div>
+                            <div>
+                                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-600 text-white shadow-lg text-base" size='sm' onClick={() => handleGoSettings()}>
+                                    SOLVED
+                                </Button>
+                            </div>
+                        </div>
                     </div>
-                    <div className='flex justify-center space-x-5 mt-8'>
-                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm" size='sm'>
-                            IN PROGRESS
-                        </Button>
-                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-700 text-white shadow-lg text-sm" size='sm'>
-                            SOLVED
-                        </Button>
-                    </div>
-                    <div className='flex flex-col pt-10 space-y-3'>
-                        {
-                            TicketTitle.map((item, index) => {
-                                return (
-                                    <div key={index} className={("cursor-pointer border border-gray-600 p-2 rounded-lg ") + (selectticket == index ? 'flex flex-col bg-gradient-to-tr from-purple-light to-purple-weight' : "flex flex-col")} onClick={() => setSelectTicket(selectticket == index ? -1 : index)}>
-                                        <span className='font-normal text-sm'>{item.date}</span>
-                                        <span className='font-semibold text-[18px]'>{item.title}</span>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                    <Progress
-                        size="md"
-                        className="max-w-2xl mt-5"
-                        color='secondary'
-                        value={value}
-                        showValueLabel={true}
-                    />
-                    <div className='mx-auto pt-5'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-5 py-5 text-lg" size='sm'>
-                            Solved
-                        </Button>
+                    <div className='flex flex-col pt-10'>
+                        <ScrollShadow className='h-[530px]'>
+                            {
+                                TicketTitle.map((item, index) => {
+                                    return (
+                                        <div key={index} className={("cursor-pointer p-2 rounded-lg ") + (selectticket == index ? 'flex flex-col border-3 border-gray-700 bg-transparent border-s-blue-500' : "flex flex-col border-3 border-gray-700")} onClick={() => setSelectTicket(selectticket == index ? -1 : index)}>
+                                            <span className='font-normal text-sm'>{item.date}</span>
+                                            <span className='font-semibold text-[18px]'>{item.title}</span>
+                                            {
+                                                item.status == "solved" ?
+                                                    <div className='mt-2'>
+                                                        <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-5 py-3 text-sm" size='sm'>
+                                                            {item.status}
+                                                        </Button>
+                                                    </div>
+                                                    :
+                                                    <div className='mt-2'>
+                                                        <Button radius="sm" className="bg-gradient-to-tr bg-white/35 border border-gray-500 text-white shadow-lg px-5 py-3 text-sm" size='sm'>
+                                                            {item.status}
+                                                        </Button>
+                                                    </div>
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
+                        </ScrollShadow>
                     </div>
                 </div>
                 <div className='flex flex-col max-w-[1040px] w-full space-y-32'>
@@ -94,9 +118,11 @@ export default function TicketDetail() {
                         </div>
                     </div>
                     <div className='flex flex-col'>
+                        <ScrollShadow className='h-[190px]'>
 
+                        </ScrollShadow>
                     </div>
-                    <div className='flex mt-10 gap-5 pt-20'>
+                    <div className='flex mt-10 gap-5'>
                         <div className='flex items-center'>{icons.paperclip}</div>
                         <div className='flex justify-between max-w-[960px] w-full bg-white/10 rounded-[16px] p-2 items-center'>
                             <div className='w-full'>

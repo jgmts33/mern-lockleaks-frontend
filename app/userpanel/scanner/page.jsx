@@ -35,28 +35,37 @@ export default function Scanner() {
             </div>
         },
         {
-            icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
+            icon: icons.googlesearch,
+            title: "GOOGLE VIDEOS SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
-                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='font-normal text-xs'>Initiated an automated Google Images search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
         {
             icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
+            title: "BING SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
-                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='font-normal text-xs'>Initiated automated searches on Bing Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
         {
             icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
+            title: "BING IMAGES SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
-                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='font-normal text-xs'>Initiated automated searches on Bing Images Search, resulting in the detection of</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='font-normal text-xs'>new copyright infringements.</span>
+            </div>
+        },
+        {
+            icon: icons.bingsearch,
+            title: "BING VIDEO SEARCH",
+            content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
+                <span className='font-normal text-xs'>Initiated automated searches on Bing Video Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>

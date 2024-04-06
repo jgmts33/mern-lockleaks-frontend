@@ -45,13 +45,13 @@ export default function DownloadData() {
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4'>
                 <ScrollShadow className="h-[350px]">
-                    <div className='flex flex-col scroll px-8 gap-5 scroll-y max-md:px-4'>
+                    <div className='flex flex-col scroll px-8 gap-5 scroll-y max-md:px-4 max-sm:gap-3'>
                         {
                             NotificationContent.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex items-center gap-10 max-md:flex-col max-xl:gap-5 max-md:items-start'>
+                                    <div key={index} className='flex items-center gap-10 max-md:flex-col max-xl:gap-5 max-md:items-start max-sm:gap-2'>
                                         <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
-                                            {items}
+                                            <span className='max-sm:font-normal max-sm:text-sm'>{items}</span>
                                         </div>
                                         <div>
                                             <Button radius="lg" className={selectDownload == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={()=>setSelectDownload(index)}>
@@ -68,7 +68,7 @@ export default function DownloadData() {
 
             {/* This section for define download data warning?*/}
 
-            <div className='flex bg-white/10 shadow-sm py-5 px-16 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full'>
+            <div className='flex bg-white/10 shadow-sm py-5 px-16 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:mt-5'>
                 <div>{icons.warning}</div>
                 <div className='flex gap-16 max-md:flex-col max-md:gap-1'>
                     <span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Scan name February 27, 2024</span>

@@ -22,6 +22,15 @@ export default function RecoveryUsers() {
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
 
+                <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full max-sm:mt-5 max-sm:text-center sm:hidden">
+                    <div className='flex items-center'>
+                        <span className='font-normal text-base'>How does it work?</span>
+                    </div>
+                    <div className='max-2xl:px-3'>
+                        <span className='font-normal text-sm'>Upload a picture of yourself to 'Profile Content Removal', then choose whether you want to upload a picture of yourself for automatic facial scanning or if you want to use your username.</span>
+                    </div>
+                </div>
+
                 {/* This section for define rusercontent content*/}
 
                 <div className='flex mt-10 max-sm:mt-0 w-full max-2xl:space-x-10 max-lg:space-x-0 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
@@ -36,7 +45,7 @@ export default function RecoveryUsers() {
                                     + Upload
                                 </Button>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    Submit
+                                    Start
                                 </Button>
                             </div>
                             <div className='flex items-center pt-12 max-2xl:mx-auto max-2xl:hidden'><span className='text-white font-extrabold text-lg'>Or</span></div>
@@ -51,7 +60,7 @@ export default function RecoveryUsers() {
                                     placeholder='Type here'
                                 />
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    Submit
+                                    Start
                                 </Button>
                             </div>
                         </div>
@@ -74,7 +83,7 @@ export default function RecoveryUsers() {
 
                 {/* This section for define how does it work?*/}
 
-                <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full">
+                <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full max-sm:hidden">
                     <div className='flex items-center'>
                         <span className='font-normal text-base'>How does it work?</span>
                     </div>
@@ -85,7 +94,7 @@ export default function RecoveryUsers() {
 
                 {/* This section for define HISTORICAL PROFILE RESULTS?*/}
 
-                <div className="flex items-center justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10 max-lg:flex-col max-lg:px-3">
+                <div className="flex items-center justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10 max-lg:flex-col max-lg:px-3 max-sm:mt-5">
                     <div className='flex gap-5 max-w-[350px] w-full items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>HISTORICAL PROFILE RESULTS</span>

@@ -24,7 +24,7 @@ export default function DataAnalytics() {
             {/* This section for define dataanalytics content?*/}
 
             <div className='flex gap-10 max-xl:flex-col max-lg:gap-0'>
-                <div className="flex flex-col max-w-[400px] max-xl:mx-auto max-lg:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10">
+                <div className="flex flex-col max-w-[400px] max-xl:mx-auto max-lg:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
                     <div className='mx-auto'>
                         <span className='font-extrabold text-lg'>Data Analytics and Insights</span>
                     </div>

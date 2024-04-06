@@ -23,6 +23,10 @@ export default function SetProperty() {
         history.back()
     }
 
+    const handleReset = () =>{
+        history.back()
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
             <div className='flex flex-col space-y-5 max-md:mx-auto'>
@@ -56,7 +60,7 @@ export default function SetProperty() {
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-5 py-2 text-lg" size='sm'>
                             Show
                         </Button>
-                        <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg px-5 py-2 text-lg" size='sm'>
+                        <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg px-5 py-2 text-lg" size='sm' onClick={()=>handleReset()}>
                             Reset
                         </Button>
                     </div>

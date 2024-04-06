@@ -48,7 +48,7 @@ export default function AccountSetting() {
 
                 {/* This section for define Subscription info*/}
 
-                <div className='flex flex-col bg-gradient-to-br bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col bg-gradient-to-br bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Subscription info</span>
                     </div>
@@ -68,7 +68,7 @@ export default function AccountSetting() {
 
                 {/* This section for define Contract Lockleaks*/}
 
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Contract Lockleaks</span>
                     </div>
@@ -83,7 +83,7 @@ export default function AccountSetting() {
 
                 {/* This section for define Tutorials*/}
 
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Tutorials</span>
                     </div>

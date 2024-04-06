@@ -59,7 +59,7 @@ export default function Notification() {
 
             {/* This section for define notification warning?*/}
 
-            <div className='flex bg-white/10 shadow-sm px-16 py-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:text-base max-sm:px-5'>
+            <div className='flex bg-white/10 shadow-sm px-16 py-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:text-base max-sm:px-5 max-sm:mt-5'>
                 <div>{icons.warning}</div>
                 <div><span className='font-semibold text-base'>AUTOMATIC DELETION OF NOTIFICATION OLDER THAN 30 DAYS</span></div>
             </div>

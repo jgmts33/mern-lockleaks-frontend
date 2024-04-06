@@ -83,7 +83,7 @@ export default function FreeAnalyse() {
               </div>
             </div>
           </div>
-          <div className='flex flex-col mt-28 max-2xl:mr-12'>
+          <div className='flex flex-col mt-28 max-2xl:mr-12 z-10'>
             <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg text-sm" size='md'>
               Contact Us
             </Button>

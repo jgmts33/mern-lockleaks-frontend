@@ -10,9 +10,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 
 const Sidebar = ({ show, setter, selectstar, setstar }) => {
-    const router = useRouter();
-    const [selectSidebar, setSelectSidebar] = useState(0);
-    const userData = useSelector((state) => state.auth);
 
     const icons = {
         filehost: <FileHost fill="currentColor" size={16} />,
@@ -43,7 +40,10 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
         yellowstar: <YellowStar fill="currentColor" size={16} />,
     };
 
-    const UserSidebarButtons = [
+    const router = useRouter();
+    const [selectSidebar, setSelectSidebar] = useState(0);
+    const userData = useSelector((state) => state.auth);
+    const [sidebarList, setSidebarList] = useState([
         {
             icon: icons.category,
             title: "DASHBOARD",
@@ -117,7 +117,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
             title: "NOTIFICATION",
             path: "/userpanel/notification"
         }
-    ]
+    ]);
 
     const AdminSidebarButtons = [
         {
@@ -200,12 +200,21 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
     ]
 
     useEffect(() => {
-        console.log(selectstar)
-    })
+        if (selectstar) {
+        const elementoMove = sidebarList[selectSidebar];
+        for (let i = selectSidebar; i > 0; i--) {
+            sidebarList[i] = sidebarList[i - 1];
+        }
+        sidebarList[0] = elementoMove;
+        setSidebarList([...sidebarList]);
+            setSelectSidebar(0)
+        }
+    }, [selectSidebar])
 
-    const handleSidebarClick = (path, index, title, icon) => {
+    const handleSidebarClick = (path, index) => {
+        console.log(index)
+        setSelectSidebar(index)
         setter(false)
-        setSelectSidebar(index);
         router.push(path);
     }
 
@@ -220,10 +229,10 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
 
     return (
         <>
-            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 w-full max-sm:bg-[#020615]/80 py-3 max-lg:h-screen max-md:py-10 justify-start px-3 z-40 max-sm:py-5 max-lg:absolute duration-1000 ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 py-3 w-full max-sm:bg-[#020615]/80 max-lg:h-screen justify-start px-3 max-sm:px-0 z-40 max-lg:absolute duration-1000 ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full">
                     <div className="mx-auto flex items-center justify-around w-full">
-                        <div className="flex"><Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
+                        <div className="flex"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></div>
                     </div>
                 </div>
                 {
@@ -233,7 +242,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                             {
                                 AdminSidebarButtons.map((items, index) => {
                                     return (
-                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                        <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path,index)}>
                                             {
                                                 selectstar && index == selectSidebar ?
                                                     <span>{icons.yellowstar}</span>
@@ -248,19 +257,21 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                             }
                         </div>
                         :
-                        <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 py-10 w-full gap-3 max-sm:gap-3 max-sm:py-2 space-x-2 cursor-pointer">
+                        <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-3">
                             {
-                                UserSidebarButtons.map((items, index) => {
+                                sidebarList.map((items, index) => {
                                     return (
-                                        <div key={index} className={("py-1 items-center ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 gap-5 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start"))} onClick={() => handleSidebarClick(items.path, index, items.title, items.icon)}>
+                                        <div key={index} className={("py-1 items-center ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSidebarClick(items.path, index)}>
                                             {
                                                 selectstar && index == selectSidebar ?
                                                     <span>{icons.yellowstar}</span>
                                                     :
                                                     false
                                             }
-                                            <span>{items.icon}</span>
-                                            <span className="font-light text-xs">{items.title}</span>
+                                            <div className="flex cursor-pointer gap-1 items-center">
+                                                <span>{items.icon}</span>
+                                                <span className="font-light text-sm">{items.title}</span>
+                                            </div>
                                         </div>
                                     )
                                 })
