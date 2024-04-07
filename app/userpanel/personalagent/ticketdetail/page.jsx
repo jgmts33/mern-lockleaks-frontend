@@ -51,26 +51,26 @@ export default function TicketDetail() {
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
             <div className='flex gap-5 mt-5 max-md:flex-col'>
-                <div className="flex flex-col max-w-[400px] w-full h-[650px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
+                <div className="flex flex-col max-w-[400px] w-full h-[650px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
                     <div className='flex flex-col justify-between mt-5 items-center'>
                         <div className='flex justify-between w-full'>
                             <div className='flex items-center'>
-                                <span className='font-semibold text-[18px]'>Ticket name</span>
+                                <span className='font-semibold text-[18px]'>Ticket Name</span>
                             </div>
                             <div>
-                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={() => handleGoSettings()}>
+                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={() => handleGoSettings()}>
                                     {icons.shape}
                                 </Button>
                             </div>
                         </div>
                         <div className='flex justify-around mt-5 w-full'>
                             <div>
-                                <Button radius="full" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-600 text-white shadow-sm text-base" size='sm' onClick={() => handleGoSettings()}>
+                                <Button radius="full" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-600 text-white text-base" size='sm' onClick={() => handleGoSettings()}>
                                     IN PROGRESS
                                 </Button>
                             </div>
                             <div>
-                                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-600 text-white shadow-lg text-base" size='sm' onClick={() => handleGoSettings()}>
+                                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-600 text-white text-base" size='sm' onClick={() => handleGoSettings()}>
                                     SOLVED
                                 </Button>
                             </div>
@@ -81,23 +81,9 @@ export default function TicketDetail() {
                             {
                                 TicketTitle.map((item, index) => {
                                     return (
-                                        <div key={index} className={("cursor-pointer p-2 rounded-lg ") + (selectticket == index ? 'flex flex-col border-3 border-gray-700 bg-transparent border-s-blue-500' : "flex flex-col border-3 border-gray-700")} onClick={() => setSelectTicket(selectticket == index ? -1 : index)}>
+                                        <div key={index} className={("cursor-pointer p-3 rounded-lg ") + (selectticket == index ? 'flex flex-col border-3 border-gray-700 bg-transparent border-s-blue-500' : "flex flex-col border-3 border-gray-700")} onClick={() => setSelectTicket(selectticket == index ? -1 : index)}>
                                             <span className='font-normal text-sm'>{item.date}</span>
                                             <span className='font-semibold text-[18px]'>{item.title}</span>
-                                            {
-                                                item.status == "solved" ?
-                                                    <div className='mt-2'>
-                                                        <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-5 py-3 text-sm" size='sm'>
-                                                            {item.status}
-                                                        </Button>
-                                                    </div>
-                                                    :
-                                                    <div className='mt-2'>
-                                                        <Button radius="sm" className="bg-gradient-to-tr bg-white/35 border border-gray-500 text-white shadow-lg px-5 py-3 text-sm" size='sm'>
-                                                            {item.status}
-                                                        </Button>
-                                                    </div>
-                                            }
                                         </div>
                                     )
                                 })
@@ -106,14 +92,14 @@ export default function TicketDetail() {
                     </div>
                 </div>
                 <div className='flex flex-col max-w-[1040px] w-full space-y-32'>
-                    <div className="flex flex-col max-w-[1040px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5">
+                    <div className="flex flex-col max-w-[1040px] w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
                         <div className='flex justify-between items-center'>
                             <div className='flex flex-col space-y-4'>
                                 <span className='font-normal text-sm'>#10 / February 27, 2024</span>
                                 <span className='font-semibold text-base mt-2'>Ticket Title</span>
                             </div>
                             <div>
-                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={() => handleGoPreviousPage()}>{icons.cancel}</Button>
+                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={() => handleGoPreviousPage()}>{icons.cancel}</Button>
                             </div>
                         </div>
                     </div>

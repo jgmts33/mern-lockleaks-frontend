@@ -73,7 +73,7 @@ export default function Bing() {
 
             {/* This section for define bing scan content*/}
 
-            <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-3 pb-10 cursor-pointer">
+            <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full p-3 pb-10 cursor-pointer">
                 {
                     ScannerContent.map((items, index) => {
                         return (
@@ -99,7 +99,7 @@ export default function Bing() {
 
             {/* This section for define bing scan footer*/}
 
-            <div className="flex items-center px-20 py-8 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5 cursor-pointer max-md:flex-col max-md:px-0">
+            <div className="flex items-center px-20 py-8 justify-start bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-5 cursor-pointer max-md:flex-col max-md:px-0">
                 <div className='flex gap-5 items-center'>
                     <div>{icons.components}</div>
                     <span className='font-normal text-base'>SEARCH RESULTS REMOVAL MODULE</span>

@@ -70,7 +70,7 @@ export default function SocialMedia() {
             <div className='grid grid-cols-2 gap-5 mt-10 max-md:grid-cols-1 max-sm:mt-5'>
                 <div className='flex flex-col w-full'>
                     <span className='font-semibold text-base max-lg:text-center'>SOCIAL MEDIA SCANNER</span>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                         {
                             SocialMediaScannerContent.map((items, index) => {
                                 return (
@@ -95,7 +95,7 @@ export default function SocialMedia() {
                 </div>
                 <div className='flex flex-col w-full'>
                     <span className='font-semibold text-base max-lg:text-center'>SOCIAL MEDIA SUBMIT</span>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                         {
                             SocialMediaSubmitContent.map((items, index) => {
                                 return (
@@ -120,14 +120,14 @@ export default function SocialMedia() {
                 </div>
             </div>
             <div className='grid grid-cols-2 gap-5 max-md:grid-cols-1'>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col bg-white/10 border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
                     <ScrollShadow className="h-[320px]">
                         <div className='flex flex-col gap-5 max-xl:px-2'>
                             {
                                 GoogleScanContent.map((items, index) => {
                                     return (
                                         <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-2'>
-                                            <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44'>
+                                            <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 pr-44'>
                                                 <span className='font-normal text-sm'>{items}</span>
                                             </div>
                                             <div className='px-4'>
@@ -142,14 +142,14 @@ export default function SocialMedia() {
                         </div>
                     </ScrollShadow>
                 </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 max-md:mt-0 w-full'>
+                <div className='flex flex-col bg-white/10 border border-gray-500 p-10 rounded-[16px] mt-5 max-md:mt-0 w-full'>
                     <ScrollShadow className="h-[320px]">
                         <div className='flex flex-col gap-5 max-xl:px-2'>
                             {
                                 GoogleScanContent.map((items, index) => {
                                     return (
                                         <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-2'>
-                                            <div className='flex bg-white/10 shadow-sm py-3 w-full rounded-[16px] px-6 pr-44'>
+                                            <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 pr-44'>
                                                 <span className='font-normal text-sm'>{items}</span>
                                             </div>
                                             <div className='px-4'>

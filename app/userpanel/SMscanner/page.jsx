@@ -34,7 +34,7 @@ export default function SMscanner() {
         {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
-                <span>Scanning on</span>
+                <span>Scanning On</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span>websites.</span>
             </div>
@@ -59,7 +59,7 @@ export default function SMscanner() {
                         <span className='font-extrabold text-lg'>SOCIAL MEDIA SCANNER</span>
                     </div>
                     <div className='max-sm:hidden'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-lg" size='sm'>
                             START
                         </Button>
                     </div>
@@ -71,10 +71,10 @@ export default function SMscanner() {
                         value={value}
                         showValueLabel={true}
                     />
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-0 sm:hidden">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-0 sm:hidden">
                         <div className='flex flex-col'>
-                            <span className='font-normal text-base text-center'>How Does It Works?</span>
-                            <span className='font-normal text-xs pt-3'>Choose the reference image, Upload your photo, upload your ID card picture, and then press Start.</span>
+                            <span className='font-normal text-base text-center'>How Does It Work?</span>
+                            <span className='font-normal text-xs pt-3'>Upload your ID card, then select the platform icon. Place the link or links of the profiles you want to report, and press the SUBMIT button.</span>
                         </div>
                     </div>
                 </div>
@@ -82,22 +82,22 @@ export default function SMscanner() {
                 {/* This section for define Social Media Scanner content*/}
 
                 <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:flex-col max-md:flex max-md:gap-0'>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
                         <div className='flex'>
                             <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
                         </div>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-sm mx-auto mt-10" size='sm'>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mx-auto mt-10" size='sm'>
                             Upload ID
                         </Button>
                     </div>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
                         <div className='flex flex-col'>
-                            <span className='font-normal text-base text-center'>How Does It Works?</span>
-                            <span className='font-normal text-xs pt-3'>Choose the reference image, Upload your photo, upload your ID card picture, and then press Start.</span>
+                            <span className='font-normal text-base text-center'>How Does It Work?</span>
+                            <span className='font-normal text-xs pt-3'>Upload your ID card, then select the platform icon. Place the link or links of the profiles you want to report, and press the SUBMIT button.</span>
                         </div>
                     </div>
                     <div className='sm:hidden max-sm:mt-5 max-sm:mx-auto'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-lg" size='sm'>
                             START
                         </Button>
                     </div>
@@ -131,7 +131,7 @@ export default function SMscanner() {
 
                 {/* This section for define Social Media Scanner footer*/}
 
-                <div className="flex items-center px-20 py-5 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5 max-lg:flex-col max-lg:px-5">
+                <div className="flex items-center px-20 py-5 justify-between bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-5 max-lg:flex-col max-lg:px-5">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>

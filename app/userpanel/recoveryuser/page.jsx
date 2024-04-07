@@ -85,7 +85,7 @@ export default function RecoveryUsers() {
 
                 <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full max-sm:hidden">
                     <div className='flex items-center'>
-                        <span className='font-normal text-base'>How does it work?</span>
+                        <span className='font-normal text-base'>How Does It Work?</span>
                     </div>
                     <div className='max-2xl:px-3'>
                         <span className='font-normal text-sm'>Upload a picture of yourself to 'Profile Content Removal', then choose whether you want to upload a picture of yourself for automatic facial scanning or if you want to use your username.</span>

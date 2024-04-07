@@ -28,19 +28,19 @@ export default function PersonalAgent() {
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
             <div className='flex gap-10 mt-5 max-md:flex-col'>
-                <div className="flex flex-col max-w-[400px] w-full h-[550px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
+                <div className="flex flex-col max-w-[400px] w-full h-[550px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
                     <div className='flex justify-between'>
                         <div>{icons.turnleft}</div>
                         <div>{icons.turnright}</div>
                     </div>
                     <div className='flex space-x-5 mt-8 max-sm:flex-col max-sm:space-x-0 max-sm:gap-3'>
-                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-700 text-white shadow-lg text-sm px-5" size='sm' onClick={()=>handleShowDetails()}>
+                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-700 text-white text-sm px-5" size='sm' onClick={()=>handleShowDetails()}>
                             NEW
                         </Button>
-                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm px-5" size='sm'>
+                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white text-sm px-5" size='sm'>
                             IN PROGRESS
                         </Button>
-                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm" size='sm'>
+                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white text-sm" size='sm'>
                             SOLVED
                         </Button>
                     </div>

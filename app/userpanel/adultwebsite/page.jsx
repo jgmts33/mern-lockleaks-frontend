@@ -63,9 +63,9 @@ export default function AdultWesite() {
             content: <div className='flex px-5 gap-2 items-center'>
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
-                    <span className='font-semibold text-sm'>Generated a removal report for</span>
+                    <span className='font-semibold text-sm'>Generated A Removal Report For</span>
                     <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
-                    <span className='font-semibold text-sm'>websites in compliance with DMCA policy and forwarded it for removal.</span>
+                    <span className='font-semibold text-sm'>Websites In Compliance With DMCA Policy And Forwarded It For Removal.</span>
                 </div>
             </div>
         },
@@ -93,12 +93,12 @@ export default function AdultWesite() {
             </div>
             <div className='flex flex-col mt-10 gap-3'>
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
-                <span className='font-medium text-lg text-white/50'>Scanning 10 websites using Specified keywords and Usernames</span>
+                <span className='font-medium text-lg text-white/50'>Scanning 10 Websites Using Specified Keywords And Usernames</span>
             </div>
 
             {/* This section for define Adult Website Content*/}
 
-            <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-md:p-0 pb-20">
+            <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-md:p-0 pb-20">
                 {
                     ScannerContent.map((items, index) => {
                         return (

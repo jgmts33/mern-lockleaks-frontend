@@ -80,7 +80,7 @@ export default function AIfaceprofile() {
                         <span className='font-extrabold text-lg'>AI FACE PROFILES</span>
                     </div>
                     <div className='flex max-sm:hidden'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-lg" size='sm'>
                             START
                         </Button>
                     </div>
@@ -92,7 +92,7 @@ export default function AIfaceprofile() {
                         value={value}
                         showValueLabel={true}
                     />
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:p-5 max-sm:mt-0 sm:hidden">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:p-5 max-sm:mt-0 sm:hidden">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base text-center'>How Doew It Works?</span>
                             <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
@@ -106,7 +106,7 @@ export default function AIfaceprofile() {
                     <span className='font-extrabold text-lg max-md:text-base max-sm:text-center'>Photo for Removal Refference</span>
                 </div>
                 <div className='flex gap-10 max-xl:flex-col max-md:gap-5'>
-                    <div className="flex flex-col w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 p-5 rounded-[16px] mt-5">
+                    <div className="flex flex-col w-full bg-white/15 border border-gray-500 p-5 rounded-[16px] mt-5">
                         <div className='flex mx-auto'>
                             <Image src={Woman} width={200} height={100} className='' alt='saturn' />
                         </div>
@@ -116,7 +116,7 @@ export default function AIfaceprofile() {
                                     AIImageLists.map((items, index) => {
                                         return (
                                             <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full max-lg:gap-5 max-lg:items-start max-sm:px-0 max-sm:items-center'>
-                                                <div className='flex bg-gradient-to-br justify-start bg-white/10 shadow-sm py-3 px-10 w-full items-center gap-3 rounded-[16px] max-md:items-start max-sm:px-2 max-sm:py-2'>
+                                                <div className='flex bg-gradient-to-br justify-start bg-white/10 py-3 px-10 w-full items-center gap-3 rounded-[16px] max-md:items-start max-sm:px-2 max-sm:py-2'>
                                                     <div>{items.icon}</div>
                                                     <span>{items.content}</span>
                                                 </div>
@@ -132,7 +132,7 @@ export default function AIfaceprofile() {
                     </div>
                     <div className='flex flex-col py-10 w-full max-sm:py-0'>
                         <span className='font-extrabold text-lg max-md:text-base max-sm:text-center'>Upload Photo for Removal</span>
-                        <div className='flex flex-col w-full h-[400px] max-md:h-[200px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
+                        <div className='flex flex-col w-full h-[400px] max-md:h-[200px] bg-white/10 border border-gray-500 rounded-[16px] mt-5'>
                             <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                                 <div className="flex items-center justify-center pt-5 pb-6">
                                     <span className="font-light text-lg text-white">+ Upload Photo</span>
@@ -142,16 +142,16 @@ export default function AIfaceprofile() {
                         </div>
                     </div>
                     <div className='max-w-[400px] w-full max-lg:flex max-lg:max-w-[700px] max-lg:gap-5 max-md:flex-col max-md:gap-0'>
-                        <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-10 max-sm:mt-0">
+                        <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-10 max-sm:mt-0">
                             <div className='flex'>
                                 <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
                             </div>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-sm mx-auto mt-10" size='sm'>
+                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mx-auto mt-10" size='sm'>
                                 Upload ID
                             </Button>
                         </div>
                         <div className='flex sm:hidden max-sm:mt-5 max-sm:mx-auto'>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>
+                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-lg" size='sm'>
                                 START
                             </Button>
                         </div>
@@ -163,7 +163,7 @@ export default function AIfaceprofile() {
                             value={value}
                             showValueLabel={true}
                         />
-                        <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
+                        <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
                             <div className='flex flex-col'>
                                 <span className='font-normal text-base text-center'>How Doew It Works?</span>
                                 <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
@@ -189,7 +189,7 @@ export default function AIfaceprofile() {
 
                 {/* This section for define AI face profile footer*/}
 
-                <div className="flex items-center px-16 py-5 justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5 max-lg:py-5 max-lg:px-5 max-md:flex-col">
+                <div className="flex items-center px-16 py-5 justify-start bg-white/15 border border-gray-500 rounded-[16px] w-full p-5 max-lg:py-5 max-lg:px-5 max-md:flex-col">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span>

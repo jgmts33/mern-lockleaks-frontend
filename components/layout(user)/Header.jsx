@@ -58,26 +58,6 @@ const UserHeader = ({ setter, setstar }) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </Button>
-        {
-          userData.email == "cosmin@gmail.com" && userData.password == "admin123"
-            ?
-            <div className="flex">
-              <div className="px-2 max-md:hidden">
-                <span>{icons.pencil}</span>
-              </div>
-              <div className="px-2 max-md:hidden">
-                <span>{icons.trash}</span>
-              </div>
-              <div className="px-2 max-md:hidden">
-                <span>{icons.window}</span>
-              </div>
-              <div className="px-2 max-md:hidden">
-                <span>{icons.control}</span>
-              </div>
-            </div>
-            :
-            false
-        }
         <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => setstar(!true)}>
           {icons.yellowstar}
         </Button>

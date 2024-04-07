@@ -44,23 +44,23 @@ export default function Scanner() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 w-full container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 w-full container text-white max-lg:mx-auto">
+            <div className='max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>SCANNER ORDERS</span>
             </div> 
             <div className='flex w-full gap-5 max-xl:flex-col'>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 px-5 py-10 rounded-[16px] mt-5 w-full'>
+                <div className='flex flex-col bg-white/10 border border-gray-500 px-5 py-10 rounded-[16px] mt-5 w-full'>
                     <ScrollShadow className="h-[320px]">
                         <div className='flex flex-col scroll px-5 gap-5 scroll-y'>
                             {
                                 ScannerContent.map((items, index) => {
                                     return (
                                         <div key={index} className='flex items-center gap-10'>
-                                            <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
+                                            <div className='flex bg-white/20 p-3 w-full rounded-[16px]'>
                                                 <span className='font-normal text-sm'>{items}</span>
                                             </div>
                                             <div>
-                                                <Button radius="lg" className={"border border-white/30 " +(selectAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectAccept(index)}>
+                                                <Button radius="lg" className={"border border-white/30 " +(selectAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white text-base" : "bg-gradient-to-tr bg-white/10 text-white text-base")} size='sm' onClick={() => setSelectAccept(index)}>
                                                     Accept
                                                 </Button>
                                             </div>
@@ -71,7 +71,7 @@ export default function Scanner() {
                         </div>
                     </ScrollShadow>
                 </div>
-                <div className="flex flex-col w-full h-1/2 mt-5 max-w-[500px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-2 max-lg:mx-auto">
+                <div className="flex flex-col w-full h-1/2 mt-5 max-w-[500px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-2 max-lg:mx-auto">
                     <div className='flex justify-between px-3 py-3'>
                         <div className='px-5 cursor-pointer'><span className='font-medium text-lg'>{ScannerDetails.title}</span></div>
                         <div>{icons.moredetails}</div>

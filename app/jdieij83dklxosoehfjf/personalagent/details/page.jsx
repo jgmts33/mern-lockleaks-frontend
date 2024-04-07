@@ -31,19 +31,19 @@ export default function PersonalAgentDetails() {
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
             <div className='flex gap-10 mt-5 max-md:flex-col'>
-                <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
+                <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
                     <div className='flex justify-between'>
                         <div>{icons.turnleft}</div>
                         <div>{icons.turnright}</div>
                     </div>
                     <div className='flex space-x-5 mt-8 max-sm:flex-col max-sm:gap-3 max-sm:space-x-0'>
-                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm" size='sm'>
+                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white text-sm" size='sm'>
                             NEW
                         </Button>
-                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm" size='sm'>
+                        <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white text-sm" size='sm'>
                             IN PROGRESS
                         </Button>
-                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-700 text-white shadow-lg text-sm" size='sm'>
+                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-700 text-white text-sm" size='sm'>
                             SOLVED
                         </Button>
                     </div>
@@ -67,23 +67,23 @@ export default function PersonalAgentDetails() {
                         showValueLabel={true}
                     />
                     <div className='mx-auto pt-5'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg px-5 text-lg" size='md' onClick={() => handleShowDetails()}>
+                        <Button radius="lg" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white px-5 text-lg" size='md' onClick={() => handleShowDetails()}>
                             Download
                         </Button>
                     </div>
                 </div>
                 <div className='flex flex-col max-w-[1040px] w-full space-y-32'>
-                    <div className="flex flex-col max-w-[1040px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] max-sm:px-0 px-10 py-5">
+                    <div className="flex flex-col max-w-[1040px] w-full bg-white/15 border border-gray-500 rounded-[20px] max-sm:px-0 px-10 py-5">
                         <div className='flex justify-between items-center max-sm:flex-col'>
                             <div className='flex flex-col space-y-4 max-sm:space-y-2'>
                                 <span className='font-normal text-sm'>#10 / February 27, 2024</span>
                                 <span className='font-semibold text-base mt-2'>Ticket Title</span>
                             </div>
                             <div className='flex items-center max-sm:mt-2'>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-5 py-4 text-lg" size='sm' onClick={() => handleShowDetails()}>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white px-5 py-4 text-lg" size='sm' onClick={() => handleShowDetails()}>
                                     SOLVED
                                 </Button>
-                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={() => handleGoPreviousPage()}>{icons.cancel}</Button>
+                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={() => handleGoPreviousPage()}>{icons.cancel}</Button>
                             </div>
                         </div>
                     </div>

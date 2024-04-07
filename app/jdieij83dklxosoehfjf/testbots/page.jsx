@@ -67,7 +67,7 @@ export default function TestBots() {
             <div className='grid grid-cols-3 max-2xl:grid-cols-2 max-lg:grid-cols-1  gap-5 mt-10'>
                 <div className='flex flex-col w-full'>
                     <span className='font-semibold text-base max-lg:text-center'>STATUS</span>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 p-5 rounded-[16px] w-full pb-8">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 p-5 rounded-[16px] w-full pb-8">
                         {
                             BotStatus.map((bots, index) => {
                                 return (
@@ -93,7 +93,7 @@ export default function TestBots() {
                 </div>
                 <div className='flex flex-col w-full'>
                     <span className='font-semibold text-base max-lg:text-center'>WORKING BOTS</span>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                         <ScrollShadow className='h-80'>
                             {
                                 WorkingBots.map((items, index) => {
@@ -121,7 +121,7 @@ export default function TestBots() {
                 </div>
                 <div className='flex flex-col w-full'>
                     <span className='font-semibold text-base bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent max-lg:text-center'>Not WORKING BOTS</span>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                         <ScrollShadow className='h-80'>
                             {
                                 NotWorkingBots.map((items, index) => {

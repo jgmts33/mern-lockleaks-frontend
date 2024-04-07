@@ -15,7 +15,7 @@ export default function DataAnalytics() {
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
 
-        {/* This section for define dataanalytics header?*/}
+            {/* This section for define dataanalytics header?*/}
 
             <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
@@ -26,12 +26,17 @@ export default function DataAnalytics() {
             <div className='flex gap-10 max-xl:flex-col max-lg:gap-0'>
                 <div className="flex flex-col max-w-[400px] max-xl:mx-auto max-lg:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
                     <div className='mx-auto'>
-                        <span className='font-extrabold text-lg'>Data Analytics and Insights</span>
+                        <span className='font-extrabold text-lg'>Data analytics and insights</span>
                     </div>
-                    <div className='mt-20 mx-auto'>
+                    <div className='mt-10 mx-auto'>
                         <span className='font-normal text-xs'>The analysis is ready to download in PDF format.</span>
                     </div>
-                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto mt-16" size='sm'>
+                    <div className='mt-10 mx-auto'>
+                        <span className='font-normal text-base'>
+                            Logo Data Anylistic
+                        </span>
+                    </div>
+                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto mt-10" size='sm'>
                         Download
                     </Button>
                 </div>

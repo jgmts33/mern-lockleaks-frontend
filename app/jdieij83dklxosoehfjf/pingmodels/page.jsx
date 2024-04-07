@@ -20,28 +20,28 @@ export default function PingModels() {
     const PingModelContent = [
         {
             name: "John +2 ",
-            platform:"Cam.com+2",
-            socialmedia:"Facebook+2",
-            reponse:"Yes",
-            goal:"Paid"
-        },{
+            platform: "Cam.com+2",
+            socialmedia: "Facebook+2",
+            reponse: "Yes",
+            goal: "Paid"
+        }, {
             name: "John +2 ",
-            platform:"Cam.com+2",
-            socialmedia:"Facebook+2",
-            reponse:"No",
-            goal:"No"
-        },{
+            platform: "Cam.com+2",
+            socialmedia: "Facebook+2",
+            reponse: "No",
+            goal: "No"
+        }, {
             name: "John +2 ",
-            platform:"Cam.com+2",
-            socialmedia:"Facebook+2",
-            reponse:"Yes",
-            goal:"Paid"
-        },{
+            platform: "Cam.com+2",
+            socialmedia: "Facebook+2",
+            reponse: "Yes",
+            goal: "Paid"
+        }, {
             name: "John +2 ",
-            platform:"Cam.com+2",
-            socialmedia:"Facebook+2",
-            reponse:"No",
-            goal:"No"
+            platform: "Cam.com+2",
+            socialmedia: "Facebook+2",
+            reponse: "No",
+            goal: "No"
         }
     ]
 
@@ -92,49 +92,72 @@ export default function PingModels() {
                     ADD
                 </Button>
             </div>
-            <div className='grid grid-cols-5 max-w-[1400px] mt-5 px-10'>
-                <div>
-                    <span>MODEL NAME</span>
+            <ScrollShadow className='max-sm:w-[500px]'>
+                <div className='max-w-[1400px] grid grid-cols-5 mt-5 px-10 w-full'>
+                    <div>
+                        <span>MODEL NAME</span>
+                    </div>
+                    <div>
+                        <span>PLATFORM</span>
+                    </div>
+                    <div>
+                        <span>SOCIAL MEDIA</span>
+                    </div>
+                    <div>
+                        <span>RESPONSE</span>
+                    </div>
+                    <div>
+                        <span>GOAL</span>
+                    </div>
                 </div>
-                <div>
-                    <span>PLATFORM</span>
-                </div>
-                <div>
-                    <span>SOCIAL MEDIA</span>
-                </div>
-                <div>
-                    <span>RESPONSE</span>
-                </div>
-                <div>
-                    <span>GOAL</span>
-                </div>
-            </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 w-full'>
+            </ScrollShadow>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-2 rounded-[16px] max-w-[1400px] mt-10 w-full'>
                 <ScrollShadow className='h-[400px]'>
                     <div className='w-full'>
-                        {
-                            PingModelContent.map((items, index) => {
-                                return (
-                                    <div key={index} className='grid grid-cols-5 py-6 font-semibold text-lg items-center px-5'>
-                                        <div>
-                                            <span>{items.name}</span>
-                                        </div>
-                                        <div>
-                                            <span>{items.platform}</span>
-                                        </div>
-                                        <div>
-                                            <span>{items.socialmedia}</span>
-                                        </div>
-                                        <div>
-                                            <span>{items.reponse}</span>
-                                        </div>
-                                        <div>
-                                            <span>{items.goal}</span>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
+                        <ScrollShadow className='max-sm:w-[700px]'>
+                            <div className='w-full'>
+                                {
+                                    PingModelContent.map((items, index) => {
+                                        return (
+                                            <div key={index} className='grid grid-cols-5 py-6 font-semibold text-base items-center px-5'>
+                                                <div>
+                                                    <span>{items.name}</span>
+                                                </div>
+                                                <div>
+                                                    <span>{items.platform}</span>
+                                                </div>
+                                                <div>
+                                                    <span>{items.socialmedia}</span>
+                                                </div>
+                                                <div>
+                                                    {
+                                                        items.reponse == "Yes"
+                                                            ?
+                                                            <span className='text-[#4AC34E]'>{items.reponse}</span>
+                                                            :
+                                                            <span className='text-[#CF3B56]'>{items.reponse}</span>
+                                                    }
+                                                    <span>
+                                                        {
+                                                            items.reponse == "Yes"
+                                                        }
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    {
+                                                        items.goal == "Paid"
+                                                            ?
+                                                            <span className='text-[#4AC34E]'>{items.goal}</span>
+                                                            :
+                                                            <span className='text-[#CF3B56]'>{items.goal}</span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </ScrollShadow>
                     </div>
                 </ScrollShadow>
             </div>

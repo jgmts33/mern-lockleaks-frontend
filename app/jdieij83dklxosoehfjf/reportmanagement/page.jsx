@@ -81,7 +81,7 @@ export default function ReportManagement() {
                     ADD
                 </Button>
             </div>
-            <div className='grid grid-cols-4 w-full mt-5 px-10'>
+            <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-10'>
                 <div>
                     <span>WEBSITE</span>
                 </div>

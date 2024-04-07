@@ -34,7 +34,7 @@ export default function SetProperty() {
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
             <div className='flex gap-5 mt-5 max-md:flex-col'>
-                <div className="flex flex-col max-w-[400px] w-full h-[650px] bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
+                <div className="flex flex-col max-w-[400px] w-full h-[650px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
                     <div className='flex justify-between mt-5'>
                         <span className='font-semibold text-[18px]'>Ticket Name</span>
                         <Button radius="sm" className='bg-transparent' size='sm' onClick={()=>handlePreviousPage()}>{icons.shape}</Button>
@@ -57,23 +57,23 @@ export default function SetProperty() {
                         <div><Checkbox color="success" radius="full">High</Checkbox></div>
                     </div>
                     <div className='flex justify-between mt-10'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-5 py-2 text-lg" size='sm'>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white px-5 py-2 text-lg" size='sm'>
                             Show
                         </Button>
-                        <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg px-5 py-2 text-lg" size='sm' onClick={()=>handleReset()}>
+                        <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white px-5 py-2 text-lg" size='sm' onClick={()=>handleReset()}>
                             Reset
                         </Button>
                     </div>
                 </div>
                 <div className='flex flex-col max-w-[1040px] w-full space-y-44'>
-                    <div className="flex flex-col max-w-[1040px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[20px] px-10 py-5">
+                    <div className="flex flex-col max-w-[1040px] w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
                         <div className='flex justify-between items-center'>
                             <div className='flex flex-col space-y-4'>
                                 <span className='font-normal text-sm'>#10 / February 27, 2024</span>
                                 <span className='font-semibold text-base mt-2'>Ticket Title</span>
                             </div>
                             <div>
-                            <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
+                            <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
                             </div>
                         </div>
                     </div>

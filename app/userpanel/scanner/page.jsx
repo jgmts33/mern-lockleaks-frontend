@@ -97,7 +97,7 @@ export default function Scanner() {
 
                 {/* This section for define scanner content*/}
 
-                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
+                <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full p-5">
                     {
                         ScannerContent.map((items, index) => {
                             return (
@@ -118,7 +118,7 @@ export default function Scanner() {
 
                 {/* This section for define scanner footer*/}
 
-                <div className="flex items-center px-20 max-lg:px-3 max-lg:flex-col py-8 max-md:flex-col justify-start bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 w-full p-5">
+                <div className="flex items-center px-20 max-lg:px-3 max-lg:flex-col py-8 max-md:flex-col justify-start bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-5">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.complete}</div>
                         <span className='font-normal text-base'>SEARCH RESULTS REMOVAL MODULE</span>

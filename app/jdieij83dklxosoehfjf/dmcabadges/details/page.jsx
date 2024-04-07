@@ -27,7 +27,7 @@ export default function DmcaBadgeDetails() {
                     <div className="flex border max-w-[450px] max-md:max-w-full border-gray-500 rounded-[23px] mt-10 cursor-pointer">
                         <Image src={Saturn} width={250} height={250} className='w-full height-full' alt='saturn' />
                     </div>
-                    <div className='flex justify-between px-2 pt-5'>
+                    <div className='flex justify-between pr-5 pt-5'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm'>
                             Set Position
                         </Button>
@@ -40,7 +40,7 @@ export default function DmcaBadgeDetails() {
                     <div className="flex shadow-gray-50 max-w-[450px] max-md:max-w-full border border-gray-500 rounded-[23px] mt-10 w-full cursor-pointer">
                         <Image src={Multicolor} width={250} height={250} className='w-full height-full' alt='saturn' />
                     </div>
-                    <div className='flex justify-between px-2 pt-5'>
+                    <div className='flex justify-between pr-5 pt-5'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm'>
                             Set Position
                         </Button>
@@ -53,7 +53,7 @@ export default function DmcaBadgeDetails() {
                     <div className="flex shadow-gray-50 max-w-[450px] max-md:max-w-full border border-gray-500 rounded-[25px] mt-10 w-full cursor-pointer">
                         <Image src={Fire} width={250} height={250} className='w-full height-full' alt='saturn' />
                     </div>
-                    <div className='flex justify-between px-2 pt-5'>
+                    <div className='flex justify-between pr-5 pt-5'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm'>
                             Set Position
                         </Button>

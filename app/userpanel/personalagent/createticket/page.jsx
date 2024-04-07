@@ -30,16 +30,16 @@ export default function CreateTicket() {
             <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
             </div>
-            <div className="flex items-center px-10 py-5 mt-10 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] w-full p-5">
+            <div className="flex items-center px-10 py-5 mt-10 justify-between bg-white/15 border border-gray-500 rounded-[16px] w-full p-5">
                 <div><span>New Ticket</span></div>
                 <div>
-                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white shadow-lg text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
+                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
                 </div>
             </div>
 
             {/* This section for define create ticket content?*/}
 
-            <div className="flex flex-col px-10 py-5 mt-10 mx-auto max-w-[750px] w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] p-5 max-md:px-3">
+            <div className="flex flex-col px-10 py-5 mt-10 mx-auto max-w-[750px] w-full bg-white/15 border border-gray-500 rounded-[16px] p-5 max-md:px-3">
                 <div className='flex flex-col w-full p-5'>
                     <label>Subject</label>
                     <input
@@ -58,10 +58,10 @@ export default function CreateTicket() {
                     />
                 </div>
                 <div className='flex justify-between w-full pb-10 px-5'>
-                    <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg px-12 text-sm" size='sm'>
+                    <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white px-12 text-sm" size='sm'>
                         Cancel
                     </Button>
-                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-12" size='sm' onClick={()=>handleTicketDetail()}>
+                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white px-12" size='sm' onClick={()=>handleTicketDetail()}>
                         Create
                     </Button>
                 </div>

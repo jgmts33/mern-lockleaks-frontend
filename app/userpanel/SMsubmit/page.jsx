@@ -53,7 +53,7 @@ export default function SMsubmit() {
                 <div className='grid grid-cols-3 gap-10 max-2xl:gap-2 max-xl:flex-col max-xl:flex max-xl:gap-0'>
                     <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
                         <div className='flex max-w-[330px] max-xl:max-w-full'>
-                            <span className='font-normal text-[18px] max-sm:text-sm'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
+                            <span className='font-normal text-[18px] max-sm:text-sm'>Requests Are Reviewed,And Government-Issued IDs Are Required For Verification.Without The Upload Of A Government-Issued ID, These Profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
                         </div>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
                             Upload ID
@@ -61,7 +61,7 @@ export default function SMsubmit() {
                     </div>
                     <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10 max-sm:mt-5">
                         <div className='flex flex-col'>
-                            <span className='font-normal text-base'>Select the platform icon where you want to report the profile.</span>
+                            <span className='font-normal text-base'>Select The Platform Icon Where You Want To Report The Profile.</span>
                             <div className='flex justify-around mt-5 max-lg:justify-between px-2 max-xl:gap-0 max-sm:gap-2'>
                                 {
                                     SOcialMediaButtons.map((items, index) => {
@@ -79,8 +79,8 @@ export default function SMsubmit() {
                     </div>
                     <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
                         <div className='flex flex-col'>
-                            <span className='font-normal text-[18px] text-center'>How Doew It Works?</span>
-                            <span className='font-normal text-xs pt-3'>Choose the reference image, Upload your photo, upload your ID card picture, and then press Start.</span>
+                            <span className='font-normal text-[18px] text-center'>How Doew It Work?</span>
+                            <span className='font-normal text-xs pt-3'>Upload your ID card, then select the platform icon. Place the link or links of the profiles you want to report, and press the SUBMIT button.</span>
                         </div>
                     </div>
                 </div>

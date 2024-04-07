@@ -244,7 +244,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                 {
                     userData.email == "cosmin@gmail.com" && userData.password == "admin123"
                         ?
-                        <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-2 py-5 w-full space-y-2">
+                        <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-4 py-3 w-full space-y-1 gap-2">
                             {
                                 AdminSidebarButtons.map((items, index) => {
                                     return (

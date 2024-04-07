@@ -33,9 +33,9 @@ export default function FileHosted() {
             icon: icons.components,
             content:
                 <div className='flex items-center flex-wrap space-x-1'>
-                    <span>Generated a removal report for</span>
+                    <span>Generated A Removal Report For</span>
                         <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
-                        <span>FileHosts in compliance with DMCA policy and forwarded it for removal.</span>
+                        <span>FileHosts In Compliance With DMCA Policy And Forwarded It For Removal.</span>
                 </div>
         }
     ]
@@ -67,12 +67,12 @@ export default function FileHosted() {
             </div>
             <div className='flex flex-col mt-10 gap-3 max-sm:mt-5'>
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
-                <span className='font-medium text-lg text-white/50'>Scanning 10 websites using Specified keywords and Usernames</span>
+                <span className='font-medium text-lg text-white/50'>Scanning 10 Websites Using Specified Keywords And Usernames</span>
             </div>
 
             {/* This section for define file hosted content*/}
 
-            <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-sm:p-2 pb-20">
+            <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-sm:p-2 pb-20">
                 {
                     ScannerContent.map((items, index) => {
                         return (
