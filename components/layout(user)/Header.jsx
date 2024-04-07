@@ -58,7 +58,7 @@ const UserHeader = ({ setter, setstar }) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </Button>
-        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => setstar(!true)}>
+        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => setstar(true)}>
           {icons.yellowstar}
         </Button>
         <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-white max-sm:hidden"></div>
