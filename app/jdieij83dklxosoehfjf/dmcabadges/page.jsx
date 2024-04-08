@@ -50,20 +50,26 @@ export default function Dmcabadges() {
         setFile(URL.createObjectURL(e[0]));
     }
 
+    const handleBack = () => {
+        history.back()
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-3 py-5 container text-white max-lg:mx-auto">
             <div className='flex max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
-            <div className='flex justify-between max-w-[450px] mt-10 max-lg:max-w-full max-lg:justify-around'>
-                <Button radius="md" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base border border-white/40" size='md' onClick={()=>handleGoDetails()}>
-                    Choose file
-                </Button>
-                <Button radius="md" className="bg-gradient-to-tr from-gray-800 to-gray-600 text-white shadow-lg text-base border border-white/40" size='md'>
-                    Upload image
-                </Button>
+            <div className='flex justify-between w-full mt-10 max-lg:max-w-full max-lg:justify-around'>
+                <div className='flex justify-between max-w-[450px] w-full'>
+                    <Button radius="md" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base border border-white/40" size='md' onClick={() => handleGoDetails()}>
+                        Choose file
+                    </Button>
+                    <Button radius="md" className="bg-gradient-to-tr from-gray-800 to-gray-600 text-white shadow-lg text-base border border-white/40" size='md'>
+                        Upload image
+                    </Button>
+                </div>
             </div>
-            <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1'>
+            <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 mt-5'>
                 <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                     <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                         <div className="flex items-center justify-center pt-5 pb-6">

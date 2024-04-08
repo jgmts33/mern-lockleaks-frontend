@@ -52,8 +52,8 @@ export default function VPSManagement() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>VPS MANAGEMENT</span>
             </div>
             <div className='flex mt-10'>
@@ -61,7 +61,7 @@ export default function VPSManagement() {
                     CONNECT VPS
                 </Button>
             </div>
-            <div className='grid grid-cols-4 font-semibold text-sm w-full mt-10'>
+            <div className='grid grid-cols-4 font-semibold text-sm w-full mt-10 max-sm:hidden'>
                 <div className='flex px-20'><span>VPS IP</span></div>
                 <div className='flex'><span>USERS</span></div>
                 <div className='flex px-3'><span>FREE SPACE</span></div>
@@ -69,10 +69,17 @@ export default function VPSManagement() {
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 w-full'>
                 <ScrollShadow className="h-[300px]">
+                    <ScrollShadow className='max-sm:w-[800px]'>
+                    <div className='grid grid-cols-4 sm:hidden'>
+                        <div className='flex px-20 max-sm:px-0'><span>VPS IP</span></div>
+                        <div className='flex'><span>USERS</span></div>
+                        <div className='flex px-3 max-sm:px-0'><span>FREE SPACE</span></div>
+                        <div className='flex px-10 max-sm:px-10'><span>STATUS</span></div>
+                    </div>
                     {
                         UsersData.map((items, index) => {
                             return (
-                                <div key={index} className='grid grid-cols-4 font-semibold text-lg gap-10 justify-between w-full py-3'>
+                                <div key={index} className='grid grid-cols-4 font-semibold text-lg max-sm:font-normal max-sm:text-sm gap-10 w-full py-3'>
                                     <div className='flex'><span>{items.vpsip}</span></div>
                                     <div className='flex'>
                                         <span>{items.users}</span>/
@@ -90,12 +97,13 @@ export default function VPSManagement() {
                                         </div>
                                     </div>
                                     <div className='flex items-center justify-center'>
-                                        <span className={items.status == "ONLINE"?"text-[#4AC34E]":"text-[#CF3B56]"}>{items.status}</span>
+                                        <span className={items.status == "ONLINE" ? "text-[#4AC34E]" : "text-[#CF3B56]"}>{items.status}</span>
                                     </div>
                                 </div>
                             )
                         })
                     }
+                    </ScrollShadow>
                 </ScrollShadow>
             </div>
         </div>

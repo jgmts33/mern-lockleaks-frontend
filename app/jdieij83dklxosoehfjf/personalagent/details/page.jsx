@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Progress, Input
+    Button, Link, Progress, Input, ScrollShadow
 } from '@nextui-org/react';
 import React from 'react';
 import { useRouter } from 'next/navigation';
@@ -24,11 +24,33 @@ export default function PersonalAgentDetails() {
         router.push("/jdieij83dklxosoehfjf/analytics/details");
     }
 
+    const personalAgentContent = [
+        {
+            date: "#10 / February 27, 2024",
+            title: "Ticket Title"
+        }, {
+            date: "#10 / February 27, 2024",
+            title: "Ticket Title"
+        }, {
+            date: "#10 / February 27, 2024",
+            title: "Ticket Title"
+        }
+    ]
+
+    const handleBack = () =>{
+        history.back()
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
             <div className='flex flex-col space-y-5 max-md:mx-auto'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
+            </div>
+            <div className='flex justify-between w-full mt-5'>
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
+                <Button radius="lg" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-white/50 text-white text-sm" size='md' onClick={()=>handleBack()}>
+                    Back
+                </Button>
             </div>
             <div className='flex gap-10 mt-5 max-md:flex-col'>
                 <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
@@ -47,18 +69,18 @@ export default function PersonalAgentDetails() {
                             SOLVED
                         </Button>
                     </div>
-                    <div className='flex flex-col mt-10 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>
-                        <span className='font-normal text-xs'>#10 / February 27, 2024</span>
-                        <span className='font-semibold text-[18px]'>Ticket Title</span>
-                    </div>
-                    <div className='flex flex-col mt-10'>
-                        <span className='font-normal text-xs'>#10 / February 27, 2024</span>
-                        <span className='font-semibold text-[18px]'>Ticket Title</span>
-                    </div>
-                    <div className='flex flex-col mt-10'>
-                        <span className='font-normal text-xs'>#10 / February 27, 2024</span>
-                        <span className='font-semibold text-[18px]'>Ticket Title</span>
-                    </div>
+                    <ScrollShadow className='h-[220px]'>
+                        {
+                            personalAgentContent.map((item, index) => {
+                                return (
+                                    <div className={index == 0 ? 'flex flex-col mt-10 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent' : "flex flex-col mt-10"}>
+                                        <span className='font-normal text-xs'>{item.date}</span>
+                                        <span className='font-semibold text-[18px]'>{item.title}</span>
+                                    </div>
+                                )
+                            })
+                        }
+                    </ScrollShadow>
                     <Progress
                         size="md"
                         className="max-w-2xl mt-5"

@@ -40,14 +40,14 @@ export default function ReportManagement() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>REPORTS MANAGEMENT</span>
             </div>
-            <div className='flex max-w-[1232px] justify-between mt-10'>
+            <div className='flex max-w-[1232px] justify-between mt-10 max-sm:mt-5'>
                 <span className='font-semibold text-base'>Info</span>
             </div>
-            <div className='flex max-w-[1032px] justify-between mt-16'>
+            <div className='flex max-w-[1032px] justify-between mt-16 max-sm:mt-5'>
                 <Input
                     isClearable
                     radius="lg"
@@ -81,7 +81,7 @@ export default function ReportManagement() {
                     ADD
                 </Button>
             </div>
-            <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-10'>
+            <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-10 max-sm:hidden'>
                 <div>
                     <span>WEBSITE</span>
                 </div>
@@ -95,37 +95,53 @@ export default function ReportManagement() {
                     <span>SUCCESS</span>
                 </div>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1300px] mt-10 w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1300px] mt-10 w-full'>
                 <ScrollShadow className='h-[400px]'>
-                    <div className='w-full'>
-                        {
-                            ReportsContent.map((items, index) => {
-                                return (
-                                    <div key={index} className='grid grid-cols-4 py-6 font-semibold text-lg items-center'>
-                                        <div>
-                                            <span>{items.domain}</span>
+                    <ScrollShadow className='max-sm:w-[600px]'>
+                        <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-10 sm:hidden max-sm:max-w-full max-sm:px-0'>
+                            <div>
+                                <span>WEBSITE</span>
+                            </div>
+                            <div>
+                                <span>METHOD</span>
+                            </div>
+                            <div className='pl-10 max-sm:pl-0'>
+                                <span>LINKS</span>
+                            </div>
+                            <div className='pl-20 max-sm:pl-0'>
+                                <span>SUCCESS</span>
+                            </div>
+                        </div>
+                        <div className='w-full'>
+                            {
+                                ReportsContent.map((items, index) => {
+                                    return (
+                                        <div key={index} className='grid grid-cols-4 py-6 font-semibold text-lg items-center max-sm:font-normal max-sm:text-sm'>
+                                            <div>
+                                                <span>{items.domain}</span>
+                                            </div>
+                                            <div>
+                                                <Button radius="lg" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
+                                                    View
+                                                </Button>
+                                            </div>
+                                            <div>
+                                                <span>{items.links}</span>
+                                            </div>
+                                            <div className='flex gap-2'>
+                                                <Button radius="lg" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
+                                                    Yes
+                                                </Button>
+                                                <Button radius="lg" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} size='sm'>
+                                                    No
+                                                </Button>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <Button radius="lg" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
-                                                View
-                                            </Button>
-                                        </div>
-                                        <div>
-                                            <span>{items.links}</span>
-                                        </div>
-                                        <div className='flex gap-2'>
-                                            <Button radius="lg" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
-                                                Yes
-                                            </Button>
-                                            <Button radius="lg" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} size='sm'>
-                                                No
-                                            </Button>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </ScrollShadow>
                 </ScrollShadow>
             </div>
             <Modal

@@ -44,7 +44,7 @@ export default function Header() {
     {
       content: "Pricing",
       path: "/pricing"
-    },{
+    }, {
       content: "Services",
       path: "/services"
     }, {
@@ -53,10 +53,10 @@ export default function Header() {
     }, {
       content: "Dmca Badges",
       path: "/dmcabadges"
-    },{
+    }, {
       content: "Help",
       path: "/help"
-    },{
+    }, {
       content: "Delete Data",
       path: "/deletedata"
     },
@@ -76,7 +76,7 @@ export default function Header() {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       className="bg-transparent sm:p-1 z-20"
-      maxWidth="2xl"
+      maxWidth="full"
     >
       <NavbarContent className="md:hidden text-white" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
@@ -89,12 +89,14 @@ export default function Header() {
           </Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex gap-8" justify="center">
+      <NavbarContent justify="start">
         <NavbarBrand>
           <Link href="/">
             <Image src="/assets/logo.svg" width={190} height={50} alt="logo" />
           </Link>
         </NavbarBrand>
+      </NavbarContent>
+      <NavbarContent className="hidden sm:flex gap-20" justify="center">
         <NavbarItem className="max-md:hidden">
           <Link color="foreground" href="/pricing" title="pricing">
             PRICING
@@ -145,7 +147,6 @@ export default function Header() {
       </NavbarContent>
 
       <NavbarContent className="max-md:block hidden"></NavbarContent>
-
       <NavbarMenu>
         {ToggleMenuItems.map((menu, index) => (
           <NavbarMenuItem key={index}>

@@ -22,7 +22,7 @@ export default function RecoveryUsers() {
                     <span className='font-extrabold text-lg'>RECOVERY AND REMOVAL OF USERNAMES CONTENT</span>
                 </div>
 
-                <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full max-sm:mt-5 max-sm:text-center sm:hidden">
+                <div className="flex flex-col items-center py-8 justify-between bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full max-sm:mt-5 max-sm:text-center sm:hidden">
                     <div className='flex items-center'>
                         <span className='font-normal text-base'>How does it work?</span>
                     </div>
@@ -37,7 +37,7 @@ export default function RecoveryUsers() {
                     <div className='flex flex-col w-2/3 max-lg:w-full'>
                         <div className='text-center justify-center items-center font-extrabold text-lg max-sm:text-base max-sm:mt-5 pr-10'><span>Recovery Usernames</span></div>
                         <div className='flex space-x-10 max-2xl:space-x-0 max-2xl:flex-col'>
-                            <div className="flex flex-col max-w-[480px] max-xl:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-5">
+                            <div className="flex flex-col max-w-[480px] max-xl:max-w-full w-full bg-white/15 border border-gray-500 rounded-[16px] mt-5 p-10 pb-5">
                                 <div className='flex max-w-[250px] text-center mx-auto'>
                                     <span className='font-normal text-sm'>To Start the Scanning Process, Please Begin by Uploading a Photo of Yourself</span>
                                 </div>
@@ -49,7 +49,7 @@ export default function RecoveryUsers() {
                                 </Button>
                             </div>
                             <div className='flex items-center pt-12 max-2xl:mx-auto max-2xl:hidden'><span className='text-white font-extrabold text-lg'>Or</span></div>
-                            <div className="flex flex-col max-w-[480px] max-xl:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10">
+                            <div className="flex flex-col max-w-[480px] max-xl:max-w-full w-full bg-white/15 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10">
                                 <div className='flex max-w-[250px] text-center mx-auto'>
                                     <span className='font-normal text-sm'>To Begin the Scanning Process,Please Provide Any Known Usernames You Have Used.</span>
                                 </div>
@@ -67,7 +67,7 @@ export default function RecoveryUsers() {
                     </div>
                     <div className='flex flex-col w-1/3 justify-center items-center max-2xl:w-full max-lg:mt-5'>
                         <div className='font-extrabold text-lg mx-auto text-center'><span>Profile Content Removal</span></div>
-                        <div className="flex flex-col max-w-[460px] max-xl:max-w-full w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10">
+                        <div className="flex flex-col max-w-[460px] max-xl:max-w-full w-full bg-white/15 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10">
                             <div className='flex max-w-[200px] text-center mx-auto'>
                                 <span className='font-normal text-sm'>Upload a Picture Of Yourself While Holding a Sign That Reads  “CGF”</span>
                             </div>
@@ -83,7 +83,7 @@ export default function RecoveryUsers() {
 
                 {/* This section for define how does it work?*/}
 
-                <div className="flex flex-col items-center py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full max-sm:hidden">
+                <div className="flex flex-col items-center py-8 justify-between bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full max-sm:hidden">
                     <div className='flex items-center'>
                         <span className='font-normal text-base'>How Does It Work?</span>
                     </div>
@@ -94,7 +94,7 @@ export default function RecoveryUsers() {
 
                 {/* This section for define HISTORICAL PROFILE RESULTS?*/}
 
-                <div className="flex items-center justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10 max-lg:flex-col max-lg:px-3 max-sm:mt-5">
+                <div className="flex items-center justify-between bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full py-5 px-10 max-lg:flex-col max-lg:px-3 max-sm:mt-5">
                     <div className='flex gap-5 max-w-[350px] w-full items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>HISTORICAL PROFILE RESULTS</span>

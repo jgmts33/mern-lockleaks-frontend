@@ -13,14 +13,15 @@ import {
 } from '@nextui-org/react';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import NextTopLoader from 'nextjs-toploader';
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   const currentPath = usePathname();
   const [showSidebar, setShowSidebar] = useState(false);
-  const [selectStar,setSelectStar] = useState(false);
-  
+  const [selectStar, setSelectStar] = useState(false);
+
   return (
     <html lang="en">
       <body className={poppins.className + " dark"}>
@@ -30,9 +31,9 @@ export default function RootLayout({ children }) {
               currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
                 ?
                 <div className="flex">
-                  <Sidebar show={showSidebar} setter={setShowSidebar} selectstar={selectStar} setstar={setSelectStar} />
+                  <Sidebar show={showSidebar} setter={setShowSidebar} selectstar={selectStar} />
                   <div className="flex flex-col w-full gradiant-background">
-                    <UserHeader setter={setShowSidebar} setstar={setSelectStar} />
+                    <UserHeader setter={setShowSidebar} selectstar={selectStar} setstar={setSelectStar} />
                     <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-56px)] overflow-y-auto">
                       {children}
                     </div>
@@ -51,6 +52,21 @@ export default function RootLayout({ children }) {
                   }
                   <div className="flex w-full">
                     <div className="mx-auto">
+                      <NextTopLoader
+                        color="#2299DD"
+                        initialPosition={0.08}
+                        crawlSpeed={200}
+                        height={3}
+                        crawl={true}
+                        showSpinner={true}
+                        easing="ease"
+                        speed={200}
+                        shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+                        template='<div class="bar absolute" role="bar"><div class="peg"></div></div> 
+                        <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+                        zIndex={1600}
+                        showAtBottom={false}
+                      />
                       {children}
                     </div>
                   </div>

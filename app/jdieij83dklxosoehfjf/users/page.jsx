@@ -48,12 +48,12 @@ export default function Users() {
             <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
-            <div className='flex max-w-[1232px] justify-between mt-10 max-sm:mt-5 max-sm:'>
+            <div className='flex max-w-[1400px] justify-between mt-10 max-sm:mt-5 max-md:gap-2 max-sm:flex-col max-sm:mx-auto'>
                 <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: 10</span>
                 <span className='font-semibold text-base'>TOTAL USERS: 10</span>
                 <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: 10</span>
             </div>
-            <div className='flex max-w-[1232px] justify-between mt-16 max-sm:mt-5 max-md:flex-col max-sm:gap-2 max-sm:mx-auto'>
+            <div className='flex max-w-[1400px] justify-between mt-16 max-sm:mt-5 max-md:flex-col max-sm:gap-2 max-sm:mx-auto'>
                 <Input
                     isClearable
                     radius="lg"
@@ -114,8 +114,9 @@ export default function Users() {
                     }
                 />
             </div>
-            {/* <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1400px] mt-10 max-md:w-full'>     */}
-                <ScrollShadow className='h-[400px] overflow-x-auto flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1400px] mt-10 max-md:w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1400px] mt-10 max-md:w-full'>
+                <ScrollShadow className='h-[400px]'>
+                    <ScrollShadow className='max-sm:w-[900px]'>
                     <div className='grid grid-cols-5 w-full'>
                         <div>
                             <span>Email</span>
@@ -156,7 +157,7 @@ export default function Users() {
                                             </Button>
                                         </div>
                                         <div className='flex'>
-                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
+                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm' onClick={()=>handleShowMoreDetails()}>
                                                 View
                                             </Button>                                        
                                         </div>
@@ -165,8 +166,9 @@ export default function Users() {
                             })
                         }
                     </div>
+                    </ScrollShadow>
                 </ScrollShadow>
-            {/* </div> */}
+                </div>
         </div>
     )
 }

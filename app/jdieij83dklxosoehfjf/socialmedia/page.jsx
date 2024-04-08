@@ -69,8 +69,10 @@ export default function SocialMedia() {
             </div>
             <div className='grid grid-cols-2 gap-5 mt-10 max-md:grid-cols-1 max-sm:mt-5'>
                 <div className='flex flex-col w-full'>
-                    <span className='font-semibold text-base max-lg:text-center'>SOCIAL MEDIA SCANNER</span>
-                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
+                    <div className='flex mx-auto'>
+                        <span className='font-semibold text-base max-lg:text-center'>SOCIAL MEDIA SCANNER</span>
+                    </div>
+                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-5 rounded-[16px] w-full pb-8">
                         {
                             SocialMediaScannerContent.map((items, index) => {
                                 return (
@@ -94,8 +96,10 @@ export default function SocialMedia() {
                     </div>
                 </div>
                 <div className='flex flex-col w-full'>
-                    <span className='font-semibold text-base max-lg:text-center'>SOCIAL MEDIA SUBMIT</span>
-                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
+                    <div className='flex mx-auto'>
+                        <span className='font-semibold text-base max-lg:text-center'>SOCIAL MEDIA SUBMIT</span>
+                    </div>
+                    <div className="flex flex-col bg-white/15 border border-gray-500 mt-5 rounded-[16px] w-full pb-8">
                         {
                             SocialMediaSubmitContent.map((items, index) => {
                                 return (

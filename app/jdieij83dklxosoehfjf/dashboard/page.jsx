@@ -22,13 +22,13 @@ export default function AdminDashbaord() {
             total: 123456
         },
         {
-            title: "Unauthorized content upload",
+            title: "AI Bots",
             subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
         },
         {
-            title: "Adult tube sites",
+            title: "Adult Tube Websites",
             subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
@@ -40,13 +40,13 @@ export default function AdminDashbaord() {
             total: 123456
         },
         {
-            title: "Social media",
+            title: "Social Media",
             subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
         },
         {
-            title: "Personal agent",
+            title: "Personal Agent",
             subtitle:"total last scan",
             lastscan: 123456,
             total: 123456

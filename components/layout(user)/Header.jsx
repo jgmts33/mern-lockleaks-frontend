@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from 'next/image';
-import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, AccountSetting } from "@/components/utils/Icons";
+import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, AccountSetting, Star } from "@/components/utils/Icons";
 import { useCallback, useEffect, useState } from 'react';
 import {
   Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input
@@ -11,10 +11,11 @@ import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
-const UserHeader = ({ setter, setstar }) => {
+const UserHeader = ({ setter, selectstar, setstar }) => {
   const router = useRouter();
   const userData = useSelector((state) => state.auth);
-  const [isSearch, setSearch] = useState(false)
+  const [isSearch, setSearch] = useState(false);
+  const [selectStar, setselectStar] = useState(false);
 
   const icons = {
     yellowstar: <YellowStar fill="currentColor" size={16} />,
@@ -26,6 +27,7 @@ const UserHeader = ({ setter, setstar }) => {
     window: <Window fill="currentColor" size={16} />,
     logout: <LogOut fill="currentColor" size={16} />,
     accountsetting: <AccountSetting fill="currentColor" size={16} />,
+    star: <Star fill="currentColor" size={16} />,
   };
 
   const handleUserSetting = () => {
@@ -50,6 +52,11 @@ const UserHeader = ({ setter, setstar }) => {
     router.push("/auth/login")
   }
 
+  const handleSelectStar = () => {
+    setstar(p => !p);
+    setselectStar(p => !p);
+  }
+
   return (
     <nav className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14 z-30">
       <div className="flex px-2 items-center max-sm:justify-center max-sm:px-0">
@@ -58,15 +65,22 @@ const UserHeader = ({ setter, setstar }) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </Button>
-        <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => setstar(true)}>
-          {icons.yellowstar}
-        </Button>
+        {
+          selectStar ?
+            <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => handleSelectStar()}>
+              {icons.star}
+            </Button>
+            :
+            <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => handleSelectStar()}>
+              {icons.yellowstar}
+            </Button>
+        }
         <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-white max-sm:hidden"></div>
         <Button radius="lg" className="bg-transparent text-white flex items-center max-sm:hidden" size='sm' onClick={() => { setSearch(isSearch ? false : true) }}>
           {icons.search}
         </Button>
         <div className={("flex duration-1000 pb-2 ") + (!isSearch ? "opacity-0" : "opacity-100")}>
-          <Input type="text" label="Search" className="h-7" />
+          <Input type="text" label="Search" className="h-7 w-80 max-md:w-32" />
         </div>
       </div>
       <div className="flex px-5 text-white gap-5 items-center">
@@ -106,61 +120,61 @@ const UserHeader = ({ setter, setstar }) => {
           </div>
         </div>
         <div className="flex gap-1">
-        <div className="flex max-sm:hidden cursor-pointer z-0" >
-          <Dropdown>
-            <DropdownTrigger>
-              <div className="flex flex-col">
-                <span className="font-semibold text-sm">Emilia Clarke</span>
-                <span className="font-normal text-xs">EC@gmail.com</span>
-              </div>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Action event example"
-              className="text-white"
-            >
-              <DropdownItem>
-                <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
-                  <span>{icons.accountsetting}</span>
-                  <span>Account Settings</span>
+          <div className="flex max-sm:hidden cursor-pointer z-0" >
+            <Dropdown>
+              <DropdownTrigger>
+                <div className="flex flex-col">
+                  <span className="font-semibold text-sm">Emilia Clarke</span>
+                  <span className="font-normal text-xs">EC@gmail.com</span>
                 </div>
-              </DropdownItem>
-              <DropdownItem>
-                <div className="flex w-full space-x-2 mx-auto pl-1" onClick={() => handleLogOut()}>
-                  <span>{icons.logout}</span>
-                  <span>Log out</span>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Action event example"
+                className="text-white"
+              >
+                <DropdownItem>
+                  <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
+                    <span>{icons.accountsetting}</span>
+                    <span>Account Settings</span>
+                  </div>
+                </DropdownItem>
+                <DropdownItem>
+                  <div className="flex w-full space-x-2 mx-auto pl-1" onClick={() => handleLogOut()}>
+                    <span>{icons.logout}</span>
+                    <span>Log out</span>
+                  </div>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+          <div className="cursor-pointer z-0">
+            <Dropdown>
+              <DropdownTrigger>
+                <div>
+                  <Badge content="" color="success" shape="circle" placement="bottom-right">
+                    <Image src={UserAvatar} width={35} height={35} className="" alt="useravatar" />
+                  </Badge>
                 </div>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
-        <div className="cursor-pointer z-0">
-          <Dropdown>
-            <DropdownTrigger>
-              <div>
-                <Badge content="" color="success" shape="circle" placement="bottom-right">
-                  <Image src={UserAvatar} width={35} height={35} className="" alt="useravatar" />
-                </Badge>
-              </div>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Action event example"
-              className="text-white"
-            >
-              <DropdownItem>
-                <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
-                  <span>{icons.accountsetting}</span>
-                  <span>Account Settings</span>
-                </div>
-              </DropdownItem>
-              <DropdownItem>
-                <div className="flex w-full space-x-2 mx-auto pl-1" onClick={() => handleLogOut()}>
-                  <span>{icons.logout}</span>
-                  <span>Log out</span>
-                </div>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Action event example"
+                className="text-white"
+              >
+                <DropdownItem>
+                  <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
+                    <span>{icons.accountsetting}</span>
+                    <span>Account Settings</span>
+                  </div>
+                </DropdownItem>
+                <DropdownItem>
+                  <div className="flex w-full space-x-2 mx-auto pl-1" onClick={() => handleLogOut()}>
+                    <span>{icons.logout}</span>
+                    <span>Log out</span>
+                  </div>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         </div>
       </div>
     </nav>

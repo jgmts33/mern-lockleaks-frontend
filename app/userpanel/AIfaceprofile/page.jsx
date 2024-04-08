@@ -94,7 +94,7 @@ export default function AIfaceprofile() {
                     />
                     <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:p-5 max-sm:mt-0 sm:hidden">
                         <div className='flex flex-col'>
-                            <span className='font-normal text-base text-center'>How Doew It Works?</span>
+                            <span className='font-normal text-base text-center'>How Doew It Work?</span>
                             <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
                         </div>
                     </div>
@@ -165,7 +165,7 @@ export default function AIfaceprofile() {
                         />
                         <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
                             <div className='flex flex-col'>
-                                <span className='font-normal text-base text-center'>How Doew It Works?</span>
+                                <span className='font-normal text-base text-center'>How Doew It Work?</span>
                                 <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
                             </div>
                         </div>

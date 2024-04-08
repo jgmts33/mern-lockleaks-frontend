@@ -42,7 +42,7 @@ export default function SMsubmit() {
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SUBMIT</span></div>
                 </div>
-                <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5 sm:hidden">
+                <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5 sm:hidden">
                     <div className='flex flex-col'>
                         <span className='font-normal text-[18px] text-center'>How Doew It Works?</span>
                         <span className='font-normal text-xs pt-3'>Choose the reference image, Upload your photo, upload your ID card picture, and then press Start.</span>
@@ -51,7 +51,7 @@ export default function SMsubmit() {
                 {/* This section for define Social Submit content*/}
 
                 <div className='grid grid-cols-3 gap-10 max-2xl:gap-2 max-xl:flex-col max-xl:flex max-xl:gap-0'>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
                         <div className='flex max-w-[330px] max-xl:max-w-full'>
                             <span className='font-normal text-[18px] max-sm:text-sm'>Requests Are Reviewed,And Government-Issued IDs Are Required For Verification.Without The Upload Of A Government-Issued ID, These Profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
                         </div>
@@ -59,7 +59,7 @@ export default function SMsubmit() {
                             Upload ID
                         </Button>
                     </div>
-                    <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10 max-sm:mt-5">
+                    <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10 max-sm:mt-5">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base'>Select The Platform Icon Where You Want To Report The Profile.</span>
                             <div className='flex justify-around mt-5 max-lg:justify-between px-2 max-xl:gap-0 max-sm:gap-2'>
@@ -71,13 +71,13 @@ export default function SMsubmit() {
                                     })
                                 }
                             </div>
-                            <textarea className='bg-white/15 shadow-sm shadow-gray-50 rounded-lg mt-3 h-20'></textarea>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-5 text-sm mx-auto mt-7" size='sm'>
+                            <textarea className='bg-white/15 rounded-lg mt-3 h-20'></textarea>
+                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 py-5 text-sm mx-auto mt-7" size='sm'>
                                 Submit
                             </Button>
                         </div>
                     </div>
-                    <div className="flex flex-col bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
+                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
                         <div className='flex flex-col'>
                             <span className='font-normal text-[18px] text-center'>How Doew It Work?</span>
                             <span className='font-normal text-xs pt-3'>Upload your ID card, then select the platform icon. Place the link or links of the profiles you want to report, and press the SUBMIT button.</span>
@@ -87,7 +87,7 @@ export default function SMsubmit() {
 
                 {/* This section for define Social Media Submit result*/}
 
-                <div className="flex items-center px-20 py-8 justify-between bg-white/15 shadow-sm shadow-gray-50 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-xl:flex-col max-xl:px-3 max-sm:mt-5">
+                <div className="flex items-center px-20 py-8 justify-between bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-xl:flex-col max-xl:px-3 max-sm:mt-5">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>

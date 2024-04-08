@@ -30,8 +30,8 @@ export default function ProxyBot() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 space-y-10 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 space-y-10 container text-white max-lg:mx-auto max-sm:space-y-5">
+            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>PROXIES / VPS  BOTS</span>
             </div>
             <div className='flex items-center justify-between max-w-[1100px]'>
@@ -42,13 +42,14 @@ export default function ProxyBot() {
                     </Button>
                 </div>
             </div>
-            <div className='flex max-w-[650px] justify-between px-5'>
+            <div className='flex max-w-[650px] justify-between px-5 max-sm:px-0'>
                 <span className='font-semibold text-base'>VPS NAME</span>
                 <span className='font-semibold text-base'>PROXIES NUMBER</span>
                 <span className='font-semibold text-base'>EXPIRE DATE</span>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1300px] mt-10 w-full'>
                 <ScrollShadow className='h-[350px]'>
+                    <ScrollShadow className='max-sm:w-[800px]'>
                     {
                         proxybotContent.map((items, index) => {
                             return (
@@ -77,6 +78,7 @@ export default function ProxyBot() {
                             )
                         })
                     }
+                    </ScrollShadow>
                 </ScrollShadow>
             </div>
             <Modal

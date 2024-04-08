@@ -48,3 +48,7 @@ body {
 .gradiant-background{
   background-image: radial-gradient(#2e213b 5%, #261c36 25%, #020615 60%);
 }
+
+.tox-editor-container {
+  background: #242222
+}

@@ -41,15 +41,15 @@ export default function Analytics() {
             <div className='max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
-            <div className='mt-10 max-lg:mx-auto'>
+            <div className='mt-10 max-lg:mx-auto max-sm:mt-5'>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm' onClick={()=>handleGoAddAnalytics()}>
                     Add
                 </Button>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-10 w-full max-md:px-4'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-10 w-full max-md:px-4 max-sm:mt-5'>
                 <ScrollShadow className="h-[350px]">
                     <div className='flex flex-col gap-5 scroll-y px-4'>
-                        <div className='flex justify-between'>
+                        <div className='flex justify-between px-5'>
                             <div><span>Search Domain...</span></div>
                             <div>
                                 <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm'>

@@ -44,6 +44,12 @@ export default function TicketDetail() {
         }
     ]
 
+    const chatContent = [
+        {
+
+        }
+    ]
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
             <div className='flex flex-col space-y-5 max-md:mx-auto max-md:text-center'>
@@ -105,7 +111,9 @@ export default function TicketDetail() {
                     </div>
                     <div className='flex flex-col'>
                         <ScrollShadow className='h-[190px]'>
-
+                            {
+                                
+                            }
                         </ScrollShadow>
                     </div>
                     <div className='flex mt-10 gap-5'>

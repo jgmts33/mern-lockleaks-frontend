@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { FileHost, CalendarCheck, YellowStar, Users, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots } from "@/components/utils/Icons";
+import { FileHost, CalendarCheck, Star, Users, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
@@ -9,7 +9,7 @@ import {
 } from '@nextui-org/react';
 import { useSelector, useDispatch } from 'react-redux';
 
-const Sidebar = ({ show, setter, selectstar, setstar }) => {
+const Sidebar = ({ show, setter, selectstar }) => {
 
     const icons = {
         filehost: <FileHost fill="currentColor" size={16} />,
@@ -37,7 +37,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
         pingmodels: <PingModels fill="currentColor" size={16} />,
         autocontract: <AutoContract fill="currentColor" size={16} />,
         bing: <Bing fill="currentColor" size={16} />,
-        yellowstar: <YellowStar fill="currentColor" size={16} />,
+        yellowstar: <Star fill="currentColor" size={16} />,
     };
 
     const router = useRouter();
@@ -45,77 +45,113 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
     const userData = useSelector((state) => state.auth);
     const [sidebarList, setSidebarList] = useState([
         {
+            id:0,
             icon: icons.category,
             title: "DASHBOARD",
-            path: "/userpanel/dashboard"
+            path: "/userpanel/dashboard",
+            favourite: false
         }, {
+            id:1,
             icon: icons.scanner,
             title: "SCANNER",
-            path: "/userpanel/scanner"
+            path: "/userpanel/scanner",
+            favourite: false
         }, {
+            id:2,
             icon: icons.warningcircle,
             title: "ADULT WEBSITES",
-            path: "/userpanel/adultwebsite"
+            path: "/userpanel/adultwebsite",
+            favourite: false
         }, {
+            id:3,
             icon: icons.filehost,
             title: "FILE HOSTED",
-            path: "/userpanel/filehosted"
+            path: "/userpanel/filehosted",
+            favourite: false
         }, {
+            id:4,
             icon: icons.search,
             title: "GOOGLE",
-            path: "/userpanel/google"
+            path: "/userpanel/google",
+            favourite: false
         }, {
+            id:5,
             icon: icons.search,
             title: "BING",
-            path: "/userpanel/bing"
+            path: "/userpanel/bing",
+            favourite: false
         }, {
+            id:6,
             icon: icons.photo,
             title: "AI FACE IMAGES",
-            path: "/userpanel/AIfaceimages"
+            path: "/userpanel/AIfaceimages",
+            favourite: false
         }, {
+            id:7,
             icon: icons.AIProfile,
             title: "AI FACE PROFILES",
-            path: "/userpanel/AIfaceprofile"
+            path: "/userpanel/AIfaceprofile",
+            favourite: false
         }, {
+            id:8,
             icon: icons.SMscanner,
             title: "SM SCANNER",
-            path: "/userpanel/SMscanner"
+            path: "/userpanel/SMscanner",
+            favourite: false
         }, {
+            id:9,
             icon: icons.submit,
             title: "SM SUBMIT",
-            path: "/userpanel/SMsubmit"
+            path: "/userpanel/SMsubmit",
+            favourite: false
         }, {
+            id:10,
             icon: icons.usercontent,
             title: "R&R OF USER CONTENT",
-            path: "/userpanel/recoveryuser"
+            path: "/userpanel/recoveryuser",
+            favourite: false
         }, {
+            id:11,
             icon: icons.AIProfile,
             title: "DMCA BADGES",
-            path: "/userpanel/dmcabadges"
+            path: "/userpanel/dmcabadges",
+            favourite: false
         }, {
+            id:12,
             icon: icons.DataReport,
             title: "DATA REPORT",
-            path: "/userpanel/datareport"
+            path: "/userpanel/datareport",
+            favourite: false
         }, {
+            id:13,
             icon: icons.calendarcheck,
             title: "DATA ANALYTICS",
-            path: "/userpanel/dataanalytics"
+            path: "/userpanel/dataanalytics",
+            favourite: false
         }, {
+            id:14,
             icon: icons.profilesquare,
             title: "PERSONAL AGENT",
-            path: "/userpanel/personalagent"
+            path: "/userpanel/personalagent",
+            favourite: false
         }, {
+            id:15,
             icon: icons.AccountSetting,
             title: "ACCOUNT SETTINGS",
-            path: "/userpanel/accountsetting"
+            path: "/userpanel/accountsetting",
+            favourite: false
         }, {
+            id:16,
             icon: icons.DownloadData,
             title: "DOWNLOAD DATA",
-            path: "/userpanel/downloaddata"
+            path: "/userpanel/downloaddata",
+            favourite: false
         }, {
+            id: 17,
             icon: icons.notification,
             title: "NOTIFICATION",
-            path: "/userpanel/notification"
+            path: "/userpanel/notification",
+            favourite: false
         }
     ]);
 
@@ -200,14 +236,32 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
     ]
 
     useEffect(() => {
+
         if (selectstar) {
-            const elementoMove = sidebarList[selectSidebar];
-            for (let i = selectSidebar; i > 0; i--) {
-                sidebarList[i] = sidebarList[i - 1];
-            }
-            sidebarList[0] = elementoMove;
-            setSidebarList([...sidebarList]);
+            sidebarList.map((item, index) => {
+                if (index === selectSidebar) {
+                    item.favourite = true;
+                    return item
+                }
+                else {
+                    return item
+                }
+            })
         }
+        else{
+            sidebarList.map((item, index) => {
+                if (index === selectSidebar) {
+                    item.favourite = false;
+                    return item
+                }
+                else {
+                    return item
+                }
+            })
+        }
+
+        sidebarList.sort((a, b) => {return a.id - b.id })
+        sidebarList.sort((a, b) => {return b.favourite - a.favourite })
     }, [selectSidebar])
 
     const handleSidebarClick = (path, index) => {
@@ -250,7 +304,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                                     return (
                                         <Button key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                             {
-                                                selectstar && index == selectSidebar ?
+                                                items.favourite ?
                                                     <span>{icons.yellowstar}</span>
                                                     :
                                                     false
@@ -269,7 +323,7 @@ const Sidebar = ({ show, setter, selectstar, setstar }) => {
                                     return (
                                         <div key={index} className={("py-1 items-center ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSidebarClick(items.path, index)}>
                                             {
-                                                selectstar && index == selectSidebar ?
+                                                items.favourite ?
                                                     <span>{icons.yellowstar}</span>
                                                     :
                                                     false
