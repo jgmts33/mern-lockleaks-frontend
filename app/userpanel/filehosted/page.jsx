@@ -47,11 +47,6 @@ export default function FileHosted() {
 
             <div className='flex gap-10 items-center max-md:flex-col max-sm:gap-5'>
                 <div>
-                    <Button radius="lg" className="max-lg:hidden bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-sm" size='sm'>
-                        FILE HOSTED SCANNED
-                    </Button>
-                </div>
-                <div>
                     <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight bg-opacity-20 text-white border border-gray-600 shadow-lg px-7 text-sm" size='sm'>
                         STATISTICS
                     </Button>

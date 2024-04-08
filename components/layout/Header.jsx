@@ -81,7 +81,6 @@ export default function Header() {
       <NavbarContent className="md:hidden text-white" justify="start">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
-
       <NavbarContent className="lg:hidden mx-auto flex" justify="center">
         <NavbarBrand className="w-full">
           <Link href="/">

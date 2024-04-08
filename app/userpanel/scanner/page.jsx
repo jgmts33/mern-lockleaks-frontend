@@ -20,7 +20,7 @@ export default function Scanner() {
             icon: icons.googlesearch,
             title: "GOOGLE SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
-                <span className='font-normal text-xs'>Initiated an automated Google search, resulting in the detection of</span>
+                <span className='font-normal text-xs'>Initiated an automated Google Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
@@ -29,7 +29,7 @@ export default function Scanner() {
             icon: icons.googlesearch,
             title: "GOOGLE IMAGES SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
-                <span className='font-normal text-xs'>Initiated an automated Google Images search, resulting in the detection of</span>
+                <span className='font-normal text-xs'>Initiated an automated Google Images Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span className='font-normal text-xs'>new copyright infringements</span>
             </div>
@@ -38,7 +38,7 @@ export default function Scanner() {
             icon: icons.googlesearch,
             title: "GOOGLE VIDEOS SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
-                <span className='font-normal text-xs'>Initiated an automated Google Videos search, resulting in the detection of</span>
+                <span className='font-normal text-xs'>Initiated an automated Google Videos Search, resulting in the detection of</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
