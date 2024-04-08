@@ -95,7 +95,7 @@ export default function Header() {
           </Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex gap-20 max-xl:gap-5" justify="center">
+      <NavbarContent className="hidden sm:flex gap-12 max-xl:gap-5" justify="center">
         <NavbarItem className="max-md:hidden">
           <Link color="foreground" href="/pricing" title="pricing">
             PRICING
