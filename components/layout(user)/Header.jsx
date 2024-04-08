@@ -53,19 +53,21 @@ const UserHeader = ({ setter }) => {
   return (
     <Navbar maxWidth="full">
       <NavbarBrand>
-        <Button radius="sm" className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
+        <Button radius="sm" className="bg-transparent text-white hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </Button>
+        <div className="flex max-sm:hidden">
         <Button radius="lg" className="bg-transparent text-white flex items-center " size='sm' onClick={() => { setSearch(isSearch ? false : true) }}>
           {icons.search}
         </Button>
         <div className={("flex duration-1000 pb-2 ") + (!isSearch ? "opacity-0" : "opacity-100")}>
           <Input type="text" label="Search" className="h-7 w-80 max-md:w-32" />
         </div>
+        </div>
       </NavbarBrand>
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className="items-center">
         <NavbarItem className="flex items-center max-sm:hidden">
           <Image src={Flag} width={15} height={15} alt="flag" />
           <span className="text-white">En</span>
@@ -97,7 +99,7 @@ const UserHeader = ({ setter }) => {
             </DropdownMenu>
           </Dropdown>
         </NavbarItem>
-        <NavbarItem className="flex items-center">
+        <NavbarItem className="flex items-center cursor-pointer">
         <Dropdown>
               <DropdownTrigger>
               <div className="flex text-white items-center">

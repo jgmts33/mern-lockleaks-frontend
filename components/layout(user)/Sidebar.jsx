@@ -253,7 +253,7 @@ const Sidebar = ({ show, setter }) => {
 
     const handleSelectFavourite = (selectindex) => {
         sidebarList.map((item, index) => {
-            if (index === selectindex) {
+            if (index === selectindex && item.favourite != true) {
                 item.favourite = !item.favourite;
                 return item
             }
@@ -267,8 +267,8 @@ const Sidebar = ({ show, setter }) => {
     }
 
     return (
-        <>
-            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 py-3 w-full max-sm:bg-[#020615]/80 max-lg:h-screen justify-start px-3 max-sm:px-0 z-40 max-lg:absolute duration-1000 ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+        <>ya
+            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 py-3 w-full max-sm:bg-[#020615]/80 max-lg:h-screen justify-start px-3 max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full">
                     {
                         userData.email == "cosmin@gmail.com" && userData.password == "admin123"
