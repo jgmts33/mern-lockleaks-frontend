@@ -116,7 +116,7 @@ export default function DataReport() {
                                 {
                                     personalAgentContent.map((item, index) => {
                                         return (
-                                            <div className={index == 0 ? ('flex flex-col mt-10 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent') : ("flex flex-col mt-10")}>
+                                            <div key={index} className={index == 0 ? ('flex flex-col mt-10 bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent') : ("flex flex-col mt-10")}>
                                                 <span className='font-normal text-xs'>{item.date}</span>
                                                 <span className='font-semibold text-[18px]'>{item.mail}</span>
                                             </div>

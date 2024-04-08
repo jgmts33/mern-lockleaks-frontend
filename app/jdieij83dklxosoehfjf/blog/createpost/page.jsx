@@ -32,7 +32,7 @@ export default function CreatePost() {
             <Editor
                 apiKey='j9vvbxoc4iq2zp87e9zuryasu0roc91682u6ayc1btavtr7u'
                 value={value}
-                className="text_editor"
+                theme="dark"
                 onChange={(newValue, editor) => setValue(newValue)}
             />
             <textarea className='h-[100px] rounded-lg p-3' placeholder='Type here'>{value}</textarea>
