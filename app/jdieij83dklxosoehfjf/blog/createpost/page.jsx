@@ -21,6 +21,17 @@ export default function CreatePost() {
         }
     ]
 
+    useEffect(()=>{
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'powerpaste casechange searchreplace autolink directionality advcode visualblocks visualchars image link media mediaembed codesample table charmap pagebreak nonbreaking anchor tableofcontents insertdatetime advlist lists checklist wordcount tinymcespellchecker editimage help formatpainter permanentpen charmap linkchecker emoticons advtable export autosave',
+            toolbar: 'undo redo print spellcheckdialog formatpainter | blocks fontfamily fontsize | bold italic underline forecolor backcolor | link image | alignleft aligncenter alignright alignjustify lineheight | checklist bullist numlist indent outdent | removeformat',
+            height: '300px',
+            skin: 'oxide-dark',
+            content_css: 'dark'
+        });
+    })
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-10 space-y-10 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto'>
@@ -29,12 +40,6 @@ export default function CreatePost() {
             <div className='flex mt-5 w-full px-3'>
                 <Input type="text" label="Title" />
             </div>
-            <Editor
-                apiKey='j9vvbxoc4iq2zp87e9zuryasu0roc91682u6ayc1btavtr7u'
-                value={value}
-                theme="dark"
-                onChange={(newValue, editor) => setValue(newValue)}
-            />
             <textarea className='h-[100px] rounded-lg p-3' placeholder='Type here'>{value}</textarea>
             <div className='flex justify-end'>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
