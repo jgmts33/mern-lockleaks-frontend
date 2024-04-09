@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <html lang="en">
+    <html lang="en" className='scroll-smooth' style={{scrollBehavior:'smooth'}}>
       <body className={poppins.className + " dark"}>
         <Provider store={store}>
           <div className="flex flex-col">
