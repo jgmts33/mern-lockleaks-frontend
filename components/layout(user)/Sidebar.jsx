@@ -269,6 +269,10 @@ const Sidebar = ({ show, setter }) => {
         />
     )
 
+    const handleSelectTitle = () => {
+        setter(false)
+    }
+
     const handleSelectFavourite = (selectindex) => {
         if (userData.email == "cosmin@gmail.com" && userData.password == "admin123") {
             adminsidebarList.map((item, index) => {
@@ -330,8 +334,10 @@ const Sidebar = ({ show, setter }) => {
                                                     :
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
                                             }
+                                            <div className="flex items-center">
                                             <span>{items.icon}</span>
                                             <span className="font-light text-xs">{items.title}</span>
+                                            </div>
                                         </div>
                                     )
                                 })
@@ -349,7 +355,7 @@ const Sidebar = ({ show, setter }) => {
                                                     :
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
                                             }
-                                            <div className="flex cursor-pointer gap-1 items-center">
+                                            <div className="flex cursor-pointer gap-1 items-center" onClick={()=>handleSelectTitle()}>
                                                 <span>{items.icon}</span>
                                                 <span className="font-light text-sm">{items.title}</span>
                                             </div>
