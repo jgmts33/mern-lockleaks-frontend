@@ -276,7 +276,7 @@ const Sidebar = ({ show, setter }) => {
     const handleSelectFavourite = (selectindex) => {
         if (userData.email == "cosmin@gmail.com" && userData.password == "admin123") {
             adminsidebarList.map((item, index) => {
-                if (index === selectindex && item.favourite != true) {
+                if (index === selectindex) {
                     item.favourite = !item.favourite;
                     return item
                 }
@@ -290,7 +290,7 @@ const Sidebar = ({ show, setter }) => {
         }
         else {
             sidebarList.map((item, index) => {
-                if (index === selectindex && item.favourite != true) {
+                if (index === selectindex) {
                     item.favourite = !item.favourite;
                     return item
                 }
