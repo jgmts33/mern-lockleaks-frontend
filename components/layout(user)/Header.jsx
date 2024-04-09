@@ -52,7 +52,7 @@ const UserHeader = ({ setter}) => {
   }
 
   return (
-    <nav className="flex bg-[#0a0a0a] items-center max-w-screen justify-between h-14 z-30">
+    <nav className="flex max-sm:fixed bg-[#0a0a0a] items-center  max-sm:w-screen justify-between h-14 z-30">
       <div className="flex px-2 items-center max-sm:justify-center max-sm:px-0">
         <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">

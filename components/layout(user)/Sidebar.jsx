@@ -156,85 +156,104 @@ const Sidebar = ({ show, setter }) => {
         }
     ]);
 
-    const AdminSidebarButtons = [
+    const [adminsidebarList, setAdminSidebarList] = useState([
         {
             icon: icons.category,
             title: "DASHBOARD",
-            path: "/jdieij83dklxosoehfjf/dashboard"
+            path: "/jdieij83dklxosoehfjf/dashboard",
+            favourite: false
         }, {
             icon: icons.scanner,
             title: "SCANNER",
-            path: "/jdieij83dklxosoehfjf/scanner"
+            path: "/jdieij83dklxosoehfjf/scanner",
+            favourite: false
         }, {
             icon: icons.search,
             title: "GOOGLE & BING",
-            path: "/jdieij83dklxosoehfjf/googlebing"
+            path: "/jdieij83dklxosoehfjf/googlebing",
+            favourite: false
         }, {
             icon: icons.AIProfile,
             title: "AI FACE",
-            path: "/jdieij83dklxosoehfjf/AIface"
+            path: "/jdieij83dklxosoehfjf/AIface",
+            favourite: false
         }, {
             icon: icons.submit,
             title: "SOCIAL MEDIA",
-            path: "/jdieij83dklxosoehfjf/socialmedia"
+            path: "/jdieij83dklxosoehfjf/socialmedia",
+            favourite: false
         }, {
             icon: icons.AIProfile,
             title: "PERSONAL AGENT",
-            path: "/jdieij83dklxosoehfjf/personalagent"
+            path: "/jdieij83dklxosoehfjf/personalagent",
+            favourite: false
         }, {
             icon: icons.usercontent,
             title: "R&R OF USER CONTENT",
-            path: "/jdieij83dklxosoehfjf/rusercontent"
+            path: "/jdieij83dklxosoehfjf/rusercontent",
+            favourite: false
         }, {
             icon: icons.AIProfile,
             title: "DMCA BADGES",
-            path: "/jdieij83dklxosoehfjf/dmcabadges"
+            path: "/jdieij83dklxosoehfjf/dmcabadges",
+            favourite: false
         }, {
             icon: icons.calendarcheck,
             title: "DATA ANALYTICS",
-            path: "/jdieij83dklxosoehfjf/analytics"
+            path: "/jdieij83dklxosoehfjf/analytics",
+            favourite: false
         }, {
             icon: icons.DataReport,
             title: "DATA REPORT",
-            path: "/jdieij83dklxosoehfjf/datareport"
+            path: "/jdieij83dklxosoehfjf/datareport",
+            favourite: false
         }, {
             icon: icons.testbots,
             title: "TEST BOTS",
-            path: "/jdieij83dklxosoehfjf/testbots"
+            path: "/jdieij83dklxosoehfjf/testbots",
+            favourite: false
         }, {
             icon: icons.users,
             title: "USERS",
-            path: "/jdieij83dklxosoehfjf/users"
+            path: "/jdieij83dklxosoehfjf/users",
+            favourite: false
         }, {
             icon: icons.proxybots,
             title: "PROXIES BOTS",
-            path: "/jdieij83dklxosoehfjf/proxybot"
+            path: "/jdieij83dklxosoehfjf/proxybot",
+            favourite: false
         }, {
             icon: icons.management,
             title: "VPS MANAGEMENT",
-            path: "/jdieij83dklxosoehfjf/vpsmanagement"
+            path: "/jdieij83dklxosoehfjf/vpsmanagement",
+            favourite: false
         }, {
             icon: icons.management,
             title: "REPORTS MANAGEMENT",
-            path: "/jdieij83dklxosoehfjf/reportmanagement"
+            path: "/jdieij83dklxosoehfjf/reportmanagement",
+            favourite: false
         }, {
             icon: icons.pingmodels,
             title: "PING MODELS",
-            path: "/jdieij83dklxosoehfjf/pingmodels"
+            path: "/jdieij83dklxosoehfjf/pingmodels",
+            favourite: false
         }, {
             icon: icons.notification,
             title: "NOTIFICATION",
-            path: "/jdieij83dklxosoehfjf/notifications"
+            path: "/jdieij83dklxosoehfjf/notifications",
+            favourite: false
         }, {
             icon: icons.autocontract,
             title: "AUTO-CONTRACT",
-            path: "/jdieij83dklxosoehfjf/autocontract"
+            path: "/jdieij83dklxosoehfjf/autocontract",
+            favourite: false
         }, {
             icon: icons.bing,
             title: "BLOG",
-            path: "/jdieij83dklxosoehfjf/blog"
+            path: "/jdieij83dklxosoehfjf/blog",
+            favourite: false
         }
-    ]
+    ])
 
     const handleSidebarClick = (path, index) => {
         setSelectSidebar(index)
@@ -252,23 +271,39 @@ const Sidebar = ({ show, setter }) => {
     )
 
     const handleSelectFavourite = (selectindex) => {
-        sidebarList.map((item, index) => {
-            if (index === selectindex && item.favourite != true) {
-                item.favourite = !item.favourite;
-                return item
-            }
-            else {
-                return item
-            }
-        })
+        if (userData.email == "cosmin@gmail.com" && userData.password == "admin123") {
+            adminsidebarList.map((item, index) => {
+                if (index === selectindex && item.favourite != true) {
+                    item.favourite = !item.favourite;
+                    return item
+                }
+                else {
+                    return item
+                }
+            })
 
-        sidebarList.sort((a, b) => { return a.id - b.id })
-        sidebarList.sort((a, b) => { return b.favourite - a.favourite })
+            adminsidebarList.sort((a, b) => { return a.id - b.id })
+            adminsidebarList.sort((a, b) => { return b.favourite - a.favourite })
+        }
+        else {
+            sidebarList.map((item, index) => {
+                if (index === selectindex && item.favourite != true) {
+                    item.favourite = !item.favourite;
+                    return item
+                }
+                else {
+                    return item
+                }
+            })
+
+            sidebarList.sort((a, b) => { return a.id - b.id })
+            sidebarList.sort((a, b) => { return b.favourite - a.favourite })
+        }
     }
 
     return (
         <>
-            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 py-3 w-full max-sm:bg-[#020615]/80 max-lg:h-screen justify-start px-3 max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+            <div className={`flex flex-col bg-[#000001] text-white overflow-y-auto ease-in-out max-w-72 py-3 w-full max-sm:bg-[#020615] max-lg:h-screen justify-start px-3 max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full">
                     {
                         userData.email == "cosmin@gmail.com" && userData.password == "admin123"
@@ -285,16 +320,16 @@ const Sidebar = ({ show, setter }) => {
                 {
                     userData.email == "cosmin@gmail.com" && userData.password == "admin123"
                         ?
-                        <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] px-4 py-3 w-full space-y-1 gap-2">
+                        <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
                             {
-                                AdminSidebarButtons.map((items, index) => {
+                                adminsidebarList.map((items, index) => {
                                     return (
-                                        <div key={index} className={selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-3 rounded-[20px] justify-start") : ("bg-transparent gap-5 text-white flex justify-start")} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                        <div key={index} className={("py-1 items-center ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
                                             {
                                                 items.favourite ?
-                                                    <div>{icons.yellowstar}</div>
+                                                    <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.star}</div>
                                                     :
-                                                    false
+                                                    <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
                                             }
                                             <span>{items.icon}</span>
                                             <span className="font-light text-xs">{items.title}</span>
