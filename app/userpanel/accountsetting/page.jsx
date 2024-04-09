@@ -4,8 +4,12 @@ import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 export default function AccountSetting() {
+
+    const userData = useSelector((state) => state.auth);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:py-16 container text-white max-lg:mx-auto">
@@ -47,39 +51,49 @@ export default function AccountSetting() {
                 </div>
 
                 {/* This section for define Subscription info*/}
-
-                <div className='flex flex-col bg-gradient-to-br bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
-                    <div className='mx-auto'>
-                        <span className='font-semibold text-base'>Subscription info</span>
-                    </div>
-                    <div className='flex flex-col px-5 gap-5'>
-                        <div className='mt-10'>
-                            <Button radius="lg" className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full" size='sm'>
-                                <span>Actve until 22.02.2024</span>
-                            </Button>
+                {
+                    userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                        ?
+                        false
+                        :
+                        <div className='flex flex-col bg-gradient-to-br bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
+                            <div className='mx-auto'>
+                                <span className='font-semibold text-base'>Subscription info</span>
+                            </div>
+                            <div className='flex flex-col px-5 gap-5'>
+                                <div className='mt-10'>
+                                    <Button radius="lg" className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full" size='sm'>
+                                        <span>Actve until 22.02.2024</span>
+                                    </Button>
+                                </div>
+                                <div>
+                                    <Button radius="lg" className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full" size='sm'>
+                                        Connected with
+                                    </Button>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <Button radius="lg" className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full" size='sm'>
-                                Connected with
-                            </Button>
-                        </div>
-                    </div>
-                </div>
+                }
 
                 {/* This section for define Contract Lockleaks*/}
-
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
-                    <div className='mx-auto'>
-                        <span className='font-semibold text-base'>Contract Lockleaks</span>
-                    </div>
-                    <div className='flex flex-col px-5 gap-5'>
-                        <div className='mt-10'>
-                            <Button radius="lg" className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full" size='sm'>
-                                Download
-                            </Button>
+                {
+                    userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                        ?
+                        false
+                        :
+                        <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
+                            <div className='mx-auto'>
+                                <span className='font-semibold text-base'>Contract Lockleaks</span>
+                            </div>
+                            <div className='flex flex-col px-5 gap-5'>
+                                <div className='mt-10'>
+                                    <Button radius="lg" className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full" size='sm'>
+                                        Download
+                                    </Button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                }
 
                 {/* This section for define Tutorials*/}
 

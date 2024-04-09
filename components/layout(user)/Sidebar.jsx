@@ -257,7 +257,6 @@ const Sidebar = ({ show, setter }) => {
 
     const handleSidebarClick = (path, index) => {
         setSelectSidebar(index)
-        setter(false)
         router.push(path);
     }
 
