@@ -74,7 +74,7 @@ export default function Scanner() {
 
     return (
         <>
-            <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:py-16 container text-white max-lg:mx-auto">
 
             {/* This section for define scanner header*/}
 

@@ -14,7 +14,7 @@ export default function PersonalAgent() {
     }
 
     return (
-            <div className="flex flex-col bg-gradient-to-tr px-10 py-5 container text-white">
+            <div className="flex flex-col bg-gradient-to-tr px-10 py-5 max-sm:py-16 container text-white">
                 <div className='mt-5 max-md:mx-auto'>
                     <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
                 </div>
