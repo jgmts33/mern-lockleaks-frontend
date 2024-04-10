@@ -14,7 +14,7 @@ export default function RecoveryUsers() {
 
     return (
         <>
-            <div className="flex flex-col max-sm:pt-16 bg-gradient-to-tr py-5 px-5 text-white max-lg:mx-auto">
+            <div className="flex flex-col bg-gradient-to-tr py-5 px-5 text-white max-lg:mx-auto">
 
                 {/* This section for define rusercontent header*/}
 

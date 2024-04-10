@@ -67,7 +67,7 @@ export default function FileHosted() {
 
             {/* This section for define file hosted content*/}
 
-            <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-sm:p-2 pb-20">
+            <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 w-full p-5 max-sm:p-2">
                 {
                     ScannerContent.map((items, index) => {
                         return (
