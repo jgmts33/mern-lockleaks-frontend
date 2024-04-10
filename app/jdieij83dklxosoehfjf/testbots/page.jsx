@@ -50,7 +50,7 @@ export default function TestBots() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container max-sm:py-16 text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container max-sm:pt-16 text-white max-lg:mx-auto">
             <div className='flex gap-16 items-center max-lg:mx-auto'>
                 <div><span className='font-extrabold text-lg'>TEST BOTS</span></div>
             </div>

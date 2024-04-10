@@ -237,12 +237,7 @@ const Sidebar = ({ show, setter }) => {
             title: "PING MODELS",
             path: "/jdieij83dklxosoehfjf/pingmodels",
             favourite: false
-        }, {
-            icon: icons.notification,
-            title: "NOTIFICATION",
-            path: "/jdieij83dklxosoehfjf/notifications",
-            favourite: false
-        }, {
+        },  {
             icon: icons.autocontract,
             title: "AUTO-CONTRACT",
             path: "/jdieij83dklxosoehfjf/autocontract",
@@ -252,7 +247,12 @@ const Sidebar = ({ show, setter }) => {
             title: "BLOG",
             path: "/jdieij83dklxosoehfjf/blog",
             favourite: false
-        }
+        },{
+            icon: icons.notification,
+            title: "NOTIFICATION",
+            path: "/jdieij83dklxosoehfjf/notifications",
+            favourite: false
+        },
     ])
 
     const handleSidebarClick = (path, index) => {
@@ -334,7 +334,7 @@ const Sidebar = ({ show, setter }) => {
                                                     :
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
                                             }
-                                            <div className="flex items-center">
+                                            <div className="flex cursor-pointer gap-1 items-center" onClick={()=>handleSelectTitle()}>
                                             <span>{items.icon}</span>
                                             <span className="font-light text-xs">{items.title}</span>
                                             </div>

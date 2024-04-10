@@ -17,7 +17,7 @@ export default function Dashbaord() {
     const DashboardOverview = [
         {
             title: "Search Engines",
-            path:"",
+            path: "",
             lastscan: 123456,
             total: 123456
         },
@@ -28,13 +28,13 @@ export default function Dashbaord() {
         },
         {
             title: " Adult Tube Websites",
-            path:"/userpanel/adultwebsite",
+            path: "/userpanel/adultwebsite",
             lastscan: 123456,
             total: 123456
         },
         {
             title: "Social Media",
-            path:"/userpanel/SMscanner",
+            path: "/userpanel/SMscanner",
             lastscan: 123456,
             total: 123456
         },
@@ -45,14 +45,14 @@ export default function Dashbaord() {
         },
         {
             title: "File Hosted",
-            path:"/userpanel/filehosted",
+            path: "/userpanel/filehosted",
             lastscan: 123456,
             total: 123456
         },
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:py-16 text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 max-sm:pt-16 text-white">
 
             {/* This section for define dashboard header*/}
 
@@ -70,7 +70,7 @@ export default function Dashbaord() {
                                 <div className='flex justify-between px-3 py-3'>
                                     <div className='px-5 cursor-pointer'>
                                         <Link href={items.path} className='text-white'><span className='font-medium text-lg'>{items.title}</span></Link>
-                                        </div>
+                                    </div>
                                     <div>{icons.moredetails}</div>
                                 </div>
                                 <div className='flex gap-5'>

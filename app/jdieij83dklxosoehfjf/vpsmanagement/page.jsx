@@ -52,7 +52,7 @@ export default function VPSManagement() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:py-16 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:pt-16 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>VPS MANAGEMENT</span>
             </div>
@@ -67,7 +67,7 @@ export default function VPSManagement() {
                 <div className='flex px-3'><span>FREE SPACE</span></div>
                 <div className='flex px-10'><span>STATUS</span></div>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 max-sm:mt-16 w-full'>
                 <ScrollShadow className="h-[300px]">
                     <ScrollShadow className='max-sm:w-[800px]'>
                     <div className='grid grid-cols-4 sm:hidden'>

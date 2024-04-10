@@ -12,7 +12,7 @@ export default function AccountSetting() {
     const userData = useSelector((state) => state.auth);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:py-16 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:pt-16 container text-white max-lg:mx-auto">
 
             {/* This section for define Account Settings header*/}
 

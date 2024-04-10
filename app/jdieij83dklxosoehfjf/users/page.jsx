@@ -44,7 +44,7 @@ export default function Users() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:py-16 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:pt-16 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
@@ -53,11 +53,11 @@ export default function Users() {
                 <span className='font-semibold text-base'>TOTAL USERS: 10</span>
                 <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: 10</span>
             </div>
-            <div className='flex max-w-[1400px] justify-between mt-16 max-sm:mt-5 max-md:flex-col max-sm:gap-2 max-sm:mx-auto'>
+            <div className='flex mt-16 max-sm:mt-5 max-md:flex-col max-sm:gap-2 max-sm:mx-auto'>
                 <Input
                     isClearable
                     radius="lg"
-                    className='w-56'
+                    className='w-60'
                     classNames={{
                         input: [
                             "bg-transparent",
@@ -78,37 +78,7 @@ export default function Users() {
                             "!cursor-text",
                         ],
                     }}
-                    placeholder="Search by Email"
-                    startContent={
-                        <span>{icons.search}</span>
-                    }
-                />
-                <Input
-                    isClearable
-                    radius="lg"
-                    className='w-56'
-                    classNames={{
-                        input: [
-                            "bg-transparent",
-                            "text-black/90 dark:text-white/90",
-                            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
-                            "w-44"
-                        ],
-                        innerWrapper: "bg-transparent",
-                        inputWrapper: [
-                            "shadow-xl",
-                            "bg-default-200/50",
-                            "dark:bg-default/60",
-                            "backdrop-blur-xl",
-                            "backdrop-saturate-200",
-                            "hover:bg-default-200/70",
-                            "dark:hover:bg-default/70",
-                            "group-data-[focused=true]:bg-default-200/50",
-                            "dark:group-data-[focused=true]:bg-default/60",
-                            "!cursor-text",
-                        ],
-                    }}
-                    placeholder="Search by Username"
+                    placeholder="Search by User or Email"
                     startContent={
                         <span>{icons.search}</span>
                     }

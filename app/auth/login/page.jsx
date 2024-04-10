@@ -88,7 +88,7 @@ export default function Login() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(e, "email")}
                                 ref={emailInputRef}
-                                className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30'
+                                className='w-full outline-none p-2 pl-16 pr-28 max-sm:pr-0 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30'
                                 required
                             />
                         </div>

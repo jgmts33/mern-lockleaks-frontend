@@ -32,7 +32,7 @@ export default function CreatePost() {
             <Editor
                 apiKey='j9vvbxoc4iq2zp87e9zuryasu0roc91682u6ayc1btavtr7u'
                 init={{
-                    color_cols_background:"black",
+                    color_cols_background:"silver"
                 }}
             />
             <div className='flex justify-end'>

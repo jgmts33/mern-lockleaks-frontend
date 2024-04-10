@@ -17,11 +17,11 @@ export default function UsersView() {
     };
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:pt-16 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
-            <div className='flex flex-col space-y-5 mt-5'>
+            <div className='flex flex-col space-y-5 mt-10'>
                 <div className='flex font-semibold text-base max-w-[600px] justify-between'>
                     <div className='flex w-1/2'><span>EMAIL:</span></div>
                     <div className='flex w-1/2'><span>user@admin.com</span></div>
