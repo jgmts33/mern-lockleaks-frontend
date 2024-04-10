@@ -33,15 +33,18 @@ body {
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
+  scroll-behavior: smooth;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #26304e;
+  scroll-behavior: smooth;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
+  scroll-behavior: smooth;
   background: linear-gradient(#aa7fe2,#ee4613);
   border-radius: 5px;
 }
