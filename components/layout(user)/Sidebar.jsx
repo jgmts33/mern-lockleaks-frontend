@@ -237,7 +237,7 @@ const Sidebar = ({ show, setter }) => {
             title: "PING MODELS",
             path: "/jdieij83dklxosoehfjf/pingmodels",
             favourite: false
-        },  {
+        }, {
             icon: icons.autocontract,
             title: "AUTO-CONTRACT",
             path: "/jdieij83dklxosoehfjf/autocontract",
@@ -247,7 +247,7 @@ const Sidebar = ({ show, setter }) => {
             title: "BLOG",
             path: "/jdieij83dklxosoehfjf/blog",
             favourite: false
-        },{
+        }, {
             icon: icons.notification,
             title: "NOTIFICATION",
             path: "/jdieij83dklxosoehfjf/notifications",
@@ -334,9 +334,9 @@ const Sidebar = ({ show, setter }) => {
                                                     :
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
                                             }
-                                            <div className="flex cursor-pointer gap-1 items-center" onClick={()=>handleSelectTitle()}>
-                                            <span>{items.icon}</span>
-                                            <span className="font-light text-xs">{items.title}</span>
+                                            <div className="flex cursor-pointer gap-1 items-center" onClick={() => handleSelectTitle()}>
+                                                <span>{items.icon}</span>
+                                                <span className="font-light text-xs">{items.title}</span>
                                             </div>
                                         </div>
                                     )
@@ -348,16 +348,18 @@ const Sidebar = ({ show, setter }) => {
                             {
                                 sidebarList.map((items, index) => {
                                     return (
-                                        <div key={index} className={("py-1 items-center ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSidebarClick(items.path, index)}>
+                                        <div className="flex items-center gap-2" onClick={() => handleSidebarClick(items.path, index)}>
                                             {
                                                 items.favourite ?
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.star}</div>
                                                     :
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
                                             }
-                                            <div className="flex cursor-pointer gap-1 items-center" onClick={()=>handleSelectTitle()}>
-                                                <span>{items.icon}</span>
-                                                <span className="font-light text-sm">{items.title}</span>
+                                            <div key={index} className={("py-1 items-center w-full ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSelectTitle()}>
+                                                <div className="flex cursor-pointer gap-1 items-center">
+                                                    <span>{items.icon}</span>
+                                                    <span className="font-light text-sm">{items.title}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     )
