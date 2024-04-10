@@ -51,7 +51,7 @@ export default function TicketDetail() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container max-sm:pt-16 text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
             <div className='flex flex-col space-y-5 max-md:mx-auto max-md:text-center'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>

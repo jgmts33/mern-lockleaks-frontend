@@ -11,8 +11,7 @@ export default function GoogleBing() {
     const [value, setValue] = React.useState(25);
     const [selectGoogleAccept, setSelectGoogleAccept] = useState(0)
     const [selectBingAccept, setSelectBingAccept] = useState(0)
-
-
+    
     const icons = {
         googlesearch: <GoogleSearch fill="currentColor" size={16} />,
         components: <Components fill="currentColor" size={16} />,
@@ -171,7 +170,7 @@ export default function GoogleBing() {
                                                 <span className='font-normal text-sm'>{items}</span>
                                             </div>
                                             <div className='px-4'>
-                                                <Button radius="lg" className={("border border-white/40 ") + (selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectGoogleAccept(index)}>
+                                                <Button radius="lg" className={("border border-white/40 ") + (selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectBingAccept(index)}>
                                                     Accept
                                                 </Button>
                                             </div>

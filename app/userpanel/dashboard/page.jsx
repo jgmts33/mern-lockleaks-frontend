@@ -52,7 +52,7 @@ export default function Dashbaord() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 max-sm:pt-16 text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white">
 
             {/* This section for define dashboard header*/}
 
