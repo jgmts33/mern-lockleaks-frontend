@@ -348,14 +348,14 @@ const Sidebar = ({ show, setter }) => {
                             {
                                 sidebarList.map((items, index) => {
                                     return (
-                                        <div className="flex items-center gap-2" onClick={() => handleSidebarClick(items.path, index)}>
+                                        <div key={index} className="flex items-center gap-2" onClick={() => handleSidebarClick(items.path, index)}>
                                             {
                                                 items.favourite ?
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.star}</div>
                                                     :
                                                     <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
                                             }
-                                            <div key={index} className={("py-1 items-center w-full ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSelectTitle()}>
+                                            <div className={("py-1 items-center w-full ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSelectTitle()}>
                                                 <div className="flex cursor-pointer gap-1 items-center">
                                                     <span>{items.icon}</span>
                                                     <span className="font-light text-sm">{items.title}</span>
