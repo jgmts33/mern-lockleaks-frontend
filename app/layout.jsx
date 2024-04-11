@@ -31,9 +31,9 @@ export default function RootLayout({ children }) {
                 ?
                 <div className="flex">
                   <Sidebar show={showSidebar} setter={setShowSidebar} />
-                  <div className="w-full gradiant-background">
+                  <div className="w-full">
                     <UserHeader setter={setShowSidebar} />
-                    <div className="flex flex-col flex-grow md:w-full overflow-y-auto" style={{scrollBehavior:'smooth'}}>
+                    <div className={showSidebar ? "overflow-y-auto h-[calc(100vh-64px)]" :"flex flex-col flex-grow md:w-full gradiant-background"} style={{scrollBehavior:'smooth'}}>
                       {children}
                     </div>
                   </div>

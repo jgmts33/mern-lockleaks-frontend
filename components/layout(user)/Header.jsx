@@ -57,21 +57,13 @@ const UserHeader = ({ show, setter }) => {
       className="bg-transparent sm:p-1 z-30"
       maxWidth="full"
     >
-      <NavbarContent className="md:hidden text-white" justify="start">
+      <NavbarContent>
+      <NavbarBrand>
         <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
           <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </Button>
-        <Button radius="lg" className="bg-transparent text-white flex items-center" size='sm' onClick={() => { setSearch(isSearch ? false : true) }}>
-          {icons.search}
-        </Button>
-        <div className={("flex duration-1000 pb-2 ") + (!isSearch ? "opacity-0" : "opacity-100")}>
-          <Input type="text" label="Search" className="h-7 w-80 max-md:w-32" />
-        </div>
-      </NavbarContent>
-      <NavbarContent className="max-lg:hidden" justify="start">
-        <NavbarBrand>
           <Button radius="lg" className="bg-transparent text-white flex items-center" size='sm' onClick={() => { setSearch(isSearch ? false : true) }}>
             {icons.search}
           </Button>
@@ -80,11 +72,11 @@ const UserHeader = ({ show, setter }) => {
           </div>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className="" justify="end">
-      <NavbarItem className="text-white flex max-sm:hidden">
-      <Image src={Flag} width={15} height={15} alt="flag" />
-        <span>En</span>
-      </NavbarItem>
+      <NavbarContent justify="end">
+        <NavbarItem className="text-white flex max-sm:hidden">
+          <Image src={Flag} width={15} height={15} alt="flag" />
+          <span>En</span>
+        </NavbarItem>
         <NavbarItem className="text-white">
           <Dropdown>
             <DropdownTrigger>
