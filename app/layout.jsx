@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <html lang="en" className='scroll-smooth' style={{scrollBehavior:'smooth'}}>
+    <html lang="en">
       <body className={poppins.className + " dark"}>
         <Provider store={store}>
           <div className="flex flex-col">
@@ -31,9 +31,9 @@ export default function RootLayout({ children }) {
                 ?
                 <div className="flex">
                   <Sidebar show={showSidebar} setter={setShowSidebar} />
-                  <div className="w-full">
+                  <div className="w-full gradiant-background">
                     <UserHeader setter={setShowSidebar} />
-                    <div className={showSidebar ? "overflow-y-auto h-[calc(100vh-64px)]" :"flex flex-col flex-grow md:w-full gradiant-background"} style={{scrollBehavior:'smooth'}}>
+                    <div className="flex flex-col flex-grow w-screen md:w-full sm:h-[calc(100vh-65px)] overflow-y-auto" style={{scrollBehavior:'smooth'}}>
                       {children}
                     </div>
                   </div>

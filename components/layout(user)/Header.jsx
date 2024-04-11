@@ -54,7 +54,7 @@ const UserHeader = ({ show, setter }) => {
   return (
     <Navbar
       isBordered
-      className="bg-transparent sm:p-1 z-30"
+      className="bg-transparent z-30"
       maxWidth="full"
     >
       <NavbarContent>
