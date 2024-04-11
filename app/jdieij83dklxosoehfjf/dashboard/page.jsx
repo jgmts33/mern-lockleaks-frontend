@@ -66,7 +66,7 @@ export default function AdminDashbaord() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:pt-16 text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white">
             <div className='flex max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>OVERVIEW OF INFIRNGEMENT</span>
             </div>

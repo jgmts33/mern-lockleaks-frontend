@@ -74,7 +74,7 @@ export default function GoogleBing() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:pt-16 container text-white max-lg:mx-auto max-lg:px-3">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto max-lg:px-3">
             <div className='flex items-center max-lg:mx-auto'>
                 <div>
                     <span className='font-extrabold text-lg'>GOOGLE & BING ORDERS</span>

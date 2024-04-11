@@ -68,17 +68,18 @@ export default function MonthlyPdf() {
 
                 {/* This section for define monthly pdf header*/}
 
-                <div className='mt-20 max-md:px-3 max-md:text-center'>
+                <div className='mt-20 max-md:px-3 max-md:text-center z-10'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{MonthlyTitle.title}</p>
                     <div className='flex items-center justify-between mx-auto max-2xl:justify-around max-md:flex-col'>
                         <div className='max-w-[653px] mt-10'><p className='font-normal text-lg mt-10'>{MonthlyTitle.content}</p></div>
-                        <Image src="/assets/logo.svg" width={190} height={50} className='mt-20' alt="logo" />
+                        <Image src="/assets/logo.svg" width={190} height={50} className='mt-20 z-10' alt="logo" />
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='absolute top-0 right-20 bg-[#362666] bg-opacity-5 blur-3xl max-xl:hidden' />
                     </div>
                 </div>
 
                 {/* This section for define help content*/}
-
-                <div className='flex w-full justify-center mt-72 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center max-xl:mt-20'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='absolute top-10 left-0 bg-[#362666] bg-opacity-5 blur-3xl max-xl:hidden' />
+                <div className='flex w-full justify-center mt-72 z-10 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center max-xl:mt-20'>
                     <div className='relative'>
                         <span className='font-medium text-md'>How It Helps</span>
                     </div>
@@ -88,7 +89,9 @@ export default function MonthlyPdf() {
                         <p className='font-normal text-lg mt-2 max-sm:text-base'>Strategy Planning: Facilitates informed decision-making for future content strategies.</p>
                     </div>
                     <div className='max-xl:hidden'><Image src={RightChat} width={200} height={100} className='absolute left-60 -top-8' alt='right rotate chat' /></div>
-                    <div className="flex max-w-[422px] duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={242} className='absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl max-xl:hidden' />
+
+                    <div className="flex max-w-[422px] z-10 duration-700 max-2xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-20 max-xl:right-0 max-xl:top-20 max-2xl:right-0">
                         <div>{icons.protect}</div>
                         <div>
                             <p className='font-normal text-lg mt-2 max-sm:text-base'>Comprehensive Analysis:Presents a detailed overview of content evolution and performance metrics.</p>
@@ -104,7 +107,7 @@ export default function MonthlyPdf() {
 
                 {/* This section for define benefit content*/}
 
-                <div className='flex max-lg:px-5 mt-80 py-2 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px] max-md:mt-60 max-sm:pb-10'>
+                <div className='flex max-lg:px-5 mt-80 z-10 py-2 max-md:items-center max-md:justify-center max-md:mx-auto bg-[#0E142B] rounded-[40px] max-md:mt-60 max-sm:pb-10'>
                     <div className='flex flex-col'>
                         <div className='py-10 px-12'><span className='font-medium text-5xl max-lg:text-4xl'>BENEFITS:</span></div>
                         <div className='grid grid-cols-2 max-lg:grid-cols-2 max-md:grid-cols-1 gap-8 justify-center items-center px-10 py-10 max-sm:p-0'>

@@ -37,7 +37,7 @@ export default function Analytics() {
 
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-3 py-5 max-sm:pt-16 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-3 py-5 container text-white max-lg:mx-auto">
             <div className='max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>

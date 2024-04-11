@@ -63,7 +63,7 @@ export default function SocialMedia() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 max-sm:pt-16 container text-white max-lg:mx-auto max-lg:px-3">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto max-lg:px-3">
             <div className='flex gap-16 items-center max-lg:mx-auto'>
                 <div><span className='font-extrabold text-lg'>SOCIAL MEDIA ORDERS</span></div>
             </div>

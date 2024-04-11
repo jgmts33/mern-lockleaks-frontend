@@ -164,9 +164,9 @@ export default function ScanTakeDown() {
                 </div>
                 <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-lg:flex-col max-lg:justify-center items-center'>
                     <div className='flex items-center w-64 h-64'>
-                        <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "mx-auto w-44 h-44" : "mx-auto w-full h-full"} alt='warning' width={250} height={250} />
+                        <Image src={selectedContent == 'scan' ? Scan : Takedown} className={selectedContent == 'scan' ? "mx-auto w-44 h-44 z-10" : "mx-auto w-full h-full z-10"} alt='warning' width={250} height={250} />
                     </div>
-                    <Image src="assets/bg-shape-purple-green.svg" alt='shape-green' width={503} height={372} className='max-lg:hidden absolute top-80 left-44 bg-[#58f040] bg-opacity-5' />
+                    <Image src="assets/bg-shape-green.svg" alt='shape-green' width={403} height={272} className='max-lg:hidden absolute top-80 left-64' />
                     <div className='max-w-[695px] max-lg:text-center max-lg:mt-10'>
                         <p className='font-normal text-medium'>{selectedContent == 'scan' ? scanHeaderContent.description : takedownHeaderContent.description}</p>
                         <p className='font-normal text-red-300 text-medium mt-5'>{selectedContent == 'scan' ? '' : takedownHeaderContent.note}</p>
