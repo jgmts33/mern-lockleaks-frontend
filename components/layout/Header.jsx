@@ -101,7 +101,7 @@ export default function Header() {
             PRICING
           </Link>
         </NavbarItem>
-        <NavbarItem className="max-md:hidden">
+        <NavbarItem className="max-md:hidden cursor-pointer">
           <Dropdown>
             <DropdownTrigger>
               <Link color="foreground">SERVICES<span className="animate-bounce w-6 h-6 text-white">{icons.arrowDown}</span></Link>

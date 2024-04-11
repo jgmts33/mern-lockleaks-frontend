@@ -46,24 +46,24 @@ export default function AIfaceprofile() {
     const scanResults = [
         {
             icon: icons.components,
-            content: <div className='flex items-center space-x-1 font-normal text-base'>
+            content: <div className='flex items-center space-x-1 font-normal text-sm'>
                 <span>Scanning on</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-base'>10</span>
                 <span>websites.</span>
             </div>
         },
         {
             icon: icons.components,
-            content: <div className='flex items-center space-x-1 font-normal text-base'>
+            content: <div className='flex items-center space-x-1 font-normal text-sm'>
                 <span>"Photos Matched</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-base'>10</span>
                 <span>.</span>
             </div>
         }, {
             icon: icons.components,
-            content: <div className='flex items-center space-x-1 font-normal text-base'>
+            content: <div className='flex items-center space-x-1 font-normal text-sm'>
                 <span>Profiles Matched:</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-base'>10</span>
                 <span>.</span>
             </div>
         },
@@ -102,21 +102,22 @@ export default function AIfaceprofile() {
 
                 {/* This section for define AI face profile content*/}
 
-                <div className='flex max-w-[700px] w-full justify-between mt-10 max-md:flex-col max-md:gap-2 max-sm:mt-5'>
-                    <span className='font-extrabold text-lg max-md:text-base max-sm:text-center'>Photo for Removal Refference</span>
-                </div>
-                <div className='flex gap-10 max-xl:flex-col max-md:gap-5'>
-                    <div className="flex flex-col w-full bg-white/15 border border-gray-500 p-5 rounded-[16px] mt-5">
-                        <div className='flex mx-auto'>
-                            <Image src={Woman} width={200} height={100} className='' alt='saturn' />
+                <div className='flex gap-5 max-xl:flex-col max-md:gap-5'>
+                <div className='flex flex-col mt-3'>
+                        <div className='flex max-sm:mx-auto'>
+                            <span className='font-extrabold text-lg max-lg:text-base'>Photo for Removal Refference</span>
                         </div>
-                        <div>
-                            <ScrollShadow className="h-[220px] max-sm:h-[140px]">
+                        <div className="flex flex-col w-full bg-white/15 border border-gray-500 py-2 px-5 rounded-[16px] mt-5">
+                            <div className='flex mx-auto'>
+                                <Image src={Woman} width={150} height={150} className='' alt='saturn' />
+                            </div>
+                            <div>
+                            <ScrollShadow className="h-[220px] max-sm:h-[130px]">
                                 {
                                     AIImageLists.map((items, index) => {
                                         return (
-                                            <div key={index} className='flex mt-5 items-center px-8 gap-10 w-full max-lg:gap-5 max-lg:items-start max-sm:px-0 max-sm:items-center'>
-                                                <div className='flex bg-gradient-to-br justify-start bg-white/10 py-3 px-10 w-full items-center gap-3 rounded-[16px] max-md:items-start max-sm:px-2 max-sm:py-2'>
+                                            <div key={index} className='flex py-1 items-center px-8 gap-2 w-full max-lg:gap-3 max-lg:ite-start max-sm:px-0'>
+                                                <div className='flex bg-gradient-to-br justify-start bg-white/10 py-2 px-10 w-full items-center gap-3 rounded-[16px] max-md:items-start max-sm:px-1 max-sm:py-2'>
                                                     <div>{items.icon}</div>
                                                     <span>{items.content}</span>
                                                 </div>
@@ -128,6 +129,7 @@ export default function AIfaceprofile() {
                                     })
                                 }
                             </ScrollShadow>
+                        </div>
                         </div>
                     </div>
                     <div className='flex flex-col py-10 w-full max-sm:py-0'>
@@ -171,11 +173,11 @@ export default function AIfaceprofile() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col mt-5'>
+                <div className='flex flex-col'>
                     {
                         scanResults.map((items, index) => {
                             return (
-                                <div key={index} className='flex flex-col p-3'>
+                                <div key={index} className='flex flex-col p-1'>
                                     <div className='flex gap-5 p-3'>
                                         <div>{items.icon}</div>
                                         <div>{items.content}</div>
@@ -189,7 +191,7 @@ export default function AIfaceprofile() {
 
                 {/* This section for define AI face profile footer*/}
 
-                <div className="flex items-center px-16 py-5 justify-start bg-white/15 border border-gray-500 rounded-[16px] w-full p-5 max-lg:py-5 max-lg:px-5 max-md:flex-col">
+                <div className="flex items-center px-16 py-5 justify-start bg-white/15 border border-gray-500 rounded-[16px] w-full p-5 max-lg:py-5 max-lg:px-5 mt-1 max-md:flex-col">
                     <div className='flex gap-5 items-center'>
                         <div>{icons.components}</div>
                         <span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span>
