@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={poppins.className + " dark max-2xl:pr-2"}>
+      <body className={poppins.className + " dark pr-2"}>
         <Provider store={store}>
           <div className="flex flex-col">
             {
@@ -33,14 +33,13 @@ export default function RootLayout({ children }) {
                   <Sidebar show={showSidebar} setter={setShowSidebar} />
                   <div className="w-full gradiant-background">
                     <UserHeader setter={setShowSidebar} />
-                    <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto" style={{scrollBehavior:'smooth',marginRight:"10px"}}>
+                    <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto" style={{ scrollBehavior: 'smooth' }}>
                       {children}
                     </div>
                   </div>
                 </div>
                 :
-              
-              <div className="">
+                <div className="">
                   {
                     !currentPath.includes("/auth")
                       ?
