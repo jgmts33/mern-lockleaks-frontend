@@ -1,44 +1,67 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input
+    Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react';
+import { Warning } from "@/components/utils/Icons";
 
-export default function Notifications() {
+export default function Notification() {
 
-    const [selectDownload, setSelectDownload] = useState(0);
+    const icons = {
+        warning: <Warning fill="currentColor" size={16} />,
+    };
+
+    const NotificationContent = [
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+        "Notification from the module",
+    ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 mt-5 container text-white max-lg:mx-auto">
-            <div className='max-lg:mx-auto'>
-                <span className='font-extrabold text-lg'>NOTIFICATIONS</span>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+
+            {/* This section for define notification header?*/}
+
+            <div className='mt-5 max-xl:mx-auto max-lg:mt-0'>
+                <span className='font-extrabold text-lg'>NOTIFICATION</span>
             </div>
-            <div className='flex space-x-5 mt-10 max-md:flex-col max-md:justify-center max-md:items-center'>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] w-1/2 max-md:w-full'>
-                    <ScrollShadow className='flex h-[400px] justify-between max-md:h-[200px]'>
-                        <span className='font-semibold text-base'>NOTIFICATION FROM ALL MODULES</span>
-                        <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-sm" size='sm'>
-                            Yes
-                        </Button>
-                    </ScrollShadow>
-                </div>
-                <div className='w-1/2 flex items-center max-md:mt-5 max-md:w-full'>
-                    <div className='flex flex-col space-y-16 max-md:space-y-5'>
-                        <div className='text-center'>
-                            <span className='font-bold text-lg'>AUTOMATIC DELETION OF NOTIFICATION OLDER THAN 30 DAYS</span>
-                        </div>
-                        <div className='text-center'>
-                            <span className='font-semibold text-base'>CLICK REDIRECT TO NOTIFICATION</span>
-                        </div>
-                        <div className='flex mx-auto'>
-                            <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-sm" size='sm'>
-                                REDIRECT
-                            </Button>
-                        </div>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-3 rounded-[16px] max-w-[1100px] mt-5 w-full'>
+                <ScrollShadow className="h-[350px]">
+                    <div className='flex flex-col scroll px-5 gap-5 max-sm:px-3'>
+                        {
+                            NotificationContent.map((items, index) => {
+                                return (
+                                    <div key={index} className='flex bg-white/20 shadow-sm p-3 rounded-[16px]'>
+                                        <span className='max-md:text-sm'>{items}</span>
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
-                </div>
+                </ScrollShadow>
+            </div>
+
+            {/* This section for define notification warning?*/}
+
+            <div className='flex bg-white/10 shadow-sm px-16 py-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:text-base max-sm:px-5 max-sm:mt-5'>
+                <div>{icons.warning}</div>
+                <div><span className='font-semibold text-base'>AUTOMATIC DELETION OF NOTIFICATION OLDER THAN 30 DAYS</span></div>
             </div>
         </div>
     )

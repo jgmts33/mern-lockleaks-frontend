@@ -22,26 +22,18 @@ export default function PingModels() {
             name: "John +2 ",
             platform: "Cam.com+2",
             socialmedia: "Facebook+2",
-            reponse: "Yes",
-            goal: "Paid"
         }, {
             name: "John +2 ",
             platform: "Cam.com+2",
             socialmedia: "Facebook+2",
-            reponse: "No",
-            goal: "No"
         }, {
             name: "John +2 ",
             platform: "Cam.com+2",
             socialmedia: "Facebook+2",
-            reponse: "Yes",
-            goal: "Paid"
         }, {
             name: "John +2 ",
             platform: "Cam.com+2",
             socialmedia: "Facebook+2",
-            reponse: "No",
-            goal: "No"
         }
     ]
 
@@ -55,10 +47,10 @@ export default function PingModels() {
             <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>PING MODELS</span>
             </div>
-            <div className='flex max-w-[1232px] justify-between mt-10 max-sm:mt-5'>
+            <div className='flex max-w-[1232px] justify-between mt-5'>
                 <span className='font-semibold text-base'>Info</span>
             </div>
-            <div className='flex max-w-[1170px] justify-between mt-16 max-sm:mt-5'>
+            <div className='flex max-w-[1170px] justify-between mt-10'>
                 <Input
                     isClearable
                     radius="lg"
@@ -113,67 +105,89 @@ export default function PingModels() {
             </ScrollShadow>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-2 rounded-[16px] max-w-[1400px] mt-10 w-full max-sm:py-5'>
                 <ScrollShadow className='h-[400px]'>
-                        <ScrollShadow className='max-sm:w-[700px]'>
-                            <div className='w-full grid grid-cols-5 mt-5 sm:hidden'>
-                                <div>
-                                    <span>MODEL NAME</span>
-                                </div>
-                                <div>
-                                    <span>PLATFORM</span>
-                                </div>
-                                <div>
-                                    <span>SOCIAL MEDIA</span>
-                                </div>
-                                <div>
-                                    <span>RESPONSE</span>
-                                </div>
-                                <div>
-                                    <span>GOAL</span>
-                                </div>
+                    <ScrollShadow className='max-sm:w-[700px]'>
+                        <div className='w-full grid grid-cols-5 mt-5 sm:hidden'>
+                            <div>
+                                <span>MODEL NAME</span>
                             </div>
-                            <div className='w-full'>
-                                {
-                                    PingModelContent.map((items, index) => {
-                                        return (
-                                            <div key={index} className='grid grid-cols-5 py-6 font-semibold text-base items-center px-5'>
+                            <div>
+                                <span>PLATFORM</span>
+                            </div>
+                            <div>
+                                <span>SOCIAL MEDIA</span>
+                            </div>
+                            <div>
+                                <span>RESPONSE</span>
+                            </div>
+                            <div>
+                                <span>GOAL</span>
+                            </div>
+                        </div>
+                        <div className='w-full'>
+                            {
+                                PingModelContent.map((items, index) => {
+                                    return (
+                                        <div key={index} className='grid grid-cols-5 py-6 font-semibold text-base items-center px-5'>
+                                            <div className='flex gap-5 items-center'>
                                                 <div>
                                                     <span>{items.name}</span>
                                                 </div>
                                                 <div>
+                                                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm' onClick={() => handlePingManagement()}>
+                                                        VIEW DATA
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                            <div className='flex gap-5 items-center'>
+                                                <div>
                                                     <span>{items.platform}</span>
                                                 </div>
+                                                <div>
+                                                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm' onClick={() => handlePingManagement()}>
+                                                        VIEW DATA
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                            <div className='flex gap-5 items-center'>
                                                 <div>
                                                     <span>{items.socialmedia}</span>
                                                 </div>
                                                 <div>
-                                                    {
-                                                        items.reponse == "Yes"
-                                                            ?
-                                                            <span className='text-[#4AC34E]'>{items.reponse}</span>
-                                                            :
-                                                            <span className='text-[#CF3B56]'>{items.reponse}</span>
-                                                    }
-                                                    <span>
-                                                        {
-                                                            items.reponse == "Yes"
-                                                        }
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    {
-                                                        items.goal == "Paid"
-                                                            ?
-                                                            <span className='text-[#4AC34E]'>{items.goal}</span>
-                                                            :
-                                                            <span className='text-[#CF3B56]'>{items.goal}</span>
-                                                    }
+                                                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm' onClick={() => handlePingManagement()}>
+                                                        VIEW DATA
+                                                    </Button>
                                                 </div>
                                             </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </ScrollShadow>
+                                            <div className='flex'>
+                                                <div>
+                                                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg text-base bg-gradient-to-tr from-gray-700 to-gray-800"} size='sm'>
+                                                        No
+                                                    </Button>
+                                                </div>
+                                                <div>
+                                                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
+                                                        Yes
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                            <div className='flex'>
+                                                <div>
+                                                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg text-base bg-gradient-to-tr from-gray-700 to-gray-800"} size='sm'>
+                                                        No
+                                                    </Button>
+                                                </div>
+                                                <div>
+                                                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
+                                                        Yes
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </ScrollShadow>
                 </ScrollShadow>
             </div>
             <Modal

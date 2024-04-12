@@ -34,12 +34,6 @@ export default function AdminDashbaord() {
             total: 123456
         },
         {
-            title: "Total users",
-            subtitle:"total users last 7 days",
-            lastscan: 123456,
-            total: 123456
-        },
-        {
             title: "Social Media",
             subtitle:"total last scan",
             lastscan: 123456,
@@ -60,6 +54,12 @@ export default function AdminDashbaord() {
         {
             title: "Total orders",
             subtitle:"total orders last 7 days",
+            lastscan: 123456,
+            total: 123456
+        },
+        {
+            title: "Total users",
+            subtitle:"total users last 7 days",
             lastscan: 123456,
             total: 123456
         },

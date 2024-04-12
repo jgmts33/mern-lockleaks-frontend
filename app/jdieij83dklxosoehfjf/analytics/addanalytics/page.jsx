@@ -130,17 +130,20 @@ export default function AddAnalytics() {
                 </div>
                 <div className='flex flex-col w-full gap-5'>
                     <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5 space-y-7 text-white">
+                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5 text-white">
                             <div className='flex mx-auto'>
-                                <span className='font-semibold text-base'>Hosting Revenue</span>
+                                <span className='font-semibold text-base mt-5'>Hosting Revenue</span>
                             </div>
-                            <div className='flex mx-auto'>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-lg mt-14" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                            <div className='flex mx-auto w-full justify-around'>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base mt-5" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
                                     Add
+                                </Button>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base mt-5" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                                    View List
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5 space-y-5">
+                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-3 space-y-3">
                             <div className='flex flex-col space-y-3 mx-auto'>
                                 <span className='font-semibold text-base'>Subscription Profits</span>
                                 <span className='font-normal text-xs text-center bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning</span>
@@ -148,31 +151,40 @@ export default function AddAnalytics() {
                             <div className='flex mx-auto'>
                                 <span className='font-normal text-xs'>Duplicates and unique links added here</span>
                             </div>
-                            <div className='flex mx-auto'>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-lg" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                            <div className='flex mx-auto w-full justify-around'>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
                                     Add
+                                </Button>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                                    View List
                                 </Button>
                             </div>
                         </div>
                     </div>
                     <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
                         <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
-                            <div className='flex mx-auto'>
+                            <div className='flex mx-auto mt-3'>
                                 <span className='font-semibold text-base'> Advertisement Revenue</span>
                             </div>
-                            <div className='flex mx-auto'>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-lg mt-16" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                            <div className='flex mx-auto w-full justify-around'>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base mt-5" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
                                     Add
+                                </Button>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base mt-5" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                                    View List
                                 </Button>
                             </div>
                         </div>
                         <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
-                            <div className='flex mx-auto'>
+                            <div className='flex mx-auto text-center'>
                                 <span className='font-semibold text-base'>Intermediary Forums &Websites</span>
                             </div>
-                            <div className='flex mx-auto mt-10'>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-lg" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                            <div className='flex mx-auto mt-5 w-full justify-around'>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
                                     Add
+                                </Button>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                                View List
                                 </Button>
                             </div>
                         </div>
@@ -182,8 +194,8 @@ export default function AddAnalytics() {
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'>Archive Websites</span>
                             </div>
-                            <div className='flex mx-auto mt-10'>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-lg" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                            <div className='flex mx-auto mt-5'>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
                                     Add
                                 </Button>
                             </div>

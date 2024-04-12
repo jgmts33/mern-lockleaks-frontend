@@ -18,8 +18,15 @@ export default function UsersView() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto'>
-                <span className='font-extrabold text-lg'>USERS</span>
+            <div className='flex mt-5 max-lg:mx-auto w-full justify-between items-center'>
+                <div>
+                    <span className='font-extrabold text-lg'>USERS</span>
+                </div>
+                <div>
+                    <Button radius='full' size="sm" className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white text-sm">
+                        Back
+                    </Button>
+                </div>
             </div>
             <div className='flex flex-col space-y-5 mt-10'>
                 <div className='flex font-semibold text-base max-w-[600px] justify-between'>

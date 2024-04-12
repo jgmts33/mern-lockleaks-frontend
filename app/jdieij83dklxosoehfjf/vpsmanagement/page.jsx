@@ -70,39 +70,55 @@ export default function VPSManagement() {
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 max-sm:mt-16 w-full'>
                 <ScrollShadow className="h-[300px]">
                     <ScrollShadow className='max-sm:w-[800px]'>
-                    <div className='grid grid-cols-4 sm:hidden'>
-                        <div className='flex px-20 max-sm:px-0'><span>VPS IP</span></div>
-                        <div className='flex'><span>USERS</span></div>
-                        <div className='flex px-3 max-sm:px-0'><span>FREE SPACE</span></div>
-                        <div className='flex px-10 max-sm:px-10'><span>STATUS</span></div>
-                    </div>
-                    {
-                        UsersData.map((items, index) => {
-                            return (
-                                <div key={index} className='grid grid-cols-4 font-semibold text-lg max-sm:font-normal max-sm:text-sm gap-10 w-full py-3'>
-                                    <div className='flex'><span>{items.vpsip}</span></div>
-                                    <div className='flex'>
-                                        <span>{items.users}</span>/
-                                        <span>{items.total_users}</span>
-                                    </div>
-                                    <div className='flex gap-10'>
-                                        <div className='flex'>
-                                            <span className=''>{items.first_freespace}</span>/
-                                            <span className=''>{items.second_freespace}</span>
+                        <div className='grid grid-cols-4 sm:hidden'>
+                            <div className='flex px-20 max-sm:px-0'><span>VPS IP</span></div>
+                            <div className='flex'><span>USERS</span></div>
+                            <div className='flex px-3 max-sm:px-0'><span>FREE SPACE</span></div>
+                            <div className='flex px-10 max-sm:px-10'><span>STATUS</span></div>
+                        </div>
+                        {
+                            UsersData.map((items, index) => {
+                                return (
+                                    <div key={index} className='grid grid-cols-4 font-semibold text-lg max-sm:font-normal max-sm:text-sm gap-10 w-full py-3'>
+                                        <div className='flex gap-5'>
+                                            <div>
+                                                <span>{items.vpsip}</span>
+                                            </div>
+                                            <div>
+                                                <Button radius='full' size="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-sm">
+                                                    View
+                                                </Button>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <Button radius='full' size="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-sm">
-                                                Delete
-                                            </Button>
+                                        <div className='flex gap-5'>
+                                            <div>
+                                                <span>{items.users}</span>/
+                                                <span>{items.total_users}</span>
+                                            </div>
+                                            <div>
+                                                <Button radius='full' size="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-sm">
+                                                    View
+                                                </Button>
+                                            </div>
+                                        </div>
+                                        <div className='flex gap-5'>
+                                            <div className='flex'>
+                                                <span className=''>{items.first_freespace}</span>/
+                                                <span className=''>{items.second_freespace}</span>
+                                            </div>
+                                            <div>
+                                                <Button radius='full' size="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-sm">
+                                                    Delete
+                                                </Button>
+                                            </div>
+                                        </div>
+                                        <div className='flex items-center justify-center'>
+                                            <span className={items.status == "ONLINE" ? "text-[#4AC34E]" : "text-[#CF3B56]"}>{items.status}</span>
                                         </div>
                                     </div>
-                                    <div className='flex items-center justify-center'>
-                                        <span className={items.status == "ONLINE" ? "text-[#4AC34E]" : "text-[#CF3B56]"}>{items.status}</span>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
+                                )
+                            })
+                        }
                     </ScrollShadow>
                 </ScrollShadow>
             </div>

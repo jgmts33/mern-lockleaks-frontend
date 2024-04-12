@@ -60,12 +60,9 @@ export default function Dmcabadges() {
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
             <div className='flex justify-between w-full mt-10 max-lg:max-w-full max-lg:justify-around'>
-                <div className='flex justify-between max-w-[450px] w-full'>
+                <div className='flex w-full'>
                     <Button radius="md" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base border border-white/40" size='md' onClick={() => handleGoDetails()}>
                         Choose file
-                    </Button>
-                    <Button radius="md" className="bg-gradient-to-tr from-gray-800 to-gray-600 text-white shadow-lg text-base border border-white/40" size='md'>
-                        Upload image
                     </Button>
                 </div>
             </div>

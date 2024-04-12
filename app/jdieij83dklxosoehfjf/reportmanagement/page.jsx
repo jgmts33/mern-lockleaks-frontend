@@ -125,8 +125,15 @@ export default function ReportManagement() {
                                                     View
                                                 </Button>
                                             </div>
-                                            <div>
-                                                <span>{items.links}</span>
+                                            <div className='flex gap-5'>
+                                                <div>
+                                                    <span>{items.links}</span>
+                                                </div>
+                                                <div>
+                                                    <Button radius="lg" className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight" size='sm'>
+                                                        View
+                                                    </Button>
+                                                </div>
                                             </div>
                                             <div className='flex gap-2'>
                                                 <Button radius="lg" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
