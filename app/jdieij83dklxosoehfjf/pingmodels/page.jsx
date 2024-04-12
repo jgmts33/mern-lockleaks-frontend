@@ -105,7 +105,7 @@ export default function PingModels() {
             </ScrollShadow>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-2 rounded-[16px] max-w-[1400px] mt-10 w-full max-sm:py-5'>
                 <ScrollShadow className='h-[400px]'>
-                    <ScrollShadow className='max-sm:w-[700px]'>
+                    <ScrollShadow className='max-sm:w-[1300px]'>
                         <div className='w-full grid grid-cols-5 mt-5 sm:hidden'>
                             <div>
                                 <span>MODEL NAME</span>

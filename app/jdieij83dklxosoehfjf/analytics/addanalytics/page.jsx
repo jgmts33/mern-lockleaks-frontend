@@ -129,10 +129,10 @@ export default function AddAnalytics() {
                     </div>
                 </div>
                 <div className='flex flex-col w-full gap-5'>
-                    <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5 text-white">
+                    <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 lg:mx-auto w-full max-sm:grid-cols-1'>
+                        <div className="flex flex-col w-full bg-white/15 sm:max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5 text-white">
                             <div className='flex mx-auto'>
-                                <span className='font-semibold text-base mt-5'>Hosting Revenue</span>
+                                <span className='font-semibold text-base'>Hosting Revenue</span>
                             </div>
                             <div className='flex mx-auto w-full justify-around'>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base mt-5" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
@@ -143,15 +143,11 @@ export default function AddAnalytics() {
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-3 space-y-3">
-                            <div className='flex flex-col space-y-3 mx-auto'>
+                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
+                            <div className='flex flex-col mx-auto'>
                                 <span className='font-semibold text-base'>Subscription Profits</span>
-                                <span className='font-normal text-xs text-center bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning</span>
                             </div>
-                            <div className='flex mx-auto'>
-                                <span className='font-normal text-xs'>Duplicates and unique links added here</span>
-                            </div>
-                            <div className='flex mx-auto w-full justify-around'>
+                            <div className='flex mx-auto w-full justify-around mt-5'>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
                                     Add
                                 </Button>
