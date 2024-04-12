@@ -6,7 +6,8 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { tuple } from 'yup';
-import { Editor } from '@tinymce/tinymce-react';
+import CustomQuill from '@/components/CustomQuill';
+
 
 export default function CreatePost() {
     const router = useRouter();
@@ -21,6 +22,7 @@ export default function CreatePost() {
         }
     ]
 
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 space-y-10 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto'>
@@ -29,16 +31,10 @@ export default function CreatePost() {
             <div className='flex mt-5 w-full px-3'>
                 <Input type="text" label="Title" />
             </div>
-            <Editor
-                apiKey='j9vvbxoc4iq2zp87e9zuryasu0roc91682u6ayc1btavtr7u'
-                init={{
-                    skin: 'oxide-dark',
-                    content_css: 'dark'
-                }}
-            />
+            <CustomQuill theme="bubble" />
             <div className='flex justify-end'>
-                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
-                    START
+                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg mt-5" size='sm'>
+                    Post
                 </Button>
             </div>
         </div>
