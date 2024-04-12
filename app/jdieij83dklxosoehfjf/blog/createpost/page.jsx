@@ -88,7 +88,7 @@ export default function CreatePost() {
             </div>
             <div className='flex justify-end'>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
-                    START
+                    Post
                 </Button>
             </div>
         </div>

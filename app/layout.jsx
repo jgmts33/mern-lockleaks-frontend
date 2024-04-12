@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={poppins.className + " dark"}>
+      <body className={poppins.className + " dark max-2xl:pr-2"}>
         <Provider store={store}>
           <div className="flex flex-col">
             {
