@@ -5,9 +5,6 @@ import {
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { tuple } from 'yup';
-import CustomQuill from '@/components/CustomQuill';
-
 
 export default function CreatePost() {
     const router = useRouter();
@@ -31,7 +28,6 @@ export default function CreatePost() {
             <div className='flex mt-5 w-full px-3'>
                 <Input type="text" label="Title" />
             </div>
-            <CustomQuill theme="bubble" />
             <div className='flex justify-end'>
                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg mt-5" size='sm'>
                     Post
