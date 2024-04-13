@@ -58,7 +58,7 @@ export default function AdminDashbaord() {
             total: 123456
         },
         {
-            title: "Total users",
+            title: "Total Users",
             subtitle:"total users last 7 days",
             lastscan: 123456,
             total: 123456

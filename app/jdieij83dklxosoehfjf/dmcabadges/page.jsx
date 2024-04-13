@@ -57,12 +57,12 @@ export default function Dmcabadges() {
     return (
         <div className="flex flex-col bg-gradient-to-tr px-3 py-5 container text-white max-lg:mx-auto">
             <div className='flex max-lg:mx-auto'>
-                <span className='font-extrabold text-lg'>DMCA BADGES</span>
+                <span className='font-extrabold text-lg'>DMCA badges</span>
             </div>
             <div className='flex justify-between w-full mt-10 max-lg:max-w-full max-lg:justify-around'>
                 <div className='flex w-full'>
                     <Button radius="md" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base border border-white/40" size='md' onClick={() => handleGoDetails()}>
-                        Choose file
+                        DMCA Badeges
                     </Button>
                 </div>
             </div>

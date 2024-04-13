@@ -77,22 +77,26 @@ export default function ReportManagement() {
                         <span>{icons.search}</span>
                     }
                 />
-                <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm' onClick={() => handleReportManagement()}>
-                    ADD
-                </Button>
             </div>
-            <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-10 max-sm:hidden'>
-                <div>
-                    <span>WEBSITE</span>
+            <div className='flex items-center'>
+                <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-10 max-sm:hidden'>
+                    <div >
+                        <span>WEBSITE</span>
+                    </div>
+                    <div>
+                        <span>METHOD</span>
+                    </div>
+                    <div className='pl-16'>
+                        <span>LINKS</span>
+                    </div>
+                    <div className='pl-20'>
+                        <span>SUCCESS</span>
+                    </div>
                 </div>
-                <div>
-                    <span>METHOD</span>
-                </div>
-                <div className='pl-10'>
-                    <span>LINKS</span>
-                </div>
-                <div className='pl-20'>
-                    <span>SUCCESS</span>
+                <div className='max-sm:mt-5'>
+                    <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm' onClick={() => handleReportManagement()}>
+                        ADD
+                    </Button>
                 </div>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1300px] mt-10 w-full'>
