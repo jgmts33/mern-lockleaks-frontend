@@ -44,7 +44,7 @@ export default function PingModels() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
+            <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>PING MODELS</span>
             </div>
             <div className='flex max-w-[1232px] justify-between mt-5'>
@@ -85,7 +85,7 @@ export default function PingModels() {
                 </Button>
             </div>
             <ScrollShadow className='max-sm:w-[500px]'>
-                <div className='max-w-[1400px] grid grid-cols-5 mt-5 px-10 w-full max-sm:hidden'>
+                <div className='max-w-[1400px] grid grid-cols-5 mt-5 px-14 w-full max-sm:hidden'>
                     <div>
                         <span>MODEL NAME</span>
                     </div>
@@ -107,10 +107,10 @@ export default function PingModels() {
                 <ScrollShadow className='h-[400px]'>
                     <ScrollShadow className='max-sm:w-[1300px]'>
                         <div className='w-full grid grid-cols-5 mt-5 sm:hidden'>
-                            <div>
+                            <div className='flex max-sm:pl-5'>
                                 <span>MODEL NAME</span>
                             </div>
-                            <div>
+                            <div className='flex max-sm:pl-3'>
                                 <span>PLATFORM</span>
                             </div>
                             <div>

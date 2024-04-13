@@ -141,9 +141,9 @@ export default function HomePage() {
       img: "assets/services/content-creator.svg"
     },
     {
-      name: "Reverify & Reanalyzer",
+      name: "Re-verify & Re-analyzer",
       description: <div className='outline-none px-10 py-10'>
-        <p>This functionality involves repetitive scans and periodic updates to identify and evaluate any new copyright infringements or reintroduced content. It ensures constant monitoring of illegal activities and helps rediscover previously undetected content, ensuring all violations are appropriately managed and eliminated, maintaining high-security standards for copyrighted content.</p>
+        <p>The "Re-verify & Re-analyzer Tool" enables you to conduct thorough re-evaluations and analyses of your content. Utilize this tool to double-check and re-assess the accuracy and effectiveness of your previous verifications and analyses. With the "Re-verify & Re-analyzer Tool," ensure that your content remains up-to-date and optimized for maximum performance.</p>
       </div>,
       img: "assets/services/reverify-reanalyzer.svg"
     },
@@ -384,7 +384,9 @@ export default function HomePage() {
 
         {/* This section for define we're ready to assist*/}
 
-        <div className='max-lg:px-3'>
+        <div className='max-lg:px-3 relative'>
+        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
           <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-sm:mt-24 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
             <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-3xl'>OUR SERVICES FOR YOUR BENEFIT</span>
             <div className="grid grid-cols-4 gap-x-3 max-lg:flex-col max-w-[700px] mx-auto lg:hidden">

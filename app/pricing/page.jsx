@@ -1,19 +1,18 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button,
+    Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, ArrowDown } from "@/components/utils/Icons";
+import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, ArrowDown, WarningIcon } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customerReview';
-import UncompleteIcon from "@/public/assets/background/uncomplete.svg"
-import CompleteIcon from "@/public/assets/background/complete.svg"
 
 export default function Pricing() {
-
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isPricingSelected, setPricingSelected] = React.useState(true);
     const [selectServiceList, setSelectServiceList] = React.useState(-1);
+    const [selectMoreContent, setSelectMoreContent] = useState("")
 
     const icons = {
         left: <ChevronLeft fill="currentColor" size={16} />,
@@ -23,6 +22,7 @@ export default function Pricing() {
         star: <Star fill="currentColor" size={16} />,
         uncomplete: <Uncomplete fill="currentColor" size={16} />,
         arrowDown: <ArrowDown fill="currentColor" size={16} />,
+        warningicon: <WarningIcon fill="currentColor" size={16} />,
     };
 
     const pricingContent = [
@@ -38,20 +38,20 @@ export default function Pricing() {
             add_propertity: "mt-[72px]",
             agent_request: "Personal Agent Requests",
             takedowns: "Unlimited Takedowns",
-            daily_report: "Daily Repports",
+            daily_report: "Daily Reports",
             badges: "DMCA Badges",
             pdf_report: "Monthly PDF Reports",
             candidential_takedown: "Confidential DMCA Takedown",
-            analyzer_tool: "Analyzer Tool Search English",
-            reverify_tool: "Reverify & Reanalyzer Tool",
-            google_removal_report: "Google Results,Images & Videos Removal Report",
-            bing_removal_report: "Bing Results,Images & Videos Removal Report",
-            social_analyze: "Social Media Analyzer Tools & Removal  Report",
+            analyzer_tool: "Analyzer Tool Search",
+            reverify_tool: "Re-verify & Re-analyzer Tool",
+            google_removal_report: "Google Results, Images & Videos Removal Report",
+            bing_removal_report: "Bing Results, Images & Videos Removal Report",
+            social_analyze: "Social Media Analyzer Tools & Removal Report",
             adult_analyze: "Adult Tubes Analyzer Tool & Removal Report",
             forum_analyze: "Forums Analyzer & Removal Report",
-            file_analyze: "File Host Analyzer tool & Removal Report",
-            AI_analyze: "FACE RECGNITION AI ANALYZER & REMOVAL REPORT",
-            monthly_analyze: "MONTHLY REPORT DATA ANALYTICS AND INSIGHTS",
+            file_analyze: "File Host Analyzer Tool & Removal Report",
+            AI_analyze: "Face Recognition AI Analyzer & Removal Report",
+            monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             social_analyze_status: false,
             adult_analyze_status: false,
@@ -60,7 +60,7 @@ export default function Pricing() {
             AI_analyze_status: false,
             monthly_analyze_status: false,
             recovery_report_status: false,
-            add_content: "px-10"
+            add_content: "px-3"
         }, {
             title: "STAR",
             monthly_price: "350",
@@ -73,20 +73,20 @@ export default function Pricing() {
             user_name: "5",
             agent_request: "Personal Agent Requests",
             takedowns: "Unlimited Takedowns",
-            daily_report: "Daily Repports",
+            daily_report: "Daily Reports",
             badges: "DMCA Badges",
             pdf_report: "Monthly PDF Reports",
             candidential_takedown: "Confidential DMCA Takedown",
-            analyzer_tool: "Analyzer Tool Search English",
-            reverify_tool: "Reverify & Reanalyzer Tool",
-            google_removal_report: "Google Results,Images & Videos Removal Report",
-            bing_removal_report: "Bing Results,Images & Videos Removal Report",
-            social_analyze: "Social Media Analyzer Tools & Removal  Report",
+            analyzer_tool: "Analyzer Tool Search",
+            reverify_tool: "Re-verify & Re-analyzer Tool",
+            google_removal_report: "Google Results, Images & Videos Removal Report",
+            bing_removal_report: "Bing Results, Images & Videos Removal Report",
+            social_analyze: "Social Media Analyzer Tools & Removal Report",
             adult_analyze: "Adult Tubes Analyzer Tool & Removal Report",
             forum_analyze: "Forums Analyzer & Removal Report",
-            file_analyze: "File Host Analyzer tool & Removal Report",
-            AI_analyze: "FACE RECGNITION AI ANALYZER & REMOVAL REPORT",
-            monthly_analyze: "MONTHLY REPORT DATA ANALYTICS AND INSIGHTS",
+            file_analyze: "File Host Analyzer Tool & Removal Report",
+            AI_analyze: "Face Recognition AI Analyzer & Removal Report",
+            monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             bing_removal_report_status: true,
             social_analyze_status: true,
@@ -96,7 +96,7 @@ export default function Pricing() {
             AI_analyze_status: true,
             monthly_analyze_status: true,
             recovery_report_status: true,
-            add_content: "bg-opacity-10 bg-black/20 rounded-[20px] px-10 py-10"
+            add_content: "bg-opacity-10 bg-black/20 rounded-[20px] px-3 py-10"
         },
         {
             title: "PRO",
@@ -111,20 +111,20 @@ export default function Pricing() {
             user_name: "3",
             agent_request: "Personal Agent Requests",
             takedowns: "Unlimited Takedowns",
-            daily_report: "Daily Repports",
+            daily_report: "Daily Reports",
             badges: "DMCA Badges",
             pdf_report: "Monthly PDF Reports",
             candidential_takedown: "Confidential DMCA Takedown",
-            analyzer_tool: "Analyzer Tool Search English",
-            reverify_tool: "Reverify & Reanalyzer Tool",
-            google_removal_report: "Google Results,Images & Videos Removal Report",
-            bing_removal_report: "Bing Results,Images & Videos Removal Report",
-            social_analyze: "Social Media Analyzer Tools & Removal  Report",
+            analyzer_tool: "Analyzer Tool Search",
+            reverify_tool: "Re-verify & Re-analyzer Tool",
+            google_removal_report: "Google Results, Images & Videos Removal Report",
+            bing_removal_report: "Bing Results, Images & Videos Removal Report",
+            social_analyze: "Social Media Analyzer Tools & Removal Report",
             adult_analyze: "Adult Tubes Analyzer Tool & Removal Report",
             forum_analyze: "Forums Analyzer & Removal Report",
-            file_analyze: "File Host Analyzer tool & Removal Report",
-            AI_analyze: "FACE RECGNITION AI ANALYZER & REMOVAL REPORT",
-            monthly_analyze: "MONTHLY REPORT DATA ANALYTICS AND INSIGHTS",
+            file_analyze: "File Host Analyzer Tool & Removal Report",
+            AI_analyze: "Face Recognition AI Analyzer & Removal Report",
+            monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             bing_removal_report_status: true,
             social_analyze_status: true,
@@ -134,9 +134,86 @@ export default function Pricing() {
             AI_analyze_status: false,
             monthly_analyze_status: false,
             recovery_report_status: false,
-            add_content: "px-10"
+            add_content: "px-3"
         }
     ]
+
+    const princingMoreDetais = [
+        {
+            title: "Personal Agent Requests",
+            content: "The 'Personal Agent Requests' feature enables you to directly interact with our specialized agents for personalized assistance. An agent will promptly review your request and provide tailored responses or solutions to address your needs. This feature offers individualized support, ensuring you receive the assistance necessary to enhance your experience with our services."
+        },
+        {
+            title: "Unlimited Takedowns",
+            content: "The 'Unlimited Takedowns' feature empowers you to swiftly remove infringing content without limitations. With this feature, you can efficiently address copyright violations across various platforms. Enjoy the freedom to initiate takedown requests without constraints, ensuring that your content remains protected and your rights upheld."
+        },
+        {
+            title: "Daily Reports",
+            content: "The 'Daily Reports' feature provides you with comprehensive insights into your platform's performance delivered directly to your panel and email inbox. Stay informed about key metrics, trends, and activities, allowing you to make informed decisions and optimize your strategies effectively. Receive regular updates effortlessly, ensuring you stay ahead of the curve and maximize the potential of your platform."
+        },
+        {
+            title: "DMCA Badges",
+            content: "The 'DMCA Badges' feature offers visible indicators that your content is safeguarded by copyright and adheres to DMCA (Digital Millennium Copyright Act) regulations. These badges serve as a warning to potential infringers, signaling that your content is legally protected, and any unauthorized use will face legal consequences. Display these badges prominently on your platform to reinforce your commitment to copyright protection."
+        },
+        {
+            title: "Monthly PDF Reports",
+            content: "The 'Monthly PDF Reports' feature delivers detailed insights into your platform's performance directly to your inbox in PDF format. Stay up-to-date with key analytics, trends, and interactions, empowering you to make data-driven decisions and optimize your strategies effectively. Receive comprehensive reports effortlessly, ensuring you have the information you need to track progress and drive success for your platform."
+        },
+        {
+            title: "Confidential DMCA Takedown",
+            content: "The 'Confidential DMCA Takedown' feature ensures discreet removal of infringing content while protecting your privacy. Our dedicated team handles takedown requests with utmost confidentiality, safeguarding your personal information throughout the process. Rest assured that your rights are upheld without compromising your privacy, allowing you to address copyright violations discreetly and effectively."
+        },
+        {
+            title: "Re-verify & Re-analyzer Tool",
+            content: "The 'Re-verify & Re-analyzer Tool' enables you to conduct thorough re-evaluations and analyses of your content. Utilize this tool to double-check and re-assess the accuracy and effectiveness of your previous verifications and analyses. With the 'Re-verify & Re-analyzer Tool,' ensure that your content remains up-to-date and optimized for maximum performance."
+        },
+        {
+            title: "Analyzer Tool Search",
+            content: "The 'Analyzer Tool Search' feature offers in-depth analysis and insights into your content's online visibility. Utilize this tool to search for mentions, reviews, and interactions across various platforms. Gain valuable insights to understand audience sentiment, track engagement, and refine your content strategy effectively. With the Analyzer Tool Search, stay informed about your content's performance and take proactive steps to enhance your online presence."
+        },
+        {
+            title: "Google Results, Images & Videos Removal Report",
+            content: "The 'Google Results, Images & Videos Removal Report' provides detailed documentation of the removal process for content across Google search results, images, and videos. This report offers comprehensive insights into the status and effectiveness of removal requests, allowing you to track the progress and results of content removal efforts. Stay informed about the management of your online presence and ensure that unauthorized content is promptly addressed and removed from Google's platforms."
+        },
+        {
+            title: "Bing Results, Images & Videos Removal Report",
+            content: "The 'Bing Results, Images & Videos Removal Report' offers comprehensive documentation of the removal process for content across Bing search results, images, and videos. This report provides detailed insights into the status and outcomes of removal requests, enabling you to monitor the effectiveness of content removal efforts. Stay informed about the management of your online presence and ensure that unauthorized content is promptly addressed and removed from Bing's platforms."
+        },
+        {
+            title: "Social Media Analyzer Tools & Removal Report",
+            content: "The 'Social Media Analyzer Tools & Removal Report' provides a comprehensive analysis of your social media presence and offers insights into content removal processes. Utilize these tools to monitor mentions, engagements, and reviews across various social media platforms. Additionally, gain detailed documentation of the content removal process, ensuring that unauthorized or harmful content is swiftly addressed and removed from social media channels. Stay informed about your online reputation and take proactive steps to manage and protect your brand image effectively."
+        },
+        {
+            title: "Adult Tubes Analyzer Tool & Removal Report",
+            content: "The 'Adult Tubes Analyzer Tool & Removal Report' offers specialized analysis and documentation for content across adult tube websites. Utilize these tools to monitor and analyze your presence on adult platforms, including mentions, interactions, and reviews. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content from adult tube sites. Stay informed about your online presence in adult spaces and take proactive steps to manage and protect your content effectively."
+        },
+        {
+            title: "Forums Analyzer & Removal Report",
+            content: "The 'Forums Analyzer & Removal Report' provides detailed analysis and documentation of your presence on online forums. Utilize these tools to monitor discussions, mentions, and interactions across various forum platforms. Additionally, gain insights into the content removal process with comprehensive reports, ensuring that unauthorized or harmful content is swiftly addressed and removed from forums. Stay informed about your online reputation and take proactive steps to manage and protect your brand image effectively on forum communities."
+        },
+        {
+            title: "File Host Analyzer Tool & Removal Report",
+            content: "The 'File Host Analyzer Tool & Removal Report' offers comprehensive analysis and documentation for content hosted on file sharing platforms. Utilize these tools to monitor and analyze the distribution of your content across various file hosting services. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content from file hosting platforms. Stay informed about the distribution of your content and take proactive steps to protect your intellectual property rights and brand image."
+        },
+        {
+            title: "Face Recognition AI Analyzer & Removal Report",
+            content: "The 'Face Recognition AI Analyzer & Removal Report' offers comprehensive analysis and documentation for content flagged by facial recognition AI systems. Utilize these tools to monitor and analyze instances of your content being flagged or identified across various platforms. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content flagged by facial recognition AI. Stay informed about the presence of your content and take proactive steps to protect your privacy and online reputation."
+        },
+        {
+            title: "Monthly Report Data Analytics and Insights",
+            content: "The 'Monthly Report Data Analytics and Insights' provides a comprehensive overview of your platform's performance, offering detailed analytics and valuable insights. Utilize this report to track key metrics, identify trends, and make data-driven decisions to optimize your strategies effectively. Stay informed about your platform's progress and leverage insights to drive growth and success.on features, search."
+        },
+        {
+            title: "Usernames History Content Recovery & Removal Report",
+            content: "The 'Usernames History Content Recovery & Removal Report' offers a detailed account of the recovery and removal process for content associated with multiple usernames. Utilize this report to track the recovery and removal of unauthorized or unwanted content linked to specific usernames across various platforms. Gain insights into the effectiveness of content removal efforts and take proactive steps to safeguard your online image and security.popups finished."
+        },
+    ]
+
+    const selectMoreDetails = (data) => {
+        setSelectMoreContent(data);
+        onOpenChange(!isOpen)
+        onOpen();
+    }
 
     return (
         <>
@@ -150,7 +227,7 @@ export default function Pricing() {
 
                 {/* This section for define pricing page content*/}
 
-                <div className='flex justify-between max-md:justify-center max-sm:flex-col gap-5 mt-10'>
+                <div className='flex justify-between max-md:justify-center max-sm:flex-col gap-5 mt-10 z-10'>
                     <div className='flex flex-col'>
                         <span className='text-center font-medium text-xl'>special offer for agency and business</span>
                         <Button radius="lg" className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white mt-5 shadow-lg px-5 py-3 text-sm" size='md'>
@@ -165,6 +242,8 @@ export default function Pricing() {
                     </div>
                 </div>
                 <div className='flex mx-auto mt-32 max-md:mt-20'>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
                     <sapn className="font-medium text-5xl max-lg:text-4xl">PRICING TABLE</sapn>
                 </div>
                 <div className='bg-gradient-to-tr w-1/2 max-lg:w-full max-lg:mt-16 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
@@ -172,7 +251,7 @@ export default function Pricing() {
                         Bill Monthly
                     </Button>
                     <Button radius="full" className={isPricingSelected ? "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" : "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"} onClick={() => setPricingSelected(false)} size='lg'>
-                        Bill Quarterly 
+                        Bill Quarterly
                     </Button>
                 </div>
 
@@ -221,33 +300,32 @@ export default function Pricing() {
                                                     ADD EXTRA
                                                 </Button>
                                             </div>
-                                            <Button radius="lg" className="w-full bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2 gap-5 hidden max-sm:block" size='md' onClick={() => { selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1) }}>
+                                            <Button radius="lg" className="w-full bg-gradient-to-br bg-transparent p-2 gap-5 hidden max-sm:block" size='md' onClick={() => { selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1) }}>
                                                 <div className='flex items-center justify-center'>
                                                     <span className='flex items-center justify-center '>Plan Details</span>
                                                     <span className={selectServiceList == index ? 'rotate-[180deg]' : ''}>{icons.arrowDown}</span>
                                                 </div>
                                             </Button>
                                             <div className='flex items-center max-xl:justify-content'>
-                                                <div className='flex gap-7'><p>{item.plan_deadline}/DAY</p> {icons.complete}{item.agent_request}</div>
+                                                <div className='flex gap-3 items-center max-sm:hidden'><div onClick={()=>selectMoreDetails(item.agent_request)}>{icons.warningicon}</div><div>{icons.complete}</div><span>{item.agent_request}</span><p>{item.plan_deadline}/DAY</p></div>
                                             </div>
                                             <div className={("flex flex-col gap-y-5 mb-10 max-sm:space-y-2 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
-                                                <div className='flex flex-wrap gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.agent_request}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div className='max-sm:flex-col'>{icons.complete}</div><div>{item.takedowns}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.daily_report}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.badges}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.pdf_report}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.candidential_takedown}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.analyzer_tool}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.reverify_tool}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.google_removal_report}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{icons.complete}</div><div>{item.bing_removal_report}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{item.social_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.social_analyze}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{item.adult_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.adult_analyze}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div>{item.forum_analyze_status ? icons.complete : icons.uncomplete}</div><div>{item.forum_analyze}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div className='w-9 h-9'>{item.file_analyze_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.file_analyze}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div className='w-9 h-9'>{item.AI_analyze_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.AI_analyze}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div className='w-9 h-9'>{item.monthly_analyze_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.monthly_analyze}</div></div>
-                                                <div className='flex gap-7 max-sm:flex-col max-sm:gap-2'><div className='w-9 h-9'>{item.recovery_report_status ? <Image src={CompleteIcon} width={30} height={30} alt='success' /> : <Image src={UncompleteIcon} width={30} height={30} />}</div><div>{item.history_content}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-2'><div className='cusor-point' onClick={() => selectMoreDetails(item.takedowns)}>{icons.warningicon}</div><div>{item.takedowns}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.daily_report)}>{icons.warningicon}</div><div>{item.daily_report}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.badges)}>{icons.warningicon}</div><div>{item.badges}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.pdf_report)}>{icons.warningicon}</div><div>{item.pdf_report}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.candidential_takedown)}>{icons.warningicon}</div><div>{item.candidential_takedown}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.analyzer_tool)}>{icons.warningicon}</div><div>{item.analyzer_tool}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.reverify_tool)}>{icons.warningicon}</div><div>{item.reverify_tool}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.google_removal_report)}>{icons.warningicon}</div><div>{item.google_removal_report}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.bing_removal_report)}>{icons.warningicon}</div><div>{item.bing_removal_report}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.social_analyze)}>{icons.warningicon}</div><div>{item.social_analyze}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.adult_analyze)}>{icons.warningicon}</div><div>{item.adult_analyze}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.file_analyze)}>{icons.warningicon}</div><div>{item.file_analyze}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.forum_analyze)}>{icons.warningicon}</div><div>{item.forum_analyze}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.AI_analyze)}>{icons.warningicon}</div><div>{item.AI_analyze}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.monthly_analyze)}>{icons.warningicon}</div><div>{item.monthly_analyze}</div></div>
+                                                <div className='flex gap-5 max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.history_content)}>{icons.warningicon}</div><div>{item.history_content}</div></div>
                                             </div>
                                         </div>
                                     </div>
@@ -256,6 +334,37 @@ export default function Pricing() {
                         })
                     }
                 </div>
+                <Modal
+                    backdrop="opaque"
+                    isOpen={isOpen}
+                    onOpenChange={onOpenChange}
+                    classNames={{
+                        backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+                    }}
+                >
+                    <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77] py-10 px-5 text-white text-center max-md:absolute max-md:top-32'>
+                        {(onClose) => (
+                            <>
+                                <ModalHeader className="flex flex-col gap-1">
+                                {selectMoreContent}
+                                </ModalHeader>
+                                <ModalBody>
+                                    {
+                                        princingMoreDetais.map((detail, index) => {
+                                            return (
+                                                detail.title == selectMoreContent
+                                                    ?
+                                                    <span key={index}>{detail.content}</span>
+                                                    :
+                                                    false
+                                            )
+                                        })
+                                    }
+                                </ModalBody>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
             </div >
             <CustomerReview />
         </>

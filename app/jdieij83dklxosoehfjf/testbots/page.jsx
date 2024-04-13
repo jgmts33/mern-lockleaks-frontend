@@ -55,8 +55,8 @@ export default function TestBots() {
                 <div><span className='font-extrabold text-lg'>TEST BOTS</span></div>
             </div>
             <div className='flex flex-col mt-5 space-y-3 max-lg:mx-auto'>
-                <div>
-                    <span className=''>info</span>
+                <div className='max-sm:mx-auto'>
+                    <span className=''>Info</span>
                 </div>
                 <div>
                     <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-6 text-base" size='sm'>

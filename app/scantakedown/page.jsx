@@ -170,6 +170,7 @@ export default function ScanTakeDown() {
                     <div className='max-w-[695px] max-lg:text-center max-lg:mt-10'>
                         <p className='font-normal text-medium'>{selectedContent == 'scan' ? scanHeaderContent.description : takedownHeaderContent.description}</p>
                         <p className='font-normal text-red-300 text-medium mt-5'>{selectedContent == 'scan' ? '' : takedownHeaderContent.note}</p>
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-44 right-32 bg-opacity-5 blur-3xl' />
                     </div>
                 </div>
 

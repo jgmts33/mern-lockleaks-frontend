@@ -57,12 +57,12 @@ export default function Dmcabadges() {
     return (
         <div className="flex flex-col bg-gradient-to-tr px-3 py-5 container text-white max-lg:mx-auto">
             <div className='flex max-lg:mx-auto'>
-                <span className='font-extrabold text-lg'>DMCA badges</span>
+                <span className='font-extrabold text-lg'>DMCA Badges</span>
             </div>
             <div className='flex justify-between w-full mt-10 max-lg:max-w-full max-lg:justify-around'>
                 <div className='flex w-full'>
                     <Button radius="md" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base border border-white/40" size='md' onClick={() => handleGoDetails()}>
-                        DMCA Badeges
+                        DMCA Badges
                     </Button>
                 </div>
             </div>
@@ -89,7 +89,7 @@ export default function Dmcabadges() {
                                             <span>{items.content}</span>
                                         </div>
                                         <div>
-                                            <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
+                                            <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>Upload</Button>
                                         </div>
                                     </div>
                                 )

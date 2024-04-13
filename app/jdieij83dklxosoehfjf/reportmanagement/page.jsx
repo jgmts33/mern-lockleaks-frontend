@@ -41,7 +41,7 @@ export default function ReportManagement() {
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
-            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
+            <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>REPORTS MANAGEMENT</span>
             </div>
             <div className='flex max-w-[1232px] justify-between mt-10 max-sm:mt-5'>

@@ -143,7 +143,7 @@ export default function AddAnalytics() {
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
+                        <div className="flex flex-col w-full bg-white/15 sm:max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
                             <div className='flex flex-col mx-auto'>
                                 <span className='font-semibold text-base'>Subscription Profits</span>
                             </div>
@@ -157,8 +157,8 @@ export default function AddAnalytics() {
                             </div>
                         </div>
                     </div>
-                    <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1'>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
+                    <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 max-lg:mx-auto max-sm:grid-cols-1 w-full'>
+                        <div className="flex flex-col w-full bg-white/15 sm:max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
                             <div className='flex mx-auto mt-3'>
                                 <span className='font-semibold text-base'> Advertisement Revenue</span>
                             </div>
@@ -171,7 +171,7 @@ export default function AddAnalytics() {
                                 </Button>
                             </div>
                         </div>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
+                        <div className="flex flex-col w-full bg-white/15 sm:max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
                             <div className='flex mx-auto text-center'>
                                 <span className='font-semibold text-base'>Intermediary Forums &Websites</span>
                             </div>
@@ -186,7 +186,7 @@ export default function AddAnalytics() {
                         </div>
                     </div>
                     <div className='grid grid-cols-3 max-lg:grid-cols-1 max-lg:mx-auto max-sm:w-full'>
-                        <div className="flex flex-col w-full bg-white/15 max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
+                        <div className="flex flex-col w-full bg-white/15 sm:max-w-[330px] border border-gray-500 rounded-[20px] px-10 py-5">
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'>Archive Websites</span>
                             </div>

@@ -98,10 +98,16 @@ export default function Recovery() {
                 {/* This section for define username recovery header*/}
 
                 <div className='mt-10'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-0 left-0 bg-opacity-5 blur-3xl' />
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{RecoveryTitle.title}</p>
                     <div className='flex gap-20 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-lg:flex-col max-md:gap-10'>
-                        <div className='max-w-[612px] mt-20 max-sm:mt-10'><p className='font-normal text-base'>{RecoveryTitle.sub_title}</p></div>
-                        <div className='font-medium text-7xl mt-0 max-md:w-52 max-md:h-24'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
+                        <div className='max-w-[612px] mt-20 max-sm:mt-10'>
+                            <p className='font-normal text-base'>{RecoveryTitle.sub_title}</p>
+                        </div>
+                        <div className='font-medium text-7xl mt-0 max-md:w-52 max-md:h-24'>
+                            <Image src="/assets/logo.svg" width={300} height={150} alt="logo" />
+                        </div>
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-0 right-40 bg-opacity-5 blur-3xl' />
                     </div>
                 </div>
                 <div className='flex relative mx-auto'>

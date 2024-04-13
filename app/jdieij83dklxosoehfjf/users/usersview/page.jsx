@@ -16,6 +16,10 @@ export default function UsersView() {
         trash: <Trash fill="currentColor" size={16} />,
     };
 
+    const handleBackButton = () =>{
+        history.back()
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
             <div className='flex mt-5 max-lg:mx-auto w-full justify-between items-center'>
@@ -23,7 +27,7 @@ export default function UsersView() {
                     <span className='font-extrabold text-lg'>USERS</span>
                 </div>
                 <div>
-                    <Button radius='full' size="sm" className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white text-sm">
+                    <Button radius='full' size="sm" className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white text-sm" onClick={()=>handleBackButton()}>
                         Back
                     </Button>
                 </div>

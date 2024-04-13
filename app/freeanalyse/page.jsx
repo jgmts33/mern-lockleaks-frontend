@@ -39,6 +39,8 @@ export default function FreeAnalyse() {
           </div>
           <div className='flex flex-col text-center mx-auto mt-0 max-w-[603px] max-xl:flex-wrap'>
             <div className='flex justify-between items-center max-sm:gap-3'>
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-10 left-0 bg-opacity-5 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-10 right-0 bg-opacity-5 blur-3xl' />
               <div className='hidden max-xl:block'><Image className="mt-2 object-cover rounded-[20px]" src={AI} width={150} height={150} alt="Modern building architecture" /></div>
               <div className='mx-auto'><p className='font-medium text-5xl max-lg:text-3xl'>FREE ANALYZE</p></div>
               <div className='hidden max-xl:block'><Image className="mt-2 object-cover p-2 rounded-[20px]" src={SCAN} width={150} height={150} alt='saturn' /></div>
@@ -75,11 +77,11 @@ export default function FreeAnalyse() {
               <Image src={Reversechat} className="mt-24 max-md:w-full" width={200} height={150} alt="Modern building architecture" />
             </div>
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-94 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-            <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] p-2 right-32 cursor-pointer w-[350px] absolute rotate-[12deg] -mt-[60px]">
+            <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray- rounded-[20px] p-2 right-32 cursor-pointer w-[350px] absolute rotate-[12deg] -mt-[60px]">
               <div className='absolute'>{icons.robertchat}</div>
               <div className='flex justify-start flex-col'>
                 <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
-                <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
+                <div className='justify-center items-center flex'><p className='font-normal text-base mt-2 uppercase'>support</p></div>
               </div>
             </div>
           </div>
@@ -94,8 +96,8 @@ export default function FreeAnalyse() {
             <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] cursor-pointer">
               <div className='absolute'>{icons.chat}</div>
               <div className='flex justify-start flex-col'>
-                <div className='flex justify-start ml-20'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
-                <div><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
+                <div className='flex justify-start ml-20 max-sm:ml-32'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
+                <div className='max-sm:mx-auto'><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
               </div>
             </div>
             <div className='flex justify-center items-center mt-10'>

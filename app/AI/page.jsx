@@ -85,7 +85,9 @@ export default function AI() {
                 {/* This section for deplay social media network*/}
 
                 <div className='max-md:px-3'>
-                    <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center from-gray-600/40 mt-20 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />   
+                    <div className='flex gap-8 w-full flex-col bg-gradient-to-br max-w-[1470px] text-center mx-auto justify-center z-10 from-gray-600/40 mt-20 to-gray-800/40 rounded-[30px] py-10 max-xl:px-5'>
                         <div className='max-w-[425px] mx-auto justify-content'><p className='font-normal text-xl '>Our AI tools are deployed across a myriad of social media networks:</p></div>
                         <div className='flex gap-10 justify-center items-center max-lg:flex-col px-10'>
                             <Image src={Facebook} width={150} height={150} alt='facebook' />

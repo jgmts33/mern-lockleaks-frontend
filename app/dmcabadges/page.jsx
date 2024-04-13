@@ -58,6 +58,8 @@ export default function DmcaBadges() {
             {/* This section for define dmcabadges title*/}
 
                 <div className='flex gap-32 mt-10'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
                     <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1'>
                         {
                             DmcaBadgesContent.map((dmcabadge, index) => {
@@ -77,7 +79,8 @@ export default function DmcaBadges() {
                         }
                     </div>
                 </div>
-                <div className='flex w-[calc(100vw-10px)] pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
+                <div className='flex w-[calc(100vw-10px)] relative pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={342} className='absolute max-xl:hidden left-0 top-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                     <div className='flex w-1/3 relative '>
                         <Image className='z-20 max-xl:hidden' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-32 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
@@ -102,10 +105,11 @@ export default function DmcaBadges() {
                         </div>
                     </div>
                 </div>
-                <div className='flex w-full mt-36 max-w-[1400px] max-xl:flex-col max-xl:items-center mb-32 max-sm:mb-10 max-sm:px-3 max-sm:mt-44'>
-                    <div className='flex w-1/4 max-md:w-full items-center max-lg:text-center'>
+                <div className='flex w-full mt-36 max-w-[1400px] relative max-xl:flex-col max-xl:items-center mb-32 max-sm:mb-10 max-sm:px-3 max-sm:mt-44'>
+                    <div className='flex w-1/4 max-md:w-full z-10 items-center max-lg:text-center'>
                         <span className='font-medium max-md:mx-auto text-md max-xl:text-3xl'>How to Use DMCA Badges?</span>
                     </div>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={342} className='absolute max-xl:hidden left-0 top-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                     <div className='relative flex w-1/2 max-xl:flex-col max-md:w-full max-md:px-3'>
                         <div className="flex max-w-[462px] max-xl:w-full duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-8 cursor-pointer absolute left-0 top-6 max-xl:left-0 max-xl:top-5 mt-6 ">
                             <div className='flex flex-col'>
