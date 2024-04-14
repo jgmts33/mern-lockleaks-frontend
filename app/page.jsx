@@ -143,7 +143,7 @@ export default function HomePage() {
     {
       name: "Re-verify & Re-analyzer",
       description: <div className='outline-none px-10 py-10'>
-        <p>The "Re-verify & Re-analyzer Tool" enables you to conduct thorough re-evaluations and analyses of your content. Utilize this tool to double-check and re-assess the accuracy and effectiveness of your previous verifications and analyses. With the "Re-verify & Re-analyzer Tool," ensure that your content remains up-to-date and optimized for maximum performance.</p>
+        <p>This functionality involves repetitive scans and periodic updates to identify and evaluate any new copyright infringements or reintroduced content. It ensures constant monitoring of illegal activities and helps rediscover previously undetected content, ensuring all violations are appropriately managed and eliminated, maintaining high-security standards for copyrighted content.what need be here</p>
       </div>,
       img: "assets/services/reverify-reanalyzer.svg"
     },

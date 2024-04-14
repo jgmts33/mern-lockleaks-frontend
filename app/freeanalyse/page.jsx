@@ -95,9 +95,9 @@ export default function FreeAnalyse() {
           <div className='bg-white/5 shadow-sm rounded-[30px] w-1/2 max-sm:w-full mx-auto h-340px p-5'>
             <div className="flex backdrop-blur-sm bg-white/5 border border-gray-500 shadow-sm shadow-gray-10 rounded-[20px] cursor-pointer">
               <div className='absolute'>{icons.chat}</div>
-              <div className='flex justify-start flex-col'>
-                <div className='flex justify-start ml-20 max-sm:ml-32'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
-                <div className='max-sm:mx-auto'><p className='font-normal text-base mt-2 uppercase ml-20'>support</p></div>
+              <div className='flex justify-start flex-col max-sm:w-full'>
+                <div className='flex justify-start ml-20 max-sm:mx-auto'><Image src="/assets/logo.svg" width={230} height={150} alt="logo" /></div>
+                <div className='max-sm:mx-auto'><p className='font-normal text-base mt-2 uppercase'>support</p></div>
               </div>
             </div>
             <div className='flex justify-center items-center mt-10'>

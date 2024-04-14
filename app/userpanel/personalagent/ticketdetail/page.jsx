@@ -87,7 +87,7 @@ export default function TicketDetail() {
                             {
                                 TicketTitle.map((item, index) => {
                                     return (
-                                        <div key={index} className={("cursor-pointer p-3 rounded-lg ") + (selectticket == index ? 'flex flex-col border-3 border-gray-700 bg-transparent border-s-blue-500' : "flex flex-col border-3 border-gray-700")} onClick={() => setSelectTicket(selectticket == index ? -1 : index)}>
+                                        <div key={index} className={("cursor-pointer p-3 rounded-lg ") + (selectticket == index ? 'flex flex-col border-3 border-gray-700 bg-gradient-to-tr from-purple-light to-purple-weight' : "flex flex-col border-3 border-gray-700")} onClick={() => setSelectTicket(selectticket == index ? -1 : index)}>
                                             <span className='font-normal text-sm'>{item.date}</span>
                                             <span className='font-semibold text-[18px]'>{item.title}</span>
                                         </div>

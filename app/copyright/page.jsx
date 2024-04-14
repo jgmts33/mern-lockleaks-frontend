@@ -67,6 +67,8 @@ export default function CopyRight() {
                 <div className='text-center mt-10 px-3'>
                     <p className='font-bold text-7xl max-lg:text-[40px]'>{CopyrightTitle.title}</p>
                     <div className='max-w-[1100px]'><p className='font-normal text-base mt-10'>{CopyrightTitle.sub_title}</p></div>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={442} className='absolute bg-[#6748a1] max-xl:hidden z-0 top-0 left-0 bg-opacity-5 blur-3xl' />
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={442} className='absolute bg-[#6748a1] max-xl:hidden z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                 </div>
 
                 {/* This section for define help content*/}
@@ -77,7 +79,7 @@ export default function CopyRight() {
                 <div className='flex gap-20 mt-20 max-lg:flex-col max-md:-mt-20 max-md:gap-0'>
                     <div className='max-md:-mt-10 relative'>
                         <Image className="w-[606px] mt-5 h-[550px] z-10 relative" src={CopyrightHelp} alt='copyright' />
-                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={442} className='absolute bg-[#6748a1] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={442} className='absolute max-xl:hidden bg-[#6748a1] z-0 top-0 right-0 bg-opacity-5 blur-3xl' />
                     </div>
                     <div className='flex flex-col max-xl:items-center max-xl:px-3 max-md:-mt-20'>
                         {

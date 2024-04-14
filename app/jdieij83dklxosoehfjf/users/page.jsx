@@ -48,12 +48,12 @@ export default function Users() {
             <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
-            <div className='flex max-w-[1400px] justify-between mt-10 max-sm:mt-5 max-md:gap-2 max-sm:flex-col max-sm:mx-auto'>
+            <div className='flex max-w-[1400px] justify-between mt-10 max-sm:mt-5 max-md:gap-5 max-sm:flex-col max-sm:mx-auto'>
                 <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: 10</span>
                 <span className='font-semibold text-base'>TOTAL USERS: 10</span>
                 <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: 10</span>
             </div>
-            <div className='flex mt-16 max-sm:mt-5 max-md:flex-col max-sm:gap-2 max-sm:mx-auto'>
+            <div className='flex mt-16 max-sm:mt-10 max-md:flex-col max-sm:mx-auto'>
                 <Input
                     isClearable
                     radius="lg"

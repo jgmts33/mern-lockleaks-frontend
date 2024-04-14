@@ -11,7 +11,7 @@ import Multicolor from '@/public/assets/background/multicolor.svg';
 export default function DmcaBadges() {
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 max-sm:px-3 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
 
             {/* This section for define dmcabadges header?*/}
 
@@ -36,7 +36,7 @@ export default function DmcaBadges() {
                                 Download
                             </Button>
                         </div>
-                        <div className='flex pr-5'>
+                        <div className='flex pr-5 max-sm:pr-0'>
                             <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white px-4 shadow-lg py-5 text-base" size='sm'>
                                 Embed your badge
                             </Button>
@@ -53,7 +53,7 @@ export default function DmcaBadges() {
                                 Download
                             </Button>
                         </div>
-                        <div className='flex pr-5'>
+                        <div className='flex pr-5 max-sm:pr-0'>
                             <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-4 py-5 text-base" size='sm'>
                                 Embed your badge
                             </Button>
@@ -70,7 +70,7 @@ export default function DmcaBadges() {
                                 Download
                             </Button>
                         </div>
-                        <div className='flex pr-5'>
+                        <div className='flex pr-5 max-sm:pr-0'>
                             <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-4 py-5 text-base" size='sm'>
                                 Embed your badge
                             </Button>
