@@ -190,9 +190,12 @@ export default function AddAnalytics() {
                             <div className='flex mx-auto'>
                                 <span className='font-semibold text-base'>Archive Websites</span>
                             </div>
-                            <div className='flex mx-auto mt-5'>
+                            <div className='flex mx-auto mt-5 justify-around w-full'>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
                                     Add
+                                </Button>
+                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
+                                View List
                                 </Button>
                             </div>
                         </div>

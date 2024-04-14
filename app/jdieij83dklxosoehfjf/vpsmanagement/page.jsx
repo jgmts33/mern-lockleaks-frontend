@@ -63,23 +63,23 @@ export default function VPSManagement() {
             </div>
             <div className='grid grid-cols-4 font-semibold text-sm max-w-[1400px] mt-10 max-sm:hidden px-10'>
                 <div className='flex pl-1'><span>VPS IP</span></div>
-                <div className='flex pl-3'><span>USERS</span></div>
+                <div className='flex pl-12'><span>USERS</span></div>
                 <div className='flex pl-4'><span>FREE SPACE</span></div>
-                <div className='flex pl-7'><span>STATUS</span></div>
+                <div className='flex pl-3'><span>STATUS</span></div>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1400px] mt-10 max-sm:mt-16 w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1200px] mt-10 max-sm:mt-16 w-full'>
                 <ScrollShadow className="h-[300px]">
-                    <ScrollShadow className='max-sm:w-[800px]'>
-                        <div className='grid grid-cols-4 sm:hidden w-full'>
-                            <div className='flex px-20 max-sm:px-0'><span>VPS IP</span></div>
-                            <div className='flex max-sm:pl-2'><span>USERS</span></div>
-                            <div className='flex px-3 max-sm:px-0 max-sm:pl-5'><span>FREE SPACE</span></div>
-                            <div className='flex px-10 max-sm:px-10 max-sm:pl-7'><span>STATUS</span></div>
+                    <ScrollShadow className='max-sm:w-[900px]'>
+                        <div className='flex gap-44 sm:hidden w-full'>
+                            <div className='flex'><span>VPS IP</span></div>
+                            <div className='flex pl-10'><span>USERS</span></div>
+                            <div className='flex pl-10'><span>FREE SPACE</span></div>
+                            <div className='flex'><span>STATUS</span></div>
                         </div>
                         {
                             UsersData.map((items, index) => {
                                 return (
-                                    <div key={index} className='grid grid-cols-4 font-semibold text-lg max-sm:font-normal max-sm:text-sm gap-10 w-full py-3'>
+                                    <div key={index} className='flex font-semibold text-lg max-sm:font-normal max-sm:text-sm gap-40 w-full py-3 max-sm:grid max-sm:grid-cols-4'>
                                         <div className='flex gap-5'>
                                             <div>
                                                 <span>{items.vpsip}</span>

@@ -1,12 +1,15 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure,Checkbox
+    Button, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, ArrowDown, WarningIcon } from "@/components/utils/Icons";
+import { Shine, Star, ChevronLeft, ChevronRight, ArrowDown } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customerReview';
+import Complete from "@/public/assets/background/complete.svg";
+import Uncomplete from "@/public/assets/background/uncomplete.svg";
+import Info from "@/public/assets/info.svg"
 
 export default function Pricing() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -18,11 +21,11 @@ export default function Pricing() {
         left: <ChevronLeft fill="currentColor" size={16} />,
         right: <ChevronRight fill="currentColor" size={16} />,
         shine: <Shine fill="currentColor" size={16} />,
-        complete: <Complete fill="currentColor" size={16} />,
         star: <Star fill="currentColor" size={16} />,
-        uncomplete: <Uncomplete fill="currentColor" size={16} />,
         arrowDown: <ArrowDown fill="currentColor" size={16} />,
-        warningicon: <WarningIcon fill="currentColor" size={16} />,
+        complete: <Complete fill="currentColor" size={16} />,
+        uncomplete: <Uncomplete fill="currentColor" size={16} />,
+        info: <Info fill="currentColor" size={16} />,
     };
 
     const pricingContent = [
@@ -129,7 +132,7 @@ export default function Pricing() {
             bing_removal_report_status: true,
             social_analyze_status: true,
             adult_analyze_status: true,
-            forum_analyze_status: true,
+            forum_analyze_status: false,
             file_analyze_status: false,
             AI_analyze_status: false,
             monthly_analyze_status: false,
@@ -165,7 +168,7 @@ export default function Pricing() {
         },
         {
             title: "Re-verify & Re-analyzer Tool",
-            content: "The 'Re-verify & Re-analyzer Tool' enables you to conduct thorough re-evaluations and analyses of your content. Utilize this tool to double-check and re-assess the accuracy and effectiveness of your previous verifications and analyses. With the 'Re-verify & Re-analyzer Tool,' ensure that your content remains up-to-date and optimized for maximum performance."
+            content: "This functionality involves repetitive scans and periodic updates to identify and evaluate any new copyright infringements or reintroduced content. It ensures constant monitoring of illegal activities and helps rediscover previously undetected content, ensuring all violations are appropriately managed and eliminated, maintaining high-security standards for copyrighted content.what need be here"
         },
         {
             title: "Analyzer Tool Search",
@@ -261,7 +264,7 @@ export default function Pricing() {
                     {
                         pricingContent.map((item, index) => {
                             return (
-                                <div key={index} className={'bg-gradient-to-tr  rounded-3xl max-xl:flex-col max-w-[544px] max-xl:mx-auto max-xl:w-full cursor-pointer ' + item.bg_color + " " + item.add_propertity + " max-xl:mt-4 "}>
+                                <div key={index} className={'bg-gradient-to-tr  rounded-3xl max-xl:flex-col max-w-[544px] max-xl:mx-auto max-xl:w-full cursor-pointer px-3 ' + item.bg_color + " " + item.add_propertity + " max-xl:mt-4 "}>
                                     <div>
                                         <div className='p-10'>
                                             {
@@ -307,25 +310,197 @@ export default function Pricing() {
                                                 </div>
                                             </Button>
                                             <div className='flex items-center max-xl:justify-content'>
-                                                <div className='flex gap-3 items-center max-sm:hidden'><div onClick={()=>selectMoreDetails(item.agent_request)}>{icons.warningicon}</div><div><Checkbox color="success" className='rounded-full' /></div><span>{item.agent_request}</span><p>{item.plan_deadline}/DAY</p></div>
+                                                <div className='flex gap-3 items-center max-sm:hidden'>
+                                                    <div className='flex px-3'>
+                                                        <div onClick={() => selectMoreDetails(item.agent_request)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                        <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                    </div>
+                                                    <span>{item.agent_request}</span>
+                                                    <p>{item.plan_deadline}/DAY</p>
+                                                </div>
                                             </div>
-                                            <div className={("flex flex-col gap-y-5 mb-10 max-sm:space-y-2 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
-                                                <div className='flex gap-5 items-center max-sm:gap-2'><div className='cusor-point' onClick={() => selectMoreDetails(item.takedowns)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.takedowns}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.daily_report)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.daily_report}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.badges)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.badges}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.pdf_report)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.pdf_report}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.candidential_takedown)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.candidential_takedown}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.analyzer_tool)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.analyzer_tool}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.reverify_tool)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.reverify_tool}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.google_removal_report)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.google_removal_report}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.bing_removal_report)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.bing_removal_report}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.social_analyze)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.social_analyze}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.adult_analyze)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.adult_analyze}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.file_analyze)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.file_analyze}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.forum_analyze)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.forum_analyze}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.AI_analyze)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.AI_analyze}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.monthly_analyze)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.monthly_analyze}</div></div>
-                                                <div className='flex gap-5 items-center max-sm:gap-5'><div className='cusor-point' onClick={() => selectMoreDetails(item.history_content)}>{icons.warningicon}</div><div className='flex'><Checkbox color="success" className='rounded-full' />{item.history_content}</div></div>
+                                            <div className={("flex flex-col gap-y-5 mb-10 max-sm:space-y-2 px-3 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.takedowns)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.takedowns}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.daily_report)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.daily_report}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.badges)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.badges}</div>
+                                                </div>
+                                                <div className='flex gap-1 items-center'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.pdf_report)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div><div>
+                                                    </div>
+                                                    <div className='flex pl-1 flex-wrap'>{item.pdf_report}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.candidential_takedown)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.candidential_takedown}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.analyzer_tool)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.analyzer_tool}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.reverify_tool)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.reverify_tool}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.google_removal_report)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.google_removal_report}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.bing_removal_report)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.bing_removal_report}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.social_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.social_analyze_status
+                                                                    ?
+                                                                    <div ><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.social_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.adult_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.adult_analyze_status
+                                                                    ?
+                                                                    <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.adult_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.file_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.file_analyze_status
+                                                                    ?
+                                                                    <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.file_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.forum_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.forum_analyze_status
+                                                                    ?
+                                                                    <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.forum_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.AI_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.AI_analyze_status
+                                                                    ?
+                                                                    <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.AI_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.monthly_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.monthly_analyze_status
+                                                                    ?
+                                                                    <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.monthly_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.history_content)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.history_content}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -346,7 +521,7 @@ export default function Pricing() {
                         {(onClose) => (
                             <>
                                 <ModalHeader className="flex flex-col gap-1">
-                                {selectMoreContent}
+                                    {selectMoreContent}
                                 </ModalHeader>
                                 <ModalBody>
                                     {

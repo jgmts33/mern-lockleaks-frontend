@@ -78,25 +78,9 @@ export default function Dmcabadges() {
                 <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 max-md:mt-0'>
                     <Image src={file} width={100} height={100} alt='uploaded_photo' className={file ? 'block w-full h-full rounded-[16px]' : 'hidden'}></Image>
                 </div>
-                <ScrollShadow className="h-[383px]">
-                    <div className='mx-auto px-2'>
-                        {
-                            AIImageLists.map((items, index) => {
-                                return (
-                                    <div key={index} className='flex mt-5 items-center gap-10 max-md:gap-5 max-md:items-start'>
-                                        <div className='flex bg-gradient-to-br bg-white/10 shadow-sm p-3 w-full max-w-[250px] justify-start px-7 items-center gap-3 rounded-[16px]'>
-                                            {items.icon}
-                                            <span>{items.content}</span>
-                                        </div>
-                                        <div>
-                                            <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>Upload</Button>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                </ScrollShadow>
+                <div className='flex mt-5'>
+                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-lg " size='lg'>Upload</Button>
+                </div>
             </div>
         </div>
     )

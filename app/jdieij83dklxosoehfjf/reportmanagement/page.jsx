@@ -79,14 +79,14 @@ export default function ReportManagement() {
                 />
             </div>
             <div className='flex items-center'>
-                <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-10 max-sm:hidden'>
+                <div className='grid grid-cols-4 w-full max-w-[1200px] mt-5 px-5 max-sm:hidden'>
                     <div >
                         <span>WEBSITE</span>
                     </div>
-                    <div>
+                    <div className='pl-8'>
                         <span>METHOD</span>
                     </div>
-                    <div className='pl-16'>
+                    <div className='pl-12'>
                         <span>LINKS</span>
                     </div>
                     <div className='pl-20'>

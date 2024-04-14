@@ -38,6 +38,10 @@ export default function Header() {
       content: "Monthly Analytics PDF",
       path: "/monthlypdf"
     },
+    {
+      content: "DMCA Badges",
+      path: "/dmcabadges"
+    },
   ];
 
   const ToggleMenuItems = [

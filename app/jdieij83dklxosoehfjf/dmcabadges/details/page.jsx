@@ -18,7 +18,7 @@ export default function DmcaBadgeDetails() {
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
-            <div className='flex justify-end mt-10 px-5 max-lg:max-w-full max-sm:flex-col'>
+            <div className='flex justify-end mt-10 px-5'>
                 <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => handleBack()}>
                     Back
                 </Button>
