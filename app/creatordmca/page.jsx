@@ -65,16 +65,18 @@ export default function CreatorDmca() {
                 {/* This section for define create dmca header*/}
 
                 <div className='text-center mt-10 max-lg:px-3'>
-                    <p className='font-bold text-6xl uppercase max-lg:text-3xl'>{CamDmcaTitle.title}</p>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 left-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 right-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
+                    <p className='font-bold text-6xl uppercase max-lg:text-3xl z-10'>{CamDmcaTitle.title}</p>
                     <div className='flex gap-32 max-xl:gap-20 max-lg:flex-col items-center max-md:gap-10 mt-20 max-lg:gap-10 max-sm:mt-10 max-xl:px-3'>
-                        <div className='max-w-[805px]'><p className='font-normal text-base'>{CamDmcaTitle.sub_title}</p></div>
-                        <div className='max-lg:w-56 max-lg:h-24'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
+                        <div className='max-w-[805px] z-10'><p className='font-normal text-base'>{CamDmcaTitle.sub_title}</p></div>
+                        <div className='max-lg:w-56 max-lg:h-24 z-10'><Image src="/assets/logo.svg" width={300} height={150} alt="logo" /></div>
                     </div>
                 </div>
 
                 {/* This section for define additional element*/}
 
-                <div className='px-3'>
+                <div className='px-3 z-10'>
                     <div className='flex bg-white/5 mx-auto mt-24 max-lg:mt-5 justify-center rounded-[20px] max-xl:flex-col w-full max-w-[1440px] px-10 py-10 gap-32'>
                         <div className='flex max-md:items-center max-lg:flex-wrap max-lg:flex-col'>
                             <div className='w-1/2 max-lg:w-full max-lg:mx-auto'>
