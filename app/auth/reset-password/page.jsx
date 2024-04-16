@@ -62,7 +62,7 @@ export default function Home() {
       <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
       <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
         <div className="sm:w-[562px] flex flex-col items-center gap-10 text-white">
-          <div className='text-center max-w-[354px] mb-4 max-sm:mx-auto'>
+          <div className='text-center max-w-[354px] mb-4 max-sm:mx-auto max-sm:mt-10'>
             <p className="text-[40px] font-medium leading-[60px]">Reset Password</p>
             <p className="text-base font-[300] ">Enter your new password and confirm it below to reset your account password.</p>
           </div>
@@ -89,7 +89,7 @@ export default function Home() {
                 <p className={'text-sm ' + (passwordStength == "Weak" ? '!text-red-500' : passwordStength == "Strong" ? "!text-green-500" : "")}>{passwordStength}</p>
               </div>
             </div>
-            <div className='relative w-full'>
+            <div className='relative w-full max-sm:mt-10'>
               <p className='font-[300] text-white pb-2'>Confirm Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
               <div>
@@ -102,11 +102,11 @@ export default function Home() {
               </div>
             </div>
             <Link href="/">
-              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
+              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4 max-sm:mt-10" size='lg'>
                 Confirm
               </Button>
             </Link>
-            <Button radius="lg" className="bg-transparent text-white shadow-lg w-full" size='lg'>
+            <Button radius="lg" className="bg-transparent text-white shadow-lg w-full max-sm:mt-5" size='lg'>
               Cancel
             </Button>
           </div>

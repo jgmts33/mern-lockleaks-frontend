@@ -17,7 +17,7 @@ export default function DataReport() {
                 <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                     <span className='font-extrabold text-lg'>DATA REPORT</span>
                 </div>
-                <div className='flex gap-10 max-xl:flex-col max-lg:gap-3'>
+                <div className='flex gap-10 max-xl:flex-col max-lg:gap-3 max-sm:mt-10'>
                     <div className="flex flex-col max-w-[400px] max-xl:max-w-full w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 max-sm:mt-5">
                         <div className='mx-auto'>
                             <span className='font-extrabold text-lg'>Data Report PDF</span>
@@ -30,7 +30,7 @@ export default function DataReport() {
                             Download
                         </Button>
                     </div>
-                    <div className="flex flex-col max-w-[960px] w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 max-sm:py-5 max-xl:mt-0 px-16 max-sm:px-5 py-10 pb-20">
+                    <div className="flex flex-col max-w-[960px] w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 max-sm:py-5 max-xl:mt-0 px-16 max-sm:px-5 py-10 pb-20 max-sm:mt-10">
                         <div className='flex gap-5 max-md:flex-col pt-20 max-sm:pt-0'>
                             <div>{icons.warning}</div>
                             <div>

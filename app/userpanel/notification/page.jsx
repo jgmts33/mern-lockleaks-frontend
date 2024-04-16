@@ -41,7 +41,7 @@ export default function Notification() {
             <div className='mt-5 max-xl:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>NOTIFICATION</span>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-3 rounded-[16px] max-w-[1100px] mt-5 w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-3 rounded-[16px] max-w-[1100px] mt-5 w-full max-sm:mt-20'>
                 <ScrollShadow className="h-[350px]">
                     <div className='flex flex-col scroll px-5 gap-5 max-sm:px-3'>
                         {
@@ -59,7 +59,7 @@ export default function Notification() {
 
             {/* This section for define notification warning?*/}
 
-            <div className='flex bg-white/10 shadow-sm px-16 py-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:text-base max-sm:px-5 max-sm:mt-5'>
+            <div className='flex bg-white/10 shadow-sm px-16 py-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:text-base max-sm:px-5 max-sm:mt-20'>
                 <div>{icons.warning}</div>
                 <div><span className='font-semibold text-base'>AUTOMATIC DELETION OF NOTIFICATION OLDER THAN 30 DAYS</span></div>
             </div>

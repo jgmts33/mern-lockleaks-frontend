@@ -43,7 +43,7 @@ export default function DownloadData() {
             <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
                 <span className='font-extrabold text-lg'>DOWNLOAD DATA</span>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4 max-sm:mt-20'>
                 <ScrollShadow className="h-[350px]">
                     <div className='flex flex-col scroll px-8 gap-5 scroll-y max-md:px-4 max-sm:gap-3'>
                         {
@@ -68,7 +68,7 @@ export default function DownloadData() {
 
             {/* This section for define download data warning?*/}
 
-            <div className='flex bg-white/10 shadow-sm py-5 px-16 max-sm:px-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:mt-5'>
+            <div className='flex bg-white/10 shadow-sm py-5 px-16 max-sm:px-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:mt-20'>
                 <div>{icons.warning}</div>
                 <div className='flex gap-16 max-md:flex-col max-md:gap-1'>
                     <span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Scan name February 27, 2024</span>
