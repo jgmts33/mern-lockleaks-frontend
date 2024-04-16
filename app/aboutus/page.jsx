@@ -29,10 +29,12 @@ export default function AboutUs() {
                 {/* This section for define aboutus page header*/}
 
                 <div className="text-center mt-10">
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-20 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-20 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                     <div className='mx-auto'><p className="font-medium text-huge uppercase max-lg:text-4xl">About us</p></div>
                 </div>
                 <div className="flex mt-10 max-sm:mt-5 max-xl:mx-auto max-xl:px-3">
-                    <div className='flex w-full justify-around max-lg:flex-col max-xl:gap-5'>
+                    <div className='flex w-full justify-around max-lg:flex-col max-xl:gap-5 z-10'>
                         {
                             AboutUsHeader.map((description, index) => {
                                 return (
@@ -65,7 +67,7 @@ export default function AboutUs() {
                 <div className='relative'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={1033} height={542} className='absolute bg-[#935ee9] z-0 -top-96 right-0 bg-opacity-5 blur-3xl' />
                 </div>
-                
+
                 {/* This section for define Success Stories or Case Studies*/}
 
                 <div className='max-lg:px-3 mt-20 z-20'>
