@@ -93,7 +93,7 @@ export default function Login() {
                             />
                         </div>
                         <div className={('text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs ') + (emailerror != "" ? "block" : "hidden")}><span>{icons.error}</span>&nbsp;<span>{emailerror}</span></div>
-                        <div className='relative w-full'>
+                        <div className='relative w-full max-sm:mt-10'>
                             <p className='font-light text-white pb-2'>Password</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.lock}</i>
                             <input
