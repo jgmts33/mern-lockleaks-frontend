@@ -58,7 +58,9 @@ export default function Home() {
 
       {/* This section for define reset password page content*/}
 
-      <div className='w-full flex items-center justify-center'>
+      <div className='w-full flex items-center justify-center max-sm:mt-20'>
+      <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+      <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
         <div className="sm:w-[562px] flex flex-col items-center gap-10 text-white">
           <div className='text-center max-w-[354px] mb-4 max-sm:mx-auto'>
             <p className="text-[40px] font-medium leading-[60px]">Reset Password</p>

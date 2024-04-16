@@ -165,7 +165,7 @@ export default function Register() {
                                 {icons.twitter}
                             </Button>
                         </div>
-                        <div className='max-auto text-center mb-5'>
+                        <div className='max-auto text-center'>
                             <span className='font-light text-sm'>Already have an account</span> <Link href='/auth/login' underline='always' className='text-white'><span className='font-medium text-sm'>Login</span></Link>
                         </div>
                     </div>

@@ -71,9 +71,9 @@ export default function Login() {
             {/* This section for define Login page content*/}
 
             <div className='w-full flex items-center justify-center'>
-                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                 <div className="w-[562px] flex flex-col items-center gap-10 text-white z-30">
-                    <div className='text-center max-w-[354px] mb-4'>
+                    <div className='text-center max-w-[354px] mb-4 max-sm:mb-0'>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
                         <p className="font-medium text-5xl ">Log in</p>
                     </div>
@@ -127,7 +127,7 @@ export default function Login() {
                                 {icons.twitter}
                             </Button>
                         </div>
-                        <div className='mx-auto text-center mb-10 z-30'>
+                        <div className='mx-auto text-center z-30'>
                             <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>
                         </div>
                     </div>
