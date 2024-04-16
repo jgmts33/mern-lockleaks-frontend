@@ -99,7 +99,7 @@ export default function Pricing() {
             AI_analyze_status: true,
             monthly_analyze_status: true,
             recovery_report_status: true,
-            add_content: "bg-opacity-50 bg-black/40 rounded-[20px] px-3 py-8"
+            add_content: "bg-opacity-50 bg-black/40 rounded-[20px] px-3 py-3"
         },
         {
             title: "PRO",
@@ -296,19 +296,21 @@ export default function Pricing() {
                                                     </Button>
                                             }
                                         </div>
-                                        <div className={'flex flex-col gap-y-2 mb-10 ' + item.add_content}>
+                                        <div className={'flex flex-col gap-3 mb-1 ' + item.add_content}>
                                             <div className={'flex justify-between items-center z-10 px-4'}>
                                                 <p className='font-semibold text-xl'>USERNAMES : {item.user_name}</p>
                                                 <Button radius="full" className="w-1/3 bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2" size='md'>
                                                     ADD EXTRA
                                                 </Button>
                                             </div>
-                                            <Button radius="lg" className="w-full bg-gradient-to-br bg-transparent p-2 gap-5 hidden max-sm:block" size='md' onClick={() => { selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1) }}>
-                                                <div className='flex items-center justify-center'>
-                                                    <span className='flex items-center justify-center '>Plan Details</span>
-                                                    <span className={selectServiceList == index ? 'rotate-[180deg]' : ''}>{icons.arrowDown}</span>
-                                                </div>
-                                            </Button>
+                                            <div>
+                                                <Button radius="lg" className="w-full bg-gradient-to-br bg-transparent p-2 gap-5 hidden max-sm:block" size='md' onClick={() => { selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1) }}>
+                                                    <div className='flex items-center justify-center'>
+                                                        <span className='flex items-center justify-center '>Plan Details</span>
+                                                        <span className={selectServiceList == index ? 'rotate-[180deg]' : ''}>{icons.arrowDown}</span>
+                                                    </div>
+                                                </Button>
+                                            </div>
                                             <div className='flex items-center max-xl:justify-content'>
                                                 <div className='flex items-center max-sm:hidden px-3 gap-3'>
                                                     <div className='flex w-10 h-5'>
@@ -319,7 +321,7 @@ export default function Pricing() {
                                                     <p>{item.plan_deadline}/DAY</p>
                                                 </div>
                                             </div>
-                                            <div className={("flex flex-col gap-y-2 mb-10 max-sm:space-y-2 px-3 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
+                                            <div className={("flex flex-col gap-y-5 mb-10 max-sm:space-y-2 px-3 ") + (selectServiceList == index ? "max-sm:block" : "max-sm:hidden")}>
                                                 <div className='flex gap-3 items-center max-sm:gap-2'>
                                                     <div className='cusor-point flex'>
                                                         <div className='flex items-center w-10 h-5'>

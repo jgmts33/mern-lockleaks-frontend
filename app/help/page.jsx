@@ -81,9 +81,11 @@ export default function Help() {
             {/* This section for define Help Page Title*/}
 
             <div className='mt-10 max-md:px-3 max-md:text-center'>
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 left-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 right-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
                 <p className='font-medium text-7xl text-center max-lg:text-5xl'>HELP CENTER</p>
             </div>
-            <div className='flex mx-auto justify-center gap-5 w-full mt-10 items-center max-w-[1050px] max-sm:flex-col'>
+            <div className='flex mx-auto justify-center gap-5 w-full mt-10 items-center max-w-[1050px] max-sm:flex-col z-10'>
                 <div className='w-full'>
                     <input
                         type="text"
@@ -93,7 +95,7 @@ export default function Help() {
                         required
                     />
                 </div>
-                <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
+                <Button radius="lg" className="bg-gradient-to-tr mx-auto z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
                     Search<span className='w-5 h-5'>{icons.search}</span>
                 </Button>
             </div>
@@ -103,7 +105,7 @@ export default function Help() {
 
             {/* This section for define Help Page content*/}
 
-            <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10 mx-auto mt-20 max-xl:mt-10'>
+            <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10 mx-auto mt-20 max-xl:mt-10 z-10'>
                 {
                     CategoriesContent.map((category, index) => {
                         return (
@@ -128,17 +130,19 @@ export default function Help() {
                 </Button>
             </div>
             <div className='relative max-xl:hidden'>
-                <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute right-0 -top-20' />
-                <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-32 top-32' />
+                <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute right-0 -top-20 z-10' />
+                <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-32 top-32 z-10' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-20 right-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-20 left-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
             </div>
             <div className='mt-20 mx-auto max-w-[600px] text-center max-xl:mt-10'>
                 <span className='font-medium text-5xl max-md:text-4xl'>Frequently Asked Questions</span>
             </div>
-            <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-10 mx-auto mt-20 max-xl:mt-10 max-lg:mt-10 mb-10'>
+            <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-10 mx-auto mt-20 max-xl:mt-10 max-lg:mt-10 mb-10 z-10'>
                 {
                     QuestionContent.map((items, index) => {
                         return (
-                            <div key={index} className="flex max-w-[466px] bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-5 cursor-pointer" onClick={()=>handleGoDetail()}>
+                            <div key={index} className="flex max-w-[466px] bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-5 cursor-pointer" onClick={() => handleGoDetail()}>
                                 <div className='flex flex-col w-full'>
                                     <div className='flex items-center gap-5'>
                                         <span className='-ml-5'>{icons.chat}</span>

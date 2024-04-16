@@ -59,21 +59,23 @@ export default function Home() {
       {/* This section for define reset password page content*/}
 
       <div className='w-full flex items-center justify-center'>
-        <div className="w-[562px] flex flex-col items-center gap-10 text-white">
-          <div className='text-center max-w-[354px] mb-4'>
+        <div className="sm:w-[562px] flex flex-col items-center gap-10 text-white">
+          <div className='text-center max-w-[354px] mb-4 max-sm:mx-auto'>
             <p className="text-[40px] font-medium leading-[60px]">Reset Password</p>
             <p className="text-base font-[300] ">Enter your new password and confirm it below to reset your account password.</p>
           </div>
           <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
-            <div className='relative w-full'>
+            <div className='relative w-full max-sm:mx-auto'>
               <p className='font-[300] text-white pb-2'>Enter new Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
+              <div>
               <input
                 type="password"
                 name="new-password"
                 onChange={(e) => setPassword(e.target.value)}
                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
               />
+              </div>
               <div className='absolute flex gap-2 items-center bottom-3 right-4'>
                 {
                   passwordStength ? <div className='flex gap-1 items-center'>
@@ -88,12 +90,14 @@ export default function Home() {
             <div className='relative w-full'>
               <p className='font-[300] text-white pb-2'>Confirm Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
+              <div>
               <input
                 type="password"
                 name="confirm-password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
               />
+              </div>
             </div>
             <Link href="/">
               <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>

@@ -108,7 +108,8 @@ export default function Catfishing() {
 
                 {/* This section for define tips for catfishing page*/}
 
-                <div className='flex w-full mx-auto mt-10 max-sm:mt-10 max-sm:!py-10 justify-center px-10 py-20 gap-32 max-sm:px-0'>
+                <div className='flex w-full relative mx-auto mt-10 max-sm:mt-10 max-sm:!py-10 justify-center px-10 py-20 gap-32 max-sm:px-0'>
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 left-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={542} className='max-md:hidden absolute bg-[#955bf1] right-32 z-0 bg-opacity-5 blur-3xl' />
                     <div className='flex max-w-[705px] flex-col gap-y-10 max-sm:gap-y-0'>
                         <p className='font-medium text-5xl text-center max-lg:text-3xl'>Tips for Prevention</p>

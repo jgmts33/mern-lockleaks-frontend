@@ -83,11 +83,11 @@ export default function Register() {
 
             {/* This section for keep Register Content*/}
 
-            <div className='w-full flex items-center justify-center max-lg:pt-10'>
-                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top- left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+            <div className='w-full flex items-center justify-center'>
+                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-0 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                 <div className="w-[562px] flex flex-col items-center text-white z-30">
                     <div className='text-center max-w-[354px]'>
-                        <p className="font-medium text-5xl ">Sign up</p>
+                        <p className="font-medium text-5xl ">Sign up</p>                                                                                                                                                                                                                                                                                                                                                    
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
                     </div>
                     <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
@@ -165,7 +165,7 @@ export default function Register() {
                                 {icons.twitter}
                             </Button>
                         </div>
-                        <div className='max-auto text-center mb-10'>
+                        <div className='max-auto text-center mb-5'>
                             <span className='font-light text-sm'>Already have an account</span> <Link href='/auth/login' underline='always' className='text-white'><span className='font-medium text-sm'>Login</span></Link>
                         </div>
                     </div>
