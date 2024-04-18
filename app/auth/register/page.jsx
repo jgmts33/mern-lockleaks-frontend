@@ -25,8 +25,9 @@ export default function Register() {
     const [isTermSelected, setIsTermSelected] = useState(false);
     const [email, setEmail] = useState("");
     const [passwordStength, setPasswordStength] = useState("");
-    const [repeatpassword, setRepeatPassword] = useState("");
-    const [incorrectPassword, setIncorrectPassword] = useState(false);
+    const [confirmpassword, setConfirmPassword] = useState("");
+    const [errors,setErrors] = useState({});
+    const [isFormValid,setIsFormValid] = useState(false);
 
     const passwordStrengthCheck = (password) => {
         const passwordLength = password.length;
@@ -66,17 +67,37 @@ export default function Register() {
     useEffect(() => {
         if (password.length) passwordStrengthCheck(password);
         else setPasswordStength("");
-    }, [password]);
+        validationForm();
+    }, [email,password,confirmpassword]);
+
+    const validationForm = () =>{
+        let errors = {};
+        if(!email) {
+            errors.email = "Email is required";
+        }
+        else if(!/\S+@\S+\.\S+/.test(email)){
+            errors.email = "email is invalid";
+        }
+        if(!password) {
+            errors.password = "Password is required";
+        }
+        else if(password.length<6 || password.length >12){
+            errors.password = "Password must be at least 6~12 characters"
+        }
+        else if(confirmpassword != password){
+            errors.password = "Password is invalid"
+        }
+        console.log(confirmpassword,password)
+        setErrors(errors);
+        setIsFormValid(Object.keys(errors).length === 0);
+
+    }
 
     const handleRegister = () => {
-        if (password != repeatpassword) {
-            setIncorrectPassword(true);
-        }
-        else {
-            onOpenChange(!isOpen)
-            onOpen()
-        }
+
     }
+
+
 
     return (
         <div className='px-10 max-sm:px-2 flex w-screen min-h-[calc(100vh-80px)]'>
@@ -103,6 +124,12 @@ export default function Register() {
                                 required
                             />
                         </div>
+                        {
+                            errors.email ?
+                                <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-sm'>{icons.error}&nbsp;{errors.email}</div>
+                                :
+                                false
+                        }
                         <div className='relative w-full'>
                             <p className='font-[300] text-white pb-2'>Password</p>
                             <i className='absolute bottom-3 left-6 h-4'>{icons.lock}</i>
@@ -111,6 +138,7 @@ export default function Register() {
                                 name="password"
                                 onChange={(e) => setPassword(e.target.value)}
                                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 px-3'
+                                required
                             />
                             <div className='absolute flex gap-2 items-center bottom-3 right-4'>
                                 {
@@ -130,13 +158,13 @@ export default function Register() {
                             <input
                                 type="password"
                                 name="password"
-                                onChange={(e) => setRepeatPassword(e.target.value)}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
                                 className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
                             />
                         </div>
                         {
-                            incorrectPassword == true ?
-                                <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs'>{icons.error}&nbsp;The password you entered is incorrect.</div>
+                            errors.password ?
+                                <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-sm'>{icons.error}&nbsp;{errors.password}</div>
                                 :
                                 false
                         }
@@ -148,7 +176,7 @@ export default function Register() {
                                 <span className='font-light text-xs pl-2'>I agree to WEBSITE NAMEr's</span> <Link href='/termservice' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                         </div>
-                        <Button radius="lg" onClick={() => handleRegister()} className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
+                        <Button radius="lg" isLoading={!isFormValid} onClick={() => handleRegister()} className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4" size='lg'>
                             Sign Up
                         </Button>
                         <div className='flex justify-center'>
