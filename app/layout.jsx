@@ -23,7 +23,8 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={poppins.className + " dark pr-2 " + (currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf") ? "overflow-hidden !p-0" : "")}>
+      {/* <body className={poppins.className + " dark pr-2 " + (currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf") ? "overflow-hidden !p-0" : "")}> */}
+      <body className={poppins.className + " dark pr-2 "}>
         <Provider store={store}>
           <div className="flex flex-col">
             {
