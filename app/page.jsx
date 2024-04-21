@@ -63,7 +63,8 @@ export default function HomePage() {
         <p>Incorporating facial recognition software, machine learning, optical character recognition, and an array of algorithms developed by our experts, we fortify content protection against copyright infringements on:</p>
         <ul className='mt-10 list-disc pl-4'>
           <li>Google Images</li>
-          <li>Google Videos Additionally, these tools are utilized on various social media platforms, including Facebook, Instagram, TikTok, Reddit, X / Twitter, blogs, and other websites</li>
+          <li>Google Videos</li>
+          <li>Additionally, these tools are utilized on various social media platforms, including Facebook, Instagram, TikTok, Reddit, X / Twitter, blogs, and other websites</li>
         </ul>
       </div>,
       img: "assets/services/artifical-intelligence.svg"

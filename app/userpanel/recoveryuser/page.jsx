@@ -33,7 +33,7 @@ export default function RecoveryUsers() {
 
                 {/* This section for define rusercontent content*/}
 
-                <div className='flex mt-10 max-sm:mt-0 w-full max-2xl:space-x-10 max-lg:space-x-0 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
+                <div className='flex mt-10 max-sm:mt-0 w-full gap-5 max-lg:flex-col max-lg:justify-center max-lg:items-center'>
                     <div className='flex flex-col w-2/3 max-lg:w-full '>
                         <div className='text-center justify-center items-center font-extrabold text-lg max-sm:text-base max-sm:mt-5 pr-10 max-sm:pr-0'><span>Recovery Usernames</span></div>
                         <div className='flex space-x-10 max-2xl:space-x-0 max-2xl:flex-col'>
