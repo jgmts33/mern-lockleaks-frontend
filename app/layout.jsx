@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
             {
               currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
                 ?
-                <div className="flex ">
+                <div className="flex">
                   <Sidebar show={showSidebar} setter={setShowSidebar} />
                   <div className="w-full gradiant-background">
                     <UserHeader setter={setShowSidebar} />
