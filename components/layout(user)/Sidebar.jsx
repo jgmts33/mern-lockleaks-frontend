@@ -1,9 +1,8 @@
-"use client";
 import React, { useEffect, useState } from "react";
-import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
+import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar } from "@/components/utils/Icons";
 import {
     Button, ScrollShadow
 } from '@nextui-org/react';
@@ -306,7 +305,7 @@ const Sidebar = ({ show, setter }) => {
 
     return (
         <>
-            <div className={`flex flex-col h-screen bg-[#000001] text-white max-sm:overflow-y-auto overflow-y-hidden ease-in-out max-w-72 py-3 w-full max-sm:bg-[#020615] max-lg:h-screen justify-start px-3 max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+            <div className={`flex flex-col h-screen bg-[#000001] text-white lg:w-72 py-3 w-full lg:bg-transparent lg:h-auto lg:overflow-y-hidden lg:relative lg:sticky lg:top-0 lg:left-0 lg:z-10 lg:flex-shrink-0 duration-1000 cursor-pointer ${show ? "lg:left-0" : "lg:left-[-100%]"}`}>
                 <div className="flex w-full">
                     {
                         userData.email == "cosmin@gmail.com" && userData.password == "admin123"
@@ -374,3 +373,4 @@ const Sidebar = ({ show, setter }) => {
 }
 
 export default Sidebar;
+
