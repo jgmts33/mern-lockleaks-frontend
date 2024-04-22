@@ -11,11 +11,11 @@ import Multicolor from '@/public/assets/background/multicolor.svg';
 export default function DmcaBadges() {
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
 
             {/* This section for define dmcabadges header?*/}
 
-            <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
+            <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
             <div className='flex flex-col mt-10 gap-3 max-lg:text-center'>
