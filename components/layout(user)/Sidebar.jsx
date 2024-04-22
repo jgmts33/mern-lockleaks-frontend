@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
@@ -42,7 +42,7 @@ const Sidebar = ({ show, setter }) => {
     };
 
     const router = useRouter();
-    const [selectSidebar, setSelectSidebar] = useState(0);
+    const [selectedSidebar, setSelectedSidebar] = useState(0);
     const userData = useSelector((state) => state.auth);
     const [sidebarList, setSidebarList] = useState([
         {
@@ -255,10 +255,10 @@ const Sidebar = ({ show, setter }) => {
         },
     ])
 
-    const handleSidebarClick = (path, index) => {
-        setSelectSidebar(index)
+    const handleSidebarClick = useCallback((path, index) => {
+        setSelectedSidebar(index)
         router.push(path);
-    }
+    }, [selectedSidebar]);
 
     const ModalOverlay = () => (
         <div
@@ -273,40 +273,48 @@ const Sidebar = ({ show, setter }) => {
         setter(false)
     }
 
-    const handleSelectFavourite = (selectindex) => {
+    const handleSelectFavourite = useCallback((selectindex) => {
+
+        let _adminsidebarList = adminsidebarList.slice(), _sidebarList = sidebarList.slice();
         if (userData.email == "cosmin@gmail.com" && userData.password == "admin123") {
-            adminsidebarList.map((item, index) => {
+            _adminsidebarList.map((item, index) => {
                 if (index === selectindex) {
-                    item.favourite = !item.favourite;
-                    return item
-                }
-                else {
-                    return item
+                    _adminsidebarList[index].favourite = !item.favourite;
                 }
             })
-
-            adminsidebarList.sort((a, b) => { return a.id - b.id })
-            adminsidebarList.sort((a, b) => { return b.favourite - a.favourite })
+            _adminsidebarList.sort((a, b) => { return a.id - b.id })
+            _adminsidebarList.sort((a, b) => { return b.favourite - a.favourite });
+            _adminsidebarList.map((item, index) => {
+                if (adminsidebarList[selectedSidebar].path == item.path) {
+                    handleSidebarClick(item.path, index);
+                }
+            });
+            setAdminSidebarList(_adminsidebarList);
         }
         else {
-            sidebarList.map((item, index) => {
+            _sidebarList.map((item, index) => {
                 if (index === selectindex) {
-                    item.favourite = !item.favourite;
-                    return item
-                }
-                else {
-                    return item
+                    _sidebarList[index].favourite = !item.favourite;
                 }
             })
-
-            sidebarList.sort((a, b) => { return a.id - b.id })
-            sidebarList.sort((a, b) => { return b.favourite - a.favourite })
+            _sidebarList.sort((a, b) => { return a.id - b.id })
+            _sidebarList.sort((a, b) => { return b.favourite - a.favourite });
+            _sidebarList.map((item, index) => {
+                if (sidebarList[selectedSidebar].path == item.path) {
+                    handleSidebarClick(item.path, index);
+                }
+            });
+            setSidebarList(_sidebarList);
         }
-    }
+    }, [sidebarList, adminsidebarList, selectedSidebar]);
+
+    useEffect(() => {
+        console.log(sidebarList, selectedSidebar);
+    }, [sidebarList, selectedSidebar]);
 
     return (
         <>
-            <div className={`flex flex-col h-screen bg-[#000001] text-white max-sm:overflow-y-auto ease-in-out max-w-72 w-full max-sm:bg-[#020615] max-lg:h-screen justify-start max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
+            <div className={`flex flex-col h-screen bg-[#000001] text-white max-sm:overflow-y-auto ease-in-out max-w-80 w-full max-sm:bg-[#020615] max-lg:h-screen justify-start max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full px-3 py-3">
                     {
                         userData.email == "cosmin@gmail.com" && userData.password == "admin123"
@@ -328,12 +336,30 @@ const Sidebar = ({ show, setter }) => {
                                 {
                                     adminsidebarList.map((items, index) => {
                                         return (
-                                            <div key={index} className={("py-1 items-center ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm' onClick={() => handleSidebarClick(items.path, index)}>
+                                            <div
+                                                key={index}
+                                                className={("py-1 items-center ") + (selectedSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm'
+                                                onClick={() => handleSidebarClick(items.path, index)}
+                                            >
                                                 {
                                                     items.favourite ?
-                                                        <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.star}</div>
+                                                        <div className="border border-gray-500 bg-transparent rounded-md"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleSelectFavourite(index);
+                                                            }}
+                                                        >
+                                                            {icons.star}
+                                                        </div>
                                                         :
-                                                        <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
+                                                        <div className="border border-gray-500 bg-transparent rounded-md"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleSelectFavourite(index);
+                                                            }}
+                                                        >
+                                                            {icons.yellowstar}
+                                                        </div>
                                                 }
                                                 <div className="flex cursor-pointer gap-1 items-center" onClick={() => handleSelectTitle()}>
                                                     <span>{items.icon}</span>
@@ -352,11 +378,27 @@ const Sidebar = ({ show, setter }) => {
                                             <div key={index} className="flex items-center gap-2" onClick={() => handleSidebarClick(items.path, index)}>
                                                 {
                                                     items.favourite ?
-                                                        <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.star}</div>
+                                                        <div
+                                                            className="border border-gray-500 bg-transparent rounded-md"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleSelectFavourite(index)
+                                                            }}
+                                                        >
+                                                            {icons.star}
+                                                        </div>
                                                         :
-                                                        <div className="border border-gray-500 bg-transparent rounded-md" onClick={() => handleSelectFavourite(index)}>{icons.yellowstar}</div>
+                                                        <div
+                                                            className="border border-gray-500 bg-transparent rounded-md"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleSelectFavourite(index)
+                                                            }}
+                                                        >
+                                                            {icons.yellowstar}
+                                                        </div>
                                                 }
-                                                <div className={("py-1 items-center w-full ") + (selectSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSelectTitle()}>
+                                                <div className={("py-1 items-center w-full ") + (selectedSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSelectTitle()}>
                                                     <div className="flex cursor-pointer gap-1 items-center">
                                                         <span>{items.icon}</span>
                                                         <span className="font-light text-sm">{items.title}</span>
