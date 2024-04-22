@@ -320,7 +320,7 @@ const Sidebar = ({ show, setter }) => {
                             </div>
                     }
                 </div>
-                <div className="overflow-y-auto h-[calc(100vh-56px)] px-3 py-3">
+                <div className="overflow-y-auto h-[calc(100vh-56px)] px-3 pb-3">
                     {
                         userData.email == "cosmin@gmail.com" && userData.password == "admin123"
                             ?
