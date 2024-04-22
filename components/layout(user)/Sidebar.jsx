@@ -324,7 +324,7 @@ const Sidebar = ({ show, setter }) => {
                     {
                         userData.email == "cosmin@gmail.com" && userData.password == "admin123"
                             ?
-                            <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
+                            <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
                                 {
                                     adminsidebarList.map((items, index) => {
                                         return (
@@ -345,7 +345,7 @@ const Sidebar = ({ show, setter }) => {
                                 }
                             </div>
                             :
-                            <div className="flex flex-col mt-5 sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-3">
+                            <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-3">
                                 {
                                     sidebarList.map((items, index) => {
                                         return (
