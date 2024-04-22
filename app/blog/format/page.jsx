@@ -54,9 +54,13 @@ export default function BlogFormat() {
                 <div className='px-3'>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
                         <Image src={Space} alt="Service" className='max-xl:w-full' />
-                        <div className='flex flex-col p-8'>
+                        <div className='flex flex-col max-sm:p-8 p-16 relative'>
                             <span className='max-w-1/2 max-xl:text-center font-medium text-5xl mx-auto'>{ArticleContent.title}</span>
                             <span className='max-w-1/2 max-xl:text-center font-normal text-base mt-5'>{ArticleContent.description}</span>
+                            <Button radius="full" className="absolute flex items-center top-8 right-8 bg-gradient-to-tr from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6 opacity-40" size='md'>
+                                <p className='text-medium font-normal'>100</p>
+                                {icons.eye}
+                            </Button>
                         </div>
                     </div>
                 </div>
@@ -64,19 +68,22 @@ export default function BlogFormat() {
                 {/* This section for define Blog Format Page Actions*/}
 
                 <div className='flex justify-start mt-10 gap-5 max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 '>
-                    <Button radius="full" className="font-light bg-gradient-to-tr from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg text-lg max-md:text-[15px]" size='md'>
-                        Lockleaks{icons.right}
+                    <Button radius="full" className="bg-gradient-to-tr flex items-center from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg max-md:text-[15px] px-6" size='md'>
+                        <p className='text-medium font-normal'>Lockleaks</p>
+                        {icons.right}
                     </Button>
-                    <Button radius="full" className="font-light bg-gradient-to-tr v from-gray-800/80 to-gray-800/40 text-white shadow-lg text-lg max-md:text-[15px]" size='md'>
-                        Blog{icons.right}
+                    <Button radius="full" className="bg-gradient-to-tr flex items-center v from-gray-800/80 to-gray-800/40 text-white shadow-lg max-md:text-[15px] px-6" size='md'>
+                        <p className='text-medium font-normal'>Blog</p>
+                        {icons.right}
                     </Button>
-                    <Button radius="full" className="font-light bg-gradient-to-tr from-gray-800/80 to-gray-800/40 border--gray-600 text-white shadow-lg text-lg max-md:text-[13px]" size='md'>
-                        Example post blog( Title){icons.right}
+                    <Button radius="full" className="bg-gradient-to-tr flex items-center from-gray-800/80 to-gray-800/40 border-gray-600 text-white shadow-lg max-md:text-[13px] px-6" size='md'>
+                        <p className='text-medium font-normal'>Example post blog( Title)</p>
+                        {icons.right}
                     </Button>
                 </div>
                 <div className='font-light flex mt-32 gap-5 justify-start max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 max-xl:mt-5'>
-                    <Button radius="full" className="bg-gradient-to-tr from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg text-lg max-md:text-[13px]" size='md'>
-                        TAGS (Example interview){icons.right}
+                    <Button radius="full" className="bg-gradient-to-tr flex items-center from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6" size='md'>
+                        <p className='text-medium font-normal'>TAGS (Example interview)</p>
                     </Button>
                 </div>
 
