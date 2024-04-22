@@ -54,7 +54,7 @@ export default function BlogFormat() {
                 <div className='px-3'>
                     <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
                         <Image src={Space} alt="Service" className='max-xl:w-full' />
-                        <div className='flex flex-col max-sm:p-8 p-16 relative'>
+                        <div className='flex flex-col max-sm:pt-24 max-sm:p-8 p-16 relative '>
                             <span className='max-w-1/2 max-xl:text-center font-medium text-5xl mx-auto'>{ArticleContent.title}</span>
                             <span className='max-w-1/2 max-xl:text-center font-normal text-base mt-5'>{ArticleContent.description}</span>
                             <Button radius="full" className="absolute flex items-center top-8 right-8 bg-gradient-to-tr from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6 opacity-40" size='md'>
