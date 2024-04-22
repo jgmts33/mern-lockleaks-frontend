@@ -66,7 +66,7 @@ export default function Login() {
 
     return (
 
-        <div className='px-10 max-sm:px-3 flex min-h-[calc(100vh-80px)] w-screen'>
+        <div className='px-10 max-sm:px-3 flex min-h-[calc(100vh-80px)]'>
 
             {/* This section for define Login page content*/}
 
