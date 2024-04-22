@@ -38,7 +38,7 @@ export default function Notification() {
 
             {/* This section for define notification header?*/}
 
-            <div className='mt-5 max-xl:mx-auto max-lg:mt-0'>
+            <div className='mt-5 max-xl:mx-auto'>
                 <span className='font-extrabold text-lg'>NOTIFICATION</span>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:px-3 rounded-[16px] max-w-[1100px] mt-5 w-full max-sm:mt-20'>

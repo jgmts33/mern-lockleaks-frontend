@@ -17,7 +17,7 @@ export default function DataAnalytics() {
 
             {/* This section for define dataanalytics header?*/}
 
-            <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
+            <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
 

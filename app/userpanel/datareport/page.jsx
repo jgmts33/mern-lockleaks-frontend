@@ -14,7 +14,7 @@ export default function DataReport() {
 
     return (
             <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
-                <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
+                <div className='mt-5 max-lg:mx-auto'>
                     <span className='font-extrabold text-lg'>DATA REPORT</span>
                 </div>
                 <div className='flex gap-10 max-xl:flex-col max-lg:gap-3 max-sm:mt-10'>

@@ -23,14 +23,13 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      {/* <body className={poppins.className + " dark pr-2 " + (currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf") ? "overflow-hidden !p-0" : "")}> */}
-      <body className={poppins.className + " dark pr-2 "}>
+      <body className={poppins.className + " dark pr-2 " + (currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf") ? "overflow-hidden !p-0" : "")}>
         <Provider store={store}>
           <div className="flex flex-col">
             {
               currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf")
                 ?
-                <div className="flex">
+                <div className="flex ">
                   <Sidebar show={showSidebar} setter={setShowSidebar} />
                   <div className="w-full gradiant-background">
                     <UserHeader setter={setShowSidebar} />

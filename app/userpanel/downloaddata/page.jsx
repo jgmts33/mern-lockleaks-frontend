@@ -40,7 +40,7 @@ export default function DownloadData() {
 
             {/* This section for define download data header?*/}
 
-            <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
+            <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DOWNLOAD DATA</span>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4 max-sm:mt-20'>

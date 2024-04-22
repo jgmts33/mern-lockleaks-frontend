@@ -16,7 +16,7 @@ export default function AccountSetting() {
 
             {/* This section for define Account Settings header*/}
 
-            <div className='mt-5 max-lg:mx-auto max-lg:mt-0'>
+            <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>ACCOUNT SETTINGS</span>
             </div>
             <div className='grid grid-cols-4 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-md:gap-3'>
