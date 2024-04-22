@@ -97,7 +97,7 @@ export default function Recovery() {
 
                 {/* This section for define username recovery header*/}
 
-                <div className='mt-10'>
+                <div className='mt-10 max-sm:mt-5'>
                 <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-0 left-0 bg-opacity-5 blur-3xl' />
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{RecoveryTitle.title}</p>
                     <div className='flex gap-20 items-center justify-between max-w-[1300px] mx-auto max-xl:px-5 max-lg:flex-col max-md:gap-10'>

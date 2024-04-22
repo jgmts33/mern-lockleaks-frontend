@@ -67,7 +67,7 @@ export default function BlogFormat() {
 
                 {/* This section for define Blog Format Page Actions*/}
 
-                <div className='flex justify-start mt-10 gap-5 max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 '>
+                <div className='flex justify-start mt-10 max-sm:mt-5 gap-5 max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 '>
                     <Button radius="full" className="bg-gradient-to-tr flex items-center from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg max-md:text-[15px] px-6" size='md'>
                         <p className='text-medium font-normal'>Lockleaks</p>
                         {icons.right}

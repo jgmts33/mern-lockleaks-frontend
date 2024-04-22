@@ -68,10 +68,10 @@ export default function MonthlyPdf() {
 
                 {/* This section for define monthly pdf header*/}
 
-                <div className='mt-20 max-md:px-3 max-md:text-center z-10'>
+                <div className='mt-20 max-sm:mt-5 max-md:px-3 max-md:text-center z-10'>
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{MonthlyTitle.title}</p>
                     <div className='flex items-center justify-between mx-auto max-2xl:justify-around max-md:flex-col'>
-                        <div className='max-w-[653px] mt-10'><p className='font-normal text-lg mt-10'>{MonthlyTitle.content}</p></div>
+                        <div className='max-w-[653px] mt-10 max-sm:mt-4'><p className='font-normal text-lg mt-10'>{MonthlyTitle.content}</p></div>
                         <Image src="/assets/logo.svg" width={190} height={50} className='mt-20 z-10' alt="logo" />
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='absolute top-0 right-20 bg-[#362666] bg-opacity-5 blur-3xl max-xl:hidden' />
                     </div>
@@ -79,7 +79,7 @@ export default function MonthlyPdf() {
 
                 {/* This section for define help content*/}
                 <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='absolute top-10 left-0 bg-[#362666] bg-opacity-5 blur-3xl max-xl:hidden' />
-                <div className='flex w-full justify-center mt-72 z-10 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center max-xl:mt-20'>
+                <div className='flex w-full justify-center mt-72 max-sm:mt-16 z-10 relative max-2xl:w-full max-2xl:flex-col max-2xl:items-center max-2xl:mx-auto max-md:px-3 max-2xl:justify-center max-xl:mt-20'>
                     <div className='relative'>
                         <span className='font-medium text-md'>How It Helps</span>
                     </div>

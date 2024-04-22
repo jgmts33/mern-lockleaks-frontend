@@ -33,7 +33,7 @@ export default function FreeAnalyse() {
 
         {/* This section for define Freeanalyse Content*/}
 
-        <div className='flex mt-10 pb-10 mx-auto gap-10 max-w-[1500px] items-center max-xl:justify-center max-xl:items-center'>
+        <div className='flex mt-10 max-sm:mt-5 pb-10 mx-auto gap-10 max-w-[1500px] items-center max-xl:justify-center max-xl:items-center'>
           <div className='flex items-center gap-5 max-sm:px-3'>
             <Image className="max-xl:hidden mt-2 object-cover max-md:w-full p-2 max-xl:justify-center rounded-[20px]" src={AI} width={250} height={250} alt="Modern building architecture" />
           </div>

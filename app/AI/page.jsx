@@ -77,7 +77,7 @@ export default function AI() {
 
                 {/* This section for define AI page header*/}
 
-                <div className='text-center mt-10'>
+                <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-medium text-7xl max-lg:text-[40px]'>{AITitle.title}</p>
                     <div className='max-w-[830px]'><p className='font-normal text-base mt-10'>{AITitle.sub_title}</p></div>
                 </div>

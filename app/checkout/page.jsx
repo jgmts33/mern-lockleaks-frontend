@@ -165,10 +165,10 @@ export default function Checkout() {
 
             {/* This section for define chechout page header*/}
 
-            <div className="text-center gap-10 mt-20">
+            <div className="text-center gap-10 mt-20 max-sm:mt-5">
                 <p className="font-bold text-7xl max-lg:text-[40px] max-md:justify-center">CHECKOUT</p>
             </div>
-            <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-28 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
+            <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-28 max-sm:mt-8 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
                 <Button radius="full" className={isSelected ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} onClick={() => setSelected(true)} size='lg'>
                     Bill Monthly
                 </Button>
@@ -179,7 +179,7 @@ export default function Checkout() {
 
             {/* This section for define chechout page content*/}
 
-            <div className='flex mt-28 w-full gap-3 relative max-xl:flex-col mx-auto justify-center'>
+            <div className='flex mt-28 max-sm:mt-8 w-full gap-3 relative max-xl:flex-col mx-auto justify-center'>
                 {
                     pricingContent.map((item, index) => {
                         return (
@@ -249,7 +249,7 @@ export default function Checkout() {
 
             {/* This section for define select user name*/}
 
-            <div className='flex justify-center mx-auto mt-32 gap-10 max-xl:flex-col max-md:mx-auto max-md:px-3'>
+            <div className='flex justify-center mx-auto mt-32 max-sm:mt-10 gap-10 max-sm:gap-6 max-xl:flex-col max-md:mx-auto max-md:px-3 max-sm:px-0'>
                 <div className="flex bg-white/5 shadow-sm rounded-[20px] max-w-[720px] w-full flex-col gap-4 p-20 max-sm:p-10">
                     <p className='font-medium text-6xl mt-3'>ORDER</p>
                     <div className='flex flex-col'>
@@ -289,7 +289,7 @@ export default function Checkout() {
 
             {/* This section for add new user name*/}
 
-            <div className='mt-20 flex mx-auto justify-center gap-80 max-2xl:gap-0 max-xl:flex-col max-md:px-3'>
+            <div className='mt-20 max-sm:mt-8 flex mx-auto justify-center gap-80 max-2xl:gap-0 max-xl:flex-col max-md:px-3 max-sm:px-0'>
                 <div className='flex-col flex mx-auto'>
                     <p className='font-medium text-3xl'>ADD NEW USERNAME</p>
                     {
@@ -364,7 +364,7 @@ export default function Checkout() {
 
             {/* This section for define payment*/}
 
-            <div className="flex bg-gradient-to-br mt-20 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">
+            <div className="flex bg-gradient-to-br mt-20 max-sm:mt-8 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col w-full border border-gray-700 max-w-[1389px] py-20 px-5">
                 <p className='font-medium text-[34px] text-center'>PAYMENT</p>
                 <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
                     Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.
@@ -382,7 +382,7 @@ export default function Checkout() {
                     </Button>
                 </div>
             </div>
-            <div className='max-w-[1420px] w-full mx-auto text-start mt-20 mb-40 max-md:px-3'>
+            <div className='max-w-[1420px] w-full mx-auto text-start mt-20 max-sm:mt-8 mb-40 max-sm:mb-8 max-md:px-3'>
                 <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
                 <p className='font-normal text-base'>You will be charged this amount at regular intervals until you opt to cancel the automatic renewal.You can cancel the subscription using your account settings in the Billing section, or you can check the email you received for this purchase in your inbox. You will find instructions on how to cancel the subscription there.</p>
             </div>

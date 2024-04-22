@@ -80,7 +80,7 @@ export default function Help() {
 
             {/* This section for define Help Page Title*/}
 
-            <div className='mt-10 max-md:px-3 max-md:text-center'>
+            <div className='mt-10 max-sm:mt-5 max-md:px-3 max-md:text-center'>
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 left-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 right-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
                 <p className='font-medium text-7xl text-center max-lg:text-5xl'>HELP CENTER</p>

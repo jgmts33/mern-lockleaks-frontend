@@ -189,11 +189,11 @@ export default function HomePage() {
     { title: "100,000 ", content: "Websites Crawled Daily", bgColor: true },
     { title: "7+", content: "Years of Experience" },
     { title: "100%", content: "Search Removal Efficiency", bgColor: true },
-    { title: "98%", content: " Success Rate in Filehost Removal" },
+    { title: "4", content: "Bots AI"},
+    { title: "98%", content: " Success Rate in Filehost Removal", bgColor: true  },
     { title: "100%", content: "Removal from All Social Media Platforms" },
     { title: "97%", content: " Adult Tube Posts Removal", bgColor: true },
-    { title: "100%", content: " Removal of Fake Profiles" },
-    { title: "4", content: "Bots AI", bgColor: true }
+    { title: "100%", content: " Removal of Fake Profiles" }
   ]
 
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
@@ -252,7 +252,7 @@ export default function HomePage() {
           {/* This section for define homepage header*/}
 
           <div className="flex w-full justify-center items-center flex-col relative">
-            <div className="text-center max-w-[950px] gap-10 mt-10">
+            <div className="text-center max-w-[950px] gap-10 mt-10 max-sm:mt-5">
               <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-44 -left-64 bg-[#0d091a] bg-opacity-5 blur-3xl' />
               <p className="font-bold text-6xl max-lg:text-2xl max-md:mx-auto uppercase whitespace-normal z-10">
                 increase your online success with professional copyright protection
@@ -264,7 +264,7 @@ export default function HomePage() {
                 Protect Content Now!
                 <span>{icons.shine}</span>
               </Button>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-0 mt-6 max-sm:opacity-100 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute left-0 top-6 max-xl:top-0 mt-6 max-sm:opacity-100 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>Protect Your Content</p>

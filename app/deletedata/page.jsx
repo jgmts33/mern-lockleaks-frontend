@@ -72,7 +72,7 @@ export default function DeleteData() {
 
             {/* This section for request personal data*/}
 
-            <div className="text-center gap-10 mt-10 max-xl:px-3 z-10">
+            <div className="text-center gap-10 mt-10 max-sm:mt-5 max-xl:px-3 z-10">
                 <div className='max-w-[600px] mx-auto'><p className="font-medium text-[50px] max-lg:text-3xl">{DeleteDataTitle.title}</p></div>
                 <div className='max-w-[980px] mx-auto mt-5'><span className='font-normal text-base'>{DeleteDataTitle.sub_title}</span></div>
             </div>

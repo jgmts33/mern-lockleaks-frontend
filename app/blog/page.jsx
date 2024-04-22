@@ -167,7 +167,7 @@ export default function Blog() {
   }
 
   return (
-    <div className="text-white relative container flex flex-col pb-20 mt-10 max-sm:px-3 mx-auto">
+    <div className="text-white relative container flex flex-col pb-20 mt-10 max-sm:mt-5 max-sm:px-3 mx-auto">
 
       {/* This section for define blog title*/}
 

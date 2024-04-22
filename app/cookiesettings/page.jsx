@@ -34,7 +34,7 @@ export default function CookieSettigs() {
 
     return (
         <div className="flex flex-col text-white w-full max-xl:px-3">
-            <div className='flex flex-col mt-10 bg-transparent bg-opacity-20 shadow-sm shadow-gray-50 border border-gray-500 p-5 mb-20 rounded-[20px] max-w-[1400px] mx-auto cursor-pointer'>
+            <div className='flex flex-col mt-10 max-sm:mt-5 bg-transparent bg-opacity-20 shadow-sm shadow-gray-50 border border-gray-500 p-5 mb-20 rounded-[20px] max-w-[1400px] mx-auto cursor-pointer'>
 
                 {/* This section for define cookie settings header*/}
 

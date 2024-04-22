@@ -64,7 +64,7 @@ export default function CreatorDmca() {
 
                 {/* This section for define create dmca header*/}
 
-                <div className='text-center mt-10 max-lg:px-3'>
+                <div className='text-center mt-10 max-sm:mt-5 max-lg:px-3'>
                 <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 left-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
                 <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 right-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
                     <p className='font-bold text-6xl uppercase max-lg:text-3xl z-10'>{CamDmcaTitle.title}</p>

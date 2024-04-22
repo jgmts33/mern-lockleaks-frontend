@@ -224,7 +224,7 @@ export default function Pricing() {
 
                 {/* This section for define pricing page header*/}
 
-                <div className="text-center gap-10 mt-10">
+                <div className="text-center gap-10 mt-10 max-sm:mt-5">
                     <p className="font-bold text-7xl max-lg:text-4xl max-md:justify-center">PRICING</p>
                 </div>
 

@@ -64,7 +64,7 @@ export default function CopyRight() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
-                <div className='text-center mt-10 px-3'>
+                <div className='text-center mt-10 max-sm:mt-5 px-3'>
                     <p className='font-bold text-7xl max-lg:text-[40px]'>{CopyrightTitle.title}</p>
                     <div className='max-w-[1100px]'><p className='font-normal text-base mt-10'>{CopyrightTitle.sub_title}</p></div>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={442} className='absolute bg-[#6748a1] max-xl:hidden z-0 top-0 left-0 bg-opacity-5 blur-3xl' />

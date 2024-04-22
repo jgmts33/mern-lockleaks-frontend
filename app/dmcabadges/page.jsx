@@ -47,7 +47,7 @@ export default function DmcaBadges() {
 
             {/* This section for define dmcabadges title*/}
 
-                <div className='text-center mt-10'>
+                <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-medium text-5xl max-lg:text-[30px]'>{DmcaBadgesTitle.title}</p>
                     <div className='max-w-[716px] mx-auto max-md:px-3'><p className='font-normal text-base mt-10'>{DmcaBadgesTitle.content}</p></div>
                 </div>

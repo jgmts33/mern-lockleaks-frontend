@@ -72,7 +72,7 @@ export default function Catfishing() {
 
                 {/* This section for define catifishing header*/}
 
-                <div className='text-center mt-10'>
+                <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-medium text-5xl uppercase max-lg:text-4xl'>{CamDmcaTitle.title}</p>
                     <div className='max-lg:px-3'><p className='font-normal text-base mt-10 max-w-[1100px]'>{CamDmcaTitle.sub_title}</p></div>
                 </div>

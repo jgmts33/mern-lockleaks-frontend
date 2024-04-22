@@ -28,7 +28,7 @@ export default function AboutUs() {
 
                 {/* This section for define aboutus page header*/}
 
-                <div className="text-center mt-10">
+                <div className="text-center mt-10 max-sm:mt-5">
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-20 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-20 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                     <div className='mx-auto'><p className="font-medium text-huge uppercase max-lg:text-4xl">About us</p></div>

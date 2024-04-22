@@ -86,7 +86,7 @@ export default function SERVICES() {
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 left-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-0 right-0 bg-[#0d091a] bg-opacity-20 blur-3xl' />
             <Image src="assets/safeground/robot-hand-finger.svg" alt='robert-hand' width={600} height={170} className="mt-52 absolute right-0 max-2xl:hidden" />
-            <div className='flex mt-10 relative justify-center max-sm:px-3'>
+            <div className='flex mt-10 max-sm:mt-5 relative justify-center max-sm:px-3'>
                 <div className='left-0 top-0  max-2xl:hidden'>
                     <div className='mb-0 absolute left-40 -top-10 max-2xl:w-[100px]'>{icons.photo}</div>
                     <div className='absolute left-6 top-32 max-2xl:-left-6 max-2xl:top-2'>{icons.chat}</div>

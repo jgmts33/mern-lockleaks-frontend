@@ -10,8 +10,8 @@ export default function BUY() {
 
     return (
         <div className="flex flex-col text-white w-full">
-            <div className='flex justify-center mx-auto mt-32 gap-10 max-xl:flex-col max-sm:items-center max-sm:mx-auto'>
-                <div className="flex bg-white/5 shadow-sm rounded-[20px] w-[720px] h-[1252px] flex-col gap-4 px-20">
+            <div className='flex justify-center mx-auto mt-32 mb-[10px] max-sm:mt-5 gap-10 max-xl:flex-col max-sm:items-center max-sm:mx-auto max-sm:px-2'>
+                <div className="flex bg-white/5 shadow-sm rounded-[20px] w-[720px] max-sm:w-full h-[1252px] max-sm:h-auto flex-col gap-4 px-20 max-sm:px-6 max-sm:pb-6">
                     <p className='font-medium text-6xl mt-20'>ORDER</p>
                     <div className='flex flex-col'>
                         <p className='mt-10'>Tell Us Jow Many Usernames You're Using.</p>
@@ -32,7 +32,7 @@ export default function BUY() {
                         </select>
                     </div>
                 </div>
-                <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] h-[540px] rounded-[20px] z-40 p-5 w-full max-w-[422px] text-center ">
+                <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] h-[540px] rounded-[20px] z-10 p-5 w-full max-w-[422px] text-center ">
                     <div className='mt-5'>
                         <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
                             <span className='px-4'>popular</span>

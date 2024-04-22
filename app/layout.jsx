@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={poppins.className + " dark pr-2 " + (currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf") ? "overflow-hidden !p-0" : "")}>
+      <body className={poppins.className + " dark " + (currentPath.includes("/userpanel") || currentPath.includes("/jdieij83dklxosoehfjf") ? "overflow-hidden !p-0" : "")}>
         <Provider store={store}>
           <div className="flex flex-col">
             {
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
                   </div>
                 </div>
                 :
-                <div className="">
+                <div className="relative">
                   {
                     !currentPath.includes("/auth")
                       ?
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
                       </div>
                   }
                   <div className="flex w-full">
-                    <div className="mx-auto">
+                    <div className="mx-auto max-sm:w-full">
                       <NextTopLoader
                         color="#2299DD"
                         initialPosition={0.08}

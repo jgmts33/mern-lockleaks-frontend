@@ -14,7 +14,7 @@ export default function CookiePolicy() {
     return (
         <>
             <div className="flex flex-col mx-auto items-center max-w-[1470px] justify-center text-white w-full font-normal text-base">
-                <div className='text-center mt-10'>
+                <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-medium text-5xl uppercase'>{PravicyPolicy.title}</p>
                 </div>
                 <div className='mt-5 max-xl:px-3 mb-5'>

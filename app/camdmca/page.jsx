@@ -112,7 +112,7 @@ export default function CamDmca() {
 
                 {/* This section for define camdmca title*/}
 
-                <div className='text-center mt-10'>
+                <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-bold text-7xl max-lg:text-3xl uppercase'>{CamDmcaTitle.title}</p>
                     <div className='max-w-[848px] mx-auto'><p className='font-normal text-base mt-10'>{CamDmcaTitle.sub_title}</p></div>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={442} className='absolute bg-[#6748a1] max-xl:hidden z-0 top-0 left-0 bg-opacity-5 blur-3xl' />

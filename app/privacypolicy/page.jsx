@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
 
                 {/* This section for define privacy policy header*/}
             
-                <div className='text-center mt-10'>
+                <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-medium text-5xl uppercase max-lg:text-[30px]'>{PravicyPolicy.title}</p>
                 </div>
 

@@ -72,7 +72,7 @@ export default function Categories() {
 
             {/* This section for define Help Page Title*/}
 
-            <div className='mt-10 max-md:px-3 max-md:text-center'>
+            <div className='mt-10 max-sm:mt-5 max-md:px-3 max-md:text-center'>
                 <p className='font-medium text-7xl text-center max-md:text-4xl'>HELP CENTER</p>
             </div>
             <div className='flex mx-auto justify-center gap-5 w-full mt-10 items-center max-w-[1050px] max-md:flex-col'>

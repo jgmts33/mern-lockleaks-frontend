@@ -54,19 +54,19 @@ export default function Home() {
   }, [password]);
 
   return (
-    <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
+    <div className='px-10 max-sm:px-2 flex min-h-[calc(100vh-80px)] w-full'>
 
       {/* This section for define reset password page content*/}
 
-      <div className='w-full flex items-center justify-center max-sm:mt-20'>
+      <div className='w-full flex items-center justify-center'>
       <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
       <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
-        <div className="sm:w-[562px] flex flex-col items-center gap-10 text-white">
-          <div className='text-center max-w-[354px] mb-4 max-sm:mx-auto max-sm:mt-10'>
+        <div className="w-[562px] max-sm:w-full flex flex-col items-center gap-10 text-white z-30">
+          <div className='text-center max-w-[354px] mb-4 max-sm:mx-auto max-sm:mb-0 max-sm:mt-0'>
             <p className="text-[40px] font-medium leading-[60px]">Reset Password</p>
             <p className="text-base font-[300] ">Enter your new password and confirm it below to reset your account password.</p>
           </div>
-          <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-6 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
+          <div className='flex flex-col gap-6 h-fit w-full px-12 max-sm:px-2 py-5 bg-[#846DA3] bg-opacity-0 rounded-[40px] border-[#846DA3] border-transparent '>
             <div className='relative w-full max-sm:mx-auto'>
               <p className='font-[300] text-white pb-2'>Enter new Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
@@ -89,7 +89,7 @@ export default function Home() {
                 <p className={'text-sm ' + (passwordStength == "Weak" ? '!text-red-500' : passwordStength == "Strong" ? "!text-green-500" : "")}>{passwordStength}</p>
               </div>
             </div>
-            <div className='relative w-full max-sm:mt-10'>
+            <div className='relative w-full'>
               <p className='font-[300] text-white pb-2'>Confirm Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
               <div>
@@ -102,11 +102,11 @@ export default function Home() {
               </div>
             </div>
             <Link href="/">
-              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4 max-sm:mt-10" size='lg'>
+              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4 " size='lg'>
                 Confirm
               </Button>
             </Link>
-            <Button radius="lg" className="bg-transparent text-white shadow-lg w-full max-sm:mt-5" size='lg'>
+            <Button radius="lg" className="bg-transparent text-white shadow-lg w-full " size='lg'>
               Cancel
             </Button>
           </div>

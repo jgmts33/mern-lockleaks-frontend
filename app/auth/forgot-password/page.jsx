@@ -17,11 +17,11 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className='px-10 max-sm:px-2 mx-auto flex w-screen min-h-[calc(100vh-80px)]'>
+    <div className='px-10 max-sm:px-2 mx-auto flex w-full min-h-[calc(100vh-80px)]'>
 
       {/* This section for define forgot password content*/}
 
-      <div className='w-full flex items-center justify-center max-sm:mt-10'>
+      <div className='w-full flex items-center justify-center max-sm:mt-5'>
       <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
       <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
         <div className="w-[562px] flex flex-col items-center gap-10 text-white">
