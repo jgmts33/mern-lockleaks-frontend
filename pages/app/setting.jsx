@@ -4,12 +4,13 @@ import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
 
 
 export default function AccountSetting() {
 
-    const userData = useSelector((state) => state.auth);
+    const userInfo = useSelector(info);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
@@ -52,7 +53,7 @@ export default function AccountSetting() {
 
                 {/* This section for define Subscription info*/}
                 {
-                    userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                    userInfo.roles.find(p => p === 'admin')
                         ?
                         false
                         :
