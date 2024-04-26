@@ -8,6 +8,7 @@ import {
     Button, ScrollShadow
 } from '@nextui-org/react';
 import { useSelector, useDispatch } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
 
 const Sidebar = ({ show, setter }) => {
 
@@ -43,7 +44,7 @@ const Sidebar = ({ show, setter }) => {
 
     const router = useRouter();
     const [selectedSidebar, setSelectedSidebar] = useState(0);
-    const userData = useSelector((state) => state.auth);
+    const userInfo = useSelector(info);
     const [sidebarList, setSidebarList] = useState([
         {
             id: 0,
@@ -276,7 +277,7 @@ const Sidebar = ({ show, setter }) => {
     const handleSelectFavourite = useCallback((selectindex) => {
 
         let _adminsidebarList = adminsidebarList.slice(), _sidebarList = sidebarList.slice();
-        if (userData.email == "cosmin@gmail.com" && userData.password == "admin123") {
+        if (userInfo.roles.find((p) => p === 'admin')) {
             _adminsidebarList.map((item, index) => {
                 if (index === selectindex) {
                     _adminsidebarList[index].favourite = !item.favourite;
@@ -317,7 +318,7 @@ const Sidebar = ({ show, setter }) => {
             <div className={`flex flex-col h-screen bg-[#000001] text-white max-sm:overflow-y-auto ease-in-out max-w-80 w-full max-sm:bg-[#020615] max-lg:h-screen justify-start max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full px-3 py-3">
                     {
-                        userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                        userInfo.roles.find((p) => p === 'admin')
                             ?
                             <div className="mx-auto flex items-center justify-around w-full">
                                 <div className="flex"><Link className="text-white cursor-pointer" href="/jdieij83dklxosoehfjf/dashboard"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
@@ -330,7 +331,7 @@ const Sidebar = ({ show, setter }) => {
                 </div>
                 <div className="overflow-y-auto h-[calc(100vh-56px)] px-3 pb-3">
                     {
-                        userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                        userInfo.roles.find((p) => p === 'admin')
                             ?
                             <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
                                 {

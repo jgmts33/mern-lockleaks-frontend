@@ -18,7 +18,7 @@ export default function Header() {
       path: "/scantakedown"
     }, {
       content: "AI",
-      path: "/AI"
+      path: "/ai"
     }, {
       content: "Copyright",
       path: "/copyright"

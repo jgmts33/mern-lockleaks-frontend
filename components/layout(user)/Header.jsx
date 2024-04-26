@@ -12,8 +12,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 
 const UserHeader = ({ show, setter }) => {
+
   const router = useRouter();
-  const userData = useSelector((state) => state.auth);
+
+
   const [isSearch, setSearch] = useState(false);
 
   const icons = {
@@ -58,12 +60,12 @@ const UserHeader = ({ show, setter }) => {
       maxWidth="full"
     >
       <NavbarContent>
-      <NavbarBrand>
-        <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
-          <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </Button>
+        <NavbarBrand>
+          <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
+            <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </Button>
           <Button radius="lg" className="bg-transparent text-white flex items-center" size='sm' onClick={() => { setSearch(isSearch ? false : true) }}>
             {icons.search}
           </Button>

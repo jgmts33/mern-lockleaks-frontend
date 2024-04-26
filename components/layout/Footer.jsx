@@ -24,7 +24,7 @@ export default function Footer() {
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Services</p>
             <Link href={"/scantakedown"}>Scan & Takedown</Link>
-            <Link href={"/AI"}>Artificial Intelligence</Link>
+            <Link href={"/ai"}>Artificial Intelligence</Link>
             <Link href={"/copyright"}>Copyright</Link>
             <Link href={"/camdmca"}>Cam DMCA Content Protection</Link>
             <Link href={"/creatordmca"}>Creator DMCA Content Protection</Link>
@@ -36,16 +36,16 @@ export default function Footer() {
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Company</p>
             <Link href={"/blog"}>Blog</Link>
-            <Link href={"/aboutus"}>About Us</Link>
-            <Link href={"/privacypolicy"}>Privacy Policy</Link>
-            <Link href={"/termsofservices"}>Terms of Services</Link>
-            <Link href={"/cookiepolicy"}>Cookie Policy</Link>
-            <Link href={"/cookiesettings"}>Cookie Settings</Link>
+            <Link href={"/about-us"}>About Us</Link>
+            <Link href={"/privacy-policy"}>Privacy Policy</Link>
+            <Link href={"/terms-of-services"}>Terms of Services</Link>
+            <Link href={"/cookie-policy"}>Cookie Policy</Link>
+            <Link href={"/cookie-settings"}>Cookie Settings</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Support</p>
             <Link href={"/help"}>Help & Support</Link>
-            <Link href={"/contactus"}>Contact Us</Link>
+            <Link href={"/contact-us"}>Contact Us</Link>
             <Link href={"/deletedata"}>Delete Data</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
@@ -74,11 +74,11 @@ export default function Footer() {
           <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2024 LockLeaks.</p>
           <div className='flex gap-7 justify-end mt-0 mb-10'>
             <Link href={"https://tiktok.com/lockleaks"}>{icons.tiktok}</Link>
-            <Link href={"https://www.instagram.com/lockleaks/"}>{icons.instagram}</Link>
-            <Link href={" https://www.twitter.com/@lockleaks"}>{icons.twitter}</Link>
+            <Link href={"https://www.instagram.com/lockleaks"}>{icons.instagram}</Link>
+            <Link href={"https://www.twitter.com/@lockleaks"}>{icons.twitter}</Link>
             <Link href={"https://linkedin.com/@lockleaks"}>{icons.linkedin}</Link>
-            <Link href={"https://www.facebook.com/lockleaks/"}>{icons.facebook}</Link>
-            <Link href={"https://www.reddit.com/r/LockLeaks/"}>{icons.redit}</Link>
+            <Link href={"https://www.facebook.com/lockleaks"}>{icons.facebook}</Link>
+            <Link href={"https://www.reddit.com/r/LockLeaks"}>{icons.redit}</Link>
           </div>
         </div>
       </div>
