@@ -13,7 +13,7 @@ export const login = async (data) => {
   } catch (err) {
     return {
       status: 'fail',
-      data: err.response.data.message
+      data: err.response?.data?.message
     }
   }
 }
