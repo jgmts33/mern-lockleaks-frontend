@@ -18,6 +18,7 @@ import GoogleAuth from '@/components/auth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 
 export default function Register() {
 
@@ -32,6 +33,7 @@ export default function Register() {
     };
 
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
