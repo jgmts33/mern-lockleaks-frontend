@@ -1,10 +1,10 @@
 'use client'
 import { Poppins } from "next/font/google";
 import { useEffect, useState } from 'react';
-import Header from "@/components/layout/Header.jsx";
-import UserHeader from "@/components/layout(user)/Header.jsx";
-import Sidebar from "@/components/layout(user)/Sidebar.jsx";
-import Footer from "@/components/layout/Footer.jsx";
+import Header from "@/components/layout/Header";
+import UserHeader from "@/components/layout(user)/Header";
+import Sidebar from "@/components/layout(user)/Sidebar";
+import Footer from "@/components/layout/Footer";
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import {
