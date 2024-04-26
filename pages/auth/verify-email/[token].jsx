@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { verifyEmail } from "../../../axios/auth";
+import { verifyEmail } from "@/axios/auth";
 
 export default function VerifyEmail() {
 

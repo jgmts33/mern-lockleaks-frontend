@@ -1,4 +1,4 @@
-import { ENDPOINT } from '@/config/config';
+import { ENDPOINT } from '@/config/config.js';
 import axios from 'axios';
 
 export const login = async (data) => {

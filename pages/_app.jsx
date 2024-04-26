@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Layout from '../components/layout';
+import Layout from '../components/layout/index.jsx';
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
