@@ -10,7 +10,7 @@ export default function PersonalAgent() {
     const router = useRouter();
 
     const handleCreteTicket = () => {
-        router.push("/userpanel/personalagent/createticket");
+        router.push("/app/personal-agent/create-ticket");
     }
 
     return (

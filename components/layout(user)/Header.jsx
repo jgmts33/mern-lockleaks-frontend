@@ -32,7 +32,7 @@ const UserHeader = ({ show, setter }) => {
   };
 
   const handleUserSetting = () => {
-    router.push("/userpanel/accountsetting")
+    router.push("/app/setting")
   }
 
   const notifications = [

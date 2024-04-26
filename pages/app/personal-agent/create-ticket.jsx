@@ -15,7 +15,7 @@ export default function CreateTicket() {
     };
 
     const handleTicketDetail = () =>{
-        router.push("/userpanel/personalagent/ticketdetail")
+        router.push("/app/personal-agent/ticket-detail")
     }
 
     const handlePreviousPage = () => {

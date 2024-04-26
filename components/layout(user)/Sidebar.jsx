@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
     Button, ScrollShadow
 } from '@nextui-org/react';
@@ -50,109 +50,109 @@ const Sidebar = ({ show, setter }) => {
             id: 0,
             icon: icons.category,
             title: "DASHBOARD",
-            path: "/userpanel/dashboard",
+            path: "/app/dashboard",
             favourite: false
         }, {
             id: 1,
             icon: icons.scanner,
             title: "SCANNER",
-            path: "/userpanel/scanner",
+            path: "/app/scanner",
             favourite: false
         }, {
             id: 2,
             icon: icons.warningcircle,
             title: "ADULT WEBSITES",
-            path: "/userpanel/adultwebsite",
+            path: "/app/adult-website",
             favourite: false
         }, {
             id: 3,
             icon: icons.filehost,
             title: "FILE HOSTED",
-            path: "/userpanel/filehosted",
+            path: "/app/file-hosted",
             favourite: false
         }, {
             id: 4,
             icon: icons.search,
             title: "GOOGLE",
-            path: "/userpanel/google",
+            path: "/app/google",
             favourite: false
         }, {
             id: 5,
             icon: icons.search,
             title: "BING",
-            path: "/userpanel/bing",
+            path: "/app/bing",
             favourite: false
         }, {
             id: 6,
             icon: icons.photo,
             title: "AI FACE IMAGES",
-            path: "/userpanel/AIfaceimages",
+            path: "/app/ai-face-images",
             favourite: false
         }, {
             id: 7,
             icon: icons.AIProfile,
             title: "AI FACE PROFILES",
-            path: "/userpanel/AIfaceprofile",
+            path: "/app/ai-face-profile",
             favourite: false
         }, {
             id: 8,
             icon: icons.SMscanner,
             title: "SM SCANNER",
-            path: "/userpanel/SMscanner",
+            path: "/app/sm-scanner",
             favourite: false
         }, {
             id: 9,
             icon: icons.submit,
             title: "SM SUBMIT",
-            path: "/userpanel/SMsubmit",
+            path: "/app/sm-submit",
             favourite: false
         }, {
             id: 10,
             icon: icons.usercontent,
             title: "R&R OF USER CONTENT",
-            path: "/userpanel/recoveryuser",
+            path: "/app/recovery-user",
             favourite: false
         }, {
             id: 11,
             icon: icons.AIProfile,
             title: "DMCA BADGES",
-            path: "/userpanel/dmcabadges",
+            path: "/app/dmcabadges",
             favourite: false
         }, {
             id: 12,
             icon: icons.DataReport,
             title: "DATA REPORT",
-            path: "/userpanel/datareport",
+            path: "/app/report",
             favourite: false
         }, {
             id: 13,
             icon: icons.calendarcheck,
             title: "DATA ANALYTICS",
-            path: "/userpanel/dataanalytics",
+            path: "/app/analytics",
             favourite: false
         }, {
             id: 14,
             icon: icons.profilesquare,
             title: "PERSONAL AGENT",
-            path: "/userpanel/personalagent",
+            path: "/app/personal-agent",
             favourite: false
         }, {
             id: 15,
             icon: icons.AccountSetting,
             title: "ACCOUNT SETTINGS",
-            path: "/userpanel/accountsetting",
+            path: "/app/setting",
             favourite: false
         }, {
             id: 16,
             icon: icons.DownloadData,
             title: "DOWNLOAD DATA",
-            path: "/userpanel/downloaddata",
+            path: "/app/download",
             favourite: false
         }, {
             id: 17,
             icon: icons.notification,
             title: "NOTIFICATION",
-            path: "/userpanel/notification",
+            path: "/app/notification",
             favourite: false
         }
     ]);
@@ -161,97 +161,97 @@ const Sidebar = ({ show, setter }) => {
         {
             icon: icons.category,
             title: "DASHBOARD",
-            path: "/jdieij83dklxosoehfjf/dashboard",
+            path: "/admin/dashboard",
             favourite: false
         }, {
             icon: icons.scanner,
             title: "SCANNER",
-            path: "/jdieij83dklxosoehfjf/scanner",
+            path: "/admin/scanner",
             favourite: false
         }, {
             icon: icons.search,
             title: "GOOGLE & BING",
-            path: "/jdieij83dklxosoehfjf/googlebing",
+            path: "/admin/google-bing",
             favourite: false
         }, {
             icon: icons.AIProfile,
             title: "AI FACE",
-            path: "/jdieij83dklxosoehfjf/AIface",
+            path: "/admin/ai-face",
             favourite: false
         }, {
             icon: icons.submit,
             title: "SOCIAL MEDIA",
-            path: "/jdieij83dklxosoehfjf/socialmedia",
+            path: "/admin/social-media",
             favourite: false
         }, {
             icon: icons.AIProfile,
             title: "PERSONAL AGENT",
-            path: "/jdieij83dklxosoehfjf/personalagent",
+            path: "/admin/personal-agent",
             favourite: false
         }, {
             icon: icons.usercontent,
             title: "R&R OF USER CONTENT",
-            path: "/jdieij83dklxosoehfjf/rusercontent",
+            path: "/admin/ruser-content",
             favourite: false
         }, {
             icon: icons.AIProfile,
             title: "DMCA BADGES",
-            path: "/jdieij83dklxosoehfjf/dmcabadges",
+            path: "/admin/dmcabadges",
             favourite: false
         }, {
             icon: icons.calendarcheck,
             title: "DATA ANALYTICS",
-            path: "/jdieij83dklxosoehfjf/analytics",
+            path: "/admin/analytics",
             favourite: false
         }, {
             icon: icons.DataReport,
             title: "DATA REPORT",
-            path: "/jdieij83dklxosoehfjf/datareport",
+            path: "/admin/report",
             favourite: false
         }, {
             icon: icons.testbots,
             title: "TEST BOTS",
-            path: "/jdieij83dklxosoehfjf/testbots",
+            path: "/admin/test-bots",
             favourite: false
         }, {
             icon: icons.users,
             title: "USERS",
-            path: "/jdieij83dklxosoehfjf/users",
+            path: "/admin/users",
             favourite: false
         }, {
             icon: icons.proxybots,
             title: "PROXIES BOTS",
-            path: "/jdieij83dklxosoehfjf/proxybot",
+            path: "/admin/proxy-bot",
             favourite: false
         }, {
             icon: icons.management,
             title: "VPS MANAGEMENT",
-            path: "/jdieij83dklxosoehfjf/vpsmanagement",
+            path: "/admin/vps-management",
             favourite: false
         }, {
             icon: icons.management,
             title: "REPORTS MANAGEMENT",
-            path: "/jdieij83dklxosoehfjf/reportmanagement",
+            path: "/admin/report-management",
             favourite: false
         }, {
             icon: icons.pingmodels,
             title: "PING MODELS",
-            path: "/jdieij83dklxosoehfjf/pingmodels",
+            path: "/admin/ping-models",
             favourite: false
         }, {
             icon: icons.autocontract,
             title: "AUTO-CONTRACT",
-            path: "/jdieij83dklxosoehfjf/autocontract",
+            path: "/admin/auto-contract",
             favourite: false
         }, {
             icon: icons.bing,
             title: "BLOG",
-            path: "/jdieij83dklxosoehfjf/blog",
+            path: "/admin/blog",
             favourite: false
         }, {
             icon: icons.notification,
             title: "NOTIFICATION",
-            path: "/jdieij83dklxosoehfjf/notifications",
+            path: "/admin/notifications",
             favourite: false
         },
     ])
@@ -273,6 +273,8 @@ const Sidebar = ({ show, setter }) => {
     const handleSelectTitle = () => {
         setter(false)
     }
+
+    const currentPath = usePathname();
 
     const handleSelectFavourite = useCallback((selectindex) => {
 
@@ -318,21 +320,21 @@ const Sidebar = ({ show, setter }) => {
             <div className={`flex flex-col h-screen bg-[#000001] text-white max-sm:overflow-y-auto ease-in-out max-w-80 w-full max-sm:bg-[#020615] max-lg:h-screen justify-start max-sm:px-0 z-40 max-lg:absolute duration-1000 cursor-pointer ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
                 <div className="flex w-full px-3 py-3">
                     {
-                        userInfo.roles.find((p) => p === 'admin')
-                            ?
+
+                        currentPath.includes("admin") ?
                             <div className="mx-auto flex items-center justify-around w-full">
-                                <div className="flex"><Link className="text-white cursor-pointer" href="/jdieij83dklxosoehfjf/dashboard"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
+                                <div className="flex"><Link className="text-white cursor-pointer" href="/admin/dashboard"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
                             </div>
                             :
                             <div className="mx-auto flex items-center justify-around w-full">
-                                <div className="flex"><Link className="text-white cursor-pointer" href="/userpanel/dashboard"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
+                                <div className="flex"><Link className="text-white cursor-pointer" href="/app/dashboard"><Image src="/assets/logo.svg" width={150} height={50} alt="logo" /></Link></div>
                             </div>
                     }
                 </div>
                 <div className="overflow-y-auto h-[calc(100vh-56px)] px-3 pb-3">
                     {
-                        userInfo.roles.find((p) => p === 'admin')
-                            ?
+
+                        currentPath.includes("admin") ?
                             <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
                                 {
                                     adminsidebarList.map((items, index) => {

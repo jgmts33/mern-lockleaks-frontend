@@ -7,7 +7,7 @@ import { Warning,TurnLeft, TurnRight, Search } from "@/components/utils/Icons";
 import { useRouter } from 'next/navigation';
 
 
-export default function DataReport() {
+export default function AutoContract() {
     const router = useRouter();
     const [value, setValue] = React.useState(25);
     const [selectDownload, setSelectDownload] = useState(0)
@@ -52,16 +52,16 @@ export default function DataReport() {
 
     const setSelectDownloadData = (index) => {
         setSelectDownload(index)
-        router.push("/jdieij83dklxosoehfjf/datareport/details")
+        router.push("/admin/report/details")
     }
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
             <div className='mt-0 max-lg:mx-auto'>
-                <span className='font-extrabold text-lg'>DATA PDF REPORT</span>
+                <span className='font-extrabold text-lg'>Auto Contract</span>
             </div>
             <div className='mt-10 max-md:mx-auto max-sm:mt-0'>
-                <span className='font-semibold text-base'>DATA PDF REPORT  DOWNLOAD</span>
+                <span className='font-semibold text-base'>Auto Contract Download</span>
             </div>
             <div className='flex gap-5 max-lg:flex-col max-sm:gap-0'>
                 <div className='flex gap-10 mt-5 max-2xl:flex-col max-lg:justify-center max-lg:items-center'>

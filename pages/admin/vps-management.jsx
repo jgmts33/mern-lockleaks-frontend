@@ -48,7 +48,7 @@ export default function VPSManagement() {
     ]
 
     const handleShowMoreDetails = () => {
-        router.push("/jdieij83dklxosoehfjf/users/usersview")
+        router.push("/admin/users/view")
     }
 
     return (

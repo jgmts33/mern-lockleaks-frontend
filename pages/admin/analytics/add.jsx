@@ -20,7 +20,7 @@ export default function AddAnalytics() {
     };
 
     const handleShowDetails = () => {
-        router.push("/jdieij83dklxosoehfjf/analytics/details");
+        router.push("/admin/analytics/details");
     }
 
     const personalAgentContent = [

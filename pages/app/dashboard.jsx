@@ -6,6 +6,7 @@ import {
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 
 export default function Dashbaord() {
 
@@ -28,13 +29,13 @@ export default function Dashbaord() {
         },
         {
             title: " Adult Tube Websites",
-            path: "/userpanel/adultwebsite",
+            path: "/app/adult-website",
             lastscan: 123456,
             total: 123456
         },
         {
             title: "Social Media",
-            path: "/userpanel/SMscanner",
+            path: "/app/sm-scanner",
             lastscan: 123456,
             total: 123456
         },
@@ -45,11 +46,17 @@ export default function Dashbaord() {
         },
         {
             title: "File Hosted",
-            path: "/userpanel/filehosted",
+            path: "/app/file-hosted",
             lastscan: 123456,
             total: 123456
         },
     ]
+
+    const userInfo = useSelector(info);
+
+    useEffect(() => {
+        console.log("userInfo:", userInfo);
+    },[userInfo]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white">

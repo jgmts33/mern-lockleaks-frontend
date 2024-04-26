@@ -30,13 +30,13 @@ export const register = async (data) => {
   } catch (err) {
     return {
       status: 'fail',
-      data: err.response.data.message
+      data: err.response?.data?.message
     }
   }
 }
 
 export const verifyEmail = async (token) => {
-  
+
   try {
     const res = await axios.post(`${ENDPOINT}/auth/verify-email`, { token });
 
@@ -48,8 +48,25 @@ export const verifyEmail = async (token) => {
   } catch (err) {
     return {
       status: 'fail',
-      data: err.response.data.message
+      data: err.response?.data?.message
     }
   }
-  
+
+}
+
+export const googleAuth = async (code) => {
+  try {
+    const res = await axios.post(`${ENDPOINT}/auth/google`, { code });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message
+    }
+  }
 }
