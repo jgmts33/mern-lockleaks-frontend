@@ -110,7 +110,7 @@ export default function Register() {
         }
 
         setIsProcessing(false);
-    }, [email, password]);
+    }, [email, password, confirmPassword]);
 
 
 
