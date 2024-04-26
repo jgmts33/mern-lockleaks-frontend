@@ -78,7 +78,7 @@ export default function AccountSetting() {
 
                 {/* This section for define Contract Lockleaks*/}
                 {
-                    userData.email == "cosmin@gmail.com" && userData.password == "admin123"
+                    userInfo.roles.find(p => p === 'admin')
                         ?
                         false
                         :
