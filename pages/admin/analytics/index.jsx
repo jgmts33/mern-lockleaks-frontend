@@ -32,7 +32,7 @@ export default function Analytics() {
     ]
 
     const handleGoAddAnalytics = () => {
-        router.push("/jdieij83dklxosoehfjf/analytics/addanalytics")
+        router.push("/admin/analytics/add")
     }
 
 

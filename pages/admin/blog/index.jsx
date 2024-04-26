@@ -20,7 +20,7 @@ export default function Blog() {
     ]
 
     const handleCreatePost = () =>{
-        router.push("/jdieij83dklxosoehfjf/blog/createpost")
+        router.push("create-post")
     }
 
     return (

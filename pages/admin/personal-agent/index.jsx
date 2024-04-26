@@ -18,7 +18,7 @@ export default function PersonalAgent() {
     };
 
     const handleShowDetails = () => {
-        router.push("/jdieij83dklxosoehfjf/personalagent/details");
+        router.push("details");
     }
 
     return (

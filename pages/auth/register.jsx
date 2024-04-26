@@ -1,12 +1,23 @@
 "use client";
 import Image from 'next/image';
+import React from "react";
 import {
-    Button, Link, Checkbox, Chip, cn, useDisclosure, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter,
+    Button,
+    Link,
+    Checkbox,
+    useDisclosure,
+    Modal,
+    ModalContent,
+    ModalBody,
+    ModalFooter,
 } from '@nextui-org/react';
 import { useCallback, useEffect, useState } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google, Error, Success } from "@/components/utils/Icons";
-import React from "react";
 import { register } from '@/axios/auth';
+import GoogleAuth from '@/components/auth/google';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
+import { useRouter } from 'next/router';
 
 export default function Register() {
 
@@ -19,6 +30,8 @@ export default function Register() {
         error: <Error fill="currentColor" size={16} />,
         success: <Success fill="currentColor" size={16} />,
     };
+
+    const router = useRouter();
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -102,7 +115,8 @@ export default function Register() {
         });
 
         if (res.status === 'success') {
-
+            dispatch(setUserInfo({ ...res.data }));
+            router.push("/app/dashboard");
         }
 
         else {
@@ -111,7 +125,10 @@ export default function Register() {
 
         setIsProcessing(false);
     }, [email, password, confirmPassword]);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6053fd3da895503a10f0ce074118b83c474bfd5a
 
 
     return (
@@ -205,13 +222,10 @@ export default function Register() {
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
                         <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto max-sm:w-60  max-sm:justify-center max-sm:items-center'>
-                            <Button
-                                radius="lg"
-                                className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
-                                size='md'
-                            >
-                                {icons.google}
-                            </Button>
+                            <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}>
+                                <GoogleAuth />
+                            </GoogleOAuthProvider>
+
                             <Button
                                 radius="lg"
                                 className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"

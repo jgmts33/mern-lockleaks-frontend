@@ -21,7 +21,7 @@ export default function TicketDetail() {
     };
 
     const handleGoSettings = () => {
-        router.push("/userpanel/personalagent/setproperty");
+        router.push("/app/personal-agent/property");
     }
 
     const handleGoPreviousPage = () => {

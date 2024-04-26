@@ -31,7 +31,7 @@ export default function ReportManagement() {
     ]
 
     const handleShowMoreDetails = () => {
-        router.push("/jdieij83dklxosoehfjf/users/usersview")
+        router.push("/admin/users/view")
     }
 
     const handleReportManagement = () => {
