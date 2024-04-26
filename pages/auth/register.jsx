@@ -125,11 +125,6 @@ export default function Register() {
 
         setIsProcessing(false);
     }, [email, password, confirmPassword]);
-<<<<<<< HEAD
-
-=======
->>>>>>> 6053fd3da895503a10f0ce074118b83c474bfd5a
-
 
     return (
         <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
