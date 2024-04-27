@@ -12,6 +12,7 @@ import { login } from '@/axios/auth';
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import GoogleAuth from '@/components/auth/google';
+import FaceBookAuth from '@/components/auth/facebook';
 
 export default function Login() {
     const router = useRouter();
@@ -134,9 +135,10 @@ export default function Login() {
                             <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}>
                                 <GoogleAuth />
                             </GoogleOAuthProvider>
-                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30" size='md'>
+                            {/* <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30" size='md'>
                                 {icons.facebook}
-                            </Button>
+                            </Button> */}
+                            <FaceBookAuth />
                             <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30" size='md'>
                                 {icons.twitter}
                             </Button>

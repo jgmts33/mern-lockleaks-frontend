@@ -1,5 +1,5 @@
 import { Button } from "@nextui-org/react";
-import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import { Google } from "../utils/Icons";
 import { googleAuth } from "@/axios/auth";
 import { setUserInfo } from '@/lib/auth/authSlice';

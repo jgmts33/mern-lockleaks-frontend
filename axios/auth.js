@@ -70,3 +70,20 @@ export const googleAuth = async (code) => {
     }
   }
 }
+
+export const facebookAuth = async (code) => {
+  try {
+    const res = await axios.post(`${ENDPOINT}/auth/facebook`, { code });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message
+    }
+  }
+}
