@@ -19,6 +19,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
+import FaceBookAuth from '@/components/auth/facebook';
+import TwitterAuth from '@/components/auth/twitter';
 
 export default function Register() {
 
@@ -219,24 +221,9 @@ export default function Register() {
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
                         <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto max-sm:w-60  max-sm:justify-center max-sm:items-center'>
-                            <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}>
-                                <GoogleAuth />
-                            </GoogleOAuthProvider>
-
-                            <Button
-                                radius="lg"
-                                className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
-                                size='md'
-                            >
-                                {icons.facebook}
-                            </Button>
-                            <Button
-                                radius="lg"
-                                className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
-                                size='md'
-                            >
-                                {icons.twitter}
-                            </Button>
+                            <GoogleAuth />
+                            <FaceBookAuth />
+                            <TwitterAuth />
                         </div>
                         <div className='max-auto text-center'>
                             <span className='font-light text-sm'>Already have an account</span> <Link href='/auth/login' underline='always' className='text-white'><span className='font-medium text-sm'>Login</span></Link>

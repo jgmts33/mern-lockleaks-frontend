@@ -5,32 +5,32 @@ import { googleAuth } from "@/axios/auth";
 import { setUserInfo } from '@/lib/auth/authSlice';
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import queryString from "query-string";
 
 export default function GoogleAuth() {
 
   const icons = {
     google: <Google fill="currentColor" size={16} />,
   };
-  
+
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleGoogleAuth = useGoogleLogin({
-    onSuccess: async (codeReponse) => {
+  const handleGoogleAuth = async () => {
 
-      const res = await googleAuth(codeReponse.code)
+    const stringifiedParams = queryString.stringify({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+      redirect_uri: 'https://copyrightfixer.com/auth/google',
+      // redirect_uri: 'http://localhost:3000/auth/google',
+      scope: ['openid'].join(','), // comma seperated string
+      response_type: 'code',
+      access_type: 'offline'
+    });
 
-      if (res.status === 'success') {
-        dispatch(setUserInfo({ ...res.data }));
-        router.push("/app/dashboard");
-      } else {
-        console.log(res.data);
-      }
+    const googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`
 
-    },
-    flow: 'auth-code',
-    scope: ['openid'],
-  });
+    router.push(googleLoginUrl);
+  }
 
 
   return <Button
