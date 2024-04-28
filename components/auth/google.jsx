@@ -20,11 +20,13 @@ export default function GoogleAuth() {
 
     const stringifiedParams = queryString.stringify({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      redirect_uri: 'https://copyrightfixer.com/auth/google',
-      // redirect_uri: 'http://localhost:3000/auth/google',
-      scope: ['openid'].join(','), // comma seperated string
+      // redirect_uri: 'https://copyrightfixer.com/auth/google',
+      redirect_uri: 'http://localhost:3000/auth/google',
       response_type: 'code',
-      access_type: 'offline'
+      prompt: 'select_account',
+      include_granted_scopes: 'true',
+      enable_granular_conset: 'true',
+      scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me'
     });
 
     const googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`
