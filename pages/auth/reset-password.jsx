@@ -5,13 +5,27 @@ import {
 } from '@nextui-org/react';
 import Link from "next/link";
 import KeyIcon from "@/public/assets/Key.svg";
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { resetPassword } from '@/axios/auth';
+import { useRouter } from 'next/router';
+import { Error, Success } from '@/components/utils/Icons';
 
 export default function Home() {
+
+  const icons = {
+    error: <Error fill="currentColor" size={16} />,
+    success: <Success fill="currentColor" size={16} />,
+};
+
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordStength, setPasswordStength] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const passwordStrengthCheck = (password) => {
     const passwordLength = password.length;
@@ -48,6 +62,41 @@ export default function Home() {
     setPasswordStength(strength);
   }
 
+  const validationForm = useCallback(() => {
+    let errors = {};
+
+    if (!password) {
+      errors.password = "Password is required";
+    }
+    else if (password.length < 6 || password.length > 12) {
+      errors.password = "Password must be at least 6~12 characters"
+    }
+    else if (confirmPassword != password) {
+      errors.password = "Passwords Not Matched!"
+    }
+    console.log(confirmPassword, password)
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  }, [password, confirmPassword]);
+
+  const handleResetPassword = useCallback(async () => {
+
+    if (!validationForm()) return;
+
+    const token = searchParams.get('token'); searchParams;
+
+    setIsProcessing(true);
+    const res = await resetPassword(token, password);
+
+    if (res.status == "success") {
+      console.log("Success:", res.data);
+    } else {
+      console.log("error:", res.data);
+    }
+
+    setIsProcessing(false);
+  }, [password, confirmPassword]);
+
   useEffect(() => {
     if (password.length) passwordStrengthCheck(password);
     else setPasswordStength("");
@@ -59,8 +108,8 @@ export default function Home() {
       {/* This section for define reset password page content*/}
 
       <div className='w-full flex items-center justify-center'>
-      <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
-      <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
         <div className="w-[562px] max-sm:w-full flex flex-col items-center gap-10 text-white z-30">
           <div className='text-center max-w-[354px] mb-4 max-sm:mx-auto max-sm:mb-0 max-sm:mt-0'>
             <p className="text-[40px] font-medium leading-[60px]">Reset Password</p>
@@ -71,12 +120,12 @@ export default function Home() {
               <p className='font-[300] text-white pb-2'>Enter new Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
               <div>
-              <input
-                type="password"
-                name="new-password"
-                onChange={(e) => setPassword(e.target.value)}
-                className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
-              />
+                <input
+                  type="password"
+                  name="new-password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
+                />
               </div>
               <div className='absolute flex gap-2 items-center bottom-3 right-4'>
                 {
@@ -89,24 +138,42 @@ export default function Home() {
                 <p className={'text-sm ' + (passwordStength == "Weak" ? '!text-red-500' : passwordStength == "Strong" ? "!text-green-500" : "")}>{passwordStength}</p>
               </div>
             </div>
+            {
+                errors.password ?
+                  <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-sm'>{icons.error}&nbsp;{errors.password}</div>
+                  :
+                  false
+              }
             <div className='relative w-full'>
               <p className='font-[300] text-white pb-2'>Confirm Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
               <div>
-              <input
-                type="password"
-                name="confirm-password"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
-              />
+                <input
+                  type="password"
+                  name="confirm-password"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
+                />
               </div>
             </div>
-            <Link href="/">
-              <Button radius="lg" className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4 " size='lg'>
-                Confirm
-              </Button>
-            </Link>
-            <Button radius="lg" className="bg-transparent text-white shadow-lg w-full " size='lg'>
+            <Button
+              radius="lg"
+              className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4 "
+              size='lg'
+              onClick={handleResetPassword}
+              isProcessing={isProcessing}
+            >
+              Confirm
+            </Button>
+            <Button
+              radius="lg"
+              className="bg-transparent text-white shadow-lg w-full "
+              size='lg'
+              onClick={(e) => {
+                e.preventDefault();
+                router.push('/auth/login');
+              }}
+            >
               Cancel
             </Button>
           </div>

@@ -9,7 +9,7 @@ export default function VerifyCode() {
   useEffect(() => {
     (async () => {
       if (searchParams.get("code")) {
-        const res = await facebookAuth(searchParams.get("code"));
+        const res = await twitterAuth(searchParams.get("code"));
 
         if (res.status === 'success') {
           // Email verification successful

@@ -13,6 +13,7 @@ import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import GoogleAuth from '@/components/auth/google';
 import FaceBookAuth from '@/components/auth/facebook';
+import TwitterAuth from '@/components/auth/twitter';
 
 export default function Login() {
     const router = useRouter();
@@ -132,16 +133,16 @@ export default function Login() {
                             <span className='font-light text-sm'>or continue with</span>
                         </div>
                         <div className='flex relative gap-x-4 gap-y-2 w-96 mx-auto max-sm:justify-center max-sm:w-60'>
-                            <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}>
+                            <GoogleOAuthProvider
+                                clientId={`${process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}`}
+                            >
                                 <GoogleAuth />
                             </GoogleOAuthProvider>
                             {/* <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30" size='md'>
                                 {icons.facebook}
                             </Button> */}
                             <FaceBookAuth />
-                            <Button radius="lg" className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30" size='md'>
-                                {icons.twitter}
-                            </Button>
+                            <TwitterAuth />
                         </div>
                         <div className='mx-auto text-center z-30'>
                             <span className='font-light text-sm'>Don't have an account?</span> <Link href='/auth/register' underline='always' className='text-white'>Sign up</Link>

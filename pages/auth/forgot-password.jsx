@@ -4,12 +4,35 @@ import {
   Button
 } from '@nextui-org/react';
 import Link from "next/link";
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { GradientKey, Envelop } from "@/components/utils/Icons";
+import { forgotPassword } from '@/axios/auth';
+import { useRouter } from 'next/router';
 
 export default function ForgotPassword() {
 
+  const router = useRouter();
   const [email, setEmail] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleForgotPassword = useCallback(async () => {
+
+    if (email != "" && !/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(email)) {
+      setEmailError("Invalid Email Address");
+      return;
+    }
+
+    setIsProcessing(true);
+    const res = await forgotPassword(email);
+
+    if (res.status == "success") {
+      console.log("Password reset email sent successfully!");
+    } else {
+      console.log("error:", res.data);
+    }
+
+    setIsProcessing(false);
+  }, [email]);
 
   const icons = {
     envelop: <Envelop fill="currentColor" size={16} />,
@@ -22,8 +45,8 @@ export default function ForgotPassword() {
       {/* This section for define forgot password content*/}
 
       <div className='w-full flex items-center justify-center max-sm:mt-5'>
-      <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
-      <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
         <div className="w-[562px] flex flex-col items-center gap-10 text-white">
           <div className='text-center max-w-[354px] max-sm:mt-16'>
             <div className='rounded-full mx-auto bg-gradient-to-br from-gray-800 to-gray-900 p-3 w-12'>{icons.gradiant_key}</div>
@@ -42,10 +65,19 @@ export default function ForgotPassword() {
                 className='w-full outline-none p-2 pl-16 pr-28 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
               />
             </div>
-              <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4 max-sm:mt-16" size='lg'>
-                Send
-              </Button>
-            <Button radius="lg" className="bg-transparent text-white shadow-lg w-full max-sm:mt-10" size='lg'>
+            <Button
+              radius="lg"
+              className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4 max-sm:mt-16" size='lg'
+              onClick={handleForgotPassword}
+              isLoading={isProcessing}
+            >
+              Send
+            </Button>
+            <Button
+              radius="lg"
+              className="bg-transparent text-white shadow-lg w-full max-sm:mt-10" size='lg'
+              onClick={() => router.push("/auth/login")}
+            >
               Cancel
             </Button>
           </div>

@@ -1,5 +1,5 @@
 import { Button } from "@nextui-org/react";
-import { Facebook } from "../utils/Icons";
+import { Twitter } from "../utils/Icons";
 import { googleAuth } from "@/axios/auth";
 import { setUserInfo } from '@/lib/auth/authSlice';
 import { useDispatch } from "react-redux";
@@ -9,24 +9,25 @@ import queryString from "query-string";
 export default function FaceBookAuth() {
 
   const icons = {
-    facebook: <Facebook fill="currentColor" size={16} />,
+    twitter: <Twitter fill="currentColor" size={16} />,
   };
 
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleFacebookAuth = async () => {
+  const handleTwitterAuth = async () => {
 
     const stringifiedParams = queryString.stringify({
-      client_id: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
-      redirect_uri: 'https://copyrightfixer.com/auth/facebook/',
-      scope: ['email', 'user_friends'].join(','), // comma seperated string
+      client_id: process.env.NEXT_PUBLIC_TWITTER_CLIENT_ID,
+      redirect_uri: 'https://copyrightfixer.com/auth/twitter/',
+      state: 'state',
       response_type: 'code',
-      auth_type: 'rerequest',
-      display: 'popup',
+      code_challenge: process.env.NEXT_PUBLIC_TWITTER_CLIENT_SECRET,
+      code_challenge_method: 'S256',
+      scope: ["users.read", "tweet.read", "follows.read", "follows.write"]
     });
 
-    const facebookLoginUrl = `https://www.facebook.com/v4.0/dialog/oauth?${stringifiedParams}`
+    const facebookLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
 
     router.push(facebookLoginUrl);
   }
@@ -36,8 +37,8 @@ export default function FaceBookAuth() {
     radius="lg"
     className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
     size='md'
-    onClick={handleFacebookAuth}
+    onClick={handleTwitterAuth}
   >
-    {icons.facebook}
+    {icons.twitter}
   </Button>
 }

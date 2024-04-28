@@ -87,3 +87,60 @@ export const facebookAuth = async (code) => {
     }
   }
 }
+
+export const twitterAuth = async (code) => {
+  try {
+    const res = await axios.post(`${ENDPOINT}/auth/twitter`, { code });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message
+    }
+  }
+}
+
+export const forgotPassword = async (email) => {
+  try {
+
+    const res = await axios.post(`${ENDPOINT}/auth/forgot-password`, { email });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message
+    }
+  }
+}
+
+
+export const resetPassword = async (token, password) => {
+  try {
+
+    const res = await axios.post(`${ENDPOINT}/auth/reset-password`, {
+      token: token,
+      password: password,
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message
+    }
+  }
+}

@@ -28,7 +28,8 @@ export default function GoogleAuth() {
       }
 
     },
-    flow: 'auth-code'
+    flow: 'auth-code',
+    scope: ['openid'],
   });
 
 
