@@ -1,25 +1,27 @@
-import { useEffect } from "react";
 import { facebookAuth } from "@/axios/auth";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
+import { useDispatch } from 'react-redux';
+import { setUserInfo } from '@/lib/auth/authSlice';
 
 export default function VerifyCode() {
 
   const searchParams = useSearchParams();
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
+  if (searchParams) {
     (async () => {
       if (searchParams.get("code")) {
         const res = await facebookAuth(searchParams.get("code"));
 
         if (res.status === 'success') {
-          // Email verification successful
+          dispatch(setUserInfo({ ...res.data }));
           router.push('/app/dashboard');
         }
       }
     })();
-  }, [searchParams]);
+  }
 
-  return <></>
+  else router.push("/auth/login");
 }

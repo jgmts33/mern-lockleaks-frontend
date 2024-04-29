@@ -1,22 +1,27 @@
 "use client";
 import Image from 'next/image';
 import {
-  Button
+  Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  useDisclosure
 } from '@nextui-org/react';
-import Link from "next/link";
 import KeyIcon from "@/public/assets/Key.svg";
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { resetPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';
-import { Error, Success } from '@/components/utils/Icons';
+import { Error, Success, WarningModal } from '@/components/utils/Icons';
 
-export default function Home() {
+export default function ResetPassword() {
 
   const icons = {
     error: <Error fill="currentColor" size={16} />,
     success: <Success fill="currentColor" size={16} />,
-};
+    warningmodal: <WarningModal fill="currentColor" size={16} />,
+  };
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -26,6 +31,12 @@ export default function Home() {
   const [passwordStength, setPasswordStength] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [errors, setErrors] = useState({});
+  const [modalValue, setModalValue] = useState({
+    status: "",
+    content: ""
+  });
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const passwordStrengthCheck = (password) => {
     const passwordLength = password.length;
@@ -68,8 +79,8 @@ export default function Home() {
     if (!password) {
       errors.password = "Password is required";
     }
-    else if (password.length < 6 || password.length > 12) {
-      errors.password = "Password must be at least 6~12 characters"
+    else if (password.length < 6) {
+      errors.password = "Password must be at least 6 characters"
     }
     else if (confirmPassword != password) {
       errors.password = "Passwords Not Matched!"
@@ -87,10 +98,20 @@ export default function Home() {
 
     setIsProcessing(true);
     const res = await resetPassword(token, password);
-
+    
+    
     if (res.status == "success") {
-      console.log("Success:", res.data);
+      setModalValue({
+        status: "success",
+        content: res.data
+      })
+      onOpen();
     } else {
+      setModalValue({
+        status: "failed",
+        content: res.data || "Something went wrong!"
+      });
+      onOpen();
       console.log("error:", res.data);
     }
 
@@ -101,6 +122,14 @@ export default function Home() {
     if (password.length) passwordStrengthCheck(password);
     else setPasswordStength("");
   }, [password]);
+
+  const handleConfirmClick = useCallback(() => {
+    if (modalValue.status === "success") {
+      router.push("/auth/login");
+    } else {
+      onOpenChange(false);
+    }
+  }, [modalValue]);
 
   return (
     <div className='px-10 max-sm:px-2 flex min-h-[calc(100vh-80px)] w-full'>
@@ -139,11 +168,11 @@ export default function Home() {
               </div>
             </div>
             {
-                errors.password ?
-                  <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-sm'>{icons.error}&nbsp;{errors.password}</div>
-                  :
-                  false
-              }
+              errors.password ?
+                <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-sm'>{icons.error}&nbsp;{errors.password}</div>
+                :
+                false
+            }
             <div className='relative w-full'>
               <p className='font-[300] text-white pb-2'>Confirm Password</p>
               <Image src={KeyIcon} alt="Key Icon" className='absolute bottom-3 left-6 h-4' />
@@ -179,6 +208,37 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Modal
+        backdrop="opaque"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        classNames={{
+          backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+        }}
+      >
+        <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <div className='mx-auto flex items-center justify-center -mb-24'>{modalValue.status === 'success' ? icons.success : icons.warningmodal}</div>
+                <span className='font-medium text-5xl text-center capitalize'>{modalValue.status}!</span>
+                <span className='font-light text-xl'>{modalValue.content} </span>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  radius="lg"
+                  className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 ${modalValue.status === "success" ? 'from-[#84e584] to-[#35d35c]' : 'from-[#9C3FE4] to-[#C65647]'}`}
+                  size='md'
+                  onClick={() => handleConfirmClick()}
+                >
+                  {modalValue.status === 'success' ? "Confirm" : "Try Again"}
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+
+        </ModalContent>
+      </Modal>
     </div>
   );
 }

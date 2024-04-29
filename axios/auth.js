@@ -134,7 +134,7 @@ export const resetPassword = async (token, password) => {
 
     return {
       status: 'success',
-      data: res.data
+      data: res.data?.message || ""
     }
 
   } catch (err) {

@@ -12,13 +12,12 @@ import {
     ModalFooter,
 } from '@nextui-org/react';
 import { useCallback, useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google, Error, Success } from "@/components/utils/Icons";
+import { Lock, Envelop, Twitter, Facebook, Google, Error, Success, WarningModal } from "@/components/utils/Icons";
 import { register } from '@/axios/auth';
 import GoogleAuth from '@/components/auth/google';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import FaceBookAuth from '@/components/auth/facebook';
 import TwitterAuth from '@/components/auth/twitter';
 
@@ -31,10 +30,12 @@ export default function Register() {
         twitter: <Twitter fill="currentColor" size={16} />,
         facebook: <Facebook fill="currentColor" size={16} />,
         error: <Error fill="currentColor" size={16} />,
+        warningmodal: <WarningModal fill="currentColor" size={16} />,
         success: <Success fill="currentColor" size={16} />,
     };
 
     const router = useRouter();
+    const userInfo = useSelector(info);
     const dispatch = useDispatch();
 
     const [password, setPassword] = useState("");
@@ -46,6 +47,10 @@ export default function Register() {
     const [passwordStength, setPasswordStength] = useState("");
     const [errors, setErrors] = useState({});
     const [isProcessing, setIsProcessing] = useState(false);
+    const [modalValue, setModalValue] = useState({
+        status: "",
+        content: ""
+    });
 
     const passwordStrengthCheck = (password) => {
         const passwordLength = password.length;
@@ -98,8 +103,8 @@ export default function Register() {
         if (!password) {
             errors.password = "Password is required";
         }
-        else if (password.length < 6 || password.length > 12) {
-            errors.password = "Password must be at least 6~12 characters"
+        else if (password.length < 6 ) {
+            errors.password = "Password must be at least 6 characters"
         }
         else if (confirmPassword != password) {
             errors.password = "Passwords Not Matched!"
@@ -119,16 +124,33 @@ export default function Register() {
         });
 
         if (res.status === 'success') {
+            setModalValue({
+                status: "success",
+                content: "Congratulations, your account has been successfully created"
+            })
+            onOpen();
             dispatch(setUserInfo({ ...res.data }));
-            router.push("/app/dashboard");
         }
 
         else {
+            setModalValue({
+                status: "failed",
+                content: res.data || "Something went wrong!"
+            });
+            onOpen();
             console.log("error:", res.data);
         }
 
         setIsProcessing(false);
     }, [email, password, confirmPassword]);
+
+    const handleConfirmClick = useCallback(() => {
+        if (modalValue.status === "success") {
+            router.push("/app/dashboard");
+        } else {
+            onOpenChange(false);
+        }
+    }, [modalValue]);
 
     return (
         <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
@@ -136,7 +158,7 @@ export default function Register() {
             {/* This section for keep Register Content*/}
 
             <div className='w-full flex items-center justify-center'>
-                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-0 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
+                <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-0 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
                 <div className="w-[562px] max-sm:w-full flex flex-col items-center text-white z-30">
                     <div className='text-center max-w-[354px] mb-4 max-sm:mb-0 max-sm:mt-0'>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
@@ -243,20 +265,25 @@ export default function Register() {
                     {(onClose) => (
                         <>
                             <ModalBody>
-                                <div className='mx-auto flex items-center justify-center -mb-32'>{icons.success}</div>
-                                <span className='font-medium text-5xl text-center'>Success!</span>
-                                <span className='font-light text-xl'>Congratulations, your account has been successfully created</span>
+                                <div className='mx-auto flex items-center justify-center -mb-24'>{modalValue.status === 'success' ? icons.success : icons.warningmodal}</div>
+                                <span className='font-medium text-5xl text-center capitalize'>{modalValue.status}!</span>
+                                <span className='font-light text-xl'>{modalValue.content} </span>
                             </ModalBody>
                             <ModalFooter>
-                                <Button radius="lg" className="bg-gradient-to-tr from-[#84e584] to-[#35d35c] mt-4 w-full" size='md'>
-                                    Success
+                                <Button
+                                    radius="lg"
+                                    className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 ${modalValue.status === "success" ? 'from-[#84e584] to-[#35d35c]' : 'from-[#9C3FE4] to-[#C65647]'}`}
+                                    size='md'
+                                    onClick={() => handleConfirmClick()}
+                                >
+                                    {modalValue.status === 'success' ? "Confirm" : "Try Again"}
                                 </Button>
                             </ModalFooter>
                         </>
                     )}
                 </ModalContent>
             </Modal>
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-52 bg-[#532a88] bg-opacity-50 blur-3xl' />
+            <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-52 bg-[#532a88] bg-opacity-50 blur-3xl' />
         </div>
     );
 }
