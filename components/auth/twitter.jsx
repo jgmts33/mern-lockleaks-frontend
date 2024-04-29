@@ -24,7 +24,7 @@ export default function FaceBookAuth() {
       response_type: 'code',
       code_challenge: process.env.NEXT_PUBLIC_TWITTER_CLIENT_SECRET,
       code_challenge_method: 'S256',
-      scope: ["users.read", "tweet.read", "follows.read", "follows.write"]
+      scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" ")
     });
 
     const facebookLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
