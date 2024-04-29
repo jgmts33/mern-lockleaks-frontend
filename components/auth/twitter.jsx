@@ -26,7 +26,7 @@ export default function FaceBookAuth() {
       response_type: 'code',
       code_challenge: 'challenge',
       code_challenge_method: 'plain',
-      scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" ")
+      scope: ["users.read", "users.email.read"].join(" ")
     });
 
     const twitterLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
