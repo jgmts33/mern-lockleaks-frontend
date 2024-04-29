@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { facebookAuth } from "@/axios/auth";
+import { twitterAuth } from "@/axios/auth";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 
