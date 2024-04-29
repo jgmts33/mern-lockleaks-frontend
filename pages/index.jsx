@@ -217,7 +217,7 @@ export default function HomePage() {
   }, []);
 
   const handleSettingCookie = () => {
-    router.push("/cookiesettings")
+    router.push("/cookie-settings")
   }
 
   const CookieSetting = () => {

@@ -4,6 +4,7 @@ import Layout from '../components/layout/index.jsx';
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import StoreProvider from "@/lib/StoreProvider.jsx";
 
 export default function MyApp({ Component, pageProps }) {
 
@@ -19,9 +20,11 @@ export default function MyApp({ Component, pageProps }) {
       <Script src="https://accounts.google.com/gsi/client" async defer></Script>
       <NextUIProvider>
         <NextThemesProvider attribute="class" defaultTheme="dark">
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <StoreProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </StoreProvider>
         </NextThemesProvider>
       </NextUIProvider>
     </>

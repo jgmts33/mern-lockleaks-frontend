@@ -35,7 +35,6 @@ export default function Register() {
     };
 
     const router = useRouter();
-    const userInfo = useSelector(info);
     const dispatch = useDispatch();
 
     const [password, setPassword] = useState("");
