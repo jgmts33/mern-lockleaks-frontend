@@ -23,7 +23,7 @@ export default function FaceBookAuth() {
       client_id: process.env.NEXT_PUBLIC_TWITTER_CLIENT_ID,
       redirect_uri: 'https://copyrightfixer.com/auth/twitter',
       state: 'state',
-      response_type: 'token',
+      response_type: 'code',
       code_challenge: 'challenge',
       code_challenge_method: 'plain',
       scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" ")
