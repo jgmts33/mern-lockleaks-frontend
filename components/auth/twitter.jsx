@@ -29,9 +29,9 @@ export default function FaceBookAuth() {
       scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" ")
     });
 
-    const facebookLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
+    const twitterLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
 
-    router.push(facebookLoginUrl);
+    router.push(twitterLoginUrl);
   }
 
 
