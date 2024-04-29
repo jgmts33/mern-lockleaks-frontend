@@ -190,7 +190,7 @@ export default function ResetPassword() {
               className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4 "
               size='lg'
               onClick={handleResetPassword}
-              isProcessing={isProcessing}
+              isLoading={isProcessing}
             >
               Confirm
             </Button>
