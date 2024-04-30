@@ -53,7 +53,7 @@ export default function AccountSetting() {
 
                 {/* This section for define Subscription info*/}
                 {
-                    userInfo.roles.find(p => p === 'admin')
+                    userInfo?.roles.find(p => p === 'admin')
                         ?
                         false
                         :
@@ -78,7 +78,7 @@ export default function AccountSetting() {
 
                 {/* This section for define Contract Lockleaks*/}
                 {
-                    userInfo.roles.find(p => p === 'admin')
+                    userInfo?.roles.find(p => p === 'admin')
                         ?
                         false
                         :
