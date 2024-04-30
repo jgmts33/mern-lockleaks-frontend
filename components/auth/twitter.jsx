@@ -28,7 +28,8 @@ export default function FaceBookAuth() {
       code_challenge_method: 'plain',
       scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" "),
       prompt: 'consent',
-      incluse_granted_scopes: 'true'
+      incluse_granted_scopes: 'true',
+      enable_granular_consent: 'true'
     });
 
     const twitterLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`

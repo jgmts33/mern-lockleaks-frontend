@@ -10,18 +10,17 @@ export default function VerifyCode() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  if (searchParams) {
-    (async () => {
-      if (searchParams.get("code")) {
-        const res = await facebookAuth(searchParams.get("code"));
+  (async () => {
+    if (searchParams.get("code")) {
+      const res = await facebookAuth(searchParams.get("code"));
 
-        if (res.status === 'success') {
-          dispatch(setUserInfo({ ...res.data }));
-          router.push('/app/dashboard');
-        }
+      if (res.status === 'success') {
+        dispatch(setUserInfo({ ...res.data }));
+        router.push('/app/dashboard');
       }
-    })();
-  }
-
-  else router.push("/auth/login");
+    }
+    else {
+      router.push("/auth/login");
+    }
+  })();
 }
