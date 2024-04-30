@@ -22,11 +22,11 @@ export default function FaceBookAuth() {
     const stringifiedParams = queryString.stringify({
       client_id: process.env.NEXT_PUBLIC_TWITTER_CLIENT_ID,
       redirect_uri: 'https://copyrightfixer.com/auth/twitter',
-      state: 'copyrightfixer-twitter-increaser-state',
+      state: 'twitter-increaser-state',
       response_type: 'code',
       code_challenge: 'challenge',
       code_challenge_method: 'plain',
-      scope: ["users.read"].join(" ")
+      scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" ")
     });
 
     const twitterLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
