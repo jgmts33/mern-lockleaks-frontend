@@ -27,7 +27,7 @@ export default function FaceBookAuth() {
       code_challenge: 'challenge',
       code_challenge_method: 'plain',
       scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" "),
-      prompt: 'selecte_account',
+      prompt: 'select_account',
       incluse_granted_scopes: 'true'
     });
 
