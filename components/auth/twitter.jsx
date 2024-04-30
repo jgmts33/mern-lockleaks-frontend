@@ -26,10 +26,9 @@ export default function FaceBookAuth() {
       response_type: 'code',
       code_challenge: 'challenge',
       code_challenge_method: 'plain',
-      prompt: 'select_account',
-      include_granted_scopes: 'true',
-      enable_granular_conset: 'true',
-      scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" ")
+      scope: ["users.read", "tweet.read", "follows.read", "follows.write"].join(" "),
+      prompt: 'selecte_account',
+      incluse_granted_scopes: 'true'
     });
 
     const twitterLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
