@@ -1,6 +1,6 @@
 'use client'
 import { Poppins } from "next/font/google";
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Header from "@/components/layout/Header";
 import UserHeader from "@/components/layout(user)/Header";
 import Sidebar from "@/components/layout(user)/Sidebar";
@@ -8,26 +8,73 @@ import Footer from "@/components/layout/Footer";
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import {
-  Link, Button
+  Link, Button,
+  useDisclosure,
+  ModalContent,
+  ModalBody,
+  ModalFooter,
+  Modal
 } from '@nextui-org/react';
 import NextTopLoader from 'nextjs-toploader';
 import { useSelector } from "react-redux";
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useRouter } from "next/router";
+import { WarningModal } from "../utils/Icons";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
-  const currentPath = usePathname();
-  const [showSidebar, setShowSidebar] = useState(false);
-  const router = useRouter();
 
+  const icons = {
+    warningmodal: <WarningModal fill="currentColor" size={16} />,
+  };
+
+  const currentPath = usePathname();
+
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [modalValue, setModalValue] = useState({
+    title: "",
+    content: ""
+  });
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const router = useRouter();
   const userInfo = useSelector(info);
 
+  const handleConfirmClick = useCallback(() => {
+
+    if (!userInfo?.verified) {
+      window.location.assign(`mailto:${userInfo.email}`);
+    }
+
+    else if (!userInfo.subscription) {
+      router.push("/pricing");
+    }
+
+  }, [userInfo]);
+
   useEffect(() => {
+
     if (!userInfo && (currentPath?.includes("/app") || (currentPath?.includes("/admin")))) {
       router.push("/auth/login");
     }
+
+    if (!userInfo?.verified) {
+      setModalValue({
+        title: "You should verify Email before using our application",
+        content: 'If you want to use this feature, check your Inbox!'
+      })
+      onOpen();
+    }
+
+    else if (!userInfo?.subscription) {
+      setModalValue({
+        title: "You cannot use this feature, you must have the Pro or Star plan.",
+        content: 'If you want to use this feature click on the "Upgrade" button.'
+      })
+      onOpen();
+    }
+
   }, [userInfo]);
 
   return (
@@ -44,6 +91,40 @@ export default function RootLayout({ children }) {
                   {children}
                 </div>
               </div>
+
+              <Modal
+                backdrop="opaque"
+                isOpen={isOpen}
+                onClose={onOpen}
+                onOpenChange={onOpenChange}
+                classNames={{
+                  backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+                }}
+                hideCloseButton
+              >
+                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
+                  {(onClose) => (
+                    <>
+                      <ModalBody>
+                        <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>
+                        <span className='font-bold text-[34px] text-center capitalize leading-9'>{modalValue.title}!</span>
+                        <span className='font-light text-[22px]'>{modalValue.content} </span>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          radius="lg"
+                          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+                          size='md'
+                          onClick={() => handleConfirmClick()}
+                        >
+                          {!userInfo?.verified ? "Verify Email" : "Upgrade"}
+                        </Button>
+                      </ModalFooter>
+                    </>
+                  )}
+
+                </ModalContent>
+              </Modal>
             </div>
             :
             <div className="relative">
