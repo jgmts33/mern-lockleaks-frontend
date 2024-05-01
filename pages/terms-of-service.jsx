@@ -12,8 +12,8 @@ export default function TermService() {
         shine: <Shine fill="currentColor" size={16} />,
     };
 
-    const PravicyPolicy = {
-        title: "Terms of Services",
+    const TermsOfService = {
+        title: "Terms of Service",
     }
 
     const TermServiceContent = [
@@ -23,7 +23,7 @@ export default function TermService() {
         },
         {
             id: '',
-            content: "Lorem ipsum dolor sit amet consectetur. Venenatis risus dui metus in lectus vitae. Lobortis cursus viverra vitae molestie magnis. Nullam lorem sed nunc vulputate tellus. Sit neque lectus in enim hac vel blandit at. Rhoncus ipsum mi mi ridiculus a hac aliquet donec nibh. Mattis non non id lectus mattis quam. Ultricies auctor et dictum gravida. Eu viverra vulputate augue etiam. Tortor commodo vitae mollis turpis diam felis et faucibus dictum."
+            content: "AGREEMENT TO TERMS"
         },
         {
             id: '',
@@ -61,9 +61,8 @@ export default function TermService() {
 
                 {/* This section for define term service header*/}
 
-                <div className='text-center mt-10 max-sm:mt-5'>
-                    <p className='font-medium text-5xl uppercase max-lg:text-[30px]'>{PravicyPolicy.title}</p>
-                </div>
+                <p className='font-medium text-5xl uppercase max-lg:text-[30px] mt-10 mb-3 max-sm:mt-5'>{TermsOfService.title}</p>
+                <p>UPDATE DATE: 01.05.2024</p>
 
                 {/* This section for define term service content*/}
 
@@ -75,7 +74,11 @@ export default function TermService() {
                                     <div className='flex flex-col'>
                                         {icons.shine}
                                         <p className='mt-5 font-normal text-base'>{termservice.content.slice(0, 100)}...</p>
-                                        <Button radius="lg" className="bg-transparent justify-start text-white mt-4 flex gap-2 items-center" size='lg'>
+                                        <Button
+                                            radius="lg"
+                                            className="bg-transparent justify-start text-white mt-4 flex gap-2 items-center w-max"
+                                            size='lg'
+                                        >
                                             <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>Read More</span>
                                             <Image src="assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
                                         </Button>

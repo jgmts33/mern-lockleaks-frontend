@@ -115,7 +115,7 @@ export default function Header() {
               {
                 menuItems.map((menus, index) => {
                   return (
-                    <DropdownItem key={index} className="text-white" onClick={() => handleMenuItemClick(menus.path)}>{menus.content}</DropdownItem>
+                    <DropdownItem key={index} className="text-white" onClick={() => handleMenuItemClick(menus.path)}><span className="font-medium">{menus.content}</span></DropdownItem>
                   )
                 })
               }
