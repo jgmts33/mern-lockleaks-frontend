@@ -97,7 +97,7 @@ export default function RootLayout({ children }) {
               <Modal
                 backdrop="opaque"
                 isOpen={isOpen}
-                onClose={ !userInfo.roles.find(p => p === 'admin') && onOpen }
+                onClose={ !userInfo?.roles?.find(p => p === 'admin') && onOpen }
                 onOpenChange={onOpenChange}
                 classNames={{
                   backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
