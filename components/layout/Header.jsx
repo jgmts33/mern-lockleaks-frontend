@@ -4,6 +4,9 @@ import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, Navb
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowDown } from "@/components/utils/Icons";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function Header() {
   const router = useRouter();
@@ -110,12 +113,12 @@ export default function Header() {
             <DropdownTrigger>
               <Link color="foreground">SERVICES<span className="animate-bounce w-6 h-6 text-white">{icons.arrowDown}</span></Link>
             </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6">
+            <DropdownMenu aria-label="Static Actions" className="bg-[#191f33] rounded-sm px-6" >
               <DropdownSection title="" showDivider></DropdownSection>
               {
                 menuItems.map((menus, index) => {
                   return (
-                    <DropdownItem key={index} className="text-white" onClick={() => handleMenuItemClick(menus.path)}><span className="font-medium">{menus.content}</span></DropdownItem>
+                    <DropdownItem key={index} className="text-white" onClick={() => handleMenuItemClick(menus.path)}><span className={poppins.className}>{menus.content}</span></DropdownItem>
                   )
                 })
               }
