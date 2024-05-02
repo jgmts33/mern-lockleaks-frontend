@@ -1,18 +1,15 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
+    Button
 } from '@nextui-org/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success, WarningOnModal } from "@/components/utils/Icons";
 import { useRouter } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import React, { useRef } from "react";
 import { login } from '@/axios/auth';
-import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import GoogleAuth from '@/components/auth/google';
-import FaceBookAuth from '@/components/auth/facebook';
-import TwitterAuth from '@/components/auth/twitter';
+import { setUserInfo } from '@/lib/auth/authSlice';
 
 export default function Login() {
     const router = useRouter();
@@ -31,11 +28,6 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
-    const [modalValue, setModalValue] = useState({
-        status: "",
-        content: ""
-    });
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     const emailInputRef = useRef(null);
     const passwordInputRef = useRef(null);
@@ -64,31 +56,14 @@ export default function Login() {
         });
 
         if (res.status == "success") {
-            setModalValue({
-                status: "success",
-                content: "Congratulations!, welcome to visit our lockleaks site"
-            })
-            onOpen();
-            dispatch(setUserInfo({ ...res.data }));
+            dispatch(setUserInfo({ ...res.data }))
+            router.push("/admin/dashboard");
         } else {
-            setModalValue({
-                status: "failed",
-                content: res.data || "Something went wrong!"
-            });
-            onOpen();
             console.log("error:", res.data);
         }
 
         setIsProcessing(false);
     }, [email, password]);
-
-    const handleConfirmClick = useCallback(() => {
-        if (modalValue.status === "success") {
-            router.push("/amdin/dashboard");
-        } else {
-            onOpenChange(false);
-        }
-    }, [modalValue]);
 
     return (
 
@@ -143,37 +118,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            <Modal
-                backdrop="opaque"
-                isOpen={isOpen}
-                onOpenChange={onOpenChange}
-                classNames={{
-                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
-                }}
-            >
-                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
-                    {(onClose) => (
-                        <>
-                            <ModalBody>
-                                <div className='mx-auto flex items-center justify-center -mb-24'>{modalValue.status === 'success' ? icons.success : icons.warningmodal}</div>
-                                <span className='font-medium text-5xl text-center capitalize'>{modalValue.status}!</span>
-                                <span className='font-light text-xl'>{modalValue.content} </span>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button
-                                    radius="lg"
-                                    className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 ${modalValue.status === "success" ? 'from-[#84e584] to-[#35d35c]' : 'from-[#9C3FE4] to-[#C65647]'}`}
-                                    size='md'
-                                    onClick={() => handleConfirmClick()}
-                                >
-                                    {modalValue.status === 'success' ? "Confirm" : "Try Again"}
-                                </Button>
-                            </ModalFooter>
-                        </>
-                    )}
-
-                </ModalContent>
-            </Modal>
             <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 right-52 bg-[#532a88] bg-opacity-50 blur-3xl' />
         </div>
     );
