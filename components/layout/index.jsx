@@ -119,6 +119,14 @@ export default function RootLayout({ children }) {
                         >
                           {!userInfo?.verified ? "Verify Email" : "Upgrade"}
                         </Button>
+                        <Button
+                          radius="lg"
+                          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600`}
+                          size='md'
+                          onClick={() => router.push("/")}
+                        >
+                          Back to HomePage
+                        </Button>
                       </ModalFooter>
                     </>
                   )}
