@@ -55,6 +55,8 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
 
+    console.log("userInfo:", userInfo);
+
     if (!userInfo && (currentPath?.includes("/app") || (currentPath?.includes("/admin")))) {
       router.push("/auth/login");
     }
