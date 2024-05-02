@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { verifyEmail } from "@/axios/auth";
 import { useDispatch } from "react-redux";
+import { setUserInfo } from "@/lib/auth/authSlice";
 
 export default function VerifyEmail() {
 
