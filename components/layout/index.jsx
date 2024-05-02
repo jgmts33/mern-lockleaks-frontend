@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
     title: "",
     content: ""
   });
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   const router = useRouter();
   const userInfo = useSelector(info);
@@ -77,6 +77,10 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
+    else {
+      onClose();
+    }
+
   }, [userInfo]);
 
   return (
@@ -97,7 +101,7 @@ export default function RootLayout({ children }) {
               <Modal
                 backdrop="opaque"
                 isOpen={isOpen}
-                onClose={ !userInfo?.roles?.find(p => p === 'admin') && onOpen }
+                onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{
                   backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
