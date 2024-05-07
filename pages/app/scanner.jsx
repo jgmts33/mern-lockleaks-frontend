@@ -15,8 +15,12 @@ export default function Scanner() {
         complete: <Complete fill="currentColor" size={16} />,
     };
 
+    const handleScan = () => {
+
+    }
+
     const ScannerContent = [
-        {
+        {  
             icon: icons.googlesearch,
             title: "GOOGLE SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>

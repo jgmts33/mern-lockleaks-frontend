@@ -10,11 +10,15 @@ import Flag from '@/public/assets/background/download.svg';
 import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
+import { setUserInfo } from "@/lib/auth/authSlice";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 const UserHeader = ({ show, setter }) => {
 
   const router = useRouter();
-
+  const dispatch = useDispatch();
 
   const [isSearch, setSearch] = useState(false);
 
@@ -50,7 +54,8 @@ const UserHeader = ({ show, setter }) => {
   ]
 
   const handleLogOut = () => {
-    router.push("/auth/login")
+    dispatch(setUserInfo(null));
+    router.push("/auth/login");
   }
 
   return (
@@ -98,7 +103,7 @@ const UserHeader = ({ show, setter }) => {
                 notifications.map((item, index) => {
                   return (
                     <DropdownItem key={index}>
-                      <div className="max-w-[300px] flex w-full flex-col">
+                      <div className={"max-w-[300px] flex w-full flex-col " + poppins.className}>
                         <div><span>{item.title}</span></div>
                       </div>
                     </DropdownItem>
@@ -126,13 +131,13 @@ const UserHeader = ({ show, setter }) => {
               className="text-white"
             >
               <DropdownItem>
-                <div className="flex w-full space-x-1 mx-auto" onClick={() => handleUserSetting()}>
+                <div className={"flex w-full space-x-1 mx-auto " + poppins.className} onClick={handleUserSetting}>
                   <span>{icons.accountsetting}</span>
                   <span>Account Settings</span>
                 </div>
               </DropdownItem>
               <DropdownItem>
-                <div className="flex w-full space-x-2 mx-auto pl-1" onClick={() => handleLogOut()}>
+                <div className={"flex w-full space-x-2 mx-auto pl-1 " + poppins.className} onClick={handleLogOut}>
                   <span>{icons.logout}</span>
                   <span>Log out</span>
                 </div>

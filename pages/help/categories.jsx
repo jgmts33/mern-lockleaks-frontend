@@ -95,27 +95,29 @@ export default function Categories() {
 
             {/* This section for define Help Page content*/}
 
-            <div className="flex z-10 backdrop-blur-sm bg-white/5 shadow-sm rounded-[20px] w-full p-20 max-xl:p-0 mt-20 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center">
-                <div className='flex flex-col w-1/3 gap-3 max-md:mx-auto max-md:justify-center max-md:items-center max-md:w-full'>
+            <div className="flex z-10 gap-10 backdrop-blur-sm bg-white/5 shadow-sm rounded-[20px] w-full p-20 max-xl:p-0 mt-20 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center">
+                <div className='flex flex-col min-w-[300px] gap-3 max-md:mx-auto max-md:justify-center max-md:items-center max-md:w-full'>
                     <div className='max-xl:pt-10'><span className='font-medium text-3xl'>Categories</span></div>
                     {
                         CatagoryButtons.map((items, index) => {
                             return (
-                                <div key={index} className='mt-3'>
+                                <div key={index}>
                                     {
                                         selectedCategory == index ?
                                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white px-5 py-5 shadow-lg text-lg max-sm:text-base" size='md' onClick={() => setSelectCatecory(index)}>
                                                 {items}
                                             </Button>
                                             :
-                                            <span className='font-medium text-lg max-sm:text-base' onClick={() => setSelectCatecory(index)}>{items}</span>
+                                            <Button radius="lg" className="bg-transparent text-white px-5 py-5 shadow-lg text-lg max-sm:text-base -ml-5" size='md' onClick={() => setSelectCatecory(index)}>
+                                                {items}
+                                            </Button>
                                     }
                                 </div>
                             )
                         })
                     }
                 </div>
-                <div className='flex flex-col w-2/3 gap-5 max-xl:w-full max-xl:px-5 max-md:mx-auto max-md:text-lg max-xl:mt-10 mb-10 max-sm:w-full max-sm:px-3'>
+                <div className='flex flex-col gap-5 max-xl:w-full max-xl:px-5 max-md:mx-auto max-md:text-lg max-xl:mt-10 mb-10 max-sm:w-full max-sm:px-3'>
                     {
                         CategoriesContent.map((category, index) => {
                             return (

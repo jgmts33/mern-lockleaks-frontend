@@ -46,7 +46,7 @@ export default function AdminDashbaord() {
             total: 123456
         },
         {
-            title: "Forums",
+            title: "File Hosted",
             subtitle:"total last scan",
             lastscan: 123456,
             total: 123456
@@ -85,7 +85,7 @@ export default function AdminDashbaord() {
                                         <span className='text-[#A29EB1]'>{items.subtitle}</span>
                                         <span className='py-1'>{items.lastscan}</span>
                                         <div className='flex gap-5 py-5 items-center'>
-                                            <div><span className='gap-5 font-medium text-lg text-[#A29EB1]'>ToTal:</span></div>
+                                            <div><span className='gap-5 font-medium text-lg text-[#A29EB1]'>Total:</span></div>
                                             <div><span className='font-bold text-base'>{items.total}</span></div>
                                         </div>
                                     </div>

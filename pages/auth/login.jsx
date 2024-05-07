@@ -33,7 +33,8 @@ export default function Login() {
     const [isProcessing, setIsProcessing] = useState(false);
     const [modalValue, setModalValue] = useState({
         status: "",
-        content: ""
+        content: "",
+        userInfo: null,
     });
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -65,10 +66,10 @@ export default function Login() {
         if (res.status == "success") {
             setModalValue({
                 status: "success",
-                content: "Congratulations!, welcome to visit our lockleaks site"
+                content: "Congratulations!, welcome to visit our lockleaks site",
+                userInfo: {...res.data}
             })
             onOpen();
-            dispatch(setUserInfo({ ...res.data }));
         } else {
             setModalValue({
                 status: "failed",
@@ -83,11 +84,12 @@ export default function Login() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
+            dispatch(setUserInfo(modalValue.userInfo));
             router.push("/app/dashboard");
         } else {
             onOpenChange(false);
         }
-    }, [modalValue]);
+    }, [modalValue.status]);
 
     return (
 
@@ -181,7 +183,7 @@ export default function Login() {
                                     radius="lg"
                                     className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 ${modalValue.status === "success" ? 'from-[#84e584] to-[#35d35c]' : 'from-[#9C3FE4] to-[#C65647]'}`}
                                     size='md'
-                                    onClick={() => handleConfirmClick()}
+                                    onClick={handleConfirmClick}
                                 >
                                     {modalValue.status === 'success' ? "Confirm" : "Try Again"}
                                 </Button>

@@ -84,10 +84,10 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   return (
-    <div className={poppins.className + (currentPath?.includes("/app") || currentPath?.includes("/admin") ? " overflow-hidden !p-0" : "")}>
+    <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
         {
-          currentPath?.includes("/app") || currentPath?.includes("/admin")
+          userInfo
             ?
             <div className="flex ">
               <Sidebar show={showSidebar} setter={setShowSidebar} />

@@ -86,7 +86,7 @@ export default function Dashbaord() {
                                         <span className='text-[#A29EB1]'>last scan:</span>
                                         <span className='py-1'>{items.lastscan}</span>
                                         <div className='flex gap-5 py-5 items-center'>
-                                            <div><span className='gap-5 font-medium text-lg text-[#A29EB1]'>ToTal:</span></div>
+                                            <div><span className='gap-5 font-medium text-lg text-[#A29EB1]'>Total:</span></div>
                                             <div><span className='font-bold text-base'>{items.total}</span></div>
                                         </div>
                                     </div>
