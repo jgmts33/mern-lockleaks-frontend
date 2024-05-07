@@ -143,7 +143,7 @@ export default function RootLayout({ children }) {
             :
             <div className="relative">
               {
-                !currentPath?.includes("/auth")
+                !currentPath?.includes("/auth") && !currentPath?.includes("/login")
                   ?
                   <Header />
                   :
@@ -172,7 +172,7 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
               {
-                !currentPath?.includes("/auth")
+                !currentPath?.includes("/auth") && !currentPath?.includes("/login")
                   ?
                   <Footer />
                   :
