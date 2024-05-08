@@ -44,7 +44,7 @@ export default function SMsubmit() {
                 </div>
                 <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5 sm:hidden">
                     <div className='flex flex-col'>
-                        <span className='font-normal text-[18px] text-center'>How Doew It Works?</span>
+                        <span className='font-normal text-[18px] text-center'>How Does It Work?</span>
                         <span className='font-normal text-xs pt-3'>Choose the reference image, Upload your photo, upload your ID card picture, and then press Start.</span>
                     </div>
                 </div>

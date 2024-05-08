@@ -20,20 +20,17 @@ export default function Blog() {
     ]
 
     const handleCreatePost = () =>{
-        router.push("create-post")
+        router.push("/admin/blog/create-post")
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 space-y-10 container text-white max-lg:mx-auto">
-            <div className='max-lg:mx-auto'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+            <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>BLOG</span>
             </div>
-            <div className='flex items-center space-x-20 max-lg:justify-between'> 
+            <div className='flex items-center space-x-20 max-lg:justify-between mt-5'> 
                 <Button radius="lg" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base" size='md' onClick={()=>handleCreatePost()}>
                     Create post
-                </Button>
-                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md'>
-                    Edit existing
                 </Button>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 px-10 py-5 rounded-[16px] max-w-[1000px] mt-10 w-full'>

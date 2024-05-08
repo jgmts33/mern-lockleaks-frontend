@@ -48,7 +48,7 @@ export default function CreatePost() {
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>BLOG</span>
             </div>
-            <div className='flex mt-5 w-full px-3'>
+            <div className='flex mt-5 w-full'>
                 <Input type="text" label="Title" />
             </div>
             <div className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 text-white px-10 max-sm:gap-3  w-full bg-gradient-to-br bg-[#242222] border py-5 items-center border-gray-600 rounded-[20px]'>

@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar } from "@/components/utils/Icons";
+import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar, KeywordsDataSet } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
 import { usePathname, useRouter } from 'next/navigation';
@@ -43,6 +43,7 @@ const Sidebar = ({ show, setter }) => {
         bing: <Bing fill="currentColor" size={16} />,
         yellowstar: <YellowStar fill="currentColor" size={16} />,
         star: <Star fill="currentColor" size={16} />,
+        keywordsDataSet : <KeywordsDataSet fill="currentColor" size={16} />
     };
 
     const router = useRouter();
@@ -242,6 +243,11 @@ const Sidebar = ({ show, setter }) => {
             path: "/admin/ping-models",
             favourite: false
         }, {
+            icon: icons.keywordsDataSet,
+            title: "KEYWORDS DATASET",
+            path: "/admin/keywords",
+            favourite: false
+        }, {
             icon: icons.autocontract,
             title: "AUTO-CONTRACT",
             path: "/admin/auto-contract",
@@ -369,7 +375,7 @@ const Sidebar = ({ show, setter }) => {
                                                 }
                                                 <div className="flex cursor-pointer gap-1 items-center" onClick={() => handleSelectTitle()}>
                                                     <span>{items.icon}</span>
-                                                    <span className="text-xs">{items.title}</span>
+                                                    <span className="text-sm">{items.title}</span>
                                                 </div>
                                             </div>
                                         )
