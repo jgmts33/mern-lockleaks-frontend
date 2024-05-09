@@ -54,14 +54,14 @@ export const getAccessToken = async () => {
         tokens = await refreshTokenValue(tokens.refresh.token);
       } catch (error) {
 
-        if (window.location.pathname !== '/login') {
-          window.location.replace("/login")
+        if (window.location.pathname !== '/auth/login') {
+          window.location.replace("/auth/login")
         }
         return null;
       }
     } else {
-      if (window.location.pathname !== '/login') {
-        window.location.replace("/login")
+      if (window.location.pathname !== '/auth/login') {
+        window.location.replace("/auth/login")
       }
       return null;
     }

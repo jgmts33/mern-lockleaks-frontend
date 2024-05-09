@@ -87,8 +87,10 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    (async() => {
-      try {
+    if (currentPath.includes("/app") || currentPath.includes("/admin")) {
+
+      (async () => {
+        try {
           const accessToken = await getAccessToken();
           if (accessToken) {
             const res = await getUserInfo();
@@ -96,13 +98,13 @@ export default function RootLayout({ children }) {
               dispatch(setUserInfo(res.data));
             }
           }
-      } catch (err) {
+        } catch (err) {
           console.log(err);
-      } finally {
-          setIsLoading(false);
-      }
-    })();
-  },[]);
+        }
+      })();
+
+    }
+  }, []);
 
   return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
