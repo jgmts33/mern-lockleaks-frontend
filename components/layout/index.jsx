@@ -16,10 +16,12 @@ import {
   Modal
 } from '@nextui-org/react';
 import NextTopLoader from 'nextjs-toploader';
-import { useSelector } from "react-redux";
-import { userInfo as info } from '@/lib/auth/authSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
+import { getAccessToken } from "@/axios/token";
+import { getUserInfo } from "@/axios/auth";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -40,6 +42,7 @@ export default function RootLayout({ children }) {
 
   const router = useRouter();
   const userInfo = useSelector(info);
+  const dispatch = useDispatch();
 
   const handleConfirmClick = useCallback(() => {
 
@@ -82,6 +85,24 @@ export default function RootLayout({ children }) {
     }
 
   }, [userInfo]);
+
+  useEffect(() => {
+    (async() => {
+      try {
+          const accessToken = await getAccessToken();
+          if (accessToken) {
+            const res = await getUserInfo();
+            if (res.status == 'success') {
+              dispatch(setUserInfo(res.data));
+            }
+          }
+      } catch (err) {
+          console.log(err);
+      } finally {
+          setIsLoading(false);
+      }
+    })();
+  },[]);
 
   return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>

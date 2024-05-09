@@ -13,6 +13,7 @@ import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import GoogleAuth from '@/components/auth/google';
 import FaceBookAuth from '@/components/auth/facebook';
 import TwitterAuth from '@/components/auth/twitter';
+import { getAccessToken, setTokens } from '@/axios/token';
 
 export default function Login() {
     const router = useRouter();
@@ -31,6 +32,8 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isAutherized, setIsAutherized] = useState(false);
     const [modalValue, setModalValue] = useState({
         status: "",
         content: "",
@@ -85,11 +88,29 @@ export default function Login() {
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
             dispatch(setUserInfo(modalValue.userInfo));
+            setTokens(res.data.tokens);
             router.push("/app/dashboard");
         } else {
             onOpenChange(false);
         }
     }, [modalValue.status]);
+
+    // useEffect(() => {
+    //     (async() => {
+    //         try {
+    //             const accessToken = await getAccessToken();
+    //             if (accessToken) setIsAutherized(true);
+    //         } catch (err) {
+    //             console.log(err);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     })();
+    // },[]);
+
+    // if (isLoading) return <></>
+
+    // if (isAutherized) return <Navigate to="/dashboard" replace />
 
     return (
 

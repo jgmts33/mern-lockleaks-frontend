@@ -24,8 +24,8 @@ const refreshTokenValue = async (refreshToken) => {
     const response = await axios.post(`${ENDPOINT}/auth/refresh-token`, {
       refreshToken: refreshToken,
     });
-    const { accessToken, refreshToken } = response.data;
-    const tokens = { access : accessToken, refresh: refreshToken };
+    const { access, refresh } = response.data;
+    const tokens = { access, refresh };
 
     setTokens(tokens);
 

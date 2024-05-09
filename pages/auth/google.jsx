@@ -16,6 +16,7 @@ export default function VerifyCode() {
 
       if (res.status === 'success') {
         dispatch(setUserInfo({ ...res.data }));
+        setTokens(res.data.tokens);
         router.push('/app/dashboard');
       }
     }

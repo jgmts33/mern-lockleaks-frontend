@@ -1,5 +1,6 @@
 import { ENDPOINT } from '@/config/config';
 import axios from 'axios';
+import { getAccessToken, getUserId } from './token';
 
 export const login = async (data) => {
   try {
@@ -135,6 +136,27 @@ export const resetPassword = async (token, password) => {
     return {
       status: 'success',
       data: res.data?.message || ""
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message
+    }
+  }
+}
+
+export const getUserInfo = async () => {
+
+  const userId = getUserId();
+
+  try {
+
+    const res = await axios.get(`${ENDPOINT}/users/${userId}`);
+
+    return {
+      status: 'success',
+      data: res.data
     }
 
   } catch (err) {
