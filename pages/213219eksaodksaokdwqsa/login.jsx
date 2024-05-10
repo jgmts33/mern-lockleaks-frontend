@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import React, { useRef } from "react";
 import { login } from '@/axios/auth';
 import { setUserInfo } from '@/lib/auth/authSlice';
+import { setTokens } from '@/axios/token';
 
 export default function Login() {
     const router = useRouter();
@@ -57,6 +58,7 @@ export default function Login() {
 
         if (res.status == "success") {
             dispatch(setUserInfo({ ...res.data }))
+            setTokens(res.data.tokens);
             router.push("/admin/dashboard");
         } else {
             console.log("error:", res.data);

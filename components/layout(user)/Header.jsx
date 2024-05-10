@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import { setUserInfo } from "@/lib/auth/authSlice";
 import { Poppins } from "next/font/google";
+import { setTokensExpired } from "@/axios/token";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -55,6 +56,7 @@ const UserHeader = ({ show, setter }) => {
 
   const handleLogOut = () => {
     dispatch(setUserInfo(null));
+    setTokensExpired();
     router.push("/auth/login");
   }
 

@@ -72,6 +72,6 @@ export const getAccessToken = async () => {
 
 export const getUserId = () => {
   let access = getCookieValue('access') || '';
-  const { sub } = jwtDecode(access);
-  return sub ? sub : '';
+  const { id } = jwtDecode(access);
+  return id ? id : '';
 }

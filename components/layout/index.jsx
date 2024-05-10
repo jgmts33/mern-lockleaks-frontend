@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
-import { getAccessToken } from "@/axios/token";
+import { getAccessToken, setTokensExpired } from "@/axios/token";
 import { getUserInfo } from "@/axios/auth";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
@@ -58,13 +58,9 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
 
-    console.log("userInfo:", userInfo);
+    if (!userInfo) return;
 
-    if (!userInfo && (currentPath?.includes("/app") || (currentPath?.includes("/admin")))) {
-      router.push("/auth/login");
-    }
-
-    if (!userInfo?.verified) {
+    if (!userInfo.verified) {
       setModalValue({
         title: "You should verify Email before using our application",
         content: 'If you want to use this feature, check your Inbox!'
@@ -72,7 +68,7 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
-    else if (!userInfo?.subscription) {
+    else if (!userInfo.subscription) {
       setModalValue({
         title: "You cannot use this feature, you must have the Pro or Star plan.",
         content: 'If you want to use this feature click on the "Upgrade" button.'
@@ -84,40 +80,52 @@ export default function RootLayout({ children }) {
       onClose();
     }
 
+    if ( currentPath.includes("login") ) {
+
+      if (userInfo.roles?.includes("admin")) {
+        router.push("/admin/dashboard");
+      } else {
+        router.push("/app/dashboard");
+      }
+
+    }
+
   }, [userInfo]);
 
   useEffect(() => {
-    if (currentPath.includes("/app") || currentPath.includes("/admin")) {
-
-      (async () => {
-        try {
-          const accessToken = await getAccessToken();
-          if (accessToken) {
-            const res = await getUserInfo();
-            if (res.status == 'success') {
-              dispatch(setUserInfo(res.data));
-            }
+    if (!currentPath.includes("login") && !currentPath.includes("/app") && !currentPath.includes("/admin")) return;
+    console.log("asdasdasdasdasd");
+    (async () => {
+      try {
+        const accessToken = await getAccessToken();
+        if (accessToken) {
+          const res = await getUserInfo();
+          if (res.status == 'success') {
+            dispatch(setUserInfo(res.data));
           }
-        } catch (err) {
-          console.log(err);
         }
-      })();
+      } catch (err) {
+        console.log(err);
+      }
+    })();
 
-    }
   }, []);
+
+  useEffect(() => {
+    console.log("userInfo:", userInfo);
+  },[userInfo]);
 
   return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
         {
-          userInfo
-            ?
+          userInfo?
             <div className="flex ">
               <Sidebar show={showSidebar} setter={setShowSidebar} />
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
                 <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto" style={{ scrollBehavior: 'smooth' }}>
-                  {children}
+                  { children}
                 </div>
               </div>
 
@@ -152,7 +160,11 @@ export default function RootLayout({ children }) {
                           radius="lg"
                           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600`}
                           size='md'
-                          onClick={() => router.push("/")}
+                          onClick={() => {
+                            dispatch(setUserInfo(null));
+                            setTokensExpired();
+                            router.push("/");
+                          }}
                         >
                           Back to HomePage
                         </Button>

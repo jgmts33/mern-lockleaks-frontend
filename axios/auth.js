@@ -152,7 +152,11 @@ export const getUserInfo = async () => {
 
   try {
 
-    const res = await axios.get(`${ENDPOINT}/users/${userId}`);
+    const res = await axios.get(`${ENDPOINT}/users/${userId}`, {
+      headers: {
+        'x-access-token': await getAccessToken()
+      }
+    });
 
     return {
       status: 'success',

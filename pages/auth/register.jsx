@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import FaceBookAuth from '@/components/auth/facebook';
 import TwitterAuth from '@/components/auth/twitter';
+import { setTokens } from '@/axios/token';
 
 export default function Register() {
 
@@ -145,6 +146,7 @@ export default function Register() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
+            setTokens(res.data.tokens);
             router.push("/app/dashboard");
         } else {
             onOpenChange(false);

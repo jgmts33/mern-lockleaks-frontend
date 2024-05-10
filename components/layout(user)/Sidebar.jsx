@@ -43,13 +43,10 @@ const Sidebar = ({ show, setter }) => {
         bing: <Bing fill="currentColor" size={16} />,
         yellowstar: <YellowStar fill="currentColor" size={16} />,
         star: <Star fill="currentColor" size={16} />,
-        keywordsDataSet : <KeywordsDataSet fill="currentColor" size={16} />
+        keywordsDataSet: <KeywordsDataSet fill="currentColor" size={16} />
     };
 
-    const router = useRouter();
-    const [selectedSidebar, setSelectedSidebar] = useState(0);
-    const userInfo = useSelector(info);
-    const [sidebarList, setSidebarList] = useState([
+    const USER_SIDEBAR_LIST = [
         {
             id: 0,
             icon: icons.category,
@@ -159,9 +156,9 @@ const Sidebar = ({ show, setter }) => {
             path: "/app/notification",
             favourite: false
         }
-    ]);
-
-    const [adminsidebarList, setAdminSidebarList] = useState([
+    ];
+    
+    const ADMIN_SIDEBAR_LIST = [
         {
             icon: icons.category,
             title: "DASHBOARD",
@@ -263,7 +260,12 @@ const Sidebar = ({ show, setter }) => {
             path: "/admin/notifications",
             favourite: false
         },
-    ])
+    ]
+
+    const router = useRouter();
+    const [selectedSidebar, setSelectedSidebar] = useState(0);
+    const userInfo = useSelector(info);
+    const [sidebarList, setSidebarList] = useState([]);
 
     const handleSidebarClick = useCallback((path, index) => {
         setSelectedSidebar(index)
@@ -287,23 +289,7 @@ const Sidebar = ({ show, setter }) => {
 
     const handleSelectFavourite = useCallback((selectindex) => {
 
-        let _adminsidebarList = adminsidebarList.slice(), _sidebarList = sidebarList.slice();
-        if (userInfo.roles.find((p) => p === 'admin')) {
-            _adminsidebarList.map((item, index) => {
-                if (index === selectindex) {
-                    _adminsidebarList[index].favourite = !item.favourite;
-                }
-            })
-            _adminsidebarList.sort((a, b) => { return a.id - b.id })
-            _adminsidebarList.sort((a, b) => { return b.favourite - a.favourite });
-            _adminsidebarList.map((item, index) => {
-                if (adminsidebarList[selectedSidebar].path == item.path) {
-                    handleSidebarClick(item.path, index);
-                }
-            });
-            setAdminSidebarList(_adminsidebarList);
-        }
-        else {
+        let _sidebarList = sidebarList.slice();
             _sidebarList.map((item, index) => {
                 if (index === selectindex) {
                     _sidebarList[index].favourite = !item.favourite;
@@ -317,12 +303,17 @@ const Sidebar = ({ show, setter }) => {
                 }
             });
             setSidebarList(_sidebarList);
-        }
-    }, [sidebarList, adminsidebarList, selectedSidebar]);
+
+    }, [sidebarList, selectedSidebar]);
 
     useEffect(() => {
-        console.log(sidebarList, selectedSidebar);
-    }, [sidebarList, selectedSidebar]);
+
+        if (userInfo.roles.includes('admin')) {
+            setSidebarList(ADMIN_SIDEBAR_LIST)
+        } else {
+            setSidebarList(USER_SIDEBAR_LIST)
+        }
+    }, [userInfo]);
 
     return (
         <>
@@ -341,87 +332,45 @@ const Sidebar = ({ show, setter }) => {
                     }
                 </div>
                 <div className="overflow-y-auto h-[calc(100vh-56px)] px-3 pb-3">
-                    {
 
-                        currentPath.includes("admin") ?
-                            <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
-                                {
-                                    adminsidebarList.map((items, index) => {
-                                        return (
-                                            <div
-                                                key={index}
-                                                className={("py-1 items-center cursor-pointer ") + (selectedSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm'
-                                                onClick={() => handleSidebarClick(items.path, index)}
-                                            >
-                                                {
-                                                    items.favourite ?
-                                                        <div className="border border-gray-500 bg-transparent rounded-md"
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                handleSelectFavourite(index);
-                                                            }}
-                                                        >
-                                                            {icons.star}
-                                                        </div>
-                                                        :
-                                                        <div className="border border-gray-500 bg-transparent rounded-md"
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                handleSelectFavourite(index);
-                                                            }}
-                                                        >
-                                                            {icons.yellowstar}
-                                                        </div>
-                                                }
-                                                <div className="flex cursor-pointer gap-1 items-center" onClick={() => handleSelectTitle()}>
-                                                    <span>{items.icon}</span>
-                                                    <span className="text-sm">{items.title}</span>
+                    <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
+                        {
+                            sidebarList.map((items, index) => {
+                                return (
+                                    <div
+                                        key={index}
+                                        className={("py-1 items-center cursor-pointer ") + (selectedSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm'
+                                        onClick={() => handleSidebarClick(items.path, index)}
+                                    >
+                                        {
+                                            items.favourite ?
+                                                <div className="border border-gray-500 bg-transparent rounded-md"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleSelectFavourite(index);
+                                                    }}
+                                                >
+                                                    {icons.star}
                                                 </div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                            :
-                            <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-3">
-                                {
-                                    sidebarList.map((items, index) => {
-                                        return (
-                                            <div key={index} className="flex items-center cursor-pointer gap-2" onClick={() => handleSidebarClick(items.path, index)}>
-                                                {
-                                                    items.favourite ?
-                                                        <div
-                                                            className="border border-gray-500 bg-transparent rounded-md"
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                handleSelectFavourite(index)
-                                                            }}
-                                                        >
-                                                            {icons.star}
-                                                        </div>
-                                                        :
-                                                        <div
-                                                            className="border border-gray-500 bg-transparent rounded-md"
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                handleSelectFavourite(index)
-                                                            }}
-                                                        >
-                                                            {icons.yellowstar}
-                                                        </div>
-                                                }
-                                                <div className={"py-1 items-center w-full " + (selectedSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} onClick={() => handleSelectTitle()}>
-                                                    <div className="flex cursor-pointer gap-1 items-center">
-                                                        <span>{items.icon}</span>
-                                                        <span className="text-sm">{items.title}</span>
-                                                    </div>
+                                                :
+                                                <div className="border border-gray-500 bg-transparent rounded-md"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleSelectFavourite(index);
+                                                    }}
+                                                >
+                                                    {icons.yellowstar}
                                                 </div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                    }
+                                        }
+                                        <div className="flex cursor-pointer gap-1 items-center" onClick={() => handleSelectTitle()}>
+                                            <span>{items.icon}</span>
+                                            <span className="text-sm">{items.title}</span>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
             {show ? <ModalOverlay /> : <></>}
