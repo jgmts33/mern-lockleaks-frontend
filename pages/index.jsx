@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import CustomerReview from '@/components/customerReview';
 import { useRouter } from 'next/navigation';
+import { getCookieValue } from '@/axios/token';
+import { COOKIE_SETTING_OPTIONS } from './cookie-settings';
 
 export default function HomePage() {
   const router = useRouter();
@@ -189,8 +191,8 @@ export default function HomePage() {
     { title: "100,000 ", content: "Websites Crawled Daily", bgColor: true },
     { title: "7+", content: "Years of Experience" },
     { title: "100%", content: "Search Removal Efficiency", bgColor: true },
-    { title: "4", content: "Bots AI"},
-    { title: "98%", content: " Success Rate in Filehost Removal", bgColor: true  },
+    { title: "4", content: "Bots AI" },
+    { title: "98%", content: " Success Rate in Filehost Removal", bgColor: true },
     { title: "100%", content: "Removal from All Social Media Platforms" },
     { title: "97%", content: " Adult Tube Posts Removal", bgColor: true },
     { title: "100%", content: " Removal of Fake Profiles" }
@@ -200,8 +202,18 @@ export default function HomePage() {
   const [animationCounter, setAnimationCounter] = useState(0);
   const [isFlipped, setIsFlipped] = useState(-1);
   const [selectCookie, setSlectCookie] = useState(false);
-  
+  const [functionalCookieAllowed, setFunctionalCookieAllowed] = useState(false);
+
   useEffect(() => {
+
+    if (getCookieValue('necessary')) {
+      setSlectCookie(true);
+    }
+
+    if (getCookieValue('functional') == 'allowed') {
+      setFunctionalCookieAllowed(true);
+    }
+
     if (screen.width >= 650) {
       const timer = setInterval(() => {
         if (animationCounter === 2) {
@@ -211,16 +223,16 @@ export default function HomePage() {
       }, 1000);
       return () => clearInterval(timer);
     }
-    else{
+    else {
       setAnimationCounter(3)
     }
   }, []);
 
-  const handleSettingCookie = () => {
-    router.push("/cookie-settings")
-  }
-
-  const CookieSetting = () => {
+  const handleAllChecked = () => {
+    const expires = new Date('2030-12-30').toUTCString();
+    for (let index = 0; index < COOKIE_SETTING_OPTIONS.length; index++) {
+      document.cookie = `${COOKIE_SETTING_OPTIONS[index].name}=allowed; expires=${expires}; path=/`;
+    }
     setSlectCookie(true);
   }
 
@@ -237,10 +249,24 @@ export default function HomePage() {
               </div>
               <div className='flex space-x-5'>
                 <div>
-                  <Button radius="lg" className="border border-white/10" color="danger" onClick={() => handleSettingCookie()}>Customize</Button>
+                  <Button
+                    radius="lg"
+                    className="border border-white/10"
+                    color="danger"
+                    onClick={() => router.push("/cookie-settings")}
+                  >
+                    Customize
+                  </Button>
                 </div>
                 <div>
-                  <Button radius="lg" className="border border-white/10" color="primary" onClick={() => CookieSetting()}>Accept All</Button>
+                  <Button
+                    radius="lg"
+                    className="border border-white/10"
+                    color="primary"
+                    onClick={handleAllChecked}
+                  >
+                    Accept All
+                  </Button>
                 </div>
               </div>
             </div>
@@ -386,8 +412,8 @@ export default function HomePage() {
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3 relative'>
-        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
           <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-sm:mt-24 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
             <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-3xl'>OUR SERVICES FOR YOUR BENEFIT</span>
             <div className="grid grid-cols-4 gap-x-3 max-lg:flex-col max-w-[700px] mx-auto lg:hidden">
@@ -460,12 +486,12 @@ export default function HomePage() {
 
         {/* This section for define support video*/}
 
-        <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
+        { !functionalCookieAllowed ? <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
           <video controls preload="none" className='rounded-xl w-full'>
             <source src="/path/to/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+        </div> : <></>}
 
         {/* This section for define we're ready to assist*/}
 

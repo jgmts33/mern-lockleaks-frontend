@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
-import { getAccessToken, setTokensExpired } from "@/axios/token";
+import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
 import { getUserInfo } from "@/axios/auth";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
@@ -80,7 +80,7 @@ export default function RootLayout({ children }) {
       onClose();
     }
 
-    if ( currentPath.includes("login") ) {
+    if (currentPath.includes("login") && getCookieValue('necessary') == 'allowed') {
 
       if (userInfo.roles?.includes("admin")) {
         router.push("/admin/dashboard");
@@ -93,8 +93,7 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    if (!currentPath.includes("login") && !currentPath.includes("/app") && !currentPath.includes("/admin")) return;
-    console.log("asdasdasdasdasd");
+    if (!currentPath.includes("login") && !currentPath.includes("/app") && !currentPath.includes("/admin") || getCookieValue('necessary') !== 'allowed') return;
     (async () => {
       try {
         const accessToken = await getAccessToken();
@@ -113,19 +112,19 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     console.log("userInfo:", userInfo);
-  },[userInfo]);
+  }, [userInfo]);
 
   return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
         {
-          userInfo?
+          userInfo ?
             <div className="flex ">
               <Sidebar show={showSidebar} setter={setShowSidebar} />
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
                 <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto" style={{ scrollBehavior: 'smooth' }}>
-                  { children}
+                  {children}
                 </div>
               </div>
 

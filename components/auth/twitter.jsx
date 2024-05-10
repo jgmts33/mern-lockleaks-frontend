@@ -32,7 +32,7 @@ export default function FaceBookAuth() {
       enable_granular_consent: 'true'
     });
 
-    const twitterLoginUrl = `https://twitter.com/i/oauth2/authorize?${stringifiedParams}`
+    const twitterLoginUrl = `https://twitter.com/i/oauth2/authenticate?${stringifiedParams}`
 
     router.push(twitterLoginUrl);
   }

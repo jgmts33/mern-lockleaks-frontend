@@ -3,34 +3,73 @@ import Image from 'next/image';
 import {
     Button, Switch
 } from '@nextui-org/react';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { SelectSwitch, UnselectSwitch } from "@/components/utils/Icons";
+import { getCookieValue } from '@/axios/token';
+import { useRouter } from 'next/router';
+
+export const COOKIE_SETTING_OPTIONS = [
+    {
+        placeholder: "Strictly necessary",
+        name: "necessary",
+        selected: false
+    },
+    {
+        placeholder: "Perfomance Cookies",
+        name: "performance",
+        selected: false
+    },
+    {
+        placeholder: "Functional Cookies",
+        name: "functional",
+        selected: false
+    },
+    {
+        placeholder: "Targeting Cookies",
+        name: "targeting",
+        selected: false
+    },
+]
 
 export default function CookieSettigs() {
 
-    const [isselected, setSelectBtn] = useState(1);
+    const router = useRouter();
 
-    const cookieSettingContent = [
-        {
-            placeholder: "Strictly necessary"
-        },
-        {
-            placeholder: "Perfomance Cookies"
-        },
-        {
-            placeholder: "Functional Cookies"
-        },
-        {
-            placeholder: "Targeting Cookies"
-        },
-    ]
+    const [isselected, setSelectBtn] = useState(0);
+
+    const [cookieSettingContent, setCookieSettingContent] = useState(COOKIE_SETTING_OPTIONS);
 
     const cookieSettingButtons = [
         "Confirm Selection",
         "Accept All",
         "Cancel"
     ]
+
+    useEffect(() => {
+
+        let counts = 0;
+        for (let cookie of cookieSettingContent) {
+            const cookieValue = getCookieValue(cookie.name);
+            if (cookieValue == 'allowed') {
+                let _cookieSettingContent = cookieSettingContent.slice(0);
+                _cookieSettingContent.find(c => c.name === cookie.name).selected = true;
+                setCookieSettingContent(_cookieSettingContent);
+                counts ++;
+            }
+        }
+        if(counts == 4) setSelectBtn(1);
+    }, []);
+
+    const handleAllChecked = useCallback(() => {
+        const expires = new Date('2030-12-30').toUTCString();
+        let _cookieSettingContent = cookieSettingContent.slice(0);
+        for (let index = 0; index < _cookieSettingContent.length; index++) {
+            document.cookie = `${_cookieSettingContent[index].name}=allowed; expires=${expires}; path=/`;
+            _cookieSettingContent[index].selected = true;
+        }
+        setCookieSettingContent(_cookieSettingContent);
+    }, [cookieSettingContent]);
 
     return (
         <div className="flex flex-col text-white w-full max-xl:px-3">
@@ -47,40 +86,73 @@ export default function CookieSettigs() {
 
                 <div className='flex flex-col max-w-[337px] mx-auto mb-10'>
                     {
-                        cookieSettingContent.map((content, index) => {
-                            return (
-                                <div key={index} className='flex'>
-                                    <div className='mt-7'>
-                                        <Switch
-                                            defaultSelected
-                                            size="md"
-                                            color="default"
-                                            thumbIcon={({ isSelected, className }) =>
-                                                isSelected ? (
-                                                    <SelectSwitch className={className} />
-                                                ) : (
-                                                    <UnselectSwitch className={className} />
-                                                )
+                        cookieSettingContent.map((content, index) => <div key={index} className='flex'>
+                            <div className='mt-7'>
+                                <Switch
+                                    size="md"
+                                    color="default"
+                                    thumbIcon={({ isSelected, className }) =>
+                                        isSelected ? (
+                                            <SelectSwitch className={className} />
+                                        ) : (
+                                            <UnselectSwitch className={className} />
+                                        )
+                                    }
+                                    isSelected={content.selected}
+                                    onValueChange={(value) => {
+
+                                        const expires = new Date('2030-12-30').toUTCString();
+                                        const cookieValue = value ? "allowed" : "un-allowed"
+                                        document.cookie = `${content.name}=${cookieValue}; expires=${expires}; path=/`;
+
+                                        setCookieSettingContent(prev => {
+                                            const data = prev.map(item => {
+
+                                                if (item.name === content.name) {
+                                                    return { ...item, selected: value }
+                                                }
+                                                return item
+                                            });
+                                            const counts = data.filter((item) => item.selected == true).length;
+                                            if (counts == 4) {
+                                                setSelectBtn(1);
+                                            } else {
+                                                setSelectBtn(0);
                                             }
-                                        >
-                                        </Switch>
-                                    </div>
-                                    <div>
-                                        <select className="form-select bg-transparent text-white p-3 rounded-lg mt-5 block w-full">
-                                            <option>{content.placeholder}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            )
-                        })
+                                            return data;
+                                        });
+                                    }}
+                                >
+                                </Switch>
+                            </div>
+                            <div>
+                                <select className="form-select bg-transparent text-white p-3 rounded-lg mt-5 block w-full">
+                                    <option>{content.placeholder}</option>
+                                </select>
+                            </div>
+                        </div>
+                        )
                     }
                 </div>
                 <div className='max-lg:px-3'>
                     <div className='bg-gradient-to-tr mx-auto mb-10 from-gray-600/40 to-gray-800/40 p-2 border-gray-600 border rounded-[30px] w-full max-w-[890px] flex items-center max-xl:flex-col max-xl:px-3 max-xl:max-w-[750px]'>
                         {
-                            cookieSettingButtons.map((items,index) => {
+                            cookieSettingButtons.map((items, index) => {
                                 return (
-                                    <Button key={index} radius="full" className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 text-lg"} size='lg' onClick={()=>setSelectBtn(index)}>
+                                    <Button
+                                        key={index}
+                                        radius="full"
+                                        className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 text-lg"} size='lg'
+                                        onClick={() => {
+                                            if (index == 1) {
+                                                handleAllChecked();
+                                            }
+                                            if (index == 2) {
+                                                router.push("/");
+                                            }
+                                            setSelectBtn(index);
+                                        }}
+                                    >
                                         {items}
                                     </Button>
                                 )
