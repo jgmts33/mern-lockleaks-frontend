@@ -3,10 +3,10 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow, Input, useDisclosure, Modal, ModalContent, ModalBody, ModalFooter, ModalHeader
 } from '@nextui-org/react';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from "@/components/utils/Icons";
-import { addNewKeyword } from '@/axios/keyword';
+import { addNewKeyword, deleteBasicKeyword, deleteCustomKeyword, getBasicKeywords, getCustomKeywords } from '@/axios/keyword';
 
 export default function PingModels() {
     const router = useRouter();
@@ -22,88 +22,59 @@ export default function PingModels() {
     const [newWebsite, setNewWebsite] = useState("");
     const [newKeywords, setNewKeywords] = useState("");
     const [isAdding, setIsAdding] = useState(false);
-    const [basicKeywords, setBasicKeywords] = useState([
-        {
-            id: "1",
-            keyword: "info"
-        },
-        {
-            id: "2",
-            keyword: "basic"
-        },
-        {
-            id: "3",
-            keyword: "of"
-        },
-        {
-            id: "4",
-            keyword: "from"
-        },
-        {
-            id: "5",
-            keyword: "good at"
-        },
-        {
-            id: "6",
-            keyword: "love"
-        },
-        {
-            id: "7",
-            keyword: "dislike"
-        },
-        {
-            id: "8",
-            keyword: "afraid"
-        }
-    ]);
-    const [customKeywords, setCustomKeywords] = useState([
-        {
-            id: "1",
-            website: "onlyfans.com",
-            keywords: "of leak, only fans leak, onlyfans free"
-        },
-        {
-            id: "2",
-            website: "pornhub.com",
-            keywords: "porn hub, pornhub free videos, porn"
-        },
-        {
-            id: "3",
-            website: "xvideos.com",
-            keywords: "x videos, xvideo, xvideos free"
-        },
-        {
-            id: "4",
-            website: "redtube.com",
-            keywords: "red tube, redtube videos, redt"
-        },
-        {
-            id: "5",
-            website: "youporn.com",
-            keywords: "you porn, youporn videos, youp"
-        }
-    ]);
+    const [basicKeywords, setBasicKeywords] = useState([]);
+    const [customKeywords, setCustomKeywords] = useState([]);
+
+    const getBasicKeywordsData = async () => {
+        const res = await getBasicKeywords();
+
+        if (res.status == 'status') setBasicKeywords(res.data);
+    }
+
+    const getCustomKeywordsData = async () => {
+        const res = await getCustomKeywords();
+
+        if (res.status == 'status') setCustomKeywords(res.data);
+    }
 
     const handleAddNewKeyword = useCallback(async () => {
         setIsAdding(true);
 
-        if (targetKeywordType === "basic") {
-            const res = await addNewKeyword({
-                website: newWebsite,
-                keyword: newBasicKeyword,
-                keywords: newKeywords
-            });
+        const res = await addNewKeyword({
+            website: newWebsite,
+            keyword: newBasicKeyword,
+            keywords: newKeywords
+        });
 
-            if (res.status == 'success') {
-                if (targetKeywordType === "basic") {
-                    setBasicKeywords([...basicKeywords, { id: res.data.id, keyword: newBasicKeyword }]);
-                } else {
-                    setCustomKeywords([...customKeywords, { id: res.data.id, website: newWebsite, keywords: newKeywords }]);
-                }
+        if (res.status == 'success') {
+            if (targetKeywordType == "basic") {
+                setBasicKeywords(p => [...p, { id: res.data.id, keyword: newBasicKeyword }]);
+            } else {
+                setCustomKeywords(p => [...p, { id: res.data.id, website: newWebsite, keywords: newKeywords }]);
             }
         }
 
-    }, [basicKeywords, customKeywords, targetKeywordType, newWebsite, newKeywords, newBasicKeyword]);
+    }, [targetKeywordType, newWebsite, newKeywords, newBasicKeyword]);
+
+    const handleDeleteKeyword = async( id, type ) => {
+        
+        if (type == 'basic'){
+            const res = await deleteBasicKeyword(id);
+            if (res.status == 'success') {
+                setBasicKeywords(p => p.filter(kw => kw.id != id));
+            }
+        } else {
+            res = await deleteCustomKeyword(id);
+            if (res.status == 'success') {
+                setCustomKeywords(p => p.filter(kw => kw.id != id));
+            }
+        }
+    }
+
+    useEffect(() => {
+        getBasicKeywordsData();
+        getCustomKeywordsData();
+    },[]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
@@ -182,7 +153,12 @@ export default function PingModels() {
                                     value={item.keyword}
                                     disabled
                                 />
-                                <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} size='sm' onClick={() => { }}>
+                                <Button 
+                                    radius="full" 
+                                    className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} 
+                                    size='sm' 
+                                    onClick={() => handleDeleteKeyword(item.id, "basic")}
+                                >
                                     Delete
                                 </Button>
                             </div>)
@@ -263,9 +239,7 @@ export default function PingModels() {
                                     radius="full"
                                     className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                     size='sm'
-                                    onClick={() => {
-
-                                    }}
+                                    onClick={() => {}}
                                 >
                                     Edit
                                 </Button>
@@ -273,9 +247,7 @@ export default function PingModels() {
                                     radius="full"
                                     className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                     size='sm'
-                                    onClick={() => {
-
-                                    }}
+                                    onClick={() => handleDeleteKeyword(item.id, "custom")}
                                 >
                                     Delete
                                 </Button>
