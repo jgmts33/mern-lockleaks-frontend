@@ -93,7 +93,8 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    if (currentPath.includes("/login") || getCookieValue('necessary') !== 'allowed') return;
+    if ( getCookieValue('necessary') === 'un-allowed' ) return;
+    if (!currentPath.includes("app") && !currentPath.includes("admin") && !currentPath.includes("login") ) return;
     (async () => {
       try {
         const accessToken = await getAccessToken();

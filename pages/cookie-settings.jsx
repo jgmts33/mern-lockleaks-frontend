@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { SelectSwitch, UnselectSwitch } from "@/components/utils/Icons";
 import { getCookieValue } from '@/axios/token';
 import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 export const COOKIE_SETTING_OPTIONS = [
     {
@@ -35,6 +36,7 @@ export const COOKIE_SETTING_OPTIONS = [
 export default function CookieSettigs() {
 
     const router = useRouter();
+    const currentPath = usePathname();
 
     const [isselected, setSelectBtn] = useState(0);
 
@@ -56,10 +58,14 @@ export default function CookieSettigs() {
                 _cookieSettingContent.find(c => c.name === cookie.name).selected = true;
                 setCookieSettingContent(_cookieSettingContent);
                 counts ++;
+            } else {
+                let _cookieSettingContent = cookieSettingContent.slice(0);
+                _cookieSettingContent.find(c => c.name === cookie.name).selected = false;
+                setCookieSettingContent(_cookieSettingContent);
             }
         }
         if(counts == 4) setSelectBtn(1);
-    }, []);
+    }, [currentPath]);
 
     const handleAllChecked = useCallback(() => {
         const expires = new Date('2030-12-30').toUTCString();
