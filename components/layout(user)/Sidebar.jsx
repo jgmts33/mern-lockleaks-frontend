@@ -309,11 +309,13 @@ const Sidebar = ({ show, setter }) => {
     useEffect(() => {
 
         if (userInfo.roles.includes('admin')) {
-            setSidebarList(ADMIN_SIDEBAR_LIST)
+            setSidebarList(ADMIN_SIDEBAR_LIST);
+            setSelectedSidebar(ADMIN_SIDEBAR_LIST.findIndex(p => p.path === currentPath));
         } else {
-            setSidebarList(USER_SIDEBAR_LIST)
+            setSidebarList(USER_SIDEBAR_LIST);
+            setSelectedSidebar(USER_SIDEBAR_LIST.findIndex(p => p.path === currentPath));
         }
-    }, [userInfo]);
+    }, [userInfo, currentPath]);
 
     return (
         <>
