@@ -6,7 +6,7 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from "@/components/utils/Icons";
-import { addNewKeyword, deleteBasicKeyword, deleteCustomKeyword, getBasicKeywords, getCustomKeywords } from '@/axios/keyword';
+import { addNewKeyword, deleteBasicKeyword, deleteCustomKeyword, editCustomKeyword, getBasicKeywords, getCustomKeywords } from '@/axios/keyword';
 
 export default function PingModels() {
     const router = useRouter();
@@ -15,66 +15,104 @@ export default function PingModels() {
         search: <Search fill="currentColor" size={16} />,
     };
 
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
     const [targetKeywordType, setTargetKeywordType] = useState("");
     const [newBasicKeyword, setNewBasicKeyword] = useState("");
     const [newWebsite, setNewWebsite] = useState("");
     const [newKeywords, setNewKeywords] = useState("");
     const [isAdding, setIsAdding] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
     const [basicKeywords, setBasicKeywords] = useState([]);
     const [customKeywords, setCustomKeywords] = useState([]);
+    const [filteredBasicKeywords, setFilteredBasicKeywords] = useState([]);
+    const [filteredCustomKeywords, setFilteredCustomKeywords] = useState([]);
+    const [selectedCustomKeywordId, setSelectedCustomKeywordId] = useState();
+    const [basicKeywordsSearchInput, setBasicKeywordsSearchInput] = useState("");
+    const [customKeywordsSearchInput, setcustomKeywordsSearchInput] = useState("");
 
     const getBasicKeywordsData = async () => {
         const res = await getBasicKeywords();
-
-        if (res.status == 'status') setBasicKeywords(res.data);
+        console.log("res.data:", res.data);
+        if (res.status == 'success') setBasicKeywords(res.data);
     }
 
     const getCustomKeywordsData = async () => {
         const res = await getCustomKeywords();
 
-        if (res.status == 'status') setCustomKeywords(res.data);
+        if (res.status == 'success') setCustomKeywords(res.data);
     }
 
     const handleAddNewKeyword = useCallback(async () => {
         setIsAdding(true);
+        if (selectedCustomKeywordId) {
+            const res = await editCustomKeyword( selectedCustomKeywordId,  {
+                website: newWebsite,
+                keywords: newKeywords
+            });
 
-        const res = await addNewKeyword({
-            website: newWebsite,
-            keyword: newBasicKeyword,
-            keywords: newKeywords
-        });
-
-        if (res.status == 'success') {
-            if (targetKeywordType == "basic") {
-                setBasicKeywords(p => [...p, { id: res.data.id, keyword: newBasicKeyword }]);
-            } else {
-                setCustomKeywords(p => [...p, { id: res.data.id, website: newWebsite, keywords: newKeywords }]);
+            if (res.status == 'success') {
+                let _customKeywords = customKeywords.slice(0);
+                _customKeywords.map((item) => {
+                    if (item.id == selectedCustomKeywordId) {
+                        item.website = newWebsite;
+                        item.keywords = newKeywords;
+                    }
+                });
+                setCustomKeywords(_customKeywords);
             }
         }
+        else {
+            const res = await addNewKeyword({
+                website: newWebsite,
+                keyword: newBasicKeyword,
+                keywords: newKeywords
+            });
 
-    }, [targetKeywordType, newWebsite, newKeywords, newBasicKeyword]);
+            if (res.status == 'success') {
+                if (targetKeywordType == "basic") {
+                    setBasicKeywords(p => [...p, { id: res.data.id, keyword: newBasicKeyword }]);
+                } else {
+                    setCustomKeywords(p => [...p, { id: res.data.id, website: newWebsite, keywords: newKeywords }]);
+                }
+            }
+        }
+        
+        setNewWebsite("");
+        setNewKeywords("");
+        setNewBasicKeyword("");
+        setSelectedCustomKeywordId(null);
+        setIsAdding(false);
+        onClose();
+
+    }, [targetKeywordType, newWebsite, newKeywords, newBasicKeyword, selectedCustomKeywordId, customKeywords]);
 
     const handleDeleteKeyword = async( id, type ) => {
-        
+        setSelectedCustomKeywordId(id);
+        setIsDeleting(true);
         if (type == 'basic'){
             const res = await deleteBasicKeyword(id);
             if (res.status == 'success') {
                 setBasicKeywords(p => p.filter(kw => kw.id != id));
             }
         } else {
-            res = await deleteCustomKeyword(id);
+            const res = await deleteCustomKeyword(id);
             if (res.status == 'success') {
                 setCustomKeywords(p => p.filter(kw => kw.id != id));
             }
         }
+        setIsDeleting(false);
     }
 
     useEffect(() => {
         getBasicKeywordsData();
         getCustomKeywordsData();
     },[]);
+
+    useEffect(() => {
+        setFilteredBasicKeywords(basicKeywords.filter((item) => item.keyword.toLowerCase().includes(basicKeywordsSearchInput.toLowerCase())));
+        setFilteredCustomKeywords(customKeywords.filter((item) => item.website.toLowerCase().includes(customKeywordsSearchInput.toLowerCase())));
+    },[basicKeywords, customKeywords, basicKeywordsSearchInput, customKeywordsSearchInput]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
@@ -112,6 +150,8 @@ export default function PingModels() {
                             startContent={
                                 <span>{icons.search}</span>
                             }
+                            value={basicKeywordsSearchInput}
+                            onChange={(e) => setBasicKeywordsSearchInput(e.target.value)}
                         />
                         <Button
                             radius="full"
@@ -127,7 +167,7 @@ export default function PingModels() {
                     </div>
                     <ScrollShadow className='mt-4 h-60 overflow-y-auto'>
                         {
-                            basicKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
+                            filteredBasicKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
                                 <Input
                                     radius="lg"
                                     classNames={{
@@ -158,6 +198,7 @@ export default function PingModels() {
                                     className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} 
                                     size='sm' 
                                     onClick={() => handleDeleteKeyword(item.id, "basic")}
+                                    isLoading={selectedCustomKeywordId == item.id && isDeleting}
                                 >
                                     Delete
                                 </Button>
@@ -195,6 +236,8 @@ export default function PingModels() {
                             startContent={
                                 <span>{icons.search}</span>
                             }
+                            value={customKeywordsSearchInput}
+                            onChange={(e) => setcustomKeywordsSearchInput(e.target.value)}
                         />
                         <Button
                             radius="full"
@@ -209,7 +252,7 @@ export default function PingModels() {
                     </div>
                     <ScrollShadow className='mt-4 h-60 overflow-y-auto'>
                         {
-                            customKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
+                            filteredCustomKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
                                 <Input
                                     radius="lg"
                                     classNames={{
@@ -239,7 +282,13 @@ export default function PingModels() {
                                     radius="full"
                                     className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                     size='sm'
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                        setTargetKeywordType('custom')
+                                        setNewWebsite(item.website);
+                                        setNewKeywords(item.keywords);
+                                        setSelectedCustomKeywordId(item.id);
+                                        onOpen();
+                                    }}
                                 >
                                     Edit
                                 </Button>
@@ -248,6 +297,7 @@ export default function PingModels() {
                                     className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                     size='sm'
                                     onClick={() => handleDeleteKeyword(item.id, "custom")}
+                                    isLoading={selectedCustomKeywordId == item.id && isDeleting}
                                 >
                                     Delete
                                 </Button>
@@ -305,6 +355,7 @@ export default function PingModels() {
                                             radius="lg"
                                             className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
                                             onClick={handleAddNewKeyword}
+                                            isLoading={isAdding}
                                         >
                                             Save
                                         </Button>

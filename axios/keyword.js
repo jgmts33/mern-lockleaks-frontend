@@ -74,6 +74,30 @@ export const addNewKeyword = async (data) => {
   }
 }
 
+export const editCustomKeyword = async (id, data) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.patch(`${ENDPOINT}/keywords/${id}`, data, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
 export const deleteBasicKeyword = async (id) => {
 
   const accessToken = await getAccessToken();
