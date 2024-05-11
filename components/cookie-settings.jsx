@@ -81,7 +81,7 @@ export default function CookieSettigs({ onClose }) {
             {/* This section for define cookie settings header*/}
 
             <div className="gap-10 max-w-[1480px] mx-auto max-xl:px-3">
-                <p className="font-bold text-7xl text-center max-xl:text-[40px]">COOKIE SETTINGS</p>
+                <p className="font-bold text-5xl text-center max-xl:text-[40px]">COOKIE SETTINGS</p>
                 <p className='mt-5 p-3'>When you visit any of our websites, it may store or retrieve information on your browser, mostly in the form of cookies.  This information might be about you, your device and  is mostly used to make the site work as you exept it to. The informstion does not ussually directly identify you, but it can give you a more personalized web experience. Because we respect your right to privacy, you can choose not to allow some types of cookies. Click on the different category headings to find out more and manage your preferences. Please note, blocking some types of cookies may impact your experience of the site and the services we are able to offer.</p>
             </div>
 
