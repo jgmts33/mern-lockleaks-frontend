@@ -22,6 +22,7 @@ import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
 import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
 import { getUserInfo } from "@/axios/auth";
+import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
   const currentPath = usePathname();
 
   const [showSidebar, setShowSidebar] = useState(false);
+  const [selectCookie, setSlectCookie] = useState(false);
   const [modalValue, setModalValue] = useState({
     title: "",
     content: ""
@@ -55,6 +57,14 @@ export default function RootLayout({ children }) {
     }
 
   }, [userInfo]);
+
+  const handleAllChecked = () => {
+    const expires = new Date('2030-12-30').toUTCString();
+    for (let index = 0; index < COOKIE_SETTING_OPTIONS.length; index++) {
+      document.cookie = `${COOKIE_SETTING_OPTIONS[index].name}=allowed; expires=${expires}; path=/`;
+    }
+    setSlectCookie(true);
+  }
 
   useEffect(() => {
 
@@ -93,8 +103,10 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    if ( getCookieValue('necessary') === 'un-allowed' ) return;
-    if (!currentPath.includes("app") && !currentPath.includes("admin") && !currentPath.includes("login") ) return;
+    if (getCookieValue('necessary') === 'un-allowed') return;
+    if (!currentPath.includes("app")) return;
+    if (!currentPath.includes("admin")) return;
+    if (!currentPath.includes("login")) return;
     (async () => {
       try {
         const accessToken = await getAccessToken();
@@ -109,11 +121,13 @@ export default function RootLayout({ children }) {
       }
     })();
 
-  }, []);
+  }, [currentPath]);
 
   useEffect(() => {
-    console.log("userInfo:", userInfo);
-  }, [userInfo]);
+    if (getCookieValue('necessary')) {
+      setSlectCookie(true);
+    }
+  }, []);
 
   return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
@@ -152,7 +166,7 @@ export default function RootLayout({ children }) {
                           radius="lg"
                           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
                           size='md'
-                          onClick={() => handleConfirmClick()}
+                          onPress={() => handleConfirmClick()}
                         >
                           {!userInfo?.verified ? "Verify Email" : "Upgrade"}
                         </Button>
@@ -160,7 +174,7 @@ export default function RootLayout({ children }) {
                           radius="lg"
                           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600`}
                           size='md'
-                          onClick={() => {
+                          onPress={() => {
                             dispatch(setUserInfo(null));
                             setTokensExpired();
                             router.push("/");
@@ -177,6 +191,61 @@ export default function RootLayout({ children }) {
             </div>
             :
             <div className="relative">
+              <Modal
+                backdrop="opaque"
+                placement="center"
+                hideCloseButton
+                size="3xl"
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                classNames={{
+                  backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/80 backdrop-opacity-100"
+                }}
+              >
+                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77] text-white text-center'>
+                  {(onClose) => (
+                    <>
+                      <ModalBody>
+                        {isOpen ? <CookieSettigs onClose={() => onClose()} /> : <></>}
+                      </ModalBody>
+                    </>
+                  )}
+
+                </ModalContent>
+              </Modal>
+              {
+                selectCookie == false && currentPath == "/" ?
+                  <div className="flex max-md:flex-col fixed text-white items-center bg-gradient-to-tr backdrop-blur bg-[#403f4244] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-20 max-w-[700px] max-md:left-0">
+                    <div>
+                      <span className='max-md:hidden'>Your privacy By clicking "Accept All" you can store cookies on your website and disclose information in accordance with our cookie policy.</span>
+                      <span className='hidden max-md:block'>Your privacy By clicking <br />"Accept All" or Customize</span>
+                    </div>
+                    <div className='flex space-x-5'>
+                      <div>
+                        <Button
+                          radius="lg"
+                          className="border border-white/10"
+                          color="danger"
+                          onPress={() => onOpen()}
+                        >
+                          Customize
+                        </Button>
+                      </div>
+                      <div>
+                        <Button
+                          radius="lg"
+                          className="border border-white/10"
+                          color="primary"
+                          onPress={handleAllChecked}
+                        >
+                          Accept All
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                  :
+                  <></>
+              }
               {
                 !currentPath?.includes("/auth") && !currentPath?.includes("/login")
                   ?
@@ -209,7 +278,7 @@ export default function RootLayout({ children }) {
               {
                 !currentPath?.includes("/auth") && !currentPath?.includes("/login")
                   ?
-                  <Footer />
+                  <Footer cookieSettingsOnOpen={() => onOpen()} />
                   :
                   false
               }

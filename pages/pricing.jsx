@@ -6,7 +6,7 @@ import {
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Shine, Star, ChevronLeft, ChevronRight, ArrowDown } from "@/components/utils/Icons";
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 import Complete from "@/public/assets/background/complete.svg";
 import Uncomplete from "@/public/assets/background/uncomplete.svg";
 import Info from "@/public/assets/info.svg"

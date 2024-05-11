@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 
 export default function AboutUs() {
 

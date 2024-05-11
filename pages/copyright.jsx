@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { Balance, Banned, Law, ChevronRight, Tips } from "@/components/utils/Icons";
 import CopyrightHelp from '@/public/assets/copyright/copyright.svg';
 import RobertHand from '@/public/assets/copyright/robert-hand.svg';
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 
 export default function CopyRight() {
 

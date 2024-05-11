@@ -13,7 +13,7 @@ import Robert from '@/public/assets/dmcabadge/robert.svg';
 import Saturn from '@/public/assets//blog/saturn.svg';
 import Moon from '@/public/assets//blog/moon.svg';
 import Mars from '@/public/assets//blog/mars.svg'
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 
 export default function DmcaBadges() {
 

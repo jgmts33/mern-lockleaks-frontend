@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import WriteTip from "@/public/assets/scan/write-tip.svg";
 import TipDocument from "@/public/assets/scan/tip-document.svg";
 import { FirstTip, SecondTip, ThirdTip, Chat } from "@/components/utils/Icons";
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 import Envelop from '@/public/assets/dmca/envelop.svg';
 import Reversechat from '@/public/assets/dmca/envelop-reverse.svg';
 

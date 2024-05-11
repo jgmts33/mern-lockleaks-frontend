@@ -6,7 +6,7 @@ import {
   Button
 } from '@nextui-org/react';
 
-export default function Footer() {
+export default function Footer({cookieSettingsOnOpen}) {
 
   const icons = {
     twitter: <TwitterV2 fill="currentColor" />,
@@ -40,7 +40,7 @@ export default function Footer() {
             <Link href={"/privacy-policy"}>Privacy Policy</Link>
             <Link href={"/terms-of-service"}>Terms of Service</Link>
             <Link href={"/cookie-policy"}>Cookie Policy</Link>
-            <Link href={"/cookie-settings"}>Cookie Settings</Link>
+            <p className='cursor-pointer' onClick={() => cookieSettingsOnOpen()}>Cookie Settings</p>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Support</p>

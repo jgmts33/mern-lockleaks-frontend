@@ -6,7 +6,7 @@ import {
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { FirstTip, SecondTip, ThirdTip, Chat } from "@/components/utils/Icons";
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 
 export default function Catfishing() {
 

@@ -12,7 +12,7 @@ import Reddit from "@/public/assets/AI/Reddit.svg"
 import Twitter from "@/public/assets/AI/twitter.svg"
 import { ProtectKey, MotherBoard, Locks, Hub, Tips, ChevronRight } from "@/components/utils/Icons";
 import Robertgroup from '@/public/assets/robert.svg';
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 import RobertHand from '@/public/assets/copyright/robert-hand.svg';
 
 

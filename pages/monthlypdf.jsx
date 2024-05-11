@@ -9,7 +9,7 @@ import { Shine, ProtectShadow, RecoveryChat } from "@/components/utils/Icons";
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 
 export default function MonthlyPdf() {
 

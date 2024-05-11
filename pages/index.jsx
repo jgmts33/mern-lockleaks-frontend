@@ -5,10 +5,9 @@ import {
 import { Shine, Fan, Lock, Support, ThumbUp, Protect, Star, Twitter, ChevronLeft, ChevronRight, IconSuccess, Profile, Chat, Tip } from "@/components/utils/Icons";
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 import { useRouter } from 'next/navigation';
 import { getCookieValue } from '@/axios/token';
-import { COOKIE_SETTING_OPTIONS } from './cookie-settings';
 
 export default function HomePage() {
   const router = useRouter();
@@ -201,14 +200,9 @@ export default function HomePage() {
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
   const [animationCounter, setAnimationCounter] = useState(0);
   const [isFlipped, setIsFlipped] = useState(-1);
-  const [selectCookie, setSlectCookie] = useState(false);
   const [functionalCookieAllowed, setFunctionalCookieAllowed] = useState(false);
 
   useEffect(() => {
-
-    if (getCookieValue('necessary')) {
-      setSlectCookie(true);
-    }
 
     if (getCookieValue('functional') == 'allowed') {
       setFunctionalCookieAllowed(true);
@@ -228,51 +222,11 @@ export default function HomePage() {
     }
   }, []);
 
-  const handleAllChecked = () => {
-    const expires = new Date('2030-12-30').toUTCString();
-    for (let index = 0; index < COOKIE_SETTING_OPTIONS.length; index++) {
-      document.cookie = `${COOKIE_SETTING_OPTIONS[index].name}=allowed; expires=${expires}; path=/`;
-    }
-    setSlectCookie(true);
-  }
-
   return (
     <>
       {/* This section for define cookie setting*/}
       <div className="text-white max-w-[1480px] mx-auto">
-        {
-          selectCookie == false ?
-            <div className="flex max-md:flex-col fixed text-white items-center bg-gradient-to-tr backdrop-blur bg-[#403f4244] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-20 max-w-[700px] max-md:left-0">
-              <div>
-                <span className='max-md:hidden'>Your privacy By clicking "Accept All" you can store cookies on your website and disclose information in accordance with our cookie policy.</span>
-                <span className='hidden max-md:block'>Your privacy By clicking <br />"Accept All" or Customize</span>
-              </div>
-              <div className='flex space-x-5'>
-                <div>
-                  <Button
-                    radius="lg"
-                    className="border border-white/10"
-                    color="danger"
-                    onClick={() => router.push("/cookie-settings")}
-                  >
-                    Customize
-                  </Button>
-                </div>
-                <div>
-                  <Button
-                    radius="lg"
-                    className="border border-white/10"
-                    color="primary"
-                    onClick={handleAllChecked}
-                  >
-                    Accept All
-                  </Button>
-                </div>
-              </div>
-            </div>
-            :
-            false
-        }
+        
         <div className='relative flex px-5'>
 
           {/* This section for define homepage header*/}

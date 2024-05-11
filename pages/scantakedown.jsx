@@ -10,7 +10,7 @@ import { FirstTip, SecondTip, ThirdTip, ChevronRight } from "@/components/utils/
 import { useEffect, useState } from 'react';
 import Scan from "@/public/assets/scan/scan.svg"
 import Takedown from "@/public/assets/scan/takedown.svg"
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 
 const TipContent = ({ targetContent }) => {
 

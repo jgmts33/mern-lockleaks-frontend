@@ -10,7 +10,7 @@ import Robertgroup from '@/public/assets/robert.svg';
 import Chat from '@/public/assets/services/chat.svg';
 import Reversechat from '@/public/assets/reverse-chat.svg';
 import { Shine, Robertchat, RecoveryChat } from "@/components/utils/Icons";
-import CustomerReview from '@/components/customerReview';
+import CustomerReview from '@/components/customer-review';
 
 
 export default function FreeAnalyse() {
