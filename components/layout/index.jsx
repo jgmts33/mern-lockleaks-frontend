@@ -104,9 +104,7 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
-    if (!currentPath.includes("app")) return;
-    if (!currentPath.includes("admin")) return;
-    if (!currentPath.includes("login")) return;
+    if (!currentPath.includes("app") && !currentPath.includes("admin") && !currentPath.includes("auth/login")) return;
     (async () => {
       try {
         const accessToken = await getAccessToken();
