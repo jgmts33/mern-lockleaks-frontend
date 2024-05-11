@@ -5,8 +5,8 @@ import {
 } from '@nextui-org/react';
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
-import { SelectSwitch, UnselectSwitch } from "@/components/utils/Icons";
-import { getCookieValue } from '@/axios/token';
+import { SelectSwitch, UnselectSwitch } from "./utils/Icons";
+import { getCookieValue } from '../axios/token';
 export const COOKIE_SETTING_OPTIONS = [
     {
         placeholder: "Strictly necessary",
