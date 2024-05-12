@@ -55,7 +55,7 @@ export default function ForgotPassword() {
     }
 
     setIsProcessing(false);
-  }, [email]);
+  }, [email, dispatch, onOpen]);
 
   const icons = {
     envelop: <Envelop fill="currentColor" size={16} />,

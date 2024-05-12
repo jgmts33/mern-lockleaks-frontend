@@ -212,7 +212,7 @@ export default function RootLayout({ children }) {
                 </ModalContent>
               </Modal>
               {
-                selectCookie == false && currentPath == "/" ?
+                selectCookie == false ?
                   <div className="flex max-md:flex-col fixed text-white items-center bg-gradient-to-tr backdrop-blur bg-[#403f4244] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-20 max-w-[700px] max-md:left-0">
                     <div>
                       <span className='max-md:hidden'>Your privacy By clicking "Accept All" you can store cookies on your website and disclose information in accordance with our cookie policy.</span>
@@ -245,7 +245,7 @@ export default function RootLayout({ children }) {
                   <></>
               }
               {
-                !currentPath?.includes("/auth") && !currentPath?.includes("/login")
+                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout")
                   ?
                   <Header />
                   :
@@ -274,7 +274,7 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
               {
-                !currentPath?.includes("/auth") && !currentPath?.includes("/login")
+                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout")
                   ?
                   <Footer cookieSettingsOnOpen={() => onOpen()} />
                   :
