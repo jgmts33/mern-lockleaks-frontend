@@ -253,25 +253,23 @@ export default function RootLayout({ children }) {
                     <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
                   </div>
               }
-              <div className="flex w-full">
-                <div className="mx-auto max-sm:w-full">
-                  <NextTopLoader
-                    color="#2299DD"
-                    initialPosition={0.08}
-                    crawlSpeed={200}
-                    height={3}
-                    crawl={true}
-                    showSpinner={true}
-                    easing="ease"
-                    speed={200}
-                    shadow="0 0 10px #2299DD,0 0 5px #2299DD"
-                    template='<div class="bar absolute" role="bar"><div class="peg"></div></div> 
+              <div className="flex w-full flex-col items-center">
+                <NextTopLoader
+                  color="#2299DD"
+                  initialPosition={0.08}
+                  crawlSpeed={200}
+                  height={3}
+                  crawl={true}
+                  showSpinner={true}
+                  easing="ease"
+                  speed={200}
+                  shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+                  template='<div class="bar absolute" role="bar"><div class="peg"></div></div> 
                         <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-                    zIndex={1600}
-                    showAtBottom={false}
-                  />
-                  {children}
-                </div>
+                  zIndex={1600}
+                  showAtBottom={false}
+                />
+                {children}
               </div>
               {
                 !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout")
