@@ -10,12 +10,15 @@ import CustomerReview from '@/components/customer-review';
 import Complete from "@/public/assets/background/complete.svg";
 import Uncomplete from "@/public/assets/background/uncomplete.svg";
 import Info from "@/public/assets/info.svg"
+import { useRouter } from 'next/router';
 
 export default function Pricing() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isPricingSelected, setPricingSelected] = React.useState(true);
     const [selectServiceList, setSelectServiceList] = React.useState(-1);
-    const [selectMoreContent, setSelectMoreContent] = useState("")
+    const [selectMoreContent, setSelectMoreContent] = useState("");
+
+    const router = useRouter();
 
     const icons = {
         left: <ChevronLeft fill="currentColor" size={16} />,
@@ -287,11 +290,21 @@ export default function Pricing() {
                                             }
                                             {
                                                 item.title != "STAR" ?
-                                                    <Button radius="lg" className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                                                    <Button
+                                                        radius="lg"
+                                                        className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
+                                                        size='lg'
+                                                        onClick={() => router.push("/checkout/buy")}
+                                                    >
                                                         BUY
                                                     </Button>
                                                     :
-                                                    <Button radius="lg" className="w-full mt-10 bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" size='lg'>
+                                                    <Button
+                                                        radius="lg"
+                                                        className="w-full mt-10 bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
+                                                        size='lg'
+                                                        onClick={() => router.push("/checkout/buy")}
+                                                    >
                                                         BUY
                                                     </Button>
                                             }
