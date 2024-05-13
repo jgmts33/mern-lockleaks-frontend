@@ -4,7 +4,7 @@ import { ENDPOINT } from '@/config/config';
 
 export const scan = async (data) => {
 
-  const accessToken = getAccessToken();
+  const accessToken = await getAccessToken();
 
   try {
     const res = await axios.post(`${ENDPOINT}/scrape`, data, {
