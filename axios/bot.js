@@ -1,13 +1,14 @@
 import axios from 'axios';
-import { getAccessToken } from './token';
+import { getAccessToken, getUserId } from './token';
 import { ENDPOINT } from '@/config/config';
 
 export const scan = async (data) => {
 
   const accessToken = await getAccessToken();
+  const userId = getUserId();
 
   try {
-    const res = await axios.post(`${ENDPOINT}/scrape`, data, {
+    const res = await axios.post(`${ENDPOINT}/${userId}/scrape`, data, {
       headers: {
         'x-access-token': accessToken
       }
