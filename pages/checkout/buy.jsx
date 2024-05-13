@@ -180,7 +180,8 @@ export default function BUY() {
                     step == 1
                         ?
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
-                            <p className='font-medium text-[34px] text-center'>USERNAMES LIST</p>
+                            <p className='font-medium text-[34px] text-center -mb-4'>USERNAMES LIST</p>
+                            <p className='font-medium text-center'>({keywords.length} USERNAMES)</p>
                             {
                                 keywords.map((keyword, index) => {
                                     return (
@@ -352,9 +353,13 @@ export default function BUY() {
                     </Button> : <div></div>}
                     {step < 2 ? <Button
                         radius="lg"
-                        className="bg-gradient-to-tr text-white w-36  from-purple-light to-purple-weight"
+                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && !keywords.length ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight") }
                         size='lg'
-                        onPress={() => setStep(p => p + 1)}
+                        disabled={step == 1 && !keywords.length}
+                        onPress={() => {
+                            if (step == 1 && !keywords.length) return;
+                            setStep(p => p + 1)
+                        }}
                     >
                         Next
                     </Button> : <div></div>}
