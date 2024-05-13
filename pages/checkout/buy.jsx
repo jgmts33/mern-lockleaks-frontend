@@ -260,6 +260,7 @@ export default function BUY() {
                                         className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'
                                         onClick={() => {
                                             setTargetKeyword(null);
+                                            setTargetKeywordType("username")
                                             let _keywords = keywords.slice(0, -1);
                                             setKeywords(_keywords);
                                         }}
