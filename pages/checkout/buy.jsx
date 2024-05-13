@@ -49,12 +49,13 @@ export default function BUY() {
     }, [customUsernameCount]);
 
     const handleSetNewUsername = useCallback(() => {
+        console.log(keywords, targetKeywordIndex);
         if (targetKeyword.username) {
             const _keywords = keywords.slice(0);
             _keywords[targetKeywordIndex].username = targetKeyword.username;
             setKeywords(_keywords);
+            setTargetKeywordType('link');
         }
-        setTargetKeywordType('link');
     }, [targetKeyword, keywords, targetKeywordIndex]);
 
     const handleSetNewLink = useCallback(() => {
@@ -67,6 +68,10 @@ export default function BUY() {
         }
         setTargetKeywordType('username');
     }, [targetKeyword, keywords, targetKeywordIndex, usernameCount]);
+
+    useEffect(() => {
+        setKeywords(p => ([...p.splice(0, usernameCount)]))
+    }, [usernameCount]);
 
     return (
         <div className="text-white w-full min-h-[calc(100vh-112px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4">
