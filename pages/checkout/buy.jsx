@@ -74,7 +74,7 @@ export default function BUY() {
     }, [usernameCount]);
 
     return (
-        <div className="text-white w-full min-h-[calc(100vh-112px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4">
+        <div className="text-white w-full min-h-[calc(100vh-112px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4 px-4">
             {
                 step == 0 ?
                     <div className='flex justify-center mx-auto gap-10 max-xl:flex-col max-sm:items-center max-sm:mx-auto max-sm:px-2'>
@@ -180,6 +180,7 @@ export default function BUY() {
                     step == 1
                         ?
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
+                            <p className='font-medium text-[34px] text-center'>USERNAMES LIST</p>
                             {
                                 keywords.map((keyword, index) => {
                                     return (
