@@ -46,7 +46,7 @@ export default function PingModels() {
 
     const handleAddNewKeyword = useCallback(async () => {
         setUrlValidation("");
-        if ( !checkLinkValidation() ) return;
+        if ( targetKeywordType == 'custom' && !checkLinkValidation() ) return;
         setIsAdding(true);
         if (selectedCustomKeywordId) {
             const res = await editCustomKeyword( selectedCustomKeywordId,  {
