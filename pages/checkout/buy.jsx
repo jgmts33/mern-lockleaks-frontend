@@ -35,6 +35,7 @@ export default function BUY() {
         update: false
     });
     const [targetKeywordType, setTargetKeywordType] = useState('username');
+    const [urlValidation, setUrlValidation] = useState("");
     const [targetKeywordIndex, setTargetKeywordIndex] = useState(0);
     const [keywords, setKeywords] = useState([
         {
@@ -59,15 +60,25 @@ export default function BUY() {
     }, [targetKeyword, keywords, targetKeywordIndex]);
 
     const handleSetNewLink = useCallback(() => {
-        if (targetKeyword.link) {
+        setUrlValidation("");
+        if (targetKeyword.link && checkLinkValidation()) {
             const _keywords = keywords.slice(0);
             _keywords[targetKeywordIndex].link = targetKeyword.link;
             setKeywords(_keywords);
             setTargetKeyword(null);
-
+            setTargetKeywordType('username');
         }
-        setTargetKeywordType('username');
     }, [targetKeyword, keywords, targetKeywordIndex, usernameCount]);
+
+    const checkLinkValidation = useCallback(() => {
+        var url = targetKeyword?.link || "";
+        var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (!regexp.test(url)) {
+            setUrlValidation("Please enter valid Link.");
+            return false;
+        }
+        return true;
+    }, [targetKeyword])
 
     useEffect(() => {
         setKeywords(p => ([...p.splice(0, usernameCount)]))
@@ -181,7 +192,7 @@ export default function BUY() {
                         ?
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
                             <p className='font-medium text-[34px] text-center -mb-4'>USERNAMES LIST</p>
-                            <p className='font-medium text-center'>({keywords.length} USERNAMES)</p>
+                            <p className='font-medium text-center'>({keywords.filter(p => (p.link != "")).length} USERNAMES)</p>
                             {
                                 keywords.map((keyword, index) => {
                                     return (
@@ -241,8 +252,8 @@ export default function BUY() {
                                     <p className='flex justify-start'>{targetKeywordType == 'link' ? "LINK:" : "USERNAME:"}</p>
                                     <div className='flex'>
                                         {
-                                            <div className="w-full flex items-center">
-                                                <div className="flex flex-col gap-2">
+                                            <div className="w-full flex">
+                                                <div className="flex flex-col gap-2 mt-1">
                                                     <Switch
                                                         defaultSelected
                                                         size="lg"
@@ -257,17 +268,20 @@ export default function BUY() {
                                                     >
                                                     </Switch>
                                                 </div>
-                                                <input
-                                                    type="text"
-                                                    placeholder='Type here'
-                                                    value={targetKeywordType == 'link' ? targetKeyword.link : targetKeyword.username}
-                                                    onChange={(e) => {
-                                                        if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
-                                                        else setTargetKeyword(p => ({ ...p, username: e.target.value }))
-                                                    }}
-                                                    className='w-full outline-none p-2 pr-28 rounded-lg bg-white text-black'
-                                                    required
-                                                />
+                                                <div className='flex flex-col w-full'>
+                                                    <input
+                                                        type="text"
+                                                        placeholder={targetKeywordType == 'username' ? 'Type here.. @username' : 'Type here.... example: https://onlyfans.com/@username'}
+                                                        value={targetKeywordType == 'link' ? targetKeyword.link : targetKeyword.username}
+                                                        onChange={(e) => {
+                                                            if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
+                                                            else setTargetKeyword(p => ({ ...p, username: e.target.value }))
+                                                        }}
+                                                        className='w-full outline-none p-2 rounded-lg bg-white text-black'
+                                                        required
+                                                    />
+                                                    <p className='mt-1 text-red-700'>{ urlValidation }</p>
+                                                </div>
                                             </div>
                                         }
                                     </div>
@@ -289,6 +303,13 @@ export default function BUY() {
                                     <Button
                                         radius="full"
                                         className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'
+                                        onClick={() => {
+                                            setTargetKeyword(null);
+                                            if (targetKeywordType == 'link') {
+                                                let _keywords = keywords.slice(0, -1);
+                                                setKeywords(_keywords);
+                                            }
+                                        }}
                                     >
                                         Cancel
                                     </Button>
@@ -353,7 +374,7 @@ export default function BUY() {
                     </Button> : <div></div>}
                     {step < 2 ? <Button
                         radius="lg"
-                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && !keywords.length ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight") }
+                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && !keywords.length ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
                         size='lg'
                         disabled={step == 1 && !keywords.length}
                         onPress={() => {

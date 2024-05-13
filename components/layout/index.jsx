@@ -41,6 +41,7 @@ export default function RootLayout({ children }) {
     content: ""
   });
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const [mounted, setMounted] = useState(false);
 
   const router = useRouter();
   const userInfo = useSelector(info);
@@ -125,9 +126,10 @@ export default function RootLayout({ children }) {
     if (getCookieValue('necessary')) {
       setSlectCookie(true);
     }
+    setMounted(true);
   }, []);
 
-  return (
+  if ( mounted ) return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
         {
@@ -213,7 +215,7 @@ export default function RootLayout({ children }) {
               </Modal>
               {
                 selectCookie == false ?
-                  <div className="flex max-md:flex-col fixed text-white items-center bg-gradient-to-tr backdrop-blur bg-[#403f4244] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-20 max-w-[700px] max-md:left-0">
+                  <div className="flex max-md:flex-col fixed text-white items-center bg-gradient-to-tr backdrop-blur bg-[#403f4244] border border-gray-500 shadow-lg rounded-lg p-3 bottom-2 gap-2 left-5 z-30 max-w-[700px] max-md:left-0">
                     <div>
                       <span className='max-md:hidden'>Your privacy By clicking "Accept All" you can store cookies on your website and disclose information in accordance with our cookie policy.</span>
                       <span className='hidden max-md:block'>Your privacy By clicking <br />"Accept All" or Customize</span>
@@ -282,5 +284,7 @@ export default function RootLayout({ children }) {
         }
       </div>
     </div>
-  );
+  )
+
+  else  return (<></>);
 }
