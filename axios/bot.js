@@ -1,9 +1,17 @@
-import { BOT_ENDPOINT } from '@/config/config';
 import axios from 'axios';
+import { getAccessToken } from './token';
+import { ENDPOINT } from '@/config/config';
 
 export const scan = async (data) => {
+
+  const accessToken = getAccessToken();
+
   try {
-    const res = await axios.post(`${BOT_ENDPOINT}/scrape`, data);
+    const res = await axios.post(`${ENDPOINT}/scrape`, data, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
 
     return {
       status: 'success',

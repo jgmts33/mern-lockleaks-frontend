@@ -13,6 +13,7 @@ import {
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { SelectSwitch, Shine, UnselectSwitch } from '@/components/utils/Icons';
+import { scan } from '@/axios/bot';
 
 export default function BUY() {
 
@@ -78,7 +79,27 @@ export default function BUY() {
             return false;
         }
         return true;
-    }, [targetKeyword])
+    }, [targetKeyword]);
+
+    const handlePaymentProcess = useCallback(async () => {
+        // TODO: payment integration usernameCount, totalPrice
+
+        const promises = [];
+
+        keywords.map((keyword) => {
+            promises.push(
+                scan({
+                    link: keyword.link,
+                    username: keyword.username
+                })
+            )
+        });
+
+        Promise.all(promises).then(res => {
+            console.log(res);
+        })
+
+    }, [keywords, usernameCount]);
 
     useEffect(() => {
         setKeywords(p => ([...p.splice(0, usernameCount)]))
@@ -346,13 +367,28 @@ export default function BUY() {
                                     This charge will be billed at regular intervals until you opt to cancel the automatic renewal.
                                 </p>
                                 <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-2 border-gray-600 border rounded-[30px] max-w-[676px] gap-3 flex max-md:flex-col items-center'>
-                                    <Button radius="full" className="mx-auto bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" size='lg'>
+                                    <Button
+                                        radius="full"
+                                        className="mx-auto bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg"
+                                        size='lg'
+                                        onClick={handlePaymentProcess}
+                                    >
                                         Pay whith credit card
                                     </Button>
-                                    <Button radius="full" className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg" size='lg'>
+                                    <Button
+                                        radius="full"
+                                        className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg"
+                                        size='lg'
+                                        onClick={handlePaymentProcess}
+                                    >
                                         Pay whith paypal
                                     </Button>
-                                    <Button radius="full" className=" bg-transparent mx-auto px-7 py-7 text-lg" size='lg'>
+                                    <Button
+                                        radius="full"
+                                        className=" bg-transparent mx-auto px-7 py-7 text-lg"
+                                        size='lg'
+                                        onClick={handlePaymentProcess}
+                                    >
                                         Request fan support
                                     </Button>
                                 </div>
