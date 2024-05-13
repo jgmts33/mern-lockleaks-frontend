@@ -31,8 +31,10 @@ export default function BUY() {
     const [customUsernameCount, setCustomUsernameCount] = useState(5);
     const [targetKeyword, setTargetKeyword] = useState({
         username: '',
-        link: ''
+        link: '',
+        update: false
     });
+    const [targetKeywordType, setTargetKeywordType] = useState('username');
     const [targetKeywordIndex, setTargetKeywordIndex] = useState(0);
     const [keywords, setKeywords] = useState([
         {
@@ -52,6 +54,7 @@ export default function BUY() {
             _keywords[targetKeywordIndex].username = targetKeyword.username;
             setKeywords(_keywords);
         }
+        setTargetKeywordType('link');
     }, [targetKeyword, keywords, targetKeywordIndex]);
 
     const handleSetNewLink = useCallback(() => {
@@ -62,6 +65,7 @@ export default function BUY() {
             setTargetKeyword(null);
 
         }
+        setTargetKeywordType('username');
     }, [targetKeyword, keywords, targetKeywordIndex, usernameCount]);
 
     return (
@@ -189,6 +193,8 @@ export default function BUY() {
                                                                 className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                                                 size='sm'
                                                                 onClick={() => {
+                                                                    setTargetKeywordIndex(index);
+                                                                    setTargetKeyword({ ...keywords[index], update: true });
                                                                 }}
                                                             >
                                                                 Edit
@@ -197,7 +203,13 @@ export default function BUY() {
                                                                 radius="full"
                                                                 className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                                                 size='sm'
-                                                                onClick={() => { }}
+                                                                onClick={() => {
+                                                                    setKeywords(p => {
+                                                                        let _p = p.slice(0);
+                                                                        _p.splice(index, 1);
+                                                                        return _p;
+                                                                    });
+                                                                }}
                                                             >
                                                                 Delete
                                                             </Button>
@@ -211,15 +223,15 @@ export default function BUY() {
                             }
                             {targetKeyword != null ? <div className="flex bg-gradien t-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 cursor-pointer flex-col border border-gray-700 py-20 px-10 ">
                                 {
-                                    keywords[targetKeywordIndex].username ?
-                                        <p className='font-medium text-[34px] text-center'>ADD LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keywords[targetKeywordIndex].username}</span></p>
-                                        : <p className='font-medium text-[34px] text-center'>ADD NEW USERNAME</p>
+                                    targetKeywordType == 'link' ?
+                                        <p className='font-medium text-[34px] text-center'>{!targetKeyword.update ? "ADD" : "UPDATE"} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keywords[targetKeywordIndex].username}</span></p>
+                                        : <p className='font-medium text-[34px] text-center'> {!targetKeyword.update ? "ADD NEW" : "UPDATE"} USERNAME</p>
                                 }
                                 <p className='mt-3'>
-                                    {keywords[targetKeywordIndex].username ? "We will utilize your profile page URL to establish your ownership of this content" : "We will use your username to identify and report copyright infringements"}
+                                    {targetKeywordType == 'link' ? "We will utilize your profile page URL to establish your ownership of this content" : "We will use your username to identify and report copyright infringements"}
                                 </p>
                                 <div className="flex w-full flex-col gap-4 mt-5">
-                                    <p className='flex justify-start'>{keywords[targetKeywordIndex].username ? "LINK:" : "USERNAME:"}</p>
+                                    <p className='flex justify-start'>{targetKeywordType == 'link' ? "LINK:" : "USERNAME:"}</p>
                                     <div className='flex'>
                                         {
                                             <div className="w-full flex items-center">
@@ -241,9 +253,9 @@ export default function BUY() {
                                                 <input
                                                     type="text"
                                                     placeholder='Type here'
-                                                    value={keywords[targetKeywordIndex].username ? targetKeyword.link : targetKeyword.username}
+                                                    value={targetKeywordType == 'link' ? targetKeyword.link : targetKeyword.username}
                                                     onChange={(e) => {
-                                                        if (keywords[targetKeywordIndex].username) setTargetKeyword(p => ({ ...p, link: e.target.value }))
+                                                        if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
                                                         else setTargetKeyword(p => ({ ...p, username: e.target.value }))
                                                     }}
                                                     className='w-full outline-none p-2 pr-28 rounded-lg bg-white text-black'
@@ -261,11 +273,11 @@ export default function BUY() {
                                         className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
                                         size='lg'
                                         onClick={() => {
-                                            if (keywords[targetKeywordIndex].username) handleSetNewLink();
+                                            if (targetKeywordType == 'link') handleSetNewLink();
                                             else handleSetNewUsername();
                                         }}
                                     >
-                                        {keywords[targetKeywordIndex].username ? "Save" : "Next"}
+                                        {targetKeywordType == 'link' ? "Save" : "Next"}
                                     </Button>
                                     <Button
                                         radius="full"
@@ -289,7 +301,7 @@ export default function BUY() {
                                             username: '',
                                             link: ''
                                         }])
-                                        setTargetKeywordIndex(p => (p + 1))
+                                        setTargetKeywordIndex(keywords.length)
                                     }}
                                 >
                                     Add New
