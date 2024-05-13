@@ -193,6 +193,102 @@ export default function BUY() {
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
                             <p className='font-medium text-[34px] text-center -mb-4'>USERNAMES LIST</p>
                             <p className='font-medium text-center'>({keywords.filter(p => (p.link != "")).length} USERNAMES)</p>
+
+                            {targetKeyword != null ? <div className="flex bg-gradien t-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 cursor-pointer flex-col border border-gray-700 py-20 px-10 ">
+                                {
+                                    targetKeywordType == 'link' ?
+                                        <p className='font-medium text-[34px] text-center'>{!targetKeyword.update ? "ADD" : "UPDATE"} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keywords[targetKeywordIndex].username}</span></p>
+                                        : <p className='font-medium text-[34px] text-center'> {!targetKeyword.update ? "ADD NEW" : "UPDATE"} USERNAME</p>
+                                }
+                                <p className='mt-3'>
+                                    {targetKeywordType == 'link' ? "We will utilize your profile page URL to establish your ownership of this content" : "We will use your username to identify and report copyright infringements"}
+                                </p>
+                                <div className="flex w-full flex-col gap-4 mt-5">
+                                    <p className='flex justify-start'>{targetKeywordType == 'link' ? "LINK:" : "USERNAME:"}</p>
+                                    <div className='flex'>
+                                        {
+                                            <div className="w-full flex">
+                                                <div className="flex flex-col gap-2 mt-1">
+                                                    <Switch
+                                                        defaultSelected
+                                                        size="lg"
+                                                        color="default"
+                                                        thumbIcon={({ isSelected, className }) =>
+                                                            isSelected ? (
+                                                                <SelectSwitch className={className} />
+                                                            ) : (
+                                                                <UnselectSwitch className={className} />
+                                                            )
+                                                        }
+                                                    >
+                                                    </Switch>
+                                                </div>
+                                                <div className='flex flex-col w-full'>
+                                                    <input
+                                                        type="text"
+                                                        placeholder={targetKeywordType == 'username' ? 'Type here.. @username' : 'Type here.... example: https://onlyfans.com/@username'}
+                                                        value={targetKeywordType == 'link' ? targetKeyword.link : targetKeyword.username}
+                                                        onChange={(e) => {
+                                                            if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
+                                                            else setTargetKeyword(p => ({ ...p, username: e.target.value }))
+                                                        }}
+                                                        className='w-full outline-none p-2 rounded-lg bg-white text-black'
+                                                        required
+                                                    />
+                                                    <p className='mt-1 text-red-700'>{urlValidation}</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div
+                                    className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center container'
+                                >
+                                    <Button
+                                        radius="full"
+                                        className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
+                                        size='lg'
+                                        onClick={() => {
+                                            if (targetKeywordType == 'link') handleSetNewLink();
+                                            else handleSetNewUsername();
+                                        }}
+                                    >
+                                        {targetKeywordType == 'link' ? "Save" : "Next"}
+                                    </Button>
+                                    <Button
+                                        radius="full"
+                                        className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'
+                                        onClick={() => {
+                                            setTargetKeyword(null);
+                                            let _keywords = keywords.slice(0, -1);
+                                            setKeywords(_keywords);
+                                        }}
+                                    >
+                                        Cancel
+                                    </Button>
+                                </div>
+                            </div>
+                                :
+                                usernameCount > keywords.length ? <Button
+                                    radius="full"
+                                    className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
+                                    size='lg'
+                                    onClick={() => {
+                                        setTargetKeyword({
+                                            username: '',
+                                            link: ''
+                                        });
+                                        setKeywords(p => [...p, {
+                                            username: '',
+                                            link: ''
+                                        }])
+                                        setTargetKeywordIndex(keywords.length)
+                                    }}
+                                >
+                                    Add New
+                                </Button> : <></>
+                            }
+
                             {
                                 keywords.map((keyword, index) => {
                                     return (
@@ -238,102 +334,6 @@ export default function BUY() {
                                         </div>
                                     )
                                 })
-                            }
-                            {targetKeyword != null ? <div className="flex bg-gradien t-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 cursor-pointer flex-col border border-gray-700 py-20 px-10 ">
-                                {
-                                    targetKeywordType == 'link' ?
-                                        <p className='font-medium text-[34px] text-center'>{!targetKeyword.update ? "ADD" : "UPDATE"} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keywords[targetKeywordIndex].username}</span></p>
-                                        : <p className='font-medium text-[34px] text-center'> {!targetKeyword.update ? "ADD NEW" : "UPDATE"} USERNAME</p>
-                                }
-                                <p className='mt-3'>
-                                    {targetKeywordType == 'link' ? "We will utilize your profile page URL to establish your ownership of this content" : "We will use your username to identify and report copyright infringements"}
-                                </p>
-                                <div className="flex w-full flex-col gap-4 mt-5">
-                                    <p className='flex justify-start'>{targetKeywordType == 'link' ? "LINK:" : "USERNAME:"}</p>
-                                    <div className='flex'>
-                                        {
-                                            <div className="w-full flex">
-                                                <div className="flex flex-col gap-2 mt-1">
-                                                    <Switch
-                                                        defaultSelected
-                                                        size="lg"
-                                                        color="default"
-                                                        thumbIcon={({ isSelected, className }) =>
-                                                            isSelected ? (
-                                                                <SelectSwitch className={className} />
-                                                            ) : (
-                                                                <UnselectSwitch className={className} />
-                                                            )
-                                                        }
-                                                    >
-                                                    </Switch>
-                                                </div>
-                                                <div className='flex flex-col w-full'>
-                                                    <input
-                                                        type="text"
-                                                        placeholder={targetKeywordType == 'username' ? 'Type here.. @username' : 'Type here.... example: https://onlyfans.com/@username'}
-                                                        value={targetKeywordType == 'link' ? targetKeyword.link : targetKeyword.username}
-                                                        onChange={(e) => {
-                                                            if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
-                                                            else setTargetKeyword(p => ({ ...p, username: e.target.value }))
-                                                        }}
-                                                        className='w-full outline-none p-2 rounded-lg bg-white text-black'
-                                                        required
-                                                    />
-                                                    <p className='mt-1 text-red-700'>{ urlValidation }</p>
-                                                </div>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div
-                                    className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center container'
-                                >
-                                    <Button
-                                        radius="full"
-                                        className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
-                                        size='lg'
-                                        onClick={() => {
-                                            if (targetKeywordType == 'link') handleSetNewLink();
-                                            else handleSetNewUsername();
-                                        }}
-                                    >
-                                        {targetKeywordType == 'link' ? "Save" : "Next"}
-                                    </Button>
-                                    <Button
-                                        radius="full"
-                                        className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'
-                                        onClick={() => {
-                                            setTargetKeyword(null);
-                                            if (targetKeywordType == 'link') {
-                                                let _keywords = keywords.slice(0, -1);
-                                                setKeywords(_keywords);
-                                            }
-                                        }}
-                                    >
-                                        Cancel
-                                    </Button>
-                                </div>
-                            </div>
-                                :
-                                usernameCount > keywords.length ? <Button
-                                    radius="full"
-                                    className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
-                                    size='lg'
-                                    onClick={() => {
-                                        setTargetKeyword({
-                                            username: '',
-                                            link: ''
-                                        });
-                                        setKeywords(p => [...p, {
-                                            username: '',
-                                            link: ''
-                                        }])
-                                        setTargetKeywordIndex(keywords.length)
-                                    }}
-                                >
-                                    Add New
-                                </Button> : <></>
                             }
                         </div>
                         :
