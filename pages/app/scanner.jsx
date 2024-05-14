@@ -4,10 +4,14 @@ import {
     Button, Link, Progress
 } from '@nextui-org/react';
 import { GoogleSearch, BingSearch, Complete } from "@/components/utils/Icons";
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { getUsernames } from '@/axios/usernames';
+import { scan } from '../../axios/bot';
 
 export default function Scanner() {
+
     const [value, setValue] = React.useState(25);
+    const [usernames, setUsernames] = useState([]);
 
     const icons = {
         googlesearch: <GoogleSearch fill="currentColor" size={16} />,
@@ -15,12 +19,37 @@ export default function Scanner() {
         complete: <Complete fill="currentColor" size={16} />,
     };
 
-    const handleScan = () => {
+    const handleScan = useCallback(async () => {
+        if (!usernames.length) return;
+        const res = await scan(usernames);
 
+        if (res.status == 'success') {
+            
+            // TODO : make the scanner progress as 100%
+            // setUsernames(res.data);
+        }
+        else {
+            console.log(res.data);
+        }
+    }, [usernames])
+
+    const getUsernamesInfo = async () => {
+        const res = await getUsernames();
+
+        if (res.status == 'success') {
+            setUsernames(res.data);
+        }
+        else {
+            console.log(res.data);
+        }
     }
 
+    useEffect(() => {
+        getUsernamesInfo();
+    }, []);
+
     const ScannerContent = [
-        {  
+        {
             icon: icons.googlesearch,
             title: "GOOGLE SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
@@ -80,14 +109,14 @@ export default function Scanner() {
         <>
             <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
 
-            {/* This section for define scanner header*/}
+                {/* This section for define scanner header*/}
 
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     <div>
-                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
-                        START
-                    </Button>
+                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
+                            START
+                        </Button>
                     </div>
                     <Progress
                         size="md"
@@ -111,7 +140,7 @@ export default function Scanner() {
                                             <div>{items.icon}</div>
                                             <div className='flex'><span className='font-semibold text-sm'>{items.title}</span></div>
                                         </div>
-                                       {items.content}
+                                        {items.content}
                                     </div>
                                     <hr className='w-full' />
                                 </div>
@@ -128,8 +157,8 @@ export default function Scanner() {
                         <span className='font-normal text-base'>SEARCH RESULTS REMOVAL MODULE</span>
                     </div>
                     <div className='px-20 max-md:px-0 font-normal text-xs space-x-1 max-sm:text-clip'>
-                        <span className='font-normal text-xs'>Generated a removal report with</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        <span className='font-normal text-xs'>Generated a removal report with</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
                         <span>copyright infringements and forwarded it to Search Engines.</span>
                     </div>
                 </div>

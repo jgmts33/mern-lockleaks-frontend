@@ -14,6 +14,8 @@ import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { SelectSwitch, Shine, UnselectSwitch } from '@/components/utils/Icons';
 import { scan } from '@/axios/bot';
+import { createUsernames } from '@/axios/usernames';
+import { useRouter } from 'next/router';
 
 export default function BUY() {
 
@@ -24,6 +26,8 @@ export default function BUY() {
     const icons = {
         shine: <Shine fill="currentColor" size={16} />,
     };
+
+    const router = useRouter();
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
@@ -38,7 +42,7 @@ export default function BUY() {
     const [targetKeywordType, setTargetKeywordType] = useState('username');
     const [urlValidation, setUrlValidation] = useState("");
     const [targetKeywordIndex, setTargetKeywordIndex] = useState(0);
-    const [keywords, setKeywords] = useState([
+    const [usernames, setUsernames] = useState([
         {
             username: '',
             link: ''
@@ -51,25 +55,25 @@ export default function BUY() {
     }, [customUsernameCount]);
 
     const handleSetNewUsername = useCallback(() => {
-        console.log(keywords, targetKeywordIndex);
+        console.log(usernames, targetKeywordIndex);
         if (targetKeyword.username) {
-            const _keywords = keywords.slice(0);
-            _keywords[targetKeywordIndex].username = targetKeyword.username;
-            setKeywords(_keywords);
+            const _usernames = usernames.slice(0);
+            _usernames[targetKeywordIndex].username = targetKeyword.username;
+            setUsernames(_usernames);
             setTargetKeywordType('link');
         }
-    }, [targetKeyword, keywords, targetKeywordIndex]);
+    }, [targetKeyword, usernames, targetKeywordIndex]);
 
     const handleSetNewLink = useCallback(() => {
         setUrlValidation("");
         if (targetKeyword.link && checkLinkValidation()) {
-            const _keywords = keywords.slice(0);
-            _keywords[targetKeywordIndex].link = targetKeyword.link;
-            setKeywords(_keywords);
+            const _usernames = usernames.slice(0);
+            _usernames[targetKeywordIndex].link = targetKeyword.link;
+            setUsernames(_usernames);
             setTargetKeyword(null);
             setTargetKeywordType('username');
         }
-    }, [targetKeyword, keywords, targetKeywordIndex, usernameCount]);
+    }, [targetKeyword, usernames, targetKeywordIndex, usernameCount]);
 
     const checkLinkValidation = useCallback(() => {
         var url = targetKeyword?.link || "";
@@ -84,25 +88,18 @@ export default function BUY() {
     const handlePaymentProcess = useCallback(async () => {
         // TODO: payment integration usernameCount, totalPrice
 
-        const promises = [];
+        const res = await createUsernames({ usernames });
 
-        keywords.map((keyword) => {
-            promises.push(
-                scan({
-                    link: keyword.link,
-                    username: keyword.username
-                })
-            )
-        });
+        if (res.status == 'success') {
+            router.push("/app/scanner");
+        } else {
+            console.log("Error:", res.data);
+        }
 
-        Promise.all(promises).then(res => {
-            console.log(res);
-        })
-
-    }, [keywords, usernameCount]);
+    }, [usernames, usernameCount]);
 
     useEffect(() => {
-        setKeywords(p => ([...p.splice(0, usernameCount)]))
+        setUsernames(p => ([...p.splice(0, usernameCount)]))
     }, [usernameCount]);
 
     return (
@@ -213,12 +210,12 @@ export default function BUY() {
                         ?
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
                             <p className='font-medium text-[34px] text-center -mb-4'>USERNAMES LIST</p>
-                            <p className='font-medium text-center'>({keywords.filter(p => (p.link != "")).length} USERNAMES)</p>
+                            <p className='font-medium text-center'>({usernames.filter(p => (p.link != "")).length} USERNAMES)</p>
 
                             {targetKeyword != null ? <div className="flex bg-gradien t-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 cursor-pointer flex-col border border-gray-700 py-20 px-10 ">
                                 {
                                     targetKeywordType == 'link' ?
-                                        <p className='font-medium text-[34px] text-center'>{!targetKeyword.update ? "ADD" : "UPDATE"} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keywords[targetKeywordIndex].username}</span></p>
+                                        <p className='font-medium text-[34px] text-center'>{!targetKeyword.update ? "ADD" : "UPDATE"} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{usernames[targetKeywordIndex].username}</span></p>
                                         : <p className='font-medium text-[34px] text-center'> {!targetKeyword.update ? "ADD NEW" : "UPDATE"} USERNAME</p>
                                 }
                                 <p className='mt-3'>
@@ -282,8 +279,8 @@ export default function BUY() {
                                         onClick={() => {
                                             setTargetKeyword(null);
                                             setTargetKeywordType("username")
-                                            let _keywords = keywords.slice(0, -1);
-                                            setKeywords(_keywords);
+                                            let _usernames = usernames.slice(0, -1);
+                                            setUsernames(_usernames);
                                         }}
                                     >
                                         Cancel
@@ -291,7 +288,7 @@ export default function BUY() {
                                 </div>
                             </div>
                                 :
-                                usernameCount > keywords.length ? <Button
+                                usernameCount > usernames.length ? <Button
                                     radius="full"
                                     className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
                                     size='lg'
@@ -300,11 +297,11 @@ export default function BUY() {
                                             username: '',
                                             link: ''
                                         });
-                                        setKeywords(p => [...p, {
+                                        setUsernames(p => [...p, {
                                             username: '',
                                             link: ''
                                         }])
-                                        setTargetKeywordIndex(keywords.length)
+                                        setTargetKeywordIndex(usernames.length)
                                     }}
                                 >
                                     Add New
@@ -312,7 +309,7 @@ export default function BUY() {
                             }
 
                             {
-                                keywords.map((keyword, index) => {
+                                usernames.map((keyword, index) => {
                                     return (
                                         <div key={index}>
                                             {
@@ -330,7 +327,7 @@ export default function BUY() {
                                                                 size='sm'
                                                                 onClick={() => {
                                                                     setTargetKeywordIndex(index);
-                                                                    setTargetKeyword({ ...keywords[index], update: true });
+                                                                    setTargetKeyword({ ...usernames[index], update: true });
                                                                 }}
                                                             >
                                                                 Edit
@@ -340,7 +337,7 @@ export default function BUY() {
                                                                 className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                                                 size='sm'
                                                                 onClick={() => {
-                                                                    setKeywords(p => {
+                                                                    setUsernames(p => {
                                                                         let _p = p.slice(0);
                                                                         _p.splice(index, 1);
                                                                         return _p;
@@ -411,11 +408,11 @@ export default function BUY() {
                     </Button> : <div></div>}
                     {step < 2 ? <Button
                         radius="lg"
-                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && !keywords.length ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
+                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && !usernames.length ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
                         size='lg'
-                        disabled={step == 1 && !keywords.length}
+                        disabled={step == 1 && !usernames.length}
                         onPress={() => {
-                            if (step == 1 && !keywords.length) return;
+                            if (step == 1 && !usernames.length) return;
                             setStep(p => p + 1)
                         }}
                     >
