@@ -7,10 +7,13 @@ import { GoogleSearch, BingSearch, Complete } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import { getUsernames } from '@/axios/usernames';
 import { scan } from '../../axios/bot';
+import { io } from 'socket.io-client';
+import { getUserId } from '../../axios/token';
+import { ENDPOINT } from '../../config/config';
 
 export default function Scanner() {
 
-    const [value, setValue] = React.useState(25);
+    const [scanProgress, setScanProgress] = React.useState(0);
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
@@ -20,11 +23,12 @@ export default function Scanner() {
     };
 
     const handleScan = useCallback(async () => {
+        console.log("usernames", usernames);
         if (!usernames.length) return;
-        const res = await scan(usernames);
+        const res = await scan({usernames});
 
         if (res.status == 'success') {
-            
+            setScanProgress(100);
             // TODO : make the scanner progress as 100%
             // setUsernames(res.data);
         }
@@ -46,6 +50,18 @@ export default function Scanner() {
 
     useEffect(() => {
         getUsernamesInfo();
+        const userId = getUserId();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userId}:scrape`, (value) => {
+            setScanProgress(value);
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+
     }, []);
 
     const ScannerContent = [
@@ -114,7 +130,12 @@ export default function Scanner() {
                 <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
                     <div><span className='font-extrabold text-lg'>SCANNER</span></div>
                     <div>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
+                        <Button 
+                            radius="lg" 
+                            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" 
+                            size='sm'
+                            onPress={() => handleScan()}
+                        >
                             START
                         </Button>
                     </div>
@@ -123,7 +144,7 @@ export default function Scanner() {
                         aria-label="Loading..."
                         className="max-w-2xl"
                         color='secondary'
-                        value={value}
+                        value={scanProgress}
                         showValueLabel={true}
                     />
                 </div>

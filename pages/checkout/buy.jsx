@@ -13,7 +13,6 @@ import {
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { SelectSwitch, Shine, UnselectSwitch } from '@/components/utils/Icons';
-import { scan } from '@/axios/bot';
 import { createUsernames } from '@/axios/usernames';
 import { useRouter } from 'next/router';
 
@@ -408,11 +407,11 @@ export default function BUY() {
                     </Button> : <div></div>}
                     {step < 2 ? <Button
                         radius="lg"
-                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && !usernames.length ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
+                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && (!usernames.length || !usernames[0]?.link) ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
                         size='lg'
-                        disabled={step == 1 && !usernames.length}
+                        disabled={step == 1 && (!usernames.length || !usernames[0]?.link)}
                         onPress={() => {
-                            if (step == 1 && !usernames.length) return;
+                            if (step == 1 && (!usernames.length || !usernames[0]?.link)) return;
                             setStep(p => p + 1)
                         }}
                     >
