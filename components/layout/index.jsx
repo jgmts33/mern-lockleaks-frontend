@@ -23,6 +23,8 @@ import { WarningModal } from "../utils/Icons";
 import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
 import { getUserInfo } from "@/axios/auth";
 import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
+import { io } from "socket.io-client";
+import { ENDPOINT } from "../../config/config";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -106,6 +108,7 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
     if (!currentPath.includes("app") && !currentPath.includes("admin") && !currentPath.includes("auth/login")) return;
+    console.log("here");
     (async () => {
       try {
         const accessToken = await getAccessToken();
@@ -127,6 +130,16 @@ export default function RootLayout({ children }) {
       setSlectCookie(true);
     }
     setMounted(true);
+
+    const socket = io(ENDPOINT);
+
+    socket.on(`welcome`, (value) => {
+        console.log(value);
+    })
+
+    return () => {
+        socket.disconnect();
+    }
   }, []);
 
   if ( mounted ) return (

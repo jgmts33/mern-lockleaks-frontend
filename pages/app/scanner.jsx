@@ -15,6 +15,14 @@ export default function Scanner() {
 
     const [scanProgress, setScanProgress] = React.useState(0);
     const [usernames, setUsernames] = useState([]);
+    const [scrapedData, setScrapedData] = useState({
+        total_google_links: 0,
+        total_google_images: 0,
+        total_google_videos: 0,
+        total_bing_links: 0,
+        total_bing_images: 0,
+        total_bing_videos: 0
+    });
 
     const icons = {
         googlesearch: <GoogleSearch fill="currentColor" size={16} />,
@@ -23,19 +31,21 @@ export default function Scanner() {
     };
 
     const handleScan = useCallback(async () => {
-        console.log("usernames", usernames);
-        if (!usernames.length) return;
+        if (!usernames.length || scanProgress) return;
+        setScanProgress(0.1);
         const res = await scan({usernames});
 
         if (res.status == 'success') {
             setScanProgress(100);
+            console.log("res.data:", res.data);
+            setScrapedData(res.data);
             // TODO : make the scanner progress as 100%
             // setUsernames(res.data);
         }
         else {
             console.log(res.data);
         }
-    }, [usernames])
+    }, [usernames, scanProgress])
 
     const getUsernamesInfo = async () => {
         const res = await getUsernames();
@@ -70,7 +80,7 @@ export default function Scanner() {
             title: "GOOGLE SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated an automated Google Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scrapedData.total_google_links}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -79,7 +89,7 @@ export default function Scanner() {
             title: "GOOGLE IMAGES SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated an automated Google Images Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scrapedData.total_google_images}</span>
                 <span className='font-normal text-xs'>new copyright infringements</span>
             </div>
         },
@@ -88,7 +98,7 @@ export default function Scanner() {
             title: "GOOGLE VIDEOS SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated an automated Google Videos Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scrapedData.total_google_videos}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -97,7 +107,7 @@ export default function Scanner() {
             title: "BING SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated automated searches on Bing Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scrapedData.total_bing_links}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -106,7 +116,7 @@ export default function Scanner() {
             title: "BING IMAGES SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated automated searches on Bing Images Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scrapedData.total_bing_images}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -115,7 +125,7 @@ export default function Scanner() {
             title: "BING VIDEO SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated automated searches on Bing Video Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scrapedData.total_bing_videos}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -132,11 +142,14 @@ export default function Scanner() {
                     <div>
                         <Button 
                             radius="lg" 
-                            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" 
+                            className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!scanProgress ? "from-purple-light to-purple-weight" : scanProgress == 100? "from-green-700 to-green-800" : "from-purple-light to-purple-weight" ) }
                             size='sm'
+                            disabled={scanProgress}
                             onPress={() => handleScan()}
                         >
-                            START
+                            {
+                                scanProgress == 0 ? "START" : scanProgress == 100 ? "FINISHED" : "Processing"
+                            }
                         </Button>
                     </div>
                     <Progress
@@ -179,7 +192,14 @@ export default function Scanner() {
                     </div>
                     <div className='px-20 max-md:px-0 font-normal text-xs space-x-1 max-sm:text-clip'>
                         <span className='font-normal text-xs'>Generated a removal report with</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{
+                            scrapedData.total_google_links +
+                            scrapedData.total_google_images +
+                            scrapedData.total_google_videos +
+                            scrapedData.total_bing_links +
+                            scrapedData.total_bing_images +
+                            scrapedData.total_bing_videos
+                        }</span>
                         <span>copyright infringements and forwarded it to Search Engines.</span>
                     </div>
                 </div>
