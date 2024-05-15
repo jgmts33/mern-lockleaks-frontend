@@ -7,13 +7,13 @@ import { GoogleSearch, BingSearch, Complete } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import { getUsernames } from '@/axios/usernames';
 import { scan } from '../../axios/bot';
-import { io } from 'socket.io-client';
-import { getUserId } from '../../axios/token';
-import { ENDPOINT } from '../../config/config';
+import { scanProgress as scanProgressInfo, setScan } from "../../lib/bot/botSlice";
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Scanner() {
 
-    const [scanProgress, setScanProgress] = React.useState(0);
+    const scanProgress = useSelector(scanProgressInfo);
+    const dispatch = useDispatch();
     const [usernames, setUsernames] = useState([]);
     const [scrapedData, setScrapedData] = useState({
         total_google_links: 0,
@@ -32,11 +32,11 @@ export default function Scanner() {
 
     const handleScan = useCallback(async () => {
         if (!usernames.length || scanProgress) return;
-        setScanProgress(0.1);
+        dispatch(setScan(0.1));
         const res = await scan({usernames});
 
         if (res.status == 'success') {
-            setScanProgress(100);
+            dispatch(setScan(100));
             console.log("res.data:", res.data);
             setScrapedData(res.data);
             // TODO : make the scanner progress as 100%
@@ -60,18 +60,6 @@ export default function Scanner() {
 
     useEffect(() => {
         getUsernamesInfo();
-        const userId = getUserId();
-
-        const socket = io(ENDPOINT);
-
-        socket.on(`${userId}:scrape`, (value) => {
-            setScanProgress(value);
-        })
-
-        return () => {
-            socket.disconnect();
-        }
-
     }, []);
 
     const ScannerContent = [

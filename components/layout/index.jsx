@@ -18,6 +18,7 @@ import {
 import NextTopLoader from 'nextjs-toploader';
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, setScan } from "../../lib/bot/botSlice";
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
 import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
@@ -25,6 +26,7 @@ import { getUserInfo } from "@/axios/auth";
 import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
 import { io } from "socket.io-client";
 import { ENDPOINT } from "../../config/config";
+import { getUserId } from "../../axios/token";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -103,6 +105,22 @@ export default function RootLayout({ children }) {
 
     }
 
+    const userId = getUserId();
+
+    const socket = io(ENDPOINT);
+
+    socket.on(`welcome`, (value) => {
+        console.log(value);
+    })
+
+    socket.on(`${userId}:scrape`, (value) => {
+      dispatch(setScan(value));
+    })
+
+    return () => {
+        socket.disconnect();
+    }
+
   }, [userInfo]);
 
   useEffect(() => {
@@ -130,16 +148,7 @@ export default function RootLayout({ children }) {
       setSlectCookie(true);
     }
     setMounted(true);
-
-    const socket = io(ENDPOINT);
-
-    socket.on(`welcome`, (value) => {
-        console.log(value);
-    })
-
-    return () => {
-        socket.disconnect();
-    }
+    
   }, []);
 
   if ( mounted ) return (
