@@ -4,59 +4,106 @@ import {
     Button, Link
 } from '@nextui-org/react';
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, scanResult as scanRusultInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
 
 export default function Dashbaord() {
 
+    const scanResult = useSelector(scanRusultInfo);
     const icons = {
         moredetails: <MoreDetails fill="currentColor" size={16} />,
         updownscroll: <UpDownScroll fill="currentColor" size={16} />,
     };
 
-    const DashboardOverview = [
+    const [dashboardOverview, setDashboardOverview] = useState([
         {
             title: "Search Engines",
             path: "",
-            lastscan: 123456,
-            total: 123456
+            lastscan: 0,
+            total: 0
         },
         {
             title: "AI Bots",
-            lastscan: 123456,
-            total: 123456
+            lastscan: 0,
+            total: 0
         },
         {
             title: " Adult Tube Websites",
             path: "/app/adult-website",
-            lastscan: 123456,
-            total: 123456
+            lastscan: 0,
+            total: 0
         },
         {
             title: "Social Media",
             path: "/app/sm-scanner",
-            lastscan: 123456,
-            total: 123456
+            lastscan: 0,
+            total: 0
         },
         {
             title: "Personal Agent",
-            lastscan: 123456,
-            total: 123456
+            lastscan: 0,
+            total: 0
         },
         {
             title: "File Hosted",
             path: "/app/file-hosted",
-            lastscan: 123456,
-            total: 123456
+            lastscan: 0,
+            total: 0
         },
-    ]
+    ]);
+
+    useEffect(() => {
+        setDashboardOverview([
+            {
+                title: "Search Engines",
+                path: "",
+                lastscan: 0,
+                total:
+                    scanResult.total_google_links +
+                    scanResult.total_google_images +
+                    scanResult.total_google_videos +
+                    scanResult.total_bing_links +
+                    scanResult.total_bing_images +
+                    scanResult.total_bing_videos
+            },
+            {
+                title: "AI Bots",
+                lastscan: 0,
+                total: 0
+            },
+            {
+                title: " Adult Tube Websites",
+                path: "/app/adult-website",
+                lastscan: 0,
+                total: scanResult.report_count + scanResult.no_report_count
+            },
+            {
+                title: "Social Media",
+                path: "/app/sm-scanner",
+                lastscan: 0,
+                total: 0
+            },
+            {
+                title: "Personal Agent",
+                lastscan: 0,
+                total: 0
+            },
+            {
+                title: "File Hosted",
+                path: "/app/file-hosted",
+                lastscan: 0,
+                total: scanResult.good_count
+            }
+        ])
+    }, [scanResult]);
 
     const userInfo = useSelector(info);
 
     useEffect(() => {
         console.log("userInfo:", userInfo);
-    },[userInfo]);
+    }, [userInfo]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white">
@@ -71,7 +118,7 @@ export default function Dashbaord() {
 
             <div className='grid grid-cols-3 gap-10 py-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:justify-center max-lg:items-center max-lg:mx-auto max-sm:py-5 max-sm:gap-5'>
                 {
-                    DashboardOverview.map((items, index) => {
+                    dashboardOverview.map((items, index) => {
                         return (
                             <div key={index} className="flex flex-col max-w-[480px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
                                 <div className='flex justify-between px-3 py-3'>

@@ -18,7 +18,7 @@ import {
 import NextTopLoader from 'nextjs-toploader';
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setScan } from "../../lib/bot/botSlice";
+import { setScanProgress } from "../../lib/bot/botSlice";
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
 import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
@@ -114,7 +114,7 @@ export default function RootLayout({ children }) {
     })
 
     socket.on(`${userId}:scrape`, (value) => {
-      dispatch(setScan(value));
+      dispatch(setScanProgress(value));
     })
 
     return () => {
