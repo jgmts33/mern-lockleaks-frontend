@@ -3,37 +3,56 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Warning } from "@/components/utils/Icons";
+import { downloadSrapedData, getDownloadList } from '../../axios/download';
+import moment from 'moment/moment';
 
 export default function DownloadData() {
 
-    const [selectDownload , setSelectDownload] = useState(0)
+    const [list, setList] = useState([]);
 
     const icons = {
         warning: <Warning fill="currentColor" size={16} />,
     };
 
-    const NotificationContent = [
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-    ]
+    const getDownloadListInfo = async () => {
+        const res = await getDownloadList();
+
+        if (res.status == 'success') {
+            setList(res.data);
+        } else {
+            console.log(res.data);
+        }
+    }
+
+    const convertToDate = (str) => {
+        const dateParts = str.split("_")[0].split("-");
+        const dateObj = moment(`${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`, "YYYY-MM-DD");
+
+        return dateObj.format("MMMM DD, YYYY");
+    }
+
+    const handleDownload = async (folder_name) => {
+        const res = await downloadSrapedData(folder_name);
+
+        if (res.status == 'success') {
+            const blob = new Blob([res.data]);
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${folder_name}.zip`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        } else {
+            console.log("Error");
+        }
+    }
+
+    useEffect(() => {
+        getDownloadListInfo();
+    }, []);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
@@ -47,14 +66,22 @@ export default function DownloadData() {
                 <ScrollShadow className="h-[350px]">
                     <div className='flex flex-col scroll px-8 gap-5 scroll-y max-md:px-4 max-sm:gap-3'>
                         {
-                            NotificationContent.map((items, index) => {
+                            list.map((item, index) => {
                                 return (
-                                    <div key={index} className='flex items-center gap-10 max-md:flex-col max-xl:gap-5 max-md:items-start max-sm:gap-2'>
-                                        <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
-                                            <span className='max-sm:font-normal max-sm:text-sm'>{items}</span>
+                                    <div key={index} className='flex items-end gap-10 max-xl:gap-5 max-sm:gap-2'>
+                                        <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px] justify-between items-end max-sm:items-start max-sm:flex-col gap-3'>
+                                            <p className='max-sm:font-normal font-bold max-sm:text-sm bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>
+                                                {item.scrape_date}
+                                            </p>
+                                            <small className='max-sm:text-right max-sm:w-full'>{convertToDate(item.scrape_date)}</small>
                                         </div>
                                         <div>
-                                            <Button radius="lg" className={selectDownload == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={()=>setSelectDownload(index)}>
+                                            <Button
+                                                radius="lg"
+                                                className={item ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
+                                                size='sm'
+                                                onClick={() => handleDownload(item.scrape_date)}
+                                            >
                                                 Download
                                             </Button>
                                         </div>
