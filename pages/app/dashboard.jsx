@@ -83,8 +83,17 @@ export default function Dashbaord() {
             {
                 title: " Adult Tube Websites",
                 path: "/app/adult-website",
-                lastscan: lastScanResult.report_count + lastScanResult.no_report_count,
-                total: scanResult.report_count + scanResult.no_report_count
+                lastscan: 
+                    lastScanResult.matches_count+
+                    lastScanResult.no_matches_count+
+                    lastScanResult.no_report_count+
+                    lastScanResult.report_count,
+                total: 
+                    scanResult.matches_count+
+                    scanResult.no_matches_count+
+                    scanResult.no_report_count+
+                    scanResult.report_count
+                
             },
             {
                 title: "Social Media",
@@ -122,8 +131,8 @@ export default function Dashbaord() {
                     dashboardOverview.map((items, index) => {
                         return (
                             <div key={index} className="flex flex-col max-w-[480px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
-                                <div className='flex justify-between px-3 py-3'>
-                                    <div className='px-5 cursor-pointer'>
+                                <div className='flex justify-between py-3'>
+                                    <div className='px-8 cursor-pointer '>
                                         <Link href={items.path} className='text-white'><span className='font-medium text-lg'>{items.title}</span></Link>
                                     </div>
                                     <div>{icons.moredetails}</div>

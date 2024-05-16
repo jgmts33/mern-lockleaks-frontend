@@ -3,19 +3,16 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react';
-import { Warning } from "@/components/utils/Icons";
+import React, { useCallback, useEffect, useState } from 'react';
 import { downloadSrapedData, getScrapedDataList } from '../../axios/download';
 import moment from 'moment/moment';
+import { scanProgress as scanProgressInfo } from "../../lib/bot/botSlice";
+import { useSelector } from 'react-redux';
 
 export default function DownloadData() {
 
     const [list, setList] = useState([]);
-
-    const icons = {
-        warning: <Warning fill="currentColor" size={16} />,
-    };
-
+    const scanProgress = useSelector(scanProgressInfo);
     const getScrapedDataListInfo = async () => {
         const res = await getScrapedDataList();
 
@@ -33,7 +30,7 @@ export default function DownloadData() {
         return dateObj.format("MMMM DD, YYYY");
     }
 
-    const handleDownload = async (folder_name) => {
+    const handleDownload = useCallback(async (folder_name, index) => {
         const res = await downloadSrapedData(folder_name);
 
         if (res.status == 'success') {
@@ -45,10 +42,21 @@ export default function DownloadData() {
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
+
+            setList((p) => {
+                let data = p.slice();
+                data[index].downloaded = true;
+                return data;
+            });
+
         } else {
             console.log("Error");
         }
-    }
+    }, [list]);
+
+    useEffect(() => {
+        if (scanProgress == 100) getScrapedDataListInfo();
+    }, [scanProgress]);
 
     useEffect(() => {
         getScrapedDataListInfo();
@@ -80,10 +88,10 @@ export default function DownloadData() {
                                                 className={item.status == 'available' ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
                                                 size='sm'
                                                 onClick={() => {
-                                                    if (item.status == 'available') handleDownload(item.scrape_date);
+                                                    if (item.status == 'available') handleDownload(item.scrape_date, index);
                                                 }}
                                             >
-                                                {item.status == 'available' ? "Download" : "Expired"}
+                                                {item.status == 'available' ? item.downloaded ? "Downloaded" : "Download" : "Expired"}
                                             </Button>
                                         </div>
                                     </div>

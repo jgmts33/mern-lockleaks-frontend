@@ -30,7 +30,7 @@ export const COOKIE_SETTING_OPTIONS = [
     },
 ]
 
-export default function CookieSettigs({ onClose }) {
+export default function CookieSettigs({ onClose, onAccept }) {
 
     const [isselected, setSelectBtn] = useState(0);
 
@@ -61,18 +61,30 @@ export default function CookieSettigs({ onClose }) {
             }
         }
         if (selectedCounts == 4) setSelectBtn(1);
-        if (!isEverSet) handleAllChecked();
+        if (!isEverSet) {
+            setCookieSettingContent(prev => {
+                const data = prev.map(item => {
+                    return { ...item, selected: true }
+                });
+
+                return data;
+            })
+            setSelectBtn(1);
+        }
     }, []);
 
-    const handleAllChecked = useCallback(() => {
+    const handleClickConfirm = useCallback(() => {
+
         const expires = new Date('2030-12-30').toUTCString();
         let _cookieSettingContent = cookieSettingContent.slice(0);
         for (let index = 0; index < _cookieSettingContent.length; index++) {
-            document.cookie = `${_cookieSettingContent[index].name}=allowed; expires=${expires}; path=/`;
-            _cookieSettingContent[index].selected = true;
+            let cookieValue = 'un-allowed';
+            if (_cookieSettingContent[index].selected) cookieValue = 'allowed';
+            document.cookie = `${_cookieSettingContent[index].name}=${cookieValue}; expires=${expires}; path=/`;
         }
         setCookieSettingContent(_cookieSettingContent);
-        setSelectBtn(1);
+        onAccept();
+
     }, [cookieSettingContent]);
 
     return (
@@ -103,14 +115,8 @@ export default function CookieSettigs({ onClose }) {
                                 }
                                 isSelected={content.selected}
                                 onValueChange={(value) => {
-
-                                    const expires = new Date('2030-12-30').toUTCString();
-                                    const cookieValue = value ? "allowed" : "un-allowed"
-                                    document.cookie = `${content.name}=${cookieValue}; expires=${expires}; path=/`;
-
                                     setCookieSettingContent(prev => {
                                         const data = prev.map(item => {
-
                                             if (item.name === content.name) {
                                                 return { ...item, selected: value }
                                             }
@@ -146,9 +152,15 @@ export default function CookieSettigs({ onClose }) {
                                     className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 text-lg"} size='lg'
                                     onClick={() => {
                                         if (index == 1) {
-                                            handleAllChecked();
+                                            setCookieSettingContent(prev => {
+                                                const data = prev.map(item => {
+                                                    return { ...item, selected: true }
+                                                });
+
+                                                return data;
+                                            })
                                         }
-                                        setSelectBtn(index);
+                                        if (index != 2) handleClickConfirm();
                                         onClose();
                                     }}
                                 >

@@ -19,8 +19,7 @@ import NextTopLoader from 'nextjs-toploader';
 import { useDispatch, useSelector } from "react-redux";
 
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import { setScanProgress } from "../../lib/bot/botSlice";
-import { scanProgress as scanProgressInfo, scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo, setScanResult, setLastScanResult } from "../../lib/bot/botSlice";
+import { scanProgress as scanProgressInfo, setLastScanResult, scanResult as scanResultInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
 
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
@@ -53,6 +52,7 @@ export default function RootLayout({ children }) {
 
   const router = useRouter();
   const userInfo = useSelector(info);
+  const scanResult = useSelector(scanResultInfo);
   const scanProgress = useSelector(scanProgressInfo);
   const dispatch = useDispatch();
 
@@ -77,16 +77,51 @@ export default function RootLayout({ children }) {
   }
 
   const getScrapedDataListInfo = async () => {
+
     const res = await getScrapedDataList();
 
     if (res.status == 'success') {
-      if (res.data?.length >= 2) {
-        dispatch(setLastScanResult(res.data[1]));
-      }
       if (res.data?.length >= 1) {
-        dispatch(setScanResult(res.data[0]));
+        dispatch(setLastScanResult(res.data[0]));
       }
+      let _scanResult = {
+        total_google_links: 0,
+        total_google_images: 0,
+        total_google_videos: 0,
+        total_bing_links: 0,
+        total_bing_images: 0,
+        total_bing_videos: 0,
+        good_count: 0,
+        other_count: 0,
+        bad_count: 0,
+        new_count: 0,
+        report_count: 0,
+        no_report_count: 0,
+        matches_count: 0,
+        no_matches_count: 0
+      };
+
+      res.data.map((item) => {
+        _scanResult.total_google_links += item.total_google_links
+        _scanResult.total_google_images += item.total_google_images
+        _scanResult.total_google_videos += item.total_google_videos
+        _scanResult.total_bing_links += item.total_bing_links
+        _scanResult.total_bing_images += item.total_bing_images
+        _scanResult.total_bing_videos += item.total_bing_videos
+        _scanResult.good_count += item.good_count
+        _scanResult.other_count += item.other_count
+        _scanResult.bad_count += item.bad_count
+        _scanResult.new_count += item.new_count
+        _scanResult.report_count += item.report_count
+        _scanResult.no_report_count += item.no_report_count
+        _scanResult.matches_count += item.matches_count
+        _scanResult.no_matches_count += item.no_matches_count
+      });
+
+      dispatch(setScanResult(_scanResult));
+
       dispatch(setScanProgress(0));
+
     } else {
       console.log(res.data);
     }
@@ -137,6 +172,7 @@ export default function RootLayout({ children }) {
     })
 
     socket.on(`${userId}:scrape`, (value) => {
+      console.log("scrape-progress:", value)
       dispatch(setScanProgress(value));
     })
 
@@ -148,7 +184,7 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     if (scanProgress == 100) getScrapedDataListInfo();
-}, [scanProgress]);
+  }, [scanProgress]);
 
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
@@ -175,7 +211,6 @@ export default function RootLayout({ children }) {
       setSlectCookie(true);
     }
     setMounted(true);
-
   }, []);
 
   if (mounted) return (
@@ -203,7 +238,7 @@ export default function RootLayout({ children }) {
                 hideCloseButton
               >
                 <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
-                  {(onClose) => (
+                  {() => (
                     <>
                       <ModalBody>
                         <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>
@@ -226,6 +261,7 @@ export default function RootLayout({ children }) {
                           onPress={() => {
                             dispatch(setUserInfo(null));
                             setTokensExpired();
+                            onClose();
                             router.push("/");
                           }}
                         >
@@ -255,7 +291,15 @@ export default function RootLayout({ children }) {
                   {(onClose) => (
                     <>
                       <ModalBody>
-                        {isOpen ? <CookieSettigs onClose={() => onClose()} /> : <></>}
+                        {
+                          isOpen ?
+                            <CookieSettigs
+                              onClose={() => onClose()}
+                              onAccept={() => setSlectCookie(true)}
+                            />
+                            :
+                            <></>
+                        }
                       </ModalBody>
                     </>
                   )}

@@ -4,12 +4,12 @@ import {
     Button, Checkbox
 } from '@nextui-org/react';
 import { Components, Checkboxs } from "@/components/utils/Icons";
-import { scanResult as scanRusultInfo } from "../../lib/bot/botSlice";
+import { lastScanResult as lastScanRusultInfo } from "../../lib/bot/botSlice";
 import { useSelector } from 'react-redux';
 
 export default function AdultWesite() {
 
-    const scanResult = useSelector(scanRusultInfo);
+    const lastScanResult = useSelector(lastScanRusultInfo);
 
     const icons = {
         component: <Components fill="currentColor" size={16} />,
@@ -23,7 +23,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.matches_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.matches_count}</span>
                     <span className='font-semibold text-sm'>MATCHES WITH SPECIFIED KEYWORDS AND USERNAMES  IN URLs.</span>
                 </div>
             </div>
@@ -34,7 +34,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.no_matches_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.no_matches_count}</span>
                     <span className='font-semibold text-sm'>POTENTIAL MATCHES.</span>
                 </div>
             </div>
@@ -45,7 +45,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.no_report_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.no_report_count}</span>
                     <span className='font-semibold text-sm'>NON-COMPLIANT WEBSITES REGARDING DMCA POLICY.</span>
                 </div>
             </div>
@@ -56,7 +56,7 @@ export default function AdultWesite() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.report_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.report_count}</span>
                     <span className='font-semibold text-sm'>WEBSITES COMPLYING WITH DMCA POLICY.</span>
                 </div>
             </div>
@@ -69,10 +69,10 @@ export default function AdultWesite() {
                     <span className='font-semibold text-sm'>Generated A Removal Report For</span>
                     <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>
                         {
-                            scanResult.matches_count+
-                            scanResult.no_matches_count+
-                            scanResult.no_report_count+
-                            scanResult.report_count
+                            lastScanResult.matches_count+
+                            lastScanResult.no_matches_count+
+                            lastScanResult.no_report_count+
+                            lastScanResult.report_count
                         }
                     </span>
                     <span className='font-semibold text-sm'>Websites In Compliance With DMCA Policy And Forwarded It For Removal.</span>
@@ -103,7 +103,12 @@ export default function AdultWesite() {
             </div>
             <div className='flex flex-col mt-10 gap-3'>
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
-                <span className='font-medium text-lg text-white/50'>Scanning 10 Websites Using Specified Keywords And Usernames</span>
+                <span className='font-medium text-lg text-white/50'>Scanning {
+                            lastScanResult.matches_count+
+                            lastScanResult.no_matches_count+
+                            lastScanResult.no_report_count+
+                            lastScanResult.report_count
+                        } Websites Using Specified Keywords And Usernames</span>
             </div>
 
             {/* This section for define Adult Website Content*/}
