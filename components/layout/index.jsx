@@ -128,6 +128,9 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
 
+    if ( !currentPath.includes("admin") && !currentPath.includes("app") ) {
+      setMounted(true);
+    }
     if (!userInfo) return;
 
     if (!userInfo.verified) {
@@ -161,7 +164,9 @@ export default function RootLayout({ children }) {
       }
 
     }
-
+    
+    setMounted(true);
+    
     const userId = getUserId();
 
     const socket = io(ENDPOINT);
@@ -211,7 +216,6 @@ export default function RootLayout({ children }) {
     if (getCookieValue('necessary')) {
       setSlectCookie(true);
     }
-    setMounted(true);
   }, []);
 
   if (mounted) return (

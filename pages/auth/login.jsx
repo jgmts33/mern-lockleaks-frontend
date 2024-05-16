@@ -95,23 +95,6 @@ export default function Login() {
         }
     }, [modalValue.status]);
 
-    // useEffect(() => {
-    //     (async() => {
-    //         try {
-    //             const accessToken = await getAccessToken();
-    //             if (accessToken) setIsAutherized(true);
-    //         } catch (err) {
-    //             console.log(err);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     })();
-    // },[]);
-
-    // if (isLoading) return <></>
-
-    // if (isAutherized) return <Navigate to="/dashboard" replace />
-
     return (
 
         <div className='px-10 max-sm:px-3 flex min-h-[calc(100vh-80px)] w-full'>
@@ -187,6 +170,7 @@ export default function Login() {
                 backdrop="opaque"
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
+                onClose={handleConfirmClick}
                 classNames={{
                     backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
                 }}

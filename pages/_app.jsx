@@ -5,6 +5,7 @@ import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import StoreProvider from "@/lib/StoreProvider.jsx";
+import { Suspense } from 'react';
 
 export default function MyApp({ Component, pageProps }) {
 

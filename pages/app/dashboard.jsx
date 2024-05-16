@@ -7,8 +7,11 @@ import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo } from "../../lib/bot/botSlice";
+import { useRouter } from 'next/router';
 
 export default function Dashbaord() {
+
+    const router = useRouter();
 
     const scanResult = useSelector(scanRusultInfo);
     const lastScanResult = useSelector(lastScanResultInfo);
@@ -116,7 +119,7 @@ export default function Dashbaord() {
     }, [scanResult, lastScanResult]);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white container">
 
             {/* This section for define dashboard header*/}
 
@@ -133,7 +136,7 @@ export default function Dashbaord() {
                             <div key={index} className="flex flex-col max-w-[480px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
                                 <div className='flex justify-between py-3'>
                                     <div className='px-8 cursor-pointer '>
-                                        <Link href={items.path} className='text-white'><span className='font-medium text-lg'>{items.title}</span></Link>
+                                        <span className='font-medium text-lg hover:text-gray-200' onClick={() => router.push(items.path)}>{items.title}</span>
                                     </div>
                                     <div>{icons.moredetails}</div>
                                 </div>
