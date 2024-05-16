@@ -5,7 +5,7 @@ import {
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { Warning } from "@/components/utils/Icons";
-import { downloadSrapedData, getDownloadList } from '../../axios/download';
+import { downloadSrapedData, getScrapedDataList } from '../../axios/download';
 import moment from 'moment/moment';
 
 export default function DownloadData() {
@@ -16,8 +16,8 @@ export default function DownloadData() {
         warning: <Warning fill="currentColor" size={16} />,
     };
 
-    const getDownloadListInfo = async () => {
-        const res = await getDownloadList();
+    const getScrapedDataListInfo = async () => {
+        const res = await getScrapedDataList();
 
         if (res.status == 'success') {
             setList(res.data);
@@ -51,7 +51,7 @@ export default function DownloadData() {
     }
 
     useEffect(() => {
-        getDownloadListInfo();
+        getScrapedDataListInfo();
     }, []);
 
     return (
@@ -62,27 +62,28 @@ export default function DownloadData() {
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DOWNLOAD DATA</span>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4 max-sm:mt-20'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full max-md:px-4 max-sm:mt-20'>
                 <ScrollShadow className="h-[350px]">
                     <div className='flex flex-col scroll px-8 gap-5 scroll-y max-md:px-4 max-sm:gap-3'>
                         {
                             list.map((item, index) => {
                                 return (
-                                    <div key={index} className='flex items-end gap-10 max-xl:gap-5 max-sm:gap-2'>
+                                    <div key={index} className='flex items-center gap-10 max-xl:gap-5 max-sm:gap-2'>
                                         <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px] justify-between items-end max-sm:items-start max-sm:flex-col gap-3'>
-                                            <p className='max-sm:font-normal font-bold max-sm:text-sm bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>
-                                                {item.scrape_date}
+                                            <p className='max-sm:font-normal font-bold max-sm:text-sm'>
+                                                {item.scrape_date} <span className='ml-3'>{convertToDate(item.scrape_date)}</span>
                                             </p>
-                                            <small className='max-sm:text-right max-sm:w-full'>{convertToDate(item.scrape_date)}</small>
                                         </div>
                                         <div>
                                             <Button
                                                 radius="lg"
-                                                className={item ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
+                                                className={item.status == 'available' ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
                                                 size='sm'
-                                                onClick={() => handleDownload(item.scrape_date)}
+                                                onClick={() => {
+                                                    if (item.status == 'available') handleDownload(item.scrape_date);
+                                                }}
                                             >
-                                                Download
+                                                {item.status == 'available' ? "Download" : "Expired"}
                                             </Button>
                                         </div>
                                     </div>
@@ -95,13 +96,13 @@ export default function DownloadData() {
 
             {/* This section for define download data warning?*/}
 
-            <div className='flex bg-white/10 shadow-sm py-5 px-16 max-sm:px-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:mt-20'>
+            {/* <div className='flex bg-white/10 shadow-sm py-5 px-16 max-sm:px-5 gap-7 rounded-[16px] border border-gray-500 max-w-[1300px] items-center mt-10 w-full max-sm:mt-20'>
                 <div>{icons.warning}</div>
                 <div className='flex gap-16 max-md:flex-col max-md:gap-1'>
                     <span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Scan name February 27, 2024</span>
                     <span className='font-semibold text-base '>Date Has Expired</span>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

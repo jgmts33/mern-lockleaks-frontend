@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAccessToken, getUserId } from './token';
 import { ENDPOINT } from '@/config/config';
 
-export const getDownloadList = async () => {
+export const getScrapedDataList = async () => {
 
   const accessToken = await getAccessToken();
   const userId = getUserId();

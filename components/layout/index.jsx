@@ -17,8 +17,11 @@ import {
 } from '@nextui-org/react';
 import NextTopLoader from 'nextjs-toploader';
 import { useDispatch, useSelector } from "react-redux";
+
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { setScanProgress } from "../../lib/bot/botSlice";
+import { scanProgress as scanProgressInfo, scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo, setScanResult, setLastScanResult } from "../../lib/bot/botSlice";
+
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
 import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
@@ -27,6 +30,7 @@ import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
 import { io } from "socket.io-client";
 import { ENDPOINT } from "../../config/config";
 import { getUserId } from "../../axios/token";
+import { getScrapedDataList } from "../../axios/download";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -49,6 +53,7 @@ export default function RootLayout({ children }) {
 
   const router = useRouter();
   const userInfo = useSelector(info);
+  const scanProgress = useSelector(scanProgressInfo);
   const dispatch = useDispatch();
 
   const handleConfirmClick = useCallback(() => {
@@ -69,6 +74,21 @@ export default function RootLayout({ children }) {
       document.cookie = `${COOKIE_SETTING_OPTIONS[index].name}=allowed; expires=${expires}; path=/`;
     }
     setSlectCookie(true);
+  }
+
+  const getScrapedDataListInfo = async () => {
+    const res = await getScrapedDataList();
+
+    if (res.status == 'success') {
+      if (res.data?.length >= 2) {
+        dispatch(setLastScanResult(res.data[1]));
+      }
+      if (res.data?.length >= 1) {
+        dispatch(setScanResult(res.data[0]));
+      }
+    } else {
+      console.log(res.data);
+    }
   }
 
   useEffect(() => {
@@ -95,6 +115,8 @@ export default function RootLayout({ children }) {
       onClose();
     }
 
+    getScrapedDataListInfo();
+
     if (currentPath.includes("login") && getCookieValue('necessary') == 'allowed') {
 
       if (userInfo.roles?.includes("admin")) {
@@ -110,7 +132,7 @@ export default function RootLayout({ children }) {
     const socket = io(ENDPOINT);
 
     socket.on(`welcome`, (value) => {
-        console.log(value);
+      console.log(value);
     })
 
     socket.on(`${userId}:scrape`, (value) => {
@@ -118,10 +140,14 @@ export default function RootLayout({ children }) {
     })
 
     return () => {
-        socket.disconnect();
+      socket.disconnect();
     }
 
   }, [userInfo]);
+
+  useEffect(() => {
+    if (scanProgress == 100) getScrapedDataListInfo();
+}, [scanProgress]);
 
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
@@ -148,10 +174,10 @@ export default function RootLayout({ children }) {
       setSlectCookie(true);
     }
     setMounted(true);
-    
+
   }, []);
 
-  if ( mounted ) return (
+  if (mounted) return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
         {
@@ -308,5 +334,5 @@ export default function RootLayout({ children }) {
     </div>
   )
 
-  else  return (<></>);
+  else return (<></>);
 }

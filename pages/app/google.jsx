@@ -4,16 +4,58 @@ import {
     Button, Link, Progress
 } from '@nextui-org/react';
 import { GoogleSearch, Components } from "@/components/utils/Icons";
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import GoogleIcon from '@/public/assets/background/Google.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { scanProgress as scanProgressInfo, scanResult as scanRusultInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
+import { getUsernames } from '@/axios/usernames';
+import { scan } from '../../axios/bot';
 
 export default function Google() {
-    const [value, setValue] = React.useState(25);
+
+    const scanProgress = useSelector(scanProgressInfo);
+    const scanResult = useSelector(scanRusultInfo);
+
+    const dispatch = useDispatch();
+    const [usernames, setUsernames] = useState([]);
 
     const icons = {
         googlesearch: <GoogleSearch fill="currentColor" size={16} />,
         components: <Components fill="currentColor" size={16} />,
     };
+
+    const handleScan = useCallback(async () => {
+        if (!usernames.length || scanProgress) return;
+        dispatch(setScanProgress(0.1));
+        const res = await scan({ 
+            usernames,
+            only: 'google'
+        });
+
+        if (res.status == 'success') {
+            dispatch(setScanProgress(100));
+            dispatch(setScanResult(res.data));
+            console.log("res.data:", res.data);
+        }
+        else {
+            console.log(res.data);
+        }
+    }, [usernames, scanProgress])
+
+    const getUsernamesInfo = async () => {
+        const res = await getUsernames();
+
+        if (res.status == 'success') {
+            setUsernames(res.data);
+        }
+        else {
+            console.log(res.data);
+        }
+    }
+
+    useEffect(() => {
+        getUsernamesInfo();
+    }, []);
 
     const ScannerContent = [
         {
@@ -22,7 +64,7 @@ export default function Google() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated an automated Google Search, resulting in the detection of </span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_google_links}</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -33,7 +75,7 @@ export default function Google() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated an automated Google Images Search, resulting in the detection of</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_google_images}</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -43,7 +85,7 @@ export default function Google() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated an automated Google Videos Search, resulting in the detection of</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_google_videos}</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -56,17 +98,28 @@ export default function Google() {
             {/* This section for define file google scan header*/}
 
             <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
-                <div><span className='font-extrabold text-lg'>GOOGLE MODULE</span></div>
-                <div><Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg" size='sm'>
-                    START
-                </Button>
+                <div>
+                    <span className='font-extrabold text-lg'>GOOGLE MODULE</span>
+                </div>
+                <div>
+                    <Button
+                        radius="lg"
+                        className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!scanProgress ? "from-purple-light to-purple-weight" : scanProgress == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
+                        size='sm'
+                        disabled={scanProgress}
+                        onPress={() => handleScan()}
+                    >
+                        {
+                            scanProgress == 0 ? "START" : scanProgress == 100 ? "FINISHED" : "Processing"
+                        }
+                    </Button>
                 </div>
                 <Progress
                     size="md"
                     aria-label="Loading..."
                     className="max-w-2xl"
                     color='secondary'
-                    value={value}
+                    value={scanProgress}
                     showValueLabel={true}
                 />
             </div>
@@ -106,7 +159,11 @@ export default function Google() {
                 </div>
                 <div className='px-20 max-md:px-0 font-normal text-xs space-x-1 items-center'>
                     <span>Generated a removal report with </span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{
+                        scanResult.total_google_links +
+                        scanResult.total_google_images +
+                        scanResult.total_google_videos
+                    }</span>
                     <span>copyright infringements and forwarded it to Search Engines.</span>
                 </div>
             </div>

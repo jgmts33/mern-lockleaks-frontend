@@ -5,13 +5,14 @@ import {
 } from '@nextui-org/react';
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, scanResult as scanRusultInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
+import { useSelector } from 'react-redux';
+import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo } from "../../lib/bot/botSlice";
 
 export default function Dashbaord() {
 
     const scanResult = useSelector(scanRusultInfo);
+    const lastScanResult = useSelector(lastScanResultInfo);
+    
     const icons = {
         moredetails: <MoreDetails fill="currentColor" size={16} />,
         updownscroll: <UpDownScroll fill="currentColor" size={16} />,
@@ -59,7 +60,13 @@ export default function Dashbaord() {
             {
                 title: "Search Engines",
                 path: "",
-                lastscan: 0,
+                lastscan:
+                    lastScanResult.total_google_links +
+                    lastScanResult.total_google_images +
+                    lastScanResult.total_google_videos +
+                    lastScanResult.total_bing_links +
+                    lastScanResult.total_bing_images +
+                    lastScanResult.total_bing_videos,
                 total:
                     scanResult.total_google_links +
                     scanResult.total_google_images +
@@ -76,7 +83,7 @@ export default function Dashbaord() {
             {
                 title: " Adult Tube Websites",
                 path: "/app/adult-website",
-                lastscan: 0,
+                lastscan: lastScanResult.report_count + lastScanResult.no_report_count,
                 total: scanResult.report_count + scanResult.no_report_count
             },
             {
@@ -93,17 +100,11 @@ export default function Dashbaord() {
             {
                 title: "File Hosted",
                 path: "/app/file-hosted",
-                lastscan: 0,
+                lastscan: lastScanResult.good_count,
                 total: scanResult.good_count
             }
         ])
-    }, [scanResult]);
-
-    const userInfo = useSelector(info);
-
-    useEffect(() => {
-        console.log("userInfo:", userInfo);
-    }, [userInfo]);
+    }, [scanResult, lastScanResult]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white">

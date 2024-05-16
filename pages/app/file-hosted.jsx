@@ -1,12 +1,15 @@
 "use client";
-import Image from 'next/image';
 import {
     Button, Checkbox
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { scanResult as scanRusultInfo } from "../../lib/bot/botSlice";
 
 export default function FileHosted() {
+
+    const scanResult = useSelector(scanRusultInfo);
 
     const icons = {
         components: <Components fill="currentColor" size={16} />,
@@ -20,7 +23,7 @@ export default function FileHosted() {
                 <div className='flex items-center'>
                     <div className='flex space-x-1 items-center'>
                         <span>FOUND</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.good_count}</span>
                         <span>DOWNLOAD URLs.</span>
                     </div>
                 </div>
@@ -34,7 +37,7 @@ export default function FileHosted() {
             content:
                 <div className='flex items-center flex-wrap space-x-1'>
                     <span>Generated A Removal Report For</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.good_count}</span>
                         <span>FileHosts In Compliance With DMCA Policy And Forwarded It For Removal.</span>
                 </div>
         }
