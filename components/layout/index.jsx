@@ -52,7 +52,6 @@ export default function RootLayout({ children }) {
 
   const router = useRouter();
   const userInfo = useSelector(info);
-  const scanResult = useSelector(scanResultInfo);
   const scanProgress = useSelector(scanProgressInfo);
   const dispatch = useDispatch();
 
@@ -120,7 +119,7 @@ export default function RootLayout({ children }) {
 
       dispatch(setScanResult(_scanResult));
 
-      dispatch(setScanProgress(0));
+      
 
     } else {
       console.log(res.data);
@@ -173,7 +172,7 @@ export default function RootLayout({ children }) {
 
     socket.on(`${userId}:scrape`, (value) => {
       console.log("scrape-progress:", value)
-      dispatch(setScanProgress(value));
+      if (value) dispatch(setScanProgress(value));
     })
 
     return () => {
@@ -183,13 +182,15 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    if (scanProgress == 100) getScrapedDataListInfo();
+    if (scanProgress == 100) {
+      getScrapedDataListInfo();
+      dispatch(setScanProgress(0));
+    }
   }, [scanProgress]);
 
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
     if (!currentPath.includes("app") && !currentPath.includes("admin") && !currentPath.includes("auth/login")) return;
-    console.log("here");
     (async () => {
       try {
         const accessToken = await getAccessToken();

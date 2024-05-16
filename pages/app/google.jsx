@@ -35,7 +35,6 @@ export default function Google() {
         if (res.status == 'success') {
             dispatch(setScanProgress(100));
             dispatch(setScanResult(res.data));
-            console.log("res.data:", res.data);
         }
         else {
             console.log(res.data);
