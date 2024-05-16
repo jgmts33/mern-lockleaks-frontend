@@ -86,6 +86,7 @@ export default function RootLayout({ children }) {
       if (res.data?.length >= 1) {
         dispatch(setScanResult(res.data[0]));
       }
+      dispatch(setScanProgress(0));
     } else {
       console.log(res.data);
     }
