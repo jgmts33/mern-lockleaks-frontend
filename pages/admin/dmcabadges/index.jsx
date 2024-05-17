@@ -64,10 +64,10 @@ export default function Dmcabadges() {
                 <div className='flex flex-col justify-center items-center w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 max-md:mt-0'>
                     {
                         previewImgUrl ?
-                            <Image
+                            <img
                                 src={previewImgUrl}
-                                width={200}
-                                height={100}
+                                // width={200}
+                                // height={100}
                                 className='rounded-2xl'
                                 alt='uploaded_photo'
                             />
