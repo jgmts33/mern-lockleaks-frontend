@@ -66,10 +66,10 @@ export default function Dmcabadges() {
                         previewImgUrl ?
                             <Image
                                 src={previewImgUrl}
-                                width={100}
+                                width={200}
                                 height={100}
+                                className='rounded-2xl'
                                 alt='uploaded_photo'
-                                className='block w-full h-auto rounded-[16px]'
                             />
                             : <></>
                     }

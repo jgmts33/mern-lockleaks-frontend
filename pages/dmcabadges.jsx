@@ -69,9 +69,9 @@ export default function DmcaBadges() {
                             list.map((item, index) => <div key={index} className="flex justify-center items-center relative max-md:w-[330px] w-[380px] h-[300px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
                                 <Image 
                                     src={`https://server.lockleaks.com/images?filename=${item.name}`} 
-                                    width={250} 
-                                    height={250} 
-                                    className='w-full height-auto rounded-2xl object-contain object-top'
+                                    width={200}
+                                    height={100}
+                                    className='rounded-2xl'
                                     alt={item.name}
                                 />
                                 <div className='flex justify-between pt-5 w-full px-1 absolute bottom-4'>
