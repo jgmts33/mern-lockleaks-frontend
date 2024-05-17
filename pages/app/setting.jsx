@@ -6,7 +6,7 @@ import {
 import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { Facebook, Google, Twitter } from '../../components/utils/Icons';
+import { Facebook, Google, Twitter, Error } from '../../components/utils/Icons';
 import { getAccessToken } from '../../axios/token';
 import { resetPassword } from '../../axios/auth';
 import { useRouter } from 'next/router';
@@ -24,11 +24,18 @@ export default function AccountSetting() {
         google: <Google fill="currentColor" size={16} />,
         twitter: <Twitter fill="currentColor" size={16} />,
         facebook: <Facebook fill="currentColor" size={16} />,
+        error: <Error fill="currentColor" size={16} />,
     };
 
     const [newPassword, setNewPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleSetNewPassword = useCallback(async () => {
+
+        if (newPassword.length < 6 ) {
+            setError("Password must be at least 6 characters");
+            return;
+        }
         setIsPasswordResetProcessing(true);
         const accessToken = await getAccessToken();
 
@@ -62,14 +69,7 @@ export default function AccountSetting() {
                         <span className='font-semibold text-base'>Personal Details</span>
                     </div>
                     <div className='flex flex-col px-5 mt-10 gap-5'>
-                        <Button
-                            radius="lg"
-                            className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full"
-                            size='sm'
-                        >
-                            Connected with
-                            <span>{userInfo?.social ? icons[userInfo?.social] : ""}</span>
-                        </Button>
+                        
                         {!userInfo?.social ? <div className='space-y-5'>
                             <Button
                                 radius="lg"
@@ -84,10 +84,16 @@ export default function AccountSetting() {
                                     type="password"
                                     name="password"
                                     value={newPassword}
-                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    onChange={(e) => {
+                                        setNewPassword(e.target.value);
+                                        setError("");
+                                    }}
                                     className='w-full outline-none p-2 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30'
                                     required
                                 />
+                                {
+                                    error ? <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-xs mt-2'>{icons.error}&nbsp;{error}</div> : <div className='w-full h-8'></div>
+                                }
                             </div>
                             <Button
                                 radius="lg"
@@ -98,7 +104,14 @@ export default function AccountSetting() {
                             >
                                 {isChangePasswordSuccessed ? "Changed successfully!" : "Save"}
                             </Button>
-                        </div> : <></>}
+                        </div> : <Button
+                            radius="lg"
+                            className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full"
+                            size='sm'
+                        >
+                            Connected with
+                            <span>{userInfo?.social ? icons[userInfo?.social] : ""}</span>
+                        </Button>}
                     </div>
                 </div>
 
@@ -128,7 +141,7 @@ export default function AccountSetting() {
                                         className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
                                         size='sm'
                                     >
-                                        Connected with <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{userInfo?.subscription.payment_method}</span>
+                                        Payment Method: <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{userInfo?.subscription.payment_method}</span>
                                     </Button>
                                 </div>
                             </div>

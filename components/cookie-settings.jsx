@@ -32,7 +32,7 @@ export const COOKIE_SETTING_OPTIONS = [
 
 export default function CookieSettigs({ onClose, onAccept }) {
 
-    const [isselected, setSelectBtn] = useState(0);
+    const [selectBtn, setSelectBtn] = useState(0);
 
     const [cookieSettingContent, setCookieSettingContent] = useState(COOKIE_SETTING_OPTIONS);
 
@@ -73,12 +73,13 @@ export default function CookieSettigs({ onClose, onAccept }) {
         }
     }, []);
 
-    const handleClickConfirm = useCallback(() => {
-
+    const handleClickConfirm = useCallback((allAccpet = false) => {
+        console.log("cookieSettingContent:", cookieSettingContent, allAccpet);
         const expires = new Date('2030-12-30').toUTCString();
         let _cookieSettingContent = cookieSettingContent.slice(0);
         for (let index = 0; index < _cookieSettingContent.length; index++) {
             let cookieValue = 'un-allowed';
+            if (allAccpet) _cookieSettingContent[index].selected = true;
             if (_cookieSettingContent[index].selected) cookieValue = 'allowed';
             document.cookie = `${_cookieSettingContent[index].name}=${cookieValue}; expires=${expires}; path=/`;
         }
@@ -149,18 +150,9 @@ export default function CookieSettigs({ onClose, onAccept }) {
                                 <Button
                                     key={index}
                                     radius="full"
-                                    className={isselected == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 text-lg"} size='lg'
+                                    className={selectBtn == index ? "mx-auto w-1/3 max-xl:w-full bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-7 text-lg" : "mx-auto w-1/3 max-xl:w-full bg-transparent text-white shadow-lg px-7 py-7 text-lg"} size='lg'
                                     onClick={() => {
-                                        if (index == 1) {
-                                            setCookieSettingContent(prev => {
-                                                const data = prev.map(item => {
-                                                    return { ...item, selected: true }
-                                                });
-
-                                                return data;
-                                            })
-                                        }
-                                        if (index != 2) handleClickConfirm();
+                                        if (index != 2) handleClickConfirm(!!index);
                                         onClose();
                                     }}
                                 >

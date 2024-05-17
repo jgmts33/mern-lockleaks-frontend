@@ -57,8 +57,8 @@ export default function DmcaBadgeDetails() {
             </div>
             <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:gap-3'>
                 {
-                    list.map((item, index) => <div key={index}>
-                        <div className="flex justify-center items-center border max-w-[450px] max-md:max-w-full aspect-square border-gray-500 rounded-[23px] mt-10 cursor-pointer">
+                    list.map((item, index) => <div key={index} className='max-w-[450px] max-md:max-w-full'>
+                        <div className="flex justify-center items-center border w-full aspect-square border-gray-500 rounded-[23px] mt-10 cursor-pointer">
                             <img
                                 src={`https://server.lockleaks.com/images?filename=${item.name}`}
                                 // width={200}
