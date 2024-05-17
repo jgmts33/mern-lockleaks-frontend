@@ -3,14 +3,31 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
+import { Facebook, Google, Twitter } from '../../components/utils/Icons';
+import { getAccessToken } from '../../axios/token';
+import { resetPassword } from '../../axios/auth';
 
 
 export default function AccountSetting() {
 
     const userInfo = useSelector(info);
+
+    const icons = {
+        google: <Google fill="currentColor" size={16} />,
+        twitter: <Twitter fill="currentColor" size={16} />,
+        facebook: <Facebook fill="currentColor" size={16} />,
+    };
+
+    const [newPassword, setNewPassword] = useState("");
+
+    const handleSetNewPassword = useCallback(async () => {
+        const accessToken = getAccessToken();
+
+        const res = await resetPassword(accessToken, newPassword);
+    },[newPassword]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
@@ -29,25 +46,38 @@ export default function AccountSetting() {
                         <span className='font-semibold text-base'>Personal Details</span>
                     </div>
                     <div className='flex flex-col px-5 mt-10 gap-5'>
-                        <div>
-                            <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full" size='sm'>
-                                <span>Connected with</span>
+                        <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full" size='sm'>
+                            Connected with
+                            <span>{userInfo?.social ? icons[userInfo?.social] : ""}</span>
+                        </Button>
+                        {!userInfo?.social ? <div className='space-y-5'>
+                            <Button
+                                radius="lg"
+                                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
+                                size='sm'
+                            >
+                                Change Password
                             </Button>
-                        </div>
-                        <div>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full" size='sm'>
-                                <span>Change Password</span>
+                            <div className='flex flex-col w-full'>
+                                <label className='font-normal text-xs text-white/65'>Enter new password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    className='w-full outline-none p-2 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30'
+                                    required
+                                />
+                            </div>
+                            <Button
+                                radius="lg"
+                                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
+                                size='sm'
+                                onPress={handleSetNewPassword}
+                            >
+                                Save
                             </Button>
-                        </div>
-                        <div className='flex flex-col w-full'>
-                            <label className='font-normal text-xs text-white/65'>Enter new password</label>
-                            <textarea className='bg-white/10 rounded-lg'></textarea>
-                        </div>
-                        <div>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full" size='sm'>
-                                <span>Save</span>
-                            </Button>
-                        </div>
+                        </div> : <></>}
                     </div>
                 </div>
 

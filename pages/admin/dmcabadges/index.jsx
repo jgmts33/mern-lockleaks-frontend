@@ -3,56 +3,42 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import React from 'react';
-import { Chain } from "@/components/utils/Icons";
-import { useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { uploadDmcaImage } from '../../../axios/dmca';
 
 export default function Dmcabadges() {
     const router = useRouter();
-    const icons = {
-        chain: <Chain fill="currentColor" size={16} />,
-    };
 
-    const [selectedimage, setSelectImage] = useState(0);
+    const [previewImgUrl, setPreviewImgUrl] = useState('');
     const [file, setFile] = useState();
-
-    const AIImageLists = [
-        {
-            icon: icons.chain,
-            content: "Example.img"
-        }, {
-            icon: icons.chain,
-            content: "Example.img"
-        }, {
-            icon: icons.chain,
-            content: "Example.img"
-        }, {
-            icon: icons.chain,
-            content: "Example.img"
-        }, {
-            icon: icons.chain,
-            content: "Example.img"
-        }, {
-            icon: icons.chain,
-            content: "Example.img"
-        }, {
-            icon: icons.chain,
-            content: "Example.img"
-        }
-    ]
 
     const handleGoDetails = () => {
         router.push("/admin/dmcabadges/details");
     }
 
-    const handleChange = (e) => {
-        setFile(URL.createObjectURL(e[0]));
+    const handleChange = (files) => {
+        if (!files.length) return;
+        setPreviewImgUrl(URL.createObjectURL(files[0]));
+        setFile(files[0]);
     }
 
-    const handleBack = () => {
-        history.back()
-    }
+    const handleSubmit = useCallback(async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('file', file);
+        const res = await uploadDmcaImage(formData);
+
+        if ( res.status == 'success' ) {
+            setFile(null);
+            setPreviewImgUrl('');
+        } else {
+            console.log(res.data);
+        }
+
+    }, [file])
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
@@ -66,22 +52,39 @@ export default function Dmcabadges() {
                     </Button>
                 </div>
             </div>
-            <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 mt-5'>
+            <form onSubmit={handleSubmit} className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 mt-5'>
                 <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5'>
                     <label className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                         <div className="flex items-center justify-center pt-5 pb-6">
                             <span className="font-light text-lg text-white">+ Upload Photo</span>
                         </div>
-                        <input type="file" className="hidden" onChange={(e) => handleChange(e.target.files)} />
+                        <input type="file" className="hidden" onChange={(e) => handleChange(e.target.files)} accept=".png" />
                     </label>
                 </div>
                 <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 max-md:mt-0'>
-                    <Image src={file} width={100} height={100} alt='uploaded_photo' className={file ? 'block w-full h-full rounded-[16px]' : 'hidden'}></Image>
+                    {
+                        previewImgUrl ?
+                            <Image
+                                src={previewImgUrl}
+                                width={100}
+                                height={100}
+                                alt='uploaded_photo'
+                                className='block w-full h-full rounded-[16px]'
+                            />
+                            : <></>
+                    }
                 </div>
                 <div className='flex mt-5'>
-                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-lg " size='lg'>Upload</Button>
+                    <Button
+                        radius="lg"
+                        className="bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-lg "
+                        size='lg'
+                        type='submit'
+                    >
+                        Upload
+                    </Button>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }

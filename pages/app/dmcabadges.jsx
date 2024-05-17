@@ -3,12 +3,41 @@ import Image from 'next/image';
 import {
     Button, Link
 } from '@nextui-org/react';
-import React from 'react';
-import Saturn from '@/public/assets/background/saturn.svg';
-import Fire from '@/public/assets/background/fire.svg';
-import Multicolor from '@/public/assets/background/multicolor.svg';
+import React, { useEffect, useState } from 'react';
+import { downloadDmcaImages, getDmcaImages } from '../../axios/dmca';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function DmcaBadges() {
+
+    const [copied, setCopied] = useState(-1);
+    const [list, setList] = useState([]);
+
+    const getDmcaImagesInfo = async () => {
+        const res = await getDmcaImages();
+
+        if (res.status == 'success') {
+            setList(res.data);
+        }
+    }
+
+    const handleDownload = async (filename) => {
+        const res = await downloadDmcaImages(filename);
+
+        if (res.status == 'success') {
+            const blob = new Blob([res.data]);
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    }
+
+    useEffect(() => {
+        getDmcaImagesInfo();
+    }, []);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
@@ -26,57 +55,45 @@ export default function DmcaBadges() {
             {/* This section for define dmcabadges content?*/}
 
             <div className='grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 gap-10 max-xl:mx-auto max-xl:justify-center max-xl:items-center max-lg:gap-0'>
-                <div className='flex flex-col'>
-                    <div className="flex border max-w-[450px] max-md:min-w-full border-gray-500 rounded-[23px] mt-10 cursor-pointer">
-                        <Image src={Saturn} width={250} height={250} className='w-full height-full' alt='saturn' />
-                    </div>
-                    <div className='flex justify-between pt-5 max-md:gap-2'>
-                        <div>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-6 py-5 text-base" size='sm'>
+                {
+                    list.map((item, index) => <div key={index}>
+                        <div className="flex border max-w-[450px] max-md:max-w-full aspect-square border-gray-500 rounded-[23px] mt-10 cursor-pointer">
+                            <Image
+                                src={`https://server.lockleaks.com/images?filename=${item.name}`}
+                                width={450}
+                                height={450}
+                                className='w-full height-full rounded-2xl object-cover object-top'
+                                alt={item.name}
+                            />
+                        </div>
+                        <div className='flex justify-between pt-5 w-full px-1'>
+                            <Button
+                                radius="lg"
+                                className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base w-40"
+                                size='sm'
+                                onClick={() => handleDownload(item.name)}
+                            >
                                 Download
                             </Button>
+                            <CopyToClipboard text={`<img src="https://server.lockleaks.com/images?filename=${item.name}" alt="${item.name.slice(0, -4)}" />`}
+                                onCopy={() => {
+                                    setCopied(index)
+                                    setTimeout(() => {
+                                        setCopied(-1);
+                                    }, 1000)
+                                }}>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-8 py-5 text-base"
+                                    size='sm'
+                                >
+                                    {copied == index ? "Copied" : "Embeded your badge"}
+                                </Button>
+                            </CopyToClipboard>
+
                         </div>
-                        <div className='flex pr-5 max-sm:pr-0'>
-                            <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white px-4 shadow-lg py-5 text-base" size='sm'>
-                                Embed your badge
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <div className="flex shadow-gray-50 max-w-[450px] max-md:min-w-full border border-gray-500 rounded-[23px] mt-10 w-full cursor-pointer">
-                        <Image src={Multicolor} width={250} height={250} className='w-full height-full' alt='saturn' />
-                    </div>
-                    <div className='flex justify-between pt-5 max-md:gap-2 max-md:space-x-0 w-full'>
-                        <div className='flex'>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-6 py-5 text-base" size='sm'>
-                                Download
-                            </Button>
-                        </div>
-                        <div className='flex pr-5 max-sm:pr-0'>
-                            <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-4 py-5 text-base" size='sm'>
-                                Embed your badge
-                            </Button>
-                        </div>
-                    </div>
-                </div>
-                <div className='flex flex-col'>
-                    <div className="flex shadow-gray-50 max-w-[450px] max-md:min-w-full border border-gray-500 rounded-[25px] mt-10 w-full cursor-pointer">
-                        <Image src={Fire} width={250} height={250} className='w-full height-full' alt='saturn' />
-                    </div>
-                    <div className='flex justify-between pt-5 max-md:gap-2'>
-                        <div className='flex'>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-6 py-5 text-base" size='sm'>
-                                Download
-                            </Button>
-                        </div>
-                        <div className='flex pr-5 max-sm:pr-0'>
-                            <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-4 py-5 text-base" size='sm'>
-                                Embed your badge
-                            </Button>
-                        </div>
-                    </div>
-                </div>
+                    </div>)
+                }
             </div>
         </div>
     )

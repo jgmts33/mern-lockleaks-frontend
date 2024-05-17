@@ -14,8 +14,25 @@ import Saturn from '@/public/assets//blog/saturn.svg';
 import Moon from '@/public/assets//blog/moon.svg';
 import Mars from '@/public/assets//blog/mars.svg'
 import CustomerReview from '@/components/customer-review';
+import { downloadDmcaImages, getDmcaImages } from '../axios/dmca';
+import { useRouter } from 'next/router';
 
 export default function DmcaBadges() {
+
+    const [copied, setCopied] = useState(-1);
+    const [list, setList] = useState([]);
+
+    const getDmcaImagesInfo = async () => {
+        const res = await getDmcaImages();
+
+        if (res.status == 'success') {
+            setList(res.data);
+        }
+    }
+
+    useEffect(() => {
+        getDmcaImagesInfo();
+    }, []);
 
     const icons = {
         shine: <Shine fill="currentColor" size={16} />,
@@ -25,27 +42,14 @@ export default function DmcaBadges() {
         title: "DMCA BADGES",
         content: "DMCA Badges represent a visible declaration that your content is protected by copyright and follows the DMCA (Digital Millennium Copyright Act) guidelines. Placing these badges on your content or platform serves as a warning sign to potential infringers, notifying them that your work is legally protected and any unauthorized use or reproduction will face legal repercussions."
     }
-    const DmcaBadgesContent = [
-        {
-            content: Saturn
-        }, {
-            content: Moon
-        }, {
-            content: Mars
-        }, {
-            content: Saturn
-        }, {
-            content: Moon
-        }, {
-            content: Mars
-        }
-    ]
+
+    const router = useRouter();
 
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">
 
-            {/* This section for define dmcabadges title*/}
+                {/* This section for define dmcabadges title*/}
 
                 <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-medium text-5xl max-lg:text-[30px]'>{DmcaBadgesTitle.title}</p>
@@ -55,32 +59,46 @@ export default function DmcaBadges() {
                     <span className='font-medium text-md'>Download DMCA Badges</span>
                 </div>
 
-            {/* This section for define dmcabadges title*/}
+                {/* This section for define dmcabadges title*/}
 
                 <div className='flex gap-32 mt-10'>
-                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
                     <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1'>
                         {
-                            DmcaBadgesContent.map((dmcabadge, index) => {
-                                return (
-                                    <div key={index} className="flex relative max-md:w-[330px] w-[380px] bg-[url('/assets/saturn.svg')] h-[300px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
-                                        <div className='flex absolute bottom-0 p-2'>
-                                            <Button radius="lg" className="font-medium bg-gradient-to-tr max-md:text-xs from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-base" size='md'>
-                                                <span>{icons.shine}</span>Download
-                                            </Button>
-                                            <Button radius="lg" className="font-medium backdrop-blur-sm max-md:text-xs bg-white/10 shadow-gray-50 text-white px-5 py-5 text-base" size='md'>
-                                                <span>{icons.shine}</span>Embed your badge
-                                            </Button>
-                                        </div>
-                                    </div>
-                                )
-                            })
+                            list.map((item, index) => <div key={index} className="flex relative max-md:w-[330px] w-[380px] h-[300px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
+                                <Image 
+                                    src={`https://server.lockleaks.com/images?filename=${item.name}`} 
+                                    width={250} 
+                                    height={250} 
+                                    className='w-full height-full rounded-2xl object-cover object-top'
+                                    alt={item.name}
+                                />
+                                <div className='flex justify-between pt-5 w-full px-1 absolute bottom-4'>
+                                    <Button
+                                        radius="lg"
+                                        className="font-medium bg-gradient-to-tr max-md:text-xs from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-base"
+                                        size='md'
+                                        onClick={() => router.push("/auth/login")}
+                                    >
+                                        <span>{icons.shine}</span>Download
+                                    </Button>
+                                    <Button
+                                        radius="lg"
+                                        className="font-medium backdrop-blur-sm max-md:text-xs bg-white/10 shadow-gray-50 text-white px-5 py-5 text-base"
+                                        size='md'
+                                        onClick={() => router.push("/auth/login")}
+                                    >
+                                        <span>{icons.shine}</span>Embed your badge
+                                    </Button>
+
+                                </div>
+                            </div>)
                         }
                     </div>
                 </div>
                 <div className='flex w-[calc(100vw-10px)] relative pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
-                <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={342} className='absolute max-xl:hidden left-0 top-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
+                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={342} className='absolute max-xl:hidden left-0 top-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                     <div className='flex w-1/3 relative '>
                         <Image className='z-20 max-xl:hidden' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-32 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
@@ -90,7 +108,7 @@ export default function DmcaBadges() {
                         <span className='font-medium text-md mx-auto mt-20 max-xl:text-3xl'>Why Use DMCA Badges?</span>
                     </div>
                     <div className='w-1/3 max-xl:w-full relative max-xl:px-3'>
-                    <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute max-xl:hidden left-0 top-10 bg-[#a189f8] bg-opacity-5 blur-3xl' />
+                        <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute max-xl:hidden left-0 top-10 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                         <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 absolute left-0 -top-36 ">
                             <div>
                                 <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-xl:text-base'>Download Legal Protection:</span>
