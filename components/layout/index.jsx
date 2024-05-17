@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
       window.location.assign(`mailto:${userInfo.email}`);
     }
 
-    else if (!userInfo.subscription) {
+    else if (!userInfo.subscription.payment_method) {
       router.push("/pricing");
     }
 
@@ -141,7 +141,7 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
-    else if (!userInfo.subscription) {
+    else if (!userInfo.subscription.payment_method) {
       setModalValue({
         title: "You cannot use this feature, you must have the Pro or Star plan.",
         content: 'If you want to use this feature click on the "Upgrade" button.'
