@@ -61,7 +61,7 @@ export default function Dmcabadges() {
                         <input type="file" className="hidden" onChange={(e) => handleChange(e.target.files)} accept=".png" />
                     </label>
                 </div>
-                <div className='flex flex-col w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 max-md:mt-0'>
+                <div className='flex flex-col justify-center items-center w-full h-[383px] max-md:h-[300px] bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-5 max-md:mt-0'>
                     {
                         previewImgUrl ?
                             <Image
@@ -69,7 +69,7 @@ export default function Dmcabadges() {
                                 width={100}
                                 height={100}
                                 alt='uploaded_photo'
-                                className='block w-full h-full rounded-[16px]'
+                                className='block w-full h-auto rounded-[16px]'
                             />
                             : <></>
                     }

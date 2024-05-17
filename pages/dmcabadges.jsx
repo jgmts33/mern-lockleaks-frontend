@@ -66,12 +66,12 @@ export default function DmcaBadges() {
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
                     <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1'>
                         {
-                            list.map((item, index) => <div key={index} className="flex relative max-md:w-[330px] w-[380px] h-[300px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
+                            list.map((item, index) => <div key={index} className="flex justify-center items-center relative max-md:w-[330px] w-[380px] h-[300px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
                                 <Image 
                                     src={`https://server.lockleaks.com/images?filename=${item.name}`} 
                                     width={250} 
                                     height={250} 
-                                    className='w-full height-full rounded-2xl object-cover object-top'
+                                    className='w-full height-auto rounded-2xl object-contain object-top'
                                     alt={item.name}
                                 />
                                 <div className='flex justify-between pt-5 w-full px-1 absolute bottom-4'>
