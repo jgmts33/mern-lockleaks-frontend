@@ -136,7 +136,7 @@ export default function Dashbaord() {
                             <div key={index} className="flex flex-col max-w-[480px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
                                 <div className='flex justify-between py-3'>
                                     <div className='px-8 cursor-pointer '>
-                                        <span className='font-medium text-lg hover:text-gray-200' onClick={() => router.push(items.path)}>{items.title}</span>
+                                        <span className='font-medium text-lg hover:text-gray-200'>{items.title}</span>
                                     </div>
                                     <div>{icons.moredetails}</div>
                                 </div>

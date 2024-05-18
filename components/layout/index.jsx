@@ -75,9 +75,9 @@ export default function RootLayout({ children }) {
     setSlectCookie(true);
   }
 
-  const getScrapedDataListInfo = async () => {
+  const getScrapedDataListInfo = useCallback(async () => {
 
-    const res = await getScrapedDataList();
+    const res = await getScrapedDataList(!!userInfo.roles.find(p => p == 'admin'));
 
     if (res.status == 'success') {
       if (res.data?.length >= 1) {
@@ -119,16 +119,16 @@ export default function RootLayout({ children }) {
 
       dispatch(setScanResult(_scanResult));
 
-      
+
 
     } else {
       console.log(res.data);
     }
-  }
+  }, [userInfo])
 
   useEffect(() => {
 
-    if ( !currentPath.includes("admin") && !currentPath.includes("app") ) {
+    if (!currentPath.includes("admin") && !currentPath.includes("app")) {
       setMounted(true);
     }
     if (!userInfo) return;
@@ -164,9 +164,9 @@ export default function RootLayout({ children }) {
       }
 
     }
-    
+
     setMounted(true);
-    
+
     const userId = getUserId();
 
     const socket = io(ENDPOINT);

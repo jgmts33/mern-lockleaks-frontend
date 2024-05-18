@@ -5,14 +5,18 @@ import {
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { tuple } from 'yup';
-import { Editor } from '@tinymce/tinymce-react';
 import { Uppercase, Bold, Italic, TextAlignCenter, TextAlignLeft, TextAlignRight, TextsCenter, List, DynamicalList, AlignLeft, AlignRight, Pin, PaperPin, UploadPicture, Video, Help, ArrowDown } from "@/components/utils/Icons";
 
+import dynamic from "next/dynamic";
+    
+const TextEditer = dynamic(() => import("../../../components/text-editor"), {
+    ssr: false,
+});
 
 export default function CreatePost() {
     const router = useRouter();
     const [selectblog, setSlectBlog] = useState(0);
+    const [mounted, setMounted] = useState(false);
     const [value, setValue] = useState('');
 
     const icons = {
@@ -43,6 +47,10 @@ export default function CreatePost() {
         }
     ]
 
+    useEffect(() => {
+        setMounted(true);
+    },[]);
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 space-y-10 container text-white max-lg:mx-auto">
             <div className='mt-5 max-lg:mx-auto'>
@@ -51,11 +59,11 @@ export default function CreatePost() {
             <div className='flex mt-5 w-full'>
                 <Input type="text" label="Title" />
             </div>
-            <div className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 text-white px-10 max-sm:gap-3  w-full bg-gradient-to-br bg-[#242222] border py-5 items-center border-gray-600 rounded-[20px]'>
+            <div id='toolbar' className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 text-white px-10 max-sm:gap-3  w-full bg-gradient-to-br bg-[#242222] border py-5 items-center border-gray-600 rounded-[20px]'>
                 <div className='flex w-full gap-10 items-center justify-center cursor-pointer'>
-                    <span>{icons.Uppercase}</span>
-                    <span>{icons.Bold}</span>
-                    <span>{icons.Italic}</span>
+                    <span >{icons.Uppercase}</span>
+                    <span className='ql-bold'>{icons.Bold}</span>
+                    <span className='ql-italic'>{icons.Italic}</span>
                     <span>{icons.ArrowDown}</span>
                     <hr className="w-5 bg-gray-400 rotate-90"></hr>
                 </div>
@@ -91,6 +99,7 @@ export default function CreatePost() {
                     Post
                 </Button>
             </div>
+            {mounted ? <TextEditer /> : <></>}
         </div>
     )
 }

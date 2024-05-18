@@ -440,7 +440,7 @@ export default function HomePage() {
 
         {/* This section for define support video*/}
 
-        { !functionalCookieAllowed ? <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
+        { functionalCookieAllowed ? <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
           <video controls preload="none" className='rounded-xl w-full'>
             <source src="/path/to/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
