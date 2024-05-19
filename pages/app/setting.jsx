@@ -53,7 +53,7 @@ export default function AccountSetting() {
     }, [newPassword]);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto">
 
             {/* This section for define Account Settings header*/}
 

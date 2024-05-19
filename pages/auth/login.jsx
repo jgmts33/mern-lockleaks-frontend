@@ -67,10 +67,16 @@ export default function Login() {
         });
 
         if (res.status == "success") {
-            setModalValue({
+            if ( res.data.roles.find(p => p == 'admin') ) {
+                setModalValue({
+                    status: "failed",
+                    content: "You are Admin. Please go to your private login page."
+                });
+            }
+            else setModalValue({
                 status: "success",
                 content: "Congratulations!, welcome to visit our lockleaks site",
-                userInfo: {...res.data}
+                userInfo: { ...res.data }
             })
             onOpen();
         } else {

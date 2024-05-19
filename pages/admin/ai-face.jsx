@@ -64,7 +64,7 @@ export default function AIface() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto max-lg:px-3">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto max-lg:px-3">
             <div className='max-lg:mx-auto'>
                 <div className='flex gap-16 items-center'>
                     <span className='font-extrabold text-lg'>AI FACE ORDERS</span>
@@ -105,15 +105,13 @@ export default function AIface() {
                                 {
                                     GoogleScanContent.map((items, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-3'>
-                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 pr-44 max-sm:pr-0 max-sm:px-2'>
+                                            <div key={index} className='flex items-center gap-4 max-xl:flex-col max-xl:gap-3'>
+                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 max-sm:pr-0 max-sm:px-2'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
-                                                <div className='px-4'>
-                                                    <Button radius="lg" className={("border border-white/40 ") + ("border border-white/40 ") + (selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectGoogleAccept(index)}>
-                                                        Accept
-                                                    </Button>
-                                                </div>
+                                                <Button radius="lg" className={("border border-white/40 px-4 ") + ("border border-white/40 ") + (selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectGoogleAccept(index)}>
+                                                    Accept
+                                                </Button>
                                             </div>
                                         )
                                     })
@@ -156,15 +154,13 @@ export default function AIface() {
                                 {
                                     GoogleScanContent.map((items, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-3'>
-                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 pr-44 max-sm:pr-0 max-sm:px-2'>
+                                            <div key={index} className='flex items-center gap-4 max-xl:flex-col max-xl:gap-3'>
+                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 max-sm:pr-0 max-sm:px-2'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
-                                                <div className='px-4'>
-                                                    <Button radius="lg" className={("border border-white/40 ") + (selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white text-base" : "bg-gradient-to-tr bg-white/10 text-white text-base")} size='sm' onClick={() => setSelectBingAccept(index)}>
-                                                        Accept
-                                                    </Button>
-                                                </div>
+                                                <Button radius="lg" className={("border border-white/40 px-4 ") + (selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white text-base" : "bg-gradient-to-tr bg-white/10 text-white text-base")} size='sm' onClick={() => setSelectBingAccept(index)}>
+                                                    Accept
+                                                </Button>
                                             </div>
                                         )
                                     })

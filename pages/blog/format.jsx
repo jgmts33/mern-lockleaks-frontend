@@ -47,12 +47,12 @@ export default function BlogFormat() {
     return (
         <>
             <Image src={RobertHand} className='max-2xl:hidden absolute right-0 top-[630px]' alt='rober-hand' />
-            <div className="text-white container relative flex flex-col mx-auto">
+            <div className="text-white relative flex flex-col mx-auto">
 
                 {/* This section for define Blog Format Page Header*/}
 
                 <div className='px-3'>
-                    <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 container bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
+                    <div className='flex max-xl:flex-col mx-auto max-xl:mx-auto mt-10 bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl '>
                         <Image src={Space} alt="Service" className='max-xl:w-full' />
                         <div className='flex flex-col max-sm:pt-24 max-sm:p-8 p-16 relative '>
                             <span className='max-w-1/2 max-xl:text-center font-medium text-5xl mx-auto'>{ArticleContent.title}</span>

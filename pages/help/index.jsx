@@ -76,7 +76,7 @@ export default function Help() {
     }
 
     return (
-        <div className="text-white container flex flex-col max-sm:px-3 mx-auto" >
+        <div className="text-white flex flex-col max-sm:px-3 mx-auto" >
 
             {/* This section for define Help Page Title*/}
 

@@ -119,8 +119,6 @@ export default function RootLayout({ children }) {
 
       dispatch(setScanResult(_scanResult));
 
-
-
     } else {
       console.log(res.data);
     }

@@ -54,3 +54,42 @@ body {
 .gradiant-background{
   background-image: radial-gradient(#2e213b 5%, #261c36 25%, #020615 60%);
 }
+
+.text-editor .ql-container {
+  background: #242222;
+  border-radius: 12px;
+  border: none !important;
+}
+
+.text-editor .ql-snow.ql-toolbar {
+  display: flex;
+  justify-content: center;
+  border-radius: 16px;
+  background: #242222;
+  border: 2px solid rgba(128, 128, 128, 0.6);
+  padding: 16px !important;
+  margin-bottom: 20px;
+}
+.text-editor .ql-snow.ql-toolbar button {
+  width: 36px;
+  height: 36px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.text-editor .ql-snow .ql-picker {
+  height: 36px;
+  width: 136px;
+  margin-top: 4px;
+  font-size: 20px;
+}
+
+.text-editor .ql-editor {
+  min-height: 18em;
+  padding: 16px;
+  font-size: medium;
+}
+
+.text-editor .quill {
+  overflow-x: auto;
+}

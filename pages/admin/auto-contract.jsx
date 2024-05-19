@@ -56,7 +56,7 @@ export default function AutoContract() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
             <div className='mt-0 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>Auto Contract</span>
             </div>
@@ -145,7 +145,7 @@ export default function AutoContract() {
                             {
                                 NotificationContent.map((items, index) => {
                                     return (
-                                        <div key={index} className='flex items-center gap-10 max-md:flex-col max-xl:gap-5 max-md:items-start'>
+                                        <div key={index} className='flex items-center gap-4 max-md:flex-col max-xl:gap-5 max-md:items-start'>
                                             <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
                                                 {items}
                                             </div>

@@ -30,11 +30,11 @@ export default function ProxyBot() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 space-y-10 container text-white max-lg:mx-auto max-sm:space-y-5">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 space-y-10 w-full text-white max-lg:mx-auto max-sm:space-y-5">
             <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>PROXIES / VPS  BOTS</span>
             </div>
-            <div className='flex items-center justify-between max-w-[1100px]'>
+            <div className='flex items-center justify-between'>
                 <div><span className=''>INFO</span></div>
                 <div>
                     <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm' onClick={() => handleAddProxy()}>
@@ -42,12 +42,12 @@ export default function ProxyBot() {
                     </Button>
                 </div>
             </div>
-            <div className='flex max-w-[650px] justify-between px-5 max-sm:px-0 max-sm:hidden'>
+            <div className='flex max-w-[650px] justify-between px-0 max-sm:hidden'>
                 <span className='font-semibold text-base'>VPS NAME</span>
                 <span className='font-semibold text-base'>PROXIES NUMBER</span>
                 <span className='font-semibold text-base'>EXPIRE DATE</span>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1300px] mt-10 w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-10 w-full'>
                 <ScrollShadow className='h-[350px]'>
                     <ScrollShadow className='max-sm:w-[800px]'>
                         {
@@ -59,25 +59,19 @@ export default function ProxyBot() {
                                                 <div className='sm:hidden'>
                                                     <span className='font-semibold text-base'>VPS NAME</span>
                                                 </div>
-                                                <div className='mt-5'>
-                                                    <span>{items.vpsname}</span>
-                                                </div>
+                                                <p>{items.vpsname}</p>
                                             </div>
                                             <div className='flex flex-col'>
                                                 <div className='sm:hidden'>
-                                                    <span className='font-semibold text-base'>PROXIES NUMBER</span>
+                                                    <p className='font-semibold text-base'>PROXIES NUMBER</p>
                                                 </div>
-                                                <div className='mt-5'>
-                                                    <span>{items.proxynumber}</span>
-                                                </div>
+                                                <p>{items.proxynumber}</p>
                                             </div>
                                             <div className='flex flex-col'>
                                                 <div className='sm:hidden'>
-                                                    <span className='font-semibold text-base'>EXPIRE DATE</span>
+                                                    <p className='font-semibold text-base'>EXPIRE DATE</p>
                                                 </div>
-                                                <div className='mt-5'>
-                                                    <span>{items.expiredate}</span>
-                                                </div>
+                                                <p>{items.expiredate}</p>
                                             </div>
                                             <div className='flex space-x-10'>
                                                 <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm'>

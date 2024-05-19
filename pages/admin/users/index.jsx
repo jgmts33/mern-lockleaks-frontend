@@ -44,11 +44,11 @@ export default function Users() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
             <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
-            <div className='flex max-w-[1400px] justify-between mt-10 max-sm:mt-5 max-md:gap-5 max-sm:flex-col max-sm:mx-auto'>
+            <div className='flex justify-between mt-10 max-sm:mt-5 max-md:gap-5 max-sm:flex-col max-sm:mx-auto'>
                 <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: 10</span>
                 <span className='font-semibold text-base'>TOTAL USERS: 10</span>
                 <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: 10</span>
@@ -84,7 +84,7 @@ export default function Users() {
                     }
                 />
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] max-w-[1400px] mt-10 max-md:w-full'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] mt-10 max-md:w-full'>
                 <ScrollShadow className='h-[400px]'>
                     <ScrollShadow className='max-sm:w-[900px]'>
                     <div className='grid grid-cols-5 w-full'>

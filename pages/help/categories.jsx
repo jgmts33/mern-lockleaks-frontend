@@ -68,7 +68,7 @@ export default function Categories() {
     ]
 
     return (
-        <div className="text-white relative container flex flex-col max-2xl:px-3 mx-auto" >
+        <div className="text-white relative flex flex-col max-2xl:px-3 mx-auto" >
 
             {/* This section for define Help Page Title*/}
 

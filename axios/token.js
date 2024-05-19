@@ -54,14 +54,25 @@ export const getAccessToken = async () => {
         tokens = await refreshTokenValue(tokens.refresh.token);
       } catch (error) {
 
+
         if (window.location.pathname !== '/auth/login') {
-          window.location.replace("/auth/login")
+          if (window.location.pathname.includes("admin")) {
+            window.location.replace("/213219eksaodksaokdwqsa/login")
+          }
+          if (window.location.pathname.includes("app")) {
+            window.location.replace("/auth/login")
+          }
         }
         return null;
       }
     } else {
       if (window.location.pathname !== '/auth/login') {
-        window.location.replace("/auth/login")
+        if (window.location.pathname.includes("admin")) {
+          window.location.replace("/213219eksaodksaokdwqsa/login")
+        }
+        if (window.location.pathname.includes("app")) {
+          window.location.replace("/auth/login")
+        }
       }
       return null;
     }

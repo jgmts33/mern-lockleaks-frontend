@@ -41,7 +41,7 @@ export default function Dmcabadges() {
     }, [file])
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
             <div className='flex max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DMCA Badges</span>
             </div>

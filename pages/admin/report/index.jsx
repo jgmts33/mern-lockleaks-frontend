@@ -1,9 +1,9 @@
 "use client";
 import {
-    Button, Link, ScrollShadow,Input,Progress
+    Button, Link, ScrollShadow, Input, Progress
 } from '@nextui-org/react';
 import React, { useState } from 'react';
-import { Warning,TurnLeft, TurnRight, Search } from "@/components/utils/Icons";
+import { Warning, TurnLeft, TurnRight, Search } from "@/components/utils/Icons";
 import { useRouter } from 'next/navigation';
 
 
@@ -56,7 +56,7 @@ export default function DataReport() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
             <div className='mt-0 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA PDF REPORT</span>
             </div>
@@ -65,7 +65,7 @@ export default function DataReport() {
             </div>
             <div className='flex gap-5 max-lg:flex-col max-sm:gap-0'>
                 <div className='flex gap-10 mt-5 max-2xl:flex-col max-lg:justify-center max-lg:items-center'>
-                    <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
+                    <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto">
                         <div className='flex justify-between'>
                             <div>{icons.turnleft}</div>
                             <div>{icons.turnright}</div>
@@ -78,7 +78,7 @@ export default function DataReport() {
                                 SENT
                             </Button>
                         </div>
-                        <div className='flex mt-10'>
+                        <div className='flex mt-6'>
                             <Input
                                 isClearable
                                 radius="lg"
@@ -139,21 +139,19 @@ export default function DataReport() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4'>
-                    <ScrollShadow className="h-[350px]">
-                        <div className='flex flex-col scroll px-3 gap-3 max-md:px-4'>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:p-4 rounded-[16px] max-w-[calc(100vw-750px)] max-lg:max-w-full mt-5 w-full'>
+                    <ScrollShadow className="max-h-[420px]">
+                        <div className='flex flex-col scroll px-3 gap-3 max-md:px-2'>
                             {
                                 NotificationContent.map((items, index) => {
                                     return (
-                                        <div key={index} className='flex items-center gap-10 max-md:flex-col max-xl:gap-5 max-md:items-start'>
+                                        <div key={index} className='flex items-center gap-4 max-md:flex-col max-xl:gap-5 max-md:items-center'>
                                             <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
                                                 {items}
                                             </div>
-                                            <div>
-                                                <Button radius="lg" className={selectDownload == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={() => setSelectDownloadData(index)}>
-                                                    Download
-                                                </Button>
-                                            </div>
+                                            <Button radius="lg" className={selectDownload == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={() => setSelectDownloadData(index)}>
+                                                Download
+                                            </Button>
                                         </div>
                                     )
                                 })

@@ -44,18 +44,18 @@ export default function AddAnalytics() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white w-full">
             <div className='flex flex-col space-y-5 max-lg:mx-auto max-lg:text-center'>
                 <span className='font-extrabold text-lg'>DATA ANALYSTICS</span>
             </div>
-            <div className='flex justify-between max-w-[1150px] w-full mt-5'>
+            <div className='flex justify-between w-full mt-5'>
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
                 <Button radius="lg" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm" size='sm' onClick={() => handleBack()}>
                     Back
                 </Button>
             </div>
             <div className='flex gap-10 mt-5 max-2xl:flex-col max-lg:justify-center max-lg:items-center max-sm:gap-5'>
-                <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 pb-28 max-md:mx-auto">
+                <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto">
                     <div className='flex justify-between'>
                         <div>{icons.turnleft}</div>
                         <div>{icons.turnright}</div>
@@ -68,7 +68,7 @@ export default function AddAnalytics() {
                             SENT
                         </Button>
                     </div>
-                    <div className='flex mt-10'>
+                    <div className='flex mt-6'>
                         <Input
                             isClearable
                             radius="lg"
@@ -123,7 +123,7 @@ export default function AddAnalytics() {
                         showValueLabel={true}
                     />
                     <div className='mx-auto pt-5'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg px-5 text-lg" size='md' onClick={() => handleShowDetails()}>
+                        <Button radius="lg" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg px-5 text-lg" size='md'>
                             Download
                         </Button>
                     </div>
@@ -180,7 +180,7 @@ export default function AddAnalytics() {
                                     Add
                                 </Button>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
-                                View List
+                                    View List
                                 </Button>
                             </div>
                         </div>
@@ -195,14 +195,14 @@ export default function AddAnalytics() {
                                     Add
                                 </Button>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => { handleAddDetails(Date.now.toString()) }}>
-                                View List
+                                    View List
                                 </Button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <Modal backdrop="opaque"  isOpen={isOpen} onOpenChange={onOpenChange}>
+            <Modal backdrop="opaque" isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                     {(onClose) => (
                         <>

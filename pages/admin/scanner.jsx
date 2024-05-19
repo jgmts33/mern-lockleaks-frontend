@@ -67,7 +67,7 @@ export default function Scanner() {
     }, []);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 w-full container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 w-full text-white max-lg:mx-auto">
             <div className='max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>SCANNER ORDERS</span>
             </div>
@@ -78,7 +78,7 @@ export default function Scanner() {
                             {
                                 scrapedData.map((item, index) => {
                                     return (
-                                        <div key={index} className='flex items-center gap-10 max-sm:gap-2'>
+                                        <div key={index} className='flex items-center gap-4 max-sm:gap-2'>
                                             <div className='bg-white/20 p-3 w-full rounded-[16px] font-normal text-sm'>
                                                 {`${item.user_id} - ${item.scrape_date}.zip`}
                                             </div>

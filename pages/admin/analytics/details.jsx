@@ -42,11 +42,11 @@ export default function DataAnalyticsDetails() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
             <div className='mt-5 max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-5 w-full max-md:px-4'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-5 w-full max-md:px-4'>
                 <ScrollShadow className="h-[300px]">
                     <div className='flex flex-col'>
                         <div><span className='font-bold text-lg'>Monthly Report - Website</span></div>

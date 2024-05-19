@@ -24,7 +24,7 @@ export default function ProfitManagement() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 space-y-10 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-10 space-y-10 container text-white max-lg:mx-auto w-full">
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>PROXIES / VPS  BOTS</span>
             </div>

@@ -37,26 +37,25 @@ export default function Analytics() {
 
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
             <div className='max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DATA ANALYTICS</span>
             </div>
             <div className='mt-10 max-lg:mx-auto max-sm:mt-10'>
-                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm' onClick={()=>handleGoAddAnalytics()}>
+                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base" size='sm' onClick={() => handleGoAddAnalytics()}>
                     Add
                 </Button>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] max-w-[1100px] mt-10 w-full max-md:px-4 max-sm:mt-5'>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:p-4 rounded-[16px] mt-10 w-full max-md:px-4 max-sm:mt-5'>
                 <ScrollShadow className="h-[350px]">
                     <div className='flex flex-col gap-5 scroll-y px-4'>
-                        <div className='flex justify-between px-5'>
-                            <div><span>Search Domain...</span></div>
-                            <div>
-                                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm'>
-                                    Add
-                                </Button></div>
+                        <div className='flex justify-between '>
+                            <p>Search Domain...</p>
+                            <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base" size='sm'>
+                                Add
+                            </Button>
                         </div>
-                        <div className='px-3 w-1/2 max-md:w-full'>
+                        <div className='w-1/2 max-md:w-full'>
                             <div>
                                 <Input
                                     isClearable
@@ -101,7 +100,7 @@ export default function Analytics() {
                         {
                             NotificationContent.map((items, index) => {
                                 return (
-                                    <div key={index} className='flex items-center gap-10 px-4'>
+                                    <div key={index} className='flex items-center gap-4'>
                                         <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px]'>
                                             {items}
                                         </div>

@@ -16,7 +16,7 @@ export default function Details() {
     };
 
     return (
-        <div className="text-white relative container flex flex-col max-md:px-3 mx-auto" >
+        <div className="text-white relative flex flex-col max-md:px-3 mx-auto" >
 
             {/* This section for define Help Page Title*/}
 

@@ -76,7 +76,7 @@ export default function DownloadData() {
                         {
                             list.map((item, index) => {
                                 return (
-                                    <div key={index} className='flex items-center gap-10 max-xl:gap-5 max-sm:gap-2'>
+                                    <div key={index} className='flex items-center gap-4 max-xl:gap-5 max-sm:gap-2'>
                                         <div className='flex bg-white/20 shadow-sm p-3 w-full rounded-[16px] justify-between items-end max-sm:items-start max-sm:flex-col gap-3'>
                                             <p className='max-sm:font-normal font-bold max-sm:text-sm'>
                                                 {item.scrape_date} <span className='ml-3'>{convertToDate(item.scrape_date)}</span>

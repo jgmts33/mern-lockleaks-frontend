@@ -55,19 +55,21 @@ export default function BUY() {
 
     const handleSetNewUsername = useCallback(() => {
         console.log(usernames, targetKeywordIndex);
-        if (targetKeyword.username) {
+        let newUsername = targetKeyword.username.replace("@", "");
+        if (newUsername) {
             const _usernames = usernames.slice(0);
-            _usernames[targetKeywordIndex].username = targetKeyword.username;
+            _usernames[targetKeywordIndex].username = newUsername;
             setUsernames(_usernames);
             setTargetKeywordType('link');
         }
     }, [targetKeyword, usernames, targetKeywordIndex]);
 
     const handleSetNewLink = useCallback(() => {
+        let newLink = targetKeyword.link.replace("@", "");
         setUrlValidation("");
-        if (targetKeyword.link && checkLinkValidation()) {
+        if (newLink && checkLinkValidation()) {
             const _usernames = usernames.slice(0);
-            _usernames[targetKeywordIndex].link = targetKeyword.link;
+            _usernames[targetKeywordIndex].link = newLink;
             setUsernames(_usernames);
             setTargetKeyword(null);
             setTargetKeywordType('username');
@@ -259,11 +261,11 @@ export default function BUY() {
                                     </div>
                                 </div>
                                 <div
-                                    className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center container'
+                                    className='bg-gradient-to-tr max-sm:flex-wrap w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center'
                                 >
                                     <Button
                                         radius="full"
-                                        className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
+                                        className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
                                         size='lg'
                                         onClick={() => {
                                             if (targetKeywordType == 'link') handleSetNewLink();

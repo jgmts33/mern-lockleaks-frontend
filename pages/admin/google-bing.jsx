@@ -131,10 +131,10 @@ export default function GoogleBing() {
                 content: bingScrapedData.filter(p => p.accepted == false).length
             }
         ])
-    }, [googleScrapedData]);
+    }, [bingScrapedData]);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto max-lg:px-3">
+        <div className="flex flex-col bg-gradient-to-tr px-5 w-full py-5 text-white max-lg:mx-auto max-lg:px-3">
             <div className='max-lg:mx-auto'>
                 <div className='flex items-center'>
                     <div>
@@ -171,13 +171,13 @@ export default function GoogleBing() {
                             }
                         </div>
                     </div>
-                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 max-md:p-4 rounded-[16px] mt-5 w-full'>
                         <ScrollShadow className="h-[320px]">
-                            <div className='flex flex-col gap-5 px-4'>
+                            <div className='flex flex-col gap-5 px-2'>
                                 {
                                     googleScrapedData.map((item, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10 max-sm:gap-2'>
+                                            <div key={index} className='flex items-center gap-4 max-sm:gap-2'>
                                                 <div className='bg-white/20 p-3 w-full rounded-[16px] font-normal text-sm'>
                                                     {`${item.user_id} - ${item.scrape_date}.zip`}
                                                 </div>
@@ -229,13 +229,13 @@ export default function GoogleBing() {
                             }
                         </div>
                     </div>
-                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 rounded-[16px] mt-5 w-full max-sm:mt-2'>
+                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 max-md:p-4 rounded-[16px] mt-5 w-full max-sm:mt-2'>
                         <ScrollShadow className="h-[320px]">
-                            <div className='flex flex-col gap-5 px-4'>
+                            <div className='flex flex-col gap-5 px-2'>
                                 {
                                     bingScrapedData.map((item, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10 max-sm:gap-2'>
+                                            <div key={index} className='flex items-center gap-4 max-sm:gap-2'>
                                                 <div className='bg-white/20 p-3 w-full rounded-[16px] font-normal text-sm'>
                                                     {`${item.user_id} - ${item.scrape_date}.zip`}
                                                 </div>

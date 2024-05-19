@@ -43,7 +43,7 @@ export default function PingModels() {
     }
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
             <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>PING MODELS</span>
             </div>

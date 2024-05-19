@@ -1,15 +1,19 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection } from "@nextui-org/react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowDown } from "@/components/utils/Icons";
 import { Poppins } from "next/font/google";
+import { getAccessToken } from "../../axios/token";
+import { getUserInfo } from "../../axios/auth";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function Header() {
+
   const router = useRouter();
+  const [userInfo, setUserInfo] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
@@ -77,6 +81,22 @@ export default function Header() {
     router.push(url);
   };
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const accessToken = await getAccessToken();
+        if (accessToken) {
+          const res = await getUserInfo();
+          if (res.status == 'success') {
+            setUserInfo(res.data);
+          }
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+
   return (
     <Navbar
       isBordered
@@ -138,13 +158,32 @@ export default function Header() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent className="max-md:hidden" justify="end">
-        <NavbarItem>
-          <Link href="/auth/login" className="text-white">Login</Link>
-        </NavbarItem>
-        <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent"></div>
-        <NavbarItem>
-          <Link href="/auth/register" className="text-white">Register</Link>
-        </NavbarItem>
+        {
+          userInfo ?
+            <>
+              {
+                userInfo.roles.find(p => p == 'admin') ?
+                  <NavbarItem>
+                    <Link href="/admin/dashboard" className="text-white">Dashboard</Link>
+                  </NavbarItem>
+                  :
+                  <NavbarItem>
+                    <Link href="/app/dashboard" className="text-white">Dashboard</Link>
+                  </NavbarItem>
+              }
+            </>
+            :
+            <>
+              <NavbarItem>
+                <Link href="/auth/login" className="text-white">Login</Link>
+              </NavbarItem>
+              <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent"></div>
+              <NavbarItem>
+                <Link href="/auth/register" className="text-white">Register</Link>
+              </NavbarItem>
+            </>
+        }
+
         <NavbarItem className="max-lg:hidden">
           <Link href="/freeanalyse">
             <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>Free Analisis</Button>
@@ -166,18 +205,36 @@ export default function Header() {
           </NavbarMenuItem>
         ))}
         <hr className="w-56 bg-gray-400 mt-5"></hr>
-        <NavbarItem className="mt-5">
-          <Link href="/auth/login" className="text-white">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link href="/auth/register" className="text-white mt-5">Register</Link>
-        </NavbarItem>
+
+        {
+          userInfo ?
+            <>
+              {
+                userInfo.roles.find(p => p == 'admin') ?
+                  <NavbarItem className="mt-5">
+                    <Link href="/admin/dashboard" className="text-white">Dashboard</Link>
+                  </NavbarItem>
+                  :
+                  <NavbarItem>
+                    <Link href="/app/dashboard" className="text-white">Dashboard</Link>
+                  </NavbarItem>
+              }
+            </> : <>
+              <NavbarItem className="mt-5">
+                <Link href="/auth/login" className="text-white">Login</Link>
+              </NavbarItem>
+              <NavbarItem>
+                <Link href="/auth/register" className="text-white mt-5">Register</Link>
+              </NavbarItem>
+            </>
+        }
+
         <NavbarItem>
           <Link href="/freeanalyse" className="mt-5">
             <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='md'>Free Analisis</Button>
           </Link>
         </NavbarItem>
       </NavbarMenu>
-    </Navbar>
+    </Navbar >
   );
 }

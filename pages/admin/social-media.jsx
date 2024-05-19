@@ -63,7 +63,7 @@ export default function SocialMedia() {
     ]
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white max-lg:mx-auto max-lg:px-3">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 w-full text-white max-lg:mx-auto max-lg:px-3">
             <div className='max-lg:mx-auto'>
                 <div className='flex gap-16 items-center'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA ORDERS</span></div>
@@ -98,21 +98,19 @@ export default function SocialMedia() {
                             }
                         </div>
                     </div>
-                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 max-sm:p-4 rounded-[16px] mt-5 w-full'>
                         <ScrollShadow className="h-[320px]">
-                            <div className='flex flex-col gap-5 max-xl:px-2'>
+                            <div className='flex flex-col gap-5 px-2'>
                                 {
                                     GoogleScanContent.map((items, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-2'>
-                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 pr-44'>
+                                            <div key={index} className='flex items-center gap-4 max-xl:flex-col max-xl:gap-2'>
+                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
-                                                <div className='px-4'>
-                                                    <Button radius="lg" className={("border border-white/40 ") + (selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectGoogleAccept(index)}>
-                                                        Accept
-                                                    </Button>
-                                                </div>
+                                                <Button radius="lg" className={("border border-white/40 px-4 ") + (selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectGoogleAccept(index)}>
+                                                    Accept
+                                                </Button>
                                             </div>
                                         )
                                     })
@@ -149,21 +147,19 @@ export default function SocialMedia() {
                             }
                         </div>
                     </div>
-                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 rounded-[16px] mt-5 w-full'>
+                    <div className='flex flex-col bg-white/10 border border-gray-500 p-10 max-sm:p-4 rounded-[16px] mt-5 w-full'>
                         <ScrollShadow className="h-[320px]">
-                            <div className='flex flex-col gap-5 max-xl:px-2'>
+                            <div className='flex flex-col gap-5 px-2'>
                                 {
                                     GoogleScanContent.map((items, index) => {
                                         return (
-                                            <div key={index} className='flex items-center gap-10 max-xl:flex-col max-xl:gap-2'>
-                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6 pr-44'>
+                                            <div key={index} className='flex items-center gap-4 max-xl:flex-col max-xl:gap-2'>
+                                                <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6'>
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
-                                                <div className='px-4'>
-                                                    <Button radius="lg" className={("border border-white/40 ") + (selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectBingAccept(index)}>
-                                                        Accept
-                                                    </Button>
-                                                </div>
+                                                <Button radius="lg" className={("border border-white/40 px-4 ") + (selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectBingAccept(index)}>
+                                                    Accept
+                                                </Button>
                                             </div>
                                         )
                                     })

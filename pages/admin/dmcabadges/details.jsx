@@ -46,18 +46,18 @@ export default function DmcaBadgeDetails() {
     }, []);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto w-full">
             <div className='mt-5 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>DMCA BADGES</span>
             </div>
-            <div className='flex justify-end mt-10 px-5'>
+            <div className='flex justify-end mt-10'>
                 <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => handleBack()}>
                     Back
                 </Button>
             </div>
             <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:gap-3'>
                 {
-                    list.map((item, index) => <div key={index} className='max-w-[450px] max-md:max-w-full'>
+                    list.map((item, index) => <div key={index} className='max-md:max-w-full'>
                         <div className="flex justify-center items-center border w-full aspect-square border-gray-500 rounded-[23px] mt-10 cursor-pointer">
                             <img
                                 src={`https://server.lockleaks.com/images?filename=${item.name}`}
