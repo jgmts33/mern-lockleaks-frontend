@@ -52,7 +52,7 @@ export default function CreatePost() {
     }
 
     const handleSubmit = useCallback(async () => {
-        if (!blogDetails.banner || !blogDetails.moderatorInfo.avatar) return;
+        if (!blogDetails.banner || !blogDetails.moderatorInfo.avatar && !searchParams.get('id')) return;
         const formData = new FormData();
         formData.append('title', blogDetails.title);
         formData.append('banner', blogDetails.banner);
