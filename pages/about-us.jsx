@@ -70,7 +70,7 @@ export default function AboutUs() {
 
                 {/* This section for define Success Stories or Case Studies*/}
 
-                <div className='max-lg:px-3 mt-20 z-20'>
+                <div className='max-lg:px-3 mt-20 z-10'>
                     <div className='mx-auto text-center max-w-lg uppercase'>
                         <span className='font-medium text-5xl max-xl:text-4xl'>Success Stories or Case Studies</span>
                     </div>

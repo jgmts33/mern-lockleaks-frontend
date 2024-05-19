@@ -8,13 +8,15 @@ import {
     ModalHeader,
     Switch,
     useDisclosure,
-    Input
+    Input,
+    ModalFooter
 } from '@nextui-org/react';
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { SelectSwitch, Shine, UnselectSwitch } from '@/components/utils/Icons';
 import { createUsernames } from '@/axios/usernames';
 import { useRouter } from 'next/router';
+import { Success } from '../../components/utils/Icons';
 
 export default function BUY() {
 
@@ -24,6 +26,7 @@ export default function BUY() {
 
     const icons = {
         shine: <Shine fill="currentColor" size={16} />,
+        success: <Success fill="currentColor" size={16} />,
     };
 
     const router = useRouter();
@@ -92,7 +95,8 @@ export default function BUY() {
         const res = await createUsernames({ usernames });
 
         if (res.status == 'success') {
-            router.push("/app/scanner");
+            // router.push("/app/scanner");
+            onOpen();
         } else {
             console.log("Error:", res.data);
         }
@@ -421,6 +425,39 @@ export default function BUY() {
                     </Button> : <div></div>}
                 </div>
             </div>
+            <Modal
+                backdrop="opaque"
+                isOpen={isOpen}
+                onClose={onOpen}
+                onOpenChange={onOpenChange}
+                classNames={{
+                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+                }}
+                hideCloseButton
+            >
+                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
+                    {() => (
+                        <>
+                            <ModalBody>
+                                <div className='mx-auto flex items-center justify-center -mb-24'>{icons.success}</div>
+                                <span className='font-bold text-2xl text-center capitalize leading-9'>Paid Successfully!</span>
+                                {/* <span className='font-bold text-2xl text-center capitalize leading-9'>Usernames added Successfully!</span> */}
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647] mx-auto"
+                                    size='md'
+                                    onPress={() => window.open("/app/dashboard" , '_current')}
+                                >
+                                    Go to Dashboard
+                                </Button>
+                            </ModalFooter>
+                        </>
+                    )}
+
+                </ModalContent>
+            </Modal>
         </div >
     )
 }

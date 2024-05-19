@@ -87,8 +87,8 @@ export default function CreatePost() {
         (async () => {
             if (searchParams.get('id')) {
                 const res = await getBlogDetails(searchParams.get('id'));
-                setBannerPreviewImgUrl(`data:image/png;base64,${Buffer.from(JSON.parse(res.data.banner).data).toString('base64')}`);
-                setAvatarPreviewImgUrl(`data:image/png;base64,${Buffer.from(res.data.moderatorInfo.avatar.data).toString('base64')}`);
+                setBannerPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.banner}`);
+                setAvatarPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.moderatorInfo.avatar}`);
                 setBlogDetails({
                     ...res.data,
                     banner: null,

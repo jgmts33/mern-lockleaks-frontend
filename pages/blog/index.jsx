@@ -10,6 +10,7 @@ import Saturn from '@/public/assets//blog/saturn.svg';
 import Moon from '@/public/assets//blog/moon.svg';
 import Mars from '@/public/assets//blog/mars.svg';
 import Woman from '@/public/assets/woman.svg';
+import { getBlogList } from '../../axios/blog';
 
 export default function Blog() {
   const icons = {
@@ -18,7 +19,9 @@ export default function Blog() {
 
   const [seletedBlog, setSelectBlog] = useState(0);
   const [selectedPagination, setSelectPagination] = useState(1);
-  const [allPagination, setAllPagination] = useState(0)
+  const [allPagination, setAllPagination] = useState(0);
+  const [list, setList] = useState([]);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const BlogCardContent = [
     {
@@ -133,13 +136,27 @@ export default function Blog() {
     }
   ]
 
+  const getBlogListInfo = async () => {
+
+    setIsProcessing(true);
+
+    const res = await getBlogList();
+    if (res.status == 'success') setList(res.data);
+
+    setIsProcessing(false);
+  }
+
   useEffect(() => {
-    setAllPagination( Math.ceil(BlogCardContent.length / 9) );
+    setAllPagination(Math.ceil(BlogCardContent.length / 9));
   }, [BlogCardContent.length]);
 
   const handlePageChange = (page) => {
     setSelectPagination(page)
   }
+
+  useEffect(() => {
+    getBlogListInfo();
+  }, []);
 
   const renderItem = ({
     ref,
@@ -149,7 +166,7 @@ export default function Blog() {
     setPage,
     className,
   }) => {
-    
+
     if (value === PaginationItemType.DOTS) {
       return <button key={key} className={className}>...</button>;
     }
@@ -158,7 +175,7 @@ export default function Blog() {
       <button
         key={key}
         ref={ref}
-        className={ className + ( isActive ? " text-white bg-gradient-to-br from-indigo-500 to-pink-500 font-bold" : "")}
+        className={className + (isActive ? " text-white bg-gradient-to-br from-indigo-500 to-pink-500 font-bold" : "")}
         onClick={() => setPage(value)}
       >
         {value}
@@ -167,7 +184,7 @@ export default function Blog() {
   }
 
   return (
-    <div className="text-white relative flex flex-col pb-20 mt-10 max-sm:mt-5 max-sm:px-3 mx-auto">
+    <div className="text-white relative flex flex-col pb-20 mt-10 max-sm:mt-5 px-4 container mx-auto">
 
       {/* This section for define blog title*/}
 
@@ -176,23 +193,23 @@ export default function Blog() {
       {/* This section for define blog content*/}
 
       <div className='grid grid-cols-3 gap-6 max-lg:flex-wrap max-lg:justify-center mt-10 max-xl:grid-cols-2 max-lg:grid-cols-1'>
-        {          
-          BlogCardContent.slice((selectedPagination - 1) * 9, selectedPagination * 9).map((blog, index) => {
+        {
+          list.slice((selectedPagination - 1) * 9, selectedPagination * 9).map((blog, index) => {
             return (
               <div key={index} className="bg-gradient-to-br max-md:max-w-[600px] max-xl:max-w-[1000px] max-lg:max-w-[750px] from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md">
                 <div className="flex flex-col">
                   <div className="shrink-0 p-3 flex flex-col">
-                    <Image className="h-80 w-full mt-2 p-2 rounded-[20px]" src={blog.photo} alt="Modern building architecture" />
+                    <img className="h-80 w-full mt-2 p-2 rounded-[20px]" src={`https://server.lockleaks.com/images?filename=${blog.banner}`} alt="Modern building architecture" />
                     <div className="p-5">
                       <p className="font-semibold text-xl">{blog.title}</p>
-                      <p className="font-normal text-base mt-5">{blog.description}</p>
+                      <p className="font-normal text-base mt-5">{blog.shortContent}</p>
                     </div>
                     <div className='flex gap-5 mt-5 ml-3 max-lg:mx-auto justify-between'>
                       <div className='flex gap-3'>
-                        <Image className="h-6 w-6" src={Woman} alt="Modern building architecture" />
+                        <img className="h-8 w-8" src={`https://server.lockleaks.com/images?filename=${blog.moderatorInfo.avatar}`} alt="Modern building architecture" />
                         <div className='flex flex-col'>
-                          <span className='font-light text-sm justify-start'>Fitbit Incorporated</span>
-                          <span className='font-light text-xs'>San Diego, California</span>
+                          <span className='font-light text-sm justify-start'>{blog.moderatorInfo.name}</span>
+                          <span className='font-light text-xs'>{blog.moderatorInfo.description}</span>
                         </div>
                       </div>
                       <div className='flex'>
