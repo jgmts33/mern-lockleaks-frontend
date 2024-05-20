@@ -50,7 +50,7 @@ export default function Help() {
     ]
 
     const handleGoCategory = (categoryName) => {
-        router.push(`/help/articles?category=${categoryName.replaceAll(" ", "-")}`)
+        router.push(`/help/articles?category=${categoryName.replaceAll(" ", "-").replaceAll("&", "_")}`)
     }
 
     const handleGoDetail = () => {
