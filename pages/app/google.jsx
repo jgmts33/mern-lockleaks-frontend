@@ -34,7 +34,7 @@ export default function Google() {
         const res = await getScrapedDataList(false, 'google', true);
 
         if (res.status == 'success') {
-            setScanResult(res.data[0]);
+            if (res.data[0]) setScanResult(res.data[0]);
         } else {
             console.log(res.data);
         }

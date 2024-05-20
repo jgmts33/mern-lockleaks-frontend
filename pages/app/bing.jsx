@@ -33,7 +33,7 @@ export default function Bing() {
         const res = await getScrapedDataList(false, 'bing', true);
 
         if (res.status == 'success') {
-            setScanResult(res.data[0]);
+            if (res.data[0]) setScanResult(res.data[0]);
         } else {
             console.log(res.data);
         }
