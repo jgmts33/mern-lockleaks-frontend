@@ -106,3 +106,9 @@ body {
 .text-editor .quill {
   overflow-x: auto;
 }
+
+.ql-editor .ql-video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+}
