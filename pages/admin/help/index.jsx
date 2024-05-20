@@ -132,7 +132,7 @@ export default function Blog() {
                 Add New Category
               </Button>
 
-              <div className='flex flex-col gap-5 mt-8'>
+              <div className='flex flex-col gap-5 mt-8 w-full px-[10px]'>
                 {
                   isCategoryProcessing ?
 
@@ -151,7 +151,7 @@ export default function Blog() {
                         <div className='flex items-center gap-2 mb-4' >
                           <div className='px-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center'>{index + 1}</div>
                           <div className='flex gap-4 justify-between w-full'>
-                            <div className='text-lg max-w-[120px] truncate'>{item.name}</div>
+                            <div className='text-lg max-w-[100px] truncate'>{item.name}</div>
                             <div className='flex gap-4 items-center'>
                               <Button
                                 radius="full"
