@@ -5,8 +5,8 @@ import {
 } from '@nextui-org/react';
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo } from "../../lib/bot/botSlice";
+import { useSelector, useDispatch } from 'react-redux';
+import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo, extraReport as extraReportInfo, setExtraReport } from "../../lib/bot/botSlice";
 import { useRouter } from 'next/router';
 import { getExtraReport, getUsersListInfo } from '../../axios/user';
 
@@ -17,17 +17,8 @@ export default function AdminDashbaord() {
 
     const scanResult = useSelector(scanRusultInfo);
     const lastScanResult = useSelector(lastScanResultInfo);
-    const [extraReport, setExtraReport] = useState({
-        user: {
-            total: 0,
-            weekly: 0
-        },
-        order: {
-            total: 0,
-            weekly: 0
-        }
-    })
-    // const [users, setUsers] = useState([]);
+    const extraReport = useSelector(extraReportInfo);
+    const dispatch = useDispatch();
 
     const icons = {
         moredetails: <MoreDetails fill="currentColor" size={16} />,
@@ -92,7 +83,7 @@ export default function AdminDashbaord() {
     const getExtraReportInfo = async () => {
         const res = await getExtraReport();
 
-        if (res.status == 'success') setExtraReport(res.data);
+        if (res.status == 'success') dispatch(setExtraReport(res.data));
     }
 
     useEffect(() => {

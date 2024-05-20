@@ -13,10 +13,6 @@ const TextEditer = dynamic(() => import("../../../components/text-editor"), {
     ssr: false,
 });
 
-const handleBack = () => {
-    history.back()
-}
-
 export default function CreatePost() {
 
     const router = useRouter();
@@ -25,6 +21,8 @@ export default function CreatePost() {
 
     const [bannerPreviewImgUrl, setBannerPreviewImgUrl] = useState('');
     const [avatarPreviewImgUrl, setAvatarPreviewImgUrl] = useState('');
+    const [tagsStr, setTagsStr] = useState("");
+    const [isProcessing, setIsProcessing] = useState(false);
 
     const [blogDetails, setBlogDetails] = useState({
         title: "",
@@ -35,7 +33,8 @@ export default function CreatePost() {
         },
         shortContent: "",
         content: "",
-        banner: null
+        banner: null,
+        tags: []
     });
 
     const handleImageUpload = (files, target) => {
@@ -52,7 +51,9 @@ export default function CreatePost() {
     }
 
     const handleSubmit = useCallback(async () => {
-        if (!blogDetails.banner || !blogDetails.moderatorInfo.avatar && !searchParams.get('id')) return;
+        if ((!blogDetails.banner || !blogDetails.moderatorInfo.avatar) && !searchParams.get('id')) return;
+        if (!tagsStr.split(",").length) return;
+        setIsProcessing(true);
         const formData = new FormData();
         formData.append('title', blogDetails.title);
         formData.append('banner', blogDetails.banner);
@@ -61,25 +62,26 @@ export default function CreatePost() {
         formData.append('moderatorInfo[avatar]', blogDetails.moderatorInfo.avatar);
         formData.append('moderatorInfo[description]', blogDetails.moderatorInfo.description);
         formData.append('content', blogDetails.content);
+        formData.append('tags', tagsStr.split(",").slice(0, 5));
 
         if (searchParams.get('id')) {
             const res = await updateBlog(searchParams.get('id'), formData);
 
-            if (res.status == 'success') handleBack();
+            if (res.status == 'success') router.push("/admin/blog")
             else {
                 console.log("Error:", res.data);
             }
         } else {
             const res = await createNewBlog(formData);
 
-            if (res.status == 'success') handleBack();
+            if (res.status == 'success') router.push("/admin/blog")
             else {
                 console.log("Error:", res.data);
             }
         }
+        setIsProcessing(false);
 
-
-    }, [blogDetails, searchParams.get('id')]);
+    }, [blogDetails, searchParams.get('id')], tagsStr);
 
     useEffect(() => {
         setMounted(true);
@@ -89,6 +91,7 @@ export default function CreatePost() {
                 const res = await getBlogDetails(searchParams.get('id'));
                 setBannerPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.banner}`);
                 setAvatarPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.moderatorInfo.avatar}`);
+                setTagsStr(res.data.tags.join(","));
                 setBlogDetails({
                     ...res.data,
                     banner: null,
@@ -111,7 +114,7 @@ export default function CreatePost() {
                 <span className='font-extrabold text-lg'>BLOG</span>
             </div>
             <div className='flex justify-end mt-10'>
-                <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => handleBack()}>
+                <Button radius="lg" className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg text-base" size='md' onClick={() => router.push("/admin/blog")}>
                     Back
                 </Button>
             </div>
@@ -150,6 +153,12 @@ export default function CreatePost() {
                                 label="Short Description"
                                 value={blogDetails.shortContent}
                                 onChange={(e) => setBlogDetails(p => ({ ...p, shortContent: e.target.value }))}
+                            />
+                            <Input
+                                type="text"
+                                label="Tags with ','"
+                                value={tagsStr}
+                                onChange={(e) => setTagsStr(e.target.value)}
                             />
                         </div>
                     </div>
@@ -205,6 +214,7 @@ export default function CreatePost() {
                     radius="lg"
                     className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 text-lg w-40 mb-5"
                     onPress={handleSubmit}
+                    isLoading={isProcessing}
                 >
                     Post
                 </Button>

@@ -6,6 +6,8 @@ import {
 import { GoogleSearch, Components, BingSearch } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import { acceptOrder, getScrapedDataList } from '../../axios/download';
+import { io } from 'socket.io-client';
+import { ENDPOINT } from '../../config/config';
 
 export default function GoogleBing() {
 
@@ -58,6 +60,14 @@ export default function GoogleBing() {
 
     useEffect(() => {
         getScrapedDataListInfo();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`admin:dashboardInfo`, async (value) => {
+            if (value == 'scan-finished') {
+                getScrapedDataListInfo();
+            }
+        })
     }, []);
 
     const [googleScannerContent, setGoogleScannerContent] = useState([

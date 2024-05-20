@@ -112,3 +112,24 @@ export const deleteBlog = async (id) => {
     }
   }
 }
+
+export const getSimilarBlogs = async (id, tags) => {
+
+  let queryParams = `id=${id}&`;
+  queryParams += tags.map((value) => `tags=${value}`).join('&')
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/similar-blogs?${queryParams}`);
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

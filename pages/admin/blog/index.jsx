@@ -66,7 +66,7 @@ export default function Blog() {
                             :
                             list.length ? list.map((blog, index) => {
                                 return (
-                                    <div key={index} className='flex flex-col'>
+                                    <div key={index} className='flex flex-col px-2'>
                                         <div className='flex justify-between py-7 items-center'>
                                             <div className='flex'>
                                                 <span className={'font-semibold text-base'}>{blog.title}</span>

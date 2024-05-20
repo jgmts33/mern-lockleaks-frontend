@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getAccessToken, getUserId } from './token';
 import { ENDPOINT } from '@/config/config';
 
-export const getScrapedDataList = async (isAdmin = false, only = "") => {
+export const getScrapedDataList = async (isAdmin = false, only = "", lastOne = false) => {
 
   const accessToken = await getAccessToken();
   const userId = getUserId();
@@ -11,31 +11,17 @@ export const getScrapedDataList = async (isAdmin = false, only = "") => {
     let URL = `${ENDPOINT}/${userId}/scraped-data`;
     if (isAdmin) URL = `${ENDPOINT}/scraped-data`;
     if (only) URL += `?only=${only}`;
+    if (lastOne) URL += `&lastOne=true`;
 
-    if (isAdmin) {
-      const res = await axios.get(URL, {
-        headers: {
-          'x-access-token': accessToken
-        }
-      });
-
-      return {
-        status: 'success',
-        data: res.data
+    const res = await axios.get(URL, {
+      headers: {
+        'x-access-token': accessToken
       }
-    }
+    });
 
-    else {
-      const res = await axios.get(URL, {
-        headers: {
-          'x-access-token': accessToken
-        }
-      });
-
-      return {
-        status: 'success',
-        data: res.data
-      }
+    return {
+      status: 'success',
+      data: res.data
     }
 
   } catch (err) {

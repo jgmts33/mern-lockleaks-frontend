@@ -6,6 +6,8 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import { UpDownScroll, MoreDetails } from "@/components/utils/Icons";
 import { acceptOrder, getScrapedDataList } from '../../axios/download';
+import { io } from 'socket.io-client';
+import { ENDPOINT } from '../../config/config';
 
 export default function Scanner() {
 
@@ -64,6 +66,14 @@ export default function Scanner() {
 
     useEffect(() => {
         getScrapedDataListInfo();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`admin:dashboardInfo`, async (value) => {
+            if (value == 'scan-finished') {
+                getScrapedDataListInfo();
+            }
+        })
     }, []);
 
     return (

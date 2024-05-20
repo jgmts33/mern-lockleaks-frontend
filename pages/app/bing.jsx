@@ -7,21 +7,32 @@ import { Components, BingSearch } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import BingIcon from '@/public/assets/background/Bing.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { scanProgress as scanProgressInfo, scanResult as scanRusultInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
+import { scanProgress as scanProgressInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
 import { getUsernames } from '@/axios/usernames';
 import { scan } from '../../axios/bot';
+import { getScrapedDataList } from '../../axios/download';
 
 export default function Bing() {
 
+    const [scanResult, setScanResult] = useState({});
     const scanProgress = useSelector(scanProgressInfo);
-    const scanResult = useSelector(scanRusultInfo);
-
     const dispatch = useDispatch();
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
         components: <Components fill="currentColor" size={16} />,
         bingsearch: <BingSearch fill="currentColor" size={16} />,
+    };
+
+    const getScrapedDataListInfo = async () => {
+
+        const res = await getScrapedDataList(false, 'bing', true);
+
+        if (res.status == 'success') {
+            setScanResult(res.data[0]);
+        } else {
+            console.log(res.data);
+        }
     };
 
     const handleScan = useCallback(async () => {
@@ -34,7 +45,7 @@ export default function Bing() {
 
         if (res.status == 'success') {
             dispatch(setScanProgress(100));
-            dispatch(setScanResult(res.data));
+            getScrapedDataListInfo();
             console.log("res.data:", res.data);
         }
         else {
@@ -55,6 +66,7 @@ export default function Bing() {
 
     useEffect(() => {
         getUsernamesInfo();
+        getScrapedDataListInfo();
     }, []);
 
     const ScannerContent = [
@@ -64,7 +76,7 @@ export default function Bing() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated automated searches on Bing Search, resulting in the detection of</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_links}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_links || 0}</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -75,7 +87,7 @@ export default function Bing() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated automated searches on Bing Images Search, resulting in the detection of</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_images}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_images || 0}</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -85,7 +97,7 @@ export default function Bing() {
             content: <div className='flex items-center space-x-1 font-normal text-xs'>
                 <div className='space-x-2'>
                     <span>Initiated automated searches on Bing Video Search, resulting in the detection of</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_videos}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_videos || 0}</span>
                     <span>new copyright infringements.</span>
                 </div>
             </div>
@@ -158,9 +170,9 @@ export default function Bing() {
                 <div className='px-20 max-md:px-5 font-normal text-xs space-x-1'>
                     <span className='font-normal text-xs'>Generated a removal report with </span>
                     <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{
-                        scanResult.total_bing_links +
-                        scanResult.total_bing_images +
-                        scanResult.total_bing_videos
+                        (scanResult.total_bing_links  || 0)+
+                        (scanResult.total_bing_images || 0) +
+                        (scanResult.total_bing_videos || 0)
                     }</span>
                     <span>copyright infringements and forwarded it to Search Engines.</span>
                 </div>

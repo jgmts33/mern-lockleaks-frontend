@@ -19,7 +19,7 @@ import NextTopLoader from 'nextjs-toploader';
 import { useDispatch, useSelector } from "react-redux";
 
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setLastScanResult, scanResult as scanResultInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
+import { scanProgress as scanProgressInfo, setLastScanResult, setExtraReport, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
 
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
@@ -30,6 +30,7 @@ import { io } from "socket.io-client";
 import { ENDPOINT } from "../../config/config";
 import { getUserId } from "../../axios/token";
 import { getScrapedDataList } from "../../axios/download";
+import { getExtraReport } from "../../axios/user";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -122,7 +123,13 @@ export default function RootLayout({ children }) {
     } else {
       console.log(res.data);
     }
-  }, [userInfo])
+  }, [userInfo]);
+
+  const getExtraReportInfo = async () => {
+    const res = await getExtraReport();
+
+    if (res.status == 'success') dispatch(setExtraReport(res.data));
+}
 
   useEffect(() => {
 
@@ -173,10 +180,21 @@ export default function RootLayout({ children }) {
       console.log(value);
     })
 
-    socket.on(`${userId}:scrape`, (value) => {
-      console.log("scrape-progress:", value)
-      if (value) dispatch(setScanProgress(value));
-    })
+    if (currentPath.includes("app")) {
+      socket.on(`${userId}:scrape`, (value) => {
+        console.log("scrape-progress:", value)
+        if (value) dispatch(setScanProgress(value));
+      })
+    }
+
+    if (currentPath.includes("admin")) {
+      socket.on(`admin:dashboardInfo`, async (value) => {
+        if (value == 'scan-finished') {
+          getScrapedDataListInfo();
+          getExtraReportInfo();
+        }
+      })
+    }
 
     return () => {
       socket.disconnect();
@@ -351,7 +369,7 @@ export default function RootLayout({ children }) {
                     <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
                   </div>
               }
-              <div className="flex w-full flex-col items-center">
+              <div className="flex w-full flex-col items-center pb-10">
                 <NextTopLoader
                   color="#2299DD"
                   initialPosition={0.08}
