@@ -40,7 +40,7 @@ export default function Categories() {
     }, [params.get('category')]);
 
     useEffect(() => {
-        if (categories.length) setSelectCategoryId(categories.find(p => p.name == params.get('category')).id || -1);
+        if (categories.length) setSelectCategoryId(categories.find(p => p.name == params.get('category').replaceAll("-", " ")).id || -1);
     }, [params.get('category'), categories]);
 
     const getCActiclesInfo = async (categoryId) => {
@@ -56,7 +56,7 @@ export default function Categories() {
     }
 
     const handleGoCategory = (categoryName) => {
-        router.push(`/help/articles?category=${categoryName}`)
+        router.push(`/help/articles?category=${categoryName.replaceAll(" ", "-")}`);
     }
 
     useEffect(() => {
