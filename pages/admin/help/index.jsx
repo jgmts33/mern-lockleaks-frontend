@@ -4,9 +4,9 @@ import {
   Button, Input, Modal, ModalBody, ModalContent, ModalHeader, ScrollShadow,
   useDisclosure
 } from '@nextui-org/react';
+import {Chip} from "@nextui-org/chip";
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { tuple } from 'yup';
 import { addNewCategory, deleteCategory, deleteHelpArticle, getHelpAriticles, getHelpCategories, updateCategory } from '../../../axios/help';
 
 export default function Blog() {
@@ -16,7 +16,6 @@ export default function Blog() {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [isCategoryActionProcessing, setIsCategoryActionProcessing] = useState(false);
-  const [isArticleActionProcessing, setIsArticleActionProcessing] = useState(false);
   const [targetCategory, setTargetCategory] = useState({
     id: null,
     name: '',
@@ -57,11 +56,16 @@ export default function Blog() {
             return item;
           });
         })
+        onClose();
       }
     } else {
-      res = await addNewCategory(targetCategory);
+      res = await addNewCategory({
+        name: targetCategory.name,
+        description: targetCategory.description
+      });
       if (res.status == 'success') {
         setCategories(p => [res.data, ...p]);
+        onClose();
       }
     }
     setIsCategoryActionProcessing(false);
@@ -247,8 +251,9 @@ export default function Blog() {
                   return (
                     <div key={index} className='flex flex-col px-2'>
                       <div className='flex justify-between py-7 items-center'>
-                        <div className='flex'>
-                          <span className={'font-semibold text-base'}>{article.title}</span>
+                        <div className='flex items-center'>
+                          <span className={'font-semibold text-lg'}>{article.title}</span>
+                          <Chip size='sm' color='primary' className={'ml-8'}>{categories.find(p => p.id == article.categoryId)?.name || ""}</Chip>
                         </div>
                         <div className='flex gap-4 items-center'>
                           <Button

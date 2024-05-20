@@ -3,9 +3,26 @@ import axios from 'axios';
 import { getAccessToken } from './token';
 
 export const getHelpCategories = async () => {
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/help/categories`);
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getHelpAriticles = async () => {
   const accessToken = await getAccessToken();
   try {
-    const res = await axios.get(`${ENDPOINT}/help/categories`, {
+    const res = await axios.get(`${ENDPOINT}/help/articles`, {
       headers: {
         'x-access-token': accessToken
       }
@@ -23,14 +40,10 @@ export const getHelpCategories = async () => {
   }
 }
 
-export const getHelpAriticles = async () => {
-  const accessToken = await getAccessToken();
+export const getHelpArticleByCategory = async (categoryId) => {
+
   try {
-    const res = await axios.get(`${ENDPOINT}/help/categories`, {
-      headers: {
-        'x-access-token': accessToken
-      }
-    });
+    const res = await axios.get(`${ENDPOINT}/help/articles?categoryId=${categoryId}`);
 
     return {
       status: 'success',
@@ -85,7 +98,7 @@ export const updateHelpArticle = async (id, data) => {
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.post(`${ENDPOINT}/help/articles/${id}`, data, {
+    const res = await axios.patch(`${ENDPOINT}/help/articles/${id}`, data, {
       headers: {
         'x-access-token': accessToken
       }

@@ -17,7 +17,6 @@ import DOMPurify from 'dompurify';
 export default function Blog() {
 
     const router = useRouter();
-    const id = router.query.title?.split("-")[-1];
     const [bannerPreviewImgUrl, setBannerPreviewImgUrl] = useState('');
     const [avatarPreviewImgUrl, setAvatarPreviewImgUrl] = useState('');
     const [similarBlogs, setSimilarBlogs] = useState([]);
@@ -37,23 +36,28 @@ export default function Blog() {
 
     useEffect(() => {
 
-        console.log("router.query.title?.split(" - "):",);
         (async () => {
+            
             if (router.query.title?.split("-")) {
-                const titleWords = router.query.title?.split("-") || [0];
-                const res = await getBlogDetails(titleWords[titleWords.length - 1]);
-                const similarBlogsRes = await getSimilarBlogs(res.data.id, res.data.tags);
-                setBannerPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.banner}`);
-                setAvatarPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.moderatorInfo.avatar}`);
-                setBlogDetails({
-                    ...res.data,
-                    banner: null,
-                    moderatorInfo: {
-                        ...res.data.moderatorInfo,
-                        avatar: null,
-                    }
-                });
-                setSimilarBlogs(similarBlogsRes.data);
+                const titleWords = router.query.title?.split("").reverse().join("").split("-") || ['0'];
+                console.log("titleWords:", titleWords);
+                setIsProcessing(true);
+                const res = await getBlogDetails(Number(titleWords[0].split("").reverse().join("")));
+                if (res.status == 'success') {
+                    const similarBlogsRes = await getSimilarBlogs(res.data.id, res.data.tags);
+                    setBannerPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.banner}`);
+                    setAvatarPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.moderatorInfo.avatar}`);
+                    setBlogDetails({
+                        ...res.data,
+                        banner: null,
+                        moderatorInfo: {
+                            ...res.data.moderatorInfo,
+                            avatar: null,
+                        }
+                    });
+                    setSimilarBlogs(similarBlogsRes.data);
+                }
+
                 setIsProcessing(false);
             }
         })();
@@ -147,7 +151,7 @@ export default function Blog() {
 
                             <div className='w-full flex mx-auto gap-10 max-lg:flex-col max-xl:flex-col max-md:px-3 relative'>
                                 <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={160} height={180} className='max-md:hidden absolute -top-56 left-96 bg-[#532a88] bg-opacity-30 blur-3xl z-0' />
-                                { similarBlogs.length ? <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-32 right-44 bg-[#532a88] bg-opacity-30 blur-3xl z-0' /> : <></> }
+                                {similarBlogs.length ? <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-32 right-44 bg-[#532a88] bg-opacity-30 blur-3xl z-0' /> : <></>}
                                 <div className='flex flex-col top-24 w-full mt-16 gap-10 max-md:mx-auto z-10' >
                                     {
                                         similarBlogs.slice(0, 2).map((item, index) => {
