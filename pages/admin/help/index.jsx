@@ -114,23 +114,24 @@ export default function Blog() {
         <div className='mt-6 max-lg:justify-center max-lg:items-center min-w-[380px] w-[380px] max-sm:w-full '>
           <p className='mb-4 uppercase'>Categories</p>
           <div className="flex flex-col w-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto h-[calc(100vh-260px)]">
-
-            <Button
-              radius="lg"
-              className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base w-full mx-[10px]"
-              size='md'
-              onClick={() => {
-                onOpen();
-                setSelectedCategoryId(null);
-                setTargetCategory({
-                  id: null,
-                  name: '',
-                  description: ''
-                });
-              }}
-            >
-              Add New Category
-            </Button>
+            <div className='w-full px-[10px]'>
+              <Button
+                radius="lg"
+                className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base w-full "
+                size='md'
+                onClick={() => {
+                  onOpen();
+                  setSelectedCategoryId(null);
+                  setTargetCategory({
+                    id: null,
+                    name: '',
+                    description: ''
+                  });
+                }}
+              >
+                Add New Category
+              </Button>
+            </div>
             <ScrollShadow>
               <div className='flex flex-col gap-5 mt-8 w-full px-[10px]'>
                 {
