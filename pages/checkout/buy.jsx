@@ -166,7 +166,7 @@ export default function BUY() {
 
                         <Modal
                             backdrop="opaque"
-                            isOpen={isOpen}
+                            isOpen={step == 0 && isOpen}
                             size='lg'
                             onOpenChange={onOpenChange}
                             classNames={{
@@ -427,7 +427,7 @@ export default function BUY() {
             </div>
             <Modal
                 backdrop="opaque"
-                isOpen={isOpen}
+                isOpen={step == 2 && isOpen}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{
@@ -448,7 +448,7 @@ export default function BUY() {
                                     radius="lg"
                                     className="bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647] mx-auto"
                                     size='md'
-                                    onPress={() => window.open("/app/dashboard" , '_current')}
+                                    onPress={() => window.open("/app/dashboard", '_current')}
                                 >
                                     Go to Dashboard
                                 </Button>
