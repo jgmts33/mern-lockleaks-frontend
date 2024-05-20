@@ -124,6 +124,7 @@ export default function BlogList() {
                         radius="lg"
                         className="bg-transparent text-white"
                         size='lg'
+                        onPress={() => router.push(`/blog/${blog.title.replaceAll(" ", "-")}-${blog.id}`)}
                       >
                         <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Article</span>
                         <Image src="/assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />
