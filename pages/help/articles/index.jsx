@@ -40,7 +40,7 @@ export default function Categories() {
     }, [params.get('category')]);
 
     useEffect(() => {
-        if (categories.length) setSelectCategoryId(categories.find(p => p.name == params.get('category').replaceAll("-", " ")).id || -1);
+        if (categories.length && params.get('category')) setSelectCategoryId(categories.find(p => p.name == params.get('category').replaceAll("-", " "))?.id || -1);
     }, [params.get('category'), categories]);
 
     const getCActiclesInfo = async (categoryId) => {
