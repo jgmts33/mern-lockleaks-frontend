@@ -129,11 +129,11 @@ export default function RootLayout({ children }) {
     const res = await getExtraReport();
 
     if (res.status == 'success') dispatch(setExtraReport(res.data));
-}
+  }
 
   useEffect(() => {
 
-    if (!currentPath.includes("admin") && !currentPath.includes("app")) {
+    if (!currentPath?.includes("admin") && !currentPath?.includes("app")) {
       setMounted(true);
     }
     if (!userInfo) return;
@@ -160,7 +160,7 @@ export default function RootLayout({ children }) {
 
     getScrapedDataListInfo();
 
-    if (currentPath.includes("login") && getCookieValue('necessary') == 'allowed') {
+    if (currentPath?.includes("login") && getCookieValue('necessary') == 'allowed') {
 
       if (userInfo.roles?.includes("admin")) {
         router.push("/admin/dashboard");
@@ -180,14 +180,14 @@ export default function RootLayout({ children }) {
       console.log(value);
     })
 
-    if (currentPath.includes("app")) {
+    if (currentPath?.includes("app")) {
       socket.on(`${userId}:scrape`, (value) => {
         console.log("scrape-progress:", value)
         if (value) dispatch(setScanProgress(value));
       })
     }
 
-    if (currentPath.includes("admin")) {
+    if (currentPath?.includes("admin")) {
       socket.on(`admin:dashboardInfo`, async (value) => {
         if (value == 'scan-finished') {
           getScrapedDataListInfo();
@@ -205,13 +205,15 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     if (scanProgress == 100) {
       getScrapedDataListInfo();
-      dispatch(setScanProgress(0));
+      setTimeout(() => {
+        dispatch(setScanProgress(0));
+      }, 30 * 1000);
     }
   }, [scanProgress]);
 
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
-    if (!currentPath.includes("app") && !currentPath.includes("admin") && !currentPath.includes("auth/login")) return;
+    if (!currentPath?.includes("app") && !currentPath?.includes("admin") && !currentPath?.includes("auth/login")) return;
     (async () => {
       try {
         const accessToken = await getAccessToken();

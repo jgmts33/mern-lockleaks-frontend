@@ -50,8 +50,8 @@ export default function Blog() {
                     Create post
                 </Button>
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 px-10 py-5 rounded-[16px] mt-6 w-full'>
-                <ScrollShadow className='h-[350px]'>
+            <div className='flex flex-col flex-1 bg-white/10 shadow-sm border border-gray-500 px-6 max-sm:px-4 py-5 rounded-[16px] mt-6 w-full'>
+                <ScrollShadow className='h-[calc(100vh-260px)]'>
                     {
                         isProcessing ?
                             <div className='w-full flex justify-center'>

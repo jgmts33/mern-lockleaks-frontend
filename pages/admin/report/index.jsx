@@ -63,9 +63,9 @@ export default function DataReport() {
             <div className='mt-10 max-md:mx-auto max-sm:mt-0'>
                 <span className='font-semibold text-base'>DATA PDF REPORT  DOWNLOAD</span>
             </div>
-            <div className='flex gap-5 max-lg:flex-col max-sm:gap-0'>
-                <div className='flex gap-10 mt-5 max-2xl:flex-col max-lg:justify-center max-lg:items-center'>
-                    <div className="flex flex-col max-w-[400px] w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto">
+            <div className='flex gap-5 max-xl:flex-col max-sm:gap-0'>
+                <div className='flex gap-10 mt-5 max-2xl:flex-col max-lg:justify-center max-lg:items-center min-w-[380px] w-[380px] max-sm:w-full'>
+                    <div className="flex flex-col w-full h-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto">
                         <div className='flex justify-between'>
                             <div>{icons.turnleft}</div>
                             <div>{icons.turnright}</div>
@@ -139,7 +139,7 @@ export default function DataReport() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:p-4 rounded-[16px] max-w-[calc(100vw-750px)] max-lg:max-w-full mt-5 w-full'>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 max-sm:p-4 rounded-[16px] max-lg:max-w-full mt-5 w-full'>
                     <ScrollShadow className="max-h-[420px]">
                         <div className='flex flex-col scroll px-3 gap-3 max-md:px-2'>
                             {

@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar, KeywordsDataSet } from "@/components/utils/Icons";
+import { FileHost, CalendarCheck, Users, Star, Category, Proxybots, Management, PingModels, AutoContract, Bing, SMScanner, Submit, UserContent, Search, AIProfile, DataReport, DmcaBadges, AccountSetting, DownloadData, SidebarClose, Notification, Scanner, Photo, ProfileSquare, WarningCircle, TestBots, YellowStar, KeywordsDataSet, HelpPost } from "@/components/utils/Icons";
 import Image from 'next/image';
 import Link from "next/link";
 import { usePathname, useRouter } from 'next/navigation';
@@ -43,7 +43,8 @@ const Sidebar = ({ show, setter }) => {
         bing: <Bing fill="currentColor" size={16} />,
         yellowstar: <YellowStar fill="currentColor" size={16} />,
         star: <Star fill="currentColor" size={16} />,
-        keywordsDataSet: <KeywordsDataSet fill="currentColor" size={16} />
+        keywordsDataSet: <KeywordsDataSet fill="currentColor" size={16} />,
+        helpPost: <HelpPost fill="currentColor" size={16} />
     };
 
     const USER_SIDEBAR_LIST = [
@@ -157,7 +158,7 @@ const Sidebar = ({ show, setter }) => {
             favourite: false
         }
     ];
-    
+
     const ADMIN_SIDEBAR_LIST = [
         {
             icon: icons.category,
@@ -255,11 +256,16 @@ const Sidebar = ({ show, setter }) => {
             path: "/admin/blog",
             favourite: false
         }, {
+            icon: icons.helpPost,
+            title: "Help",
+            path: "/admin/help",
+            favourite: false
+        }, {
             icon: icons.notification,
             title: "NOTIFICATION",
             path: "/admin/notifications",
             favourite: false
-        },
+        }
     ]
 
     const router = useRouter();
@@ -290,19 +296,19 @@ const Sidebar = ({ show, setter }) => {
     const handleSelectFavourite = useCallback((selectindex) => {
 
         let _sidebarList = sidebarList.slice();
-            _sidebarList.map((item, index) => {
-                if (index === selectindex) {
-                    _sidebarList[index].favourite = !item.favourite;
-                }
-            })
-            _sidebarList.sort((a, b) => { return a.id - b.id })
-            _sidebarList.sort((a, b) => { return b.favourite - a.favourite });
-            _sidebarList.map((item, index) => {
-                if (sidebarList[selectedSidebar].path == item.path) {
-                    handleSidebarClick(item.path, index);
-                }
-            });
-            setSidebarList(_sidebarList);
+        _sidebarList.map((item, index) => {
+            if (index === selectindex) {
+                _sidebarList[index].favourite = !item.favourite;
+            }
+        })
+        _sidebarList.sort((a, b) => { return a.id - b.id })
+        _sidebarList.sort((a, b) => { return b.favourite - a.favourite });
+        _sidebarList.map((item, index) => {
+            if (sidebarList[selectedSidebar].path == item.path) {
+                handleSidebarClick(item.path, index);
+            }
+        });
+        setSidebarList(_sidebarList);
 
     }, [sidebarList, selectedSidebar]);
 

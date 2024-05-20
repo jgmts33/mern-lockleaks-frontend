@@ -6,7 +6,7 @@ import {
   Button
 } from '@nextui-org/react';
 
-export default function Footer({cookieSettingsOnOpen}) {
+export default function Footer({ cookieSettingsOnOpen }) {
 
   const icons = {
     twitter: <TwitterV2 fill="currentColor" />,
@@ -23,30 +23,30 @@ export default function Footer({cookieSettingsOnOpen}) {
         <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-lg:flex-col gap-10'>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Services</p>
-            <Link href={"/scantakedown"}>Scan & Takedown</Link>
-            <Link href={"/ai"}>Artificial Intelligence</Link>
-            <Link href={"/copyright"}>Copyright</Link>
-            <Link href={"/camdmca"}>Cam DMCA Content Protection</Link>
-            <Link href={"/creatordmca"}>Creator DMCA Content Protection</Link>
-            <Link href={"/catfishing"}>Catifishing & Impersonation</Link>
-            <Link href={"/recovery"}>Username History Recovery Removal</Link>
-            <Link href={"/freeanalyse"}>Monthly Analytics & PDF Reports</Link>
-            <Link href={"/dmcabadges"} className='z-10'>DMCA Badges</Link>
+            <Link href={"/scantakedown"} className='!no-underline !text-white'>Scan & Takedown</Link>
+            <Link href={"/ai"} className='!no-underline !text-white'>Artificial Intelligence</Link>
+            <Link href={"/copyright"} className='!no-underline !text-white'>Copyright</Link>
+            <Link href={"/camdmca"} className='!no-underline !text-white'>Cam DMCA Content Protection</Link>
+            <Link href={"/creatordmca"} className='!no-underline !text-white'>Creator DMCA Content Protection</Link>
+            <Link href={"/catfishing"} className='!no-underline !text-white'>Catifishing & Impersonation</Link>
+            <Link href={"/recovery"} className='!no-underline !text-white'>Username History Recovery Removal</Link>
+            <Link href={"/freeanalyse"} className='!no-underline !text-white'>Monthly Analytics & PDF Reports</Link>
+            <Link href={"/dmcabadges"} className='z-10 !no-underline !text-white'>DMCA Badges</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Company</p>
-            <Link href={"/blog"}>Blog</Link>
-            <Link href={"/about-us"}>About Us</Link>
-            <Link href={"/privacy-policy"}>Privacy Policy</Link>
-            <Link href={"/terms-of-service"}>Terms of Service</Link>
-            <Link href={"/cookie-policy"}>Cookie Policy</Link>
+            <Link href={"/blog"} className='!no-underline !text-white'>Blog</Link>
+            <Link href={"/about-us"} className='!no-underline !text-white'>About Us</Link>
+            <Link href={"/privacy-policy"} className='!no-underline !text-white'>Privacy Policy</Link>
+            <Link href={"/terms-of-service"} className='!no-underline !text-white'>Terms of Service</Link>
+            <Link href={"/cookie-policy"} className='!no-underline !text-white'>Cookie Policy</Link>
             <p className='cursor-pointer' onClick={() => cookieSettingsOnOpen()}>Cookie Settings</p>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Support</p>
-            <Link href={"/help"}>Help & Support</Link>
-            <Link href={"/contact-us"}>Contact Us</Link>
-            <Link href={"/deletedata"}>Delete Data</Link>
+            <Link href={"/help"} className='!no-underline !text-white'>Help & Support</Link>
+            <Link href={"/contact-us"} className='!no-underline !text-white'>Contact Us</Link>
+            <Link href={"/deletedata"} className='!no-underline !text-white'>Delete Data</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <div className='flex justify-start'>
@@ -73,12 +73,12 @@ export default function Footer({cookieSettingsOnOpen}) {
           </Link>
           <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2024 LockLeaks.</p>
           <div className='flex gap-7 justify-end mt-0 mb-10'>
-            <Link href={"https://tiktok.com/lockleaks"}>{icons.tiktok}</Link>
-            <Link href={"https://www.instagram.com/lockleaks"}>{icons.instagram}</Link>
-            <Link href={"https://www.twitter.com/@lockleaks"}>{icons.twitter}</Link>
-            <Link href={"https://linkedin.com/@lockleaks"}>{icons.linkedin}</Link>
-            <Link href={"https://www.facebook.com/lockleaks"}>{icons.facebook}</Link>
-            <Link href={"https://www.reddit.com/r/LockLeaks"}>{icons.redit}</Link>
+            <Link href={"https://tiktok.com/lockleaks"} className='!no-underline !text-white'>{icons.tiktok}</Link>
+            <Link href={"https://www.instagram.com/lockleaks"} className='!no-underline !text-white'>{icons.instagram}</Link>
+            <Link href={"https://www.twitter.com/@lockleaks"} className='!no-underline !text-white'>{icons.twitter}</Link>
+            <Link href={"https://linkedin.com/@lockleaks"} className='!no-underline !text-white'>{icons.linkedin}</Link>
+            <Link href={"https://www.facebook.com/lockleaks"} className='!no-underline !text-white'>{icons.facebook}</Link>
+            <Link href={"https://www.reddit.com/r/LockLeaks"} className='!no-underline !text-white'>{icons.redit}</Link>
           </div>
         </div>
       </div>

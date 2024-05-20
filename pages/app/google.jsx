@@ -38,7 +38,7 @@ export default function Google() {
 
     const handleScan = useCallback(async () => {
         if (!usernames.length || scanProgress) return;
-        dispatch(setScanProgress(0.1));
+        dispatch(setScanProgress(0.01));
         const res = await scan({
             usernames,
             only: 'google'

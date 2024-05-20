@@ -13,7 +13,7 @@ import Woman from '@/public/assets/woman.svg';
 import { getBlogList } from '../../axios/blog';
 import { useRouter } from 'next/router';
 
-export default function Blog() {
+export default function BlogList() {
 
   const router = useRouter();
   const icons = {
@@ -101,7 +101,11 @@ export default function Blog() {
 
             {list.slice((selectedPagination - 1) * 9, selectedPagination * 9).map((blog, index) => {
               return (
-                <div key={index} className="bg-gradient-to-br from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl shadow-md w-full max-w-[480px] flex flex-col p-3">
+                <div
+                  key={index}
+                  className="bg-gradient-to-br from-gray-600/40 to-gray-800/40 border border-gray-600 mx-auto rounded-xl w-full max-w-[480px] flex flex-col p-3 hover:cursor-pointer hover:shadow-xl"
+                  onClick={() => router.push(`/blog/${blog.title.replaceAll(" ", "-")}-${blog.id}`)}
+                >
                   <img className="h-80 w-full mt-2 p-2 rounded-[20px]" src={`https://server.lockleaks.com/images?filename=${blog.banner}`} alt="Modern building architecture" />
                   <div className="p-5 flex-1">
                     <p className="font-semibold text-xl">{blog.title}</p>
@@ -120,7 +124,6 @@ export default function Blog() {
                         radius="lg"
                         className="bg-transparent text-white"
                         size='lg'
-                        onPress={() => router.push(`/blog/format?id=${blog.id}`)}
                       >
                         <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Article</span>
                         <Image src="/assets/vector.svg" width={28} height={28} className='-ml-2 -mt-1' alt='vector' />

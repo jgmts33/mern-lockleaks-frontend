@@ -14,11 +14,10 @@ import { getBlogDetails, getSimilarBlogs } from '../../axios/blog';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
 
-export default function BlogFormat() {
+export default function Blog() {
 
-    const searchParams = useSearchParams();
-    const id = searchParams.get('id');
     const router = useRouter();
+    const id = router.query.title?.split("-")[-1];
     const [bannerPreviewImgUrl, setBannerPreviewImgUrl] = useState('');
     const [avatarPreviewImgUrl, setAvatarPreviewImgUrl] = useState('');
     const [similarBlogs, setSimilarBlogs] = useState([]);
@@ -37,10 +36,12 @@ export default function BlogFormat() {
     });
 
     useEffect(() => {
+
+        console.log("router.query.title?.split(" - "):",);
         (async () => {
-            if (id) {
-                setIsProcessing(true);
-                const res = await getBlogDetails(id);
+            if (router.query.title?.split("-")) {
+                const titleWords = router.query.title?.split("-") || [0];
+                const res = await getBlogDetails(titleWords[titleWords.length - 1]);
                 const similarBlogsRes = await getSimilarBlogs(res.data.id, res.data.tags);
                 setBannerPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.banner}`);
                 setAvatarPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.moderatorInfo.avatar}`);
@@ -56,7 +57,7 @@ export default function BlogFormat() {
                 setIsProcessing(false);
             }
         })();
-    }, [id]);
+    }, [router.query]);
 
     const icons = {
         right: <ChevronRight fill="currentColor" size={16} />,
@@ -96,7 +97,7 @@ export default function BlogFormat() {
                                     <div className='flex flex-col p-6 relative w-full h-[550px]'>
                                         <span className='max-xl:text-center font-medium text-5xl mx-auto'>{blogDetails.title}</span>
                                         <div className='mt-5 overflow-y-auto ql-editor' >
-                                            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blogDetails.content) }} />
+                                            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blogDetails.content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }} />
                                         </div>
                                         <Button radius="full" className="absolute flex items-center top-4 right-4 bg-gradient-to-tr from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6 opacity-40" size='md'>
                                             <p className='text-medium font-normal'>100</p>
@@ -146,7 +147,7 @@ export default function BlogFormat() {
 
                             <div className='w-full flex mx-auto gap-10 max-lg:flex-col max-xl:flex-col max-md:px-3 relative'>
                                 <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={160} height={180} className='max-md:hidden absolute -top-56 left-96 bg-[#532a88] bg-opacity-30 blur-3xl z-0' />
-                                <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-32 right-44 bg-[#532a88] bg-opacity-30 blur-3xl z-0' />
+                                { similarBlogs.length ? <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-32 right-44 bg-[#532a88] bg-opacity-30 blur-3xl z-0' /> : <></> }
                                 <div className='flex flex-col top-24 w-full mt-16 gap-10 max-md:mx-auto z-10' >
                                     {
                                         similarBlogs.slice(0, 2).map((item, index) => {
@@ -176,7 +177,7 @@ export default function BlogFormat() {
                                         })
                                     }
                                 </div>
-                                <div className='flex flex-col mt-80 w-full gap-10 max-xl:mt-8 max-md:mx-auto max-md:px-3 mb-10 z-10'>
+                                <div className='flex flex-col w-full gap-10 max-xl:mt-8 max-md:mx-auto max-md:px-3 mb-10 z-10'>
                                     {
                                         similarBlogs.slice(2, 4).map((item, index) => {
                                             return (
