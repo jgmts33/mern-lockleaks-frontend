@@ -201,7 +201,7 @@ export default function GoogleBing() {
                                             </div>
                                         </div>
                                         :
-                                        googleScannerContent.length ? googleScrapedData.map((item, index) => {
+                                        googleScrapedData.length ? googleScrapedData.map((item, index) => {
                                             return (
                                                 <div key={index} className='flex items-center gap-4 max-sm:gap-2'>
                                                     <div className='bg-white/20 p-3 w-full rounded-[16px] font-normal text-sm'>
