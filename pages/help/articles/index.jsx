@@ -160,7 +160,7 @@ export default function Categories() {
                                     <div
                                         key={index}
                                         className="bg-white/10 bg-opacity-20 shadow-sm rounded-lg p-5 cursor-pointer w-full"
-                                        onClick={() => router.push(`/help/articles/${article.title.replaceAll("?", "").replaceAll(" ", "-")}-${article.id}`)}
+                                        onClick={() => router.push(`/help/articles/${article.title.replaceAll("?", "").replaceAll(" ", "-").replaceAll("&", "_").replaceAll("/", "")}-${article.id}`)}
                                     >
                                         <div className='flex justify-between w-full'>
                                             <div className='flex gap-5'>
