@@ -113,7 +113,7 @@ export default function Blog() {
       <div className='flex gap-5 max-xl:flex-col max-sm:gap-0'>
         <div className='mt-6 max-lg:justify-center max-lg:items-center min-w-[380px] w-[380px] max-sm:w-full '>
           <p className='mb-4 uppercase'>Categories</p>
-          <div className="flex flex-col w-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto h-[calc(100vh-260px)]">
+          <div className="flex flex-col w-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto h-[calc(100vh-260px)] overflow-y-auto">
             <Button
               radius="lg"
               className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base w-full"
@@ -234,7 +234,7 @@ export default function Blog() {
         </div>
         <div className='w-full mt-6'>
           <p className='mb-4 uppercase'>Help Postings</p>
-          <div className='bg-white/10 shadow-sm border border-gray-500 px-6 max-sm:px-4 rounded-[16px] w-full h-[calc(100vh-260px)]'>
+          <div className='bg-white/10 shadow-sm border border-gray-500 px-6 max-sm:px-4 rounded-[16px] w-full h-[calc(100vh-260px)] overflow-y-auto'>
             {
               isArticleProcessing ?
                 <div className='w-full flex justify-center mt-6'>
