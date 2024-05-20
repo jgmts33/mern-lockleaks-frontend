@@ -14,7 +14,11 @@ import { getScrapedDataList } from '../../axios/download';
 
 export default function Google() {
 
-    const [scanResult, setScanResult] = useState({});
+    const [scanResult, setScanResult] = useState({
+        total_google_links: 0,
+        total_google_images: 0,
+        total_google_videos: 0
+    });
     const scanProgress = useSelector(scanProgressInfo);
 
     const dispatch = useDispatch();

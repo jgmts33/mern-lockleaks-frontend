@@ -14,7 +14,11 @@ import { getScrapedDataList } from '../../axios/download';
 
 export default function Bing() {
 
-    const [scanResult, setScanResult] = useState({});
+    const [scanResult, setScanResult] = useState({
+        total_bing_links: 0,
+        total_bing_images: 0,
+        total_bing_videos: 0
+    });
     const scanProgress = useSelector(scanProgressInfo);
     const dispatch = useDispatch();
     const [usernames, setUsernames] = useState([]);
@@ -170,7 +174,7 @@ export default function Bing() {
                 <div className='px-20 max-md:px-5 font-normal text-xs space-x-1'>
                     <span className='font-normal text-xs'>Generated a removal report with </span>
                     <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{
-                        (scanResult.total_bing_links  || 0)+
+                        (scanResult.total_bing_links || 0) +
                         (scanResult.total_bing_images || 0) +
                         (scanResult.total_bing_videos || 0)
                     }</span>
