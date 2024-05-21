@@ -55,7 +55,7 @@ export default function DmcaBadges() {
 
                 <div className='text-center mt-10 max-sm:mt-5'>
                     <p className='font-medium text-5xl max-lg:text-[30px]'>{DmcaBadgesTitle.title}</p>
-                    <div className='max-w-[716px] mx-auto max-md:px-3'><p className='font-normal text-base mt-10'>{DmcaBadgesTitle.content}</p></div>
+                    <div className='max-w-[716px] mx-auto max-md:px-3 max-sm:px-5'><p className='font-normal text-base max-sm:text-sm mt-10'>{DmcaBadgesTitle.content}</p></div>
                 </div>
                 <div className='mt-20 max-sm:mt-10 max-md:text-center max-md:mx-auto'>
                     <span className='font-medium text-md'>Download DMCA Badges</span>
