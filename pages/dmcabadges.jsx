@@ -68,9 +68,9 @@ export default function DmcaBadges() {
                         {
                             list.map((item, index) => <div
                                 key={index}
-                                className="flex flex-col gap-2 relative max-md:w-[330px] w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer p-2"
+                                className="flex flex-col gap-2 relative max-md:w-[330px] w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer"
                             >
-                                <div className='flex justify-center items-center w-full relative h-[220px] backdrop-blur-3xl bg-white/10 rounded-[20px] p-2'>
+                                <div className='flex justify-center items-center w-full relative h-[220px] backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4'>
                                     <img
                                         src={`https://server.lockleaks.com/images?filename=${item.name}`}
                                         // width={200}
@@ -79,7 +79,7 @@ export default function DmcaBadges() {
                                         alt={item.name}
                                     />
                                 </div>
-                                <div className='flex justify-between w-full gap-2'>
+                                <div className='flex justify-between w-full gap-2 p-2 pt-0'>
                                     <Button
                                         radius="lg"
                                         className="font-medium bg-gradient-to-tr max-md:text-xs from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-base"
