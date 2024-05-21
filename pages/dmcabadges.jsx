@@ -66,15 +66,20 @@ export default function DmcaBadges() {
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
                     <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1'>
                         {
-                            list.map((item, index) => <div key={index} className="flex justify-center items-center relative max-md:w-[330px] w-[380px] h-[300px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
-                                <img
-                                    src={`https://server.lockleaks.com/images?filename=${item.name}`} 
-                                    // width={200}
-                                    // height={100}
-                                    className='rounded-2xl'
-                                    alt={item.name}
-                                />
-                                <div className='flex justify-between pt-5 w-full px-1 absolute bottom-4'>
+                            list.map((item, index) => <div
+                                key={index}
+                                className="flex flex-col gap-2 relative max-md:w-[330px] w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer p-2"
+                            >
+                                <div className='flex justify-center items-center w-full relative h-[220px] backdrop-blur-3xl bg-white/10 rounded-[20px] p-2'>
+                                    <img
+                                        src={`https://server.lockleaks.com/images?filename=${item.name}`}
+                                        // width={200}
+                                        // height={100}
+                                        className='rounded-2xl max-w-full max-h-full'
+                                        alt={item.name}
+                                    />
+                                </div>
+                                <div className='flex justify-between w-full gap-2'>
                                     <Button
                                         radius="lg"
                                         className="font-medium bg-gradient-to-tr max-md:text-xs from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-base"
@@ -100,7 +105,7 @@ export default function DmcaBadges() {
                 <div className='flex w-[calc(100vw-10px)] relative pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={342} className='absolute max-xl:hidden left-0 top-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                     <div className='flex w-1/3 relative '>
-                        <Image className='z-20 max-xl:hidden' src={RobertHand} alt='robert-hand' />
+                        <Image className='z-10 max-xl:hidden' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-32 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
                     </div>
                     <div className='w-1/3 text-center mt-32 relative z-10 max-xl:mt-0 max-xl:w-full'>
@@ -109,7 +114,7 @@ export default function DmcaBadges() {
                     </div>
                     <div className='w-1/3 max-xl:w-full relative max-xl:px-3'>
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='absolute max-xl:hidden left-0 top-10 bg-[#a189f8] bg-opacity-5 blur-3xl' />
-                        <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-40 p-5 absolute left-0 -top-36 ">
+                        <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 absolute left-0 -top-36 ">
                             <div>
                                 <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-xl:text-base'>Download Legal Protection:</span>
                                 <span className='font-normal text-lg max-sm:text-base'>Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse.</span>

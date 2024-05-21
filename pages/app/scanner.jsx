@@ -126,7 +126,7 @@ export default function Scanner() {
                             onPress={() => handleScan()}
                         >
                             {
-                                scanProgress == 0 ? "START" : scanProgress == 100 ? "FINISHED" : "Processing"
+                                scanProgress == 0 ? "START" : scanProgress > 99 && scanProgress < 101 ? "FINISHED" : "Processing"
                             }
                         </Button>
                     </div>
