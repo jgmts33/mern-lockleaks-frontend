@@ -120,13 +120,13 @@ export default function Scanner() {
                     <div>
                         <Button
                             radius="lg"
-                            className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!scanProgress ? "from-purple-light to-purple-weight" : scanProgress == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
+                            className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!scanProgress.current ? "from-purple-light to-purple-weight" : scanProgress.current == scanProgress.all ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
                             size='sm'
-                            disabled={scanProgress}
+                            disabled={scanProgress.current}
                             onPress={() => handleScan()}
                         >
                             {
-                                scanProgress == 0 ? "START" : scanProgress > 99 && scanProgress < 101 ? "FINISHED" : "Processing"
+                                scanProgress.current == 0 ? "START" : scanProgress.current == scanProgress.all < 101 ? "FINISHED" : "Processing"
                             }
                         </Button>
                     </div>

@@ -203,10 +203,13 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    if (scanProgress == 100) {
+    if (scanProgress.current == scanProgress.all) {
       getScrapedDataListInfo();
       setTimeout(() => {
-        dispatch(setScanProgress(0));
+        dispatch(setScanProgress({
+          current: 0,
+          all: 0
+        }));
       }, 30 * 1000);
     }
   }, [scanProgress]);
