@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import {
     Button, Link,
+    ScrollShadow,
 } from '@nextui-org/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
@@ -66,43 +67,45 @@ export default function DmcaBadges() {
                 <div className='flex gap-32 mt-10'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-                    <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1'>
-                        {
-                            list.map((item, index) => <div
-                                key={index}
-                                className="flex flex-col gap-2 relative max-md:w-[330px] w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer"
-                            >
-                                <div className='flex justify-center items-center w-full relative h-[220px] backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4'>
-                                    <img
-                                        src={`https://server.lockleaks.com/images?filename=${item.name}`}
-                                        // width={200}
-                                        // height={100}
-                                        className='rounded-2xl max-w-full max-h-full'
-                                        alt={item.name}
-                                    />
-                                </div>
-                                <div className='flex justify-between w-full gap-2 p-2 pt-0'>
-                                    <Button
-                                        radius="lg"
-                                        className="font-medium bg-gradient-to-tr max-md:text-xs from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-base"
-                                        size='md'
-                                        onClick={() => router.push("/auth/login")}
-                                    >
-                                        <span>{icons.shine}</span>Download
-                                    </Button>
-                                    <Button
-                                        radius="lg"
-                                        className="font-medium backdrop-blur-sm max-md:text-xs bg-white/10 shadow-gray-50 text-white px-5 py-5 text-base"
-                                        size='md'
-                                        onClick={() => router.push("/auth/login")}
-                                    >
-                                        <span>{icons.shine}</span>Embed your badge
-                                    </Button>
+                    <ScrollShadow className='h-[620px]'>
+                        <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1 p-5'>
+                            {
+                                list.map((item, index) => <div
+                                    key={index}
+                                    className="flex flex-col gap-2 relative w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer"
+                                >
+                                    <div className='flex justify-center items-center w-full relative h-[220px] backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4'>
+                                        <img
+                                            src={`https://server.lockleaks.com/images?filename=${item.name}`}
+                                            // width={200}
+                                            // height={100}
+                                            className='rounded-2xl max-w-full max-h-full'
+                                            alt={item.name}
+                                        />
+                                    </div>
+                                    <div className='flex justify-between w-full gap-2 p-2 pt-0'>
+                                        <Button
+                                            radius="lg"
+                                            className="font-medium bg-gradient-to-tr max-md:text-xs from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-base"
+                                            size='md'
+                                            onClick={() => router.push("/auth/login")}
+                                        >
+                                            <span>{icons.shine}</span>Download
+                                        </Button>
+                                        <Button
+                                            radius="lg"
+                                            className="font-medium backdrop-blur-sm max-md:text-xs bg-white/10 shadow-gray-50 text-white px-5 py-5 text-base"
+                                            size='md'
+                                            onClick={() => router.push("/auth/login")}
+                                        >
+                                            <span>{icons.shine}</span>Embed your badge
+                                        </Button>
 
-                                </div>
-                            </div>)
-                        }
-                    </div>
+                                    </div>
+                                </div>)
+                            }
+                        </div>
+                    </ScrollShadow>
                 </div>
                 <div className='flex w-[calc(100vw-10px)] relative pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={342} className='absolute max-xl:hidden left-0 top-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
