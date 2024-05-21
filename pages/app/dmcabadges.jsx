@@ -4,7 +4,7 @@ import {
     Button, Link
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
-import { downloadDmcaImages, getDmcaImages } from '../../axios/dmca';
+import { downloadDmcaImages, getDmcaImages, getDmcaImagesPositions } from '../../axios/dmca';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function DmcaBadges() {
@@ -14,9 +14,15 @@ export default function DmcaBadges() {
 
     const getDmcaImagesInfo = async () => {
         const res = await getDmcaImages();
+        const positionsRes = await getDmcaImagesPositions();
 
         if (res.status == 'success') {
-            setList(res.data);
+            let _list = [];
+            positionsRes.data?.map((item, index) => {
+                const data = res.data.find((badge) => badge.id == item);
+                _list.push(data);
+            });
+            setList(_list);
         }
     }
 

@@ -1,10 +1,12 @@
 "use client";
-import Image from 'next/image';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import {
     Button, Link
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
-import { deleteDmcaImage, getDmcaImages, updateDmcaImageOrder } from '../../../axios/dmca';
+import { deleteDmcaImage, getDmcaImages, getDmcaImagesPositions, updateDmcaImagesPositions } from '../../../axios/dmca';
+import { RemoveIcon } from '../../../components/utils/Icons';
+
 
 const handleBack = () => {
     history.back()
@@ -14,13 +16,43 @@ export default function DmcaBadgeDetails() {
 
     const [list, setList] = useState([]);
 
+    const icons = {
+        remove: <RemoveIcon fill="currentColor" size={16} />
+    }
+
     const getDmcaImagesInfo = async () => {
         const res = await getDmcaImages();
+        const positionsRes = await getDmcaImagesPositions();
 
         if (res.status == 'success') {
-            setList(res.data);
+            let _list = [];
+            positionsRes.data?.map((item, index) => {
+                const data = res.data.find((badge) => badge.id == item);
+                _list.push(data);
+            });
+            setList(_list);
         }
     }
+
+    const handleDragEnd = (result) => {
+        if (!result.destination) return;
+
+        const items = reorder(
+            list,
+            result.source.index,
+            result.destination.index
+        );
+
+        setList(items);
+    };
+
+    const reorder = (list, startIndex, endIndex) => {
+        const result = Array.from(list);
+        const [removed] = result.splice(startIndex, 1);
+        result.splice(endIndex, 0, removed);
+
+        return result;
+    };
 
     const handleDelete = async (id) => {
         const res = await deleteDmcaImage(id);
@@ -33,17 +65,21 @@ export default function DmcaBadgeDetails() {
         }
     }
 
-    const handleSetPosition = async (id, order) => {
-        const res = await updateDmcaImageOrder(id, order);
-
-        if (res.status == 'success') {
-            getDmcaImagesInfo();
-        }
-    }
-
     useEffect(() => {
         getDmcaImagesInfo();
     }, []);
+
+    useEffect(() => {
+        if (!list.length) return;
+        let requestDebounce = setTimeout(() => {
+            console.log("list:", list);
+            let positionsRequestData = [];
+            list.map(item => positionsRequestData.push(item.id));
+            updateDmcaImagesPositions(positionsRequestData);
+        }, 1000);
+
+        return () => clearTimeout(requestDebounce);
+    }, [list]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto w-full">
@@ -55,40 +91,48 @@ export default function DmcaBadgeDetails() {
                     Back
                 </Button>
             </div>
-            <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 max-lg:gap-3'>
-                {
-                    list.map((item, index) => <div key={index} className='max-md:max-w-full'>
-                        <div className="flex justify-center items-center border w-full aspect-square border-gray-500 rounded-[23px] mt-10 cursor-pointer">
-                            <img
-                                src={`https://server.lockleaks.com/images?filename=${item.name}`}
-                                // width={200}
-                                // height={100}
-                                className='rounded-2xl'
-                                alt={item.name}
-                            />
-                        </div>
-                        <div className='flex justify-between pr-5 pt-5'>
-                            <Button
-                                radius="lg"
-                                className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base"
-                                size='sm'
-                                onClick={() => {
 
-                                }}
-                            >
-                                Set Position
-                            </Button>
-                            <Button
-                                radius="lg"
-                                className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-8 py-5 text-base"
-                                size='sm'
-                                onClick={() => handleDelete(item.id)}
-                            >
-                                Remove
-                            </Button>
-                        </div>
-                    </div>)
-                }
+            <div className='mt-2'>
+                <DragDropContext onDragEnd={handleDragEnd}>
+                    <Droppable droppableId="droppable">
+                        {(provided) => (
+                            <div {...provided.droppableProps} ref={provided.innerRef} className='space-y-2' >
+                                {list.map((item, index) => (
+                                    <Draggable key={item.id} draggableId={`${item.id}`} index={index}>
+                                        {(provided) => (
+                                            <div
+                                                ref={provided.innerRef}
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                            >
+                                                <div className="flex flex-col gap-2 relative w-full h-24 bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
+                                                    <div className='flex w-full relative h-full backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4'>
+                                                        <img
+                                                            src={`https://server.lockleaks.com/images?filename=${item.name}`}
+                                                            // width={200}
+                                                            // height={100}
+                                                            className='rounded-2xl max-w-full max-h-full'
+                                                            alt={item.name}
+                                                        />
+                                                        <Button
+                                                            className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg p-1 text-base absolute top-2 right-2"
+                                                            isIconOnly
+                                                            size='sm'
+                                                            onClick={() => handleDelete(item.id)}
+                                                        >
+                                                            {icons.remove}
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                ))}
+                                {provided.placeholder}
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
             </div>
         </div>
     )

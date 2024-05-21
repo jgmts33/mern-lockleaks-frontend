@@ -42,14 +42,16 @@ export default function Google() {
 
     const handleScan = useCallback(async () => {
         if (!usernames.length || scanProgress) return;
-        dispatch(setScanProgress(0.01));
+        dispatch(setScanProgress({
+            current: 0.01,
+            all: 100
+        }));
         const res = await scan({
             usernames,
             only: 'google'
         });
 
         if (res.status == 'success') {
-            dispatch(setScanProgress(100));
             getScrapedDataListInfo();
         }
         else {
@@ -135,7 +137,7 @@ export default function Google() {
                     aria-label="Loading..."
                     className="max-w-2xl"
                     color='secondary'
-                    value={scanProgress}
+                    alue={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 1)}
                     showValueLabel={true}
                 />
             </div>

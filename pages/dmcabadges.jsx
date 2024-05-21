@@ -10,23 +10,25 @@ import RobertHand from '@/public/assets/dmcabadge/robert-hand.svg';
 import PhotoRight from '@/public/assets/dmcabadge/photo-right.svg';
 import PhotoLeft from '@/public/assets/dmcabadge/photo-left.svg';
 import Robert from '@/public/assets/dmcabadge/robert.svg';
-import Saturn from '@/public/assets//blog/saturn.svg';
-import Moon from '@/public/assets//blog/moon.svg';
-import Mars from '@/public/assets//blog/mars.svg'
 import CustomerReview from '@/components/customer-review';
-import { downloadDmcaImages, getDmcaImages } from '../axios/dmca';
+import { getDmcaImages, getDmcaImagesPositions } from '../axios/dmca';
 import { useRouter } from 'next/router';
 
 export default function DmcaBadges() {
 
-    const [copied, setCopied] = useState(-1);
     const [list, setList] = useState([]);
 
     const getDmcaImagesInfo = async () => {
         const res = await getDmcaImages();
+        const positionsRes = await getDmcaImagesPositions();
 
         if (res.status == 'success') {
-            setList(res.data);
+            let _list = [];
+            positionsRes.data?.map((item, index) => {
+                const data = res.data.find((badge) => badge.id == item);
+                _list.push(data);
+            });
+            setList(_list);
         }
     }
 

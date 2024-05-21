@@ -78,7 +78,7 @@ export default function RootLayout({ children }) {
 
   const getScrapedDataListInfo = useCallback(async () => {
 
-    const res = await getScrapedDataList(!!userInfo.roles.find(p => p == 'admin'));
+    const res = await getScrapedDataList(!!userInfo?.roles.find(p => p == 'admin'));
 
     if (res.status == 'success') {
       if (res.data?.length >= 1) {
@@ -203,7 +203,7 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    if (scanProgress.current == scanProgress.all) {
+    if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
       getScrapedDataListInfo();
       setTimeout(() => {
         dispatch(setScanProgress({

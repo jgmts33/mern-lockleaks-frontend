@@ -25,16 +25,13 @@ export default function Scanner() {
     };
 
     const handleScan = useCallback(async () => {
-        if (!usernames.length || scanProgress) return;
-        dispatch(setScanProgress(0.01));
+        if (!usernames.length || scanProgress.current) return;
+        dispatch(setScanProgress({
+            current: 0.01,
+            all: 100
+        }));
         const res = await scan({ usernames });
 
-        if (res.status == 'success') {
-            dispatch(setScanProgress(100));
-        }
-        else {
-            console.log(res.data);
-        }
     }, [usernames, scanProgress])
 
     const getUsernamesInfo = async () => {
@@ -126,7 +123,7 @@ export default function Scanner() {
                             onPress={() => handleScan()}
                         >
                             {
-                                scanProgress.current == 0 ? "START" : scanProgress.current == scanProgress.all < 101 ? "FINISHED" : "Processing"
+                                scanProgress.current == 0 ? "START" : scanProgress.current == scanProgress.all ? "FINISHED" : "Processing"
                             }
                         </Button>
                     </div>
@@ -135,7 +132,7 @@ export default function Scanner() {
                         aria-label="Loading..."
                         className="max-w-2xl"
                         color='secondary'
-                        value={scanProgress}
+                        value={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 1)}
                         showValueLabel={true}
                     />
                 </div>

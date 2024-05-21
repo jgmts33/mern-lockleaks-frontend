@@ -98,10 +98,10 @@ export const downloadDmcaImages = async (filename) => {
 }
 
 
-export const getDmcaImages = async (data) => {
+export const getDmcaImages = async () => {
 
   try {
-    const res = await axios.get(`${ENDPOINT}/dmca-images`, data);
+    const res = await axios.get(`${ENDPOINT}/dmca-images`);
 
     return {
       status: 'success',
@@ -115,3 +115,42 @@ export const getDmcaImages = async (data) => {
     }
   }
 }
+
+export const getDmcaImagesPositions = async () => {
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/dmca-images/order`);
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const updateDmcaImagesPositions = async (data) => {
+
+  try {
+    const res = await axios.patch(`${ENDPOINT}/dmca-images/order`, {
+      data
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
