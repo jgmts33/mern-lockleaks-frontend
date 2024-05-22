@@ -55,9 +55,8 @@ const UserHeader = ({ show, setter }) => {
   ]
 
   const handleLogOut = () => {
-    dispatch(setUserInfo(null));
+    window.open("/auth/login", '_self');
     setTokensExpired();
-    router.push("/auth/login");
   }
 
   return (

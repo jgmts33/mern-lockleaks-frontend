@@ -65,6 +65,12 @@ export default function Footer({ cookieSettingsOnOpen }) {
                 <span>{icons.shine}</span>
               </Button>
             </div>
+            <div className='mt-6 text-sm font-bold space-y-2 px-6'>
+              <p>TEST</p>
+              <p>TEST</p>
+              <p>TEST</p>
+              <p>07213921321</p>
+            </div>
           </div>
         </div>
         <div className='flex justify-between mt-0 max-md:flex-col max-md:items-center max-md:gap-5'>

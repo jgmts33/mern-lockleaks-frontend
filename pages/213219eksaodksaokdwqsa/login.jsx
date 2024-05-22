@@ -57,9 +57,8 @@ export default function Login() {
         });
 
         if (res.status == "success") {
-            dispatch(setUserInfo({ ...res.data }))
             setTokens(res.data.tokens);
-            router.push("/admin/dashboard");
+            window.open("/app/dashboard", '_self');
         } else {
             console.log("error:", res.data);
         }

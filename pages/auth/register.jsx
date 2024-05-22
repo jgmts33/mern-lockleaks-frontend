@@ -147,7 +147,8 @@ export default function Register() {
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
             setTokens(res.data.tokens);
-            router.push("/app/dashboard");
+            // router.push("/app/dashboard");
+            window.open("/app/dashboard", '_self');
         } else {
             onOpenChange(false);
         }
@@ -228,7 +229,7 @@ export default function Register() {
                                 <p className='font-light text-xs pt-3 pl-2'>I consent to receive valuable updates from LockLeaks and acknowledge that I can unsubscribe at any time. No spam, guaranteed.</p>
                             </Checkbox>
                             <Checkbox isSelected={isTermSelected} onValueChange={setIsTermSelected} radius="none">
-                                <span className='font-light text-xs pl-2'>I agree to LockLeaks's</span> <Link href='/termservice' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
+                                <span className='font-light text-xs pl-2'>I agree to LockLeaks's</span> <Link href='/terms-of-service' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                         </div>
                         <Button

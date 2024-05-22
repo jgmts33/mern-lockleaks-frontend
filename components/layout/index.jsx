@@ -159,17 +159,7 @@ export default function RootLayout({ children }) {
     }
 
     getScrapedDataListInfo();
-
-    if (currentPath?.includes("login") && getCookieValue('necessary') == 'allowed') {
-
-      if (userInfo.roles?.includes("admin")) {
-        router.push("/admin/dashboard");
-      } else {
-        router.push("/app/dashboard");
-      }
-
-    }
-
+    
     setMounted(true);
 
     const userId = getUserId();

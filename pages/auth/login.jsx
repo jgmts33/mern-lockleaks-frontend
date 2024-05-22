@@ -93,9 +93,10 @@ export default function Login() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
-            dispatch(setUserInfo(modalValue.userInfo));
             setTokens(modalValue.userInfo.tokens);
-            router.push("/app/dashboard");
+            window.open("/app/dashboard", '_self');
+            // router.push("/app/dashboard");
+            // dispatch(setUserInfo(modalValue.userInfo));
         } else {
             onOpenChange(false);
         }
