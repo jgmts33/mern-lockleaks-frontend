@@ -66,6 +66,7 @@ export default function Pricing() {
             AI_analyze_status: false,
             monthly_analyze_status: false,
             recovery_report_status: false,
+            history_status: false,
             add_content: "px-3"
         }, {
             title: "STAR",
@@ -102,6 +103,7 @@ export default function Pricing() {
             AI_analyze_status: true,
             monthly_analyze_status: true,
             recovery_report_status: true,
+            history_status: true,
             add_content: "bg-opacity-50 bg-black/40 rounded-[20px] px-3 py-3"
         },
         {
@@ -140,6 +142,7 @@ export default function Pricing() {
             AI_analyze_status: false,
             monthly_analyze_status: false,
             recovery_report_status: false,
+            history_status: false,
             add_content: "px-3"
         }
     ]
@@ -511,7 +514,13 @@ export default function Pricing() {
                                                     <div className='cusor-point flex'>
                                                         <div className='flex items-center w-10 h-5'>
                                                             <div onClick={() => selectMoreDetails(item.history_content)}><Image src={Info} width={20} height={20} alt=''></Image></div>
-                                                            <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                            {
+                                                                item.history_status
+                                                                    ?
+                                                                    <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
                                                         </div>
                                                     </div>
                                                     <div className='flex flex-wrap'>{item.history_content}</div>

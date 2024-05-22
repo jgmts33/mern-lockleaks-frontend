@@ -18,20 +18,22 @@ export default function ProxyBot() {
     const [modalType, setModalType] = useState("");
     const [targetInfo, setTargetInfo] = useState({
         id: '',
-        name: '',
-        proxies_count: 0,
-        expire_date: '',
-        credentials: {
-            ipAddress: '',
-            username: '',
-            password: ''
-        }
+        vps_source: '',
+        ip_address: '',
+        username: '',
+        password: '',
+        vps_expire_date: null,
+        proxy_source: '',
+        proxy_credentials: '',
+        proxy_type: '',
+        proxy_expire_date: null,
     })
 
     const columns = [
-        { name: "VPS NAME", uid: "name" },
-        { name: "PROXIES NUMBER", uid: "proxies_count" },
-        { name: "EXPIRE DATE", uid: "expire_date" },
+        { name: "Vps Source", uid: "vps_source" },
+        { name: "Proxy Source", uid: "proxy_source" },
+        { name: "Vps Expiry", uid: "vps_expire_date" },
+        { name: "Proxy Expiry", uid: "proxy_expire_date" },
         { name: "ACTIONS", uid: "actions" },
     ];
 
@@ -54,14 +56,15 @@ export default function ProxyBot() {
             else setList(p => [...p, res.data]);
             setTargetInfo({
                 id: '',
-                name: '',
-                proxies_count: 0,
-                expire_date: '',
-                credentials: {
-                    ipAddress: '',
-                    username: '',
-                    password: ''
-                }
+                vps_source: '',
+                ip_address: '',
+                username: '',
+                password: '',
+                vps_expire_date: null,
+                proxy_source: '',
+                proxy_credentials: '',
+                proxy_type: '',
+                proxy_expire_date: null,
             });
             onClose();
         }
@@ -144,14 +147,15 @@ export default function ProxyBot() {
                         size='sm'
                         onClick={() => {
                             setTargetInfo({
-                                name: '',
-                                proxies_count: 0,
-                                expire_date: '',
-                                credentials: {
-                                    ipAddress: '',
-                                    username: '',
-                                    password: ''
-                                }
+                                vps_source: '',
+                                ip_address: '',
+                                username: '',
+                                password: '',
+                                vps_expire_date: null,
+                                proxy_source: '',
+                                proxy_credentials: '',
+                                proxy_type: '',
+                                proxy_expire_date: null,
                             });
                             setModalType('add');
                             onOpen();
@@ -189,8 +193,9 @@ export default function ProxyBot() {
             <Modal
                 backdrop="opaque"
                 isOpen={isOpen}
-                size={ modalType == 'view' ? 'md': '2xl'}
+                size={modalType == 'view' ? 'md' : '2xl'}
                 onOpenChange={onOpenChange}
+                placement="center"
                 classNames={{
                     backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
                 }}
@@ -211,54 +216,83 @@ export default function ProxyBot() {
                                     {
                                         modalType != 'view' ?
                                             <div className='flex flex-col space-y-4'>
-                                                <Input
-                                                    type="text"
-                                                    label="VPS name"
-                                                    value={targetInfo.name}
-                                                    onChange={(e) => setTargetInfo(p => ({ ...p, name: e.target.value }))}
-                                                />
-                                                <Input
-                                                    type="text"
-                                                    label="Proxies Count"
-                                                    value={targetInfo.proxies_count}
-                                                    onChange={(e) => setTargetInfo(p => ({ ...p, proxies_count: e.target.value }))}
-                                                />
-                                                <Input
-                                                    type="text"
-                                                    label="VPS IP"
-                                                    value={targetInfo.credentials.ipAddress}
-                                                    onChange={(e) => setTargetInfo(p => ({ ...p, credentials: { ...p.credentials, ipAddress: e.target.value } }))}
-                                                />
-                                                <Input
-                                                    type="date"
-                                                    label="Expire Date"
-                                                    min={new Date().toISOString().split('T')[0]}
-                                                    value={moment(targetInfo.expire_date).format('YYYY-MM-DD')}
-                                                    onChange={(e) => setTargetInfo(p => ({ ...p, expire_date: e.target.value }))}
-                                                />
-                                                <div>
-                                                    <p className='text-left pb-2'>Credentials</p>
+                                                <div className='space-y-2'>
+                                                    <p className='text-left pb-2'>VPS</p>
+                                                    <Input
+                                                        type="text"
+                                                        label="VPS Source"
+                                                        value={targetInfo.vps_source}
+                                                        onChange={(e) => setTargetInfo(p => ({ ...p, vps_source: e.target.value }))}
+                                                    />
+                                                    <Input
+                                                        type="text"
+                                                        label="IP Address"
+                                                        value={targetInfo.ip_address}
+                                                        onChange={(e) => setTargetInfo(p => ({ ...p, ip_address: e.target.value }))}
+                                                    />
                                                     <div className='flex gap-4 items-center'>
                                                         <Input
                                                             type="text"
                                                             label="Username"
-                                                            value={targetInfo.credentials.username}
-                                                            onChange={(e) => setTargetInfo(p => ({ ...p, credentials: { ...p.credentials, username: e.target.value } }))}
+                                                            value={targetInfo.username}
+                                                            onChange={(e) => setTargetInfo(p => ({ ...p, username: e.target.value }))}
                                                         />
                                                         <Input
                                                             type="text"
                                                             label="Password"
-                                                            value={targetInfo.credentials.password}
-                                                            onChange={(e) => setTargetInfo(p => ({ ...p, credentials: { ...p.credentials, password: e.target.value } }))}
+                                                            value={targetInfo.password}
+                                                            onChange={(e) => setTargetInfo(p => ({ ...p, password: e.target.value }))}
                                                         />
                                                     </div>
+                                                    <Input
+                                                        type="date"
+                                                        label="Expire Date"
+                                                        min={new Date().toISOString().split('T')[0]}
+                                                        value={moment(targetInfo.vps_expire_date).format('YYYY-MM-DD')}
+                                                        onChange={(e) => setTargetInfo(p => ({ ...p, vps_expire_date: e.target.value }))}
+                                                    />
+                                                </div>
+                                                <div className='space-y-2'>
+                                                    <p className='text-left pb-2'>Proxy</p>
+                                                    <Input
+                                                        type="text"
+                                                        label="Proxy Source"
+                                                        value={targetInfo.proxy_source}
+                                                        onChange={(e) => setTargetInfo(p => ({ ...p, proxy_source: e.target.value }))}
+                                                    />
+                                                    <Input
+                                                        type="text"
+                                                        label="Credentials (IP:Port:Username:Password)"
+                                                        value={targetInfo.proxy_credentials}
+                                                        onChange={(e) => setTargetInfo(p => ({ ...p, proxy_credentials: e.target.value }))}
+                                                    />
+                                                    <Input
+                                                        type="text"
+                                                        label="Proxy Type(HTTP/Socks4/Socks5)"
+                                                        value={targetInfo.proxy_type}
+                                                        onChange={(e) => setTargetInfo(p => ({ ...p, proxy_type: e.target.value }))}
+                                                    />
+                                                    <Input
+                                                        type="date"
+                                                        label="Proxy expire Date"
+                                                        min={new Date().toISOString().split('T')[0]}
+                                                        value={moment(targetInfo.proxy_expire_date).format('YYYY-MM-DD')}
+                                                        onChange={(e) => setTargetInfo(p => ({ ...p, proxy_expire_date: e.target.value }))}
+                                                    />
                                                 </div>
                                             </div>
                                             :
                                             <div className='flex flex-col space-y-4 text-left pb-4 font-semibold '>
-                                                <p>Ip Address: <span className='text-sm font-normal'>{targetInfo.credentials.ipAddress}</span></p>
-                                                <p>Username: <span className='text-sm font-normal'>{targetInfo.credentials.username}</span></p>
-                                                <p>Password: <span className='text-sm font-normal'>{targetInfo.credentials.password}</span></p>
+                                                <p className='text-lg'>VPS</p>
+                                                <div className='space-y-2'>
+                                                    <p>Ip Address: <span className='text-sm font-normal'>{targetInfo.ip_address}</span></p>
+                                                    <p>Username: <span className='text-sm font-normal'>{targetInfo.username}</span></p>
+                                                    <p>Password: <span className='text-sm font-normal'>{targetInfo.password}</span></p>
+                                                </div>
+                                                <div className='space-y-2'>
+                                                    <p className='text-lg'>Proxies</p>
+                                                    <p>Credentials: <span className='text-sm font-normal'>{targetInfo.proxy_credentials}</span></p>
+                                                </div>
                                             </div>
                                     }
 
