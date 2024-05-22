@@ -88,6 +88,31 @@ export const getBlogDetails = async (id) => {
   }
 }
 
+export const getBlogDetailsWithViews = async (id) => {
+
+  try {
+
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+
+    const res = await axios.post(`${ENDPOINT}/blogs/${id}`, {
+      user_agent: navigator.userAgent,
+      ip: data.ip
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
 export const deleteBlog = async (id) => {
 
   const accessToken = await getAccessToken();

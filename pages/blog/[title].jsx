@@ -10,7 +10,7 @@ import { ChevronRight, Eye } from "@/components/utils/Icons";
 import RobertHand from '@/public/assets/copyright/robert-hand.svg';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
-import { getBlogDetails, getSimilarBlogs } from '../../axios/blog';
+import { getBlogDetails, getBlogDetailsWithViews, getSimilarBlogs } from '../../axios/blog';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
 
@@ -31,6 +31,7 @@ export default function Blog() {
         shortContent: "",
         content: "",
         banner: null,
+        views: 0,
         tags: []
     });
 
@@ -42,7 +43,7 @@ export default function Blog() {
                 const titleWords = router.query.title?.split("").reverse().join("").split("-") || ['0'];
                 console.log("titleWords:", titleWords);
                 setIsProcessing(true);
-                const res = await getBlogDetails(Number(titleWords[0].split("").reverse().join("")));
+                const res = await getBlogDetailsWithViews(Number(titleWords[0].split("").reverse().join("")));
                 if (res.status == 'success') {
                     const similarBlogsRes = await getSimilarBlogs(res.data.id, res.data.tags);
                     setBannerPreviewImgUrl(`https://server.lockleaks.com/images?filename=${res.data.banner}`);
@@ -104,7 +105,7 @@ export default function Blog() {
                                             <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blogDetails.content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }} />
                                         </div>
                                         <Button radius="full" className="absolute flex items-center top-4 right-4 bg-gradient-to-tr from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6 opacity-40" size='md'>
-                                            <p className='text-medium font-normal'>100</p>
+                                            <p className='text-medium font-normal'>{blogDetails.views}</p>
                                             {icons.eye}
                                         </Button>
                                     </div>
