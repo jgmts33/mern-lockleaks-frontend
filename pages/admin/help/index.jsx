@@ -152,7 +152,7 @@ export default function Blog() {
                         <div className='flex items-center gap-2 mb-4' >
                           <div className='px-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center'>{index + 1}</div>
                           <div className='flex gap-4 justify-between w-full'>
-                            <div className='text-lg max-w-[100px] truncate'>{item.name}</div>
+                            <p className='text-lg w-[100px] truncate'>{item.name}</p>
                             <div className='flex gap-4 items-center'>
                               <Button
                                 radius="full"
@@ -254,10 +254,10 @@ export default function Blog() {
                   articles.length ? articles.map((article, index) => {
                     return (
                       <div key={index} className='flex flex-col px-2'>
-                        <div className='flex justify-between py-7 items-center'>
-                          <div className='flex items-center'>
+                        <div className='flex justify-between py-7 items-center '>
+                          <div className='flex items-center gap-2 flex-wrap'>
                             <span className={'font-semibold text-lg'}>{article.title}</span>
-                            <Chip size='sm' color='primary' className={'ml-8'}>{categories.find(p => p.id == article.categoryId)?.name || ""}</Chip>
+                            <Chip size='sm' color='primary' >{categories.find(p => p.id == article.categoryId)?.name || ""}</Chip>
                           </div>
                           <div className='flex gap-4 items-center'>
                             <Button

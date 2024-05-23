@@ -89,10 +89,10 @@ export default function CustomerReview() {
                                 <Image src={`https://server.lockleaks.com/images?filename=${item.avatar}`} alt='floyed' width={61} height={61} className='rounded-full' />
                                 <div className='space-y-3'>
                                     <p className='font-semibold text-xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent max-sm:text-center'>{item.name}</p>
-                                    <p className='font-light text-xs opacity-80'>{item.title}</p>
+                                    <p className='font-light text-xs opacity-80 max-sm:text-center'>{item.title}</p>
                                 </div>
                             </div>
-                            <div className='flex gap-4 mt-4'>
+                            <div className='flex gap-4 mt-4 max-sm:justify-center'>
                                 {
                                     item.telegram ?
                                         <span className='hover:bg-black bg-transparent rounded-full p-1' onClick={(e) => {

@@ -33,7 +33,7 @@ export default function FreeAnalyse() {
 
   return (
     <>
-      <div className="text-white relative container flex flex-col mx-auto" >
+      <div className="text-white relative container flex flex-col mx-auto mb-8" >
 
         {/* This section for define Freeanalyse Content*/}
 
@@ -88,7 +88,7 @@ export default function FreeAnalyse() {
           <p className='mt-10 max-md:mt-4 text-[34px] leading-tight max-w-[800px] w-full mx-auto max-md:px-4'>Test Our App for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>3 Days</span> – No Payment Required!</p>
           <Image className="max-md:w-full rounded-[20px] absolute top-16 right-24 rotate-[-20deg] max-md:hidden" width={220} height={160} src={ImgChat} alt="Reverse Chat" />
         </div>
-        <div className='flex mt-10 gap-4 font-medium max-md:flex-col max-sm:px-6'>
+        <div className='flex mt-10 gap-10 font-medium max-md:flex-col max-sm:px-6'>
           <div className='flex flex-col items-center'>
             <div className='space-y-3'>
               <p className='text-[28px]'>Discover Potential Content Leaks:</p>
@@ -133,27 +133,27 @@ export default function FreeAnalyse() {
             <p className='font-semibold text-xl mt-8'>USERNAMES : 1</p>
             <div className='space-y-4 mt-4'>
               <div className='flex items-center gap-2'>
-                {icons.complete}
+                <span>{icons.complete}</span>
                 <p className='flex flex-wrap'>Analyzer Tool Search</p>
               </div>
               <div className='flex items-center gap-2'>
-                {icons.complete}
+                <span>{icons.complete}</span>
                 <p className='flex flex-wrap'>Re-verify & Re-analyze Tool</p>
               </div>
               <div className='flex items-center gap-2'>
-                {icons.complete}
+                <span>{icons.complete}</span>
                 <p className='flex flex-wrap'>Google Results, Images & Videos Removal Report</p>
               </div>
               <div className='flex items-center gap-2'>
-                {icons.complete}
+                <span>{icons.complete}</span>
                 <p className='flex flex-wrap'>Bing Results, Images & Videos Removal Report</p>
               </div>
               <div className='flex items-center gap-2'>
-                {icons.complete}
+                <span>{icons.complete}</span>
                 <p className='flex flex-wrap'>Confidential DMCA Takedown</p>
               </div>
               <div className='flex items-center gap-2'>
-                {icons.complete}
+                <span>{icons.complete}</span>
                 <p className='flex flex-wrap'>5 Takedowns Daily</p>
               </div>
             </div>
