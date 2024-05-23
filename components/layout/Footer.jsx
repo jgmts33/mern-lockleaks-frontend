@@ -65,7 +65,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
                 <span>{icons.shine}</span>
               </Button>
             </div>
-            <div className='mt-6 text-sm font-bold space-y-2 px-6'>
+            <div className='mt-6 text-sm italic space-y-2 px-6'>
               <p>TEST</p>
               <p>TEST</p>
               <p>TEST</p>

@@ -107,10 +107,6 @@ export default function CreatePost() {
         })();
     }, []);
 
-    useEffect(() => {
-        console.log(blogDetails)
-    }, [blogDetails])
-
     return (
         <div className='flex flex-col bg-gradient-to-tr px-5 space-y-6 text-white w-full'>
             <div className='mt-5 max-lg:mx-auto'>

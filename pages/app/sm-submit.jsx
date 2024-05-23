@@ -4,11 +4,15 @@ import {
     Button, Link, Progress
 } from '@nextui-org/react';
 import { Components, SMfacebook, SMinstagram, SMtwitter, SMtelegram, SMreddit } from "@/components/utils/Icons";
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 export default function SMsubmit() {
-    const [value, setValue] = React.useState(25);
-    const [isselect, setSelect] = useState(0)
+    const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [linksStr, setLinksStr] = useState('');
+    const [data, setData] = useState({
+        social: '',
+        links: []
+    })
 
     const icons = {
         components: <Components fill="currentColor" size={16} />,
@@ -21,17 +25,26 @@ export default function SMsubmit() {
 
     const SOcialMediaButtons = [
         {
-            icon: icons.SMfacebook
+            icon: icons.SMfacebook,
+            value: 'facebook',
         }, {
-            icon: icons.SMinstagram
+            icon: icons.SMinstagram,
+            value: 'instagram',
         }, {
-            icon: icons.SMtwitter
+            icon: icons.SMtwitter,
+            value: 'twitter',
         }, {
-            icon: icons.SMtelegram
+            icon: icons.SMtelegram,
+            value: 'telegram',
         }, {
-            icon: icons.SMreddit
+            icon: icons.SMreddit,
+            value: 'reddit',
         }
     ]
+
+    const handleSubmit = useCallback(() => {
+        console.log("linksStr:", linksStr);
+    },[linksStr]);
 
     return (
         <>
@@ -42,45 +55,46 @@ export default function SMsubmit() {
                 <div className='flex gap-16 items-center max-lg:mx-auto'>
                     <div><span className='font-extrabold text-lg'>SOCIAL MEDIA SUBMIT</span></div>
                 </div>
-                <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5 sm:hidden">
-                    <div className='flex flex-col'>
-                        <span className='font-normal text-[18px] text-center'>How Does It Work?</span>
-                        <span className='font-normal text-xs pt-3'>Choose the reference image, Upload your photo, upload your ID card picture, and then press Start.</span>
-                    </div>
-                </div>
                 {/* This section for define Social Submit content*/}
 
                 <div className='grid grid-cols-3 gap-10 max-2xl:gap-2 max-xl:flex-col max-xl:flex max-xl:gap-0'>
-                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
-                        <div className='flex max-w-[330px] max-xl:max-w-full'>
-                            <span className='font-normal text-[18px] max-sm:text-sm'>Requests Are Reviewed,And Government-Issued IDs Are Required For Verification.Without The Upload Of A Government-Issued ID, These Profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
-                        </div>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
-                            Upload ID
-                        </Button>
-                    </div>
                     <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10 max-sm:mt-5">
                         <div className='flex flex-col'>
                             <span className='font-normal text-base'>Select The Platform Icon Where You Want To Report The Profile.</span>
                             <div className='flex justify-around mt-5 max-lg:justify-between px-2 max-xl:gap-0 max-sm:gap-2'>
                                 {
-                                    SOcialMediaButtons.map((items, index) => {
+                                    SOcialMediaButtons.map((item, index) => {
                                         return (
-                                            <Button key={index} radius="sm" size='md' isIconOnly className={('bg-transparent p-6 ') + (isselect == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "")} onClick={() => setSelect(index)}><span>{items.icon}</span></Button>
+                                            <Button
+                                                key={index}
+                                                radius="sm"
+                                                size='md'
+                                                isIconOnly
+                                                className={('bg-transparent p-6 ') + (data.social == item.value ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "")}
+                                                onPress={() => {
+                                                    setData({ ...data, social: item.value })
+                                                }}
+                                            >
+                                                <span>{item.icon}</span>
+                                            </Button>
                                         )
                                     })
                                 }
                             </div>
-                            <textarea className='bg-white/15 rounded-lg mt-3 h-20'></textarea>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 py-5 text-sm mx-auto mt-7" size='sm'>
+                            <textarea
+                                className='bg-white/15 rounded-lg mt-3 h-20 p-2'
+                                placeholder='https://domain.com/@username https://domain.com/@username ...'
+                                value={linksStr}
+                                onChange={(e) => setLinksStr(e.target.value)}
+                            />
+                            <Button
+                                radius="lg"
+                                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 py-5 text-sm mx-auto mt-7"
+                                size='sm'
+                                onPress={handleSubmit}
+                            >
                                 Submit
                             </Button>
-                        </div>
-                    </div>
-                    <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:hidden">
-                        <div className='flex flex-col'>
-                            <span className='font-normal text-[18px] text-center'>How Doew It Work?</span>
-                            <span className='font-normal text-xs pt-3'>Upload your ID card, then select the platform icon. Place the link or links of the profiles you want to report, and press the SUBMIT button.</span>
                         </div>
                     </div>
                 </div>

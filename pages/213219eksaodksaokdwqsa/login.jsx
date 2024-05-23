@@ -58,7 +58,7 @@ export default function Login() {
 
         if (res.status == "success") {
             setTokens(res.data.tokens);
-            window.open("/app/dashboard", '_self');
+            window.open("/admin/dashboard", '_self');
         } else {
             console.log("error:", res.data);
         }

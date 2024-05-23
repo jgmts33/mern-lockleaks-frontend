@@ -10,6 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { Poppins } from "next/font/google";
+import { Review } from "../utils/Icons";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -44,7 +45,8 @@ const Sidebar = ({ show, setter }) => {
         yellowstar: <YellowStar fill="currentColor" size={16} />,
         star: <Star fill="currentColor" size={16} />,
         keywordsDataSet: <KeywordsDataSet fill="currentColor" size={16} />,
-        helpPost: <HelpPost fill="currentColor" size={16} />
+        helpPost: <HelpPost fill="currentColor" size={16} />,
+        review: <Review fill="currentColor" size={16} />,
     };
 
     const USER_SIDEBAR_LIST = [
@@ -234,6 +236,11 @@ const Sidebar = ({ show, setter }) => {
             icon: icons.management,
             title: "REPORTS MANAGEMENT",
             path: "/admin/report-management",
+            favourite: false
+        }, {
+            icon: icons.review,
+            title: "REVIEWS MANAGEMENT",
+            path: "/admin/review",
             favourite: false
         }, {
             icon: icons.pingmodels,
