@@ -42,7 +42,7 @@ export default function FreeAnalyse() {
           <Image className="max-xl:hidden object-cover rounded-[20px] absolute left-0 top-0 inset-0 blur-2xl" src={ImgBush2} width={1000} height={1000} alt='saturn' />
           <div className='text-center relative'>
             <p className='font-medium text-5xl max-lg:text-3xl text-center'>FREE TRIAL</p>
-            <p className='mt-10 max-md:mt-4 text-[34px] leading-tight max-w-[800px] w-full mx-auto max-md:px-4'>Test Our App for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>3 Days</span> – No Payment Required!</p>
+            <p className='mt-10 max-md:mt-4 text-[34px] max-sm:text-lg leading-tight max-w-[800px] w-full mx-auto max-md:px-4'>Test Our App for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>3 Days</span> – No Payment Required!</p>
             <Image className="max-md:w-full rounded-[20px] absolute top-16 right-24 rotate-[-20deg] max-md:hidden" width={220} height={160} src={ImgChat} alt="Reverse Chat" />
           </div>
           <Image className="max-xl:hidden object-cover rounded-[20px] absolute right-36 -top-32 blur-3xl" src={ImgBush3} width={600} height={600} alt='saturn' />
