@@ -9,7 +9,11 @@ import Robertgroup from '@/public/assets/robert.svg';
 import ImgDoubleChatGroup from '@/public/assets/free-analys/double-chat-group.svg';
 import ImgContactUs from '@/public/assets/free-analys/contact-us.svg';
 import ImgChat from '@/public/assets/free-analys/chat.svg';
-import ImgSupportLogo from '@/public/assets/free-analys/support-logo.svg';
+import ImgBush1 from '@/public/assets/free-analys/bush-1.svg';
+import ImgBush2 from '@/public/assets/free-analys/bush-2.svg';
+import ImgBush3 from '@/public/assets/free-analys/bush-3.svg';
+import ImgBush4 from '@/public/assets/free-analys/bush-4.svg';
+import ImgOutlineDiscovery from '@/public/assets/free-analys/outline_discovery.svg';
 import { Shine, Robertchat, RecoveryChat } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customer-review';
 import { Bell, Complete } from '../components/utils/Icons';
@@ -33,8 +37,8 @@ export default function FreeAnalyse() {
 
   return (
     <>
+      <Image className="max-xl:hidden object-cover rounded-[20px] absolute left-0 top-[70px] max-w-screen max-h-screen inset-0 blur-2xl" src={ImgBush1} width={2000} height={1600} alt='saturn' />
       <div className="text-white relative container flex flex-col mx-auto mb-8" >
-
         {/* This section for define Freeanalyse Content*/}
 
         <div className=' mt-28 max-sm:mt-5 pb-10 mx-auto gap-10 items-center max-xl:justify-center max-xl:items-center relative w-full max-md:px-6'>
@@ -83,12 +87,16 @@ export default function FreeAnalyse() {
           </div>
         </div>
 
-        <div className='text-center relative'>
-          <p className='font-medium text-5xl max-lg:text-3xl text-center'>FREE TRIAL</p>
-          <p className='mt-10 max-md:mt-4 text-[34px] leading-tight max-w-[800px] w-full mx-auto max-md:px-4'>Test Our App for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>3 Days</span> – No Payment Required!</p>
-          <Image className="max-md:w-full rounded-[20px] absolute top-16 right-24 rotate-[-20deg] max-md:hidden" width={220} height={160} src={ImgChat} alt="Reverse Chat" />
+        <div className='relative w-full'>
+          <Image className="max-xl:hidden object-cover rounded-[20px] absolute left-0 top-0 inset-0 blur-2xl" src={ImgBush2} width={1000} height={1000} alt='saturn' />
+          <div className='text-center relative'>
+            <p className='font-medium text-5xl max-lg:text-3xl text-center'>FREE TRIAL</p>
+            <p className='mt-10 max-md:mt-4 text-[34px] leading-tight max-w-[800px] w-full mx-auto max-md:px-4'>Test Our App for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>3 Days</span> – No Payment Required!</p>
+            <Image className="max-md:w-full rounded-[20px] absolute top-16 right-24 rotate-[-20deg] max-md:hidden" width={220} height={160} src={ImgChat} alt="Reverse Chat" />
+          </div>
+          <Image className="max-xl:hidden object-cover rounded-[20px] absolute right-36 -top-32 blur-3xl" src={ImgBush3} width={600} height={600} alt='saturn' />
         </div>
-        <div className='flex mt-10 gap-10 font-medium max-md:flex-col max-sm:px-6'>
+        <div className='flex mt-10 gap-10 font-medium max-md:flex-col max-sm:px-6 relative'>
           <div className='flex flex-col items-center'>
             <div className='space-y-3'>
               <p className='text-[28px]'>Discover Potential Content Leaks:</p>
@@ -113,7 +121,7 @@ export default function FreeAnalyse() {
                 <li>Our strong affiliations with file hosting sites ensure prompt consideration of our DMCA takedown notices, aligning with our clients' business policies.</li>
               </ul>
             </div>
-            <Image className="my-10" width={422} height={138} src={ImgSupportLogo} alt="Support Logo" />
+            <Image className="my-10" width={422} height={138} src={ImgOutlineDiscovery} alt="ImgOutlineDiscovery" />
             <div className='space-y-2'>
               <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent text-[28px] w-max'>One-Time Free Trial:</p>
               <p className='text-lg'>The free trial is one-time only and cannot be used more than once or with different usernames.</p>
@@ -167,7 +175,10 @@ export default function FreeAnalyse() {
           </div>
         </div>
       </div >
-      <CustomerReview />
+      <div className='w-full relative'>
+        <Image className="max-xl:hidden object-cover rounded-[20px] absolute right-20 bottom-20 blur-2xl" src={ImgBush4} width={400} height={400} alt='saturn' />
+        <CustomerReview />
+      </div>
     </>
   )
 }

@@ -15,6 +15,7 @@ export default function Header() {
   const router = useRouter();
   const [userInfo, setUserInfo] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const menuItems = [
     {
@@ -94,6 +95,7 @@ export default function Header() {
       } catch (err) {
         console.log(err);
       }
+      setMounted(true);
     })();
   }, []);
 
@@ -159,7 +161,7 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent className="max-md:hidden" justify="end">
         {
-          userInfo ?
+          mounted ? userInfo ?
             <>
               {
                 userInfo.roles.find(p => p == 'admin') ?
@@ -186,7 +188,7 @@ export default function Header() {
                   <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>Free Analisis</Button>
                 </Link>
               </NavbarItem>
-            </>
+            </> : <></>
         }
       </NavbarContent>
 
@@ -206,7 +208,7 @@ export default function Header() {
         <hr className="w-56 bg-gray-400 mt-5"></hr>
 
         {
-          userInfo ?
+          mounted ? userInfo ?
             <>
               {
                 userInfo.roles.find(p => p == 'admin') ?
@@ -230,7 +232,7 @@ export default function Header() {
                   <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='md'>Free Analisis</Button>
                 </Link>
               </NavbarItem>
-            </>
+            </> : <></>
         }
       </NavbarMenu>
     </Navbar >

@@ -224,8 +224,8 @@ const Sidebar = ({ show, setter }) => {
             favourite: false
         }, {
             icon: icons.proxybots,
-            title: "PROXIES BOTS",
-            path: "/admin/proxy-bot",
+            title: "PROXIES/VPS",
+            path: "/admin/proxies-vps",
             favourite: false
         }, {
             icon: icons.management,
