@@ -37,57 +37,8 @@ export default function FreeAnalyse() {
 
   return (
     <>
-      <Image className="max-xl:hidden object-cover rounded-[20px] absolute left-0 top-[70px] max-w-screen max-h-screen inset-0 blur-2xl" src={ImgBush1} width={2000} height={1600} alt='saturn' />
       <div className="text-white relative container flex flex-col mx-auto mb-8" >
-        {/* This section for define Freeanalyse Content*/}
-
-        <div className=' mt-28 max-sm:mt-5 pb-10 mx-auto gap-10 items-center max-xl:justify-center max-xl:items-center relative w-full max-md:px-6'>
-          <Image className="max-xl:hidden mt-2 object-cover p-2 rounded-[20px] absolute left-0 " src={ImgDoubleChatGroup} width={350} height={560} alt='saturn' />
-          <div className='flex flex-col text-center mx-auto mt-8 max-w-[603px] max-xl:flex-wrap'>
-            <div className='flex justify-between items-center max-sm:gap-3'>
-              <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-10 left-0 bg-opacity-5 blur-3xl' />
-              <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8f51f3] z-0 top-10 right-0 bg-opacity-5 blur-3xl' />
-              <div className='mx-auto'><p className='font-medium text-5xl max-lg:text-3xl'>FREE TRIAL</p></div>
-              <div className='hidden max-xl:block'><Image className="mt-2 object-cover p-2 rounded-[20px] max-md:hidden" src={AIScan} width={150} height={150} alt='saturn' /></div>
-            </div>
-            <div className='flex flex-col text-lg space-y-4 mt-8 max-md:mt-4'>
-              <p>{freeanalyseContent.firstDescription}</p>
-              <p>{freeanalyseContent.secondDescription}</p>
-              <p>{freeanalyseContent.thirdDescription}</p>
-            </div>
-            <Button
-              radius="lg"
-              className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-max mx-auto mt-10 px-14"
-              size='lg'
-            >
-              Get Free Trial
-              <span>{icons.shine}</span>
-            </Button>
-          </div>
-          <Image className="max-xl:hidden mt-2 object-cover p-2 rounded-[20px] absolute right-[15%] top-20" src={AIScan} width={150} height={150} alt='saturn' />
-        </div>
-
-        {/* This section for define show photos for freeanalyse*/}
-
-        <div className='flex w-full mt-20 max-xl:hidden items-start justify-between'>
-          <div className='flex items-start justify-center w-1/2 mt-16'>
-            <Image className="h-[555px] w-80 max-md:w-full rounded-[20px]" src={Robertgroup} alt="Robert" />
-            <Image className="max-md:w-full rounded-[20px]" width={320} height={247} src={ImgChat} alt="Reverse Chat" />
-          </div>
-          <div className='w-1/2 relative'>
-            <Image className="max-md:w-full rounded-[20px]" width={600} height={387} src={ImgContactUs} alt="Contact Us" />
-            <Button
-              radius="lg"
-              className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-max mx-auto mt-10 absolute z-10 bottom-6 left-24"
-              size='lg'
-            >
-              Contact Us
-              <span>{icons.shine}</span>
-            </Button>
-          </div>
-        </div>
-
-        <div className='relative w-full'>
+        <div className='relative w-full mt-16'>
           <Image className="max-xl:hidden object-cover rounded-[20px] absolute left-0 top-0 inset-0 blur-2xl" src={ImgBush2} width={1000} height={1000} alt='saturn' />
           <div className='text-center relative'>
             <p className='font-medium text-5xl max-lg:text-3xl text-center'>FREE TRIAL</p>
@@ -121,13 +72,23 @@ export default function FreeAnalyse() {
                 <li>Our strong affiliations with file hosting sites ensure prompt consideration of our DMCA takedown notices, aligning with our clients' business policies.</li>
               </ul>
             </div>
-            <Image className="my-10" width={422} height={138} src={ImgOutlineDiscovery} alt="ImgOutlineDiscovery" />
+            <div className='mx-auto relative my-10'>
+              <Image className="max-md:w-full rounded-[20px]" width={600} height={387} src={ImgContactUs} alt="Contact Us" />
+              <Button
+                radius="lg"
+                className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-max mx-auto mt-10 absolute z-10 bottom-6 left-24"
+                size='lg'
+              >
+                Contact Us
+                <span>{icons.shine}</span>
+              </Button>
+            </div>
             <div className='space-y-2'>
               <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent text-[28px] w-max'>One-Time Free Trial:</p>
               <p className='text-lg'>The free trial is one-time only and cannot be used more than once or with different usernames.</p>
             </div>
           </div>
-          <div className={'bg-gradient-to-tr from-gray-600/40 to-gray-800/40 rounded-3xl cursor-pointer max-w-[590px] border-[0.4px] border-white/10 px-[54px] py-[62px] w-full max-sm:px-6'}>
+          <div className={'bg-gradient-to-tr from-[#3BC940]/10 to-gray-800/40 rounded-3xl cursor-pointer max-w-[590px] border-[0.4px] border-white/10 px-[54px] py-[62px] w-full max-sm:px-6'}>
             <p className='text-[63px] text-center'>FREE</p>
             <p className='text-[63px] text-center'>3-Day</p>
             <Button
