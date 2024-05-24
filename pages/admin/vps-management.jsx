@@ -10,7 +10,7 @@ import {
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createNewVps, deleteVps, getVpsList, updateVps } from '../../axios/vps-list';
+import { checkStatus, createNewVps, deleteVps, getVpsList, updateVps } from '../../axios/vps-list';
 import axios from 'axios';
 import io from 'socket.io-client';
 
@@ -86,29 +86,16 @@ export default function VPSManagement() {
     async function checkApiRunning(id, ipAddress) {
         const url = `http://${ipAddress}:8000`;
         console.log(url);
-        try {
-            const response = await axios.get(url);
-            if (response.status == 200) {
-                setList(p => p.map(item => {
-                    if (item.id == id) {
-                        return {
-                            ...item,
-                            status: 'online'
-                        }
-                    } else return item
-                }))
-            } else {
-                setList(p => p.map(item => {
-                    if (item.id == id) {
-                        return {
-                            ...item,
-                            status: 'offline'
-                        }
-                    } else return item
-                }));
-            }
-        } catch (error) {
-            console.error(`Error checking API at ${ipAddress}:`, error);
+        const res = await checkStatus(ipAddress);
+        if (res.status == 'success') {
+            setList(p => p.map(item => {
+                if (item.id == id) {
+                    return {
+                        ...item,
+                        status: res.data
+                    }
+                } else return item
+            }))
         }
     }
 

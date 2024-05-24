@@ -128,3 +128,30 @@ export const deleteVps = async (id) => {
     }
   }
 }
+
+export const checkStatus = async (ip_address) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/vps-status`, {
+      ip_address
+    },
+      {
+        headers: {
+          'x-access-token': accessToken
+        }
+      });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
