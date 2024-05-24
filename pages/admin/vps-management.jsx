@@ -146,12 +146,12 @@ export default function VPSManagement() {
                 <Button
                     radius='full'
                     size="sm"
-                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
+                    className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
                     onPress={() => {
                         checkVpsStatus();
                     }}
                 >
-                    Check Vps Status
+                    Check VPS Status
                 </Button>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-10 rounded-[16px] mt-10 max-sm:mt-16 w-full relative max-sm:p-4'>
