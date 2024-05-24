@@ -12,6 +12,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from "@/components/utils/Icons";
 import { createNewVps, deleteVps, getVpsList, updateVps } from '../../axios/vps-list';
+import axios from 'axios';
 
 export default function VPSManagement() {
 
@@ -84,8 +85,8 @@ export default function VPSManagement() {
 
     async function checkApiRunning(id, ipAddress) {
         try {
-            const response = await fetch(`http://${ipAddress}:8000`);
-            if (response.ok) {
+            const response = await axios.get(`http://${ipAddress}:8000`);
+            if (response.status == 200) {
                 setList(p => p.map(item => {
                     if (item.id == id) {
                         return {
