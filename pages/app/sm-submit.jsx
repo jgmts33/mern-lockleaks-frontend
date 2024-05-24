@@ -4,22 +4,22 @@ import {
     Button, Link, Progress
 } from '@nextui-org/react';
 import { Components, SMfacebook, SMinstagram, SMtwitter, SMtelegram, SMreddit } from "@/components/utils/Icons";
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useSelector } from 'react-redux';
+import { getDailySubmitionCount, socialProfileSubmit } from '../../axios/social';
 
 export default function SMsubmit() {
 
     const userInfo = useSelector(info);
 
     const [isActionProcessing, setIsActionProcessing] = useState(false);
-    const [selectedSocialMedia, setSelectedSocialMedia] = useState('facebook');
+    const [selectedSocialMedia, setSelectedSocialMedia] = useState('facebook.com');
     const [warning, setWarning] = useState('');
     const [linksStr, setLinksStr] = useState('');
-    const [data, setData] = useState([{
-        social: 'facebook',
-        links: []
-    }]);
+    const [links, setLinks] = useState([]);
+    const [leftCount, setLeftCount] = useState(0);
+    const [submittedResult, setSubmittedResult] = useState(0);
 
     const icons = {
         components: <Components fill="currentColor" size={16} />,
@@ -33,33 +33,49 @@ export default function SMsubmit() {
     const SOcialMediaButtons = [
         {
             icon: icons.SMfacebook,
-            value: 'facebook',
+            value: 'facebook.com',
         }, {
             icon: icons.SMinstagram,
-            value: 'instagram',
+            value: 'instagram.com',
         }, {
             icon: icons.SMtwitter,
-            value: 'twitter',
+            value: 'twitter.com',
         }, {
             icon: icons.SMtelegram,
-            value: 'telegram',
+            value: 't.me',
         }, {
             icon: icons.SMreddit,
-            value: 'reddit',
+            value: 'reddit.com',
         }
     ]
 
-    const checkLinkValidation = (url) => {
-        var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-        if (!regexp.test(url)) {
-            return false;
+    const handleSubmit = async (data) => {
+        if (!data.length) return;
+        setIsActionProcessing(true);
+        const res = await socialProfileSubmit(data);
+        if (res.status == 'success') {
+            setSubmittedResult(data.length);
+            setLeftCount(p => p - data.length);
+            setLinksStr("");
+            setLinks([]);
         }
-        return true;
+        setIsActionProcessing(false);
     };
 
-    const handleSubmit = useCallback(() => {
-        console.log("data:", data);
-    }, [data]);
+    const getDailySubmitionCountInfo = useCallback(async () => {
+        const res = await getDailySubmitionCount();
+
+        if (res.status == 'success') {
+            setLeftCount(userInfo.subscription.features.social_media_profile_submition - res.data.totalCount);
+        }
+    }, [userInfo]);
+
+
+    useEffect(() => {
+        if (userInfo.email) {
+            getDailySubmitionCountInfo();
+        }
+    }, userInfo);
 
     return (
         <>
@@ -83,7 +99,7 @@ export default function SMsubmit() {
                             className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 py-5 text-sm mx-auto mt-7"
                             size='sm'
                         >
-                            Submit
+                            Upload ID
                         </Button>
                     </div>
                     <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10 max-sm:mt-5">
@@ -100,20 +116,24 @@ export default function SMsubmit() {
                                                 isIconOnly
                                                 className={('bg-transparent p-6 ') + (selectedSocialMedia == item.value ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "")}
                                                 onPress={() => {
-                                                    setData(pre => {
-                                                        let newState = pre.slice(0);
-                                                        newState.map((x, index) => {
-                                                            if (x.social == selectedSocialMedia) {
-                                                                newState[index].links = linksStr.split("\n");
-                                                            }
-                                                        });
-                                                        return newState;
-                                                    });
-                                                    if (data.find(x => x.social == item.value)) {
-                                                        setLinksStr(data.find(x => x.social == item.value).links.join('\n'));
+                                                    const _links = linksStr.split("\n").filter(p => p != "") || [];
+                                                    if (!_links.length) {
+                                                        setSelectedSocialMedia(item.value);
+                                                        const filterdLinks = links.filter(p => (p.startsWith(item.value) || (item.value == 'twitter.com' && (p.startsWith('twitter.com') || p.startsWith('x.com')))));
+                                                        setLinksStr(filterdLinks.join("\n"));
+                                                        return;
                                                     }
-                                                    else setLinksStr('');
-                                                    setSelectedSocialMedia(item.value);
+                                                    if (_links[_links.length - 1].startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com' && (_links[_links.length - 1].startsWith('twitter.com') || _links[_links.length - 1].startsWith('x.com')))) {
+                                                        const remainedLinks = links.filter(p => !(p.startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com') && (p.startsWith('twitter.com') || p.startsWith('x.com'))));
+                                                        setLinks([...remainedLinks, ..._links]);
+                                                        const filterdLinks = links.filter(p => (p.startsWith(item.value) || (item.value == 'twitter.com' && (p.startsWith('twitter.com') || p.startsWith('x.com')))));
+                                                        setLinksStr(filterdLinks.join("\n"));
+                                                        setSelectedSocialMedia(item.value);
+                                                    }
+                                                    else {
+                                                        setWarning("Please type the correct url format!");
+                                                        return;
+                                                    }
                                                 }}
                                             >
                                                 <span>{item.icon}</span>
@@ -123,44 +143,59 @@ export default function SMsubmit() {
                                 }
                             </div>
                             <p className='mt-4 text-sm'>Please type links in the text box below, one link per line.</p>
-                            <p>( Max Profiles per day: {userInfo.subscription.features.social_media_profile_submition} ) 
-                            <span className='ml-4 bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'> Left: {userInfo.subscription.features.social_media_profile_submition}</span></p>
+                            <p>( Max Profiles per day: {userInfo.subscription.features.social_media_profile_submition} )
+                                <span className='ml-4 bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'> Left: {leftCount}</span></p>
                             <textarea
                                 className='bg-white/15 rounded-lg mt-3 h-32 p-2'
-                                placeholder='https://domain.com/@username'
+                                placeholder='domain.com/@username'
                                 value={linksStr}
                                 onChange={(e) => {
                                     setWarning("");
-                                    const links = e.target.value.split("\n");
+
+                                    const _links = e.target.value.split("\n").filter(p => p != "");
+                                    const remainedLinks = links.filter(p => !(p.startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com') && (p.startsWith('twitter.com') || p.startsWith('x.com'))));
+
+                                    if (remainedLinks.length + _links.length > leftCount) {
+                                        setWarning("Reached The limit!");
+                                        return;
+                                    }
                                     if (e.target.value.endsWith('\n')) {
-                                        if (!checkLinkValidation(links[links.length - 2])) {
-                                            console.log("links[links.length - 1]):", links[links.length - 2]);
+                                        if (_links.length && _links[_links.length - 1].startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com' && (_links[_links.length - 1].startsWith('twitter.com') || _links[_links.length - 1].startsWith('x.com')))) {
+                                            // setLinks
+                                        }
+                                        else {
                                             setWarning("Please type the correct url format!");
                                             return;
                                         }
-                                        if (userInfo.subscription.features.social_media_profile_submition < links.length) return;
                                     }
                                     setLinksStr(e.target.value);
                                 }}
                             />
-                            <p className='text-red-700 text-sm mt-2'>{warning}</p>
+                            <p className={'text-red-700 text-sm mt-2 duration-300 ' + (warning ? 'opacity-100' : 'opacity-0')}>{warning ? warning : "Not Warning"}</p>
                             <Button
                                 radius="lg"
                                 className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 py-5 text-sm mx-auto mt-7"
                                 size='sm'
+                                isLoading={isActionProcessing}
                                 onPress={() => {
-                                    setData(pre => {
-                                        let newState = pre.slice(0);
-                                        newState.map((x, index) => {
-                                            if (x.social == selectedSocialMedia) {
-                                                newState[index].links = linksStr.split("\n");
-                                            }
-                                        });
-                                        return newState;
-                                    });
-                                    setLinksStr("");
-                                    setSelectedSocialMedia('facebook');
-                                    handleSubmit();
+                                    const _links = linksStr.split("\n").filter(p => p != "") || [];
+                                    const remainedLinks = links.filter(p => !(p.startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com') && (p.startsWith('twitter.com') || p.startsWith('x.com'))));
+                                    let requestLinks = [];
+                                    if (_links.length) {
+                                        if (remainedLinks.length + _links.length > leftCount) {
+                                            setWarning("Reached The limit!");
+                                            return;
+                                        }
+                                        if (_links[_links.length - 1].startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com' && (_links[_links.length - 1].startsWith('twitter.com') || _links[_links.length - 1].startsWith('x.com')))) {
+                                            setLinks([...remainedLinks, ..._links]);
+                                            requestLinks = [...remainedLinks, ..._links];
+                                        }
+                                        else {
+                                            setWarning("Please type the correct url format!");
+                                            return;
+                                        }
+                                    }
+                                    handleSubmit(requestLinks);
                                 }}
                             >
                                 Submit
@@ -182,7 +217,7 @@ export default function SMsubmit() {
                     </div>
                     <div className='px-20 max-xl:px-5 space-x-1'>
                         <span className='font-normal text-xs'>Generated a removal report with</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{submittedResult}</span>
                         <span className='font-normal text-xs'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>
