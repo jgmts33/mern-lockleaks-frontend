@@ -85,6 +85,7 @@ export default function VPSManagement() {
 
     async function checkApiRunning(id, ipAddress) {
         const url = `http://${ipAddress}:8000`;
+        console.log(url);
         try {
             const response = await axios.get(url);
             if (response.status == 200) {
