@@ -86,7 +86,7 @@ export default function VPSManagement() {
     async function checkApiRunning(id, ipAddress) {
         setIsCheckStatusProcessing(id);
         try {
-            const response = await fetch(`http://${ipAddress}:3001`);
+            const response = await fetch(`http://${ipAddress}:8000`);
             if (response.ok) {
                 setList(p => p.map(item => {
                     if (item.id == id) {
@@ -104,7 +104,7 @@ export default function VPSManagement() {
                             status: 'offline'
                         }
                     } else return item
-                }))
+                }));
             }
         } catch (error) {
             console.error(`Error checking API at ${ipAddress}:`, error);
