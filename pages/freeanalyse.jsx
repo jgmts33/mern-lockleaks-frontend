@@ -88,7 +88,7 @@ export default function FreeAnalyse() {
               <p className='text-lg'>The free trial is one-time only and cannot be used more than once or with different usernames.</p>
             </div>
           </div>
-          <div className={'bg-gradient-to-tr from-[#3BC940]/10 to-gray-800/40 rounded-3xl cursor-pointer max-w-[590px] border-[0.4px] border-white/10 px-[54px] py-[62px] w-full max-sm:px-6'}>
+          <div className={'bg-gradient-to-tr from-[#3BC940]/10 to-gray-800/40 rounded-3xl cursor-pointer max-w-[590px] border-[0.4px] border-white/10 px-[54px] py-[62px] w-full max-sm:px-6 h-max'}>
             <p className='text-[63px] text-center'>FREE</p>
             <p className='text-[63px] text-center'>3-Day</p>
             <Button
@@ -130,7 +130,7 @@ export default function FreeAnalyse() {
               {icons.bell}
               <p className='text-2xl'>Important Notice:</p>
             </div>
-            <p className='text-lg font-light mt-4'>
+            <p className='text-lg font-light mt-4 mb-10'>
               These features are for the trial version only. The LockLeaks team will handle strictly 5 takedowns from Search Engines! To benefit from all features, please purchase a subscription!
             </p>
           </div>

@@ -240,7 +240,12 @@ export default function HomePage() {
             </div>
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-44 -right-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
             <div className='flex w-full justify-center mt-8 relative max-xl:flex-col max-xl:items-center max-xl:mx-auto max-lg:pb-10'>
-              <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg" size='lg'>
+              <Button 
+                radius="lg" 
+                className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg" 
+                size='lg'
+                onPress={() => router.push("/pricing")}
+              >
                 Protect Content Now!
                 <span>{icons.shine}</span>
               </Button>
