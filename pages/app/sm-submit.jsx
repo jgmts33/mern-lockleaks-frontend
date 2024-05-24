@@ -34,20 +34,62 @@ export default function SMsubmit() {
         {
             icon: icons.SMfacebook,
             value: 'facebook.com',
+            validValues: [
+                'www.facebook.com',
+                'facebook.com',
+                'https://facebook.com',
+                'https://www.facebook.com'
+            ]
         }, {
             icon: icons.SMinstagram,
             value: 'instagram.com',
+            validValues: [
+                'www.instagram.com',
+                'instagram.com',
+                'https://instagram.com',
+                'https://www.instagram.com'
+            ]
         }, {
             icon: icons.SMtwitter,
             value: 'twitter.com',
+            validValues: [
+                'www.twitter.com',
+                'twitter.com',
+                'https://twitter.com',
+                'https://www.twitter.com',
+                'www.x.com',
+                'x.com',
+                'https://x.com',
+                'https://www.x.com'
+            ]
         }, {
             icon: icons.SMtelegram,
             value: 't.me',
+            validValues: [
+                't.me',
+                'https://t.me'
+            ]
         }, {
             icon: icons.SMreddit,
             value: 'reddit.com',
+            validValues: [
+                'reddit.com',
+                'www.reddit.com',
+                'https://reddit.com/',
+                'https://www.reddit.com/'
+            ]
         }
     ]
+
+    const findIndexByIdentifier = (identifier) => {
+        return SOcialMediaButtons.findIndex(button => button.value === identifier);
+    };
+
+    // Helper function to check if a given URL is valid for a specific platform
+    const isValidUrlForPlatform = (url, platformIdentifier) => {
+        const platform = SOcialMediaButtons.find(button => button.value === platformIdentifier);
+        return platform.validValues.some(validValue => url.startsWith(validValue));
+    };
 
     const handleSubmit = async (data) => {
         if (!data.length) return;
@@ -75,7 +117,7 @@ export default function SMsubmit() {
         if (userInfo.email) {
             getDailySubmitionCountInfo();
         }
-    }, userInfo);
+    }, [userInfo]);
 
     return (
         <>
@@ -116,17 +158,21 @@ export default function SMsubmit() {
                                                 isIconOnly
                                                 className={('bg-transparent p-6 ') + (selectedSocialMedia == item.value ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "")}
                                                 onPress={() => {
-                                                    const _links = linksStr.split("\n").filter(p => p != "") || [];
+                                                    const _links = linksStr.split("\n").filter(p => p.trim() !== "");
+                                                    console.log("_links:", _links);
                                                     if (!_links.length) {
+                                                        const filterdLinks = links.filter(p => isValidUrlForPlatform(p, item.value));
+                                                        console.log("filterdLinks:", filterdLinks);
                                                         setSelectedSocialMedia(item.value);
-                                                        const filterdLinks = links.filter(p => (p.startsWith(item.value) || (item.value == 'twitter.com' && (p.startsWith('twitter.com') || p.startsWith('x.com')))));
                                                         setLinksStr(filterdLinks.join("\n"));
                                                         return;
                                                     }
-                                                    if (_links[_links.length - 1].startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com' && (_links[_links.length - 1].startsWith('twitter.com') || _links[_links.length - 1].startsWith('x.com')))) {
-                                                        const remainedLinks = links.filter(p => !(p.startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com') && (p.startsWith('twitter.com') || p.startsWith('x.com'))));
+                                                    if (isValidUrlForPlatform(_links[_links.length - 1], selectedSocialMedia)) {
+                                                        const remainedLinks = links.filter(p => !isValidUrlForPlatform(p, selectedSocialMedia));
+                                                        console.log("remainedLinks:", remainedLinks);
                                                         setLinks([...remainedLinks, ..._links]);
-                                                        const filterdLinks = links.filter(p => (p.startsWith(item.value) || (item.value == 'twitter.com' && (p.startsWith('twitter.com') || p.startsWith('x.com')))));
+                                                        const filterdLinks = links.filter(p => isValidUrlForPlatform(p, item.value));
+                                                        console.log("filterdLinks:", filterdLinks);
                                                         setLinksStr(filterdLinks.join("\n"));
                                                         setSelectedSocialMedia(item.value);
                                                     }
@@ -147,23 +193,26 @@ export default function SMsubmit() {
                                 <span className='ml-4 bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'> Left: {leftCount}</span></p>
                             <textarea
                                 className='bg-white/15 rounded-lg mt-3 h-32 p-2'
-                                placeholder='domain.com/@username'
+                                placeholder='Type one or multiple links with Enter split here'
                                 value={linksStr}
                                 onChange={(e) => {
-                                    setWarning("");
+                                    setWarning(""); // Clear any existing warning
 
-                                    const _links = e.target.value.split("\n").filter(p => p != "");
-                                    const remainedLinks = links.filter(p => !(p.startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com') && (p.startsWith('twitter.com') || p.startsWith('x.com'))));
+                                    const _links = e.target.value.split("\n").filter(p => p.trim() !== ""); // Trimmed and non-empty lines
+
+                                    // Find the index of the selected social media platform
+                                    const selectedIndex = findIndexByIdentifier(selectedSocialMedia);
+
+                                    const remainedLinks = links.filter(p => !isValidUrlForPlatform(p, selectedSocialMedia));
 
                                     if (remainedLinks.length + _links.length > leftCount) {
                                         setWarning("Reached The limit!");
                                         return;
                                     }
                                     if (e.target.value.endsWith('\n')) {
-                                        if (_links.length && _links[_links.length - 1].startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com' && (_links[_links.length - 1].startsWith('twitter.com') || _links[_links.length - 1].startsWith('x.com')))) {
-                                            // setLinks
-                                        }
-                                        else {
+                                        if (selectedIndex >= 0 && _links.length > 0 && isValidUrlForPlatform(_links[_links.length - 1], selectedSocialMedia)) {
+                                            // 
+                                        } else {
                                             setWarning("Please type the correct url format!");
                                             return;
                                         }
@@ -178,19 +227,24 @@ export default function SMsubmit() {
                                 size='sm'
                                 isLoading={isActionProcessing}
                                 onPress={() => {
-                                    const _links = linksStr.split("\n").filter(p => p != "") || [];
-                                    const remainedLinks = links.filter(p => !(p.startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com') && (p.startsWith('twitter.com') || p.startsWith('x.com'))));
+                                    const _links = linksStr.split("\n").filter(p => p.trim() !== ""); // Trimmed and non-empty lines
+
+                                    // Find the index of the selected social media platform
+                                    const selectedIndex = findIndexByIdentifier(selectedSocialMedia);
+
+                                    const remainedLinks = links.filter(p => !isValidUrlForPlatform(p, selectedSocialMedia));
+
                                     let requestLinks = [];
                                     if (_links.length) {
+
                                         if (remainedLinks.length + _links.length > leftCount) {
                                             setWarning("Reached The limit!");
                                             return;
                                         }
-                                        if (_links[_links.length - 1].startsWith(selectedSocialMedia) || (selectedSocialMedia == 'twitter.com' && (_links[_links.length - 1].startsWith('twitter.com') || _links[_links.length - 1].startsWith('x.com')))) {
+                                        if (selectedIndex >= 0 && _links.length > 0 && isValidUrlForPlatform(_links[_links.length - 1], selectedSocialMedia)) {
                                             setLinks([...remainedLinks, ..._links]);
                                             requestLinks = [...remainedLinks, ..._links];
-                                        }
-                                        else {
+                                        } else {
                                             setWarning("Please type the correct url format!");
                                             return;
                                         }
