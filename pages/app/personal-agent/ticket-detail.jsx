@@ -361,7 +361,7 @@ export default function TicketDetail() {
                                                         {eachMessage.content}
                                                         <div className='flex flex-col gap-2 w-full'>
                                                             {
-                                                                eachMessage.attached_images?.map((fileName, index) => <Image src={`https://server.lockleaks.com/images?filename=${fileName}`} width={450} height={260} className='max-w-full h-auto' />)
+                                                                eachMessage.attached_images?.map((fileName, index) => <Image key={index} src={`https://server.lockleaks.com/images?filename=${fileName}`} width={450} height={260} className='max-w-full h-auto' />)
                                                             }
                                                         </div>
                                                     </div>
