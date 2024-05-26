@@ -3,20 +3,35 @@ import Image from 'next/image';
 import {
     Button, Link
 } from '@nextui-org/react';
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Cancel } from "@/components/utils/Icons";
+import { createNewTicket } from '../../../axios/ticket';
 
 export default function CreateTicket() {
     const router = useRouter();
+    const [name, setName] = useState('');
+    const [message, setMessage] = useState('');
 
     const icons = {
         cancel: <Cancel fill="currentColor" size={16} />,
     };
 
-    const handleTicketDetail = () =>{
-        router.push("/app/personal-agent/ticket-detail")
-    }
+    const handleCreate = useCallback(async () => {
+
+        if (!name || !message) return;
+
+        const res = await createNewTicket({
+            name,
+            content: message,
+            attached_images: []
+        });
+
+        if (res.status == 'success') {
+            router.push('/app/personal-agent/ticket-detail')
+        }
+
+    }, [name, message]);
 
     const handlePreviousPage = () => {
         history.back()
@@ -32,9 +47,7 @@ export default function CreateTicket() {
             </div>
             <div className="flex items-center px-10 py-5 mt-10 justify-between bg-white/15 border border-gray-500 rounded-[16px] w-full p-5">
                 <div><span>New Ticket</span></div>
-                <div>
-                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={()=>handlePreviousPage()}>{icons.cancel}</Button>
-                </div>
+                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={() => handlePreviousPage()}>{icons.cancel}</Button>
             </div>
 
             {/* This section for define create ticket content?*/}
@@ -46,6 +59,8 @@ export default function CreateTicket() {
                         type="text"
                         name="subject"
                         className='w-full outline-none p-2 rounded-lg bg-white/15 border border-gray-700'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         placeholder='Type here'
                     />
                 </div>
@@ -54,14 +69,26 @@ export default function CreateTicket() {
                     <textarea
                         rows="5"
                         className='w-full outline-none p-2 rounded-lg bg-white/15 border border-gray-700'
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
                         placeholder='Type here'
                     />
                 </div>
                 <div className='flex justify-between w-full pb-10 px-5'>
-                    <Button radius="lg" className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white px-12 text-sm" size='sm'>
+                    <Button
+                        radius="lg"
+                        className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white px-12 text-sm"
+                        size='sm'
+                        onPress={() => router.push("/app/personal-agent")}
+                    >
                         Cancel
                     </Button>
-                    <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white px-12" size='sm' onClick={()=>handleTicketDetail()}>
+                    <Button
+                        radius="lg"
+                        className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white px-12"
+                        size='sm'
+                        onClick={handleCreate}
+                    >
                         Create
                     </Button>
                 </div>

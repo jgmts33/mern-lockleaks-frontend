@@ -32,8 +32,6 @@ import { getUserId } from "../../axios/token";
 import { getScrapedDataList } from "../../axios/download";
 import { getExtraReport } from "../../axios/user";
 
-import { Crisp } from "crisp-sdk-web";
-
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
@@ -229,8 +227,6 @@ export default function RootLayout({ children }) {
     if (getCookieValue('necessary')) {
       setSlectCookie(true);
     }
-
-    Crisp.configure('a07a14d8-8bd7-420c-b60e-e0f48ff8b31a');
   }, []);
 
   if (mounted) return (

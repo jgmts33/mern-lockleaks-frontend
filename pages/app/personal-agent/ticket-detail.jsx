@@ -1,15 +1,41 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input
+    Button, ScrollShadow, Input,
 } from '@nextui-org/react';
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Cancel, Shape, PaperClip, PaperPlane, Search } from "@/components/utils/Icons";
+import { Cancel, Shape, PaperClip, PaperPlane, Search, SortDown, SortUp } from "@/components/utils/Icons";
+import { getMessagesByTicket, getTicketsByUser, sendMessage, updateTickStatus } from '../../../axios/ticket';
+import moment from 'moment/moment';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
+import Image from 'next/image';
+import { io } from 'socket.io-client';
+import { ENDPOINT } from '../../../config/config';
+import { getUserId } from '../../../axios/token';
+import { SendMessage } from '../../../components/utils/Icons';
 
 export default function TicketDetail() {
-    const [value, setValue] = React.useState(100);
-    const [selectticket, setSelectTicket] = React.useState(-1);
+
+    const userInfo = useSelector(info);
+    const userId = getUserId();
+    const [list, setList] = useState([]);
+    const [filterdList, setFilteredList] = useState([]);
+    const [searchValue, setSearchValue] = useState("");
+    const [targetTicket, setTargetTicket] = React.useState(null);
+    const [isTicketProcessing, setIsTicketProcessing] = useState(false);
+
+    const [isMessagesProcessing, setIsMessagesProcessing] = useState(false);
+    const [messages, setMessages] = useState([]);
+    const [attachedImagesPreviewUrls, setAttachedImagesPreviewUrls] = useState([]);
+    const [message, setMessage] = useState({
+        content: '',
+        attached_images: []
+    });
+    const [isSendingMessage, setIsSendingMessage] = useState(false);
+
+    const [selectedTicketStatus, setSelectedTicketStatus] = useState('');
+    const [sortDateDSC, setSortDateDSC] = useState(true);
     const router = useRouter();
 
     const icons = {
@@ -18,114 +44,410 @@ export default function TicketDetail() {
         paperclip: <PaperClip fill="currentColor" size={16} />,
         paperplane: <PaperPlane fill="currentColor" size={16} />,
         search: <Search fill="currentColor" size={16} />,
+        sortDown: <SortDown fill="currentColor" size={16} />,
+        sortUp: <SortUp fill="currentColor" size={16} />,
+        sendMessage: <SendMessage fill="currentColor" size={32} />,
     };
 
     const handleGoSettings = () => {
         router.push("/app/personal-agent/property");
     }
 
-    const handleGoPreviousPage = () => {
-        history.back()
+    const getTicketsInfo = async () => {
+        setIsTicketProcessing(true);
+        const res = await getTicketsByUser();
+
+        if (res.status == 'success') {
+            setList(res.data);
+        }
+        setIsTicketProcessing(false);
     }
 
-    const TicketTitle = [
-        {
-            date: "#10 / February 27, 2024",
-            title: "Ticket Title",
-            status: "solved"
-        }, {
-            date: "#10 / February 27, 2024",
-            title: "Ticket Title",
-            status: "progress"
-        }, {
-            date: "#10 / February 27, 2024",
-            title: "Ticket Title",
-            status: "progress"
-        }
-    ]
+    const getMessagesByTicketInfo = useCallback(async () => {
+        if (!targetTicket) return;
+        setIsMessagesProcessing(true);
+        const res = await getMessagesByTicket(targetTicket.id)
 
-    const chatContent = [
-        {
-
+        if (res.status == 'success') {
+            console.log("res.data:", res.data)
+            setMessages(res.data);
         }
-    ]
+        setIsMessagesProcessing(false);
+    }, [targetTicket]);
+
+    const handleImageUpload = async (files) => {
+        if (!files.length) return;
+        let _attachedImagesPreviewUrls = [];
+        for (let file of files) {
+            const newPreviewUrl = URL.createObjectURL(file);
+            _attachedImagesPreviewUrls.push(newPreviewUrl);
+        }
+        setAttachedImagesPreviewUrls(_attachedImagesPreviewUrls);
+        setMessage(p => ({ ...p, attached_images: files }));
+    }
+
+    const handleSendMessage = useCallback(async () => {
+        setIsSendingMessage(true);
+        const formData = new FormData();
+        if (message.attached_images) {
+            Array.from(message.attached_images).forEach((file, index) => {
+                formData.append(`images[${index}]`, file);
+            });
+        }
+        formData.append('content', message.content);
+        formData.append('sender_id', userId);
+        formData.append('attached_image_length', message.attached_images.length);
+        formData.append('ticket_id', targetTicket.id);
+
+        await sendMessage(formData);
+        setMessage({
+            content: '',
+            attached_images: []
+        });
+        setIsSendingMessage(false);
+    }, [message, userInfo, targetTicket]);
+
+    useEffect(() => {
+        if (selectedTicketStatus == '') setFilteredList(list);
+
+        let _list = list.filter(p => {
+            if (p.status == selectedTicketStatus) return p;
+            else if (p.status == '' && selectedTicketStatus == 'open') return p;
+        });
+
+
+        if (searchValue) {
+            _list = _list.filter(p => p.name.toLowerCase().includes(searchValue.toLowerCase()));
+        }
+
+        if (sortDateDSC) {
+            setFilteredList(_list.sort((a, b) => Number(new Date(b.createdAt)) - Number(new Date(a.createdAt))));
+        }
+        else {
+            setFilteredList(_list.sort((a, b) => Number(new Date(a.createdAt)) - Number(new Date(b.createdAt))));
+        }
+
+    }, [searchValue, selectedTicketStatus, list, sortDateDSC]);
+
+    useEffect(() => {
+        getMessagesByTicketInfo();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`update_ticket_status`, async ({id, status}) => {
+            setList(prevState => {
+                let _items = prevState.map((item) => {
+                    if (item.id == id) {
+                        return { ...item, status: status }
+                    } else return item;
+                });
+                return _items;
+            });
+        })
+
+        if (targetTicket) {
+
+            socket.on(`new_message_${targetTicket.id}`, async (value) => {
+                if (value.sender_id != userId) {
+                    setSelectedTicketStatus('open');
+                }
+                setMessages(p => ([...p, value]));
+            });
+
+            return () => socket.close();
+        }
+
+    }, [targetTicket]);
+
+    useEffect(() => {
+        getTicketsInfo();
+    }, []);
+
+    useEffect(() => {
+        console.log(attachedImagesPreviewUrls);
+    }, [attachedImagesPreviewUrls])
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
-            <div className='flex flex-col space-y-5 max-md:mx-auto max-md:text-center'>
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white w-full h-[calc(100vh-60px)]">
+            <div className='flex flex-col space-y-5 pb-3 max-md:mx-auto max-md:text-center'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
-            <div className='flex gap-5 mt-5 max-md:flex-col'>
-                <div className="flex flex-col max-w-[400px] w-full h-[650px] bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto">
+            <div className='flex gap-5 max-sm:flex-col flex-1'>
+                <div className={"flex flex-col max-w-[450px] h-full max-sm:w-full max-sm:w-max-full w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto " + (targetTicket ? "max-sm:hidden" : "")}>
                     <div className='flex flex-col justify-between mt-5 items-center'>
-                        <div className='flex justify-between w-full'>
-                            <div className='flex items-center'>
-                                <span className='font-semibold text-[18px]'>Ticket Name</span>
-                            </div>
-                            <div>
-                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={() => handleGoSettings()}>
-                                    {icons.shape}
-                                </Button>
-                            </div>
+                        <div className='flex justify-between w-full items-center gap-4'>
+                            <Input
+                                isClearable
+                                radius="lg"
+                                classNames={{
+                                    label: "text-black/50 dark:text-white/90",
+                                    input: [
+                                        "bg-transparent",
+                                        "text-black/90 dark:text-white/90",
+                                        "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+                                    ],
+                                    innerWrapper: "bg-transparent",
+                                    inputWrapper: [
+                                        "shadow-xl",
+                                        "bg-default-200/50",
+                                        "dark:bg-default/60",
+                                        "backdrop-blur-xl",
+                                        "backdrop-saturate-200",
+                                        "hover:bg-default-200/70",
+                                        "dark:hover:bg-default/70",
+                                        "group-data-[focus=true]:bg-default-200/50",
+                                        "dark:group-data-[focus=true]:bg-default/60",
+                                        "!cursor-text",
+                                    ],
+                                }}
+                                placeholder="Type to search..."
+                                startContent={
+                                    icons.search
+                                }
+                                value={searchValue}
+                                onValueChange={(value) => setSearchValue(value)}
+                            />
+                            <Button
+                                radius="sm"
+                                className="bg-gradient-to-tr bg-transparent text-white text-lg"
+                                size='sm'
+                                isIconOnly
+                                onPress={() => setSortDateDSC(p => !p)}
+                            >
+                                {sortDateDSC ? icons.sortDown : icons.sortUp}
+                            </Button>
                         </div>
-                        <div className='flex justify-around mt-5 w-full'>
-                            <div>
-                                <Button radius="full" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-600 text-white text-base" size='sm' onClick={() => handleGoSettings()}>
-                                    IN PROGRESS
-                                </Button>
-                            </div>
-                            <div>
-                                <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-600 text-white text-base" size='sm' onClick={() => handleGoSettings()}>
-                                    SOLVED
-                                </Button>
-                            </div>
+                        <div className='flex justify-between mt-5 w-full'>
+                            <Button
+                                radius="full"
+                                className={"bg-gradient-to-tr border border-gray-600 text-white text-base " + (selectedTicketStatus == 'open' ? 'from-purple-light to-purple-weight' : 'from-gray-700 to-gray-800')}
+                                size='sm'
+                                onClick={() => {
+                                    setSearchValue('');
+                                    setTargetTicket(null);
+                                    setSelectedTicketStatus('open');
+                                }
+                                }
+                            >
+                                IN PROGRESS
+                            </Button>
+                            <Button
+                                radius="full"
+                                className={"bg-gradient-to-tr border border-gray-600 text-white text-base " + (selectedTicketStatus == 'solved' ? 'from-purple-light to-purple-weight' : 'from-gray-700 to-gray-800')}
+                                size='sm'
+                                onClick={() => {
+                                    setSearchValue('');
+                                    setTargetTicket(null);
+                                    setSelectedTicketStatus('solved');
+                                }
+                                }
+                            >
+                                SOLVED
+                            </Button>
+                            <Button
+                                radius="full"
+                                className={"bg-gradient-to-tr border border-gray-600 text-white text-base " + (selectedTicketStatus == 'closed' ? 'from-purple-light to-purple-weight' : 'from-gray-700 to-gray-800')}
+                                size='sm'
+                                onClick={() => {
+                                    setSearchValue('');
+                                    setTargetTicket(null);
+                                    setSelectedTicketStatus('closed');
+                                }
+                                }
+                            >
+                                CLOSED
+                            </Button>
                         </div>
+                        <Button
+                            radius="full"
+                            className="bg-gradient-to-tr border border-gray-600 text-white text-base from-purple-light to-purple-weight mt-4"
+                            size='sm'
+                            onClick={() => router.push("/app/personal-agent/create-ticket")}
+                        >
+                            Create New Ticket
+                        </Button>
                     </div>
-                    <div className='flex flex-col pt-10'>
-                        <ScrollShadow className='h-[530px]'>
+                    <div className='flex flex-col pt-3 w-full flex-1'>
+                        <ScrollShadow className='h-[calc(100vh-420px)] space-y-2'>
                             {
-                                TicketTitle.map((item, index) => {
-                                    return (
-                                        <div key={index} className={("cursor-pointer p-3 rounded-lg ") + (selectticket == index ? 'flex flex-col border-3 border-gray-700 bg-gradient-to-tr from-purple-light to-purple-weight' : "flex flex-col border-3 border-gray-700")} onClick={() => setSelectTicket(selectticket == index ? -1 : index)}>
-                                            <span className='font-normal text-sm'>{item.date}</span>
-                                            <span className='font-semibold text-[18px]'>{item.title}</span>
+                                !isTicketProcessing ?
+                                    filterdList.length ?
+                                        filterdList.map((item, index) => {
+                                            return (
+                                                <div
+                                                    key={index}
+                                                    className={("cursor-pointer p-3 rounded-lg ") + (targetTicket?.id == item.id ? 'flex flex-col border-3 border-gray-700 bg-gradient-to-tr from-purple-light to-purple-weight' : "flex flex-col border-3 border-gray-700")}
+                                                    onClick={() => setTargetTicket(item)}
+                                                >
+                                                    <span className='font-normal text-sm'>#{item.id} / {moment(item.createdAt).format('MMMM DD, YYYY')}</span>
+                                                    <span className='font-semibold text-[18px] inline-block truncate'>{item.name}</span>
+                                                </div>
+                                            )
+                                        })
+                                        : <p className='text-center mt-4'>No Tickets</p>
+
+                                    : <div className='w-full flex justify-center mt-5'>
+                                        <div role="status">
+                                            <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                            </svg>
+                                            <span className="sr-only">Loading...</span>
                                         </div>
-                                    )
-                                })
+                                    </div>
                             }
                         </ScrollShadow>
                     </div>
                 </div>
-                <div className='flex flex-col max-w-[1040px] w-full space-y-32'>
-                    <div className="flex flex-col max-w-[1040px] w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
-                        <div className='flex justify-between items-center'>
-                            <div className='flex flex-col space-y-4'>
-                                <span className='font-normal text-sm'>#10 / February 27, 2024</span>
-                                <span className='font-semibold text-base mt-2'>Ticket Title</span>
-                            </div>
-                            <div>
-                                <Button radius="sm" className="bg-gradient-to-tr bg-transparent text-white text-lg" size='sm' onClick={() => handleGoPreviousPage()}>{icons.cancel}</Button>
+                {targetTicket ?
+                    <div className='flex flex-col w-full justify-between flex-1'>
+                        <div className="flex flex-col w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
+                            <div className='flex justify-between items-center'>
+                                <div className='flex flex-col space-y-4'>
+                                    <span className='font-normal text-sm'>#{targetTicket.id} / {moment(targetTicket.createdAt).format('MMMM DD, YYYY')}</span>
+                                    <span className='font-semibold text-base mt-2'>{targetTicket.name}</span>
+                                </div>
+                                <div className='flex gap-3 items-center'>
+                                    {targetTicket.status != 'closed' ? <Button
+                                        radius="full"
+                                        className={"bg-gradient-to-tr border border-gray-600 text-white text-base " + (targetTicket.status != 'solved' ? 'from-purple-light to-purple-weight' : 'from-gray-700 to-gray-800')}
+                                        size='sm'
+                                        onClick={async () => {
+                                            if (targetTicket.status != 'solved') {
+                                                await updateTickStatus(targetTicket.id, 'solved');
+                                                setTargetTicket(p =>({
+                                                    ...p,
+                                                    status: 'solved'
+                                                }));
+                                                setSelectedTicketStatus('solved')
+                                            }
+                                        }}
+                                    >
+                                        {targetTicket.status == 'solved' ? 'SOLVED' : 'Set as Solved'}
+                                    </Button> : <></>}
+                                    <Button
+                                        isIconOnly
+                                        radius="sm"
+                                        className="bg-gradient-to-tr bg-transparent text-white text-lg hidden max-sm:block"
+                                        size='sm'
+                                        onClick={() => setTargetTicket(null)}
+                                    >
+                                        {icons.cancel}
+                                    </Button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className='flex flex-col'>
-                        <ScrollShadow className='h-[190px]'>
-                            {
-                                
-                            }
-                        </ScrollShadow>
-                    </div>
-                    <div className='flex mt-10 gap-5'>
-                        <div className='flex items-center'>{icons.paperclip}</div>
-                        <div className='flex justify-between max-w-[960px] w-full bg-white/10 rounded-[16px] p-2 items-center'>
-                            <div className='w-full'>
-                                <textarea className='bg-transparent w-full rounded-lg h-20' placeholder='Type Here'></textarea>
-                            </div>
-                            <div>{icons.paperplane}</div>
+                        <div className='flex flex-col flex-1 relative'>
+                            <ScrollShadow className='h-[calc(100vh-440px)] space-y-2'>
+                                {
+                                    isMessagesProcessing ?
+                                        <div className='w-full flex justify-center h-full items-center'>
+                                            <div role="status">
+                                                <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                                </svg>
+                                                <span className="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+                                        :
+                                        messages.map((eachMessage, index) => {
+                                            console.log(eachMessage);
+                                            return <div key={index} className={'w-full flex flex-col ' + (eachMessage.sender_id == userId ? 'items-end' : '')}>
+                                                <div className='max-sm:max-w-full max-w-[450px] w-max p-2 space-y-2'>
+                                                    <p className={eachMessage.sender_id == userId ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id == userId ? 'Username:' : "Supporter:"}</p>
+                                                    <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 ' + (eachMessage.sender_id == userId ? 'float-right' : '')}>
+                                                        {eachMessage.content}
+                                                        <div className='flex flex-col gap-2 w-full'>
+                                                            {
+                                                                eachMessage.attached_images?.map((fileName, index) => <Image src={`https://server.lockleaks.com/images?filename=${fileName}`} width={450} height={260} className='max-w-full h-auto' />)
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        })
+                                }
+                            </ScrollShadow>
+                        </div>
+                        <div className='flex mt-10 gap-5 items-center relative' >
+                            <label
+                                className='flex items-center cursor-pointer relative'
+                            >
+                                {icons.paperclip}
+                                <input
+                                    type="file"
+                                    className="hidden"
+                                    onChange={(e) => handleImageUpload(e.target.files)}
+                                    accept=".png,.jpg,.jpeg"
+                                    maxLength={10}
+                                    multiple
+                                />
+                            </label>
+                            {attachedImagesPreviewUrls.length ?
+                                <div
+                                    className='absolute w-max top-2 left-0 px-2 text-center bg-gradient-to-tr border rounded-full from-purple-light to-purple-weight '
+                                    onClick={() => {
+                                        setAttachedImagesPreviewUrls([]);
+                                        setMessage(p => ({ ...p, attached_images: [] }));
+                                    }}
+                                >
+                                    {attachedImagesPreviewUrls.length}
+                                </div>
+                                : <></>}
+                            {attachedImagesPreviewUrls.length ?
+                                <div
+                                    className='absolute w-max text-center bg-gradient-to-tr border rounded-full from-purple-light to-purple-weight cursor-pointer'
+                                    style={{ left: `${attachedImagesPreviewUrls.length * 5 + 175}px`, top: `${-(attachedImagesPreviewUrls.length * 5 + 90)}px`, zIndex: attachedImagesPreviewUrls.length + 1 }}
+                                    onClick={() => {
+                                        setAttachedImagesPreviewUrls([]);
+                                        setMessage(p => ({ ...p, attached_images: [] }));
+                                    }}
+                                >
+                                    {icons.cancel}
+                                </div>
+                                : <></>}
+                            {(targetTicket.status != 'solved' && targetTicket.status != 'closed') ? <div className='flex justify-between gap-2 w-full bg-white/10 rounded-[16px] p-2 items-center relative'>
+
+                                {
+                                    attachedImagesPreviewUrls.map((src, index) => {
+                                        return <Image
+                                            key={index}
+                                            src={src}
+                                            width="150"
+                                            height="80"
+                                            className="absolute object-cover w-[150px] h-[80px] opacity-80 rounded-xl border border-gray-900"
+                                            style={{ zIndex: index, left: `${index * 5}px`, bottom: `${110 + index * 5}px` }}
+                                        />
+                                    })
+                                }
+                                <div className='w-full'>
+                                    <textarea
+                                        className='bg-transparent w-full rounded-lg h-20 outline-none p-3'
+                                        placeholder='Type Here'
+                                        value={message.content}
+                                        onChange={(e) => setMessage(p => ({ ...p, content: e.target.value }))}
+                                    />
+                                </div>
+                                <Button
+                                    isIconOnly
+                                    className='flex items-center'
+                                    onPress={handleSendMessage}
+                                    isLoading={isSendingMessage}
+                                >
+                                    {icons.paperplane}
+                                </Button>
+                            </div> : <></>}
                         </div>
                     </div>
-                </div>
+                    :
+                    <div className='flex flex-col w-full justify-center items-center flex-1'>
+                        <div className='w-8 h-8'>{icons.sendMessage}</div>
+                        <p className='mt-3'>Select a ticket to see then inquriy history</p>
+                    </div>
+                }
             </div>
         </div>
     )

@@ -7,6 +7,7 @@ import { ArrowDown } from "@/components/utils/Icons";
 import { Poppins } from "next/font/google";
 import { getAccessToken } from "../../axios/token";
 import { getUserInfo } from "../../axios/auth";
+import { Crisp } from "crisp-sdk-web";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -97,6 +98,7 @@ export default function Header() {
       }
       setMounted(true);
     })();
+    Crisp.configure('a07a14d8-8bd7-420c-b60e-e0f48ff8b31a');
   }, []);
 
   return (

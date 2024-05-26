@@ -84,8 +84,7 @@ export default function VPSManagement() {
     }
 
     async function checkApiRunning(id, ipAddress) {
-        const url = `http://${ipAddress}:8000`;
-        console.log(url);
+        
         const res = await checkStatus(ipAddress);
         if (res.status == 'success') {
             setList(p => p.map(item => {
