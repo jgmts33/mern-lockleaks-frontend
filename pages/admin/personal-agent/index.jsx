@@ -281,7 +281,7 @@ export default function TicketDetail() {
                         </div>
                     </div>
                     <div className='flex flex-col pt-3 w-full flex-1'>
-                        <ScrollShadow className='h-[calc(100vh-420px)] space-y-2'>
+                        <ScrollShadow className='h-[calc(100vh-400px)] space-y-2'>
                             {
                                 !isTicketProcessing ?
                                     filterdList.length ?
