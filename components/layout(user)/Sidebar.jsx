@@ -16,6 +16,8 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 const Sidebar = ({ show, setter }) => {
 
+    const pathname = usePathname();
+
     const icons = {
         filehost: <FileHost fill="currentColor" size={16} />,
         calendarcheck: <CalendarCheck fill="currentColor" size={16} />,
@@ -136,7 +138,7 @@ const Sidebar = ({ show, setter }) => {
             favourite: false
         }, {
             id: 14,
-            icon: icons.profilesquare,
+            icon: icons.AIProfile,
             title: "PERSONAL AGENT",
             path: "/app/personal-agent",
             favourite: false
@@ -354,7 +356,7 @@ const Sidebar = ({ show, setter }) => {
                                 return (
                                     <div
                                         key={index}
-                                        className={("py-1 items-center cursor-pointer ") + (selectedSidebar == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm'
+                                        className={("py-1 items-center cursor-pointer ") + ( pathname.startsWith(items.path) ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm'
                                         onClick={() => handleSidebarClick(items.path, index)}
                                     >
                                         {

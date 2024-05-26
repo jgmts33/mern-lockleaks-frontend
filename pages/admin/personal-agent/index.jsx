@@ -2,7 +2,7 @@
 import {
     Button, ScrollShadow, Input,
 } from '@nextui-org/react';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Cancel, Shape, PaperClip, PaperPlane, Search, SortDown, SortUp } from "@/components/utils/Icons";
 import { getMessagesByTicket, getTickets, getTicketsByUser, sendMessage, updateTickStatus } from '../../../axios/ticket';
@@ -19,6 +19,9 @@ export default function TicketDetail() {
 
     const userInfo = useSelector(info);
     const userId = getUserId();
+
+    const messagesListRef = useRef(null);
+
     const [list, setList] = useState([]);
     const [filterdList, setFilteredList] = useState([]);
     const [searchValue, setSearchValue] = useState("");
@@ -132,6 +135,13 @@ export default function TicketDetail() {
     }, [searchValue, selectedTicketStatus, list, sortDateDSC]);
 
     useEffect(() => {
+        messagesListRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+        });
+    }, [filterdList.slice(0)]);
+
+    useEffect(() => {
         getMessagesByTicketInfo();
 
         const socket = io(ENDPOINT);
@@ -141,7 +151,7 @@ export default function TicketDetail() {
             setList(p => ([...p, value]));
         })
 
-        socket.on(`update_ticket_status`, async ({id, status}) => {
+        socket.on(`update_ticket_status`, async ({ id, status }) => {
             setList(prevState => {
                 let _items = prevState.map((item) => {
                     if (item.id == id) {
@@ -159,7 +169,7 @@ export default function TicketDetail() {
             });
 
         }
-        
+
         return () => socket.close();
 
     }, [targetTicket]);
@@ -168,12 +178,8 @@ export default function TicketDetail() {
         getTicketsInfo();
     }, []);
 
-    useEffect(() => {
-        console.log(attachedImagesPreviewUrls);
-    }, [attachedImagesPreviewUrls])
-
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white w-full h-[calc(100vh-60px)] pb-6">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white w-full h-[calc(100vh-60px)]">
             <div className='flex flex-col space-y-5 pb-3 max-md:mx-auto max-md:text-center'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
@@ -275,7 +281,7 @@ export default function TicketDetail() {
                         </div>
                     </div>
                     <div className='flex flex-col pt-3 w-full flex-1'>
-                        <ScrollShadow className='h-[calc(100vh-380px)] space-y-2'>
+                        <ScrollShadow className='h-[calc(100vh-420px)] space-y-2'>
                             {
                                 !isTicketProcessing ?
                                     filterdList.length ?
@@ -315,14 +321,14 @@ export default function TicketDetail() {
                                     <span className='font-semibold text-base mt-2'>{targetTicket.name}</span>
                                 </div>
                                 <div className='flex gap-3 items-center'>
-                                    { targetTicket.status != 'closed' ? <Button
+                                    {targetTicket.status != 'closed' ? <Button
                                         radius="full"
                                         className={"bg-gradient-to-tr border border-gray-600 text-white text-base " + (targetTicket.status != 'solved' ? 'from-purple-light to-purple-weight' : 'from-gray-700 to-gray-800')}
                                         size='sm'
                                         onClick={async () => {
-                                            if (targetTicket.status !='solved') {
+                                            if (targetTicket.status != 'solved') {
                                                 await updateTickStatus(targetTicket.id, 'solved');
-                                                setTargetTicket(p =>({
+                                                setTargetTicket(p => ({
                                                     ...p,
                                                     status: 'solved'
                                                 }));
@@ -345,10 +351,10 @@ export default function TicketDetail() {
                             </div>
                         </div>
                         <div className='flex flex-col flex-1 relative'>
-                            <ScrollShadow className='h-[calc(100vh-440px)] space-y-2'>
+                            <ScrollShadow className='h-[calc(100vh-400px)] space-y-2 p-2'>
                                 {
                                     isMessagesProcessing ?
-                                        <div className='w-full flex justify-center h-full items-center'>
+                                        <div className='w-full flex justify-center mt-16'>
                                             <div role="status">
                                                 <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
@@ -362,8 +368,9 @@ export default function TicketDetail() {
                                             console.log(eachMessage);
                                             return <div key={index} className={'w-full flex flex-col ' + (eachMessage.sender_id == userId ? 'items-end' : '')}>
                                                 <div className='max-sm:max-w-full max-w-[450px] w-max p-2 space-y-2'>
-                                                    <p className={eachMessage.sender_id == userId ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userId ? 'Username:' : "Supporter:"}</p>
-                                                    <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 ' + (eachMessage.sender_id == userId ? 'float-right' : '')}>
+                                                    <p className={eachMessage.sender_id == userId ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userId ? 'Username:' : "Support:"}</p>
+                                                    <div className={eachMessage.sender_id != userId ? 'flex justify-end' : 'flex '}>
+                                                        <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
                                                         {eachMessage.content}
                                                         <div className='flex flex-col gap-2 w-full'>
                                                             {
@@ -371,14 +378,17 @@ export default function TicketDetail() {
                                                             }
                                                         </div>
                                                     </div>
+                                                    </div>
+                                                    <p className={eachMessage.sender_id != userId ? 'text-right px-2' : 'px-2'}>{moment(targetTicket.createdAt).format('MMMM DD, YYYY')}</p>
                                                 </div>
 
                                             </div>
                                         })
                                 }
+                                <div ref={messagesListRef} />
                             </ScrollShadow>
                         </div>
-                        <div className='flex mt-10 gap-5 items-center relative' >
+                        <div className='flex gap-5 items-center relative' >
                             <label
                                 className='flex items-center cursor-pointer relative'
                             >
@@ -415,7 +425,7 @@ export default function TicketDetail() {
                                     {icons.cancel}
                                 </div>
                                 : <></>}
-                            {(targetTicket.status != 'solved' && targetTicket.status != 'closed') ? <div className='flex justify-between gap-2 w-full bg-white/10 rounded-[16px] p-2 items-center relative'>
+                            <div className='flex justify-between gap-2 w-full bg-white/10 rounded-[16px] p-2 items-center relative'>
 
                                 {
                                     attachedImagesPreviewUrls.map((src, index) => {
@@ -445,7 +455,7 @@ export default function TicketDetail() {
                                 >
                                     {icons.paperplane}
                                 </Button>
-                            </div> : <></>}
+                            </div>
                         </div>
                     </div>
                     :
