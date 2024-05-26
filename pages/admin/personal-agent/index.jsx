@@ -179,7 +179,7 @@ export default function TicketDetail() {
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
             <div className='flex gap-5 max-sm:flex-col flex-1'>
-                <div className={"flex flex-col max-w-[450px] h-full max-sm:w-full max-sm:w-max-full w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto " + (targetTicket ? "max-sm:hidden" : "")}>
+                <div className={"flex flex-col max-w-[480px] h-full max-sm:w-full max-sm:w-max-full w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto " + (targetTicket ? "max-sm:hidden" : "")}>
                     <div className='flex flex-col justify-between mt-5 items-center'>
                         <div className='flex justify-between w-full items-center gap-4'>
                             <Input
@@ -275,7 +275,7 @@ export default function TicketDetail() {
                         </div>
                     </div>
                     <div className='flex flex-col pt-3 w-full flex-1'>
-                        <ScrollShadow className='h-full space-y-2'>
+                        <ScrollShadow className='h-[calc(100vh-380px)] space-y-2'>
                             {
                                 !isTicketProcessing ?
                                     filterdList.length ?
