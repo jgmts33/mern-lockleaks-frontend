@@ -11,6 +11,7 @@ import Complete from "@/public/assets/background/complete.svg";
 import Uncomplete from "@/public/assets/background/uncomplete.svg";
 import Info from "@/public/assets/info.svg"
 import { useRouter } from 'next/router';
+import { Crisp } from 'crisp-sdk-web';
 
 export default function Pricing() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -239,14 +240,25 @@ export default function Pricing() {
                 <div className='flex justify-between max-md:justify-center max-sm:flex-col gap-5 mt-10 z-10'>
                     <div className='flex flex-col'>
                         <span className='text-center font-medium text-xl'>special offer for agency and business</span>
-                        <Button radius="lg" className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white mt-5 shadow-lg px-5 py-3 text-sm" size='md'>
+                        <Button
+                            radius="lg"
+                            className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white mt-5 shadow-lg px-5 py-3 text-sm"
+                            size='md'
+                            onClick={() => {
+                                Crisp.chat.open();
+                            }}
+                        >
                             Access Special offer!{icons.shine}
                         </Button>
                     </div>
                     <div className='flex flex-col'>
                         <span className='text-center font-medium text-xl'>how can fans gift you a plan</span>
-                        <Button radius="lg" className="bg-gradient-to-tr bg-transparent from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border mx-auto px-7 py-5 text-sm mt-5" size='md'>
-                            Request fan support{icons.shine}
+                        <Button
+                            radius="lg"
+                            className="bg-gradient-to-tr bg-transparent from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border mx-auto px-7 py-5 text-sm mt-5"
+                            size='md'
+                        >
+                            Request fan support{icons.shine}Z
                         </Button>
                     </div>
                 </div>
