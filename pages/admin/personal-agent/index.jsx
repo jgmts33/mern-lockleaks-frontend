@@ -158,8 +158,9 @@ export default function TicketDetail() {
                 setMessages(p => ([...p, value]));
             });
 
-            return () => socket.close();
         }
+        
+        return () => socket.close();
 
     }, [targetTicket]);
 
@@ -172,7 +173,7 @@ export default function TicketDetail() {
     }, [attachedImagesPreviewUrls])
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white w-full h-[calc(100vh-60px)]">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white w-full h-[calc(100vh-60px)] pb-6">
             <div className='flex flex-col space-y-5 pb-3 max-md:mx-auto max-md:text-center'>
                 <span className='font-extrabold text-lg'>PERSONAL AGENT</span>
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>

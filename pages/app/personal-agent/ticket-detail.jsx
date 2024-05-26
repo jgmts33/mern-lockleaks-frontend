@@ -99,11 +99,15 @@ export default function TicketDetail() {
         formData.append('attached_image_length', message.attached_images.length);
         formData.append('ticket_id', targetTicket.id);
 
-        await sendMessage(formData);
         setMessage({
             content: '',
             attached_images: []
         });
+        
+        setAttachedImagesPreviewUrls([]);
+
+        await sendMessage(formData);
+        
         setIsSendingMessage(false);
     }, [message, userInfo, targetTicket]);
 
@@ -153,9 +157,9 @@ export default function TicketDetail() {
                 }
                 setMessages(p => ([...p, value]));
             });
-
-            return () => socket.close();
         }
+
+        return () => socket.close();
 
     }, [targetTicket]);
 
@@ -339,7 +343,7 @@ export default function TicketDetail() {
                             </div>
                         </div>
                         <div className='flex flex-col flex-1 relative'>
-                            <ScrollShadow className='h-[calc(100vh-440px)] space-y-2'>
+                            <ScrollShadow className='space-y-2 h-[calc(100vh-400px)] p-2'>
                                 {
                                     isMessagesProcessing ?
                                         <div className='w-full flex justify-center h-full items-center'>
@@ -372,7 +376,7 @@ export default function TicketDetail() {
                                 }
                             </ScrollShadow>
                         </div>
-                        <div className='flex mt-10 gap-5 items-center relative' >
+                        <div className='flex gap-5 items-center relative' >
                             <label
                                 className='flex items-center cursor-pointer relative'
                             >

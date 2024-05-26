@@ -24,6 +24,7 @@ export default function VPSManagement() {
     const [selectedId, setSelectedId] = useState(null);
     const [isProcessing, setIsProcessing] = useState(false);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [isCheckingVpsStatus, setIsCheckingVpsStatus] = useState(false);
 
     const getVpsListInfo = async () => {
         setIsProcessing(true);
@@ -84,7 +85,7 @@ export default function VPSManagement() {
     }
 
     async function checkApiRunning(id, ipAddress) {
-        
+        setIsCheckingVpsStatus(true);
         const res = await checkStatus(ipAddress);
         if (res.status == 'success') {
             setList(p => p.map(item => {
@@ -96,6 +97,7 @@ export default function VPSManagement() {
                 } else return item
             }))
         }
+        setIsCheckingVpsStatus(false);
     }
 
     const checkVpsStatus = () => {
@@ -136,6 +138,7 @@ export default function VPSManagement() {
                     onPress={() => {
                         checkVpsStatus();
                     }}
+                    isLoading={isCheckingVpsStatus}
                 >
                     Check VPS Status
                 </Button>
