@@ -84,7 +84,7 @@ export default function SMscanner() {
                 <div className='grid grid-cols-3 gap-10 max-xl:grid-cols-2 max-md:flex-col max-md:flex max-md:gap-0'>
                     <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 pb-10 max-sm:mt-5">
                         <div className='flex'>
-                            <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
+                            <span className='font-normal text-base'><span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning:</span> Your government-issued ID is already in our database and does not need to be uploaded again. It will be used if necessary to delete the profiles you report. </span>
                         </div>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mx-auto mt-10" size='sm'>
                             Upload ID

@@ -271,6 +271,11 @@ const Sidebar = ({ show, setter }) => {
             path: "/admin/blog",
             favourite: false
         }, {
+            icon: icons.bing,
+            title: "Newsletter",
+            path: "/admin/news",
+            favourite: false
+        }, {
             icon: icons.helpPost,
             title: "Help",
             path: "/admin/help",

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { FaceBook, LinkedIn, TwitterV2, TikTok, Instagram, Redit } from '@/components/utils/Icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
   Button
 } from '@nextui-org/react';
+import { createNewSubscribeUser } from '../../axios/news';
 
 export default function Footer({ cookieSettingsOnOpen }) {
 
@@ -16,6 +17,25 @@ export default function Footer({ cookieSettingsOnOpen }) {
     instagram: <Instagram fill="currentColor" />,
     redit: <Redit fill="currentColor" />,
   };
+
+  const [email, setEmail] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [warning, setWarning] = useState('');
+
+  const handleSubscribe = useCallback(async () => {
+    setIsProcessing(true);
+    const res = await createNewSubscribeUser({
+      email
+    });
+
+    if (res.status == 'success') {
+      // TODO: handle the success result
+      setEmail('');
+    } else {
+      setWarning(res.data);
+    }
+    setIsProcessing(false);
+  }, [email]);
 
   return (
     <div className='w-full bg-black px-10 relative'>
@@ -57,14 +77,22 @@ export default function Footer({ cookieSettingsOnOpen }) {
                 type="email"
                 name="email"
                 placeholder='placeholder'
-                className='outline-none p-4 w-full pr-64 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600'
+                className='outline-none p-4 w-full pr-32 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 min-w-[500px] max-sm:min-w-full'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <Button className="absolute bottom-0 right-1 h-4 bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg rounded-full px-7 py-6 text-lg top-2" size='sm'>
+              <Button
+                className="absolute bottom-0 right-1 h-4 bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg rounded-full px-7 py-6 text-lg top-2"
+                size='sm'
+                onPress={handleSubscribe}
+                isLoading={isProcessing}
+              >
                 SEND
                 <span>{icons.shine}</span>
               </Button>
             </div>
+            <p className='text-sm font-normal text-red-600 mt-1 pl-6'>{warning}</p>
             <div className='mt-6 text-sm italic space-y-2 px-6'>
               <p>TEST</p>
               <p>TEST</p>

@@ -49,7 +49,8 @@ export default function Register() {
     const [isProcessing, setIsProcessing] = useState(false);
     const [modalValue, setModalValue] = useState({
         status: "",
-        content: ""
+        content: "",
+        data: null
     });
 
     const passwordStrengthCheck = (password) => {
@@ -126,10 +127,10 @@ export default function Register() {
         if (res.status === 'success') {
             setModalValue({
                 status: "success",
-                content: "Congratulations, your account has been successfully created"
+                content: "Congratulations, your account has been successfully created",
+                data: res.data
             })
             onOpen();
-            dispatch(setUserInfo({ ...res.data }));
         }
 
         else {
@@ -146,7 +147,8 @@ export default function Register() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
-            setTokens(res.data.tokens);
+            dispatch(setUserInfo({ ...modalValue.data }));
+            setTokens(modalValue.data.tokens);
             // router.push("/app/dashboard");
             window.open("/app/dashboard", '_self');
         } else {
