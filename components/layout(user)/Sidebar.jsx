@@ -182,7 +182,7 @@ const Sidebar = ({ show, setter }) => {
             favourite: false
         }, {
             icon: icons.AIProfile,
-            title: "AI FACE",
+            title: "ARTIFICIAL INTELLIGENCE",
             path: "/admin/ai-face",
             favourite: false
         }, {
