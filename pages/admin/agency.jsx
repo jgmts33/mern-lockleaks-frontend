@@ -89,7 +89,7 @@ export default function Dmcabadges() {
   return (
     <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
       <div className='flex max-lg:mx-auto'>
-        <span className='font-extrabold text-lg'>Agencies</span>
+        <span className='font-extrabold text-lg'>AGENCY</span>
       </div>
       <div className='grid grid-cols-2 gap-10 max-xl:grid-cols-2 max-md:grid-cols-1 mt-5'>
         <div>

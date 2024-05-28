@@ -133,13 +133,6 @@ export default function SMsubmit() {
                 <div className='grid grid-cols-3 gap-10 max-2xl:gap-2 max-xl:flex-col max-xl:flex max-xl:gap-0'>
                     <div className="flex flex-col items-center justify-center text-center max-w-[462px] max-xl:max-w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10 max-sm:mt-5">
                         <span className='font-normal text-base'><span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning:</span> Your government-issued ID is already in our database and does not need to be uploaded again. It will be used if necessary to delete the profiles you report. </span>
-                        <Button
-                            radius="lg"
-                            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 py-5 text-sm mx-auto mt-7"
-                            size='sm'
-                        >
-                            Upload ID
-                        </Button>
                     </div>
                     <div className="flex flex-col max-w-[462px] max-xl:max-w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-8 pb-10 max-sm:mt-5">
                         <div className='flex flex-col'>

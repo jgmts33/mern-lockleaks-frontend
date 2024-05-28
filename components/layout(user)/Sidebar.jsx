@@ -192,7 +192,7 @@ const Sidebar = ({ show, setter }) => {
             favourite: false
         },  {
             icon: icons.agency,
-            title: "Agencies",
+            title: "AGENCY",
             path: "/admin/agency",
             favourite: false
         }, {
