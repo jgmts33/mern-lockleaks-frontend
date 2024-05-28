@@ -54,7 +54,7 @@ function LanguageSelector({ onChange, value }) {
 
   const [isExpended, setIsExpended] = useState(false);
   const langCookie = value.split("/")[2];
-  const selectedItem = languages.find((item) => item.value == langCookie);
+  const selectedItem = languages.find((item) => item.value == langCookie) || languages[0];
   return (
     <div className="relative w-max flex flex-col">
       <div
