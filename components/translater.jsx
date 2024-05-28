@@ -69,6 +69,7 @@ function LanguageSelector({ onChange, value }) {
           {
             languages.map((item) => (
               <div
+                key={item.value}
                 className="flex gap-2 items-center justify-between p-2 hover:cursor-pointer hover:bg-slate-600 duration-300"
                 onClick={() => {
                   onChange(item.value);
