@@ -42,7 +42,7 @@ export default function PaymentProcessed() {
   const [expireDate, setExpireDate] = useState(null);
 
   const handlePaymentProcess = useCallback(async () => {
-    if ( !code ) return;
+    if (!code) return;
 
     const res = await updatePaymentLink(code);
 
@@ -77,8 +77,46 @@ export default function PaymentProcessed() {
   }, [code]);
 
   return (
-    <div className="text-white w-full min-h-[calc(100vh-120px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4 px-4">
+    <div className="text-white w-full min-h-[calc(100vh-120px)] max-w-[1389px]  flex flex-col items-center justify-center pb-6 pt-4 px-4">
       <div className='w-full'>
+        <div className='grid grid-cols-2 gap-4'>
+          <div className='flex flex-col gap-4'>
+            <p className='text-xl font-medium'>Usernames</p>
+            <ScrollShadow className='h-[400px] p-2 flex flex-col gap-2'>
+              {
+                usernames?.map((keyword, index) => {
+                  return (
+                    <div key={index}>
+                      {
+                        keyword.username && keyword.link ?
+                          <div className='flex items-center gap-4 bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm border border-gray-700 px-8 py-4 w-full rounded-xl'>
+                            <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
+                            <div className='flex flex-col gap-2 flex-1'>
+                              <div>USERNAME: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keyword.username}</span></div>
+                              <div>LINK: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keyword.link}</span></div>
+                            </div>
+                          </div>
+                          :
+                          <></>}
+                    </div>
+                  )
+                })
+              }
+            </ScrollShadow>
+          </div>
+          {price ? <div className='flex flex-col gap-4'>
+            <p className='text-xl font-medium'>Details</p>
+            {/* <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>This Payment Link will be expired at {moment(expireDate).format('MMMM Do YYYY, h:mm:ss a')}.</p> */}
+            <p className='text-lg font-medium'>Amount: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{price} USD</span></p>
+            {
+              usersCount ?
+                <p className='text-lg font-medium'>Users Count: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{usersCount}</span></p>
+                :
+                <></>
+            }
+          </div> : <></>}
+        </div>
+
         <div className="flex bg-gradient-to-br mt-20 max-sm:mt-8 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col border border-gray-700 p-5">
           <p className='font-medium text-[34px] text-center'>PAYMENT</p>
           <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
@@ -108,44 +146,6 @@ export default function PaymentProcessed() {
           <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
           <p className='font-normal text-base'>You will be charged this amount at regular intervals until you opt to cancel the automatic renewal.You can cancel the subscription using your account settings in the Billing section, or you can check the email you received for this purchase in your inbox. You will find instructions on how to cancel the subscription there.</p>
         </div>
-        <div className='grid grid-cols-2 gap-4'>
-          <div className='flex flex-col gap-4'>
-            <p className='text-xl font-medium'>Usernames</p>
-            <ScrollShadow className='h-[400px] p-2 flex flex-col gap-2'>
-            {
-              usernames?.map((keyword, index) => {
-                return (
-                  <div key={index}>
-                    {
-                      keyword.username && keyword.link ?
-                        <div className='flex items-center gap-4 bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm border border-gray-700 px-8 py-4 w-full rounded-xl'>
-                          <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
-                          <div className='flex flex-col gap-2 flex-1'>
-                            <div>USERNAME: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keyword.username}</span></div>
-                            <div>LINK: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keyword.link}</span></div>
-                          </div>
-                        </div>
-                        :
-                        <></>}
-                  </div>
-                )
-              })
-            }
-            </ScrollShadow>
-          </div>
-          {price ? <div className='flex flex-col gap-4'>
-            <p className='text-xl font-medium'>Details</p>
-            {/* <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>This Payment Link will be expired at {moment(expireDate).format('MMMM Do YYYY, h:mm:ss a')}.</p> */}
-            <p className='text-lg font-medium'>Amount: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{price} USD</span></p>
-            {
-              usersCount ? 
-              <p className='text-lg font-medium'>Users Count: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{usersCount}</span></p>
-              :
-              <></>
-            }
-          </div> : <></>}
-        </div>
-
       </div>
       <Modal
         backdrop="opaque"
