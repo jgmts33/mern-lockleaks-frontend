@@ -147,7 +147,6 @@ export default function Register() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
-            dispatch(setUserInfo({ ...modalValue.data }));
             setTokens(modalValue.data.tokens);
             // router.push("/app/dashboard");
             window.open("/app/dashboard", '_self');
