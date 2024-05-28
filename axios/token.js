@@ -60,7 +60,7 @@ export const getAccessToken = async () => {
             window.location.replace("/213219eksaodksaokdwqsa/login")
           }
           if (window.location.pathname.includes("app")) {
-            window.location.replace("/auth/login")
+            
           }
         }
         return null;

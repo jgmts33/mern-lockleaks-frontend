@@ -279,10 +279,8 @@ export default function RootLayout({ children }) {
                           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600`}
                           size='md'
                           onPress={() => {
-                            dispatch(setUserInfo(null));
-                            setTokensExpired();
                             onClose();
-                            router.push("/");
+                            window.location.replace("/")
                           }}
                         >
                           Back to HomePage
