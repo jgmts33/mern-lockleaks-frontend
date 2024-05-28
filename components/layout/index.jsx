@@ -280,7 +280,8 @@ export default function RootLayout({ children }) {
                           size='md'
                           onPress={() => {
                             onClose();
-                            window.location.replace("/")
+                            setTokensExpired();
+                            window.location.replace("/");
                           }}
                         >
                           Back to HomePage
