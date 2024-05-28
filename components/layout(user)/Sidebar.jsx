@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { Poppins } from "next/font/google";
-import { Review } from "../utils/Icons";
+import { Agency, Review } from "../utils/Icons";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -49,6 +49,7 @@ const Sidebar = ({ show, setter }) => {
         keywordsDataSet: <KeywordsDataSet fill="currentColor" size={16} />,
         helpPost: <HelpPost fill="currentColor" size={16} />,
         review: <Review fill="currentColor" size={16} />,
+        agency: <Agency fill="currentColor" size={16} />,
     };
 
     const USER_SIDEBAR_LIST = [
@@ -189,6 +190,11 @@ const Sidebar = ({ show, setter }) => {
             title: "SOCIAL MEDIA",
             path: "/admin/social-media",
             favourite: false
+        },  {
+            icon: icons.agency,
+            title: "Agencies",
+            path: "/admin/agency",
+            favourite: false
         }, {
             icon: icons.AIProfile,
             title: "PERSONAL AGENT",
@@ -212,7 +218,7 @@ const Sidebar = ({ show, setter }) => {
         }, {
             icon: icons.DataReport,
             title: "DATA REPORT",
-            path: "/admin/report",
+            path: "/admin/data-report",
             favourite: false
         }, {
             icon: icons.testbots,

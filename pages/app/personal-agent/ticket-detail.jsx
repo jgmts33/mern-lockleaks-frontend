@@ -350,7 +350,7 @@ export default function TicketDetail() {
                             </div>
                         </div>
                         <div className='flex flex-col flex-1 relative'>
-                            <ScrollShadow className='space-y-2 h-[calc(100vh-400px)] p-2'>
+                            <ScrollShadow className={'space-y-2 p-2 ' + (targetTicket.status == 'solved' || targetTicket == 'closed' ? 'h-[calc(100vh-300px)]' : 'h-[calc(100vh-400px)]')}>
                                 {
                                     isMessagesProcessing ?
                                         <div className='w-full flex justify-center mt-10 items-center'>
@@ -387,7 +387,7 @@ export default function TicketDetail() {
                                 <div ref={messagesListRef} />
                             </ScrollShadow>
                         </div>
-                        <div className='flex gap-5 items-center relative' >
+                        {targetTicket.status != 'solved' && targetTicket.status != '!closed' ? <div className='flex gap-5 items-center relative' >
                             <label
                                 className='flex items-center cursor-pointer relative'
                             >
@@ -455,7 +455,7 @@ export default function TicketDetail() {
                                     {icons.paperplane}
                                 </Button>
                             </div>
-                        </div>
+                        </div> : <></>}
                     </div>
                     :
                     <div className='flex flex-col w-full justify-center items-center flex-1'>

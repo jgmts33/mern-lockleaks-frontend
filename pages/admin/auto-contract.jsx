@@ -52,7 +52,7 @@ export default function AutoContract() {
 
     const setSelectDownloadData = (index) => {
         setSelectDownload(index)
-        router.push("/admin/report/details")
+        router.push("/admin/data-report/details")
     }
 
     return (

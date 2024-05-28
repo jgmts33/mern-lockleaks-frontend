@@ -206,7 +206,11 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
-    if (!currentPath?.includes("app") && !currentPath?.includes("admin") && !currentPath?.includes("auth/login")) return;
+    if (
+      !currentPath?.includes("app") 
+      && !currentPath?.includes("admin") 
+      && !currentPath?.includes("auth/login")
+    ) return;
     (async () => {
       try {
         const accessToken = await getAccessToken();
@@ -356,7 +360,7 @@ export default function RootLayout({ children }) {
                   <></>
               }
               {
-                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout")
+                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
                   ?
                   <Header />
                   :
@@ -383,7 +387,7 @@ export default function RootLayout({ children }) {
                 {children}
               </div>
               {
-                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout")
+                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
                   ?
                   <Footer cookieSettingsOnOpen={() => onOpen()} />
                   :

@@ -351,7 +351,7 @@ export default function TicketDetail() {
                             </div>
                         </div>
                         <div className='flex flex-col flex-1 relative'>
-                            <ScrollShadow className='h-[calc(100vh-400px)] space-y-2 p-2'>
+                            <ScrollShadow className={'space-y-2 p-2 ' + (targetTicket.status == 'solved' || targetTicket == 'closed' ? 'h-[calc(100vh-300px)]' : 'h-[calc(100vh-400px)]')}>
                                 {
                                     isMessagesProcessing ?
                                         <div className='w-full flex justify-center mt-16'>
@@ -371,13 +371,13 @@ export default function TicketDetail() {
                                                     <p className={eachMessage.sender_id == userId ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userId ? 'Username:' : "Support:"}</p>
                                                     <div className={eachMessage.sender_id != userId ? 'flex justify-end' : 'flex '}>
                                                         <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
-                                                        {eachMessage.content}
-                                                        <div className='flex flex-col gap-2 w-full'>
-                                                            {
-                                                                eachMessage.attached_images?.map((fileName, index) => <Image key={index} src={`https://server.lockleaks.com/images?filename=${fileName}`} width={450} height={260} className='max-w-full h-auto' />)
-                                                            }
+                                                            {eachMessage.content}
+                                                            <div className='flex flex-col gap-2 w-full'>
+                                                                {
+                                                                    eachMessage.attached_images?.map((fileName, index) => <Image key={index} src={`https://server.lockleaks.com/images?filename=${fileName}`} width={450} height={260} className='max-w-full h-auto' />)
+                                                                }
+                                                            </div>
                                                         </div>
-                                                    </div>
                                                     </div>
                                                     <p className={eachMessage.sender_id != userId ? 'text-right px-2' : 'px-2'}>{moment(targetTicket.createdAt).format('MMMM DD, YYYY')}</p>
                                                 </div>
@@ -388,7 +388,7 @@ export default function TicketDetail() {
                                 <div ref={messagesListRef} />
                             </ScrollShadow>
                         </div>
-                        <div className='flex gap-5 items-center relative' >
+                        {targetTicket.status != 'solved' && targetTicket.status != '!closed' ? <div className='flex gap-5 items-center relative' >
                             <label
                                 className='flex items-center cursor-pointer relative'
                             >
@@ -456,7 +456,7 @@ export default function TicketDetail() {
                                     {icons.paperplane}
                                 </Button>
                             </div>
-                        </div>
+                        </div> : <></>}
                     </div>
                     :
                     <div className='flex flex-col w-full justify-center items-center flex-1'>

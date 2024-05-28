@@ -17,9 +17,13 @@ import { SelectSwitch, Shine, UnselectSwitch } from '@/components/utils/Icons';
 import { createUsernames } from '@/axios/usernames';
 import { useRouter } from 'next/router';
 import { Success } from '../../components/utils/Icons';
+import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
+import { generateNewFanPaymentLink } from '../../axios/agency';
 
 export default function BUY() {
 
+    const userInfo = useSelector(info);
     const ButtonContent = [
         "2 (+$40)", "3 (+$80)", "4 (+$120)", "CUSTOM"
     ]
@@ -50,6 +54,8 @@ export default function BUY() {
             link: ''
         }
     ]);
+    const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [fanPaymentLink, setFanPaymentLink] = useState('');
 
     const handleSetUsernameCount = useCallback(() => {
         setUsernameCount(customUsernameCount);
@@ -89,6 +95,22 @@ export default function BUY() {
         return true;
     }, [targetKeyword]);
 
+    const handleCreateFanPaymentLink = useCallback(async () => {
+
+        setIsActionProcessing(true);
+        const res = await generateNewFanPaymentLink({
+            usernames,
+            amount: usernames.length * 40
+        });
+
+        if (res.status == 'success') {
+            setFanPaymentLink(`${window.location.host}/payment?code=${res.data.code}`)
+            navigator.clipboard.writeText(`${window.location.host}/payment?code=${res.data.code}`);
+        }
+        setIsActionProcessing(false);
+    }, [usernames, usernameCount]);
+
+
     const handlePaymentProcess = useCallback(async () => {
         // TODO: payment integration usernameCount, totalPrice
 
@@ -108,7 +130,7 @@ export default function BUY() {
     }, [usernameCount]);
 
     return (
-        <div className="text-white w-full min-h-[calc(100vh-112px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4 px-4">
+        <div className="text-white w-full min-h-[calc(100vh-120px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4 px-4">
             {
                 step == 0 ?
                     <div className='flex justify-center mx-auto gap-10 max-xl:flex-col max-sm:items-center max-sm:mx-auto max-sm:px-2'>
@@ -362,16 +384,16 @@ export default function BUY() {
                         </div>
                         :
                         <div className='w-full'>
-                            <div className="flex bg-gradient-to-br mt-20 max-sm:mt-8 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col border border-gray-700 px-5">
+                            <div className="flex bg-gradient-to-br mt-20 max-sm:mt-8 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col border border-gray-700 p-5">
                                 <p className='font-medium text-[34px] text-center'>PAYMENT</p>
                                 <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
                                     Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.
                                     This charge will be billed at regular intervals until you opt to cancel the automatic renewal.
                                 </p>
-                                <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-2 border-gray-600 border rounded-[30px] max-w-[676px] gap-3 flex max-md:flex-col items-center'>
+                                <div className='mx-auto mt-10 max-w-[676px] gap-3 flex max-md:flex-col items-center'>
                                     <Button
                                         radius="full"
-                                        className="mx-auto bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg"
+                                        className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
                                         size='lg'
                                         onClick={handlePaymentProcess}
                                     >
@@ -387,9 +409,10 @@ export default function BUY() {
                                     </Button>
                                     <Button
                                         radius="full"
-                                        className=" bg-transparent mx-auto px-7 py-7 text-lg"
+                                        className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
                                         size='lg'
-                                        onClick={handlePaymentProcess}
+                                        onClick={handleCreateFanPaymentLink}
+                                        isLoading={isActionProcessing}
                                     >
                                         Request fan support
                                     </Button>
