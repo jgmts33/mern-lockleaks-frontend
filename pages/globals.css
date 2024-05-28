@@ -5,12 +5,15 @@
 h1 {
   @apply text-3xl;
 }
+
 h2 {
   @apply text-xl;
 }
+
 h3 {
   @apply text-lg;
 }
+
 a {
   @apply text-blue-600 underline;
 }
@@ -33,6 +36,10 @@ a {
 body {
   color: rgb(var(--foreground-rgb));
   background: #020615;
+
+  position: static;
+  top: 0px !important;
+
   /* overflow-x: hidden; */
 }
 
@@ -59,12 +66,12 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   scroll-behavior: smooth;
-  background: linear-gradient(#aa7fe2,#ee4613);
+  background: linear-gradient(#aa7fe2, #ee4613);
   border-radius: 5px;
   margin-right: 10px;
 }
 
-.gradiant-background{
+.gradiant-background {
   background-image: radial-gradient(#2e213b 5%, #261c36 25%, #020615 60%);
 }
 
@@ -83,6 +90,7 @@ body {
   padding: 16px !important;
   margin-bottom: 20px;
 }
+
 .text-editor .ql-snow.ql-toolbar button {
   width: 36px;
   height: 36px;
@@ -111,4 +119,8 @@ body {
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
+}
+
+.skiptranslate {
+  display: none !important;
 }

@@ -2,17 +2,18 @@
 import React from "react";
 import Image from 'next/image';
 import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, AccountSetting, Star } from "@/components/utils/Icons";
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input, Link, Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, DropdownSection
 } from '@nextui-org/react';
 import Flag from '@/public/assets/background/download.svg';
 import UserAvatar from '@/public/assets/background/Avatar.svg';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { setUserInfo } from "@/lib/auth/authSlice";
 import { Poppins } from "next/font/google";
 import { setTokensExpired } from "@/axios/token";
+import { GoogleTranslate } from "../translater";
+import { getCookieValue } from "../../axios/token";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -34,6 +35,10 @@ const UserHeader = ({ show, setter }) => {
     logout: <LogOut fill="currentColor" size={16} />,
     accountsetting: <AccountSetting fill="currentColor" size={16} />,
     star: <Star fill="currentColor" size={16} />,
+  };
+
+  const getPrefLangCookie = () => {
+    return getCookieValue("googtrans") ?? "en";
   };
 
   const handleUserSetting = () => {
@@ -76,8 +81,7 @@ const UserHeader = ({ show, setter }) => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="text-white flex max-sm:hidden">
-          <Image src={Flag} width={15} height={15} alt="flag" />
-          <span>En</span>
+          <GoogleTranslate prefLangCookie={getPrefLangCookie()} />
         </NavbarItem>
         <NavbarItem className="text-white">
           <Dropdown>
