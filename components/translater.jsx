@@ -61,8 +61,8 @@ function LanguageSelector({ onChange, value }) {
         className="flex gap-2 items-center hover:cursor-pointer"
         onClick={() => setIsExpended(p => !p)}
       >
-        <p>{selectedItem.label}</p>
-        <Image src={selectedItem.src} width={30} height={20} alt="Flag" />
+        <p>{selectedItem?.label}</p>
+        <Image src={selectedItem?.src} width={30} height={20} alt="Flag" />
       </div>
       {
         isExpended ? <div className="absolute top-10 right-0 w-max flex flex-col p-2 bg-slate-500 rounded-md divide-y-1">
