@@ -217,7 +217,7 @@ export default function Dmcabadges() {
                     <div key={index}>
                       {
                         keyword.username && keyword.link ?
-                          <div className='flex max-sm:flex-col items-center gap-4 bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm border border-gray-700 px-4 py-2 w-full rounded-xl'>
+                          <div className='flex flex-wrap items-center gap-4 bg-gradient-to-br from-gray-600/10 to-gray-800/80 shadow-sm border border-gray-700 px-4 py-2 w-full rounded-xl'>
                             <p className='max-sm:hidden bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
                             <div className='flex flex-col gap-2 flex-1'>
                               <div>USERNAME: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{keyword.username}</span></div>
