@@ -146,7 +146,7 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
-    else if (!userInfo.subscription.payment_method) {
+    else if (!userInfo.subscription.plan_id) {
       setModalValue({
         title: "You cannot use this feature, you must have the Pro or Star plan.",
         content: 'If you want to use this feature click on the "Upgrade" button.'
