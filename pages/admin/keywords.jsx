@@ -140,7 +140,7 @@ export default function PingModels() {
                             radius="lg"
                             classNames={{
                                 input: [
-                                    "bg-transparent",
+                                    "bg-transparent notranslate",
                                     "text-black/90 dark:text-white/90",
                                     "placeholder:text-default-700/50 dark:placeholder:text-white/60",
                                 ],
@@ -184,7 +184,7 @@ export default function PingModels() {
                                     radius="lg"
                                     classNames={{
                                         input: [
-                                            "bg-transparent",
+                                            "bg-transparent notranslate",
                                             "text-black/90 dark:text-white/90",
                                             "placeholder:text-default-700/50 dark:placeholder:text-white/60",
                                         ],
@@ -226,7 +226,7 @@ export default function PingModels() {
                             radius="lg"
                             classNames={{
                                 input: [
-                                    "bg-transparent",
+                                    "bg-transparent notranslate",
                                     "text-black/90 dark:text-white/90",
                                     "placeholder:text-default-700/50 dark:placeholder:text-white/60",
                                 ],
@@ -269,7 +269,7 @@ export default function PingModels() {
                                     radius="lg"
                                     classNames={{
                                         input: [
-                                            "bg-transparent",
+                                            "bg-transparent notranslate",
                                             "text-black/90 dark:text-white/90",
                                             "placeholder:text-default-700/50 dark:placeholder:text-white/60",
                                         ],
@@ -340,6 +340,7 @@ export default function PingModels() {
                                             <Input
                                                 type="text"
                                                 label="Keyword"
+                                                className='notranslate'
                                                 value={newBasicKeyword}
                                                 onChange={(e) => setNewBasicKeyword(e.target.value)}
                                             />
@@ -350,6 +351,7 @@ export default function PingModels() {
                                                 <Input
                                                     type="text"
                                                     label="example.com"
+                                                    className='notranslate'
                                                     value={newWebsite}
                                                     onChange={(e) => setNewWebsite(e.target.value)}
                                                 />
@@ -358,6 +360,7 @@ export default function PingModels() {
                                                 <Input
                                                     type="text"
                                                     label="Keyword"
+                                                    className='notranslate'
                                                     value={newKeywords}
                                                     onChange={(e) => setNewKeywords(e.target.value)}
                                                 />

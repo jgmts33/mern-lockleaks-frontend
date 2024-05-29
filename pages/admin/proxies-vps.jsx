@@ -221,6 +221,7 @@ export default function ProxyBot() {
                                                     <Input
                                                         type="text"
                                                         label="VPS Source"
+                                                        className='notranslate'
                                                         value={targetInfo.vps_source}
                                                         onChange={(e) => setTargetInfo(p => ({ ...p, vps_source: e.target.value }))}
                                                     />
@@ -228,9 +229,10 @@ export default function ProxyBot() {
                                                         type="text"
                                                         label="IP Address"
                                                         value={targetInfo.ip_address}
+                                                        className='notranslate'
                                                         onChange={(e) => setTargetInfo(p => ({ ...p, ip_address: e.target.value }))}
                                                     />
-                                                    <div className='flex gap-4 items-center'>
+                                                    <div className='flex gap-4 items-center notranslate'>
                                                         <Input
                                                             type="text"
                                                             label="Username"
@@ -247,6 +249,7 @@ export default function ProxyBot() {
                                                     <Input
                                                         type="date"
                                                         label="Expire Date"
+                                                        className='notranslate'
                                                         min={new Date().toISOString().split('T')[0]}
                                                         value={moment(targetInfo.vps_expire_date).format('YYYY-MM-DD')}
                                                         onChange={(e) => setTargetInfo(p => ({ ...p, vps_expire_date: e.target.value }))}
@@ -257,18 +260,21 @@ export default function ProxyBot() {
                                                     <Input
                                                         type="text"
                                                         label="Proxy Source"
+                                                        className='notranslate'
                                                         value={targetInfo.proxy_source}
                                                         onChange={(e) => setTargetInfo(p => ({ ...p, proxy_source: e.target.value }))}
                                                     />
                                                     <Input
                                                         type="text"
                                                         label="Credentials (IP:Port:Username:Password)"
+                                                        className='notranslate'
                                                         value={targetInfo.proxy_credentials}
                                                         onChange={(e) => setTargetInfo(p => ({ ...p, proxy_credentials: e.target.value }))}
                                                     />
                                                     <Input
                                                         type="text"
                                                         label="Proxy Type(HTTP/Socks4/Socks5)"
+                                                        className='notranslate'
                                                         value={targetInfo.proxy_type}
                                                         onChange={(e) => setTargetInfo(p => ({ ...p, proxy_type: e.target.value }))}
                                                     />
@@ -276,6 +282,7 @@ export default function ProxyBot() {
                                                         type="date"
                                                         label="Proxy expire Date"
                                                         min={new Date().toISOString().split('T')[0]}
+                                                        className='notranslate'
                                                         value={moment(targetInfo.proxy_expire_date).format('YYYY-MM-DD')}
                                                         onChange={(e) => setTargetInfo(p => ({ ...p, proxy_expire_date: e.target.value }))}
                                                     />

@@ -285,6 +285,7 @@ export default function HomePage() {
                 <Image src="/assets/logos/patreon.png" width={118} height={32} alt='patreon' />
                 <Image src="/assets/logos/manyvids.png" width={186} height={95} alt='manyvids' />
                 <Image src="/assets/logos/chaturbate.png" width={136} height={41} alt='chaturbate' />
+                <p className="font-normal text-xl">and more</p>
               </div>
               <p className="text-center font-light text-base mt-5 opacity-80">Chosen by esteemed industry leaders</p>
             </div>

@@ -205,7 +205,7 @@ export default function Blog() {
                     {selectedCategoryId ? "Update Category" : "New Category"}
                   </ModalHeader>
                   <ModalBody>
-                    <div className='flex flex-col gap-4'>
+                    <div className='flex flex-col gap-4 notranslate'>
                       <Input
                         type="text"
                         label="Name"

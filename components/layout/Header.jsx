@@ -210,9 +210,6 @@ export default function Header() {
         {
           mounted ? userInfo ?
             <>
-              <NavbarItem className="text-white flex max-sm:hidden">
-                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
-              </NavbarItem>
               {
                 userInfo.roles.find(p => p == 'admin') ?
                   <NavbarItem>
@@ -223,12 +220,12 @@ export default function Header() {
                     <Link href="/app/dashboard" className="text-white">Dashboard</Link>
                   </NavbarItem>
               }
+              <NavbarItem className="text-white flex max-sm:hidden">
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}
+              </NavbarItem>
             </>
             :
             <>
-              <NavbarItem className="text-white flex max-sm:hidden">
-                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
-              </NavbarItem>
               <NavbarItem>
                 <Link href="/auth/login" className="text-white">Login</Link>
               </NavbarItem>
@@ -238,8 +235,11 @@ export default function Header() {
               </NavbarItem>
               <NavbarItem className="max-lg:hidden">
                 <Link href="/freeanalyse">
-                  <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>Free Analisis</Button>
+                  <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>Free Trial</Button>
                 </Link>
+              </NavbarItem>
+              <NavbarItem className="text-white flex max-sm:hidden">
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}
               </NavbarItem>
             </> : <></>
         }
@@ -262,9 +262,6 @@ export default function Header() {
         {
           mounted ? userInfo ?
             <>
-              <NavbarItem className="text-white flex max-sm:hidden">
-                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
-              </NavbarItem>
               {
                 userInfo.roles.find(p => p == 'admin') ?
                   <NavbarItem className="mt-5">
@@ -275,10 +272,10 @@ export default function Header() {
                     <Link href="/app/dashboard" className="text-white">Dashboard</Link>
                   </NavbarItem>
               }
-            </> : <>
               <NavbarItem className="text-white flex max-sm:hidden">
-                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}
               </NavbarItem>
+            </> : <>
               <NavbarItem className="mt-5">
                 <Link href="/auth/login" className="text-white">Login</Link>
               </NavbarItem>
@@ -289,6 +286,9 @@ export default function Header() {
                 <Link href="/freeanalyse" className="mt-5">
                   <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='md'>Free Analisis</Button>
                 </Link>
+              </NavbarItem>
+              <NavbarItem className="text-white flex max-sm:hidden">
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}
               </NavbarItem>
             </> : <></>
         }

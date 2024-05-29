@@ -153,7 +153,7 @@ export default function CreatePost() {
                                             </label>
                                         </div>
                                     </div>
-                                    <div className='space-y-4 w-full'>
+                                    <div className='space-y-4 w-full notranslate'>
                                         <Input
                                             type="text"
                                             label="Title"
@@ -197,7 +197,7 @@ export default function CreatePost() {
                                             </label>
                                         </div>
                                     </div>
-                                    <div className='space-y-4 w-full'>
+                                    <div className='space-y-4 w-full notranslate'>
                                         <Input
                                             type="text"
                                             label="Moderator Name"
@@ -215,11 +215,12 @@ export default function CreatePost() {
                             </div>
                         </div>
                         {mounted ?
-                            <TextEditer
-                                value={blogDetails.content}
-                                setValue={(value) => setBlogDetails(p => ({ ...p, content: value }))}
-                            />
-                            : <></>
+                            <div className='notranslate'>
+                                <TextEditer
+                                    value={blogDetails.content}
+                                    setValue={(value) => setBlogDetails(p => ({ ...p, content: value }))}
+                                />
+                            </div> : <></>
                         }
                         <div className='flex justify-end'>
                             <Button

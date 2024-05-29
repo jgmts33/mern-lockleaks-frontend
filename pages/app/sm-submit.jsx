@@ -182,7 +182,7 @@ export default function SMsubmit() {
                             <p>( Max Profiles per day: {userInfo.subscription.features.social_media_profile_submition} )
                                 <span className='ml-4 bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'> Left: {leftCount}</span></p>
                             <textarea
-                                className='bg-white/15 rounded-lg mt-3 h-32 p-2'
+                                className='bg-white/15 rounded-lg mt-3 h-32 p-2 notranslate'
                                 placeholder='Type one or multiple links with Enter split here'
                                 value={linksStr}
                                 onChange={(e) => {

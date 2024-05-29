@@ -58,7 +58,7 @@ export default function CreateTicket() {
                     <input
                         type="text"
                         name="subject"
-                        className='w-full outline-none p-2 rounded-lg bg-white/15 border border-gray-700'
+                        className='w-full outline-none p-2 rounded-lg bg-white/15 border border-gray-700 notranslate'
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder='Type here'
@@ -68,7 +68,7 @@ export default function CreateTicket() {
                     <label>Message</label>
                     <textarea
                         rows="5"
-                        className='w-full outline-none p-2 rounded-lg bg-white/15 border border-gray-700'
+                        className='w-full outline-none p-2 rounded-lg bg-white/15 border border-gray-700 notranslate'
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder='Type here'

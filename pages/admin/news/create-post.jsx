@@ -86,7 +86,7 @@ export default function CreatePost() {
                         </div>
                     </div>
                     :
-                    <>
+                    <div className='notranslate'>
                         <div className='w-full'>
                             <Input
                                 type="text"
@@ -112,7 +112,7 @@ export default function CreatePost() {
                                 Save
                             </Button>
                         </div>
-                    </>
+                    </div>
             }
         </div>
     )

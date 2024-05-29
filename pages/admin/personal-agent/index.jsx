@@ -441,7 +441,7 @@ export default function TicketDetail() {
                                 }
                                 <div className='w-full'>
                                     <textarea
-                                        className='bg-transparent w-full rounded-lg h-20 outline-none p-3'
+                                        className='bg-transparent w-full rounded-lg h-20 outline-none p-3 notranslate'
                                         placeholder='Type Here'
                                         value={message.content}
                                         onChange={(e) => setMessage(p => ({ ...p, content: e.target.value }))}

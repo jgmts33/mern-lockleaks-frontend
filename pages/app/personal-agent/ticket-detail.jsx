@@ -194,7 +194,7 @@ export default function TicketDetail() {
                                 classNames={{
                                     label: "text-black/50 dark:text-white/90",
                                     input: [
-                                        "bg-transparent",
+                                        "bg-transparent notranslate",
                                         "text-black/90 dark:text-white/90",
                                         "placeholder:text-default-700/50 dark:placeholder:text-white/60",
                                     ],
@@ -394,7 +394,7 @@ export default function TicketDetail() {
                                 {icons.paperclip}
                                 <input
                                     type="file"
-                                    className="hidden"
+                                    className="hidden notranslate"
                                     onChange={(e) => handleImageUpload(e.target.files)}
                                     accept=".png,.jpg,.jpeg"
                                     maxLength={10}
@@ -433,14 +433,14 @@ export default function TicketDetail() {
                                             src={src}
                                             width="150"
                                             height="80"
-                                            className="absolute object-cover w-[150px] h-[80px] opacity-80 rounded-xl border border-gray-900"
+                                            className="absolute object-cover w-[150px] h-[80px] opacity-80 rounded-xl border border-gray-900 notranslate"
                                             style={{ zIndex: index, left: `${index * 5}px`, bottom: `${110 + index * 5}px` }}
                                         />
                                     })
                                 }
                                 <div className='w-full'>
                                     <textarea
-                                        className='bg-transparent w-full rounded-lg h-20 outline-none p-3'
+                                        className='bg-transparent w-full rounded-lg h-20 outline-none p-3 notranslate'
                                         placeholder='Type Here'
                                         value={message.content}
                                         onChange={(e) => setMessage(p => ({ ...p, content: e.target.value }))}

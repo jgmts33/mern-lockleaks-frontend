@@ -20,7 +20,7 @@ function googleTranslateElementInit() {
   }, "google_translate_element");
 }
 
-export function GoogleTranslate({ prefLangCookie }) {
+export function GoogleTranslate({ prefLangCookie, renderValueType = 'language' /* country-code */ }) {
 
   const [langCookie, setLangCookie] = useState(decodeURIComponent(prefLangCookie));
 
@@ -54,7 +54,7 @@ export function GoogleTranslate({ prefLangCookie }) {
   return (
     <div>
       <div id="google_translate_element" style={{ visibility: "hidden", width: "1px", height: "1px" }}></div>
-      <LanguageSelector onChange={onChange} value={langCookie} />
+      <LanguageSelector onChange={onChange} value={langCookie} renderValueType={renderValueType} />
       <Script
         src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
         strategy="afterInteractive"
@@ -64,7 +64,7 @@ export function GoogleTranslate({ prefLangCookie }) {
 };
 
 
-function LanguageSelector({ onChange, value }) {
+function LanguageSelector({ onChange, value, renderValueType }) {
 
   const [isExpended, setIsExpended] = useState(false);
   const langCookie = value.split("/")[2];
@@ -75,7 +75,7 @@ function LanguageSelector({ onChange, value }) {
         className="flex gap-2 items-center hover:cursor-pointer"
         onClick={() => setIsExpended(p => !p)}
       >
-        <p>{selectedItem?.label}</p>
+        <p>{renderValueType == 'language' ? selectedItem?.label : <span className="uppercase notranslate">{selectedItem?.value}</span>}</p>
         <Image src={selectedItem?.src} width={30} height={20} alt="Flag" />
       </div>
       {
@@ -90,7 +90,7 @@ function LanguageSelector({ onChange, value }) {
                   setIsExpended(false);
                 }}
               >
-                <p className="text-sm">{item.label}</p>
+                <p>{renderValueType == 'language' ? item.label : <span className="uppercase notranslate">{item.value}</span>}</p>
                 <Image src={item.src} width={30} height={20} alt="Flag" />
               </div>
             ))
