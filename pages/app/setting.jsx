@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button, Link, ScrollShadow
 } from '@nextui-org/react';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { Facebook, Google, Twitter, Error } from '../../components/utils/Icons';
@@ -32,7 +32,7 @@ export default function AccountSetting() {
 
     const handleSetNewPassword = useCallback(async () => {
 
-        if (newPassword.length < 6 ) {
+        if (newPassword.length < 6) {
             setError("Password must be at least 6 characters");
             return;
         }
@@ -48,7 +48,7 @@ export default function AccountSetting() {
             setTimeout(() => {
                 setIsChangePasswordSuccessed(false);
                 setNewPassword("");
-            }, 1000);
+            }, 2000);
         }
     }, [newPassword]);
 
@@ -69,7 +69,7 @@ export default function AccountSetting() {
                         <span className='font-semibold text-base'>Personal Details</span>
                     </div>
                     <div className='flex flex-col px-5 mt-10 gap-5'>
-                        
+
                         {!userInfo?.social ? <div className='space-y-5'>
                             <Button
                                 radius="lg"
@@ -88,7 +88,8 @@ export default function AccountSetting() {
                                         setNewPassword(e.target.value);
                                         setError("");
                                     }}
-                                    className='w-full outline-none p-2 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30'
+                                    className='w-full outline-none p-2 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30 notranslate'
+                                    translate='no'
                                     required
                                 />
                                 {
@@ -102,14 +103,14 @@ export default function AccountSetting() {
                                 isLoading={isPasswordResetProcessing}
                                 onPress={handleSetNewPassword}
                             >
-                                {isChangePasswordSuccessed ? "Changed successfully!" : "Save"}
+                                {isChangePasswordSuccessed ? <span>Changed successfully!</span> : <span>Save</span>}
                             </Button>
                         </div> : <Button
                             radius="lg"
                             className="bg-gradient-to-tr bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full"
                             size='sm'
                         >
-                            Connected with
+                            <span>Connected with</span>
                             <span>{userInfo?.social ? icons[userInfo?.social] : ""}</span>
                         </Button>}
                     </div>

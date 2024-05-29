@@ -149,7 +149,7 @@ export default function Dmcabadges() {
                                       if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
                                       else setTargetKeyword(p => ({ ...p, username: e.target.value }))
                                     }}
-                                    className='w-full outline-none p-2 rounded-lg bg-white text-black notranslate'
+                                    className='w-full outline-none p-2 rounded-lg bg-white text-black'
                                     required
                                   />
                                   <p className='mt-1 text-red-700 text-left'>{urlValidation}</p>
@@ -271,7 +271,6 @@ export default function Dmcabadges() {
                 placeholder="exmaple@gmail.com"
                 labelPlacement='outside'
                 value={email}
-                className='notranslate'
                 onChange={(e) => {
                   setWarning("");
                   setEmail(e.target.value);
@@ -284,7 +283,6 @@ export default function Dmcabadges() {
               label="Price"
               labelPlacement='outside'
               placeholder="0.00"
-              className='notranslate'
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               startContent={
@@ -303,14 +301,12 @@ export default function Dmcabadges() {
                 type="number"
                 label="Count of Customers"
                 placeholder='0'
-                className='notranslate'
                 value={customerCount}
                 onChange={(e) => setCustomerCount(e.target.value)}
               />
               <Input
                 type="number"
                 label="Count of photoes"
-                className='notranslate'
                 disabled
                 value={customerCount * 2}
               />

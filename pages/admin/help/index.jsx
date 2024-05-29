@@ -15,7 +15,8 @@ export default function Blog() {
   const [isArticleProcessing, setIsArticleProcessing] = useState(false);
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
-  const [isCategoryActionProcessing, setIsCategoryActionProcessing] = useState(false);
+  const [isCategoryActionProcessing, setIsCategoryActionProcessing] = useState(-1);
+  const [isArticleActionProcessing, setIsArticleActionProcessing] = useState(-1);
   const [targetCategory, setTargetCategory] = useState({
     id: null,
     name: '',
@@ -45,7 +46,7 @@ export default function Blog() {
   }
 
   const handleCategorySubmit = useCallback(async () => {
-    setIsCategoryActionProcessing(true);
+    setIsCategoryActionProcessing(selectedCategoryId);
     let res = null;
     if (selectedCategoryId) {
       res = await updateCategory(selectedCategoryId, targetCategory);
@@ -68,27 +69,27 @@ export default function Blog() {
         onClose();
       }
     }
-    setIsCategoryActionProcessing(false);
+    setIsCategoryActionProcessing(-1);
   }, [targetCategory, selectedCategoryId]);
 
   const handleCategoryDelete = async (categoryId) => {
-    setIsCategoryActionProcessing(true);
+    setIsCategoryActionProcessing(categoryId);
 
     const res = await deleteCategory(categoryId);
     if (res.status == 'success') {
       setCategories(p => p.filter(item => item.id != categoryId));
     }
-    setIsCategoryActionProcessing(false);
+    setIsCategoryActionProcessing(-1);
   }
 
   const handleArticleDelete = async (articleId) => {
-    setIsCategoryActionProcessing(true);
+    setIsArticleActionProcessing(articleId);
 
     const res = await deleteHelpArticle(articleId);
     if (res.status == 'success') {
       setArticles(p => p.filter(item => item.id != articleId));
     }
-    setIsCategoryActionProcessing(false);
+    setIsArticleActionProcessing(-1);
   }
 
   const handleCreatePost = () => {
@@ -111,7 +112,7 @@ export default function Blog() {
         </Button>
       </div>
       <div className='flex gap-5 max-xl:flex-col max-sm:gap-0'>
-        <div className='mt-6 max-lg:justify-center max-lg:items-center min-w-[380px] w-[380px] max-sm:w-full '>
+        <div className='mt-6 max-lg:justify-center max-lg:items-center min-w-[430px] w-[430px] max-sm:w-full '>
           <p className='mb-4 uppercase'>Categories</p>
           <div className="flex flex-col w-full bg-white/15 border border-gray-500 rounded-[20px] px-5 pt-5 pb-10 max-md:mx-auto h-[calc(100vh-260px)]">
             <div className='w-full px-[10px]'>
@@ -170,7 +171,7 @@ export default function Blog() {
                                 radius="full"
                                 className="bg-gradient-to-tr from-gray-600 to-gray-700 border border-gray-500 text-white shadow-lg text-base"
                                 size='sm'
-                                isLoading={isCategoryActionProcessing}
+                                isLoading={isCategoryActionProcessing == item.id}
                                 onPress={() => {
                                   handleCategoryDelete(item.id);
                                 }}
@@ -205,7 +206,7 @@ export default function Blog() {
                     {selectedCategoryId ? "Update Category" : "New Category"}
                   </ModalHeader>
                   <ModalBody>
-                    <div className='flex flex-col gap-4 notranslate'>
+                    <div className='flex flex-col gap-4'>
                       <Input
                         type="text"
                         label="Name"
@@ -223,7 +224,6 @@ export default function Blog() {
                           radius="lg"
                           className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
                           onClick={handleCategorySubmit}
-                          isLoading={isCategoryActionProcessing}
                         >
                           Save
                         </Button>
@@ -272,6 +272,7 @@ export default function Blog() {
                               radius="full"
                               className="bg-gradient-to-tr from-gray-600 to-gray-700 border border-gray-500 text-white shadow-lg text-base"
                               size='sm'
+                              isLoading={isArticleActionProcessing == article.id}
                               onPress={() => handleArticleDelete(article.id)}
                             >
                               Delete

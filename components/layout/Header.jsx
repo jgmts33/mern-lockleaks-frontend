@@ -221,7 +221,7 @@ export default function Header() {
                   </NavbarItem>
               }
               <NavbarItem className="text-white flex max-sm:hidden">
-                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
               </NavbarItem>
             </>
             :

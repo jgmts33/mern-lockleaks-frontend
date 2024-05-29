@@ -86,7 +86,7 @@ export default function CreatePost() {
                         </div>
                     </div>
                     :
-                    <div className='notranslate'>
+                    <div>
                         <div className='w-full'>
                             <Input
                                 type="text"

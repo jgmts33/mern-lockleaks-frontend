@@ -154,7 +154,7 @@ export default function CreatePost() {
                                                 <input type="file" className="hidden" onChange={(e) => handleImageUpload(e.target.files)} accept=".png" />
                                             </label>
                                         </div>
-                                        <div className='space-y-4 flex-1 notranslate'>
+                                        <div className='space-y-4 flex-1'>
                                             <Input
                                                 type="text"
                                                 label="Name"
@@ -193,13 +193,12 @@ export default function CreatePost() {
                                         referLinkEnable ? <Input
                                             type="text"
                                             label="Refer link"
-                                            className='notranslate'
                                             value={customerReviewDetails.refer_link}
                                             onChange={(e) => setCustomerReviewDetails(p => ({ ...p, refer_link: e.target.value }))}
                                         /> : <></>
                                     }
                                     <textarea
-                                        className='bg-white/15 rounded-lg mt-3 h-[196px] p-2 notranslate'
+                                        className='bg-white/15 rounded-lg mt-3 h-[196px] p-2'
                                         placeholder='Customer talk here...'
                                         value={customerReviewDetails.content}
                                         onChange={(e) => setCustomerReviewDetails(p => ({ ...p, content: e.target.value }))}
@@ -208,7 +207,7 @@ export default function CreatePost() {
                             </div>
                             <div className="flex flex-col max-xl:max-w-full bg-white/15 border border-gray-500 rounded-[16px] p-8 pb-10">
                                 <p className='mb-4'>Social Profile Links</p>
-                                <div className='space-y-4 notranslate'>
+                                <div className='space-y-4'>
                                     <Input
                                         type="text"
                                         label="Telegram"

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button, Link, Progress
 } from '@nextui-org/react';
-import { Components} from "@/components/utils/Icons";
+import { Components } from "@/components/utils/Icons";
 import React from 'react';
 
 export default function SMscanner() {
@@ -95,7 +95,7 @@ export default function SMscanner() {
                     </div>
                     <div className='sm:hidden max-sm:mt-5 max-sm:mx-auto'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-lg" size='sm'>
-                            START
+                            <span>START</span>
                         </Button>
                     </div>
                     <Progress
@@ -112,12 +112,12 @@ export default function SMscanner() {
 
                 <div className='flex flex-col mt-10 max-sm:mt-5'>
                     {
-                        ScanList.map((items,index)=>{
-                            return(
+                        ScanList.map((items, index) => {
+                            return (
                                 <div key={index} className='flex flex-col'>
                                     <div className='flex gap-3 py-7 px-5'>
-                                    {icons.components}
-                                    {items.content}
+                                        {icons.components}
+                                        {items.content}
                                     </div>
                                     <hr className='w-full'></hr>
                                 </div>
@@ -134,8 +134,8 @@ export default function SMscanner() {
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>
                     </div>
                     <div className='px-20 max-lg:px-0 space-x-1 items-center'>
-                        <span className='font-normal text-xs'>Generated a removal report with</span> 
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>10</span> 
+                        <span className='font-normal text-xs'>Generated a removal report with</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>10</span>
                         <span className='font-normal text-sm'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                     </div>
                 </div>

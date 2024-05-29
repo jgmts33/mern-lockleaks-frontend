@@ -4,11 +4,10 @@ import Image from 'next/image';
 import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, AccountSetting, Star } from "@/components/utils/Icons";
 import { useState } from 'react';
 import {
-  Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarContent, NavbarItem, DropdownSection
+  Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarContent, NavbarItem
 } from '@nextui-org/react';
 import UserAvatar from '@/public/assets/background/Avatar.svg';
-import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Poppins } from "next/font/google";
 import { setTokensExpired } from "@/axios/token";
 import { GoogleTranslate } from "../translater";
@@ -19,7 +18,7 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 const UserHeader = ({ show, setter }) => {
 
   const router = useRouter();
-
+  const currentPath = usePathname();
   const [prefLangCookie, setPrefLangCookie] = useState('');
 
   const icons = {
@@ -122,7 +121,7 @@ const UserHeader = ({ show, setter }) => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="text-white flex max-sm:hidden">
-          {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
+          {prefLangCookie && !currentPath.includes('admin') ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
         </NavbarItem>
         <NavbarItem className="text-white">
           <Dropdown>

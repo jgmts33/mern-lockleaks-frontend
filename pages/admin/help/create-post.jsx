@@ -120,17 +120,14 @@ export default function CreatePost() {
                 type="text"
                 label="Title"
                 value={articleDetails.title}
-                className='notranslate'
                 onChange={(e) => setArticleDetails(p => ({ ...p, title: e.target.value }))}
               />
             </div>
             {mounted ?
-              <div className='notranslate'>
-                <TextEditer
-                  value={articleDetails.content}
-                  setValue={(value) => setArticleDetails(p => ({ ...p, content: value }))}
-                />
-              </div>
+              <TextEditer
+                value={articleDetails.content}
+                setValue={(value) => setArticleDetails(p => ({ ...p, content: value }))}
+              />
               : <></>
             }
             <div className='flex justify-end'>

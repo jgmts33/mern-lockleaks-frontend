@@ -242,7 +242,7 @@ export default function SMsubmit() {
                                     handleSubmit(requestLinks);
                                 }}
                             >
-                                Submit
+                                <span>Submit</span>
                             </Button>
                         </div>
                     </div>

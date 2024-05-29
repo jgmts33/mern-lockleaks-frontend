@@ -125,7 +125,7 @@ export default function Bing() {
                         onPress={() => handleScan()}
                     >
                         {
-                            scanProgress.current == 0 ? "START" : scanProgress.current == scanProgress.all ? "FINISHED" : "Processing"
+                            scanProgress.current == 0 ? <span>START</span> : scanProgress.current == scanProgress.all ? <span>FINISHED</span> : <span>Processing</span>
                         }
                     </Button>
                 </div>
@@ -134,7 +134,7 @@ export default function Bing() {
                     aria-label="Loading..."
                     className="max-w-2xl"
                     color='secondary'
-                    alue={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 100)}
+                    value={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 100)}
                     showValueLabel={true}
                 />
             </div>

@@ -128,7 +128,7 @@ export default function Google() {
                         onPress={() => handleScan()}
                     >
                         {
-                            scanProgress.current == 0 ? "START" : scanProgress.current == scanProgress.all ? "FINISHED" : "Processing"
+                            scanProgress.current == 0 ? <span>START</span> : scanProgress.current == scanProgress.all ? <span>FINISHED</span> : <span>Processing</span>
                         }
                     </Button>
                 </div>
@@ -137,7 +137,7 @@ export default function Google() {
                     aria-label="Loading..."
                     className="max-w-2xl"
                     color='secondary'
-                    alue={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 1)}
+                    value={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 1)}
                     showValueLabel={true}
                 />
             </div>

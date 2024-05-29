@@ -220,7 +220,6 @@ export default function VPSManagement() {
                                     type="text"
                                     label="IP Address"
                                     value={ipAddress}
-                                    className='notranslate'
                                     onChange={(e) => setIpAddress(e.target.value)}
                                 />
                                 <div className='flex my-2 mt-4 justify-end'>
