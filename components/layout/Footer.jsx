@@ -6,6 +6,7 @@ import {
   Button
 } from '@nextui-org/react';
 import { createNewSubscribeUser } from '../../axios/news';
+import { Crisp } from 'crisp-sdk-web';
 
 export default function Footer({ cookieSettingsOnOpen }) {
 
@@ -65,18 +66,23 @@ export default function Footer({ cookieSettingsOnOpen }) {
           <div className='flex flex-col text-white font-light gap-2'>
             <p className='font-semibold text-xl pb-4'>Support</p>
             <Link href={"/help"} className='!no-underline !text-white'>Help & Support</Link>
-            <Link href={"/contact-us"} className='!no-underline !text-white'>Contact Us</Link>
+            <p className='cursor-pointer'
+              onClick={() => {
+                Crisp.chat.open();
+              }}
+            >Contact Us</p>
+
             <Link href={"/deletedata"} className='!no-underline !text-white'>Delete Data</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
             <div className='flex justify-start'>
-              <p className='font-semibold text-xl pb-4'>Subscribe To our newsletter</p>
+              <p className='font-semibold text-xl pb-4'>Join Our Newsletter</p>
             </div>
             <div className='relative w-full justify-starter items-center'>
               <input
                 type="email"
                 name="email"
-                placeholder='placeholder'
+                placeholder='exmampl@gmail.com'
                 className='outline-none p-4 w-full pr-32 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 min-w-[500px] max-sm:min-w-full'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -94,10 +100,10 @@ export default function Footer({ cookieSettingsOnOpen }) {
             </div>
             <p className='text-sm font-normal text-red-600 mt-1 pl-6'>{warning}</p>
             <div className='mt-6 text-sm italic space-y-2 px-6'>
-              <p>TEST</p>
-              <p>TEST</p>
-              <p>TEST</p>
-              <p>07213921321</p>
+              <p>©2024 Lock Leaks</p>
+              <p>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
+              <p>Register Code (CUI): 48091747</p>
+              <p>VAT: RO 48091747</p>
             </div>
           </div>
         </div>

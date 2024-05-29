@@ -1,12 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from 'next/image';
 import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, AccountSetting, Star } from "@/components/utils/Icons";
 import { useState } from 'react';
 import {
-  Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Input, Link, Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, DropdownSection
+  Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarContent, NavbarItem, DropdownSection
 } from '@nextui-org/react';
-import Flag from '@/public/assets/background/download.svg';
 import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
@@ -20,9 +19,8 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 const UserHeader = ({ show, setter }) => {
 
   const router = useRouter();
-  const dispatch = useDispatch();
 
-  const [isSearch, setSearch] = useState(false);
+  const [prefLangCookie, setPrefLangCookie] = useState('');
 
   const icons = {
     yellowstar: <YellowStar fill="currentColor" size={16} />,
@@ -37,8 +35,46 @@ const UserHeader = ({ show, setter }) => {
     star: <Star fill="currentColor" size={16} />,
   };
 
-  const getPrefLangCookie = () => {
-    return getCookieValue("googtrans") ?? "en";
+  const getPrefLangCookie = async () => {
+    try {
+      // Step 1: Fetch user's IP address
+      const response = await fetch('https://api.ipify.org?format=json');
+      const { ip } = await response.json();
+
+      // Step 2: Determine location based on IP
+      const geoResponse = await fetch(`https://ipinfo.io/widget/demo/${ip}`);
+      const geoData = await geoResponse.json();
+      const countryCode = geoData.data.country;
+
+      // Step 3: Set cookie based on location
+      let lang;
+      switch (countryCode) {
+        case 'US':
+          lang = 'en';
+          break;
+        case 'IT':
+          lang = 'it';
+          break;
+        case 'RO':
+          lang = 'ro';
+          break;
+        case 'ES':
+          lang = 'es';
+          break;
+        case 'RU':
+          lang = 'ru';
+          break;
+        // Add more cases as needed
+        default:
+          lang = 'en'; // Default to English if unknown
+      }
+
+      setPrefLangCookie(getCookieValue("googtrans") ? getCookieValue("googtrans") : `/auto/${lang}`);
+
+    } catch (error) {
+      console.error('Error getting preferred language:', error);
+      return 'en'; // Fallback to English if there's an error
+    }
   };
 
   const handleUserSetting = () => {
@@ -64,6 +100,11 @@ const UserHeader = ({ show, setter }) => {
     setTokensExpired();
   }
 
+  useEffect(() => {
+    getPrefLangCookie();
+  }, [])
+
+
   return (
     <Navbar
       isBordered
@@ -81,7 +122,7 @@ const UserHeader = ({ show, setter }) => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="text-white flex max-sm:hidden">
-          <GoogleTranslate prefLangCookie={getPrefLangCookie()} />
+          {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
         </NavbarItem>
         <NavbarItem className="text-white">
           <Dropdown>

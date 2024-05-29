@@ -11,19 +11,23 @@ import {
     Input,
     ModalFooter
 } from '@nextui-org/react';
-import React, { useCallback } from 'react';
-import { useEffect, useState } from 'react';
-import { SelectSwitch, Shine, UnselectSwitch } from '@/components/utils/Icons';
-import { createUsernames } from '@/axios/usernames';
-import { useRouter } from 'next/router';
-import { Success } from '../../components/utils/Icons';
-import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { generateNewFanPaymentLink } from '../../axios/agency';
+
+import { SelectSwitch, Shine, UnselectSwitch, Success } from '@/components/utils/Icons';
+import { createUsernames } from '@/axios/usernames';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { updatePaymentStatus } from '@/axios/user';
+import { generateNewFanPaymentLink } from '@/axios/agency';
+
+import { useRouter } from 'next/router';
+import { useSearchParams } from 'next/navigation';
 
 export default function BUY() {
 
     const userInfo = useSelector(info);
+    const searchParams = useSearchParams();
+    const plan = searchParams.get('plan');
     const ButtonContent = [
         "2 (+$40)", "3 (+$80)", "4 (+$120)", "CUSTOM"
     ]
@@ -125,9 +129,30 @@ export default function BUY() {
 
     }, [usernames, usernameCount]);
 
+    const handlesubmitUsernamesForFreeTrial = useCallback(async () => {
+
+        const res = await updatePaymentStatus({
+            plan: 'trial'
+        });
+
+        if (res.status == 'success') {
+            onOpen();
+        } else {
+            console.log("Error:", res.data);
+        }
+
+    })
+
     useEffect(() => {
         setUsernames(p => ([...p.splice(0, usernameCount)]))
     }, [usernameCount]);
+
+    useEffect(() => {
+        if (plan == 'trial') {
+            setStep(1);
+            setUsernameCount(1);
+        }
+    }, [plan]);
 
     return (
         <div className="text-white w-full min-h-[calc(100vh-120px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4 px-4">
@@ -417,6 +442,7 @@ export default function BUY() {
                                         Request fan support
                                     </Button>
                                 </div>
+                                {fanPaymentLink ? <p className='text-sm mt-4 text-red-600 font-bold'> The Fans Payment Link was copied to your clipboard. </p> : <></>}
                             </div>
                             <div className='mx-auto text-start mt-20 max-sm:mt-8 mb-40 max-sm:mb-8 max-md:px-3'>
                                 <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
@@ -424,8 +450,8 @@ export default function BUY() {
                             </div>
                         </div>
             }
-            <div className='max-sm:px-6 w-full fixed bottom-0 bg-black/55 backdrop-blur-xl left-0 z-20 h-20'>
-                <div className='max-w-[1389px] flex justify-between items-center bg-transparent my-4 mx-auto'>
+            <div className='max-sm:px-6 w-full fixed bottom-0 bg-black/55 backdrop-blur-xl left-0 z-20 h-20 px-4'>
+                {!plan ? <div className='max-w-[1389px] flex justify-between items-center bg-transparent my-4 mx-auto'>
                     {step > 0 ? <Button
                         radius="lg"
                         className="bg-gradient-to-tr text-white w-36  from-purple-light to-purple-weight"
@@ -446,11 +472,21 @@ export default function BUY() {
                     >
                         Next
                     </Button> : <div></div>}
-                </div>
+                </div> : <div className='max-w-[1389px] flex justify-end items-center bg-transparent my-4 mx-auto'>
+                    <Button
+                        radius="lg"
+                        className={"bg-gradient-to-tr text-white w-36  " + (!usernames.length || !usernames[0]?.link ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
+                        disabled={!usernames.length || !usernames[0]?.link}
+                        size='lg'
+                        onPress={handlesubmitUsernamesForFreeTrial}
+                    >
+                        Submit
+                    </Button>
+                </div>}
             </div>
             <Modal
                 backdrop="opaque"
-                isOpen={step == 2 && isOpen}
+                isOpen={(step == 2 && isOpen) || ( plan && isOpen )}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{

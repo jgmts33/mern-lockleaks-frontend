@@ -272,12 +272,12 @@ const Sidebar = ({ show, setter }) => {
             favourite: false
         }, {
             icon: icons.bing,
-            title: "Newsletter",
+            title: "NEWSLETTER",
             path: "/admin/news",
             favourite: false
         }, {
             icon: icons.helpPost,
-            title: "Help",
+            title: "HELP",
             path: "/admin/help",
             favourite: false
         }, {

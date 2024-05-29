@@ -2,24 +2,23 @@
 import React from 'react'
 import Image from 'next/image';
 import {
-  Button, Link
+  Button
 } from '@nextui-org/react';
-import AIScan from '@/public/assets/services/ai-scan.svg';
-import Robertgroup from '@/public/assets/robert.svg';
-import ImgDoubleChatGroup from '@/public/assets/free-analys/double-chat-group.svg';
 import ImgContactUs from '@/public/assets/free-analys/contact-us.svg';
 import ImgChat from '@/public/assets/free-analys/chat.svg';
-import ImgBush1 from '@/public/assets/free-analys/bush-1.svg';
 import ImgBush2 from '@/public/assets/free-analys/bush-2.svg';
 import ImgBush3 from '@/public/assets/free-analys/bush-3.svg';
 import ImgBush4 from '@/public/assets/free-analys/bush-4.svg';
-import ImgOutlineDiscovery from '@/public/assets/free-analys/outline_discovery.svg';
 import { Shine, Robertchat, RecoveryChat } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customer-review';
 import { Bell, Complete } from '../components/utils/Icons';
+import { Crisp } from 'crisp-sdk-web';
+import { useRouter } from 'next/router';
 
 
 export default function FreeAnalyse() {
+
+  const router = useRouter();
 
   const icons = {
     shine: <Shine fill="currentColor" size={16} />,
@@ -29,12 +28,6 @@ export default function FreeAnalyse() {
     bell: <Bell fill="currentColor" size={16} />,
   };
 
-  const freeanalyseContent = {
-    firstDescription: "Discover potential content leaks on your account (s) with our complimentary analysis.",
-    secondDescription: "Decide whether our service is right for you based on the results.",
-    thirdDescription: "Receive Your Results via Email: Get your analysis report within 24 hours delivered straight to your inbox."
-  }
-
   return (
     <>
       <div className="text-white relative container flex flex-col mx-auto mb-8" >
@@ -42,8 +35,8 @@ export default function FreeAnalyse() {
           <Image className="max-xl:hidden object-cover rounded-[20px] absolute left-0 top-0 inset-0 blur-2xl" src={ImgBush2} width={1000} height={1000} alt='saturn' />
           <div className='text-center relative'>
             <p className='font-medium text-5xl max-lg:text-3xl text-center'>FREE TRIAL</p>
-            <p className='mt-10 max-md:mt-4 text-[34px] max-sm:text-lg leading-tight max-w-[800px] w-full mx-auto max-md:px-4'>Test Our App for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>3 Days</span> – No Payment Required!</p>
-            <Image className="max-md:w-full rounded-[20px] absolute top-16 right-24 rotate-[-20deg] max-md:hidden" width={220} height={160} src={ImgChat} alt="Reverse Chat" />
+            <p className='mt-10 max-md:mt-4 text-[34px] max-sm:text-lg leading-tight max-w-[800px] w-full mx-auto max-md:px-4'>Test Our App for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>3 Days</span> <br />- No Payment<br />Required!</p>
+            <Image className="max-md:w-full rounded-[20px] text-center absolute top-16 right-24 rotate-[-20deg] max-md:hidden" width={220} height={160} src={ImgChat} alt="Reverse Chat" />
           </div>
           <Image className="max-xl:hidden object-cover rounded-[20px] absolute right-36 -top-32 blur-3xl" src={ImgBush3} width={600} height={600} alt='saturn' />
         </div>
@@ -78,6 +71,9 @@ export default function FreeAnalyse() {
                 radius="lg"
                 className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-max mx-auto mt-10 absolute z-10 bottom-6 left-24"
                 size='lg'
+                onClick={() => {
+                  Crisp.chat.open();
+                }}
               >
                 Contact Us
                 <span>{icons.shine}</span>
@@ -90,12 +86,12 @@ export default function FreeAnalyse() {
           </div>
           <div className={'bg-gradient-to-tr from-[#3BC940]/10 to-gray-800/40 rounded-3xl cursor-pointer max-w-[590px] border-[0.4px] border-white/10 px-[54px] py-[62px] w-full max-sm:px-6 h-max'}>
             <p className='text-[63px] text-center'>FREE</p>
-            <p className='text-[63px] text-center'>3-Day</p>
+            <p className='text-5xl text-center'>3-Day</p>
             <Button
               radius="lg"
               className="w-full mt-6 bg-gradient-to-r mx-auto from-[#B759FF] to-[#F68171] border-gray-600 border text-white shadow-lg text-lg"
               size='lg'
-            // onClick={() => router.push("/checkout/buy")}
+            onClick={() => router.push("/checkout/buy?plan=trial")}
             >
               Get Free Trial
             </Button>

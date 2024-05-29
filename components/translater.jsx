@@ -9,7 +9,6 @@ const languages = [
   { label: "Romania", value: "ro", src: "https://flagcdn.com/h60/ro.png" },
   { label: "Italy", value: "it", src: "https://flagcdn.com/h60/it.png" },
   { label: "Spainish", value: "es", src: "https://flagcdn.com/h60/es.png" },
-  { label: "Russian", value: "ru", src: "https://flagcdn.com/h60/ru.png" },
   // Add additional languages as needed
 ];
 
@@ -23,14 +22,29 @@ function googleTranslateElementInit() {
 
 export function GoogleTranslate({ prefLangCookie }) {
 
-  const [langCookie, setLangCookie] = React.useState(decodeURIComponent(prefLangCookie));
+  const [langCookie, setLangCookie] = useState(decodeURIComponent(prefLangCookie));
 
   useEffect(() => {
     window.googleTranslateElementInit = googleTranslateElementInit;
   }, []);
 
+  useEffect(() => {
+    // Function to set the language and trigger change event
+    const setLanguageAndTriggerChange = () => {
+      const element = document.querySelector(".goog-te-combo");
+      console.log(element);
+      if (element) {
+        element.value = prefLangCookie.replace('/auto/', '');
+        element.dispatchEvent(new Event("change"));
+      }
+    };
+
+    // If the element is not found initially, wait a bit and try again
+    setTimeout(setLanguageAndTriggerChange, 1000); // Adjust the timeout as needed
+  }, []);
+
   const onChange = (value) => {
-    const lang = "/en/" + value;
+    const lang = "/auto/" + value;
     setLangCookie(lang);
     const element = document.querySelector(".goog-te-combo");
     element.value = value;

@@ -5,9 +5,10 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowDown } from "@/components/utils/Icons";
 import { Poppins } from "next/font/google";
-import { getAccessToken } from "../../axios/token";
+import { getAccessToken, getCookieValue } from "../../axios/token";
 import { getUserInfo } from "../../axios/auth";
 import { Crisp } from "crisp-sdk-web";
+import { GoogleTranslate } from "../translater";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function Header() {
   const [userInfo, setUserInfo] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [mounted, setMounted] = useState(false);
+  const [prefLangCookie, setPrefLangCookie] = useState('');
 
   const menuItems = [
     {
@@ -75,6 +77,48 @@ export default function Header() {
     },
   ]
 
+  const getPrefLangCookie = async () => {
+    try {
+      // Step 1: Fetch user's IP address
+      const response = await fetch('https://api.ipify.org?format=json');
+      const { ip } = await response.json();
+
+      // Step 2: Determine location based on IP
+      const geoResponse = await fetch(`https://ipinfo.io/widget/demo/${ip}`);
+      const geoData = await geoResponse.json();
+      const countryCode = geoData.data.country;
+
+      // Step 3: Set cookie based on location
+      let lang;
+      switch (countryCode) {
+        case 'US':
+          lang = 'en';
+          break;
+        case 'IT':
+          lang = 'it';
+          break;
+        case 'RO':
+          lang = 'ro';
+          break;
+        case 'ES':
+          lang = 'es';
+          break;
+        case 'RU':
+          lang = 'ru';
+          break;
+        // Add more cases as needed
+        default:
+          lang = 'en'; // Default to English if unknown
+      }
+
+      setPrefLangCookie(getCookieValue("googtrans") ? getCookieValue("googtrans") : `/auto/${lang}`);
+
+    } catch (error) {
+      console.error('Error getting preferred language:', error);
+      return 'en'; // Fallback to English if there's an error
+    }
+  };
+
   const icons = {
     arrowDown: <ArrowDown fill="currentColor" size={16} />,
   };
@@ -86,6 +130,7 @@ export default function Header() {
   useEffect(() => {
     (async () => {
       try {
+        await getPrefLangCookie();
         const accessToken = await getAccessToken();
         if (accessToken) {
           const res = await getUserInfo();
@@ -165,6 +210,9 @@ export default function Header() {
         {
           mounted ? userInfo ?
             <>
+              <NavbarItem className="text-white flex max-sm:hidden">
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
+              </NavbarItem>
               {
                 userInfo.roles.find(p => p == 'admin') ?
                   <NavbarItem>
@@ -178,6 +226,9 @@ export default function Header() {
             </>
             :
             <>
+              <NavbarItem className="text-white flex max-sm:hidden">
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
+              </NavbarItem>
               <NavbarItem>
                 <Link href="/auth/login" className="text-white">Login</Link>
               </NavbarItem>
@@ -208,10 +259,12 @@ export default function Header() {
           </NavbarMenuItem>
         ))}
         <hr className="w-56 bg-gray-400 mt-5"></hr>
-
         {
           mounted ? userInfo ?
             <>
+              <NavbarItem className="text-white flex max-sm:hidden">
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
+              </NavbarItem>
               {
                 userInfo.roles.find(p => p == 'admin') ?
                   <NavbarItem className="mt-5">
@@ -223,6 +276,9 @@ export default function Header() {
                   </NavbarItem>
               }
             </> : <>
+              <NavbarItem className="text-white flex max-sm:hidden">
+                {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}
+              </NavbarItem>
               <NavbarItem className="mt-5">
                 <Link href="/auth/login" className="text-white">Login</Link>
               </NavbarItem>

@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import CustomerReview from '@/components/customer-review';
 import { useRouter } from 'next/navigation';
 import { getCookieValue } from '@/axios/token';
+import { Crisp } from 'crisp-sdk-web';
 
 export default function HomePage() {
   const router = useRouter();
@@ -226,7 +227,7 @@ export default function HomePage() {
     <>
       {/* This section for define cookie setting*/}
       <div className="text-white max-w-[1480px] mx-auto">
-        
+
         <div className='relative flex px-5'>
 
           {/* This section for define homepage header*/}
@@ -240,9 +241,9 @@ export default function HomePage() {
             </div>
             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-44 -right-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
             <div className='flex w-full justify-center mt-8 relative max-xl:flex-col max-xl:items-center max-xl:mx-auto max-lg:pb-10'>
-              <Button 
-                radius="lg" 
-                className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg" 
+              <Button
+                radius="lg"
+                className="bg-gradient-to-tr max-xl:w-[1/2] from-purple-light to-purple-weight text-white shadow-lg px-10 py-7 text-lg"
                 size='lg'
                 onPress={() => router.push("/pricing")}
               >
@@ -278,14 +279,12 @@ export default function HomePage() {
               <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute top-56 -left-10 bg-[#0d091a] bg-opacity-5 blur-3xl' />
               <p className="text-center font-normal text-xl max-md:justify-center z-10">Increase your online success with professional copyright protection</p>
               <div className="w-full flex flex-wrap justify-center mt-12 gap-8 items-center max-lg:flex-col z-10">
-                <Image src="assets/onlyfans.svg" width={154} height={26} alt='onlyfans' />
-                <Image src="assets/myfreecams.svg" width={151} height={13} alt='myfreecams' />
-                <Image src="assets/stripchat.svg" width={143} height={26} alt='stripchat' />
-                <Image src="assets/patreon.svg" width={118} height={32} alt='patreon' />
-                <Image src="assets/stripchat.svg" width={134} height={26} alt='stripchat' />
-                <Image src="assets/manyvids.svg" width={186} height={95} alt='manyvids' />
-                <Image src="assets/chaturbate.svg" width={136} height={41} alt='chaturbate' />
-                <p className="font-normal text-xl">and more</p>
+                <Image src="/assets/logos/onlyfans.png" width={154} height={26} alt='onlyfans' />
+                <Image src="/assets/logos/myfreecams.png" width={151} height={13} alt='myfreecams' />
+                <Image src="/assets/logos/stripchat.png" width={143} height={26} alt='stripchat' />
+                <Image src="/assets/logos/patreon.png" width={118} height={32} alt='patreon' />
+                <Image src="/assets/logos/manyvids.png" width={186} height={95} alt='manyvids' />
+                <Image src="/assets/logos/chaturbate.png" width={136} height={41} alt='chaturbate' />
               </div>
               <p className="text-center font-light text-base mt-5 opacity-80">Chosen by esteemed industry leaders</p>
             </div>
@@ -431,8 +430,15 @@ export default function HomePage() {
             <div className='py-8'>
               <p className='font-medium text-5xl max-lg:text-4xl max-lg:leading-10 max-xl:text-4xl uppercase'>Securing Your Brand:</p>
               <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
-              <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full mt-6" size='lg'>
-                Free Analisis
+              <Button 
+                radius="lg" 
+                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full mt-6" 
+                size='lg'
+                onClick={() => {
+                  Crisp.chat.open();
+                }}
+              >
+                Support Chat
               </Button>
             </div>
             <div className='flex max-lg:hidden'>
@@ -445,7 +451,7 @@ export default function HomePage() {
 
         {/* This section for define support video*/}
 
-        { functionalCookieAllowed ? <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
+        {functionalCookieAllowed ? <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
           <video controls preload="none" className='rounded-xl w-full'>
             <source src="/path/to/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.

@@ -81,7 +81,7 @@ export default function PaymentProcessed() {
       <div className='w-full'>
         <div className='grid grid-cols-2 gap-4'>
           <div className='flex flex-col gap-4'>
-            <p className='text-xl font-medium'>Usernames</p>
+            <p className='text-xl font-medium'>Usernames ( {usernames.length} )</p>
             <ScrollShadow className='h-[400px] p-2 flex flex-col gap-2'>
               {
                 usernames?.map((keyword, index) => {
@@ -110,7 +110,7 @@ export default function PaymentProcessed() {
             <p className='text-lg font-medium'>Amount: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{price} USD</span></p>
             {
               usersCount ?
-                <p className='text-lg font-medium'>Users Count: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{usersCount}</span></p>
+                <p className='text-lg font-medium'>Members count of agency : <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{usersCount}</span></p>
                 :
                 <></>
             }
