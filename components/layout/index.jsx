@@ -149,9 +149,17 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
+    else if ( userInfo.subscription.status == 'expired' ) {
+      setModalValue({
+        title: "Sorry , but your plan is expired",
+        content: 'Please go to pricing page with clicking on the "Upgrade" button.'
+      })
+      onOpen();
+    }
+
     else if (!userInfo.subscription.plan_id) {
       setModalValue({
-        title: "Sorry , but you can't use any of features here before you purchase one of our plan.",
+        title: "Sorry , but you can't use any of features here before you purchase one of our plan",
         content: 'Please go to pricing page with clicking on the "Upgrade" button.'
       })
       onOpen();
