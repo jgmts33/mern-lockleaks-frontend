@@ -52,7 +52,7 @@ export const USER_SIDEBAR_LIST = [
   }, {
     id: 2,
     icon: icons.warningcircle,
-    title: "ADULT Tubs",
+    title: "ADULT TUBS",
     value: 'adult_tubs',
     path: "/app/adult-tubs",
     favourite: false
