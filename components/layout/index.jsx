@@ -144,12 +144,12 @@ export default function RootLayout({ children }) {
     if (!userInfo.verified) {
       setModalValue({
         title: "You should verify Email before using our application",
-        content: 'If you want to use this feature, check your Inbox!'
+        content: 'If you want to use this feature, check your Inbox!',
       })
       onOpen();
     }
 
-    else if ( userInfo.subscription.status == 'expired' ) {
+    else if (userInfo.subscription.status == 'expired') {
       setModalValue({
         title: "Sorry , but your plan is expired",
         content: 'Please go to pricing page with clicking on the "Upgrade" button.'
@@ -159,8 +159,8 @@ export default function RootLayout({ children }) {
 
     else if (!userInfo.subscription.plan_id) {
       setModalValue({
-        title: "Sorry , but you can't use any of features here before you purchase one of our plan",
-        content: 'Please go to pricing page with clicking on the "Upgrade" button.'
+        title: "Your subscription has expired or remains unpaid",
+        content: 'Please renew it to regain access to the panel!'
       })
       onOpen();
     }
@@ -321,7 +321,7 @@ export default function RootLayout({ children }) {
                           size='md'
                           onPress={() => handleConfirmClick()}
                         >
-                          {!userInfo?.verified ? "Verify Email" : "Upgrade"}
+                          {!userInfo?.verified ? "Verify Email" : userInfo.subscription.status == 'expired' ? "Renew" : "Upgrade"}
                         </Button>
                         <Button
                           radius="lg"
