@@ -13,7 +13,8 @@ import {
   ModalContent,
   ModalBody,
   ModalFooter,
-  Modal
+  Modal,
+  ModalHeader
 } from '@nextui-org/react';
 import NextTopLoader from 'nextjs-toploader';
 import { useDispatch, useSelector } from "react-redux";
@@ -31,6 +32,8 @@ import { ENDPOINT } from "../../config/config";
 import { getUserId } from "../../axios/token";
 import { getScrapedDataList } from "../../axios/download";
 import { getExtraReport } from "../../axios/user";
+import { ADMIN_SIDEBAR_LIST, USER_SIDEBAR_LIST } from "@/config/config";
+
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -148,8 +151,8 @@ export default function RootLayout({ children }) {
 
     else if (!userInfo.subscription.plan_id) {
       setModalValue({
-        title: "You cannot use this feature, you must have the Pro or Star plan.",
-        content: 'If you want to use this feature click on the "Upgrade" button.'
+        title: "Sorry , but you can't use any of features here before you purchase one of our plan.",
+        content: 'Please go to pricing page with clicking on the "Upgrade" button.'
       })
       onOpen();
     }
@@ -159,7 +162,7 @@ export default function RootLayout({ children }) {
     }
 
     getScrapedDataListInfo();
-    
+
     setMounted(true);
 
     const userId = getUserId();
@@ -207,8 +210,8 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;
     if (
-      !currentPath?.includes("app") 
-      && !currentPath?.includes("admin") 
+      !currentPath?.includes("app")
+      && !currentPath?.includes("admin")
       && !currentPath?.includes("auth/login")
     ) return;
     (async () => {
@@ -233,6 +236,10 @@ export default function RootLayout({ children }) {
     }
   }, []);
 
+  useEffect(() => {
+    console.log("userInfo:", userInfo);
+  }, [userInfo])
+
   if (mounted) return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
@@ -242,8 +249,26 @@ export default function RootLayout({ children }) {
               <Sidebar show={showSidebar} setter={setShowSidebar} />
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
-                <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto" style={{ scrollBehavior: 'smooth' }}>
-                  {children}
+                <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto relative " style={{ scrollBehavior: 'smooth' }}>
+                  {userInfo.roles.includes('admin') || USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value == undefined || userInfo.subscription.features[USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value]
+                    ?
+                    children :
+                    <div className="w-full py-24 max-md:py-12 max-sm:py-6">
+                      <div className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-w-lg rounded-2xl border p-8 space-y-12 mx-auto'>
+                        <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>
+                        <p className='font-bold text-[34px] text-center capitalize leading-9'>You cannot use this feature, you must have the Pro or Star plan!</p>
+                        <p className='font-light text-[22px]'>If you want to use this feature click on the "Upgrade" button. </p>
+                        <Button
+                          radius="lg"
+                          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+                          size='md'
+                          onPress={() => router.push("/pricing")}
+                        >
+                          Upgrade
+                        </Button>
+                      </div>
+                    </div>
+                  }
                 </div>
               </div>
 
@@ -260,10 +285,26 @@ export default function RootLayout({ children }) {
                 <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
                   {() => (
                     <>
+                      <ModalHeader>
+                        <div className="flex justify-end w-full">
+                          <Button
+                            radius="md"
+                            className={`bg-gradient-to-tr text-lg from-gray-500 to-gray-600 w-max`}
+                            size='sm'
+                            onPress={() => {
+                              onClose();
+                              setTokensExpired();
+                              window.location.replace("/");
+                            }}
+                          >
+                            Log out
+                          </Button>
+                        </div>
+                      </ModalHeader>
                       <ModalBody>
                         <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>
-                        <span className='font-bold text-[34px] text-center capitalize leading-9'>{modalValue.title}!</span>
-                        <span className='font-light text-[22px]'>{modalValue.content} </span>
+                        <p className='font-bold text-[34px] text-center capitalize leading-9'>{modalValue.title}!</p>
+                        <p className='font-light text-[22px]'>{modalValue.content} </p>
                       </ModalBody>
                       <ModalFooter>
                         <Button
@@ -280,7 +321,6 @@ export default function RootLayout({ children }) {
                           size='md'
                           onPress={() => {
                             onClose();
-                            setTokensExpired();
                             window.location.replace("/");
                           }}
                         >

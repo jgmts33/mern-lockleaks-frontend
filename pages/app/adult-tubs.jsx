@@ -7,7 +7,7 @@ import { Components, Checkboxs } from "@/components/utils/Icons";
 import { lastScanResult as lastScanRusultInfo } from "../../lib/bot/botSlice";
 import { useSelector } from 'react-redux';
 
-export default function AdultWesite() {
+export default function AdultTubs() {
 
     const lastScanResult = useSelector(lastScanRusultInfo);
 

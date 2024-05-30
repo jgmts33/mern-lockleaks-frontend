@@ -158,7 +158,7 @@ export default function Header() {
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
       <NavbarContent className="lg:hidden mx-auto flex" justify="center">
-        <NavbarBrand className="w-full">
+        <NavbarBrand>
           <Link href="/">
             <Image src="/assets/logo.svg" width={190} height={50} alt="logo" className="justify-starter" />
           </Link>
@@ -200,7 +200,7 @@ export default function Header() {
             HELP
           </Link>
         </NavbarItem>
-        <NavbarItem className="max-md:hidden">
+        <NavbarItem className="max-md:hidden mr-16">
           <Link color="foreground" href="/blog">
             BLOG
           </Link>

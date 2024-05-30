@@ -267,7 +267,7 @@ export default function HomePage() {
               <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-10 -top-5 max-sm:opacity-100 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
-                  <p className='font-semibold text-lg mt-3'>ROFESSIONAL SUPPORT</p>
+                  <p className='font-semibold text-lg mt-3'>PROFESSIONAL SUPPORT</p>
                   <p className='font-normal text-base mt-2'>Live Support at Your Fingertips - We're Just a Click Away.</p>
                 </div>
               </div>
