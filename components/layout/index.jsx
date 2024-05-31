@@ -323,17 +323,31 @@ export default function RootLayout({ children }) {
                         >
                           {!userInfo?.verified ? "Verify Email" : userInfo.subscription.status == 'expired' ? "Renew" : "Upgrade"}
                         </Button>
-                        <Button
-                          radius="lg"
-                          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600`}
-                          size='md'
-                          onPress={() => {
-                            onClose();
-                            window.location.replace("/");
-                          }}
-                        >
-                          Back to HomePage
-                        </Button>
+                        {
+                          !userInfo.subscription.plan_id ?
+                            <Button
+                              radius="lg"
+                              className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+                              size='md'
+                              onPress={() => {
+                                onClose();
+                                window.location.replace("/checkout/buy?plan=trial")
+                              }}
+                            >
+                              Free Trial
+                            </Button> :
+                            <Button
+                              radius="lg"
+                              className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600`}
+                              size='md'
+                              onPress={() => {
+                                onClose();
+                                window.location.replace("/");
+                              }}
+                            >
+                              Back to HomePage
+                            </Button>
+                        }
                       </ModalFooter>
                     </>
                   )}
