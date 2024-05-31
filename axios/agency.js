@@ -53,12 +53,10 @@ export const generateNewFanPaymentLink = async (data) => {
   }
 }
 
-export const updatePaymentLink = async (code) => {
+export const updatePaymentLink = async (data) => {
 
   try {
-    const res = await axios.patch(`${ENDPOINT}/payment`, {
-      code
-    });
+    const res = await axios.patch(`${ENDPOINT}/payment`, data);
 
     return {
       status: 'success',

@@ -14,19 +14,20 @@ import {
 } from '@nextui-org/react';
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
-import { Shine } from '@/components/utils/Icons';
 import { useRouter } from 'next/router';
-import { Success } from '@/components/utils/Icons';
+import { Success, Warning, Shine } from '@/components/utils/Icons';
 import { useSearchParams } from 'next/navigation';
 import { getPaymentLinkDetails } from '@/axios/agency';
-import moment from 'moment/moment';
 import { updatePaymentLink } from '../axios/agency';
+import { ENDPOINT } from '../config/config';
+import { io } from 'socket.io-client';
 
 export default function PaymentProcessed() {
 
   const icons = {
     shine: <Shine fill="currentColor" size={16} />,
     success: <Success fill="currentColor" size={16} />,
+    warning: <Warning fill="currentColor" size={16} />,
   };
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -35,45 +36,69 @@ export default function PaymentProcessed() {
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [usernames, setUsernames] = useState([]);
-  const [email, setEmail] = useState('');
   const [price, setPrice] = useState(0);
   const [usersCount, setUsersCount] = useState(0);
-  const [status, setStatus] = useState('');
-  const [expireDate, setExpireDate] = useState(null);
+  const [modalData, setModalData] = useState()
 
-  const handlePaymentProcess = useCallback(async () => {
+  const handlePaymentProcess = useCallback(async (payment_method) => {
     if (!code) return;
-
-    const res = await updatePaymentLink(code);
-
-    if (res.status == 'success') {
-      // router.push("/app/scanner");
-      onOpen();
-    } else {
-      console.log("Error:", res.data);
-    }
-
+    setIsProcessing(true);
+    await updatePaymentLink({
+      code,
+      payment_method
+    });
+    setIsProcessing(false);
   }, [code]);
 
   useEffect(() => {
+
+    const socket = io(ENDPOINT);
+    console.log(`payment_link_status_${code}`);
+    socket.on(`payment_link_status_${code}`, (value) => {
+      if (value == 'paid') {
+        setModalData({
+          status: 'success',
+          title: 'Paid Successfully!',
+          btnText: 'Go to Dashboard',
+          action: () => window.open("/app/dashboard", '_current')
+        });
+        onOpen();
+      } else {
+        setModalData({
+          status: 'failed',
+          title: 'Payment Link Expired!',
+          btnText: 'Go to Homepage',
+          action: () => window.open("/", '_current')
+        });
+        onOpen();
+      }
+
+    });
+
     (async () => {
-      setIsProcessing(false);
+      // setIsProcessing(false);
       if (!code) return;
       const res = await getPaymentLinkDetails(code);
+      console.log(res.data);
       if (res.status == 'success') {
-        if (status == 'expired' || status == 'paid') {
-          alert(status);
+        if (res.data.status == 'expired' || res.data.status == 'paid') {
           router.push('/');
         }
         setUsernames(res.data.usernames);
         setPrice(res.data.amount);
-        setStatus(res.data.status);
-        setExpireDate(res.data.expire_date);
         setUsersCount(res.data.user_counts);
-        setEmail(res.data.email);
       }
-      setIsProcessing(true);
+      else {
+        router.push("/");
+      }
+      // setIsProcessing(true);
     })();
+
+    return () => {
+      socket.disconnect();
+    }
+
+
   }, [code]);
 
   return (
@@ -128,7 +153,8 @@ export default function PaymentProcessed() {
               radius="full"
               className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
               size='lg'
-              onClick={handlePaymentProcess}
+              isLoading={isProcessing}
+              onClick={() => handlePaymentProcess('credit_card')}
             >
               Pay whith credit card
             </Button>
@@ -136,7 +162,8 @@ export default function PaymentProcessed() {
               radius="full"
               className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg"
               size='lg'
-              onClick={handlePaymentProcess}
+              isLoading={isProcessing}
+              onClick={() => handlePaymentProcess('paypal')}
             >
               Pay whith paypal
             </Button>
@@ -161,8 +188,8 @@ export default function PaymentProcessed() {
           {() => (
             <>
               <ModalBody>
-                <div className='mx-auto flex items-center justify-center -mb-24'>{icons.success}</div>
-                <span className='font-bold text-2xl text-center capitalize leading-9'>Paid Successfully!</span>
+                <div className='mx-auto flex items-center justify-center -mb-24'>{modalData?.status == 'success' ? icons.success : icons.warning}</div>
+                <span className='font-bold text-2xl text-center capitalize leading-9'>{modalData?.title}</span>
                 {/* <span className='font-bold text-2xl text-center capitalize leading-9'>Usernames added Successfully!</span> */}
               </ModalBody>
               <ModalFooter>
@@ -170,9 +197,9 @@ export default function PaymentProcessed() {
                   radius="lg"
                   className="bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647] mx-auto"
                   size='md'
-                  onPress={() => window.open("/app/dashboard", '_current')}
+                  onPress={modalData?.action}
                 >
-                  Go to Dashboard
+                  {modalData?.btnText}
                 </Button>
               </ModalFooter>
             </>
