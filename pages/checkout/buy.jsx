@@ -132,16 +132,21 @@ export default function BUY() {
     const handlePaymentProcess = useCallback(async () => {
         // TODO: payment integration usernameCount, totalPrice
 
-        const res = await createUsernames({ usernames });
+        const createUsernamesRes = await createUsernames({ usernames });
 
-        if (res.status == 'success') {
-            // router.push("/app/scanner");
-            onOpen();
-        } else {
-            console.log("Error:", res.data);
+        if ( createUsernamesRes.status == 'success' ) {
+            const res = await updatePaymentStatus({
+                plan: plan
+            });
+    
+            if (res.status == 'success') {
+                onOpen();
+            } else {
+                console.log("Error:", res.data);
+            }
         }
 
-    }, [usernames, usernameCount]);
+    }, [usernames, usernameCount, plan]);
 
     const handlesubmitUsernamesForFreeTrial = useCallback(async () => {
 

@@ -35,6 +35,7 @@ export default function Pricing() {
     const pricingContent = [
         {
             title: "STARTER",
+            value: 'starter',
             monthly_price: "150",
             yearly_price: "405",
             discount: "Discount 10%",
@@ -71,6 +72,7 @@ export default function Pricing() {
             add_content: "px-3"
         }, {
             title: "STAR",
+            value: 'star',
             monthly_price: "350",
             yearly_price: "840",
             plan_deadline: 5,
@@ -109,6 +111,7 @@ export default function Pricing() {
         },
         {
             title: "PRO",
+            value: 'pro',
             monthly_price: "200",
             yearly_price: "510",
             discount: "Discount 20%",
@@ -309,7 +312,7 @@ export default function Pricing() {
                                                         radius="lg"
                                                         className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
                                                         size='lg'
-                                                        onClick={() => router.push("/checkout/buy")}
+                                                        onClick={() => router.push(`/checkout/buy?plan=${item.value}`)}
                                                     >
                                                         BUY
                                                     </Button>
@@ -318,7 +321,7 @@ export default function Pricing() {
                                                         radius="lg"
                                                         className="w-full mt-10 bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
                                                         size='lg'
-                                                        onClick={() => router.push("/checkout/buy")}
+                                                        onClick={() => router.push(`/checkout/buy?plan=${item.value}`)}
                                                     >
                                                         BUY
                                                     </Button>
