@@ -146,6 +146,26 @@ export const resetPassword = async (token, password) => {
   }
 }
 
+export const sendVerificationEmail = async (email) => {
+
+  const userId = await getUserId();
+  try {
+
+    const res = await axios.post(`${ENDPOINT}/auth/send-verification-email`, { email, id: userId });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message
+    }
+  }
+}
+
 export const getUserInfo = async () => {
 
   const userId = getUserId();

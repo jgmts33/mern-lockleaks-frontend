@@ -110,7 +110,7 @@ export default function Login() {
 
             <div className='w-full flex items-center justify-center'>
                 <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl' />
-                <div className="w-[562px] max-sm:w-full flex flex-col items-center text-white z-30">
+                <div className="w-[562px] max-sm:w-full flex flex-col items-center text-white z-20">
                     <div className='text-center max-w-[354px] mb-4 max-sm:mb-0 max-sm:mt-0'>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
                         <p className="font-medium text-5xl ">Log in</p>

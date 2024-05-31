@@ -33,6 +33,7 @@ import { getUserId } from "../../axios/token";
 import { getScrapedDataList } from "../../axios/download";
 import { getExtraReport } from "../../axios/user";
 import { ADMIN_SIDEBAR_LIST, USER_SIDEBAR_LIST } from "@/config/config";
+import { sendVerificationEmail } from "../../axios/auth";
 
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
@@ -57,12 +58,27 @@ export default function RootLayout({ children }) {
   const router = useRouter();
   const userInfo = useSelector(info);
   const scanProgress = useSelector(scanProgressInfo);
+  const [verifyEmailSendTimer, setVerifyEmailSendTimer] = useState(0);
+  const [isProcessing, setIsProcessing] = useState(false);
   const dispatch = useDispatch();
 
-  const handleConfirmClick = useCallback(() => {
+  const handleConfirmClick = useCallback(async () => {
 
     if (!userInfo?.verified) {
-      window.location.assign(`mailto:${userInfo.email}`);
+      setIsProcessing(true);
+      const res = await sendVerificationEmail(userInfo?.email);
+      setIsProcessing(false);
+      if (res.status == 'success') {
+        let revertTime = 60;
+
+        const timer = setInterval(() => {
+
+          if (revertTime == 0) clearInterval(timer);
+          revertTime--;
+          setVerifyEmailSendTimer(revertTime);
+
+        }, 1000);
+      }
     }
 
     else if (!userInfo.subscription.payment_method) {
@@ -315,13 +331,16 @@ export default function RootLayout({ children }) {
                         <p className='font-light text-[22px]'>{modalValue.content} </p>
                       </ModalBody>
                       <ModalFooter>
+                        { verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></> }
                         <Button
                           radius="lg"
                           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
                           size='md'
+                          isLoading={isProcessing}
+                          isDisabled={verifyEmailSendTimer}
                           onPress={() => handleConfirmClick()}
                         >
-                          {!userInfo?.verified ? "Verify Email" : userInfo.subscription.status == 'expired' ? "Renew" : "Upgrade"}
+                          {!userInfo?.verified ? "Resend Email" : userInfo.subscription.status == 'expired' ? "Renew" : "Upgrade"}
                         </Button>
                         {
                           !userInfo.subscription.plan_id ?

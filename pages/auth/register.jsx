@@ -113,7 +113,7 @@ export default function Register() {
         if ( !isTermSelected ) {
             errors.terms = "You should accept to register"
         }
-        console.log(confirmPassword, password)
+        console.log(confirmPassword, password, isTermSelected)
         setErrors(errors);
         return Object.keys(errors).length === 0;
     }, [password, confirmPassword, email, isTermSelected]);
@@ -165,7 +165,7 @@ export default function Register() {
 
             <div className='w-full flex items-center justify-center'>
                 <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-44 left-44 bg-[#532a88] bg-opacity-50 blur-3xl z-10' />
-                <div className="w-[562px] max-sm:w-full flex flex-col items-center text-white z-30">
+                <div className="w-[562px] max-sm:w-full flex flex-col items-center text-white z-20">
                     <div className='text-center max-w-[354px] mb-4 max-sm:mb-0 max-sm:mt-0'>
                         <p className="font-light text-2xl leading-[60px]">Welcome!</p>
                         <p className="font-medium text-5xl ">Sign up</p>
@@ -229,10 +229,10 @@ export default function Register() {
                                 false
                         }
                         <div className="flex flex-col gap-2 text-[#CCCDD0]">
-                            <Checkbox isSelected={isagreeSelected} onValueChange={setIsAgreeSelected} radius="none">
+                            <Checkbox isSelected={isagreeSelected} onValueChange={(value) => setIsAgreeSelected(value)} radius="none">
                                 <p className='font-light text-xs pt-3 pl-2'>I consent to receive valuable updates from LockLeaks and acknowledge that I can unsubscribe at any time. No spam, guaranteed.</p>
                             </Checkbox>
-                            <Checkbox isSelected={isTermSelected} onValueChange={setIsTermSelected} radius="none">
+                            <Checkbox isSelected={isTermSelected} onValueChange={(value) => setIsTermSelected(value)} radius="none">
                                 <span className='font-light text-xs pl-2'>I agree to LockLeaks's</span> <Link href='/terms-of-service' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                             {

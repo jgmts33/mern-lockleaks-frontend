@@ -345,7 +345,6 @@ export default function BUY() {
                                     <Button
                                         radius="full"
                                         className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
-                                        size='lg'
                                         isLoading={isUsernameLinkValidationProcessing}
                                         onClick={() => {
                                             if (targetKeywordType == 'link') handleSetNewLink();
@@ -356,7 +355,7 @@ export default function BUY() {
                                     </Button>
                                     <Button
                                         radius="full"
-                                        className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'
+                                        className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"
                                         onClick={() => {
                                             setTargetKeyword(null);
                                             setTargetKeywordType("username")
