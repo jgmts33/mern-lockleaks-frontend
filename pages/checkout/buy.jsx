@@ -484,7 +484,7 @@ export default function BUY() {
                         </div>
             }
             <div className='max-sm:px-6 w-full fixed bottom-0 bg-black/55 backdrop-blur-xl left-0 z-20 h-20 px-4'>
-                {!plan ? <div className='max-w-[1389px] flex justify-between items-center bg-transparent my-4 mx-auto'>
+                {plan != 'trial' ? <div className='max-w-[1389px] flex justify-between items-center bg-transparent my-4 mx-auto'>
                     {step > 0 ? <Button
                         radius="lg"
                         className="bg-gradient-to-tr text-white w-36  from-purple-light to-purple-weight"
