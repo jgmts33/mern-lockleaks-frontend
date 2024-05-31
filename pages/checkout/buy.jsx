@@ -22,6 +22,7 @@ import { generateNewFanPaymentLink } from '@/axios/agency';
 
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
+import { getAccessToken } from '../../axios/token';
 
 export default function BUY() {
 
@@ -148,6 +149,16 @@ export default function BUY() {
     }, [usernameCount]);
 
     useEffect(() => {
+        
+        (async () => {
+            const accessToken = await getAccessToken();
+
+            if ( !accessToken ) {
+                router.push('/auth/login');
+            }
+
+        })();
+
         if (plan == 'trial') {
             setStep(1);
             setUsernameCount(1);
