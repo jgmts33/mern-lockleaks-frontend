@@ -116,7 +116,7 @@ export default function Register() {
         console.log(confirmPassword, password)
         setErrors(errors);
         return Object.keys(errors).length === 0;
-    }, [password, confirmPassword, email]);
+    }, [password, confirmPassword, email, isTermSelected]);
 
     const handleRegister = useCallback(async () => {
         if (!validationForm()) return;
