@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
     }
 
     else if (!userInfo.subscription.payment_method) {
-      router.push("/pricing");
+      window.open("/pricing");
     }
 
   }, [userInfo]);
