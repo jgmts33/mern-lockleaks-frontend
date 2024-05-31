@@ -13,23 +13,6 @@ export default function SMscanner() {
         components: <Components fill="currentColor" size={16} />,
     };
 
-    const ScannerContent = [
-        {
-            icon: icons.bingsearch,
-            title: "GOOGLE SEARCH",
-            content: "Initiated an automated Google search, resulting in the detection of 10 new copyright infringements."
-        },
-        {
-            icon: icons.bingsearch,
-            title: "GOOGLE IMAGES SEARCH",
-            content: "Initiated an automated Google Images search, resulting in the detection of 10 new copyright infringements"
-        }, {
-            icon: icons.bingsearch,
-            title: "GOOGLE VIDEOS SEARCH",
-            content: "Initiated an automated Google Images search, resulting in the detection of 10 new copyright infringements."
-        }
-    ]
-
     const ScanList = [
         {
             icon: icons.components,

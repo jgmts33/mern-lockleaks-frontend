@@ -6,7 +6,7 @@ export const createNewBlog = async (data) => {
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.post(`${ENDPOINT}/blogs/new`, data,
+    const res = await axios.post(`${ENDPOINT}/blogs`, data,
       {
         headers: {
           'x-access-token': accessToken,
