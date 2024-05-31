@@ -110,6 +110,9 @@ export default function Register() {
         else if (confirmPassword != password) {
             errors.password = "Passwords Not Matched!"
         }
+        if ( !isTermSelected ) {
+            errors.terms = "You should accept to register"
+        }
         console.log(confirmPassword, password)
         setErrors(errors);
         return Object.keys(errors).length === 0;
@@ -232,6 +235,12 @@ export default function Register() {
                             <Checkbox isSelected={isTermSelected} onValueChange={setIsTermSelected} radius="none">
                                 <span className='font-light text-xs pl-2'>I agree to LockLeaks's</span> <Link href='/terms-of-service' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
+                            {
+                            errors.terms ?
+                                <div className='text-white  font-light flex bg-[#3f2828] rounded-lg p-1 text-sm'>{icons.error}&nbsp;{errors.terms}</div>
+                                :
+                                false
+                        }
                         </div>
                         <Button
                             radius="lg"

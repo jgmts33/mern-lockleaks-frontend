@@ -145,17 +145,21 @@ export default function BUY() {
 
     const handlesubmitUsernamesForFreeTrial = useCallback(async () => {
 
-        const res = await updatePaymentStatus({
-            plan: 'trial'
-        });
+        const createUsernamesRes = await createUsernames({ usernames });
 
-        if (res.status == 'success') {
-            onOpen();
-        } else {
-            console.log("Error:", res.data);
+        if ( createUsernamesRes.status == 'success' ) {
+            const res = await updatePaymentStatus({
+                plan: 'trial'
+            });
+    
+            if (res.status == 'success') {
+                onOpen();
+            } else {
+                console.log("Error:", res.data);
+            }
         }
 
-    })
+    }, [usernames]);
 
     useEffect(() => {
         setUsernames(p => ([...p.splice(0, usernameCount)]))
