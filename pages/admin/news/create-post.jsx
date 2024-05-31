@@ -86,7 +86,7 @@ export default function CreatePost() {
                         </div>
                     </div>
                     :
-                    <div>
+                    <div className='space-y-6'>
                         <div className='w-full'>
                             <Input
                                 type="text"

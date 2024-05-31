@@ -1,9 +1,14 @@
 import React, { useCallback, useState } from 'react'
-import { FaceBook, LinkedIn, TwitterV2, TikTok, Instagram, Redit } from '@/components/utils/Icons';
+import { FaceBook, LinkedIn, TwitterV2, TikTok, Instagram, Redit, Success } from '@/components/utils/Icons';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  Button
+  Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  useDisclosure
 } from '@nextui-org/react';
 import { createNewSubscribeUser } from '../../axios/news';
 import { Crisp } from 'crisp-sdk-web';
@@ -17,7 +22,10 @@ export default function Footer({ cookieSettingsOnOpen }) {
     tiktok: <TikTok fill="currentColor" />,
     instagram: <Instagram fill="currentColor" />,
     redit: <Redit fill="currentColor" />,
+    success: <Success fill="currentColor" />,
   };
+
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   const [email, setEmail] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -30,7 +38,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
     });
 
     if (res.status == 'success') {
-      // TODO: handle the success result
+      onOpen();
       setEmail('');
     } else {
       setWarning(res.data);
@@ -85,7 +93,10 @@ export default function Footer({ cookieSettingsOnOpen }) {
                 placeholder='exmampl@gmail.com'
                 className='outline-none p-4 w-full pr-32 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 min-w-[500px] max-sm:min-w-full'
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setWarning("");
+                }}
                 required
               />
               <Button
@@ -124,6 +135,41 @@ export default function Footer({ cookieSettingsOnOpen }) {
       </div>
       <div className='w-full h-56 bg-[#362666] blur-3xl absolute bottom-0 left-0 bg-opacity-35 rounded-t-3xl'>
       </div>
+
+      <Modal
+        backdrop="opaque"
+        placement="center"
+        hideCloseButton
+        size="sm"
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        classNames={{
+          backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/80 backdrop-opacity-100"
+        }}
+      >
+        <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77] text-white text-center'>
+          {(onClose) => (
+            <>
+              <ModalBody>
+                <div className='mx-auto flex items-center justify-center -mb-24'>{icons.success}</div>
+                <span className='font-bold text-2xl text-center leading-9'>Successfully your email record, you will receive news from Lockleaks from now.</span>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  radius="lg"
+                  className="bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647] mx-auto"
+                  size='md'
+                  onPress={() => onClose()}
+                >
+                  Confirm
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+
+        </ModalContent>
+      </Modal>
+
     </div>
   )
 }

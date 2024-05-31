@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, ScrollShadow
+    Button, Chip, ScrollShadow
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -14,6 +14,10 @@ export default function News() {
     const [isProcessing, setIsProcessing] = useState(false);
     const [isSendingNews, setIsSendingNews] = useState(-1);
     const [isProcessingDelete, setIsProcessingDelete] = useState(-1);
+    const [receiverCount, setReceiverCount] = useState({
+        count : 0,
+        id: null
+    });
 
     const getNewsListInfo = async () => {
 
@@ -42,8 +46,18 @@ export default function News() {
     const handleSendNews = async (id) => {
         setIsSendingNews(id);
         const res = await sendNews(id);
-        if (res.data) {
-            // TODO: Action to show success
+        if (res.status == 'success') {
+            setReceiverCount({
+                id,
+                count: res.data.count
+            });
+
+            setTimeout(() => {
+                setReceiverCount({
+                    id : null,
+                    count: 0
+                });
+            }, 3000);
         } else {
             console.log(res.data);
         }
@@ -86,6 +100,7 @@ export default function News() {
                                                 <span className={'font-semibold text-lg'}>{news.title}</span>
                                             </div>
                                             <div className='flex gap-4 items-center'>
+                                                { receiverCount.id == news.id ? <Chip size='sm' color='primary' >{ receiverCount.count } users received news.</Chip> : <></>}
                                                 <Button
                                                     radius="full"
                                                     className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"

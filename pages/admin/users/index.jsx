@@ -40,7 +40,7 @@ export default function Users() {
     ]
 
     const handleShowMoreDetails = () => {
-        router.push("view")
+        router.push("users/view")
     }
 
     return (
