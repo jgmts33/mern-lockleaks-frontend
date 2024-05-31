@@ -146,7 +146,7 @@ export default function Register() {
         }
 
         setIsProcessing(false);
-    }, [email, password, confirmPassword]);
+    }, [email, password, confirmPassword, isTermSelected]);
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
