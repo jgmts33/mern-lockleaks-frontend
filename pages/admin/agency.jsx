@@ -12,6 +12,7 @@ import { uploadDmcaImage } from '../../axios/dmca';
 import { SelectSwitch, UnselectSwitch } from '../../components/utils/Icons';
 import { generateNewPaymentLink } from '../../axios/agency';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import { checkDoubleUsername } from '../../axios/usernames';
 
 export default function Dmcabadges() {
   const router = useRouter();
@@ -35,6 +36,7 @@ export default function Dmcabadges() {
   const [email, setEmail] = useState('');
   const [price, setPrice] = useState('');
   const [customerCount, setCustomerCount] = useState(0);
+  const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
 
   const handleSetNewUsername = useCallback(() => {
     console.log(usernames, targetKeywordIndex);
@@ -47,16 +49,27 @@ export default function Dmcabadges() {
     }
   }, [targetKeyword, usernames, targetKeywordIndex]);
 
-  const handleSetNewLink = useCallback(() => {
+  const handleSetNewLink = useCallback(async() => {
     let newLink = targetKeyword.link.replace("@", "");
     setUrlValidation("");
+    setIsUsernameLinkValidationProcessing(true);
     if (newLink && checkLinkValidation()) {
       const _usernames = usernames.slice(0);
-      _usernames[targetKeywordIndex].link = newLink;
-      setUsernames(_usernames);
-      setTargetKeyword(null);
-      setTargetKeywordType('username');
+      const res = await checkDoubleUsername({ 
+        username: _usernames[targetKeywordIndex].username, 
+        link: newLink
+      });
+      if ( res.data.valid ) {
+        _usernames[targetKeywordIndex].link = newLink;
+        setUsernames(_usernames);
+        setTargetKeyword(null);
+        setTargetKeywordType('username');  
+      }
+      else {
+        setUrlValidation("Already existed.");
+      }
     }
+    setIsUsernameLinkValidationProcessing(false);
   }, [targetKeyword, usernames, targetKeywordIndex]);
 
   const checkLinkValidation = useCallback(() => {
@@ -69,7 +82,7 @@ export default function Dmcabadges() {
     return true;
   }, [targetKeyword]);
 
-  const handleCreateNewLink = useCallback(async () => {
+  const handleCreateNewPaymentLink = useCallback(async () => {
     setIsActionProcessing(true);
     const res = await generateNewPaymentLink({
       email,
@@ -164,17 +177,17 @@ export default function Dmcabadges() {
                           <Button
                             radius="full"
                             className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
-                            size='lg'
                             onClick={() => {
                               if (targetKeywordType == 'link') handleSetNewLink();
                               else handleSetNewUsername();
                             }}
+                            isLoading={isUsernameLinkValidationProcessing}
                           >
                             {targetKeywordType == 'link' ? "Save" : "Next"}
                           </Button>
                           <Button
                             radius="full"
-                            className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'
+                            className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"
                             onClick={() => {
                               setTargetKeyword(null);
                               setTargetKeywordType("username")
@@ -314,7 +327,7 @@ export default function Dmcabadges() {
             <Button
               radius="lg"
               className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
-              onClick={handleCreateNewLink}
+              onClick={handleCreateNewPaymentLink}
               isLoading={isActionProcessing}
             >
               Create Link

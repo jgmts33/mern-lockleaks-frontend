@@ -23,6 +23,7 @@ import { generateNewFanPaymentLink } from '@/axios/agency';
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { getAccessToken } from '../../axios/token';
+import { checkDoubleUsername } from '../../axios/usernames';
 
 export default function BUY() {
 
@@ -60,6 +61,7 @@ export default function BUY() {
         }
     ]);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
     const [fanPaymentLink, setFanPaymentLink] = useState('');
 
     const handleSetUsernameCount = useCallback(() => {
@@ -78,16 +80,27 @@ export default function BUY() {
         }
     }, [targetKeyword, usernames, targetKeywordIndex]);
 
-    const handleSetNewLink = useCallback(() => {
+    const handleSetNewLink = useCallback(async () => {
         let newLink = targetKeyword.link.replace("@", "");
         setUrlValidation("");
+        setIsUsernameLinkValidationProcessing(true);
         if (newLink && checkLinkValidation()) {
             const _usernames = usernames.slice(0);
-            _usernames[targetKeywordIndex].link = newLink;
-            setUsernames(_usernames);
-            setTargetKeyword(null);
-            setTargetKeywordType('username');
+            const res = await checkDoubleUsername({
+                username: _usernames[targetKeywordIndex].username,
+                link: newLink
+            });
+            if (res.data.valid) {
+                _usernames[targetKeywordIndex].link = newLink;
+                setUsernames(_usernames);
+                setTargetKeyword(null);
+                setTargetKeywordType('username');
+            }
+            else {
+                setUrlValidation("Already existed.");
+            }
         }
+        setIsUsernameLinkValidationProcessing(false);
     }, [targetKeyword, usernames, targetKeywordIndex, usernameCount]);
 
     const checkLinkValidation = useCallback(() => {
@@ -149,11 +162,11 @@ export default function BUY() {
     }, [usernameCount]);
 
     useEffect(() => {
-        
+
         (async () => {
             const accessToken = await getAccessToken();
 
-            if ( !accessToken ) {
+            if (!accessToken) {
                 router.push('/auth/login');
             }
 
@@ -329,6 +342,7 @@ export default function BUY() {
                                         radius="full"
                                         className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
                                         size='lg'
+                                        isLoading={isUsernameLinkValidationProcessing}
                                         onClick={() => {
                                             if (targetKeywordType == 'link') handleSetNewLink();
                                             else handleSetNewUsername();
@@ -497,7 +511,7 @@ export default function BUY() {
             </div>
             <Modal
                 backdrop="opaque"
-                isOpen={(step == 2 && isOpen) || ( plan && isOpen )}
+                isOpen={(step == 2 && isOpen) || (plan && isOpen)}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{
