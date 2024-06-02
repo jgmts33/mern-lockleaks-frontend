@@ -59,7 +59,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
             <Link href={"/creatordmca"} className='!no-underline !text-white'>Creator DMCA Content Protection</Link>
             <Link href={"/catfishing"} className='!no-underline !text-white'>Catifishing & Impersonation</Link>
             <Link href={"/recovery"} className='!no-underline !text-white'>Username History Recovery Removal</Link>
-            <Link href={"/freeanalyse"} className='!no-underline !text-white'>Monthly Analytics & PDF Reports</Link>
+            <Link href={"/freetrial"} className='!no-underline !text-white'>Monthly Analytics & PDF Reports</Link>
             <Link href={"/dmcabadges"} className='z-10 !no-underline !text-white'>DMCA Badges</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
@@ -90,7 +90,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
               <input
                 type="email"
                 name="email"
-                placeholder='exmampl@gmail.com'
+                placeholder='example@gmail.com'
                 className='outline-none p-4 w-full pr-32 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 min-w-[500px] max-sm:min-w-full'
                 value={email}
                 onChange={(e) => {
@@ -111,7 +111,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
             </div>
             <p className='text-sm font-normal text-red-600 mt-1 pl-6'>{warning}</p>
             <div className='mt-6 text-sm italic space-y-2 px-6'>
-              <p className='notranslate'>©2024 Lock Leaks</p>
+              <p className='notranslate'>©2024 LockLeaks</p>
               <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
               <p className='notranslate'>Register Code (CUI): 48091747</p>
               <p className='notranslate'>VAT: RO 48091747</p>

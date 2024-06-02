@@ -234,7 +234,7 @@ export default function Header() {
                 <Link href="/auth/register" className="text-white">Register</Link>
               </NavbarItem>
               <NavbarItem className="max-lg:hidden">
-                <Link href="/freeanalyse">
+                <Link href="/freetrial">
                   <Button
                     radius="sm"
                     className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"
@@ -289,7 +289,7 @@ export default function Header() {
                 <Link href="/auth/register" className="text-white mt-5">Register</Link>
               </NavbarItem>
               <NavbarItem>
-                <Link href="/freeanalyse" className="mt-5">
+                <Link href="/freetrial" className="mt-5">
                   <Button
                     radius="sm"
                     className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"

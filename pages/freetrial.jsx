@@ -16,7 +16,7 @@ import { Crisp } from 'crisp-sdk-web';
 import { useRouter } from 'next/router';
 
 
-export default function FreeAnalyse() {
+export default function FreeTrial() {
 
   const router = useRouter();
 

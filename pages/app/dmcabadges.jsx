@@ -1,7 +1,8 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link
+    Button, Link,
+    ScrollShadow
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { downloadDmcaImages, getDmcaImages, getDmcaImagesPositions } from '../../axios/dmca';
@@ -46,7 +47,7 @@ export default function DmcaBadges() {
     }, []);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 max-sm:px-2 container text-white max-lg:mx-auto">
 
             {/* This section for define dmcabadges header?*/}
 
@@ -59,48 +60,49 @@ export default function DmcaBadges() {
             </div>
 
             {/* This section for define dmcabadges content?*/}
-
-            <div className='grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 gap-10 max-xl:mx-auto max-xl:justify-center max-xl:items-center max-lg:gap-0'>
-                {
-                    list.map((item, index) => <div key={index} className='max-w-[450px] max-md:max-w-full'>
-                        <div className="flex items-center justify-center border w-full aspect-square border-gray-500 rounded-[23px] mt-10 cursor-pointer">
-                            <img
-                                src={`https://server.lockleaks.com/images?filename=${item.name}`}
-                                // width={200}
-                                // height={100}
-                                className='rounded-2xl'
-                                alt={item.name}
-                            />
-                        </div>
-                        <div className='flex justify-between pt-5 w-full px-1'>
-                            <Button
-                                radius="lg"
-                                className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base w-40"
-                                size='sm'
-                                onClick={() => handleDownload(item.name)}
-                            >
-                                <span>Download</span>
-                            </Button>
-                            <CopyToClipboard text={`<img src="https://server.lockleaks.com/images?filename=${item.name}" alt="${item.name.slice(0, -4)}" />`}
-                                onCopy={() => {
-                                    setCopied(index)
-                                    setTimeout(() => {
-                                        setCopied(-1);
-                                    }, 1000)
-                                }}>
+            <ScrollShadow className='h-[620px]'>
+                <div className='grid grid-cols-3 gap-5 max-2xl:grid-cols-2 max-lg:grid-cols-1 p-5 max-sm:p-2'>
+                    {
+                        list.map((item, index) => <div key={index} className='flex flex-col gap-2 relative w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer mx-auto'>
+                            <div className="flex justify-center items-center relative h-[220px] max-w-full backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4">
+                                <Image
+                                    src={`https://server.lockleaks.com/images?filename=${item.name}`}
+                                    width={200}
+                                    height={100}
+                                    className='rounded-2xl max-w-full max-h-full'
+                                    alt={item.name}
+                                />
+                            </div>
+                            <div className='flex justify-between w-full gap-2 p-2 pt-0'>
                                 <Button
                                     radius="lg"
-                                    className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-8 py-5 text-base"
+                                    className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-8 py-5 text-base w-40"
                                     size='sm'
+                                    onClick={() => handleDownload(item.name)}
                                 >
-                                    {copied == index ? <span>Copied</span> : <span>Embeded your badge</span>}
+                                    <span>Download</span>
                                 </Button>
-                            </CopyToClipboard>
+                                <CopyToClipboard text={`<img src="https://server.lockleaks.com/images?filename=${item.name}" alt="${item.name.slice(0, -4)}" />`}
+                                    onCopy={() => {
+                                        setCopied(index)
+                                        setTimeout(() => {
+                                            setCopied(-1);
+                                        }, 1000)
+                                    }}>
+                                    <Button
+                                        radius="lg"
+                                        className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-8 py-5 text-base"
+                                        size='sm'
+                                    >
+                                        {copied == index ? <span>Copied</span> : <span>Embeded your badge</span>}
+                                    </Button>
+                                </CopyToClipboard>
 
-                        </div>
-                    </div>)
-                }
-            </div>
+                            </div>
+                        </div>)
+                    }
+                </div>
+            </ScrollShadow>
         </div>
     )
 }

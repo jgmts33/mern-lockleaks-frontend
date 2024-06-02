@@ -75,10 +75,10 @@ export default function DmcaBadges() {
                                     className="flex flex-col gap-2 relative w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer"
                                 >
                                     <div className='flex justify-center items-center w-full relative h-[220px] backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4'>
-                                        <img
+                                        <Image
                                             src={`https://server.lockleaks.com/images?filename=${item.name}`}
-                                            // width={200}
-                                            // height={100}
+                                            width={200}
+                                            height={100}
                                             className='rounded-2xl max-w-full max-h-full'
                                             alt={item.name}
                                         />
@@ -90,7 +90,8 @@ export default function DmcaBadges() {
                                             size='md'
                                             onClick={() => router.push("/auth/login")}
                                         >
-                                            <span>{icons.shine} Download</span>
+                                            <span>{icons.shine}</span>
+                                            <span> Download</span>
                                         </Button>
                                         <Button
                                             radius="lg"
@@ -98,7 +99,8 @@ export default function DmcaBadges() {
                                             size='md'
                                             onClick={() => router.push("/auth/login")}
                                         >
-                                            <span>{icons.shine} Embed your badge</span>
+                                            <span>{icons.shine}</span>
+                                            <span> Embed your badge</span>
                                         </Button>
 
                                     </div>
@@ -122,13 +124,13 @@ export default function DmcaBadges() {
                         <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative max-xl:rotate-0 max-xl:right-0 max-xl:top-20 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 absolute left-0 -top-36 ">
                             <div>
                                 <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-xl:text-base'>Download Legal Protection:</span>
-                                <span className='font-normal text-lg max-sm:text-base'>Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse.</span>
+                                <span className='font-normal text-lg max-sm:text-base'> “Displaying DMCA Badges communicates that your content is safeguarded by copyright laws and under DMCA policies, discouraging theft or misuse.”</span>
                             </div>
                         </div>
                         <div className="flex max-w-[422px] duration-700  max-xl:mx-auto max-xl:items-center max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute -left-8 top-6 max-xl:left-0 max-xl:top-24 mt-6 ">
                             <div>
                                 <span className='font-normal text-lg bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-sm:text-base'>Visual Deterrent:</span>
-                                <span className='font-normal text-lg max-sm:text-base'>These badges act as a deterrent to potential violators, signaling that your content is monitored and protected by copyright laws. Badges</span>
+                                <span className='font-normal text-lg max-sm:text-base'> “These badges act as a deterrent to potential violators, signaling that your content is monitored and protected by copyright laws.”</span>
                             </div>
                         </div>
                     </div>

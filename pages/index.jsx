@@ -79,7 +79,7 @@ export default function HomePage() {
           <li>Google Search, Images & Videos</li>
           <li>Web-streaming sites</li>
           <li>Forums</li>
-          <li>Reddit*</li>
+          <li>Reddit</li>
           <li>Twitter</li>
           <li>Tiktok</li>
           <li>Instagram</li>
