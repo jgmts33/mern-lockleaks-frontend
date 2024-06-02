@@ -203,8 +203,8 @@ export default function RootLayout({ children }) {
         if (value) dispatch(setScanProgress(value));
       })
 
-      socket.on(`payment_status_${user.id}`, (value) => {
-        console.log(`payment_status_${user.id}:`, value);
+      socket.on(`payment_status_${userId}`, (value) => {
+        console.log(`payment_status_${userId}:`, value);
         dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, sattus: 'expired' } }));
       });
     }
