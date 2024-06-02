@@ -476,7 +476,7 @@ export default function BUY() {
                                         <span>Request fan support</span>
                                     </Button>
                                 </div>
-                                {fanPaymentLink ? <p className='text-sm mt-4 text-red-600 font-bold'> The Fans Payment Link was copied to your clipboard. </p> : <></>}
+                                {fanPaymentLink ? <p className='text-sm mt-4 text-green-500 font-bold'> The Fans Payment Link was copied to your clipboard. </p> : <></>}
                             </div>
                             <div className='mx-auto text-start mt-20 max-sm:mt-8 mb-40 max-sm:mb-8 max-md:px-3'>
                                 <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>

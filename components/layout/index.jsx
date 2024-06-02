@@ -291,7 +291,7 @@ export default function RootLayout({ children }) {
                           radius="lg"
                           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
                           size='md'
-                          onPress={() => router.push("/pricing")}
+                          onPress={() => window.location.replace("/pricing")}
                         >
                           <span>Upgrade</span>
                         </Button>
