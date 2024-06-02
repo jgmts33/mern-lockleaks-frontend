@@ -176,6 +176,22 @@ export default function TicketDetail() {
 
     useEffect(() => {
         getTicketsInfo();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`ticket_deleted`, (value) => {
+            console.log(`ticket_deleted:`, value);
+            setList(p => p.filter((item) => item.id != value));
+        });
+
+        socket.on(`ticket_closed_admin`, (value) => {
+            console.log(`ticket_closed_admin:`, value);
+            setList(p => p.filter((item) => item.id != value));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
     }, []);
 
     return (

@@ -78,6 +78,11 @@ export default function Scanner() {
             }
         });
 
+        socket.on(`scraped_data_expired_admin`, (value) => {
+            console.log(`scraped_data_expired_admin:`, value);
+            setScannerDetails(p => p.filter((item) => !value.find((_value) => _value.id == item.id)));
+        });
+
         return () => socket.close();
     }, []);
 

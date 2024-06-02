@@ -134,11 +134,11 @@ export default function BUY() {
 
         const createUsernamesRes = await createUsernames({ usernames });
 
-        if ( createUsernamesRes.status == 'success' ) {
+        if (createUsernamesRes.status == 'success') {
             const res = await updatePaymentStatus({
                 plan: plan
             });
-    
+
             if (res.status == 'success') {
                 onOpen();
             } else {
@@ -152,11 +152,11 @@ export default function BUY() {
 
         const createUsernamesRes = await createUsernames({ usernames });
 
-        if ( createUsernamesRes.status == 'success' ) {
+        if (createUsernamesRes.status == 'success') {
             const res = await updatePaymentStatus({
                 plan: 'trial'
             });
-    
+
             if (res.status == 'success') {
                 onOpen();
             } else {
@@ -294,20 +294,21 @@ export default function BUY() {
                     step == 1
                         ?
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
-                            <p className='font-medium text-[34px] text-center -mb-4'>USERNAMES LIST</p>
-                            <p className='font-medium text-center'>({usernames.filter(p => (p.link != "")).length} USERNAMES)</p>
+                            <span className='font-medium text-[34spanx] text-center -mb-4'>USERNAMES LIST</span>
+                            <span className='font-medium text-center'>({usernames.filter(p => (p.link != "")).length} USERNAMES)</span>
 
                             {targetKeyword != null ? <div className="flex bg-gradien t-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 cursor-pointer flex-col border border-gray-700 py-20 px-10 ">
                                 {
                                     targetKeywordType == 'link' ?
-                                        <p className='font-medium text-[34px] text-center'>{!targetKeyword.update ? "ADD" : "UPDATE"} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{usernames[targetKeywordIndex].username}</span></p>
-                                        : <p className='font-medium text-[34px] text-center'> {!targetKeyword.update ? "ADD NEW" : "UPDATE"} USERNAME</p>
+                                        <span className='font-medium text-[34px] text-center'>{!targetKeyword.update ? <span>ADD</span> : <span>UPDATE</span>} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{usernames[targetKeywordIndex]?.username || ""}</span></span>
+                                        :
+                                        !targetKeyword.update ? <span>ADD NEW USERNAME</span> : <span>UPDATE USERNAME</span>
                                 }
-                                <p className='mt-3'>
-                                    {targetKeywordType == 'link' ? "We will utilize your profile page URL to establish your ownership of this content" : "We will use your username to identify and report copyright infringements"}
-                                </p>
+                                <div className='mt-3'>
+                                    {targetKeywordType == 'link' ? <span>We will utilize your profile page URL to establish your ownership of this content</span> : <span>We will use your username to identify and report copyright infringements</span>}
+                                </div>
                                 <div className="flex w-full flex-col gap-4 mt-5">
-                                    <p className='flex justify-start'>{targetKeywordType == 'link' ? "LINK:" : "USERNAME:"}</p>
+                                    <div className='flex justify-start'>{targetKeywordType == 'link' ? <span> LINK:</span> : <span>USERNAME</span>}</div>
                                     <div className='flex'>
                                         {
                                             <div className="w-full flex">
@@ -335,10 +336,10 @@ export default function BUY() {
                                                             if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
                                                             else setTargetKeyword(p => ({ ...p, username: e.target.value }))
                                                         }}
-                                                        className='w-full outline-none p-2 rounded-lg bg-white text-black'
+                                                        className='w-full outline-none p-2 rounded-lg bg-white text-black notranslate'
                                                         required
                                                     />
-                                                    <p className='mt-1 text-red-700'>{urlValidation}</p>
+                                                    <span className='mt-1 text-red-700'>{urlValidation}</span>
                                                 </div>
                                             </div>
                                         }
@@ -356,7 +357,7 @@ export default function BUY() {
                                             else handleSetNewUsername();
                                         }}
                                     >
-                                        {targetKeywordType == 'link' ? "Save" : "Next"}
+                                        {targetKeywordType == 'link' ? <span>Save</span> : <span>Next</span>}
                                     </Button>
                                     <Button
                                         radius="full"

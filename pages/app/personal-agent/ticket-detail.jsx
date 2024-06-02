@@ -175,7 +175,25 @@ export default function TicketDetail() {
     }, [targetTicket]);
 
     useEffect(() => {
+
+        const socket = io(ENDPOINT);
+
         getTicketsInfo();
+
+        (async () => {
+
+            const userId = await getUserId();
+
+            socket.on(`ticket_deleted_${userId}`, (value) => {
+                console.log(`ticket_deleted_${userId}:`, value);
+                setList(p => p.filter((item) => item.id != value));
+            });
+        })();
+
+        return () => {
+            socket.disconnect();
+        }
+
     }, []);
 
     return (
@@ -369,7 +387,7 @@ export default function TicketDetail() {
                                                 <div className='max-sm:max-w-full max-w-[450px] w-max p-2 space-y-2'>
                                                     <p className={eachMessage.sender_id == userId ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id == userId ? 'Username:' : "Support:"}</p>
                                                     <div className={eachMessage.sender_id == userId ? 'flex justify-end' : 'flex '}>
-                                                        <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
+                                                        <div className={'max-w-full w-max word-wrap bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
                                                             {eachMessage.content}
                                                             <div className='flex flex-col gap-2 w-full'>
                                                                 {

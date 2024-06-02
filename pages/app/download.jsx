@@ -8,9 +8,14 @@ import { downloadSrapedData, getScrapedDataList } from '../../axios/download';
 import moment from 'moment/moment';
 import { scanProgress as scanProgressInfo } from "../../lib/bot/botSlice";
 import { useSelector } from 'react-redux';
+import { io } from 'socket.io-client';
+import { ENDPOINT } from '../../config/config';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { getUserId } from '../../axios/token';
 
 export default function DownloadData() {
 
+    const userInfo = useSelector(info);
     const [list, setList] = useState([]);
     const scanProgress = useSelector(scanProgressInfo);
     const getScrapedDataListInfo = async () => {
@@ -59,8 +64,25 @@ export default function DownloadData() {
     }, [scanProgress]);
 
     useEffect(() => {
-        getScrapedDataListInfo();
-    }, []);
+
+        const socket = io(ENDPOINT);
+
+        (async () => {
+            if (!userInfo) return;
+            const userId = await getUserId();
+            getScrapedDataListInfo();
+
+            socket.on(`scraped_data_expired_${userId}`, (value) => {
+                console.log(`scraped_data_expired_${userId}:`, value);
+                setList(p => p.filter((item) => item.id != value));
+            });
+        })();
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 container text-white max-lg:mx-auto">

@@ -202,6 +202,11 @@ export default function RootLayout({ children }) {
         console.log("scrape-progress:", value)
         if (value) dispatch(setScanProgress(value));
       })
+
+      socket.on(`payment_status_${user.id}`, (value) => {
+        console.log(`payment_status_${user.id}:`, value);
+        dispatch(setUserInfo({...userInfo, subscription: {...userInfo.subscription, sattus: 'expired'}}));
+      });
     }
 
     if (currentPath?.includes("admin")) {
@@ -331,7 +336,7 @@ export default function RootLayout({ children }) {
                         <p className='font-light text-[22px]'>{modalValue.content} </p>
                       </ModalBody>
                       <ModalFooter>
-                        { verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></> }
+                        {verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></>}
                         <Button
                           radius="lg"
                           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
@@ -439,15 +444,17 @@ export default function RootLayout({ children }) {
                   :
                   <></>
               }
-              {
-                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
-                  ?
-                  <Header />
-                  :
-                  <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center'>
-                    <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
-                  </div>
-              }
+
+              <div className={!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
+                ? "hidden" : ""}>
+                <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center'>
+                  <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
+                </div>
+              </div>
+              <div className={!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
+                ? "" : "hidden"}>
+                <Header />
+              </div>
               <div className="flex w-full flex-col items-center pb-10">
                 <NextTopLoader
                   color="#2299DD"
@@ -466,13 +473,10 @@ export default function RootLayout({ children }) {
                 />
                 {children}
               </div>
-              {
-                !currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
-                  ?
-                  <Footer cookieSettingsOnOpen={() => onOpen()} />
-                  :
-                  false
-              }
+              <div className={!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
+                ? "" : "hidden"}>
+                <Footer cookieSettingsOnOpen={() => onOpen()} />
+              </div>
             </div>
         }
       </div>

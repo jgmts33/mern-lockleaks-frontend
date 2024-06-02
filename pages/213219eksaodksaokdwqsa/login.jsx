@@ -114,7 +114,7 @@ export default function Login() {
                             onClick={() => handleLogin()}
                             isLoading={isProcessing}
                         >
-                            Log in
+                            <span>Log in</span>
                         </Button>
                     </div>
                 </div>

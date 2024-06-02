@@ -126,7 +126,7 @@ export default function Login() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(e, "email")}
                                 ref={emailInputRef}
-                                className='w-full outline-none p-2 pl-16 pr-28 max-sm:pr-0 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30'
+                                className='w-full outline-none p-2 pl-16 pr-28 max-sm:pr-0 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30 notranslate'
                                 required
                             />
                         </div>
@@ -140,7 +140,7 @@ export default function Login() {
                                 ref={passwordInputRef}
                                 onChange={(e) => setPassword(e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(e, "password")}
-                                className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30'
+                                className='w-full outline-none p-2 pl-16 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 z-30 notranslate'
                                 required
                             />
                         </div>
@@ -151,10 +151,10 @@ export default function Login() {
                             radius="lg"
                             className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg w-full mt-4 z-30"
                             size='lg'
-                            onClick={() => handleLogin()}
+                            onClick={handleLogin}
                             isLoading={isProcessing}
                         >
-                            Log in
+                            <span>Log in</span>
                         </Button>
                         <div className='flex justify-center'>
                             <span className='font-light text-sm'>or continue with</span>
@@ -197,7 +197,7 @@ export default function Login() {
                                     size='md'
                                     onClick={handleConfirmClick}
                                 >
-                                    {modalValue.status === 'success' ? "Confirm" : "Try Again"}
+                                    {modalValue.status === 'success' ? <span>Confirm</span> : <span>Try Again</span>}
                                 </Button>
                             </ModalFooter>
                         </>
