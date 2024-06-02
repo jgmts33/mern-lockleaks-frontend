@@ -81,7 +81,7 @@ export default function CreateTicket() {
                         size='sm'
                         onPress={() => router.push("/app/personal-agent")}
                     >
-                        Cancel
+                        <span>Cancel</span>
                     </Button>
                     <Button
                         radius="lg"
@@ -89,7 +89,7 @@ export default function CreateTicket() {
                         size='sm'
                         onClick={handleCreate}
                     >
-                        Create
+                        <span>Create</span>
                     </Button>
                 </div>
             </div>

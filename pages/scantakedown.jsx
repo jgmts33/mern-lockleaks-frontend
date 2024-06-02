@@ -156,10 +156,10 @@ export default function ScanTakeDown() {
                 </div>
                 <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[680px] gap-2 items-center container'>
                     <Button radius="full" className={"mx-auto w-1/2 px-7 py-5 text-lg relative z-10 " + (selectedContent == 'scan' ? "bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg" : "bg-transparent")} size='lg' onClick={() => setSelectedContent('scan')}>
-                        SCAN
+                        <span>SCAN</span>
                     </Button>
                     <Button radius="full" className={"mx-auto w-1/2 px-7 py-5 text-lg relative z-10 " + (selectedContent == 'takedown' ? "bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg" : "bg-transparent")} size='lg' onClick={() => setSelectedContent('takedown')}>
-                        TAKEDOWN
+                        <span>TAKEDOWN</span>
                     </Button>
                 </div>
                 <div className='flex w-full justify-around max-w-[1590px] mx-auto mt-20 max-lg:flex-col max-lg:justify-center items-center'>

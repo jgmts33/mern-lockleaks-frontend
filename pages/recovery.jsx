@@ -201,7 +201,7 @@ export default function Recovery() {
                                             <span>{cards.step}</span>
                                             <p className='font-semibold text-xl mt-5 max-sm:text-lg'>{cards.title}</p>
                                             <Button className="bg-gradient-to-tr mt-5 bg-white/10 max-w-[88px] rounded-[30px] text-white shadow-lg" size='sm'>
-                                                answer:
+                                                <span>answer:</span>
                                             </Button>
                                             <p className='mt-5 font-normal text-base'>{cards.content}</p>
                                         </div>

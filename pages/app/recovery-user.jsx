@@ -42,10 +42,10 @@ export default function RecoveryUsers() {
                                     <span className='font-normal text-sm'>To Start the Scanning Process, Please Begin by Uploading a Photo of Yourself</span>
                                 </div>
                                 <Button radius="lg" className="bg-gradient-to-tr bg-white/10 text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    + Upload
+                                    <span>+ Upload</span>
                                 </Button>
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    Start
+                                    <span>Start</span>
                                 </Button>
                             </div>
                             <div className='flex items-center pt-12 max-2xl:mx-auto max-2xl:hidden'><span className='text-white font-extrabold text-lg'>Or</span></div>
@@ -60,7 +60,7 @@ export default function RecoveryUsers() {
                                     placeholder='Type here'
                                 />
                                 <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    Start
+                                    <span>Start</span>
                                 </Button>
                             </div>
                         </div>
@@ -72,10 +72,10 @@ export default function RecoveryUsers() {
                                 <span className='font-normal text-sm'>Upload a Picture Of Yourself While Holding a Sign That Reads  “CGF”</span>
                             </div>
                             <Button radius="lg" className="bg-gradient-to-tr bg-white/10 text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
-                                + Upload
+                                <span>+ Upload</span>
                             </Button>
                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                Start
+                                <span>Start</span>
                             </Button>
                         </div>
                     </div>

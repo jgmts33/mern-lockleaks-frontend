@@ -49,7 +49,7 @@ export default function PersonalAgent() {
                             <span className='font-bold text-3xl'>Need Assistance?</span>
                             <span className='font-normal text-base'>Click to Chat with Your Personal Agent</span>
                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto" size='sm' onClick={() => handleCreteTicket()}>
-                                Create A Ticket
+                                <span>Create A Ticket</span>
                             </Button>
                         </div>
 

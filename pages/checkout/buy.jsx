@@ -280,7 +280,7 @@ export default function BUY() {
                                                         onClick={handleSetUsernameCount}
                                                         isLoading={false}
                                                     >
-                                                        Save
+                                                        <span>Save</span>
                                                     </Button>
                                                 </div>
                                             </div>
@@ -369,7 +369,7 @@ export default function BUY() {
                                             setUsernames(_usernames);
                                         }}
                                     >
-                                        Cancel
+                                        <span>Cancel</span>
                                     </Button>
                                 </div>
                             </div>
@@ -390,7 +390,7 @@ export default function BUY() {
                                         setTargetKeywordIndex(usernames.length)
                                     }}
                                 >
-                                    Add New
+                                    <span>Add New</span>
                                 </Button> : <></>
                             }
 
@@ -416,7 +416,7 @@ export default function BUY() {
                                                                     setTargetKeyword({ ...usernames[index], update: true });
                                                                 }}
                                                             >
-                                                                Edit
+                                                                <span>Edit</span>
                                                             </Button>
                                                             <Button
                                                                 radius="full"
@@ -430,7 +430,7 @@ export default function BUY() {
                                                                     });
                                                                 }}
                                                             >
-                                                                Delete
+                                                                <span>Delete</span>
                                                             </Button>
                                                         </div>
                                                     </div>
@@ -456,7 +456,7 @@ export default function BUY() {
                                         size='lg'
                                         onClick={handlePaymentProcess}
                                     >
-                                        Pay whith credit card
+                                        <span>Pay whith credit card</span>
                                     </Button>
                                     <Button
                                         radius="full"
@@ -464,7 +464,7 @@ export default function BUY() {
                                         size='lg'
                                         onClick={handlePaymentProcess}
                                     >
-                                        Pay whith paypal
+                                        <span>Pay whith paypal</span>
                                     </Button>
                                     <Button
                                         radius="full"
@@ -473,7 +473,7 @@ export default function BUY() {
                                         onClick={handleCreateFanPaymentLink}
                                         isLoading={isActionProcessing}
                                     >
-                                        Request fan support
+                                        <span>Request fan support</span>
                                     </Button>
                                 </div>
                                 {fanPaymentLink ? <p className='text-sm mt-4 text-red-600 font-bold'> The Fans Payment Link was copied to your clipboard. </p> : <></>}
@@ -492,7 +492,7 @@ export default function BUY() {
                         size='lg'
                         onPress={() => setStep(p => p - 1)}
                     >
-                        Back
+                        <span>Back</span>
                     </Button> : <div></div>}
                     {step < 2 ? <Button
                         radius="lg"
@@ -504,7 +504,7 @@ export default function BUY() {
                             setStep(p => p + 1)
                         }}
                     >
-                        Next
+                        <span>Next</span>
                     </Button> : <div></div>}
                 </div> : <div className='max-w-[1389px] flex justify-end items-center bg-transparent my-4 mx-auto'>
                     <Button
@@ -514,7 +514,7 @@ export default function BUY() {
                         size='lg'
                         onPress={handlesubmitUsernamesForFreeTrial}
                     >
-                        Submit
+                        <span>Submit</span>
                     </Button>
                 </div>}
             </div>
@@ -543,7 +543,7 @@ export default function BUY() {
                                     size='md'
                                     onPress={() => window.open("/app/dashboard", '_current')}
                                 >
-                                    Go to Dashboard
+                                    <span>Go to Dashboard</span>
                                 </Button>
                             </ModalFooter>
                         </>

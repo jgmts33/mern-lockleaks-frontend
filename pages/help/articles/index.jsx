@@ -88,7 +88,7 @@ export default function Categories() {
                     />
                 </div>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
-                    Search{icons.search}
+                    <span>Search {icons.search}</span>
                 </Button>
             </div>
             <div className='flex mx-auto mt-10'>
@@ -123,7 +123,7 @@ export default function Categories() {
                                                     size='md'
                                                     onClick={() => handleGoCategory(category.name)}
                                                 >
-                                                    {category.name}
+                                                    <span>{category.name}</span>
                                                 </Button>
                                                 :
                                                 <Button
@@ -132,7 +132,7 @@ export default function Categories() {
                                                     size='md'
                                                     onClick={() => handleGoCategory(category.name)}
                                                 >
-                                                    {category.name}
+                                                    <span>{category.name}</span>
                                                 </Button>
                                         }
                                     </div>
@@ -193,7 +193,7 @@ export default function Categories() {
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
                     <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>
-                        Chat Now
+                        <span>Chat Now</span>
                     </Button>
                 </div>
             </div>

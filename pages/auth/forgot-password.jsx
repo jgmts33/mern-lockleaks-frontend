@@ -100,14 +100,14 @@ export default function ForgotPassword() {
               onClick={handleForgotPassword}
               isLoading={isProcessing}
             >
-              Send
+              <span>Send</span>
             </Button>
             <Button
               radius="lg"
               className="bg-transparent text-white shadow-lg w-full max-sm:mt-10" size='lg'
               onClick={() => router.push("/auth/login")}
             >
-              Cancel
+              <span>Cancel</span>
             </Button>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function ForgotPassword() {
                   size='md'
                   onClick={() => handleConfirmClick()}
                 >
-                  {modalValue.status === 'success' ? "Confirm" : "Try Again"}
+                  {modalValue.status === 'success' ? <span>Confirm</span> : <span>Try Again</span>}
                 </Button>
               </ModalFooter>
             </>

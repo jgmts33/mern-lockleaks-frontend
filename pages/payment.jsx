@@ -156,7 +156,7 @@ export default function PaymentProcessed() {
               isLoading={isProcessing}
               onClick={() => handlePaymentProcess('credit_card')}
             >
-              Pay whith credit card
+              <span>Pay whith credit card</span>
             </Button>
             <Button
               radius="full"
@@ -165,7 +165,7 @@ export default function PaymentProcessed() {
               isLoading={isProcessing}
               onClick={() => handlePaymentProcess('paypal')}
             >
-              Pay whith paypal
+              <span>Pay whith paypal</span>
             </Button>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function PaymentProcessed() {
                   size='md'
                   onPress={modalData?.action}
                 >
-                  {modalData?.btnText}
+                  <span>{modalData?.btnText}</span>
                 </Button>
               </ModalFooter>
             </>

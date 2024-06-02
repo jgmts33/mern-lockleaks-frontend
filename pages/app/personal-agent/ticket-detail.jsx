@@ -259,7 +259,7 @@ export default function TicketDetail() {
                                 }
                                 }
                             >
-                                IN PROGRESS
+                                <span>IN PROGRESS</span>
                             </Button>
                             <Button
                                 radius="full"
@@ -272,7 +272,7 @@ export default function TicketDetail() {
                                 }
                                 }
                             >
-                                SOLVED
+                                <span>SOLVED</span>
                             </Button>
                             <Button
                                 radius="full"
@@ -285,7 +285,7 @@ export default function TicketDetail() {
                                 }
                                 }
                             >
-                                CLOSED
+                                <span>CLOSED</span>
                             </Button>
                         </div>
                         <Button
@@ -294,7 +294,7 @@ export default function TicketDetail() {
                             size='sm'
                             onClick={() => router.push("/app/personal-agent/create-ticket")}
                         >
-                            Create New Ticket
+                            <span>Create New Ticket</span>
                         </Button>
                     </div>
                     <div className='flex flex-col pt-3 w-full flex-1'>
@@ -353,7 +353,7 @@ export default function TicketDetail() {
                                             }
                                         }}
                                     >
-                                        {targetTicket.status == 'solved' ? 'SOLVED' : 'Set as Solved'}
+                                        {targetTicket.status == 'solved' ? <span>SOLVED</span> : <span>Set as Solved</span>}
                                     </Button> : <></>}
                                     <Button
                                         isIconOnly

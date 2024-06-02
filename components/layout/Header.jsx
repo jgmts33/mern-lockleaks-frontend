@@ -235,7 +235,13 @@ export default function Header() {
               </NavbarItem>
               <NavbarItem className="max-lg:hidden">
                 <Link href="/freeanalyse">
-                  <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>Free Trial</Button>
+                  <Button
+                    radius="sm"
+                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"
+                    size='lg'
+                  >
+                    <span>Free Trial</span>
+                  </Button>
                 </Link>
               </NavbarItem>
               <NavbarItem className="text-white flex max-sm:hidden">
@@ -284,7 +290,13 @@ export default function Header() {
               </NavbarItem>
               <NavbarItem>
                 <Link href="/freeanalyse" className="mt-5">
-                  <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='md'>Free Analisis</Button>
+                  <Button
+                    radius="sm"
+                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"
+                    size='md'
+                  >
+                    <span>Free Trial</span>
+                  </Button>
                 </Link>
               </NavbarItem>
               <NavbarItem className="text-white flex max-sm:hidden">

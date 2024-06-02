@@ -98,8 +98,8 @@ export default function ResetPassword() {
 
     setIsProcessing(true);
     const res = await resetPassword(token, password);
-    
-    
+
+
     if (res.status == "success") {
       setModalValue({
         status: "success",
@@ -192,7 +192,7 @@ export default function ResetPassword() {
               onClick={handleResetPassword}
               isLoading={isProcessing}
             >
-              Confirm
+              <span>Confirm</span>
             </Button>
             <Button
               radius="lg"
@@ -203,7 +203,7 @@ export default function ResetPassword() {
                 router.push('/auth/login');
               }}
             >
-              Cancel
+              <span>Cancel</span>
             </Button>
           </div>
         </div>
@@ -232,7 +232,7 @@ export default function ResetPassword() {
                   size='md'
                   onClick={() => handleConfirmClick()}
                 >
-                  {modalValue.status === 'success' ? "Confirm" : "Try Again"}
+                  {modalValue.status === 'success' ? <span>Confirm</span> : <span>Try Again</span>}
                 </Button>
               </ModalFooter>
             </>

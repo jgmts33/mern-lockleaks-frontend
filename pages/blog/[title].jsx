@@ -105,8 +105,7 @@ export default function Blog() {
                                             <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blogDetails.content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }} />
                                         </div>
                                         <Button radius="full" className="absolute flex items-center top-4 right-4 bg-gradient-to-tr from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6 opacity-40" size='md'>
-                                            <p className='text-medium font-normal'>{blogDetails.views}</p>
-                                            {icons.eye}
+                                            <span className='text-medium font-normal'>{blogDetails.views} {icons.eye}</span>
                                         </Button>
                                     </div>
                                 </div>
@@ -121,8 +120,7 @@ export default function Blog() {
                                     size='md'
                                     onPress={() => router.push("/")}
                                 >
-                                    <p className='text-medium font-normal'>Lockleaks</p>
-                                    {icons.right}
+                                    <span className='text-medium font-normal'>Lockleaks {icons.right}</span>
                                 </Button>
                                 <Button
                                     radius="full"
@@ -130,16 +128,14 @@ export default function Blog() {
                                     size='md'
                                     onPress={() => router.push("/blog")}
                                 >
-                                    <p className='text-medium font-normal'>Blog</p>
-                                    {icons.right}
+                                    <span className='text-medium font-normal'>Blog {icons.right}</span>
                                 </Button>
                                 <Button
                                     radius="full"
                                     className="bg-gradient-to-tr flex items-center from-[#c775e0] to-[#c233af] border-gray-600 text-white shadow-lg max-md:text-[13px] px-6"
                                     size='md'
                                 >
-                                    <p className='text-medium font-normal'>{blogDetails.title}</p>
-                                    {icons.right}
+                                    <span className='text-medium font-normal'>{blogDetails.title} {icons.right}</span>
                                 </Button>
                             </div>
                             <div className='font-light flex mt-32 gap-5 justify-start max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 max-xl:mt-5'>

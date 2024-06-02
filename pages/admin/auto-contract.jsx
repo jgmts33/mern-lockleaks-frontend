@@ -72,10 +72,10 @@ export default function AutoContract() {
                         </div>
                         <div className='grid grid-cols-3 space-x-5 mt-8 max-sm:grid-cols-2'>
                             <Button radius="full" className="bg-gradient-to-tr from-gray-600/40 to-gray-800/40 border border-gray-700 text-white shadow-lg text-sm" size='sm'>
-                                IN PROGRESS
+                                <span>IN PROGRESS</span>
                             </Button>
                             <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-700 text-white shadow-lg text-sm" size='sm'>
-                                SENT
+                                <span>SENT</span>
                             </Button>
                         </div>
                         <div className='flex mt-10'>
@@ -134,7 +134,7 @@ export default function AutoContract() {
                         />
                         <div className='mx-auto pt-5'>
                             <Button radius="lg" className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg px-5 text-lg" size='md'>
-                                Download
+                                <span>Download</span>
                             </Button>
                         </div>
                     </div>
@@ -151,7 +151,7 @@ export default function AutoContract() {
                                             </div>
                                             <div>
                                                 <Button radius="lg" className={selectDownload == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"} size='sm' onClick={() => setSelectDownloadData(index)}>
-                                                    Download
+                                                    <span>Download</span>
                                                 </Button>
                                             </div>
                                         </div>

@@ -107,13 +107,13 @@ export default function ContactWarning() {
                 radius="lg"
                 className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white px-7 text-sm max-sm:w-full"
               >
-                {icons.downloadIcon} DOWNLOAD CONTRACT
+                <span>{icons.downloadIcon} DOWNLOAD CONTRACT</span>
               </Button>
               <Button
                 radius="lg"
                 className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white px-7 text-sm max-sm:w-full"
               >
-                VIEW CONTRACT
+                <span>VIEW CONTRACT</span>
               </Button>
             </div>
             <Button
@@ -121,7 +121,7 @@ export default function ContactWarning() {
               className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mt-6 w-72 max-sm:w-full mx-auto"
               size='sm'
             >
-              ACCESS PLATFORM
+              <span>ACCESS PLATFORM</span>
             </Button>
             <div className='flex justify-between items-center mt-6'>
               {icons.contractLineIcon}
@@ -136,7 +136,7 @@ export default function ContactWarning() {
           size='sm'
           onPress={() => setStep(p => p - 1)}
         >
-          Back
+          <span>Back</span>
         </Button> : <></>}
 
         {
@@ -165,7 +165,7 @@ export default function ContactWarning() {
                           size='sm'
                           onClick={handleImageUpload}
                         >
-                          Browse File
+                          <span>Browse File</span>
                         </Button>
                       </div>
                   }
@@ -184,7 +184,7 @@ export default function ContactWarning() {
                 className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mx-auto mt-10"
                 size='sm'
               >
-                Upload ID
+                <span>Upload ID</span>
               </Button>
               <Progress
                 size="md"
@@ -204,7 +204,7 @@ export default function ContactWarning() {
           size='sm'
           onPress={() => setStep(p => p + 1)}
         >
-          Next
+          <span>Next</span>
         </Button> : <></>}
       </div>
 

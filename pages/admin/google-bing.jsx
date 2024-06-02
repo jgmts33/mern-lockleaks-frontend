@@ -216,7 +216,7 @@ export default function GoogleBing() {
                                                                 if (item.status == 'available') handleAccept(item.scrape_date, index, 'google');
                                                             }}
                                                         >
-                                                            {item.status == 'available' ? item.accepted ? "Accepted" : "Accept" : "Expired"}
+                                                            {item.status == 'available' ? item.accepted ? <span>Accepted</span> : <span>Accept</span> : <span>Expired</span>}
                                                         </Button>
                                                     </div>
                                                 </div>
@@ -286,7 +286,7 @@ export default function GoogleBing() {
                                                                 if (item.status == 'available') handleAccept(item.scrape_date, index, 'bing');
                                                             }}
                                                         >
-                                                            {item.status == 'available' ? item.accepted ? "Accepted" : "Accept" : "Expired"}
+                                                            {item.status == 'available' ? item.accepted ? <span>Accepted</span> : <span>Accept</span> : <span>Expired</span>}
                                                         </Button>
                                                     </div>
                                                 </div>

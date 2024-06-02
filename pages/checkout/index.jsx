@@ -170,10 +170,10 @@ export default function Checkout() {
             </div>
             <div className='bg-gradient-to-tr w-1/2 max-sm:flex-wrap max-sm:w-full mx-auto mt-28 max-sm:mt-8 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center'>
                 <Button radius="full" className={isSelected ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} onClick={() => setSelected(true)} size='lg'>
-                    Bill Monthly
+                    <span>Bill Monthly</span>
                 </Button>
                 <Button radius="full" className={isSelected ? "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" : "bg-gradient-to-tr mx-auto w-1/2 from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"} onClick={() => setSelected(false)} size='lg'>
-                    Bill Yearly
+                    <span>Bill Yearly</span>
                 </Button>
             </div>
 
@@ -207,7 +207,7 @@ export default function Checkout() {
                                         {
                                             <Link href="/checkout/buy" className='w-full'>
                                                 <Button radius="lg" className={`w-full mt-10 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg mx-auto " + ${item.title != "PRO" ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-gradient-to-br from-gray-600/40 to-gray-800/40"}`} size='lg'>
-                                                    BUY
+                                                    <span>BUY</span>
                                                 </Button>
                                             </Link>
                                         }
@@ -216,7 +216,7 @@ export default function Checkout() {
                                         <div className={'flex justify-between items-center z-10 '}>
                                             <p className='font-semibold text-xl'>USERNAMES : {item.user_name}</p>
                                             <Button radius="full" className="w-1/3 bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2" size='md'>
-                                                ADD EXTRA
+                                                <span>ADD EXTRA</span>
                                             </Button>
                                         </div>
                                         <div className='flex items-center max-xl:justify-content'>
@@ -303,8 +303,7 @@ export default function Checkout() {
                         })
                     }
                     <Button className="rounded-[10px] mt-5 w-[327px] bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 text-white text-base" size='md'>
-                        Add New
-                        <span>{icons.shine}</span>
+                        <span>Add New {icons.shine}</span>
                     </Button>
                     <Image src="assets/robert.svg" width={320} height={400} alt='robert' className='mt-40 bg-opacity-90' />
                 </div>
@@ -349,10 +348,10 @@ export default function Checkout() {
                                     </div>
                                     <div className='bg-gradient-to-tr max-sm:flex-wrap max-sm:w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center'>
                                         <Button radius="full" className={username ? "bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} size='lg' onClick={() => setUsername(true)}>
-                                            {content.LeftButton}
+                                            <span>{content.LeftButton}</span>
                                         </Button>
                                         <Button radius="full" className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" size='lg'>
-                                            {content.RightButton}
+                                            <span>{content.RightButton}</span>
                                         </Button>
                                     </div>
                                 </div>
@@ -372,13 +371,13 @@ export default function Checkout() {
                 </p>
                 <div className='bg-gradient-to-tr mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-2 border-gray-600 border rounded-[30px] max-w-[676px] gap-3 flex max-md:flex-col items-center'>
                     <Button radius="full" className="mx-auto bg-transparent text-white shadow-lg px-7 py-7 max-md:flex-wrap text-lg" size='lg'>
-                        Pay whith credit card
+                        <span>Pay whith credit card</span>
                     </Button>
                     <Button radius="full" className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg" size='lg'>
-                        Pay whith paypal
+                        <span>Pay whith paypal</span>
                     </Button>
                     <Button radius="full" className=" bg-transparent mx-auto px-7 py-7 text-lg" size='lg'>
-                        Request fan support
+                        <span>Request fan support</span>
                     </Button>
                 </div>
             </div>

@@ -43,7 +43,7 @@ export default function SMscanner() {
                     </div>
                     <div className='max-sm:hidden'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-lg" size='sm'>
-                            START
+                            <span>START</span>
                         </Button>
                     </div>
                     <Progress

@@ -265,7 +265,7 @@ export default function DeleteData() {
 
                     <div className='mt-5 items-center mx-auto mb-20'>
                         <Button radius="lg" className="bg-gradient-to-tr max-xl:w-[1/2] from-[#9C3FE4] to-[#C65647] text-white shadow-lg px-10 py-6 text-lg" size='md'>
-                            Submit Request
+                            <span>Submit Request</span>
                             <span>{icons.shine}</span>
                         </Button>
                     </div>

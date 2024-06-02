@@ -249,7 +249,7 @@ export default function Register() {
                             className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-full mt-4"
                             size='lg'
                         >
-                            Sign Up
+                            <span>Sign Up</span>
                         </Button>
                         <div className='flex justify-center'>
                             <span className='font-light text-sm'>or continue with</span>
@@ -289,7 +289,7 @@ export default function Register() {
                                     size='md'
                                     onClick={() => handleConfirmClick()}
                                 >
-                                    {modalValue.status === 'success' ? "Confirm" : "Try Again"}
+                                    {modalValue.status === 'success' ? <span>Confirm</span> : <span>Try Again</span>}
                                 </Button>
                             </ModalFooter>
                         </>

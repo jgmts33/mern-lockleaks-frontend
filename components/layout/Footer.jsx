@@ -105,7 +105,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
                 onPress={handleSubscribe}
                 isLoading={isProcessing}
               >
-                SEND
+                <span>SEND</span>
                 <span>{icons.shine}</span>
               </Button>
             </div>
@@ -161,7 +161,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
                   size='md'
                   onPress={() => onClose()}
                 >
-                  Confirm
+                  <span>Confirm</span>
                 </Button>
               </ModalFooter>
             </>

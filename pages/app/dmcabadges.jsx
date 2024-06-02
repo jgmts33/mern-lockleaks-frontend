@@ -79,7 +79,7 @@ export default function DmcaBadges() {
                                 size='sm'
                                 onClick={() => handleDownload(item.name)}
                             >
-                                Download
+                                <span>Download</span>
                             </Button>
                             <CopyToClipboard text={`<img src="https://server.lockleaks.com/images?filename=${item.name}" alt="${item.name.slice(0, -4)}" />`}
                                 onCopy={() => {
@@ -93,7 +93,7 @@ export default function DmcaBadges() {
                                     className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-8 py-5 text-base"
                                     size='sm'
                                 >
-                                    {copied == index ? "Copied" : "Embeded your badge"}
+                                    {copied == index ? <span>Copied</span> : <span>Embeded your badge</span>}
                                 </Button>
                             </CopyToClipboard>
 

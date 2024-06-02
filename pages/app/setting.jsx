@@ -76,7 +76,7 @@ export default function AccountSetting() {
                                 className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
                                 size='sm'
                             >
-                                Change Password
+                                <span>Change Password</span>
                             </Button>
                             <div className='flex flex-col w-full'>
                                 <label className='font-normal text-xs text-white/65'>Enter new password</label>
@@ -142,7 +142,7 @@ export default function AccountSetting() {
                                         className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
                                         size='sm'
                                     >
-                                        Payment Method: <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{userInfo?.subscription.payment_method}</span>
+                                        <span>Payment Method: <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{userInfo?.subscription.payment_method}</span></span>
                                     </Button>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@ export default function AccountSetting() {
                                         className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
                                         size='sm'
                                     >
-                                        Download
+                                        <span>Download</span>
                                     </Button>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@ export default function AccountSetting() {
                                 size='sm'
                                 onPress={() => window.open("/help", '_blank')}
                             >
-                                View
+                                <span>View</span>
                             </Button>
                         </div>
                     </div>

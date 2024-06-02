@@ -183,7 +183,7 @@ export default function Dmcabadges() {
                             }}
                             isLoading={isUsernameLinkValidationProcessing}
                           >
-                            {targetKeywordType == 'link' ? "Save" : "Next"}
+                            {targetKeywordType == 'link' ? <span>Save</span> : <span>Next</span>}
                           </Button>
                           <Button
                             radius="full"
@@ -195,7 +195,7 @@ export default function Dmcabadges() {
                               setUsernames(_usernames);
                             }}
                           >
-                            Cancel
+                            <span>Cancel</span>
                           </Button>
                         </div>
                       </div>
@@ -221,7 +221,7 @@ export default function Dmcabadges() {
                 onOpen();
               }}
             >
-              Add New Username
+              <span>Add New Username</span>
             </Button>
             <ScrollShadow className='h-[560px] flex flex-col gap-3 py-2'>
               {
@@ -246,7 +246,7 @@ export default function Dmcabadges() {
                                   setTargetKeyword({ ...usernames[index], update: true });
                                 }}
                               >
-                                Edit
+                                <span>Edit</span>
                               </Button>
                               <Button
                                 radius="full"
@@ -260,7 +260,7 @@ export default function Dmcabadges() {
                                   });
                                 }}
                               >
-                                Delete
+                                <span>Delete</span>
                               </Button>
                             </div>
                           </div>
@@ -330,7 +330,7 @@ export default function Dmcabadges() {
               onClick={handleCreateNewPaymentLink}
               isLoading={isActionProcessing}
             >
-              Create Link
+              <span>Create Link</span>
             </Button>
             {createdCode ? <CopyToClipboard text={`${window.location.host}/payment?code=${createdCode}`}
               onCopy={() => {
@@ -344,7 +344,7 @@ export default function Dmcabadges() {
                 className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg px-8 py-5 text-base"
                 size='sm'
               >
-                {isCopied ? "Copied" : `Code: '${createdCode}'`}
+                {isCopied ? <span>Copied</span> : <span>Code: '{createdCode}'</span>}
               </Button>
             </CopyToClipboard> : <></>}
           </div>

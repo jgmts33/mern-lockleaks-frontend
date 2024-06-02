@@ -91,7 +91,7 @@ export default function AIImage() {
                     </div>
                     <div className='flex space-x-5 max-sm:hidden'>
                         <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>
-                            START
+                            <span>START</span>
                         </Button>
                     </div>
                     <Progress
@@ -125,7 +125,7 @@ export default function AIImage() {
                                                     <span>{items.content}</span>
                                                 </div>
                                                 <div>
-                                                    <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}>select</Button>
+                                                    <Button radius="lg" className={selectedimage == index ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-5 border border-gray-600 text-white text-base") : ("bg-gradient-to-tr bg-white/15 text-white border border-gray-600 text-base px-5 flex justify-start")} size='sm' onClick={() => setSelectImage(index)}><span>select</span></Button>
                                                 </div>
                                             </div>
                                         )
@@ -154,7 +154,7 @@ export default function AIImage() {
                                 <span className='font-normal text-base'>Requests are reviewed,and government-issued IDs are required for verification.Without the upload of a government-issued ID, these profiles.<span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Cannot Be Removed</span></span>
                             </div>
                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mx-auto mt-10" size='sm'>
-                                Upload ID
+                                <span>Upload ID</span>
                             </Button>
                         </div>
                         <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-10 p-10 max-sm:hidden">
@@ -165,7 +165,7 @@ export default function AIImage() {
                         </div>
                         <div className='flex space-x-5 sm:hidden max-sm:mx-auto max-sm:mt-5'>
                             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-lg" size='sm'>
-                                START
+                                <span>START</span>
                             </Button>
                         </div>
                         <Progress

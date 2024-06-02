@@ -75,8 +75,7 @@ export default function FreeAnalyse() {
                   Crisp.chat.open();
                 }}
               >
-                Contact Us
-                <span>{icons.shine}</span>
+                <span>Contact Us {icons.shine}</span>
               </Button>
             </div>
             <div className='space-y-2'>
@@ -93,7 +92,7 @@ export default function FreeAnalyse() {
               size='lg'
             onClick={() => router.push("/checkout/buy?plan=trial")}
             >
-              Get Free Trial
+              <span>Get Free Trial</span>
             </Button>
             <p className='font-semibold text-xl mt-8'>USERNAMES : 1</p>
             <div className='space-y-4 mt-4'>

@@ -247,8 +247,7 @@ export default function HomePage() {
                 size='lg'
                 onPress={() => router.push("/pricing")}
               >
-                Protect Content Now!
-                <span>{icons.shine}</span>
+                <span>Protect Content Now!</span> {icons.shine}
               </Button>
               <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute left-0 top-6 max-xl:top-0 mt-6 max-sm:opacity-100 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
@@ -316,7 +315,7 @@ export default function HomePage() {
                             <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index ? "hidden" : "flex flex-col items-start")}>
                               <div className='mb-2'> {item.icon} </div>
                               <p className='font-semibold text-xl'>{item.title}</p>
-                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><span className='font-normal text-base'>Issue:</span></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-3 flex gap-2 items-center" size='lg'>
                                 <span className='bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>See Solution</span>
@@ -345,7 +344,7 @@ export default function HomePage() {
                             <div className={" bg-gradient-to-br from-gray-600/40 to-gray-800/40 border absolute w-full h-full outline-none rounded-2xl border-gray-600 p-8 " + (isFlipped == index + 2 ? "hidden" : "flex flex-col items-start")}>
                               <div className='mb-2'> {item.icon} </div>
                               <p className='font-semibold text-xl'>{item.title}</p>
-                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><p className='font-normal text-base'>Issue:</p></Button>
+                              <Button radius="full" className="mt-5 bg-[#D599E126] text-white py-3" size='sm'><span className='font-normal text-base'>Issue:</span></Button>
                               <p className='font-normal text-base mt-5'>{item.content}</p>
                               <Button radius="lg" className="bg-transparent text-white mt-3" size='lg'>
                                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>See Solution</span>
@@ -431,15 +430,15 @@ export default function HomePage() {
             <div className='py-8'>
               <p className='font-medium text-5xl max-lg:text-4xl max-lg:leading-10 max-xl:text-4xl uppercase'>Securing Your Brand:</p>
               <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>
-              <Button 
-                radius="lg" 
-                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full mt-6" 
+              <Button
+                radius="lg"
+                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full mt-6"
                 size='lg'
                 onClick={() => {
                   Crisp.chat.open();
                 }}
               >
-                Support Chat
+                <span>Support Chat</span>
               </Button>
             </div>
             <div className='flex max-lg:hidden'>
@@ -495,7 +494,7 @@ export default function HomePage() {
               </div>
             </div>
             <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full" size='lg'>
-              Free Analisis
+              <span>Free Trial</span>
             </Button>
           </div>
         </div>

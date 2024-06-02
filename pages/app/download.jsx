@@ -113,7 +113,7 @@ export default function DownloadData() {
                                                     if (item.status == 'available') handleDownload(item.scrape_date, index);
                                                 }}
                                             >
-                                                {item.status == 'available' ? item.downloaded ? "Downloaded" : "Download" : "Expired"}
+                                                {item.status == 'available' ? item.downloaded ? <span>Downloaded</span> : <span>Download</span> : <span>Expired</span>}
                                             </Button>
                                         </div>
                                     </div>

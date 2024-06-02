@@ -82,7 +82,7 @@ export default function Help() {
                     />
                 </div>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
-                    Search<span className='w-5 h-5'>{icons.search}</span>
+                    <span>Search<span className='w-5 h-5'>{icons.search}</span></span>
                 </Button>
             </div>
             <div className='flex mx-auto mt-10'>
@@ -125,7 +125,7 @@ export default function Help() {
 
             <div className='flex mx-auto mt-20 max-xl:mt-10'>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto w-full z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-5 py-5 text-sm" size='md'>
-                    Contact Support
+                    <span>Contact Support</span>
                 </Button>
             </div>
             <div className='relative max-xl:hidden'>
@@ -166,7 +166,7 @@ export default function Help() {
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
                     <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>
-                        Chat Now
+                        <span>Chat Now</span>
                     </Button>
                 </div>
             </div>

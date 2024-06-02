@@ -110,7 +110,7 @@ export default function AIface() {
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <Button radius="lg" className={("border border-white/40 px-4 ") + ("border border-white/40 ") + (selectGoogleAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base")} size='sm' onClick={() => setSelectGoogleAccept(index)}>
-                                                    Accept
+                                                    <span>Accept</span>
                                                 </Button>
                                             </div>
                                         )
@@ -159,7 +159,7 @@ export default function AIface() {
                                                     <span className='font-normal text-sm'>{items}</span>
                                                 </div>
                                                 <Button radius="lg" className={("border border-white/40 px-4 ") + (selectBingAccept == index ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white text-base" : "bg-gradient-to-tr bg-white/10 text-white text-base")} size='sm' onClick={() => setSelectBingAccept(index)}>
-                                                    Accept
+                                                    <span>Accept</span>
                                                 </Button>
                                             </div>
                                         )

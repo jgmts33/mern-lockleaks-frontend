@@ -156,7 +156,7 @@ export default function CookieSettigs({ onClose, onAccept }) {
                                         onClose();
                                     }}
                                 >
-                                    {items}
+                                    <span>{items}</span>
                                 </Button>
                             )
                         })

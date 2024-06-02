@@ -90,7 +90,7 @@ export default function DmcaBadges() {
                                             size='md'
                                             onClick={() => router.push("/auth/login")}
                                         >
-                                            <span>{icons.shine}</span>Download
+                                            <span>{icons.shine} Download</span>
                                         </Button>
                                         <Button
                                             radius="lg"
@@ -98,7 +98,7 @@ export default function DmcaBadges() {
                                             size='md'
                                             onClick={() => router.push("/auth/login")}
                                         >
-                                            <span>{icons.shine}</span>Embed your badge
+                                            <span>{icons.shine} Embed your badge</span>
                                         </Button>
 
                                     </div>

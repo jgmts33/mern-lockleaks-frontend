@@ -205,7 +205,7 @@ export default function RootLayout({ children }) {
 
       socket.on(`payment_status_${user.id}`, (value) => {
         console.log(`payment_status_${user.id}:`, value);
-        dispatch(setUserInfo({...userInfo, subscription: {...userInfo.subscription, sattus: 'expired'}}));
+        dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, sattus: 'expired' } }));
       });
     }
 
@@ -293,7 +293,7 @@ export default function RootLayout({ children }) {
                           size='md'
                           onPress={() => router.push("/pricing")}
                         >
-                          Upgrade
+                          <span>Upgrade</span>
                         </Button>
                       </div>
                     </div>
@@ -326,7 +326,7 @@ export default function RootLayout({ children }) {
                               window.location.replace("/");
                             }}
                           >
-                            Log out
+                            <span>Log out</span>
                           </Button>
                         </div>
                       </ModalHeader>
@@ -345,7 +345,7 @@ export default function RootLayout({ children }) {
                           isDisabled={verifyEmailSendTimer}
                           onPress={() => handleConfirmClick()}
                         >
-                          {!userInfo?.verified ? "Resend Email" : userInfo.subscription.status == 'expired' ? "Renew" : "Upgrade"}
+                          {!userInfo?.verified ? <span>Resend Email</span> : userInfo.subscription.status == 'expired' ? <span>Renew</span> : <span>Upgrade</span>}
                         </Button>
                         {
                           !userInfo.subscription.plan_id ?
@@ -358,7 +358,7 @@ export default function RootLayout({ children }) {
                                 window.location.replace("/checkout/buy?plan=trial")
                               }}
                             >
-                              Free Trial
+                              <span>Free Trial</span>
                             </Button> :
                             <Button
                               radius="lg"
@@ -369,7 +369,7 @@ export default function RootLayout({ children }) {
                                 window.location.replace("/");
                               }}
                             >
-                              Back to HomePage
+                              <span>Back to HomePage</span>
                             </Button>
                         }
                       </ModalFooter>
@@ -426,7 +426,7 @@ export default function RootLayout({ children }) {
                           color="danger"
                           onPress={() => onOpen()}
                         >
-                          Customize
+                          <span>Customize</span>
                         </Button>
                       </div>
                       <div>
@@ -436,7 +436,7 @@ export default function RootLayout({ children }) {
                           color="primary"
                           onPress={handleAllChecked}
                         >
-                          Accept All
+                          <span>Accept All</span>
                         </Button>
                       </div>
                     </div>

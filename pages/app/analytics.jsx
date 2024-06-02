@@ -37,7 +37,7 @@ export default function DataAnalytics() {
                         </span>
                     </div>
                     <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 py-5 text-sm mx-auto mt-10" size='sm'>
-                        Download
+                        <span>Download</span>
                     </Button>
                 </div>
                 <div className="flex flex-col max-w-[960px] w-full bg-white/15 border border-gray-500 rounded-[16px] mt-10 px-16 py-10 pb-20 max-sm:px-5 max-sm:py-5 max-md:px-5 max-xl:mt-0 max-lg:mt-5">

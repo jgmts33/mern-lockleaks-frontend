@@ -164,7 +164,7 @@ export default function MonthlyPdf() {
                                             <span>{icons.chat}</span>
                                             <p className='font-semibold text-lg mt-2'>{cards.title}</p>
                                             <Button className="bg-gradient-to-tr mt-2 bg-white/10 max-w-[88px] rounded-[30px] text-white shadow-lg" size='sm'>
-                                                answer:
+                                                <span>answer:</span>
                                             </Button>
                                             <p className='mt-5 font-normal text-base'>{cards.content}</p>
                                         </div>

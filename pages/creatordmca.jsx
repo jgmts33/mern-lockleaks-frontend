@@ -88,7 +88,7 @@ export default function CreatorDmca() {
                             </div>
                             <div className='self-end max-sm:mx-auto max-sm:mt-5 max-lg:mx-auto mt-5'>
                                 <Button radius="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg" size='lg'>
-                                    Free Analisis
+                                    <span>Free Trial</span>
                                 </Button>
                             </div>
                             <div className='relative w-1/2 flex max-xl:flex-col max-lg:hidden'>
@@ -140,7 +140,7 @@ export default function CreatorDmca() {
                                             {item.icon}
                                             <p className='font-semibold text-xl mt-5'>{item.title}</p>
                                             <Button className="bg-gradient-to-tr mt-5 bg-white/10 max-w-[88px] rounded-[30px] text-white shadow-lg" size='sm'>
-                                                answer:
+                                                <span>answer:</span>
                                             </Button>
                                             <p className='mt-5 font-normal text-base'>{item.content}</p>
                                         </div>
