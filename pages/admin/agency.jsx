@@ -39,6 +39,7 @@ export default function Dmcabadges() {
   const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
 
   const handleSetNewUsername = useCallback(() => {
+    
     console.log(usernames, targetKeywordIndex);
     let newUsername = targetKeyword.username.replace("@", "");
     if (newUsername) {
@@ -51,7 +52,6 @@ export default function Dmcabadges() {
 
   const handleSetNewLink = useCallback(async() => {
     let newLink = targetKeyword.link.replace("@", "");
-    setUrlValidation("");
     setIsUsernameLinkValidationProcessing(true);
     if (newLink && checkLinkValidation()) {
       const _usernames = usernames.slice(0);
@@ -59,7 +59,7 @@ export default function Dmcabadges() {
         username: _usernames[targetKeywordIndex].username, 
         link: newLink
       });
-      if ( res.data.valid ) {
+      if ( res.data.valid && !usernames.find(item => item.link === newLink)) {
         _usernames[targetKeywordIndex].link = newLink;
         setUsernames(_usernames);
         setTargetKeyword(null);
@@ -98,6 +98,10 @@ export default function Dmcabadges() {
     }
     setIsActionProcessing(false);
   }, [usernames, customerCount, email, price]);
+
+  useEffect(() => {
+    setUrlValidation("");
+  }, [usernames]);
 
   return (
     <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">

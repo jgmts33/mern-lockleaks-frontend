@@ -82,7 +82,6 @@ export default function BUY() {
 
     const handleSetNewLink = useCallback(async () => {
         let newLink = targetKeyword.link.replace("@", "");
-        setUrlValidation("");
         setIsUsernameLinkValidationProcessing(true);
         if (newLink && checkLinkValidation()) {
             const _usernames = usernames.slice(0);
@@ -90,7 +89,7 @@ export default function BUY() {
                 username: _usernames[targetKeywordIndex].username,
                 link: newLink
             });
-            if (res.data.valid) {
+            if (res.data.valid && !usernames.find(item => item.link === newLink)) {
                 _usernames[targetKeywordIndex].link = newLink;
                 setUsernames(_usernames);
                 setTargetKeyword(null);
@@ -171,7 +170,11 @@ export default function BUY() {
     }, [usernameCount]);
 
     useEffect(() => {
+        setUrlValidation("");
+    },[usernames]);
 
+    useEffect(() => {
+        setUrlValidation("");
         (async () => {
             const accessToken = await getAccessToken();
 
