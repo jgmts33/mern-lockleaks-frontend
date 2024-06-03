@@ -59,7 +59,7 @@ export default function Dmcabadges() {
         username: _usernames[targetKeywordIndex].username, 
         link: newLink
       });
-      if ( res.data.valid && !usernames.find(item => item.link === newLink)) {
+      if ( res.data.valid && !usernames.find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
         _usernames[targetKeywordIndex].link = newLink;
         setUsernames(_usernames);
         setTargetKeyword(null);
