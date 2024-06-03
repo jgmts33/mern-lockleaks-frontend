@@ -278,7 +278,7 @@ export default function RootLayout({ children }) {
                   {userInfo.roles.includes('admin') || USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value == undefined || userInfo.subscription.features[USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value]
                     ?
                     children :
-                    <div className="w-full max-md:py-10 max-sm:py-6">
+                    <div className="w-full py-10 max-sm:py-6">
                       <div className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-w-lg rounded-2xl border p-8 space-y-12 mx-auto'>
                         <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>
                         <p className='font-bold text-[34px] text-center capitalize leading-9'>You cannot use this feature, you must have the Pro or Star plan!</p>
