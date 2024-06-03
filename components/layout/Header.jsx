@@ -134,6 +134,7 @@ export default function Header() {
       try {
         await getPrefLangCookie();
         const accessToken = await getAccessToken();
+        setMounted(true);
         if (accessToken) {
           const res = await getUserInfo();
           if (res.status == 'success') {
@@ -143,7 +144,6 @@ export default function Header() {
       } catch (err) {
         console.log(err);
       }
-      setMounted(true);
     })();
     Crisp.configure('a07a14d8-8bd7-420c-b60e-e0f48ff8b31a');
   }, []);
