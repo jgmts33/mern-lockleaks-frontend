@@ -70,7 +70,7 @@ export default function DmcaBadges() {
                     <ScrollShadow className='h-[620px]'>
                         <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1 p-5'>
                             {
-                                list.map((item, index) => <div
+                                list.length && list.map((item, index) => <div
                                     key={index}
                                     className="flex flex-col gap-2 relative w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer"
                                 >

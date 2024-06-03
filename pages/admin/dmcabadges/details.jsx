@@ -97,8 +97,8 @@ export default function DmcaBadgeDetails() {
                     <Droppable droppableId="droppable">
                         {(provided) => (
                             <div {...provided.droppableProps} ref={provided.innerRef} className='space-y-2' >
-                                {list.map((item, index) => (
-                                    <Draggable key={item.id} draggableId={`${item.id}`} index={index}>
+                                {list.length && list.map((item, index) => (
+                                    <Draggable key={item.id} draggableId={`${item?.id || ""}`} index={index}>
                                         {(provided) => (
                                             <div
                                                 ref={provided.innerRef}
