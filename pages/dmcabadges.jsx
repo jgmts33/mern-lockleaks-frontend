@@ -80,7 +80,7 @@ export default function DmcaBadges() {
                                             width={200}
                                             height={100}
                                             className='rounded-2xl max-w-full max-h-full'
-                                            alt={item.name}
+                                            alt={item?.name}
                                         />
                                     </div>
                                     <div className='flex justify-between w-full gap-2 p-2 pt-0'>

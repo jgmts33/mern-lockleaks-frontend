@@ -112,7 +112,7 @@ export default function DmcaBadgeDetails() {
                                                             width={200}
                                                             height={100}
                                                             className='rounded-2xl max-w-full max-h-full'
-                                                            alt={item.name}
+                                                            alt={item?.name}
                                                         />
                                                         <Button
                                                             className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg p-1 text-base absolute top-2 right-2"
