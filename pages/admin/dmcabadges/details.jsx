@@ -1,7 +1,7 @@
 "use client";
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import {
-    Button, Link
+    Button, Image, Link
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { deleteDmcaImage, getDmcaImages, getDmcaImagesPositions, updateDmcaImagesPositions } from '../../../axios/dmca';
@@ -107,10 +107,10 @@ export default function DmcaBadgeDetails() {
                                             >
                                                 <div className="flex flex-col gap-2 relative w-full h-24 bg-cover border border-gray-500 rounded-[20px] cursor-pointer">
                                                     <div className='flex w-full relative h-full backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4'>
-                                                        <img
+                                                        <Image
                                                             src={`https://server.lockleaks.com/images?filename=${item.name}`}
-                                                            // width={200}
-                                                            // height={100}
+                                                            width={200}
+                                                            height={100}
                                                             className='rounded-2xl max-w-full max-h-full'
                                                             alt={item.name}
                                                         />
