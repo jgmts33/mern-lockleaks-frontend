@@ -9,6 +9,7 @@ import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter } from 'next/navigation';
 import { getHelpCategories } from '../../axios/help';
+import { Crisp } from 'crisp-sdk-web';
 
 export default function Help() {
     const router = useRouter();
@@ -122,12 +123,6 @@ export default function Help() {
                         }
                     </div>
             }
-
-            <div className='flex mx-auto mt-20 max-xl:mt-10'>
-                <Button radius="lg" className="bg-gradient-to-tr mx-auto w-full z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-5 py-5 text-sm" size='md'>
-                    <span>Contact Support</span>
-                </Button>
-            </div>
             <div className='relative max-xl:hidden'>
                 <Image src={RightChat} width={250} height={150} alt="right-chat" className='absolute right-0 -top-20 z-10' />
                 <Image src={LeftChat} width={190} height={50} alt="left-chat" className='absolute right-32 top-32 z-10' />
@@ -165,7 +160,12 @@ export default function Help() {
                     <span>Contact our customer support team now.</span>
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
-                    <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>
+                    <Button 
+                        radius="lg" 
+                        className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" 
+                        size='md'
+                        onClick={() => Crisp.chat.open()}
+                    >
                         <span>Chat Now</span>
                     </Button>
                 </div>

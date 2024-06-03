@@ -122,7 +122,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
           <Link href="/">
             <Image src="/assets/logo.svg" width={250} height={200} alt="logo" className='-mt-5' />
           </Link>
-          <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2024 LockLeaks.</p>
+          <p className='font-light text-xs text-center pb-8 text-white max-md:pb-0'>Copyright © 2024 Lock Leaks.</p>
           <div className='flex gap-7 justify-end mt-0 mb-10'>
             <Link href={"https://tiktok.com/lockleaks"} className='!no-underline !text-white'>{icons.tiktok}</Link>
             <Link href={"https://www.instagram.com/lockleaks"} className='!no-underline !text-white'>{icons.instagram}</Link>

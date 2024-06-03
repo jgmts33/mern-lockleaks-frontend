@@ -21,10 +21,10 @@ export default function Categories() {
     const [isArticleProcessing, setIsArticleProcessing] = useState(false);
 
     const icons = {
-        chat: <RecoveryChat/>,
-        search: <Search/>,
-        collobation: <Collobation/>,
-        redstar: <RedStar/>,
+        chat: <RecoveryChat />,
+        search: <Search />,
+        collobation: <Collobation />,
+        redstar: <RedStar />,
     };
 
     const getCategoriesInfo = useCallback(async () => {
@@ -56,7 +56,7 @@ export default function Categories() {
     }
 
     const handleGoCategory = (categoryName) => {
-        router.push(`/help/articles?category=${categoryName.replaceAll(" ", "-").replaceAll("&", "_")}`);
+        router.push(`/help/articles?category=${categoryName.replaceAll(" ", "-").replaceAll("&", "_")}`, { scroll: false });
     }
 
     useEffect(() => {
@@ -88,7 +88,7 @@ export default function Categories() {
                     />
                 </div>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
-                    <span>Search {icons.search}</span>
+                    <span>Search</span> <span>{icons.search}</span>
                 </Button>
             </div>
             <div className='flex mx-auto mt-10'>
