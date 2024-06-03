@@ -70,13 +70,13 @@ export default function DmcaBadges() {
                     <ScrollShadow className='h-[620px]'>
                         <div className='grid grid-cols-3 gap-5 max-xl:grid-cols-2 max-md:grid-cols-1 p-5'>
                             {
-                                list.length && list.map((item, index) => <div
+                                list.map((item, index) => <div
                                     key={index}
                                     className="flex flex-col gap-2 relative w-[380px] bg-cover border border-gray-500 rounded-[20px] cursor-pointer"
                                 >
                                     <div className='flex justify-center items-center w-full relative h-[220px] backdrop-blur-3xl bg-white/10 rounded-[20px] px-2 py-4'>
                                         <Image
-                                            src={`https://server.lockleaks.com/images?filename=${item.name}`}
+                                            src={`https://server.lockleaks.com/images?filename=${item?.name}`}
                                             width={200}
                                             height={100}
                                             className='rounded-2xl max-w-full max-h-full'
