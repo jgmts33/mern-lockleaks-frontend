@@ -85,10 +85,6 @@ export default function DeleteData() {
                     <p>Email Address used for the LockLeaks account:</p>
                     <input type='text' placeholder='Type here' className="form-select bg-white text-black p-2 rounded-lg mt-5 block w-full" />
                 </div>
-                <div>
-                    <p>Email Address:</p>
-                    <input type='text' placeholder='Type here' className="form-select bg-white text-black p-2 rounded-lg mt-5 block w-full" />
-                </div>
                 <div className='relative max-2xl:hidden'>
                     <Image src={RightChat} className='absolute -right-52 rotate-[-50deg] w-48 h-44' alt='right rotate chat' />
                     <Image src={LeftChat} className='absolute -right-72 -top-52 rotate-[50deg]' alt='left lotate chat' />
