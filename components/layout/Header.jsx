@@ -130,11 +130,11 @@ export default function Header() {
   };
 
   useEffect(() => {
+    setMounted(true);
     (async () => {
       try {
         await getPrefLangCookie();
         const accessToken = await getAccessToken();
-        setMounted(true);
         if (accessToken) {
           const res = await getUserInfo();
           if (res.status == 'success') {
