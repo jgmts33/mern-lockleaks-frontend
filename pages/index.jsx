@@ -493,7 +493,11 @@ export default function HomePage() {
                 <Image src="assets/setup/clock-message.svg" alt='clock-message' width={800} height={600} className="top-0 right-0 absolute" />
               </div>
             </div>
-            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full" size='lg'>
+            <Button   
+              radius="lg" 
+              className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full" size='lg'
+              onPress={() => router.push("/freetrial")}
+            >
               <span>Free Trial</span>
             </Button>
           </div>

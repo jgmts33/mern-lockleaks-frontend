@@ -111,7 +111,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
             </div>
             <p className='text-sm font-normal text-red-600 mt-1 pl-6'>{warning}</p>
             <div className='mt-6 text-sm italic space-y-2 px-6'>
-              <p className='notranslate'>©2024 LockLeaks</p>
+              <p className='notranslate'>©2024 Lock Leaks</p>
               <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
               <p className='notranslate'>Register Code (CUI): 48091747</p>
               <p className='notranslate'>VAT: RO 48091747</p>

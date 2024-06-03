@@ -14,6 +14,9 @@ import { io } from 'socket.io-client';
 import { ENDPOINT } from '../../../config/config';
 import { getUserId } from '../../../axios/token';
 import { SendMessage } from '../../../components/utils/Icons';
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
 export default function TicketDetail() {
 
@@ -113,6 +116,12 @@ export default function TicketDetail() {
 
         setIsSendingMessage(false);
     }, [message, userInfo, targetTicket]);
+
+    const handleKeyDown = useCallback((evt) => {
+        if ( evt.keyCode == 13 && !evt.shiftKey) {
+            handleSendMessage()
+        }
+    },[message,userInfo, targetTicket]);
 
     useEffect(() => {
         if (selectedTicketStatus == '') setFilteredList(list);
@@ -387,8 +396,8 @@ export default function TicketDetail() {
                                                 <div className='max-sm:max-w-full max-w-[450px] w-max p-2 space-y-2'>
                                                     <p className={eachMessage.sender_id == userId ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id == userId ? 'Username:' : "Support:"}</p>
                                                     <div className={eachMessage.sender_id == userId ? 'flex justify-end' : 'flex '}>
-                                                        <div className={'max-w-full w-max word-wrap bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
-                                                            {eachMessage.content}
+                                                        <div className={'w-full word-wrap bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
+                                                            <pre className={poppins.className}>{eachMessage.content}</pre>
                                                             <div className='flex flex-col gap-2 w-full'>
                                                                 {
                                                                     eachMessage.attached_images?.map((fileName, index) => <Image key={index} src={`https://server.lockleaks.com/images?filename=${fileName}`} alt='Attached' width={450} height={260} className='max-w-full h-auto' />)
@@ -462,6 +471,7 @@ export default function TicketDetail() {
                                         placeholder='Type Here'
                                         value={message.content}
                                         onChange={(e) => setMessage(p => ({ ...p, content: e.target.value }))}
+                                        onKeyDown={(e) => handleKeyDown(e)}
                                     />
                                 </div>
                                 <Button

@@ -270,7 +270,8 @@ export default function RootLayout({ children }) {
   }, [userInfo])
 
   if (mounted) return (
-    <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
+    <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "") + (!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
+    ? "" : " hidden") }>
       <div className="flex flex-col">
         {
           userInfo ?
@@ -278,7 +279,7 @@ export default function RootLayout({ children }) {
               <Sidebar show={showSidebar} setter={setShowSidebar} />
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
-                <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto relative " style={{ scrollBehavior: 'smooth' }}>
+                <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto relative" style={{ scrollBehavior: 'smooth' }}>
                   {userInfo.roles.includes('admin') || USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value == undefined || userInfo.subscription.features[USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value]
                     ?
                     children :
@@ -445,16 +446,11 @@ export default function RootLayout({ children }) {
                   <></>
               }
 
-              <div className={!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
-                ? "hidden" : ""}>
-                <div className='flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center'>
-                  <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
-                </div>
+              <div className={'flex items-center justify-between w-full text-large font-semibold h-[80px] px-10 max-lg:justify-center max-lg:items-center ' + (!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
+                ? "hidden" : "")}>
+                <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
               </div>
-              <div className={!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
-                ? "" : "hidden"}>
-                <Header />
-              </div>
+              <Header />
               <div className="flex w-full flex-col items-center pb-10">
                 <NextTopLoader
                   color="#2299DD"

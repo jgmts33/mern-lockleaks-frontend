@@ -75,7 +75,7 @@ export default function FreeTrial() {
                   Crisp.chat.open();
                 }}
               >
-                <span>Contact Us {icons.shine}</span>
+                <span>Contact Us </span> <span>{icons.shine}</span>
               </Button>
             </div>
             <div className='space-y-2'>
