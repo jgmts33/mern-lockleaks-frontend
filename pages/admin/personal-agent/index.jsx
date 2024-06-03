@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '../../../config/config';
-import { getUserId } from '../../../axios/token';
 import { SendMessage } from '../../../components/utils/Icons';
 import { Poppins } from 'next/font/google';
 
@@ -21,7 +20,6 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 export default function TicketDetail() {
 
     const userInfo = useSelector(info);
-    const userId = getUserId();
 
     const messagesListRef = useRef(null);
 
@@ -93,10 +91,11 @@ export default function TicketDetail() {
     }
 
     const handleKeyDown = useCallback((evt) => {
-        if ( evt.keyCode == 13 && !evt.shiftKey) {
-            handleSendMessage()
+        if (evt.keyCode == 13 && !evt.shiftKey) {
+            handleSendMessage();
+            return;
         }
-    },[message,userInfo, targetTicket]);
+    }, [message, userInfo, targetTicket]);
 
     const handleSendMessage = useCallback(async () => {
         setIsSendingMessage(true);
@@ -107,7 +106,7 @@ export default function TicketDetail() {
             });
         }
         formData.append('content', message.content);
-        formData.append('sender_id', userId);
+        formData.append('sender_id', userInfo.id);
         formData.append('attached_image_length', message.attached_images.length);
         formData.append('ticket_id', targetTicket.id);
 
@@ -116,7 +115,7 @@ export default function TicketDetail() {
             content: '',
             attached_images: []
         });
-        
+
         setAttachedImagesPreviewUrls([]);
 
         setSelectedTicketStatus('open');
@@ -166,8 +165,10 @@ export default function TicketDetail() {
         socket.on(`update_ticket_status`, async ({ id, status }) => {
             setList(prevState => {
                 let _items = prevState.map((item) => {
-                    if (item.id == id) {
-                        return { ...item, status: status }
+                    if (item.id == Number(id)) {
+                        setTargetTicket(p => ({ ...p, status }));
+                        setSelectedTicketStatus(status);
+                        return { ...item, status: status };
                     } else return item;
                 });
                 return _items;
@@ -182,28 +183,28 @@ export default function TicketDetail() {
 
         }
 
-        return () => socket.close();
-
-    }, [targetTicket]);
-
-    useEffect(() => {
-        getTicketsInfo();
-
-        const socket = io(ENDPOINT);
-
         socket.on(`ticket_deleted`, (value) => {
             console.log(`ticket_deleted:`, value);
             setList(p => p.filter((item) => item.id != value));
+            if (targetTicket?.id == Number(value)) setTargetTicket(null);
         });
 
         socket.on(`ticket_closed_admin`, (value) => {
-            console.log(`ticket_closed_admin:`, value);
+            if (targetTicket?.id == Number(value)) {
+                setTargetTicket(p => ({ ...p, status: 'closed' }));
+                setSelectedTicketStatus('closed');
+            }
             setList(p => p.filter((item) => item.id != value));
         });
 
         return () => {
             socket.disconnect();
         }
+
+    }, [targetTicket]);
+
+    useEffect(() => {
+        getTicketsInfo();
     }, []);
 
     return (
@@ -379,8 +380,8 @@ export default function TicketDetail() {
                             </div>
                         </div>
                         <div className='flex flex-col flex-1 relative'>
-                            <ScrollShadow className={'space-y-2 p-2 ' + (targetTicket.status == 'solved' || targetTicket == 'closed' ? 'h-[calc(100vh-300px)]' : 'h-[calc(100vh-400px)]')}>
-                                {
+                            <ScrollShadow className={'space-y-2 p-2 ' + (targetTicket.status == 'solved' || targetTicket.status == 'closed' ? 'h-[calc(100vh-300px)]' : 'h-[calc(100vh-400px)]')}>
+                                {/* {
                                     isMessagesProcessing ?
                                         <div className='w-full flex justify-center mt-16'>
                                             <div role="status">
@@ -391,32 +392,32 @@ export default function TicketDetail() {
                                                 <span className="sr-only">Loading...</span>
                                             </div>
                                         </div>
-                                        :
-                                        messages.map((eachMessage, index) => {
-                                            console.log(eachMessage);
-                                            return <div key={index} className={'w-full flex flex-col ' + (eachMessage.sender_id == userId ? 'items-end' : '')}>
-                                                <div className='max-sm:max-w-full max-w-[450px] w-max p-2 space-y-2'>
-                                                    <p className={eachMessage.sender_id == userId ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userId ? 'Username:' : "Support:"}</p>
-                                                    <div className={eachMessage.sender_id != userId ? 'flex justify-end' : 'flex '}>
-                                                        <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
-                                                            <pre className={poppins.className}>{eachMessage.content}</pre>
-                                                            <div className='flex flex-col gap-2 w-full'>
-                                                                {
-                                                                    eachMessage.attached_images?.map((fileName, index) => <Image key={index} src={`https://server.lockleaks.com/images?filename=${fileName}`} width={450} height={260} className='max-w-full h-auto' />)
-                                                                }
-                                                            </div>
-                                                        </div>
+                                        : */}
+                                {messages.map((eachMessage, index) => {
+                                    console.log(eachMessage);
+                                    return <div key={index} className={'w-full flex flex-col ' + (eachMessage.sender_id == userInfo?.id ? 'items-end' : '')}>
+                                        <div className='max-sm:max-w-full max-w-[600px] w-max p-2 space-y-2'>
+                                            <p className={eachMessage.sender_id == userInfo?.id ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userInfo?.id ? 'Username:' : "Support:"}</p>
+                                            <div className={eachMessage.sender_id != userInfo?.id ? 'flex justify-end' : 'flex '}>
+                                                <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
+                                                    <pre className={poppins.className + ' text-wrap'}>{eachMessage.content}</pre>
+                                                    <div className='flex flex-col gap-2 w-full'>
+                                                        {
+                                                            eachMessage.attached_images?.map((fileName, index) => <Image key={index} src={`https://server.lockleaks.com/images?filename=${fileName}`} width={450} height={260} className='max-w-full h-auto' />)
+                                                        }
                                                     </div>
-                                                    <p className={eachMessage.sender_id != userId ? 'text-right px-2' : 'px-2'}>{moment(targetTicket.createdAt).format('MMMM DD, YYYY')}</p>
                                                 </div>
-
                                             </div>
-                                        })
-                                }
+                                            <p className={eachMessage.sender_id != userInfo?.id ? 'text-right px-2' : 'px-2'}>{moment(targetTicket.createdAt).format('MMMM DD, YYYY')}</p>
+                                        </div>
+
+                                    </div>
+                                })}
+                                {/* } */}
                                 <div ref={messagesListRef} />
                             </ScrollShadow>
                         </div>
-                        {targetTicket.status != 'solved' && targetTicket.status != '!closed' ? <div className='flex gap-5 items-center relative' >
+                        {targetTicket.status != 'solved' && targetTicket.status != 'closed' ? <div className='flex gap-5 items-center relative' >
                             <label
                                 className='flex items-center cursor-pointer relative'
                             >
@@ -472,7 +473,11 @@ export default function TicketDetail() {
                                         className='bg-transparent w-full rounded-lg h-20 outline-none p-3'
                                         placeholder='Type Here'
                                         value={message.content}
-                                        onChange={(e) => setMessage(p => ({ ...p, content: e.target.value }))}
+                                        disabled={isSendingMessage}
+                                        onChange={(e) => {
+                                            console.log("message:", e.target.value);
+                                            setMessage(p => ({ ...p, content: e.target.value }));
+                                        }}
                                         onKeyDown={(e) => handleKeyDown(e)}
                                     />
                                 </div>

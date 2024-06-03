@@ -29,10 +29,9 @@ import { getUserInfo } from "@/axios/auth";
 import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
 import { io } from "socket.io-client";
 import { ENDPOINT } from "../../config/config";
-import { getUserId } from "../../axios/token";
 import { getScrapedDataList } from "../../axios/download";
 import { getExtraReport } from "../../axios/user";
-import { ADMIN_SIDEBAR_LIST, USER_SIDEBAR_LIST } from "@/config/config";
+import { USER_SIDEBAR_LIST } from "@/config/config";
 import { sendVerificationEmail } from "../../axios/auth";
 
 
@@ -154,9 +153,11 @@ export default function RootLayout({ children }) {
 
     if (!currentPath?.includes("admin") && !currentPath?.includes("app")) {
       setMounted(true);
+      return;
     }
-    if (!userInfo) return;
+    if ( !userInfo ) return;
 
+    console.log("userInfo:", userInfo);
     if (!userInfo.verified) {
       setModalValue({
         title: "You should verify Email before using our application",
@@ -189,8 +190,6 @@ export default function RootLayout({ children }) {
 
     setMounted(true);
 
-    const userId = getUserId();
-
     const socket = io(ENDPOINT);
 
     socket.on(`welcome`, (value) => {
@@ -198,14 +197,16 @@ export default function RootLayout({ children }) {
     })
 
     if (currentPath?.includes("app")) {
-      socket.on(`${userId}:scrape`, (value) => {
+      socket.on(`${userInfo.id}:scrape`, (value) => {
         console.log("scrape-progress:", value)
         if (value) dispatch(setScanProgress(value));
       })
 
-      socket.on(`payment_status_${userId}`, (value) => {
-        console.log(`payment_status_${userId}:`, value);
-        dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, sattus: 'expired' } }));
+      console.log(`userInfo.id:`, userInfo.id);
+
+      socket.on(`payment_status_${userInfo.id}`, (value) => {
+        console.log(`payment_status_${userInfo.id}:`, value);
+        dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, status: 'expired' } }));
       });
     }
 
@@ -241,7 +242,6 @@ export default function RootLayout({ children }) {
     if (
       !currentPath?.includes("app")
       && !currentPath?.includes("admin")
-      && !currentPath?.includes("auth/login")
     ) return;
     (async () => {
       try {
@@ -265,13 +265,8 @@ export default function RootLayout({ children }) {
     }
   }, []);
 
-  useEffect(() => {
-    console.log("userInfo:", userInfo);
-  }, [userInfo])
-
   if (mounted) return (
-    <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "") + (!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
-    ? "" : " hidden") }>
+    <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
         {
           userInfo ?
@@ -283,7 +278,7 @@ export default function RootLayout({ children }) {
                   {userInfo.roles.includes('admin') || USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value == undefined || userInfo.subscription.features[USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value]
                     ?
                     children :
-                    <div className="w-full py-5 max-md:py-12 max-sm:py-6">
+                    <div className="w-full max-md:py-10 max-sm:py-6">
                       <div className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-w-lg rounded-2xl border p-8 space-y-12 mx-auto'>
                         <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>
                         <p className='font-bold text-[34px] text-center capitalize leading-9'>You cannot use this feature, you must have the Pro or Star plan!</p>
@@ -451,7 +446,7 @@ export default function RootLayout({ children }) {
                 <Link href="/" className="text-white text-xl font-semibold"><Image src="/assets/logo.svg" width={190} height={50} alt="logo" /></Link>
               </div>
               <Header />
-              <div className="flex w-full flex-col items-center pb-10">
+              <div className={"flex w-full flex-col items-center pb-10 "}>
                 <NextTopLoader
                   color="#2299DD"
                   initialPosition={0.08}

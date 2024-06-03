@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '../../config/config';
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { getUserId } from '../../axios/token';
 
 export default function DownloadData() {
 
@@ -67,16 +66,13 @@ export default function DownloadData() {
 
         const socket = io(ENDPOINT);
 
-        (async () => {
-            if (!userInfo) return;
-            const userId = await getUserId();
-            getScrapedDataListInfo();
+        if (!userInfo) return;
+        getScrapedDataListInfo();
 
-            socket.on(`scraped_data_expired_${userId}`, (value) => {
-                console.log(`scraped_data_expired_${userId}:`, value);
-                setList(p => p.filter((item) => item.id != value));
-            });
-        })();
+        socket.on(`scraped_data_expired_${userInfo.id}`, (value) => {
+            console.log(`scraped_data_expired_${userInfo.id}:`, value);
+            setList(p => p.filter((item) => item.id != value));
+        });
 
         return () => {
             socket.disconnect();

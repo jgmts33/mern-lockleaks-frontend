@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection } from "@nextui-org/react";
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { ArrowDown } from "@/components/utils/Icons";
 import { Poppins } from "next/font/google";
 import { getAccessToken, getCookieValue } from "../../axios/token";
@@ -19,6 +19,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [mounted, setMounted] = useState(false);
   const [prefLangCookie, setPrefLangCookie] = useState('');
+
+  const currentPath = usePathname();
 
   const menuItems = [
     {
@@ -151,7 +153,8 @@ export default function Header() {
       isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-transparent sm:p-1 z-20"
+      className={"bg-transparent sm:p-1 z-20 " + (!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
+      ? "" : " hidden") }
       maxWidth="full"
     >
       <NavbarContent className="md:hidden text-white" justify="start">
