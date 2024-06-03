@@ -88,7 +88,7 @@ export default function Categories() {
                     />
                 </div>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
-                    <span>Search</span> <span>{icons.search}</span>
+                    <span>Search<span className='w-5 h-5'>{icons.search}</span></span>
                 </Button>
             </div>
             <div className='flex mx-auto mt-10'>
