@@ -35,8 +35,8 @@ export default function BUY() {
     ]
 
     const icons = {
-        shine: <Shine fill="currentColor" size={16} />,
-        success: <Success fill="currentColor" size={16} />,
+        shine: <Shine/>,
+        success: <Success/>,
     };
 
     const router = useRouter();

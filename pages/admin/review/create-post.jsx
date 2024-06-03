@@ -21,13 +21,13 @@ export default function CreatePost() {
     const searchParams = useSearchParams();
 
     const icons = {
-        telegram: <TelegramAlt fill="currentColor" size={16} />,
-        discord: <DiscordAlt fill="currentColor" size={16} />,
-        tiktok: <TiktokAlt fill="currentColor" size={16} />,
-        instagram: <InstagramAlt fill="currentColor" size={16} />,
-        twitter: <TwitterXAlt fill="currentColor" size={16} />,
-        facebook: <FacebookAlt fill="currentColor" size={16} />,
-        reddit: <RedditAlt fill="currentColor" size={16} />,
+        telegram: <TelegramAlt/>,
+        discord: <DiscordAlt/>,
+        tiktok: <TiktokAlt/>,
+        instagram: <InstagramAlt/>,
+        twitter: <TwitterXAlt/>,
+        facebook: <FacebookAlt/>,
+        reddit: <RedditAlt/>,
     };
 
     const [referLinkEnable, setReferLinkEnable] = useState(false);

@@ -22,16 +22,16 @@ const UserHeader = ({ show, setter }) => {
   const [prefLangCookie, setPrefLangCookie] = useState('');
 
   const icons = {
-    yellowstar: <YellowStar fill="currentColor" size={16} />,
+    yellowstar: <YellowStar/>,
     search: <Search fill="currentColor" size={8} />,
-    dot: <Dot fill="currentColor" size={16} />,
-    pencil: <Pencil fill="currentColor" size={16} />,
-    trash: <Trash fill="currentColor" size={16} />,
-    control: <Control fill="currentColor" size={16} />,
-    window: <Window fill="currentColor" size={16} />,
-    logout: <LogOut fill="currentColor" size={16} />,
-    accountsetting: <AccountSetting fill="currentColor" size={16} />,
-    star: <Star fill="currentColor" size={16} />,
+    dot: <Dot/>,
+    pencil: <Pencil/>,
+    trash: <Trash/>,
+    control: <Control/>,
+    window: <Window/>,
+    logout: <LogOut/>,
+    accountsetting: <AccountSetting/>,
+    star: <Star/>,
   };
 
   const getPrefLangCookie = async () => {

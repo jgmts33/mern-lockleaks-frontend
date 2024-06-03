@@ -14,7 +14,7 @@ export default function AIface() {
 
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
+        components: <Components/>,
     };
 
     const GoogleScannerContent = [

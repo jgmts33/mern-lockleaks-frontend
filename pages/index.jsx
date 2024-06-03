@@ -14,20 +14,20 @@ export default function HomePage() {
   const router = useRouter();
 
   const icons = {
-    left: <ChevronLeft fill="currentColor" size={16} />,
-    right: <ChevronRight fill="currentColor" size={16} />,
-    shine: <Shine fill="currentColor" size={16} />,
-    fan: <Fan fill="currentColor" size={16} />,
-    lock: <Lock fill="currentColor" size={16} />,
-    support: <Support fill="currentColor" size={16} />,
-    thumbup: <ThumbUp fill="currentColor" size={16} />,
-    protect: <Protect fill="currentColor" size={16} />,
-    star: <Star fill="currentColor" size={16} />,
-    twitter: <Twitter fill="currentColor" size={16} />,
-    success: <IconSuccess fill="currentColor" size={16} />,
-    chat: <Chat fill="currentColor" size={16} />,
-    profile: <Profile fill="currentColor" size={16} />,
-    tip: <Tip fill="currentColor" size={16} />,
+    left: <ChevronLeft/>,
+    right: <ChevronRight/>,
+    shine: <Shine/>,
+    fan: <Fan/>,
+    lock: <Lock/>,
+    support: <Support/>,
+    thumbup: <ThumbUp/>,
+    protect: <Protect/>,
+    star: <Star/>,
+    twitter: <Twitter/>,
+    success: <IconSuccess/>,
+    chat: <Chat/>,
+    profile: <Profile/>,
+    tip: <Tip/>,
   };
 
   const assistSecionItems = [
@@ -211,10 +211,10 @@ export default function HomePage() {
 
     if (screen.width >= 650) {
       const timer = setInterval(() => {
-        if (animationCounter === 2) {
+        if (animationCounter === 0.9) {
           clearInterval(timer);
         }
-        setAnimationCounter(p => p + 1);
+        setAnimationCounter(p => p + 0.3);
       }, 1000);
       return () => clearInterval(timer);
     }
@@ -249,21 +249,21 @@ export default function HomePage() {
               >
                 <span>Protect Content Now!</span> {icons.shine}
               </Button>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute left-0 top-6 max-xl:top-0 mt-6 max-sm:opacity-100 " + (animationCounter >= 1 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:mt-10 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute left-0 top-6 max-xl:top-0 mt-6 max-sm:opacity-100 " + (animationCounter >= 0.3 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.success}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>Protect Your Content</p>
                   <p className='font-normal text-base mt-2'>Your Creativity Deserves Protection- We've Got You Covered.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-28 max-xl:right-0 max-xl:top-8 max-sm:opacity-100 " + (animationCounter >= 2 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] p-5 cursor-pointer absolute right-20 top-28 max-xl:right-0 max-xl:top-8 max-sm:opacity-100 " + (animationCounter >= 0.6 ? "opacity-100" : "opacity-0")}>
                 <div>{icons.profile}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>DEFEND YOUR NAME</p>
                   <p className='font-normal text-base mt-2'>Your Brand is Your Legacy, Let Us Be Your Guardians.</p>
                 </div>
               </div>
-              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-10 -top-5 max-sm:opacity-100 " + (animationCounter >= 3 ? "opacity-100" : "opacity-0")}>
+              <div className={"flex max-w-[422px] duration-700 max-xl:!relative max-xl:rotate-0 max-2xl:right-2 max-xl:right-0 max-xl:top-16 bg-white/5 shadow-sm shadow-gray-50 rounded-[20px] rotate-[12deg] z-10 p-5 cursor-pointer absolute right-10 -top-5 max-sm:opacity-100 " + (animationCounter >= 0.9 ? "opacity-100" : "opacity-0")}>
                 <div className='-rotate-[8deg]'>{icons.chat}</div>
                 <div>
                   <p className='font-semibold text-lg mt-3'>PROFESSIONAL SUPPORT</p>

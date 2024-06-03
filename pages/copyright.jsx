@@ -15,11 +15,11 @@ export default function CopyRight() {
     const [expandedFAQIndex, setExpandedFAQIndex] = useState(-1);
 
     const icons = {
-        balance: <Balance fill="currentColor" size={16} />,
-        ban: <Banned fill="currentColor" size={16} />,
-        law: <Law fill="currentColor" size={16} />,
-        tip: <Tips fill="currentColor" size={16} />,
-        arrowtop: <ChevronRight fill="currentColor" size={16} />,
+        balance: <Balance/>,
+        ban: <Banned/>,
+        law: <Law/>,
+        tip: <Tips/>,
+        arrowtop: <ChevronRight/>,
     };
 
     const CopyrightTitle = {

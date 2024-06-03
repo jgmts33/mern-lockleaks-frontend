@@ -17,7 +17,7 @@ export default function BlogList() {
 
   const router = useRouter();
   const icons = {
-    right: <ChevronRight fill="currentColor" size={16} />,
+    right: <ChevronRight/>,
   };
 
   const [selectedPagination, setSelectPagination] = useState(1);

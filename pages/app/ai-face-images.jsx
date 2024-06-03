@@ -12,8 +12,8 @@ export default function AIImage() {
     const [value, setValue] = React.useState(25);
 
     const icons = {
-        chain: <Chain fill="currentColor" size={16} />,
-        components: <Components fill="currentColor" size={16} />,
+        chain: <Chain/>,
+        components: <Components/>,
     };
 
     const [selectedimage, setSelectImage] = useState(0)

@@ -10,14 +10,14 @@ import CustomerReview from '@/components/customer-review';
 export default function CamDmca() {
 
     const icons = {
-        balance: <Balance fill="currentColor" size={16} />,
-        ban: <Banned fill="currentColor" size={16} />,
-        law: <Law fill="currentColor" size={16} />,
-        tip: <Tips fill="currentColor" size={16} />,
-        arrowtop: <ChevronRight fill="currentColor" size={16} />,
-        FirstTip: <FirstTip fill="currentColor" size={16} />,
-        SecondTip: <SecondTip fill="currentColor" size={16} />,
-        ThirdTip: <ThirdTip fill="currentColor" size={16} />,
+        balance: <Balance/>,
+        ban: <Banned/>,
+        law: <Law/>,
+        tip: <Tips/>,
+        arrowtop: <ChevronRight/>,
+        FirstTip: <FirstTip/>,
+        SecondTip: <SecondTip/>,
+        ThirdTip: <ThirdTip/>,
     };
 
     const [selectedTipIndex, setSelectedTipIndex] = useState(0);
@@ -76,7 +76,7 @@ export default function CamDmca() {
 
     const FAQContent = ({ targetContent }) => {
         const icons = {
-            arrowtop: <ChevronRight fill="currentColor" size={16} />,
+            arrowtop: <ChevronRight/>,
         };
     
         const [expandedIndex, setExpandedIndex] = useState(-1);

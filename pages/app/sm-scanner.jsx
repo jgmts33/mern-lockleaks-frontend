@@ -10,7 +10,7 @@ export default function SMscanner() {
     const [value, setValue] = React.useState(25);
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
+        components: <Components/>,
     };
 
     const ScanList = [

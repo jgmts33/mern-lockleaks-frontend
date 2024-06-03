@@ -58,10 +58,10 @@ export default function ForgotPassword() {
   }, [email, dispatch, onOpen]);
 
   const icons = {
-    envelop: <Envelop fill="currentColor" size={16} />,
-    gradiant_key: <GradientKey fill="currentColor" size={16} />,
-    warningmodal: <WarningModal fill="currentColor" size={16} />,
-    success: <Success fill="currentColor" size={16} />,
+    envelop: <Envelop/>,
+    gradiant_key: <GradientKey/>,
+    warningmodal: <WarningModal/>,
+    success: <Success/>,
   };
 
   const handleConfirmClick = useCallback(() => {

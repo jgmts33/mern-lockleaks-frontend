@@ -38,7 +38,7 @@ export default function DmcaBadges() {
     }, []);
 
     const icons = {
-        shine: <Shine fill="currentColor" size={16} />,
+        shine: <Shine/>,
     };
 
     const DmcaBadgesTitle = {

@@ -12,11 +12,11 @@ export default function SERVICES() {
     const router = useRouter();
 
     const icons = {
-        right: <ChevronRight fill="currentColor" size={16} />,
-        eye: <Eye fill="currentColor" size={16} />,
-        chat: <Chats fill="currentColor" size={16} />,
-        photo: <Photos fill="currentColor" size={16} />,
-        arrow_right: <GradiantChevronRIGHT fill="currentColor" size={16} />,
+        right: <ChevronRight/>,
+        eye: <Eye/>,
+        chat: <Chats/>,
+        photo: <Photos/>,
+        arrow_right: <GradiantChevronRIGHT/>,
     };
 
     const ServicesTitle = {

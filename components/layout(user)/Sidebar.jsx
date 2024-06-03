@@ -16,8 +16,8 @@ const Sidebar = ({ show, setter }) => {
     const pathname = usePathname();
 
     const icons = {
-        yellowstar: <YellowStar fill="currentColor" size={16} />,
-        star: <Star fill="currentColor" size={16} />,
+        yellowstar: <YellowStar/>,
+        star: <Star/>,
     };
 
     const router = useRouter();

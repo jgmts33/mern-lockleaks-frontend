@@ -19,9 +19,9 @@ export default function Scanner() {
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
-        googlesearch: <GoogleSearch fill="currentColor" size={16} />,
-        bingsearch: <BingSearch fill="currentColor" size={16} />,
-        complete: <Complete fill="currentColor" size={16} />,
+        googlesearch: <GoogleSearch/>,
+        bingsearch: <BingSearch/>,
+        complete: <Complete/>,
     };
 
     const handleScan = useCallback(async () => {

@@ -15,10 +15,10 @@ import Photo from '@/public/assets/recovery/photo.svg';
 export default function DeleteData() {
 
     const icons = {
-        FirstTip: <FirstTip fill="currentColor" size={16} />,
-        SecondTip: <SecondTip fill="currentColor" size={16} />,
-        ThirdTip: <ThirdTip fill="currentColor" size={16} />,
-        shine: <Shine fill="currentColor" size={16} />,
+        FirstTip: <FirstTip/>,
+        SecondTip: <SecondTip/>,
+        ThirdTip: <ThirdTip/>,
+        shine: <Shine/>,
     };
 
     const DeleteDataTitle = {

@@ -22,14 +22,14 @@ export default function Pricing() {
     const router = useRouter();
 
     const icons = {
-        left: <ChevronLeft fill="currentColor" size={16} />,
-        right: <ChevronRight fill="currentColor" size={16} />,
-        shine: <Shine fill="currentColor" size={16} />,
-        star: <Star fill="currentColor" size={16} />,
-        arrowDown: <ArrowDown fill="currentColor" size={16} />,
-        complete: <Complete fill="currentColor" size={16} />,
-        uncomplete: <Uncomplete fill="currentColor" size={16} />,
-        info: <Info fill="currentColor" size={16} />,
+        left: <ChevronLeft/>,
+        right: <ChevronRight/>,
+        shine: <Shine/>,
+        star: <Star/>,
+        arrowDown: <ArrowDown/>,
+        complete: () => <Complete/>,
+        uncomplete: () => <Uncomplete/>,
+        info: () => <Info/>,
     };
 
     const pricingContent = [
@@ -268,7 +268,7 @@ export default function Pricing() {
                 <div className='flex mx-auto mt-32 max-md:mt-20'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-                    <sapn className="font-medium text-5xl max-lg:text-4xl">PRICING TABLE</sapn>
+                    <span className="font-medium text-5xl max-lg:text-4xl">PRICING TABLE</span>
                 </div>
                 <div className='bg-gradient-to-tr w-1/2 max-lg:w-full max-lg:mt-16 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
                     <Button radius="full" className={isPricingSelected ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c879e0] to-[#ce28dd] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} onClick={() => setPricingSelected(true)} size='lg'>

@@ -19,12 +19,12 @@ import RobertHand from '@/public/assets/copyright/robert-hand.svg';
 export default function AI() {
 
     const icons = {
-        protect: <ProtectKey fill="currentColor" size={16} />,
-        motherboard: <MotherBoard fill="currentColor" size={16} />,
-        locks: <Locks fill="currentColor" size={16} />,
-        hub: <Hub fill="currentColor" size={16} />,
-        tip: <Tips fill="currentColor" size={16} />,
-        arrowtop: <ChevronRight fill="currentColor" size={16} />,
+        protect: <ProtectKey/>,
+        motherboard: <MotherBoard/>,
+        locks: <Locks/>,
+        hub: <Hub/>,
+        tip: <Tips/>,
+        arrowtop: <ChevronRight/>,
     };
 
     const AITitle = {

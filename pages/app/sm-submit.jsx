@@ -22,12 +22,12 @@ export default function SMsubmit() {
     const [submittedResult, setSubmittedResult] = useState(0);
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
-        SMfacebook: <SMfacebook fill="currentColor" size={16} />,
-        SMinstagram: <SMinstagram fill="currentColor" size={16} />,
-        SMtwitter: <SMtwitter fill="currentColor" size={16} />,
-        SMtelegram: <SMtelegram fill="currentColor" size={16} />,
-        SMreddit: <SMreddit fill="currentColor" size={16} />,
+        components: <Components/>,
+        SMfacebook: <SMfacebook/>,
+        SMinstagram: <SMinstagram/>,
+        SMtwitter: <SMtwitter/>,
+        SMtelegram: <SMtelegram/>,
+        SMreddit: <SMreddit/>,
     };
 
     const SOcialMediaButtons = [

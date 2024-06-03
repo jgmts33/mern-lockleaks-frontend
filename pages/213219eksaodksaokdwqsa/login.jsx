@@ -15,14 +15,14 @@ import { setTokens } from '@/axios/token';
 export default function Login() {
     const router = useRouter();
     const icons = {
-        lock: <Lock fill="currentColor" size={16} />,
-        envelop: <Envelop fill="currentColor" size={16} />,
-        google: <Google fill="currentColor" size={16} />,
-        twitter: <Twitter fill="currentColor" size={16} />,
-        facebook: <Facebook fill="currentColor" size={16} />,
-        warningmodal: <WarningModal fill="currentColor" size={16} />,
-        error: <Error fill="currentColor" size={16} />,
-        success: <Success fill="currentColor" size={16} />,
+        lock: <Lock/>,
+        envelop: <Envelop/>,
+        google: <Google/>,
+        twitter: <Twitter/>,
+        facebook: <Facebook/>,
+        warningmodal: <WarningModal/>,
+        error: <Error/>,
+        success: <Success/>,
     };
     const dispatch = useDispatch();
     const [password, setPassword] = useState("");

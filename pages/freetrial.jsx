@@ -21,11 +21,11 @@ export default function FreeTrial() {
   const router = useRouter();
 
   const icons = {
-    shine: <Shine fill="currentColor" size={16} />,
-    robertchat: <Robertchat fill="currentColor" size={16} />,
-    chat: <RecoveryChat fill="currentColor" size={16} />,
-    complete: <Complete fill="currentColor" size={16} />,
-    bell: <Bell fill="currentColor" size={16} />,
+    shine: <Shine/>,
+    robertchat: <Robertchat/>,
+    chat: <RecoveryChat/>,
+    complete: <Complete/>,
+    bell: <Bell/>,
   };
 
   return (

@@ -14,9 +14,9 @@ import CustomerReview from '@/components/customer-review';
 export default function MonthlyPdf() {
 
     const icons = {
-        shine: <Shine fill="currentColor" size={16} />,
-        protect: <ProtectShadow fill="currentColor" size={16} />,
-        chat: <RecoveryChat fill="currentColor" size={16} />,
+        shine: <Shine/>,
+        protect: <ProtectShadow/>,
+        chat: <RecoveryChat/>,
     };
 
     const MonthlyTitle = {

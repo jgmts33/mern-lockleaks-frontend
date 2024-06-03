@@ -12,7 +12,7 @@ export default function FileHosted() {
     const lastScanResult = useSelector(lastScanRusultInfo);
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
+        components: <Components/>,
     };
 
     const ScannerContent = [

@@ -15,8 +15,8 @@ export default function Scanner() {
     const [isProcessing, setIsProcessing] = useState(false);
 
     const icons = {
-        updownscroll: <UpDownScroll fill="currentColor" size={16} />,
-        moredetails: <MoreDetails fill="currentColor" size={16} />,
+        updownscroll: <UpDownScroll/>,
+        moredetails: <MoreDetails/>,
     };
 
     const [scannerDetails, setScannerDetails] = useState({

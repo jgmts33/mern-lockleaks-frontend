@@ -9,7 +9,7 @@ import { Warning } from "@/components/utils/Icons";
 export default function Notification() {
 
     const icons = {
-        warning: <Warning fill="currentColor" size={16} />,
+        warning: <Warning/>,
     };
 
     const NotificationContent = [

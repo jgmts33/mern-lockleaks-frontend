@@ -21,10 +21,10 @@ export default function Categories() {
     const [isArticleProcessing, setIsArticleProcessing] = useState(false);
 
     const icons = {
-        chat: <RecoveryChat fill="currentColor" size={16} />,
-        search: <Search fill="currentColor" size={16} />,
-        collobation: <Collobation fill="currentColor" size={16} />,
-        redstar: <RedStar fill="currentColor" size={16} />,
+        chat: <RecoveryChat/>,
+        search: <Search/>,
+        collobation: <Collobation/>,
+        redstar: <RedStar/>,
     };
 
     const getCategoriesInfo = useCallback(async () => {

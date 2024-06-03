@@ -9,7 +9,7 @@ import React from 'react';
 export default function RecoveryUsers() {
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
+        components: <Components/>,
     };
 
     return (

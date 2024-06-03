@@ -12,7 +12,7 @@ export default function RUserContent() {
     const [selectContentUser, setSelectContentUser] = useState(0)
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
+        components: <Components/>,
     };
 
     const UserContentPhoto = [

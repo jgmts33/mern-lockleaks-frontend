@@ -20,7 +20,7 @@ export default function SocialMedia() {
 
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
+        components: <Components/>,
     };
 
     const SocialMediaScannerContent = [

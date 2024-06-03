@@ -16,9 +16,9 @@ export default function GoogleBing() {
     const [isProcessing, setIsProcessing] = useState(false);
 
     const icons = {
-        googlesearch: <GoogleSearch fill="currentColor" size={16} />,
-        components: <Components fill="currentColor" size={16} />,
-        bingsearch: <BingSearch fill="currentColor" size={16} />,
+        googlesearch: <GoogleSearch/>,
+        components: <Components/>,
+        bingsearch: <BingSearch/>,
     };
 
     const getScrapedDataListInfo = async () => {

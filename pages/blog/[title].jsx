@@ -65,8 +65,8 @@ export default function Blog() {
     }, [router.query]);
 
     const icons = {
-        right: <ChevronRight fill="currentColor" size={16} />,
-        eye: <Eye fill="currentColor" size={16} />,
+        right: <ChevronRight/>,
+        eye: <Eye/>,
     };
 
     return (

@@ -40,7 +40,7 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 export default function RootLayout({ children }) {
 
   const icons = {
-    warningmodal: <WarningModal fill="currentColor" size={16} />,
+    warningmodal: <WarningModal/>,
   };
 
   const currentPath = usePathname();
@@ -257,7 +257,7 @@ export default function RootLayout({ children }) {
       }
     })();
 
-  }, [currentPath]);
+  }, []);
 
   useEffect(() => {
     if (getCookieValue('necessary')) {

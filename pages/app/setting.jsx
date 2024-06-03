@@ -21,10 +21,10 @@ export default function AccountSetting() {
     const [isChangePasswordSuccessed, setIsChangePasswordSuccessed] = useState(false);
 
     const icons = {
-        google: <Google fill="currentColor" size={16} />,
-        twitter: <Twitter fill="currentColor" size={16} />,
-        facebook: <Facebook fill="currentColor" size={16} />,
-        error: <Error fill="currentColor" size={16} />,
+        google: <Google/>,
+        twitter: <Twitter/>,
+        facebook: <Facebook/>,
+        error: <Error/>,
     };
 
     const [newPassword, setNewPassword] = useState("");

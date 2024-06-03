@@ -17,7 +17,7 @@ export default function DmcaBadgeDetails() {
     const [list, setList] = useState([]);
 
     const icons = {
-        remove: <RemoveIcon fill="currentColor" size={16} />
+        remove: <RemoveIcon/>
     }
 
     const getDmcaImagesInfo = async () => {

@@ -21,10 +21,10 @@ export default function Details() {
     })
 
     const icons = {
-        search: <Search fill="currentColor" size={16} />,
-        collobation: <Collobation fill="currentColor" size={16} />,
-        chat: <RecoveryChat fill="currentColor" size={16} />,
-        direction: <ArrowRight fill="currentColor" size={16} />,
+        search: <Search/>,
+        collobation: <Collobation/>,
+        chat: <RecoveryChat/>,
+        direction: <ArrowRight/>,
     };
 
     useEffect(() => {

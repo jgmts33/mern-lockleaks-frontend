@@ -9,7 +9,7 @@ import queryString from "query-string";
 export default function FaceBookAuth() {
 
   const icons = {
-    facebook: <Facebook fill="currentColor" size={16} />,
+    facebook: <Facebook/>,
   };
 
   const dispatch = useDispatch();

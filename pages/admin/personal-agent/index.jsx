@@ -43,13 +43,13 @@ export default function TicketDetail() {
     const router = useRouter();
 
     const icons = {
-        cancel: <Cancel fill="currentColor" size={16} />,
-        shape: <Shape fill="currentColor" size={16} />,
-        paperclip: <PaperClip fill="currentColor" size={16} />,
-        paperplane: <PaperPlane fill="currentColor" size={16} />,
-        search: <Search fill="currentColor" size={16} />,
-        sortDown: <SortDown fill="currentColor" size={16} />,
-        sortUp: <SortUp fill="currentColor" size={16} />,
+        cancel: <Cancel/>,
+        shape: <Shape/>,
+        paperclip: <PaperClip/>,
+        paperplane: <PaperPlane/>,
+        search: <Search/>,
+        sortDown: <SortDown/>,
+        sortUp: <SortUp/>,
         sendMessage: <SendMessage fill="currentColor" size={32} />,
     };
 

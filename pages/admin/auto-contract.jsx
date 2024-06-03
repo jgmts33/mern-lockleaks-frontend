@@ -13,10 +13,10 @@ export default function AutoContract() {
     const [selectDownload, setSelectDownload] = useState(0)
 
     const icons = {
-        warning: <Warning fill="currentColor" size={16} />,
-        turnleft: <TurnLeft fill="currentColor" size={16} />,
-        turnright: <TurnRight fill="currentColor" size={16} />,
-        search: <Search fill="currentColor" size={16} />,
+        warning: <Warning/>,
+        turnleft: <TurnLeft/>,
+        turnright: <TurnRight/>,
+        search: <Search/>,
     };
 
     const NotificationContent = [

@@ -10,7 +10,7 @@ import queryString from "query-string";
 export default function GoogleAuth() {
 
   const icons = {
-    google: <Google fill="currentColor" size={16} />,
+    google: <Google/>,
   };
 
   const dispatch = useDispatch();

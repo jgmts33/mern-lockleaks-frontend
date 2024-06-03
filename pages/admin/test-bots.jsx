@@ -12,8 +12,8 @@ export default function TestBots() {
     const [selectNotWorkingBot, setSelectNotWorkingBot] = useState(0)
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
-        warningicon: <WarningIcon fill="currentColor" size={16} />,
+        components: <Components/>,
+        warningicon: <WarningIcon/>,
     };
 
     const BotStatus = [

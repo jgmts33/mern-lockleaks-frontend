@@ -17,8 +17,8 @@ export default function Dashbaord() {
     const lastScanResult = useSelector(lastScanResultInfo);
     
     const icons = {
-        moredetails: <MoreDetails fill="currentColor" size={16} />,
-        updownscroll: <UpDownScroll fill="currentColor" size={16} />,
+        moredetails: <MoreDetails/>,
+        updownscroll: <UpDownScroll/>,
     };
 
     const [dashboardOverview, setDashboardOverview] = useState([

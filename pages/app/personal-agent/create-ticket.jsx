@@ -14,7 +14,7 @@ export default function CreateTicket() {
     const [message, setMessage] = useState('');
 
     const icons = {
-        cancel: <Cancel fill="currentColor" size={16} />,
+        cancel: <Cancel/>,
     };
 
     const handleCreate = useCallback(async () => {

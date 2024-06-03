@@ -16,11 +16,11 @@ import CustomerReview from '@/components/customer-review';
 export default function Recovery() {
 
     const icons = {
-        chat: <RecoveryChat fill="currentColor" size={16} />,
-        firststep: <FirstRecoveryStep fill="currentColor" size={16} />,
-        secondstep: <SecondRecoveryStep fill="currentColor" size={16} />,
-        thirdstep: <ThirdRecoveryStep fill="currentColor" size={16} />,
-        fourthstep: <FourthRecoveryStep fill="currentColor" size={16} />,
+        chat: <RecoveryChat/>,
+        firststep: <FirstRecoveryStep/>,
+        secondstep: <SecondRecoveryStep/>,
+        thirdstep: <ThirdRecoveryStep/>,
+        fourthstep: <FourthRecoveryStep/>,
     };
 
     const RecoveryTitle = {

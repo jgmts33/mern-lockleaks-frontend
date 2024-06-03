@@ -12,8 +12,8 @@ export default function AdultTubs() {
     const lastScanResult = useSelector(lastScanRusultInfo);
 
     const icons = {
-        component: <Components fill="currentColor" size={16} />,
-        checkboxs: <Checkboxs fill="currentColor" size={16} />,
+        component: <Components/>,
+        checkboxs: <Checkboxs/>,
     };
 
     const ScannerContent = [

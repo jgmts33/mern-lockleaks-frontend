@@ -14,9 +14,9 @@ export default function AddAnalytics() {
     const [modalID, setModalID] = useState("")
 
     const icons = {
-        turnleft: <TurnLeft fill="currentColor" size={16} />,
-        turnright: <TurnRight fill="currentColor" size={16} />,
-        search: <Search fill="currentColor" size={16} />,
+        turnleft: <TurnLeft/>,
+        turnright: <TurnRight/>,
+        search: <Search/>,
     };
 
     const handleShowDetails = () => {

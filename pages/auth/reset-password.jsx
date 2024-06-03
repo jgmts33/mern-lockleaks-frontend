@@ -18,9 +18,9 @@ import { Error, Success, WarningModal } from '@/components/utils/Icons';
 export default function ResetPassword() {
 
   const icons = {
-    error: <Error fill="currentColor" size={16} />,
-    success: <Success fill="currentColor" size={16} />,
-    warningmodal: <WarningModal fill="currentColor" size={16} />,
+    error: <Error/>,
+    success: <Success/>,
+    warningmodal: <WarningModal/>,
   };
 
   const router = useRouter();

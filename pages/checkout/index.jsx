@@ -13,13 +13,13 @@ export default function Checkout() {
     const [username, setUsername] = React.useState(false);
 
     const icons = {
-        lock: <Lock fill="currentColor" size={16} />,
-        left: <ChevronLeft fill="currentColor" size={16} />,
-        right: <ChevronRight fill="currentColor" size={16} />,
-        shine: <Shine fill="currentColor" size={16} />,
-        complete: <Complete fill="currentColor" size={16} />,
-        star: <Star fill="currentColor" size={16} />,
-        uncomplete: <Uncomplete fill="currentColor" size={16} />,
+        lock: <Lock/>,
+        left: <ChevronLeft/>,
+        right: <ChevronRight/>,
+        shine: <Shine/>,
+        complete: <Complete/>,
+        star: <Star/>,
+        uncomplete: <Uncomplete/>,
     };
 
     const ButtonContent = [

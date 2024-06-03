@@ -21,8 +21,8 @@ export default function AdminDashbaord() {
     const dispatch = useDispatch();
 
     const icons = {
-        moredetails: <MoreDetails fill="currentColor" size={16} />,
-        updownscroll: <UpDownScroll fill="currentColor" size={16} />,
+        moredetails: <MoreDetails/>,
+        updownscroll: <UpDownScroll/>,
     };
 
     const [dashboardOverview, setDashboardOverview] = useState([

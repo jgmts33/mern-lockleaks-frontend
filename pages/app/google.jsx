@@ -25,8 +25,8 @@ export default function Google() {
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
-        googlesearch: <GoogleSearch fill="currentColor" size={16} />,
-        components: <Components fill="currentColor" size={16} />,
+        googlesearch: <GoogleSearch/>,
+        components: <Components/>,
     };
 
     const getScrapedDataListInfo = async () => {

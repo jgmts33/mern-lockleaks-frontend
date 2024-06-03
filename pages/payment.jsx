@@ -25,9 +25,9 @@ import { io } from 'socket.io-client';
 export default function PaymentProcessed() {
 
   const icons = {
-    shine: <Shine fill="currentColor" size={16} />,
-    success: <Success fill="currentColor" size={16} />,
-    warning: <Warning fill="currentColor" size={16} />,
+    shine: <Shine/>,
+    success: <Success/>,
+    warning: <Warning/>,
   };
   const router = useRouter();
   const searchParams = useSearchParams();

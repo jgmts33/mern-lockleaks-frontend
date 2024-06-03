@@ -12,7 +12,7 @@ export default function Users() {
 
     const [selectDownload, setSelectDownload] = useState(0);
     const icons = {
-        search: <Search fill="currentColor" size={16} />,
+        search: <Search/>,
     };
 
     const UsersData = [

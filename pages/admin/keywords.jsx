@@ -12,7 +12,7 @@ export default function PingModels() {
     const router = useRouter();
 
     const icons = {
-        search: <Search fill="currentColor" size={16} />,
+        search: <Search/>,
     };
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();

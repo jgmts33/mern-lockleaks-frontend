@@ -122,7 +122,7 @@ export default function Header() {
   };
 
   const icons = {
-    arrowDown: <ArrowDown fill="currentColor" size={16} />,
+    arrowDown: <ArrowDown />,
   };
 
   const handleMenuItemClick = (url) => {
@@ -154,7 +154,7 @@ export default function Header() {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       className={"bg-transparent sm:p-1 z-20 " + (!currentPath?.includes("/auth") && !currentPath?.includes("/login") && !currentPath?.includes("/checkout") && !currentPath?.includes("/payment")
-      ? "" : " hidden") }
+        ? "" : " hidden")}
       maxWidth="full"
     >
       <NavbarContent className="md:hidden text-white" justify="start">
@@ -176,9 +176,9 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent className="hidden sm:flex gap-12 max-xl:gap-5" justify="center">
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="/pricing" title="pricing">
+          <button onClick={() => router.push("/pricing")}>
             PRICING
-          </Link>
+          </button>
         </NavbarItem>
         <NavbarItem className="max-md:hidden cursor-pointer">
           <Dropdown>
@@ -199,14 +199,14 @@ export default function Header() {
           </Dropdown>
         </NavbarItem>
         <NavbarItem className="max-md:hidden">
-          <Link color="foreground" href="/help">
+          <button onClick={() => router.push("/help")}>
             HELP
-          </Link>
+          </button>
         </NavbarItem>
         <NavbarItem className="max-md:hidden mr-16">
-          <Link color="foreground" href="/blog">
+          <button onClick={() => router.push("/blog")}>
             BLOG
-          </Link>
+          </button>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent className="max-md:hidden" justify="end">
@@ -216,11 +216,11 @@ export default function Header() {
               {
                 userInfo.roles.find(p => p == 'admin') ?
                   <NavbarItem>
-                    <Link href="/admin/dashboard" className="text-white">Dashboard</Link>
+                    <button onClick={() => window.open('/admin/dashboard', '_self')}>Dashboard</button>
                   </NavbarItem>
                   :
                   <NavbarItem>
-                    <Link href="/app/dashboard" className="text-white">Dashboard</Link>
+                    <button onClick={() => window.open('/app/dashboard', '_self')}>Dashboard</button>
                   </NavbarItem>
               }
               <NavbarItem className="text-white flex max-sm:hidden">
@@ -230,22 +230,20 @@ export default function Header() {
             :
             <>
               <NavbarItem>
-                <Link href="/auth/login" className="text-white">Login</Link>
+                <button onClick={() => window.open('/auth/login', '_self')}>Login</button>
               </NavbarItem>
-              <div className="h-1/2 min-h-[1em] w-px border-t-0 bg-gradient-to-tr from-transparent via-neutral-500 to-transparent"></div>
               <NavbarItem>
-                <Link href="/auth/register" className="text-white">Register</Link>
+                <button onClick={() => window.open('/auth/register', '_self')}>Register</button>
               </NavbarItem>
               <NavbarItem className="max-lg:hidden">
-                <Link href="/freetrial">
-                  <Button
-                    radius="sm"
-                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"
-                    size='lg'
-                  >
-                    <span>Free Trial</span>
-                  </Button>
-                </Link>
+                <Button
+                  radius="sm"
+                  className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"
+                  size='lg'
+                  onClick={() => router.push("/freetrial")}
+                >
+                  <span>Free Trial</span>
+                </Button>
               </NavbarItem>
               <NavbarItem className="text-white flex max-sm:hidden">
                 {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}
@@ -258,49 +256,49 @@ export default function Header() {
       <NavbarMenu>
         {ToggleMenuItems.map((menu, index) => (
           <NavbarMenuItem key={index}>
-            <Link
-              className="w-full text-white mt-3"
+            <button
+              className=" mt-3"
               href={menu.path}
               size="lg"
+              onClick={() => router.push(menu.path)}
             >
               {menu.content}
-            </Link>
+            </button>
           </NavbarMenuItem>
         ))}
-        <hr className="w-56 bg-gray-400 mt-5"></hr>
+        <hr className="bg-gray-400 mt-5"></hr>
         {
           mounted ? userInfo ?
             <>
               {
                 userInfo.roles.find(p => p == 'admin') ?
-                  <NavbarItem className="mt-5">
-                    <Link href="/admin/dashboard" className="text-white">Dashboard</Link>
+                  <NavbarItem>
+                    <button onClick={() => window.open('/admin/dashboard', '_self')}>Dashboard</button>
                   </NavbarItem>
                   :
                   <NavbarItem>
-                    <Link href="/app/dashboard" className="text-white">Dashboard</Link>
+                    <button onClick={() => window.open('/app/dashboard', '_self')}>Dashboard</button>
                   </NavbarItem>
               }
               <NavbarItem className="text-white flex max-sm:hidden">
                 {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}
               </NavbarItem>
             </> : <>
-              <NavbarItem className="mt-5">
-                <Link href="/auth/login" className="text-white">Login</Link>
+              <NavbarItem>
+                <button onClick={() => window.open('/auth/login', '_self')} class="mt-4">Login</button>
               </NavbarItem>
               <NavbarItem>
-                <Link href="/auth/register" className="text-white mt-5">Register</Link>
+                <button onClick={() => window.open('/auth/register', '_self')} class="mt-4">Register</button>
               </NavbarItem>
               <NavbarItem>
-                <Link href="/freetrial" className="mt-5">
-                  <Button
-                    radius="sm"
-                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"
-                    size='md'
-                  >
-                    <span>Free Trial</span>
-                  </Button>
-                </Link>
+                <Button
+                  radius="sm"
+                  className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg mt-4"
+                  size='lg'
+                  onClick={() => router.push("/freetrial")}
+                >
+                  <span>Free Trial</span>
+                </Button>
               </NavbarItem>
               <NavbarItem className="text-white flex max-sm:hidden">
                 {prefLangCookie ? <GoogleTranslate prefLangCookie={prefLangCookie} renderValueType="country-code" /> : <></>}

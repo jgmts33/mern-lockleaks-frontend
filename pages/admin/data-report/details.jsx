@@ -14,7 +14,7 @@ export default function DataReportDetails() {
     const [selectDownload, setSelectDownload] = useState(0)
 
     const icons = {
-        warning: <Warning fill="currentColor" size={16} />,
+        warning: <Warning/>,
     };
 
     const NotificationContent = [

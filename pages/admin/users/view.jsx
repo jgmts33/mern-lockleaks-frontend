@@ -11,9 +11,9 @@ export default function UsersView() {
 
     const [selectDownload, setSelectDownload] = useState(0);
     const icons = {
-        search: <Search fill="currentColor" size={16} />,
-        pencil: <Pencil fill="currentColor" size={16} />,
-        trash: <Trash fill="currentColor" size={16} />,
+        search: <Search/>,
+        pencil: <Pencil/>,
+        trash: <Trash/>,
     };
 
     const handleBackButton = () =>{

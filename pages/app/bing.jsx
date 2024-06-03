@@ -24,8 +24,8 @@ export default function Bing() {
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
-        components: <Components fill="currentColor" size={16} />,
-        bingsearch: <BingSearch fill="currentColor" size={16} />,
+        components: <Components/>,
+        bingsearch: <BingSearch/>,
     };
 
     const getScrapedDataListInfo = async () => {

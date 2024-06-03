@@ -12,10 +12,10 @@ export default function ContactWarning() {
   const router = useRouter();
 
   const icons = {
-    uploadIcon: <UploadIcon fill="currentColor" size={16} />,
-    downloadIcon: <DownloadIcon fill="currentColor" size={16} />,
-    contractLineIcon: <ContractLine fill="currentColor" size={16} />,
-    idCardImageIcon: <IdCardImageIcon fill="currentColor" size={16} />
+    uploadIcon: <UploadIcon/>,
+    downloadIcon: <DownloadIcon/>,
+    contractLineIcon: <ContractLine/>,
+    idCardImageIcon: <IdCardImageIcon/>
   };
 
   const [IDCardImgUrl, setIDCardImgUrl] = useState(null);

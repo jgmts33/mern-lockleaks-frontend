@@ -11,7 +11,7 @@ export default function ReportManagement() {
     const router = useRouter();
 
     const icons = {
-        search: <Search fill="currentColor" size={16} />,
+        search: <Search/>,
     };
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();

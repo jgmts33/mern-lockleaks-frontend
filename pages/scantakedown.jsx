@@ -40,7 +40,7 @@ const TipContent = ({ targetContent }) => {
 
 const FAQContent = ({ targetContent }) => {
     const icons = {
-        arrowtop: <ChevronRight fill="currentColor" size={16} />,
+        arrowtop: <ChevronRight/>,
     };
 
     const [expandedIndex, setExpandedIndex] = useState(-1);
@@ -73,9 +73,9 @@ const FAQContent = ({ targetContent }) => {
 export default function ScanTakeDown() {
 
     const icons = {
-        firstTip: <FirstTip fill="currentColor" size={16} />,
-        secondTip: <SecondTip fill="currentColor" size={16} />,
-        thirdTip: <ThirdTip fill="currentColor" size={16} />,
+        firstTip: <FirstTip/>,
+        secondTip: <SecondTip/>,
+        thirdTip: <ThirdTip/>,
     };
 
     const [selectedContent, setSelectedContent] = useState('scan');

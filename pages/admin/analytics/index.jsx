@@ -12,8 +12,8 @@ export default function Analytics() {
     const [value, setValue] = React.useState(25);
 
     const icons = {
-        warning: <Warning fill="currentColor" size={16} />,
-        search: <Search fill="currentColor" size={16} />,
+        warning: <Warning/>,
+        search: <Search/>,
     };
 
     const NotificationContent = [

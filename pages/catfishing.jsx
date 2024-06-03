@@ -11,10 +11,10 @@ import CustomerReview from '@/components/customer-review';
 export default function Catfishing() {
 
     const icons = {
-        chat: <Chat fill="currentColor" size={16} />,
-        FirstTip: <FirstTip fill="currentColor" size={16} />,
-        SecondTip: <SecondTip fill="currentColor" size={16} />,
-        ThirdTip: <ThirdTip fill="currentColor" size={16} />,
+        chat: <Chat/>,
+        FirstTip: <FirstTip/>,
+        SecondTip: <SecondTip/>,
+        ThirdTip: <ThirdTip/>,
     };
 
     const CamDmcaTitle = {

@@ -9,7 +9,7 @@ import React from 'react';
 export default function DataAnalytics() {
 
     const icons = {
-        warning: <Warning fill="currentColor" size={16} />,
+        warning: <Warning/>,
     };
 
     return (
