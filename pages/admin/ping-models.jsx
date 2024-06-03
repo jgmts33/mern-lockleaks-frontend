@@ -4,27 +4,48 @@ import {
     Button, Link, ScrollShadow, useDisclosure, Modal, ModalContent, ModalBody, ModalFooter, Input, user,
     Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue,
     ModalHeader,
-    Switch
+    Switch,
+    Tabs,
+    Tab,
+    Card,
+    CardBody
 } from '@nextui-org/react';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import moment from 'moment';
 import { createNewPingModel, deletePingModel, getPingModels, updatePingModel } from '../../axios/ping-models';
+import _ from 'lodash';
 
 export default function ProxyBot() {
     const router = useRouter();
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [list, setList] = useState([]);
-    const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [isActionProcessing, setIsActionProcessing] = useState(-1);
     const [modalType, setModalType] = useState("");
     const [targetInfo, setTargetInfo] = useState({
         id: '',
-        model_name: '',
-        platform: '',
-        social_media: '',
+        model_name: [],
+        platform: [],
+        social_media: [],
         response: false,
         goal: false
     })
+
+    let tabs = [
+        {
+            id: "model_name",
+            label: "Model Name"
+        },
+        {
+            id: "platform",
+            label: "Platform"
+        },
+        {
+            id: "social_media",
+            label: "Social Media"
+        }
+    ];
+
+    const listRef = useRef(null);
 
     const columns = [
         { name: "Model Name", uid: "model_name" },
@@ -43,7 +64,7 @@ export default function ProxyBot() {
     }
 
     const handleSubmit = useCallback(async () => {
-        setIsActionProcessing(true);
+        setIsActionProcessing(targetInfo.id);
         let res;
         if (modalType == 'update') res = await updatePingModel(targetInfo.id, targetInfo);
         else res = await createNewPingModel(targetInfo);
@@ -54,15 +75,15 @@ export default function ProxyBot() {
             else setList(p => [...p, res.data]);
             setTargetInfo({
                 id: '',
-                model_name: '',
-                platform: '',
-                social_media: '',
+                model_name: [],
+                platform: [],
+                social_media: [],
                 response: false,
                 goal: false
             });
             onClose();
         }
-        setIsActionProcessing(false);
+        setIsActionProcessing(-1);
     }, [targetInfo, modalType]);
 
     const handleUpdate = async (data) => {
@@ -73,12 +94,12 @@ export default function ProxyBot() {
     }
 
     const handleDeletPingModel = async (id) => {
-        setIsActionProcessing(true);
+        setIsActionProcessing(id);
         const res = await deletePingModel(id);
         if (res.status == 'success') {
             setList(p => p.filter(item => item.id != id));
         }
-        setIsActionProcessing(false);
+        setIsActionProcessing(-1);
     }
 
     const renderCell = React.useCallback((item, columnKey) => {
@@ -105,7 +126,7 @@ export default function ProxyBot() {
                             className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
                             size='sm'
                             onPress={() => handleDeletPingModel(item.id)}
-                            isLoading={isActionProcessing}
+                            isLoading={item.id == isActionProcessing}
                         >
                             Delete
                         </Button>
@@ -124,9 +145,19 @@ export default function ProxyBot() {
                     {cellValue ? <span>Yes</span> : <span>No</span>}
                 </Switch>
             default:
-                return cellValue;
+                return <div className='flex items-center gap-4'>
+                    <p>{cellValue[0]}</p>
+                    {cellValue.length > 1 ? <div className='bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg rounded-full px-2'>+{cellValue.length - 1} More</div> : <></>}
+                </div>;
         }
     }, []);
+
+    useEffect(() => {
+        listRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+        });
+    }, [targetInfo]);
 
     useEffect(() => {
         getPingModelsInfo();
@@ -147,9 +178,9 @@ export default function ProxyBot() {
                         onClick={() => {
                             setTargetInfo({
                                 id: '',
-                                model_name: '',
-                                platform: '',
-                                social_media: '',
+                                model_name: [],
+                                platform: [],
+                                social_media: [],
                                 response: false,
                                 goal: false
                             });
@@ -189,7 +220,7 @@ export default function ProxyBot() {
             <Modal
                 backdrop="opaque"
                 isOpen={isOpen}
-                size={modalType == 'view' ? 'md' : '2xl'}
+                size='lg'
                 onOpenChange={onOpenChange}
                 placement="center"
                 classNames={{
@@ -202,43 +233,76 @@ export default function ProxyBot() {
                             <ModalHeader>
                                 <p className='font-semibold text-lg'>
                                     {
-                                        modalType === 'add' ? 'Add new ping Model' : modalType === 'update' ? 'Update ping Model' : 'View ping Model Details'
+                                        modalType === 'add' ? 'Add new Ping Model' : modalType === 'update' ? 'Update Ping Model' : 'View Ping Model Details'
                                     }
                                 </p>
                             </ModalHeader>
                             <ModalBody>
                                 <div className='flex flex-col w-full'>
-                                    <div className='flex flex-col space-y-4'>
-                                        <Input
-                                            type="text"
-                                            label="Model Name"
-                                            value={targetInfo.model_name}
-                                            onChange={(e) => setTargetInfo(p => ({ ...p, model_name: e.target.value }))}
-                                        />
-                                        <Input
-                                            type="text"
-                                            label="Platform"
-                                            value={targetInfo.platform}
-                                            onChange={(e) => setTargetInfo(p => ({ ...p, platform: e.target.value }))}
-                                        />
-                                        <Input
-                                            type="text"
-                                            label="Social Media"
-                                            value={targetInfo.social_media}
-                                            onChange={(e) => setTargetInfo(p => ({ ...p, social_media: e.target.value }))}
-                                        />
-                                    </div>
+                                    <Tabs aria-label="Dynamic tabs" items={tabs}>
+                                        {(item) => (
+                                            <Tab key={item.id} title={item.label}>
+                                                <div className='flex flex-col space-y-4'>
+                                                    <div className='justify-start flex'>
+                                                        <Button
+                                                            className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
+                                                            onClick={() => {
+                                                                let _targetInfo = _.clone(targetInfo);
+                                                                _targetInfo[item.id].push('');
+                                                                setTargetInfo(_targetInfo);
 
-                                    <div className='flex my-2 mt-4 justify-end'>
-                                        <Button
-                                            radius="lg"
-                                            className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
-                                            onClick={handleSubmit}
-                                            isLoading={isActionProcessing}
-                                        >
-                                            Save
-                                        </Button>
-                                    </div>
+
+
+                                                            }}
+                                                        >
+                                                            Add New
+                                                        </Button>
+                                                    </div>
+                                                    <ScrollShadow className='max-h-[240px] space-y-2 px-2'>
+                                                        {
+                                                            targetInfo[item.id].map((eachData, index) => <div key={index} className='flex gap-2 items-center'>
+                                                                <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
+                                                                <Input
+                                                                    type="text"
+                                                                    size='sm'
+                                                                    label={item.label}
+                                                                    value={eachData}
+                                                                    onChange={(e) => {
+                                                                        let _targetInfo = _.clone(targetInfo);
+                                                                        _targetInfo[item.id][index] = e.target.value;
+                                                                        setTargetInfo(_targetInfo);
+                                                                    }}
+                                                                />
+                                                                <Button
+                                                                    className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
+                                                                    onPress={() => {
+                                                                        let _targetInfo = _.clone(targetInfo);
+                                                                        _targetInfo[item.id] = _targetInfo[item.id].filter((p, i) => i != index);
+                                                                        setTargetInfo(_targetInfo);
+                                                                    }}
+                                                                >
+                                                                    Delete
+                                                                </Button>
+                                                            </div>)
+                                                        }
+                                                        <div ref={listRef} />
+                                                    </ScrollShadow>
+                                                    <div className='flex justify-end'>
+                                                        <Button
+                                                            radius="lg"
+                                                            className={"border mt-4 border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
+                                                            onClick={handleSubmit}
+                                                            isLoading={targetInfo.id == isActionProcessing}
+                                                        >
+                                                            Save
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            </Tab>
+                                        )}
+                                    </Tabs>
+
+
                                 </div>
                             </ModalBody>
                         </>
