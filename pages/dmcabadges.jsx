@@ -48,6 +48,11 @@ export default function DmcaBadges() {
 
     const router = useRouter();
 
+    useEffect(() => {
+        console.log("list:", list);
+    },[list])
+
+
     return (
         <>
             <div className="flex flex-col mx-auto items-center justify-center text-white w-full">

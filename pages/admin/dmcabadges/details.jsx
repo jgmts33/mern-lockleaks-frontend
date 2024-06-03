@@ -81,6 +81,10 @@ export default function DmcaBadgeDetails() {
         return () => clearTimeout(requestDebounce);
     }, [list]);
 
+    useEffect(() => {
+        console.log("list:", list);
+    },[list])
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto w-full">
             <div className='mt-5 max-lg:mx-auto'>
@@ -98,7 +102,7 @@ export default function DmcaBadgeDetails() {
                         {(provided) => (
                             <div {...provided.droppableProps} ref={provided.innerRef} className='space-y-2' >
                                 {list.map((item, index) => (
-                                    <Draggable key={item.id} draggableId={`${item?.id}`} index={index}>
+                                    <Draggable key={item?.id} draggableId={`${item?.id}`} index={index}>
                                         {(provided) => (
                                             <div
                                                 ref={provided.innerRef}

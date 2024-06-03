@@ -46,6 +46,10 @@ export default function DmcaBadges() {
         getDmcaImagesInfo();
     }, []);
 
+    useEffect(() => {
+        console.log("list:", list);
+    },[list])
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 max-sm:px-2 container text-white max-lg:mx-auto">
 
