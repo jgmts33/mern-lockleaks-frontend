@@ -85,7 +85,7 @@ export default function FreeTrial() {
           </div>
           <div className={'bg-gradient-to-tr from-[#3BC940]/10 to-gray-800/40 rounded-3xl cursor-pointer max-w-[590px] border-[0.4px] border-white/10 px-[54px] py-[62px] w-full max-sm:px-6 h-max'}>
             <p className='text-[63px] text-center'>FREE</p>
-            <p className='text-5xl text-center'>3-Day</p>
+            <p className='text-5xl text-center'>3-Days</p>
             <Button
               radius="lg"
               className="w-full mt-6 bg-gradient-to-r mx-auto from-[#B759FF] to-[#F68171] border-gray-600 border text-white shadow-lg text-lg"
