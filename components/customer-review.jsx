@@ -74,7 +74,7 @@ export default function CustomerReview() {
                             }}
                         >
                             <div className='ml-3 mt-2 max-sm:flex-col max-sm:mx-auto  flex items-center gap-4 w-full'>
-                                <Image src={`https://server.lockleaks.com/images?filename=${item.avatar}`} alt='floyed' width={61} height={61} className='rounded-full' />
+                                <Image src={`https://server.lockleaks.com/images?filename=${item.avatar}`} alt='floyed' width={61} height={61} className='rounded-full object-cover w-[61px] h-[61px]' />
                                 <div className='space-y-3'>
                                     <p className='font-semibold text-xl bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent max-sm:text-center'>{item.name}</p>
                                     <p className='font-light text-xs opacity-80 max-sm:text-center'>{item.title}</p>

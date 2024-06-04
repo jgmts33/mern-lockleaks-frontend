@@ -1,17 +1,17 @@
 "use client";
 import {
-    Button, 
-    ScrollShadow, 
-    useDisclosure, 
-    Modal, 
-    ModalContent, 
-    ModalBody, 
+    Button,
+    ScrollShadow,
+    useDisclosure,
+    Modal,
+    ModalContent,
+    ModalBody,
     Input,
-    Table, 
-    TableHeader, 
-    TableColumn, 
-    TableBody, 
-    TableRow, 
+    Table,
+    TableHeader,
+    TableColumn,
+    TableBody,
+    TableRow,
     TableCell,
     ModalHeader,
     Switch,
@@ -36,7 +36,7 @@ export default function ProxyBot() {
     const [list, setList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
     const [isActionProcessing, setIsActionProcessing] = useState(-1);
-    const [searchValue, setSearchValue] = useState(""); 
+    const [searchValue, setSearchValue] = useState("");
     const [modalType, setModalType] = useState("");
     const [targetInfo, setTargetInfo] = useState({
         id: '',
@@ -46,6 +46,9 @@ export default function ProxyBot() {
         response: false,
         goal: false
     })
+
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     let tabs = [
         {
@@ -73,10 +76,11 @@ export default function ProxyBot() {
         { name: "Actions", uid: "actions" },
     ];
 
-    const getPingModelsInfo = async () => {
-        const res = await getPingModels();
+    const getPingModelsInfo = async (page) => {
+        const res = await getPingModels(page);
         if (res.status == 'success') {
-            setList(res.data);
+            setList(res.data.data);
+            setTotalPages(res.data.totalPages);
             setSearchValue("");
         }
     }
@@ -181,8 +185,8 @@ export default function ProxyBot() {
     }, [targetInfo]);
 
     useEffect(() => {
-        getPingModelsInfo();
-    }, []);
+        getPingModelsInfo(page);
+    }, [page]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -260,6 +264,22 @@ export default function ProxyBot() {
                     className='max-h-[520px] overflow-y-auto'
                     isHeaderSticky
                     aria-labelledby="Proxies/VPS Bots"
+                    bottomContent={
+                        totalPages > 0 ? (
+                            <div className="flex w-full justify-center">
+                                <Pagination
+                                    isCompact
+                                    showControls
+                                    showShadow
+                                    color="primary"
+                                    page={page}
+                                    total={totalPages}
+                                    onChange={(page) => setPage(page)}
+                                />
+                            </div>
+                        ) : null
+                    }
+                    {...args}
                 >
                     <TableHeader columns={columns}>
                         {(column) => (

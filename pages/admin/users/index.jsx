@@ -22,15 +22,21 @@ export default function Users() {
     const [searchValue, setSearchValue] = useState("");
     const [filteredList, setFilteredList] = useState([]);
 
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
     const [list, setList] = useState([]);
     const icons = {
         search: <Search />,
     };
 
-    const getUsersList = async () => {
-        const res = await getUsersListInfo();
+    const getUsersList = async (page) => {
+        const res = await getUsersListInfo(page);
 
-        if (res.status == 'success') setList(res.data);
+        if (res.status == 'success') {
+            setList(res.data.data);
+            setTotalPages(res.data.totalPages);
+        }
     }
 
     const handleUpdateUserVisible = async (id, ban) => {
@@ -42,8 +48,8 @@ export default function Users() {
     }
 
     useEffect(() => {
-        getUsersList();
-    }, [])
+        getUsersList(page);
+    }, [page])
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -149,6 +155,22 @@ export default function Users() {
                     className='max-h-[calc(100vh-352px)] overflow-y-auto'
                     isHeaderSticky
                     aria-labelledby="Proxies/VPS Bots"
+                    bottomContent={
+                        totalPages > 0 ? (
+                            <div className="flex w-full justify-center">
+                                <Pagination
+                                    isCompact
+                                    showControls
+                                    showShadow
+                                    color="primary"
+                                    page={page}
+                                    total={totalPages}
+                                    onChange={(page) => setPage(page)}
+                                />
+                            </div>
+                        ) : null
+                    }
+                    {...args}
                 >
                     <TableHeader columns={columns}>
                         {(column) => (

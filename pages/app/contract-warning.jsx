@@ -1,6 +1,6 @@
 "use client";
 import {
-  Button, 
+  Button,
   Input,
   Progress
 } from '@nextui-org/react';
@@ -12,10 +12,10 @@ export default function ContactWarning() {
   const router = useRouter();
 
   const icons = {
-    uploadIcon: <UploadIcon/>,
-    downloadIcon: <DownloadIcon/>,
-    contractLineIcon: <ContractLine/>,
-    idCardImageIcon: <IdCardImageIcon/>
+    uploadIcon: <UploadIcon />,
+    downloadIcon: <DownloadIcon />,
+    contractLineIcon: <ContractLine />,
+    idCardImageIcon: <IdCardImageIcon />
   };
 
   const [IDCardImgUrl, setIDCardImgUrl] = useState(null);
@@ -107,7 +107,7 @@ export default function ContactWarning() {
                 radius="lg"
                 className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white px-7 text-sm max-sm:w-full"
               >
-                <span>{icons.downloadIcon} DOWNLOAD CONTRACT</span>
+                <span>{icons.downloadIcon}</span><span> DOWNLOAD CONTRACT</span>
               </Button>
               <Button
                 radius="lg"

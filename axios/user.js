@@ -2,12 +2,12 @@ import axios from 'axios';
 import { getAccessToken, getUserId } from './token';
 import { ENDPOINT } from '@/config/config';
 
-export const getUsersListInfo = async () => {
+export const getUsersListInfo = async (page) => {
 
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.get(`${ENDPOINT}/users`, {
+    const res = await axios.get(`${ENDPOINT}/users?page=${page}`, {
       headers: {
         'x-access-token': accessToken,
       }
