@@ -143,7 +143,7 @@ export default function UsersView() {
                 <div className='flex font-semibold text-base gap-4'>
                     <div className='flex'>USERNAMES :</div>
                     <div className='flex flex-col'>
-                        {usernames.map(({ username, link }) => <div className='flex items-center gap-4'>
+                        {usernames.map(({ username, link }, index) => <div className='flex items-center gap-4' key={index} >
                             <p>Username: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{username}</span></p>
                             <p>Link: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent'>{link}</span></p>
                         </div>)}
