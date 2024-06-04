@@ -15,7 +15,7 @@ import {
 import React, { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Success, Warning, Shine } from '@/components/utils/Icons';
+import { Success, WarningOnModal, Shine } from '@/components/utils/Icons';
 import { useSearchParams } from 'next/navigation';
 import { getPaymentLinkDetails } from '@/axios/agency';
 import { updatePaymentLink } from '../axios/agency';
@@ -27,7 +27,7 @@ export default function PaymentProcessed() {
   const icons = {
     shine: <Shine/>,
     success: <Success/>,
-    warning: <Warning/>,
+    warning: <WarningOnModal/>,
   };
   const router = useRouter();
   const searchParams = useSearchParams();

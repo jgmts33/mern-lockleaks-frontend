@@ -158,7 +158,7 @@ export default function ProxyBot() {
                     {cellValue ? <span>Yes</span> : <span>No</span>}
                 </Switch>
             default:
-                return <div className='flex items-center gap-4'>
+                return <div className='flex items-center w-max gap-4'>
                     <p>{cellValue[0]}</p>
                     {cellValue.length > 1 ? <div className='bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg rounded-full px-2'>+{cellValue.length - 1} More</div> : <></>}
                 </div>;

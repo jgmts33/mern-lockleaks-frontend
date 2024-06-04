@@ -76,3 +76,21 @@ export const updatePaymentStatus = async (data) => {
     }
   }
 }
+
+export const handleDeleteSubmition = async (data) => {
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/report-delete-data`, data);
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

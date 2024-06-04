@@ -17,7 +17,6 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="description" content="Increase your online success with professional copyright protection" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="186x186" />
         <title>Lock Leaks</title>
-        <meta charset="UTF-8" />
       </Head>
       <Script src="https://accounts.google.com/gsi/client" async defer></Script>
       <NextUIProvider>

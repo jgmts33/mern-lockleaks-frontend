@@ -32,6 +32,10 @@ export default function Footer({ cookieSettingsOnOpen }) {
   const [warning, setWarning] = useState('');
 
   const handleSubscribe = useCallback(async () => {
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setWarning("Email is invalid");
+      return;
+    }
     setIsProcessing(true);
     const res = await createNewSubscribeUser({
       email
