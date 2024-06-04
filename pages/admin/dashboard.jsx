@@ -74,12 +74,6 @@ export default function AdminDashbaord() {
         },
     ]);
 
-    // const getUsersList = async () => {
-    //     const res = await getUsersListInfo();
-
-    //     if (res.status == 'success') setUsers[res.data];
-    // }
-
     const getExtraReportInfo = async () => {
         const res = await getExtraReport();
 

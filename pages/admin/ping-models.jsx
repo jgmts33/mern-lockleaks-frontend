@@ -28,7 +28,7 @@ export default function ProxyBot() {
     const [list, setList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
     const [isActionProcessing, setIsActionProcessing] = useState(-1);
-    const [searchValue, setSearchValue] = useState("");
+    const [searchValue, setSearchValue] = useState(""); 
     const [modalType, setModalType] = useState("");
     const [targetInfo, setTargetInfo] = useState({
         id: '',

@@ -94,3 +94,127 @@ export const handleDeleteSubmition = async (data) => {
     }
   }
 }
+
+export const updateUserInfo = async (id, data) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.patch(`${ENDPOINT}/user/${id}`, {
+      ...data
+    }, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const updateUserVisible = async (id, ban) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.patch(`${ENDPOINT}/user-visible/${id}`, {
+      ban
+    }, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getUserInfo = async (id) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/users/${id}`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getUsernames = async (id) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/usernames/${id}`, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const deleteUser = async (id) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.delete(`${ENDPOINT}/user/${id}`, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

@@ -4,35 +4,35 @@ export const ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT
 export const BOT_ENDPOINT = process.env.NEXT_PUBLIC_BOT_API_ENDPOINT
 
 const icons = {
-  filehost: <FileHost/>,
-  calendarcheck: <CalendarCheck/>,
-  category: <Category/>,
-  SMscanner: <SMScanner/>,
-  submit: <Submit/>,
-  usercontent: <UserContent/>,
-  AIProfile: <AIProfile/>,
-  DataReport: <DataReport/>,
-  dmcabadges: <DmcaBadges/>,
-  AccountSetting: <AccountSetting/>,
-  DownloadData: <DownloadData/>,
-  notification: <Notification/>,
-  scanner: <Scanner/>,
-  photo: <Photo/>,
-  profilesquare: <ProfileSquare/>,
-  warningcircle: <WarningCircle/>,
-  search: <Search/>,
-  sidebarclose: <SidebarClose/>,
-  testbots: <TestBots/>,
-  users: <Users/>,
-  proxybots: <Proxybots/>,
-  management: <Management/>,
-  pingmodels: <PingModels/>,
-  autocontract: <AutoContract/>,
-  bing: <Bing/>,
-  keywordsDataSet: <KeywordsDataSet/>,
-  helpPost: <HelpPost/>,
-  review: <Review/>,
-  agency: <Agency/>,
+  filehost: <FileHost />,
+  calendarcheck: <CalendarCheck />,
+  category: <Category />,
+  SMscanner: <SMScanner />,
+  submit: <Submit />,
+  usercontent: <UserContent />,
+  AIProfile: <AIProfile />,
+  DataReport: <DataReport />,
+  dmcabadges: <DmcaBadges />,
+  AccountSetting: <AccountSetting />,
+  DownloadData: <DownloadData />,
+  notification: <Notification />,
+  scanner: <Scanner />,
+  photo: <Photo />,
+  profilesquare: <ProfileSquare />,
+  warningcircle: <WarningCircle />,
+  search: <Search />,
+  sidebarclose: <SidebarClose />,
+  testbots: <TestBots />,
+  users: <Users />,
+  proxybots: <Proxybots />,
+  management: <Management />,
+  pingmodels: <PingModels />,
+  autocontract: <AutoContract />,
+  bing: <Bing />,
+  keywordsDataSet: <KeywordsDataSet />,
+  helpPost: <HelpPost />,
+  review: <Review />,
+  agency: <Agency />,
 };
 
 export const USER_SIDEBAR_LIST = [
@@ -284,4 +284,12 @@ export const ADMIN_SIDEBAR_LIST = [
     path: "/admin/notifications",
     favourite: false
   }
+]
+
+export const SUBSCRIPTION_NAMES = [
+  '',
+  'Trial',
+  'Starter',
+  'Pro',
+  'Star'
 ]

@@ -251,6 +251,9 @@ export default function RootLayout({ children }) {
           if (res.status == 'success') {
             dispatch(setUserInfo(res.data));
           }
+          else {
+            window.open("/", "_self");
+          }
         }
       } catch (err) {
         console.log(err);

@@ -1,47 +1,105 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input
+    Button, Link, ScrollShadow, Input,
+    Table,
+    TableHeader,
+    TableColumn,
+    TableBody,
+    TableRow,
+    TableCell,
+    Switch
 } from '@nextui-org/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from "@/components/utils/Icons";
+import { getUsersListInfo, updateUserVisible } from '../../../axios/user';
+import { SUBSCRIPTION_NAMES } from '../../../config/config';
 
 export default function Users() {
-    const router = useRouter();
 
-    const [selectDownload, setSelectDownload] = useState(0);
+    const router = useRouter();
+    const [searchValue, setSearchValue] = useState("");
+    const [filteredList, setFilteredList] = useState([]);
+
+    const [list, setList] = useState([]);
     const icons = {
-        search: <Search/>,
+        search: <Search />,
     };
 
-    const UsersData = [
-        {
-            email: "user@lockleaks.com",
-            username: "NickName",
-            plan: "Planname",
-        }, {
-            email: "user@lockleaks.com",
-            username: "NickName",
-            plan: "Planname",
-        }, {
-            email: "user@lockleaks.com",
-            username: "NickName",
-            plan: "Planname",
-        }, {
-            email: "user@lockleaks.com",
-            username: "NickName",
-            plan: "Planname",
-        }, {
-            email: "user@lockleaks.com",
-            username: "NickName",
-            plan: "Planname",
-        }
-    ]
+    const getUsersList = async () => {
+        const res = await getUsersListInfo();
 
-    const handleShowMoreDetails = () => {
-        router.push("users/view")
+        if (res.status == 'success') setList(res.data);
     }
+
+    const handleUpdateUserVisible = async (id, ban) => {
+        const res = await updateUserVisible(id, ban);
+
+        if (res.status == 'success') {
+            setList(p => p.map((item) => item.id == id ? ({ ...item, ban: ban }) : item));
+        }
+    }
+
+    useEffect(() => {
+        getUsersList();
+    }, [])
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            let _list = list.filter(p => {
+                if (p.email.includes(searchValue) || p.name?.includes(searchValue)) return true;
+                else return false;
+            });
+            setFilteredList(_list);
+        }, 300);
+
+        return () => clearTimeout(timer);
+
+    }, [searchValue, list]);
+
+    const columns = [
+        { name: "Email", uid: "email" },
+        { name: "Username", uid: "name" },
+        { name: "Plan", uid: "plan" },
+        { name: "Ban", uid: "ban" },
+        { name: "View", uid: "view" },
+    ];
+
+
+    const renderCell = React.useCallback((item, columnKey) => {
+        const cellValue = item[columnKey];
+
+        switch (columnKey) {
+            case "view":
+                return (
+                    <div className="relative flex items-center gap-4">
+                        <Button
+                            radius="full"
+                            className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
+                            size='sm'
+                            onPress={() => {
+                                router.push(`/admin/users/${item.id}`)
+                            }}
+                        >
+                            View
+                        </Button>
+                    </div>
+                );
+            case "ban":
+                return <Switch isSelected={cellValue} onValueChange={(value) => {
+                    handleUpdateUserVisible(item.id, value);
+                }}>
+                    {cellValue ? <span>Yes</span> : <span>No</span>}
+                </Switch>
+            case "plan":
+                return <p>{!item.subscription.plan_id ? '' : SUBSCRIPTION_NAMES[item.subscription.plan_id]}</p>
+            default:
+                return <div className='flex items-center w-max gap-4'>
+                    <p>{cellValue}</p>
+                </div>;
+        }
+    }, []);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
@@ -49,16 +107,16 @@ export default function Users() {
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
             <div className='flex justify-between mt-10 max-sm:mt-5 max-md:gap-5 max-sm:flex-col max-sm:mx-auto'>
-                <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: 10</span>
-                <span className='font-semibold text-base'>TOTAL USERS: 10</span>
-                <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: 10</span>
+                <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: {list.filter(p => p.subscription?.status == 'active').length}</span>
+                <span className='font-semibold text-base'>TOTAL USERS: {list.length}</span>
+                <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: {list.filter(p => p.subscription?.status != 'active').length}</span>
             </div>
-            <div className='flex mt-16 max-sm:mt-10 max-md:flex-col max-sm:mx-auto'>
+            <div className='max-w-[500px] w-full mt-4'>
                 <Input
                     isClearable
                     radius="lg"
-                    className='w-60'
                     classNames={{
+                        label: "text-black/50 dark:text-white/90",
                         input: [
                             "bg-transparent",
                             "text-black/90 dark:text-white/90",
@@ -73,72 +131,44 @@ export default function Users() {
                             "backdrop-saturate-200",
                             "hover:bg-default-200/70",
                             "dark:hover:bg-default/70",
-                            "group-data-[focused=true]:bg-default-200/50",
-                            "dark:group-data-[focused=true]:bg-default/60",
+                            "group-data-[focus=true]:bg-default-200/50",
+                            "dark:group-data-[focus=true]:bg-default/60",
                             "!cursor-text",
                         ],
                     }}
-                    placeholder="Search by User or Email"
+                    placeholder="Type to search..."
                     startContent={
-                        <span>{icons.search}</span>
+                        icons.search
                     }
+                    value={searchValue}
+                    onValueChange={(value) => setSearchValue(value)}
                 />
             </div>
-            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 p-5 rounded-[16px] mt-10 max-md:w-full'>
-                <ScrollShadow className='h-[400px]'>
-                    <ScrollShadow className='max-sm:w-[900px]'>
-                    <div className='grid grid-cols-5 w-full'>
-                        <div>
-                            <span>Email</span>
-                        </div>
-                        <div>
-                            <span>Username</span>
-                        </div>
-                        <div>
-                            <span>Plan</span>
-                        </div>
-                        <div>
-                            <span>Ban</span>
-                        </div>
-                        <div>
-                            <span>Data</span>
-                        </div>
-                    </div>
-                    <div className='w-full'>
-                        {
-                            UsersData.map((items, index) => {
-                                return (
-                                    <div key={index} className='grid grid-cols-5 space-y-5 font-normal text-sm items-center'>
-                                        <div className='flex mt-5'>
-                                            <span>{items.email}</span>
-                                        </div>
-                                        <div className='flex'>
-                                            <span>{items.username}</span>
-                                        </div>
-                                        <div className='flex'>
-                                            <span>{items.plan}</span>
-                                        </div>
-                                        <div className='flex gap-2'>
-                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm'>
-                                                Yes
-                                            </Button>
-                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} size='sm'>
-                                                No
-                                            </Button>
-                                        </div>
-                                        <div className='flex'>
-                                            <Button radius="full" className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"} size='sm' onClick={()=>handleShowMoreDetails()}>
-                                                View
-                                            </Button>                                        
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
-                    </ScrollShadow>
-                </ScrollShadow>
-                </div>
+            <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-4 w-full p-10 max-md:p-4'>
+                <Table
+                    className='max-h-[calc(100vh-352px)] overflow-y-auto'
+                    isHeaderSticky
+                    aria-labelledby="Proxies/VPS Bots"
+                >
+                    <TableHeader columns={columns}>
+                        {(column) => (
+                            <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
+                                {column.name}
+                            </TableColumn>
+                        )}
+                    </TableHeader>
+
+                    <TableBody items={filteredList}>
+                        {(item, index) => (
+                            <TableRow key={index}>
+                                {(columnKey) => <TableCell className='py-4'>{renderCell(item, columnKey)}</TableCell>}
+                            </TableRow>
+                        )}
+
+                    </TableBody>
+
+                </Table>
+            </div>
         </div>
     )
 }

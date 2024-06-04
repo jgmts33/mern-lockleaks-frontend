@@ -93,6 +93,14 @@ export default function Login() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
+            if ( res.data.ban ) {
+                setModalValue({
+                    status: "failed",
+                    content: "You were banned, please contact support."
+                });
+                onOpen();
+                return;
+            }
             setTokens(modalValue.userInfo.tokens);
             window.open("/app/dashboard", '_self');
             // router.push("/app/dashboard");
