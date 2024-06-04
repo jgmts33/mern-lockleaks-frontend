@@ -67,7 +67,7 @@ export default function Users() {
     ];
 
 
-    const renderCell = React.useCallback((item, columnKey) => {
+    const renderCell = (item, columnKey) => {
         const cellValue = item[columnKey];
 
         switch (columnKey) {
@@ -99,7 +99,7 @@ export default function Users() {
                     <p>{cellValue}</p>
                 </div>;
         }
-    }, []);
+    };
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">

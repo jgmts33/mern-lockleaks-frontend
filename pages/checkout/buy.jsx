@@ -52,8 +52,8 @@ export default function BUY() {
         update: false
     });
     const [targetKeywordType, setTargetKeywordType] = useState('username');
-    const [urlValidation, setUrlValidation] = useState("");
     const [targetKeywordIndex, setTargetKeywordIndex] = useState(0);
+    const [urlValidation, setUrlValidation] = useState("");
     const [usernames, setUsernames] = useState([
         {
             username: '',
