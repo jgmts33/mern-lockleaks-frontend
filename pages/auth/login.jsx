@@ -86,7 +86,7 @@ export default function Login() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
-            if ( res.data.ban ) {
+            if ( modalValue.userInfo.ban ) {
                 setModalValue({
                     status: "failed",
                     content: "You were banned, please contact support."
