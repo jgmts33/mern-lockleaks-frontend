@@ -51,7 +51,7 @@ export default function UsersView() {
         history.back()
     }
 
-    const getUserDetails = useCallback(async () => {
+    const getUserDetails = async () => {
 
         const userRes = await getUserInfo(id);
         if (userRes.status === 'success') {
@@ -64,7 +64,7 @@ export default function UsersView() {
         else {
             router.push("/admin/users");
         }
-    }, [id]);
+    }
 
     const handleUpdateAuthInfo = useCallback(async () => {
         setIsActionProcessing(true);
@@ -113,7 +113,7 @@ export default function UsersView() {
 
     useEffect(() => {
         getUserDetails();
-    }, [id]);
+    }, []);
 
     if (userInfo) return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
