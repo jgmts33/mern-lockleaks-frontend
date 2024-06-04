@@ -33,11 +33,6 @@ export default function UsersView() {
 
     const { id } = router.query;
 
-    if (!id) {
-        router.push("/admin/users");
-        return;
-    }
-
     const icons = {
         search: <Search />,
         pencil: <Pencil />,
@@ -112,8 +107,12 @@ export default function UsersView() {
     }
 
     useEffect(() => {
+        if( !id ) {
+            router.push("/admin/users")
+            return;
+        }
         getUserDetails();
-    }, []);
+    }, [id]);
 
     return (
         <>
