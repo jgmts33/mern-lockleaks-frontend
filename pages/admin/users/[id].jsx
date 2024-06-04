@@ -97,9 +97,9 @@ export default function UsersView() {
         }
 
         setIsActionProcessing(false);
-    }, [email, password, modalData, id])
+    }, [email, password, modalData])
 
-    const handleDeleteUser = useCallback(async () => {
+    const handleDeleteUser = async () => {
         setIsActionProcessing(true);
         const res = await deleteUser(id);
 
@@ -109,7 +109,7 @@ export default function UsersView() {
             console.log(res.data);
         }
         setIsActionProcessing(false);
-    }, [id]);
+    }
 
     useEffect(() => {
         getUserDetails();
