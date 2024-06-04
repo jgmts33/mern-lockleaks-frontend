@@ -4,6 +4,7 @@ import {
     Button, Modal, ModalContent, ModalHeader, ModalBody, useDisclosure
 } from '@nextui-org/react';
 import React from 'react';
+import { useState } from 'react';
 import { Shine, Star, ChevronLeft, ChevronRight, ArrowDown } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customer-review';
 import Complete from "@/public/assets/background/complete.svg";
