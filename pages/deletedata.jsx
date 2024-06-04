@@ -86,12 +86,14 @@ export default function DeleteData() {
 
         setWarning(_warning);
 
+        return _warning;
+
     }, [name, email, capacityContent, legislationContent, specificContent, requestContent, warning]);
 
     const handleSubmit = useCallback(async () => {
         console.log([name, email, capacityContent, legislationContent, specificContent, requestContent, warning])
-        isCheckValidation();
-        if (!Object.entries(warning).length) {
+        const _warning = isCheckValidation();
+        if (!Object.entries(_warning).length) {
             const res = await handleDeleteSubmition({ name, email, capacityContent, legislationContent, specificContent });
 
             if (res.status == 'success') {

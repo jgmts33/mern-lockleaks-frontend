@@ -137,7 +137,7 @@ export default function UsersView() {
                         <div className='flex'>{userInfo.name || ""}</div>
                     </div>
                     <div className='flex font-semibold text-base gap-4'>
-                        <div className='flex'>EMCONNECTED WITH :</div>
+                        <div className='flex'>Social Media Auth :</div>
                         <div className='flex'><span className='capitalize'>{userInfo.social ? <span className='flex gap-2 items-center'>{icons[userInfo.social]} Google </span> : ""}</span></div>
                     </div>
                     <div className='flex font-semibold text-base gap-4'>
