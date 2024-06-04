@@ -1,11 +1,10 @@
 "use client";
-import Image from 'next/image';
 import {
     Button, ScrollShadow
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getCustomerReviews, deleteCustomerReview } from '../../../axios/customer-review';
+import { getCustomerReviews, deleteCustomerReview } from '@/axios/customer-review';
 
 export default function ReviewManagement() {
     const router = useRouter();

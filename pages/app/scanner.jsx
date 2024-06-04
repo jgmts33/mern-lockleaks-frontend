@@ -1,13 +1,12 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, Progress
 } from '@nextui-org/react';
 import { GoogleSearch, BingSearch, Complete } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import { getUsernames } from '@/axios/usernames';
-import { scan } from '../../axios/bot';
-import { scanProgress as scanProgressInfo, lastScanResult as lastScanRusultInfo, setScanProgress } from "../../lib/bot/botSlice";
+import { scan } from '@/axios/bot';
+import { scanProgress as scanProgressInfo, lastScanResult as lastScanRusultInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Scanner() {

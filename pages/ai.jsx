@@ -1,10 +1,7 @@
 "use client";
 import Image from 'next/image';
-import {
-    Button, Link,
-} from '@nextui-org/react';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Facebook from "@/public/assets/AI/facebook.svg"
 import Instagram from "@/public/assets/AI/instagram.svg"
 import TikTok from "@/public/assets/AI/TikTok.svg"

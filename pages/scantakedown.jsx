@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link,
+    Button,
 } from '@nextui-org/react';
 import React from 'react';
 import WriteTip from "@/public/assets/scan/write-tip.svg";

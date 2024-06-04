@@ -1,13 +1,11 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button, ScrollShadow
 } from '@nextui-org/react';
 import { Components, WarningIcon } from "@/components/utils/Icons";
 import React, { useState } from 'react';
 
 export default function TestBots() {
-    const [value, setValue] = React.useState(25);
     const [selectWorkingBot, setSelectWorkingBot] = useState(0)
     const [selectNotWorkingBot, setSelectNotWorkingBot] = useState(0)
 

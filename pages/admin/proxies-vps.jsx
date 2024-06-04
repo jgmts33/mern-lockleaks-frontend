@@ -1,13 +1,22 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, useDisclosure, Modal, ModalContent, ModalBody, ModalFooter, Input, user,
-    Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue,
+    Button,
+    useDisclosure,
+    Modal,
+    ModalContent,
+    ModalBody,
+    Input,
+    Table,
+    TableHeader,
+    TableColumn,
+    TableBody,
+    TableRow,
+    TableCell,
     ModalHeader
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getProxiesBots, createNewProxiesBot, deleteProxiesBot, updateProxiesBot } from '../../axios/proxies-bot';
+import { getProxiesBots, createNewProxiesBot, deleteProxiesBot, updateProxiesBot } from '@/axios/proxies-bot';
 import moment from 'moment';
 
 export default function ProxyBot() {

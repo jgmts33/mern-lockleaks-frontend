@@ -10,7 +10,7 @@ import {
   ModalFooter,
   useDisclosure
 } from '@nextui-org/react';
-import { createNewSubscribeUser } from '../../axios/news';
+import { createNewSubscribeUser } from '@/axios/news';
 import { Crisp } from 'crisp-sdk-web';
 
 export default function Footer({ cookieSettingsOnOpen }) {

@@ -1,23 +1,19 @@
 "use client";
-import Image from 'next/image';
 import {
-  Button, Input, Link, Modal, ModalBody, ModalContent, ModalHeader, ScrollShadow,
+  Button, Input, Modal, ModalBody, ModalContent, ModalHeader, ScrollShadow,
   Switch,
   useDisclosure
 } from '@nextui-org/react';
 import React, { useCallback, useEffect } from 'react';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { uploadDmcaImage } from '../../axios/dmca';
 import { SelectSwitch, UnselectSwitch } from '../../components/utils/Icons';
 import { generateNewPaymentLink } from '../../axios/agency';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { checkDoubleUsername } from '../../axios/usernames';
 
 export default function Dmcabadges() {
-  const router = useRouter();
 
-  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const [isActionProcessing, setIsActionProcessing] = useState(false);
   const [createdCode, setCreatedCode] = useState("");
@@ -39,7 +35,7 @@ export default function Dmcabadges() {
   const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
 
   const handleSetNewUsername = useCallback(() => {
-    
+
     console.log(usernames, targetKeywordIndex);
     let newUsername = targetKeyword.username.replace("@", "");
     if (newUsername) {
@@ -50,20 +46,20 @@ export default function Dmcabadges() {
     }
   }, [targetKeyword, usernames, targetKeywordIndex]);
 
-  const handleSetNewLink = useCallback(async() => {
+  const handleSetNewLink = useCallback(async () => {
     let newLink = targetKeyword.link.replace("@", "");
     setIsUsernameLinkValidationProcessing(true);
     if (newLink && checkLinkValidation()) {
       const _usernames = usernames.slice(0);
-      const res = await checkDoubleUsername({ 
-        username: _usernames[targetKeywordIndex].username, 
+      const res = await checkDoubleUsername({
+        username: _usernames[targetKeywordIndex].username,
         link: newLink
       });
-      if ( res.data.valid && !usernames.find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
+      if (res.data.valid && !usernames.filter((item, index) => index != targetKeywordIndex).find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
         _usernames[targetKeywordIndex].link = newLink;
         setUsernames(_usernames);
         setTargetKeyword(null);
-        setTargetKeywordType('username');  
+        setTargetKeywordType('username');
       }
       else {
         setUrlValidation("Already existed.");

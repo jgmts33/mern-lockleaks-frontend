@@ -1,13 +1,13 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button, 
+    ScrollShadow
 } from '@nextui-org/react';
 import { GoogleSearch, Components, BingSearch } from "@/components/utils/Icons";
-import React, { useCallback, useEffect, useState } from 'react';
-import { acceptOrder, getScrapedDataList } from '../../axios/download';
+import React, { useEffect, useState } from 'react';
+import { acceptOrder, getScrapedDataList } from '@/axios/download';
 import { io } from 'socket.io-client';
-import { ENDPOINT } from '../../config/config';
+import { ENDPOINT } from '@/config/config';
 
 export default function GoogleBing() {
 

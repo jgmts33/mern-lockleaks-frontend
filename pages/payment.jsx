@@ -1,14 +1,10 @@
 "use client";
-import Image from 'next/image';
 import {
   Button,
   Modal,
   ModalBody,
   ModalContent,
-  ModalHeader,
-  Switch,
   useDisclosure,
-  Input,
   ModalFooter,
   ScrollShadow
 } from '@nextui-org/react';
@@ -18,8 +14,8 @@ import { useRouter } from 'next/router';
 import { Success, WarningOnModal, Shine } from '@/components/utils/Icons';
 import { useSearchParams } from 'next/navigation';
 import { getPaymentLinkDetails } from '@/axios/agency';
-import { updatePaymentLink } from '../axios/agency';
-import { ENDPOINT } from '../config/config';
+import { updatePaymentLink } from '@/axios/agency';
+import { ENDPOINT } from '@/config/config';
 import { io } from 'socket.io-client';
 
 export default function PaymentProcessed() {

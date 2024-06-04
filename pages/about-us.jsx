@@ -1,10 +1,6 @@
 "use client";
 import Image from 'next/image';
-import {
-    Button, Link,
-} from '@nextui-org/react';
 import React from 'react';
-import { useEffect, useState } from 'react';
 import CustomerReview from '@/components/customer-review';
 
 export default function AboutUs() {

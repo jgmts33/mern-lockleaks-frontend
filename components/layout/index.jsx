@@ -17,22 +17,21 @@ import {
   ModalHeader
 } from '@nextui-org/react';
 import NextTopLoader from 'nextjs-toploader';
-import { useDispatch, useSelector } from "react-redux";
-
-import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setLastScanResult, setExtraReport, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
-
 import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
-import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
 import { getUserInfo } from "@/axios/auth";
 import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
 import { io } from "socket.io-client";
-import { ENDPOINT } from "../../config/config";
-import { getScrapedDataList } from "../../axios/download";
-import { getExtraReport } from "../../axios/user";
-import { USER_SIDEBAR_LIST } from "@/config/config";
-import { sendVerificationEmail } from "../../axios/auth";
+import { useDispatch, useSelector } from "react-redux";
+
+import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, setLastScanResult, setExtraReport, setScanProgress, setScanResult } from "@/lib/bot/botSlice";
+
+import { USER_SIDEBAR_LIST, ENDPOINT } from "@/config/config";
+import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
+import { getScrapedDataList } from "@/axios/download";
+import { getExtraReport } from "@/axios/user";
+import { sendVerificationEmail } from "@/axios/auth";
 
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
@@ -54,7 +53,6 @@ export default function RootLayout({ children }) {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [mounted, setMounted] = useState(false);
 
-  const router = useRouter();
   const userInfo = useSelector(info);
   const scanProgress = useSelector(scanProgressInfo);
   const [verifyEmailSendTimer, setVerifyEmailSendTimer] = useState(0);

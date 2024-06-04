@@ -1,10 +1,9 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, SelectItem, Switch
+    Button, Link, Switch
 } from '@nextui-org/react';
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { Lock, Shine, Complete, Uncomplete, Star, ChevronLeft, ChevronRight, SelectSwitch, UnselectSwitch } from "@/components/utils/Icons";
 
 export default function Checkout() {

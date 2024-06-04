@@ -5,7 +5,7 @@ import {
 import { Components } from "@/components/utils/Icons";
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { lastScanResult as lastScanRusultInfo } from "../../lib/bot/botSlice";
+import { lastScanResult as lastScanRusultInfo } from "@/lib/bot/botSlice";
 
 export default function FileHosted() {
 

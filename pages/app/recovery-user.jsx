@@ -1,9 +1,8 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, 
 } from '@nextui-org/react';
-import { Components, SMfacebook, SMinstagram, SMtwitter, SMtelegram, SMreddit } from "@/components/utils/Icons";
+import { Components } from "@/components/utils/Icons";
 import React from 'react';
 
 export default function RecoveryUsers() {

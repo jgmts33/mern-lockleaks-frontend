@@ -1,14 +1,13 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button
 } from '@nextui-org/react';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { Facebook, Google, Twitter, Error } from '../../components/utils/Icons';
-import { getAccessToken } from '../../axios/token';
-import { resetPassword } from '../../axios/auth';
+import { Facebook, Google, Twitter, Error } from '@/components/utils/Icons';
+import { getAccessToken } from '@/axios/token';
+import { resetPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';
 import moment from 'moment/moment';
 

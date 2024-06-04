@@ -1,15 +1,14 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button, ScrollShadow
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
-import { downloadSrapedData, getScrapedDataList } from '../../axios/download';
+import { downloadSrapedData, getScrapedDataList } from '@/axios/download';
 import moment from 'moment/moment';
-import { scanProgress as scanProgressInfo } from "../../lib/bot/botSlice";
+import { scanProgress as scanProgressInfo } from "@/lib/bot/botSlice";
 import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
-import { ENDPOINT } from '../../config/config';
+import { ENDPOINT } from '@/config/config';
 import { userInfo as info } from '@/lib/auth/authSlice';
 
 export default function DownloadData() {

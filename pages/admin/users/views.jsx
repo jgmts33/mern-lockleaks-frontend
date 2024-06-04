@@ -1,7 +1,8 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input,
+    Button, 
+    ScrollShadow, 
+    Input,
     useDisclosure,
     Modal,
     ModalContent,
@@ -14,17 +15,22 @@ import { useRouter } from 'next/router';
 import { Search, Pencil, Trash, Facebook, Google, Twitter } from "@/components/utils/Icons";
 import { getUserInfo, getUsernames } from '@/axios/user';
 import { SUBSCRIPTION_NAMES } from '@/config/config';
-import { deleteUser, updateUserInfo } from '../../../axios/user';
-import { SelectSwitch, UnselectSwitch } from '../../../components/utils/Icons';
+import { deleteUser, updateUserInfo } from '@/axios/user';
+import { SelectSwitch, UnselectSwitch } from '@/components/utils/Icons';
+import { useSearchParams } from 'next/navigation';
+import { checkDoubleUsername, createUsernames, deleteUsername, updateUsername } from '@/axios/usernames';
+import moment from 'moment/moment';
 
 export default function UsersView() {
 
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userDetails, setUserDetails] = useState(null);
     const [usernames, setUsernames] = useState([]);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [isUsernameDeleteProcessing, setIsUsernameDeleteProcessing] = useState(-1);
     const [modalData, setModalData] = useState({
         title: "",
         target: "",
@@ -32,6 +38,7 @@ export default function UsersView() {
     })
 
     const [targetKeyword, setTargetKeyword] = useState({
+        id: '',
         username: '',
         link: '',
         update: false
@@ -43,7 +50,6 @@ export default function UsersView() {
     const [targetKeywordIndex, setTargetKeywordIndex] = useState(0);
     const handleSetNewUsername = useCallback(() => {
 
-        console.log(usernames, targetKeywordIndex);
         let newUsername = targetKeyword.username.replace("@", "");
         if (newUsername) {
             const _usernames = usernames.slice(0);
@@ -62,7 +68,15 @@ export default function UsersView() {
                 username: _usernames[targetKeywordIndex].username,
                 link: newLink
             });
-            if (res.data.valid && !usernames.find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
+            if (res.data.valid && !usernames.filter((item, index) => index != targetKeywordIndex).find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
+                let usernameResult;
+                if (targetKeyword.update) {
+                    usernameResult = await updateUsername(targetKeyword.id, { username: targetKeyword.username, link: targetKeyword.link });
+                    _usernames[targetKeywordIndex].id = usernameResult.data.id;
+                } else {
+                    usernameResult = await createUsernames({ usernames: [{ username: targetKeyword.username, link: targetKeyword.link }] }, searchParams.get('id'));
+                    _usernames[targetKeywordIndex].id = usernameResult.data[0].id;
+                }
                 _usernames[targetKeywordIndex].link = newLink;
                 setUsernames(_usernames);
                 setTargetKeyword(null);
@@ -73,7 +87,17 @@ export default function UsersView() {
             }
         }
         setIsUsernameLinkValidationProcessing(false);
-    }, [targetKeyword, usernames, targetKeywordIndex]);
+    }, [targetKeyword, usernames, targetKeywordIndex, searchParams.get('id')]);
+
+    const handleDeleteUsername = useCallback(async (id) => {
+        setIsUsernameDeleteProcessing(id);
+        const res = await deleteUsername(id);
+
+        if (res.status == 'success') {
+            setUsernames(p => p.filter(item => item.id != id));
+        }
+        setIsUsernameDeleteProcessing(-1);
+    })
 
     const checkLinkValidation = useCallback(() => {
         var url = targetKeyword?.link || "";
@@ -86,8 +110,6 @@ export default function UsersView() {
     }, [targetKeyword]);
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-
-    const { id } = router.query;
 
     const icons = {
         search: <Search />,
@@ -102,12 +124,12 @@ export default function UsersView() {
         history.back()
     }
 
-    const getUserDetails = async () => {
+    const getUserDetails = useCallback(async () => {
 
-        const userRes = await getUserInfo(id);
+        const userRes = await getUserInfo(searchParams.get('id'));
         if (userRes.status === 'success') {
             setUserDetails(userRes.data);
-            const usernamesRes = await getUsernames(id);
+            const usernamesRes = await getUsernames(searchParams.get('id'));
             if (usernamesRes.status == 'success') {
                 setUsernames(usernamesRes.data);
             }
@@ -115,7 +137,7 @@ export default function UsersView() {
         else {
             router.push("/admin/users");
         }
-    }
+    }, [searchParams.get('id')])
 
     const handleUpdateAuthInfo = useCallback(async () => {
         setIsActionProcessing(true);
@@ -163,9 +185,9 @@ export default function UsersView() {
     }
 
     useEffect(() => {
-        if ( !id ) return;
+        if (!searchParams.get('id')) return;
         getUserDetails();
-    }, [id]);
+    }, [searchParams.get('id')]);
 
     return (
         <>
@@ -209,9 +231,13 @@ export default function UsersView() {
                                 <div className='flex capitalize'>{userDetails.subscription.status} </div>
                             </div>
                             <div className='flex font-semibold text-base max-w-[600px] gap-4'>
-                                <div className='flex'>ACTIVE PLAN :</div>
+                                <div className='flex'>{userDetails.subscription.status == 'expired' ? 'LAST PLAN' : 'ACTIVE PLAN'} :</div>
                                 <div className='flex'> {SUBSCRIPTION_NAMES[userDetails.subscription.plan_id]}</div>
                             </div>
+                            {userDetails.subscription.status == 'active' ? <div className='flex font-semibold text-base max-w-[600px] gap-4'>
+                                <div className='flex'> Expire Date :</div>
+                                <div className='flex'> {moment(userDetails.subscription.expire_date).format("MMM DD, YYYY")}</div>
+                            </div> : <></>}
                             <div className='flex flex-col max-w-[200px] space-y-8 mt-8'>
                                 <Button
                                     radius='full'
@@ -309,7 +335,7 @@ export default function UsersView() {
                         </Modal>
                     </div>
                     <div>
-                        <p className='font-medium text-lg'>USERNAMES LIST <span className='font-medium text-sm'>({usernames.filter(p => (p.link != "")).length} USERNAMES)</span></p>
+                        <p className='font-medium text-lg'>Usernames List <span className='font-medium text-sm'>({usernames.filter(p => (p.link != "")).length} usernames)</span></p>
                         <div className='flex flex-col gap-5 w-full bg-white/10 shadow-sm border border-gray-500 rounded-[16px] p-6 mt-4'>
                             <Modal
                                 backdrop="opaque"
@@ -390,7 +416,7 @@ export default function UsersView() {
                                                             onClick={() => {
                                                                 setTargetKeyword(null);
                                                                 setTargetKeywordType("username")
-                                                                let _usernames = usernames.slice(0, -1);
+                                                                let _usernames = targetKeyword.update ? usernames.slice(0) : usernames.slice(0, -1);
                                                                 setUsernames(_usernames);
                                                             }}
                                                         >
@@ -408,6 +434,11 @@ export default function UsersView() {
                                 className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base border border-white/40 w-max mt-2"
                                 size='md'
                                 onClick={() => {
+                                    setModalData({
+                                        target: "",
+                                        title: "",
+                                        result: ""
+                                    });
                                     setTargetKeyword({
                                         username: '',
                                         link: ''
@@ -441,8 +472,14 @@ export default function UsersView() {
                                                                     className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                                                     size='sm'
                                                                     onClick={() => {
+                                                                        setModalData({
+                                                                            target: "",
+                                                                            title: "",
+                                                                            result: ""
+                                                                        });
                                                                         setTargetKeywordIndex(index);
                                                                         setTargetKeyword({ ...usernames[index], update: true });
+                                                                        onOpen();
                                                                     }}
                                                                 >
                                                                     <span>Edit</span>
@@ -451,13 +488,8 @@ export default function UsersView() {
                                                                     radius="full"
                                                                     className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
                                                                     size='sm'
-                                                                    onClick={() => {
-                                                                        setUsernames(p => {
-                                                                            let _p = p.slice(0);
-                                                                            _p.splice(index, 1);
-                                                                            return _p;
-                                                                        });
-                                                                    }}
+                                                                    isLoading={isUsernameDeleteProcessing == keyword.id}
+                                                                    onClick={() => handleDeleteUsername(keyword.id)}
                                                                 >
                                                                     <span>Delete</span>
                                                                 </Button>

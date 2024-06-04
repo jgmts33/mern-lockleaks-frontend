@@ -1,7 +1,7 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input,
+    Button,
+    Input,
     Table,
     TableHeader,
     TableColumn,
@@ -13,8 +13,8 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from "@/components/utils/Icons";
-import { getUsersListInfo, updateUserVisible } from '../../../axios/user';
-import { SUBSCRIPTION_NAMES } from '../../../config/config';
+import { getUsersListInfo, updateUserVisible } from '@/axios/user';
+import { SUBSCRIPTION_NAMES } from '@/config/config';
 
 export default function Users() {
 
@@ -79,7 +79,7 @@ export default function Users() {
                             className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
                             size='sm'
                             onPress={() => {
-                                router.push(`/admin/users/${item.id}`)
+                                router.push(`/admin/users/views?id=${item.id}`)
                             }}
                         >
                             View
@@ -93,7 +93,7 @@ export default function Users() {
                     {cellValue ? <span>Yes</span> : <span>No</span>}
                 </Switch>
             case "plan":
-                return <p>{!item.subscription.plan_id ? '' : SUBSCRIPTION_NAMES[item.subscription.plan_id]}</p>
+                return <p>{!item.subscription.plan_id ? '' : <span>{SUBSCRIPTION_NAMES[item.subscription.plan_id]} ({item.subscription.status})</span>}</p>
             default:
                 return <div className='flex items-center w-max gap-4'>
                     <p>{cellValue}</p>

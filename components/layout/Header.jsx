@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { ArrowDown } from "@/components/utils/Icons";
 import { Poppins } from "next/font/google";
-import { getAccessToken, getCookieValue } from "../../axios/token";
-import { getUserInfo } from "../../axios/auth";
+import { getAccessToken, getCookieValue } from "@/axios/token";
+import { getUserInfo } from "@/axios/auth";
 import { Crisp } from "crisp-sdk-web";
 import { GoogleTranslate } from "../translater";
 

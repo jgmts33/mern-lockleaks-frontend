@@ -1,12 +1,10 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button
 } from '@nextui-org/react';
-import React, { useCallback } from 'react';
-import { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { uploadDmcaImage } from '../../../axios/dmca';
+import { uploadDmcaImage } from '@/axios/dmca';
 
 export default function Dmcabadges() {
     const router = useRouter();

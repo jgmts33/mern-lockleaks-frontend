@@ -1,42 +1,11 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    ScrollShadow
 } from '@nextui-org/react';
-import React, { useState } from 'react';
-import { Warning } from "@/components/utils/Icons";
-import { useRouter } from 'next/navigation';
+import React from 'react';
 
 
 export default function DataReportDetails() {
-    const router = useRouter();
-
-    const [selectDownload, setSelectDownload] = useState(0)
-
-    const icons = {
-        warning: <Warning/>,
-    };
-
-    const NotificationContent = [
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-        "Scan name February 27, 2024",
-    ]
 
     const description = [
         "Our comprehensive approach to security begins with a meticulous scanning process. Leveraging our proprietary software, we conduct extensive searches across Google, including Search, Images, and Videos, along with an examination of diverse online platforms such as video-streaming sites, forums, peer-to-peer networks, file hosting services, and major social media platforms like Reddit, Instagram, Twitter, and TikTok. This process encompasses over 100,000 inspected websites, ensuring a thorough examination of potential brand copyright infringements.",

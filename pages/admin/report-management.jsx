@@ -1,9 +1,16 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input, useDisclosure, Modal, ModalContent, ModalBody, ModalFooter, ModalHeader
+    Button, 
+    ScrollShadow, 
+    Input, 
+    useDisclosure, 
+    Modal, 
+    ModalContent, 
+    ModalBody, 
+    ModalFooter, 
+    ModalHeader
 } from '@nextui-org/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import { Search } from "@/components/utils/Icons";
 

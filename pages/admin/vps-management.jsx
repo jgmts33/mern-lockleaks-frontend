@@ -1,7 +1,8 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input,
+    Button, 
+    ScrollShadow, 
+    Input,
     ModalContent,
     useDisclosure,
     Modal,
@@ -9,14 +10,10 @@ import {
     ModalBody
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { checkStatus, createNewVps, deleteVps, getVpsList, updateVps } from '../../axios/vps-list';
-import axios from 'axios';
-import io from 'socket.io-client';
+import { checkStatus, createNewVps, deleteVps, getVpsList, updateVps } from '@/axios/vps-list';
 
 export default function VPSManagement() {
 
-    const router = useRouter();
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
     const [list, setList] = useState([]);

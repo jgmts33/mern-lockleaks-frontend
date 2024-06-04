@@ -6,11 +6,7 @@ import {
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { ChevronRight } from "@/components/utils/Icons";
-import Saturn from '@/public/assets//blog/saturn.svg';
-import Moon from '@/public/assets//blog/moon.svg';
-import Mars from '@/public/assets//blog/mars.svg';
-import Woman from '@/public/assets/woman.svg';
-import { getBlogList } from '../../axios/blog';
+import { getBlogList } from '@/axios/blog';
 import { useRouter } from 'next/router';
 
 export default function BlogList() {

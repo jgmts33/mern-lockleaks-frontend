@@ -498,7 +498,7 @@ export default function HomePage() {
               className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full" size='lg'
               onPress={() => router.push("/freetrial")}
             >
-              <span>"Get Free Trial"</span>
+              <span>Get Free Trial</span>
             </Button>
           </div>
         </div>

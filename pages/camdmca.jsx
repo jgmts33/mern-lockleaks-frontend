@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import WriteTip from "@/public/assets/scan/camdcma.svg";
 import TipDocument from "@/public/assets/scan/tip-document.svg";
 import { Balance, Banned, Law, ChevronRight, Tips, FirstTip, SecondTip, ThirdTip } from "@/components/utils/Icons";

@@ -3,17 +3,12 @@ import Image from 'next/image';
 import {
     Button
 } from '@nextui-org/react';
-import { useCallback, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success, WarningOnModal } from "@/components/utils/Icons";
-import { useRouter } from 'next/navigation';
-import { useDispatch } from 'react-redux';
-import React, { useRef } from "react";
+import React, { useCallback, useState, useRef } from 'react';
+import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success } from "@/components/utils/Icons";
 import { login } from '@/axios/auth';
-import { setUserInfo } from '@/lib/auth/authSlice';
 import { setTokens } from '@/axios/token';
 
 export default function Login() {
-    const router = useRouter();
     const icons = {
         lock: <Lock/>,
         envelop: <Envelop/>,
@@ -24,7 +19,6 @@ export default function Login() {
         error: <Error/>,
         success: <Success/>,
     };
-    const dispatch = useDispatch();
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");

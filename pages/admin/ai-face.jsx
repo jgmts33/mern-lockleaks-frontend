@@ -1,11 +1,10 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button, 
+    ScrollShadow
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
 import React, { useState } from 'react';
-import GoogleIcon from '@/public/assets/background/Google.svg';
 
 export default function AIface() {
     const [value, setValue] = React.useState(25);

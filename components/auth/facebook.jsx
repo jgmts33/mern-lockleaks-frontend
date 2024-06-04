@@ -19,7 +19,7 @@ export default function FaceBookAuth() {
 
     const stringifiedParams = queryString.stringify({
       client_id: process.env.NEXT_PUBLIC_FACEBOOK_APP_ID,
-      redirect_uri: 'https://copyrightfixer.com/auth/facebook',
+      redirect_uri: 'https://lockleaks.com/auth/facebook',
       scope: ['email', 'user_friends'].join(','), // comma seperated string
       response_type: 'code',
       auth_type: 'rerequest',

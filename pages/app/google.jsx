@@ -1,16 +1,16 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, Progress
 } from '@nextui-org/react';
 import { GoogleSearch, Components } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import GoogleIcon from '@/public/assets/background/Google.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { scanProgress as scanProgressInfo, setScanProgress } from "../../lib/bot/botSlice";
+import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { getUsernames } from '@/axios/usernames';
-import { scan } from '../../axios/bot';
-import { getScrapedDataList } from '../../axios/download';
+import { scan } from '@/axios/bot';
+import { getScrapedDataList } from '@/axios/download';
 
 export default function Google() {
 

@@ -1,5 +1,4 @@
 "use client";
-import Image from 'next/image';
 import {
     Button,
     Modal,
@@ -35,8 +34,8 @@ export default function BUY() {
     ]
 
     const icons = {
-        shine: <Shine/>,
-        success: <Success/>,
+        shine: <Shine />,
+        success: <Success />,
     };
 
     const router = useRouter();
@@ -89,7 +88,7 @@ export default function BUY() {
                 username: _usernames[targetKeywordIndex].username,
                 link: newLink
             });
-            if ( res.data.valid && !usernames.find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
+            if (res.data.valid && !usernames.filter((item, index) => index != targetKeywordIndex).find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
                 _usernames[targetKeywordIndex].link = newLink;
                 setUsernames(_usernames);
                 setTargetKeyword(null);
@@ -171,7 +170,7 @@ export default function BUY() {
 
     useEffect(() => {
         setUrlValidation("");
-    },[usernames]);
+    }, [usernames]);
 
     useEffect(() => {
         setUrlValidation("");

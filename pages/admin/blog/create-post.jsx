@@ -7,9 +7,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import dynamic from "next/dynamic";
-import { createNewBlog, getBlogDetails, updateBlog } from '../../../axios/blog';
+import { createNewBlog, getBlogDetails, updateBlog } from '@/axios/blog';
 
-const TextEditer = dynamic(() => import("../../../components/text-editor"), {
+const TextEditer = dynamic(() => import("@/components/text-editor"), {
     ssr: false,
 });
 

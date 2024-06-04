@@ -1,7 +1,6 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link
+    Button
 } from '@nextui-org/react';
 import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';

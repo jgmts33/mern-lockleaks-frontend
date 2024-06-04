@@ -1,11 +1,11 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link,
+    Button,
     ScrollShadow
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
-import { downloadDmcaImages, getDmcaImages, getDmcaImagesPositions } from '../../axios/dmca';
+import { downloadDmcaImages, getDmcaImages, getDmcaImagesPositions } from '@/axios/dmca';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 export default function DmcaBadges() {

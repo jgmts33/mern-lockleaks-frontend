@@ -20,7 +20,7 @@ export default function GoogleAuth() {
 
     const stringifiedParams = queryString.stringify({
       client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      redirect_uri: 'https://copyrightfixer.com/auth/google',
+      redirect_uri: 'https://lockleaks.com/auth/google',
       // redirect_uri: 'http://localhost:3000/auth/google',
       response_type: 'code',
       prompt: 'select_account',

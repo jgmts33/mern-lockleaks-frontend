@@ -4,8 +4,7 @@ import { ChevronLeft, ChevronRight, DiscordAlt, FacebookAlt, InstagramAlt, Reddi
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import 'swiper/css';
-import Link from 'next/link';
-import { getCustomerReviews } from '../axios/customer-review';
+import { getCustomerReviews } from '@/axios/customer-review';
 
 export default function CustomerReview() {
 
@@ -22,17 +21,7 @@ export default function CustomerReview() {
         reddit: <RedditAlt/>,
     };
 
-    const [swiperRef, setSwiperRef] = useState(null);
     const [list, setList] = useState([]);
-
-    const customReview = [
-        { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
-        { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
-        { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
-        { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
-        { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
-        { title: "Floyd Miles", subTitle: "Vice President, GoPro", content: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." },
-    ]
 
     const getCustomerRewviewsInfo = async () => {
         const res = await getCustomerReviews();
@@ -51,7 +40,6 @@ export default function CustomerReview() {
             <p className='font-medium text-5xl max-xl:text-[30px] max-xl:text-center'>Customer Reviews</p>
             <div className="mt-10 relative">
                 <Swiper
-                    onSwiper={setSwiperRef}
                     slidesPerView={3}
                     centeredSlides={true}
                     spaceBetween={10}

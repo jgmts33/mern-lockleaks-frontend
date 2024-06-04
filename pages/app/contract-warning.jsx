@@ -1,7 +1,7 @@
 "use client";
-import Image from 'next/image';
 import {
-  Button, Input, Link,
+  Button, 
+  Input,
   Progress
 } from '@nextui-org/react';
 import React, { useRef, useState } from 'react';

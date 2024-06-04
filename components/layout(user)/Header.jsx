@@ -9,9 +9,8 @@ import {
 import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { usePathname, useRouter } from 'next/navigation';
 import { Poppins } from "next/font/google";
-import { setTokensExpired } from "@/axios/token";
+import { setTokensExpired, getCookieValue } from "@/axios/token";
 import { GoogleTranslate } from "../translater";
-import { getCookieValue } from "../../axios/token";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 

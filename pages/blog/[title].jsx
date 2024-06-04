@@ -2,15 +2,13 @@
 import React from 'react'
 import Image from 'next/image';
 import {
-    Button,
-    ScrollShadow
+    Button
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { ChevronRight, Eye } from "@/components/utils/Icons";
 import RobertHand from '@/public/assets/copyright/robert-hand.svg';
 import { useRouter } from 'next/router';
-import { useSearchParams } from 'next/navigation';
-import { getBlogDetails, getBlogDetailsWithViews, getSimilarBlogs } from '../../axios/blog';
+import { getBlogDetailsWithViews, getSimilarBlogs } from '@/axios/blog';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
 

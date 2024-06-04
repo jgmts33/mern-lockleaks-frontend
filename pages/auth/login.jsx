@@ -1,22 +1,18 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
+    Button, Link, Modal, ModalContent, ModalBody, ModalFooter, useDisclosure
 } from '@nextui-org/react';
-import { useCallback, useEffect, useState } from 'react';
-import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success, WarningOnModal } from "@/components/utils/Icons";
-import { useRouter } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux';
+import { useCallback, useState } from 'react';
+import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success } from "@/components/utils/Icons";
 import React, { useRef } from "react";
 import { login } from '@/axios/auth';
-import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import GoogleAuth from '@/components/auth/google';
 import FaceBookAuth from '@/components/auth/facebook';
 import TwitterAuth from '@/components/auth/twitter';
-import { getAccessToken, setTokens } from '@/axios/token';
+import { setTokens } from '@/axios/token';
 
 export default function Login() {
-    const router = useRouter();
     const icons = {
         lock: <Lock/>,
         envelop: <Envelop/>,
@@ -27,13 +23,10 @@ export default function Login() {
         error: <Error/>,
         success: <Success/>,
     };
-    const dispatch = useDispatch();
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isAutherized, setIsAutherized] = useState(false);
     const [modalValue, setModalValue] = useState({
         status: "",
         content: "",

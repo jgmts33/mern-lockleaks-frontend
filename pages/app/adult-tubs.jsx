@@ -4,7 +4,7 @@ import {
     Button, Checkbox
 } from '@nextui-org/react';
 import { Components, Checkboxs } from "@/components/utils/Icons";
-import { lastScanResult as lastScanRusultInfo } from "../../lib/bot/botSlice";
+import { lastScanResult as lastScanRusultInfo } from "@/lib/bot/botSlice";
 import { useSelector } from 'react-redux';
 
 export default function AdultTubs() {

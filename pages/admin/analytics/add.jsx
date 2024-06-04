@@ -1,11 +1,10 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, Progress, Input, ScrollShadow, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
+    Button, Progress, Input, ScrollShadow, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure
 } from '@nextui-org/react';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Cancel, Shape, PaperClip, PaperPlane, TurnLeft, TurnRight, Search } from "@/components/utils/Icons";
+import { TurnLeft, TurnRight, Search } from "@/components/utils/Icons";
 
 export default function AddAnalytics() {
     const [value, setValue] = React.useState(25);
@@ -14,9 +13,9 @@ export default function AddAnalytics() {
     const [modalID, setModalID] = useState("")
 
     const icons = {
-        turnleft: <TurnLeft/>,
-        turnright: <TurnRight/>,
-        search: <Search/>,
+        turnleft: <TurnLeft />,
+        turnright: <TurnRight />,
+        search: <Search />,
     };
 
     const handleShowDetails = () => {
@@ -38,9 +37,8 @@ export default function AddAnalytics() {
     }
 
     const handleAddDetails = (id) => {
-        onOpen(),
-            onOpenChange(!isOpen);
-        setModalID(id)
+        onOpen();
+        onOpenChange(!isOpen);
     }
 
     return (

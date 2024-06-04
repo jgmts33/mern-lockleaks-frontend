@@ -1,19 +1,17 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button,
+    ScrollShadow
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
-import GoogleIcon from '@/public/assets/background/Google.svg';
-import { acceptSocialProfiles, getSocialProfileSubmitions } from '../../axios/social';
+import { acceptSocialProfiles, getSocialProfileSubmitions } from '@/axios/social';
 import { io } from 'socket.io-client';
-import { ENDPOINT } from '../../config/config';
+import { ENDPOINT } from '@/config/config';
 
 export default function SocialMedia() {
 
     const [selectGoogleAccept, setSelectGoogleAccept] = useState(0)
-    const [selectBingAccept, setSelectBingAccept] = useState(0);
     const [isProcessing, setIsProcessing] = useState(false);
     const [isSubmitionAcceptProcessing, setIsSubmitionAcceptProcessing] = useState(-1);
     const [socialMediaSubmitionsList, setSocialMediaSubmitionsList] = useState([]);

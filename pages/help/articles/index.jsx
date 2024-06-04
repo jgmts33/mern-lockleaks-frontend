@@ -2,13 +2,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image';
 import {
-    Button, Link
+    Button
 } from '@nextui-org/react';
 import { Search, Collobation, RedStar, RecoveryChat } from "@/components/utils/Icons";
 import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { getHelpArticleByCategory, getHelpCategories } from '../../../axios/help';
+import { getHelpArticleByCategory, getHelpCategories } from '@/axios/help';
 
 export default function Categories() {
 

@@ -1,7 +1,6 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    ScrollShadow
 } from '@nextui-org/react';
 import React from 'react';
 import { Warning } from "@/components/utils/Icons";

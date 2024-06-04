@@ -1,11 +1,10 @@
 import Head from 'next/head';
 import Script from 'next/script';
-import Layout from '../components/layout/index.jsx';
+import Layout from '@/components/layout/index.jsx';
 import "./globals.css";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import StoreProvider from "@/lib/StoreProvider.jsx";
-import { Suspense } from 'react';
 
 export default function MyApp({ Component, pageProps }) {
 

@@ -1,15 +1,14 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input
+    Button, Input
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import dynamic from "next/dynamic";
-import { createNews, getNewsDetails, updateNews } from '../../../axios/news';
+import { createNews, getNewsDetails, updateNews } from '@/axios/news';
 
-const TextEditer = dynamic(() => import("../../../components/text-editor"), {
+const TextEditer = dynamic(() => import("@/components/text-editor"), {
     ssr: false,
 });
 

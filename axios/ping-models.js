@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getAccessToken, getUserId } from './token';
+import { getAccessToken } from './token';
 import { ENDPOINT } from '@/config/config';
 
 export const createNewPingModel = async (data) => {

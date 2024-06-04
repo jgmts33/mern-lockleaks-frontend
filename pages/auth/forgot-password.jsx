@@ -8,8 +8,7 @@ import {
   ModalFooter,
   useDisclosure
 } from '@nextui-org/react';
-import Link from "next/link";
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { GradientKey, Envelop, WarningModal, Success } from "@/components/utils/Icons";
 import { forgotPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';

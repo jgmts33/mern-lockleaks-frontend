@@ -1,18 +1,18 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Modal, ModalBody, ModalContent, ModalFooter, Switch,
+    Button, Modal, ModalBody, ModalContent, ModalFooter, Switch,
     useDisclosure
 } from '@nextui-org/react';
 import React, { useCallback } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FirstTip, SecondTip, ThirdTip } from "@/components/utils/Icons";
 import { SelectSwitch, UnselectSwitch, Success, WarningOnModal, Shine } from "@/components/utils/Icons";
 import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import RobertHand from '@/public/assets/recovery/robert-hand.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
-import { handleDeleteSubmition } from '../axios/user';
+import { handleDeleteSubmition } from '@/axios/user';
 
 export default function DeleteData() {
 

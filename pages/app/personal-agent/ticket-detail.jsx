@@ -5,14 +5,14 @@ import {
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Cancel, Shape, PaperClip, PaperPlane, Search, SortDown, SortUp } from "@/components/utils/Icons";
-import { getMessagesByTicket, getTicketsByUser, sendMessage, updateTickStatus } from '../../../axios/ticket';
+import { getMessagesByTicket, getTicketsByUser, sendMessage, updateTickStatus } from '@/axios/ticket';
 import moment from 'moment/moment';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import { io } from 'socket.io-client';
-import { ENDPOINT } from '../../../config/config';
-import { SendMessage } from '../../../components/utils/Icons';
+import { ENDPOINT } from '@/config/config';
+import { SendMessage } from '@/components/utils/Icons';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });

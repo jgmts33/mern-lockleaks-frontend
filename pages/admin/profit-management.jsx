@@ -1,13 +1,17 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, useDisclosure, Modal, ModalContent, ModalBody, ModalFooter, Input, user
+    Button, 
+    ScrollShadow, 
+    useDisclosure, 
+    Modal, 
+    ModalContent, 
+    ModalBody, 
+    ModalFooter, 
+    Input, 
 } from '@nextui-org/react';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react';
 
 export default function ProfitManagement() {
-    const router = useRouter();
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     
     const proxybotContent = [

@@ -1,13 +1,12 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow
+    Button, ScrollShadow
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { UpDownScroll, MoreDetails } from "@/components/utils/Icons";
-import { acceptOrder, getScrapedDataList } from '../../axios/download';
+import { acceptOrder, getScrapedDataList } from '@/axios/download';
 import { io } from 'socket.io-client';
-import { ENDPOINT } from '../../config/config';
+import { ENDPOINT } from '@/config/config';
 
 export default function Scanner() {
 

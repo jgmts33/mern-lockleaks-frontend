@@ -1,5 +1,4 @@
 "use client";
-import Image from 'next/image';
 import {
   Button, Input, Modal, ModalBody, ModalContent, ModalHeader, ScrollShadow,
   useDisclosure
@@ -7,7 +6,7 @@ import {
 import { Chip } from "@nextui-org/chip";
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { addNewCategory, deleteCategory, deleteHelpArticle, getHelpAriticles, getHelpCategories, updateCategory } from '../../../axios/help';
+import { addNewCategory, deleteCategory, deleteHelpArticle, getHelpAriticles, getHelpCategories, updateCategory } from '@/axios/help';
 
 export default function Blog() {
   const router = useRouter();

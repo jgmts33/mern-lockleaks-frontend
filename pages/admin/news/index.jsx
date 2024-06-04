@@ -1,12 +1,10 @@
 "use client";
-import Image from 'next/image';
 import {
     Button, Chip, ScrollShadow
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { tuple } from 'yup';
-import { deleteNews, getNewsList, sendNews } from '../../../axios/news';
+import { deleteNews, getNewsList, sendNews } from '@/axios/news';
 
 export default function News() {
     const router = useRouter();

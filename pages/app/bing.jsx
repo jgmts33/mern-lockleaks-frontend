@@ -1,16 +1,16 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, Progress
 } from '@nextui-org/react';
 import { Components, BingSearch } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import BingIcon from '@/public/assets/background/Bing.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { scanProgress as scanProgressInfo, setScanProgress, setScanResult } from "../../lib/bot/botSlice";
+import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { getUsernames } from '@/axios/usernames';
-import { scan } from '../../axios/bot';
-import { getScrapedDataList } from '../../axios/download';
+import { scan } from '@/axios/bot';
+import { getScrapedDataList } from '@/axios/download';
 
 export default function Bing() {
 

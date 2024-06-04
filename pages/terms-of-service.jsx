@@ -1,9 +1,4 @@
 "use client";
-import Image from 'next/image';
-import {
-    Button, Link,
-} from '@nextui-org/react';
-import { Shine, } from "@/components/utils/Icons";
 import React from 'react';
 
 export default function TermService() {

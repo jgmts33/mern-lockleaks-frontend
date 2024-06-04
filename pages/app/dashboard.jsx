@@ -1,12 +1,8 @@
 "use client";
-import Image from 'next/image';
-import {
-    Button, Link
-} from '@nextui-org/react';
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo } from "../../lib/bot/botSlice";
+import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo } from "@/lib/bot/botSlice";
 import { useRouter } from 'next/router';
 
 export default function Dashbaord() {

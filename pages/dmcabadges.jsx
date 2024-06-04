@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link,
+    Button,
     ScrollShadow,
 } from '@nextui-org/react';
 import React from 'react';
@@ -12,7 +12,7 @@ import PhotoRight from '@/public/assets/dmcabadge/photo-right.svg';
 import PhotoLeft from '@/public/assets/dmcabadge/photo-left.svg';
 import Robert from '@/public/assets/dmcabadge/robert.svg';
 import CustomerReview from '@/components/customer-review';
-import { getDmcaImages, getDmcaImagesPositions } from '../axios/dmca';
+import { getDmcaImages, getDmcaImagesPositions } from '@/axios/dmca';
 import { useRouter } from 'next/router';
 
 export default function DmcaBadges() {

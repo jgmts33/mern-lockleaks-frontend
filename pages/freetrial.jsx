@@ -9,9 +9,8 @@ import ImgChat from '@/public/assets/free-analys/chat.svg';
 import ImgBush2 from '@/public/assets/free-analys/bush-2.svg';
 import ImgBush3 from '@/public/assets/free-analys/bush-3.svg';
 import ImgBush4 from '@/public/assets/free-analys/bush-4.svg';
-import { Shine, Robertchat, RecoveryChat } from "@/components/utils/Icons";
+import { Shine, Robertchat, RecoveryChat, Bell, Complete } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customer-review';
-import { Bell, Complete } from '../components/utils/Icons';
 import { Crisp } from 'crisp-sdk-web';
 import { useRouter } from 'next/router';
 

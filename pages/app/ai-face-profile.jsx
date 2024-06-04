@@ -1,11 +1,11 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, Progress, ScrollShadow
+    Button, Progress, ScrollShadow
 } from '@nextui-org/react';
 import { Chain, Components } from "@/components/utils/Icons";
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Woman from '@/public/assets/background/woman.svg';
 
 export default function AIfaceprofile() {

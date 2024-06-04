@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image';
 import {
-    Button, Link
+    Button,
 } from '@nextui-org/react';
 import { Search, Collobation, RecoveryChat, ArrowRight } from "@/components/utils/Icons";
-import Help from '@/public/assets/help.svg';
 import { useRouter } from 'next/router';
-import { getHelpArticle } from '../../../axios/help';
+import { getHelpArticle } from '@/axios/help';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
 

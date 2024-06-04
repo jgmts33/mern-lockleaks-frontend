@@ -4,8 +4,8 @@ import {
     Button, Image, Link
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
-import { deleteDmcaImage, getDmcaImages, getDmcaImagesPositions, updateDmcaImagesPositions } from '../../../axios/dmca';
-import { RemoveIcon } from '../../../components/utils/Icons';
+import { deleteDmcaImage, getDmcaImages, getDmcaImagesPositions, updateDmcaImagesPositions } from '@/axios/dmca';
+import { RemoveIcon } from '@/components/utils/Icons';
 
 
 const handleBack = () => {

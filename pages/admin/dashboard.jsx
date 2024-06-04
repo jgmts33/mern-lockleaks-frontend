@@ -1,14 +1,10 @@
 "use client";
-import Image from 'next/image';
-import {
-    Button, Link
-} from '@nextui-org/react';
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo, extraReport as extraReportInfo, setExtraReport } from "../../lib/bot/botSlice";
+import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo, extraReport as extraReportInfo, setExtraReport } from "@/lib/bot/botSlice";
 import { useRouter } from 'next/router';
-import { getExtraReport, getUsersListInfo } from '../../axios/user';
+import { getExtraReport } from '@/axios/user';
 
 
 export default function AdminDashbaord() {

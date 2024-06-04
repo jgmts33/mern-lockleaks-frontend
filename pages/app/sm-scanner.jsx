@@ -1,7 +1,6 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button, Progress
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
 import React from 'react';

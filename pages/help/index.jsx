@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import {
-    Button, Link
+    Button
 } from '@nextui-org/react';
 import { Search, Collobation, RecoveryChat, ArrowRight } from "@/components/utils/Icons";
 import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter } from 'next/navigation';
-import { getHelpCategories } from '../../axios/help';
+import { getHelpCategories } from '@/axios/help';
 import { Crisp } from 'crisp-sdk-web';
 
 export default function Help() {

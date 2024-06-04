@@ -1,13 +1,12 @@
 "use client";
-import Image from 'next/image';
 import {
-    Button, Link, Progress
+    Button,
 } from '@nextui-org/react';
 import { Components, SMfacebook, SMinstagram, SMtwitter, SMtelegram, SMreddit } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useSelector } from 'react-redux';
-import { getDailySubmitionCount, socialProfileSubmit } from '../../axios/social';
+import { getDailySubmitionCount, socialProfileSubmit } from '@/axios/social';
 
 export default function SMsubmit() {
 

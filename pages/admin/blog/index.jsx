@@ -1,12 +1,10 @@
 "use client";
-import Image from 'next/image';
 import {
     Button, ScrollShadow
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { tuple } from 'yup';
-import { deleteBlog, getBlogList } from '../../../axios/blog';
+import { deleteBlog, getBlogList } from '@/axios/blog';
 
 export default function Blog() {
     const router = useRouter();

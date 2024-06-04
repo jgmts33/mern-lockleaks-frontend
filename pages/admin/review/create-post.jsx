@@ -1,17 +1,17 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link, ScrollShadow, Input,
+    Button, Input,
     Switch
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import dynamic from "next/dynamic";
-import { getCustomerReviewDetails, createNewCustomerReview, updateNewCustomerReview, } from '../../../axios/customer-review';
-import { DiscordAlt, FacebookAlt, InstagramAlt, RedditAlt, SelectSwitch, TelegramAlt, TiktokAlt, TwitterXAlt, UnselectSwitch } from '../../../components/utils/Icons';
+import { getCustomerReviewDetails, createNewCustomerReview, updateNewCustomerReview, } from '@/axios/customer-review';
+import { DiscordAlt, FacebookAlt, InstagramAlt, RedditAlt, SelectSwitch, TelegramAlt, TiktokAlt, TwitterXAlt, UnselectSwitch } from '@/components/utils/Icons';
 
-const TextEditer = dynamic(() => import("../../../components/text-editor"), {
+const TextEditer = dynamic(() => import("@/components/text-editor"), {
     ssr: false,
 });
 

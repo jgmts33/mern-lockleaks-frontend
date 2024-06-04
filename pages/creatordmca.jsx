@@ -1,10 +1,10 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link,
+    Button,
 } from '@nextui-org/react';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import WriteTip from "@/public/assets/scan/write-tip.svg";
 import TipDocument from "@/public/assets/scan/tip-document.svg";
 import { FirstTip, SecondTip, ThirdTip, Chat } from "@/components/utils/Icons";

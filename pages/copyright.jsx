@@ -1,10 +1,7 @@
 "use client";
 import Image from 'next/image';
-import {
-    Button, Link,
-} from '@nextui-org/react';
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Balance, Banned, Law, ChevronRight, Tips } from "@/components/utils/Icons";
 import CopyrightHelp from '@/public/assets/copyright/copyright.svg';
 import RobertHand from '@/public/assets/copyright/robert-hand.svg';

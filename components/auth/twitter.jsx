@@ -21,7 +21,7 @@ export default function FaceBookAuth() {
 
     const stringifiedParams = queryString.stringify({
       client_id: process.env.NEXT_PUBLIC_TWITTER_CLIENT_ID,
-      redirect_uri: 'https://copyrightfixer.com/auth/twitter',
+      redirect_uri: 'https://lockleaks.com/auth/twitter',
       state: 'twitter-increaser-state',
       response_type: 'code',
       code_challenge: 'challenge',

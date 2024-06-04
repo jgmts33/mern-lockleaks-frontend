@@ -1,10 +1,9 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, Link,
+    Button,
 } from '@nextui-org/react';
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { FirstTip, SecondTip, ThirdTip, Chat } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customer-review';
 
