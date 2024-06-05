@@ -28,6 +28,7 @@ import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { USER_SIDEBAR_LIST, ENDPOINT } from "@/config/config";
 import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
 import { sendVerificationEmail } from "@/axios/auth";
+import { useRouter } from "next/router";
 
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
@@ -35,10 +36,11 @@ const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 export default function RootLayout({ children }) {
 
   const icons = {
-    warningmodal: <WarningModal/>,
+    warningmodal: <WarningModal />,
   };
 
   const currentPath = usePathname();
+  const router = useRouter();
 
   const [showSidebar, setShowSidebar] = useState(false);
   const [selectCookie, setSlectCookie] = useState(false);
@@ -94,8 +96,17 @@ export default function RootLayout({ children }) {
       return;
     }
 
-    if(!userInfo) return;
-    
+    if (!userInfo) return;
+
+    if (userInfo.roles.includes("admin")) {
+      setMounted(true);
+      return;
+    }
+
+    if (userInfo.contract.status != "completed") {
+      router.push("/app/contract-warning");
+    }
+
     if (!userInfo.verified) {
       setModalValue({
         title: "You should verify Email before using our application",
@@ -129,11 +140,14 @@ export default function RootLayout({ children }) {
   }, [userInfo]);
 
   useEffect(() => {
-    if (getCookieValue('necessary') === 'un-allowed') return;
-    if (
-      !currentPath?.includes("app")
-      && !currentPath?.includes("admin")
-    ) return;
+
+    if (getCookieValue('necessary')) {
+      setSlectCookie(true);
+      if (getCookieValue('necessary') == 'un-allowed') return;
+    }
+
+    if (!currentPath?.includes("app") && !currentPath?.includes("admin")) return;
+
     (async () => {
       try {
         const accessToken = await getAccessToken();
@@ -153,19 +167,13 @@ export default function RootLayout({ children }) {
 
   }, []);
 
-  useEffect(() => {
-    if (getCookieValue('necessary')) {
-      setSlectCookie(true);
-    }
-  }, []);
-
   if (mounted) return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
       <div className="flex flex-col">
         {
           userInfo ?
             <div className="flex ">
-              <Sidebar show={showSidebar} setter={setShowSidebar} />
+              { !currentPath.includes("/app/contract-warning") ? <Sidebar show={showSidebar} setter={setShowSidebar} /> : <></>}
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
                 <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto relative" style={{ scrollBehavior: 'smooth' }}>

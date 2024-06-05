@@ -326,20 +326,17 @@ export default function ProxyBot() {
                             </ModalHeader>
                             <ModalBody>
                                 <div className='flex flex-col w-full'>
-                                    <Tabs aria-label="Dynamic tabs" items={tabs}>
+                                    <Tabs aria-label="Dynamic tabs" items={tabs} className='mx-auto'>
                                         {(item) => (
                                             <Tab key={item.id} title={item.label}>
                                                 <div className='flex flex-col space-y-4'>
-                                                    <div className='justify-start flex'>
+                                                    <div className='justify-center flex'>
                                                         <Button
                                                             className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
                                                             onClick={() => {
                                                                 let _targetInfo = _.clone(targetInfo);
                                                                 _targetInfo[item.id].push('');
                                                                 setTargetInfo(_targetInfo);
-
-
-
                                                             }}
                                                         >
                                                             Add New

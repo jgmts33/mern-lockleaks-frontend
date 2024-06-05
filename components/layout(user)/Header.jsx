@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, AccountSetting, Star } from "@/components/utils/Icons";
 import { useState } from 'react';
 import {
-  Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarContent, NavbarItem
+  Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarContent, NavbarItem,
+  Link
 } from '@nextui-org/react';
 import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { usePathname, useRouter } from 'next/navigation';
@@ -21,16 +22,16 @@ const UserHeader = ({ show, setter }) => {
   const [prefLangCookie, setPrefLangCookie] = useState('');
 
   const icons = {
-    yellowstar: <YellowStar/>,
+    yellowstar: <YellowStar />,
     search: <Search fill="currentColor" size={8} />,
-    dot: <Dot/>,
-    pencil: <Pencil/>,
-    trash: <Trash/>,
-    control: <Control/>,
-    window: <Window/>,
-    logout: <LogOut/>,
-    accountsetting: <AccountSetting/>,
-    star: <Star/>,
+    dot: <Dot />,
+    pencil: <Pencil />,
+    trash: <Trash />,
+    control: <Control />,
+    window: <Window />,
+    logout: <LogOut />,
+    accountsetting: <AccountSetting />,
+    star: <Star />,
   };
 
   const getPrefLangCookie = async () => {
@@ -109,6 +110,20 @@ const UserHeader = ({ show, setter }) => {
       className="bg-transparent z-30"
       maxWidth="full"
     >
+      <NavbarContent>
+        <div className="flex w-full px-3 py-3">
+          {
+            currentPath.includes("admin") ?
+              <Link className="text-white cursor-pointer" href="/admin/dashboard">
+                <Image src="/assets/logo.svg" width={150} height={50} alt="logo" />
+              </Link>
+              :
+              <Link className="text-white cursor-pointer" href="/app/dashboard">
+                <Image src="/assets/logo.svg" width={150} height={50} alt="logo" />
+              </Link>
+          }
+        </div>
+      </NavbarContent>
       <NavbarContent>
         <NavbarBrand>
           <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>

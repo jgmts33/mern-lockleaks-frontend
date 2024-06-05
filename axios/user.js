@@ -218,3 +218,30 @@ export const deleteUser = async (id) => {
     }
   }
 }
+
+export const submitKYC = async (data) => {
+
+  const accessToken = await getAccessToken();
+  const userId = await getUserId();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/user-kyc/${userId}`, data,
+      {
+        headers: {
+          'x-access-token': accessToken,
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
