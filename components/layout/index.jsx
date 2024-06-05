@@ -17,7 +17,6 @@ import {
   ModalHeader
 } from '@nextui-org/react';
 import NextTopLoader from 'nextjs-toploader';
-import { useRouter } from "next/router";
 import { WarningModal } from "../utils/Icons";
 import { getUserInfo } from "@/axios/auth";
 import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
@@ -25,12 +24,9 @@ import { io } from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setLastScanResult, setExtraReport, setScanProgress, setScanResult } from "@/lib/bot/botSlice";
 
 import { USER_SIDEBAR_LIST, ENDPOINT } from "@/config/config";
 import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
-import { getScrapedDataList } from "@/axios/download";
-import { getExtraReport } from "@/axios/user";
 import { sendVerificationEmail } from "@/axios/auth";
 
 
@@ -54,7 +50,6 @@ export default function RootLayout({ children }) {
   const [mounted, setMounted] = useState(false);
 
   const userInfo = useSelector(info);
-  const scanProgress = useSelector(scanProgressInfo);
   const [verifyEmailSendTimer, setVerifyEmailSendTimer] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const dispatch = useDispatch();
@@ -92,70 +87,15 @@ export default function RootLayout({ children }) {
     setSlectCookie(true);
   }
 
-  const getScrapedDataListInfo = useCallback(async () => {
-
-    const res = await getScrapedDataList(!!userInfo?.roles.find(p => p == 'admin'));
-
-    if (res.status == 'success') {
-      if (res.data?.length >= 1) {
-        dispatch(setLastScanResult(res.data[0]));
-      }
-      let _scanResult = {
-        total_google_links: 0,
-        total_google_images: 0,
-        total_google_videos: 0,
-        total_bing_links: 0,
-        total_bing_images: 0,
-        total_bing_videos: 0,
-        good_count: 0,
-        other_count: 0,
-        bad_count: 0,
-        new_count: 0,
-        report_count: 0,
-        no_report_count: 0,
-        matches_count: 0,
-        no_matches_count: 0
-      };
-
-      res.data.map((item) => {
-        _scanResult.total_google_links += item.total_google_links
-        _scanResult.total_google_images += item.total_google_images
-        _scanResult.total_google_videos += item.total_google_videos
-        _scanResult.total_bing_links += item.total_bing_links
-        _scanResult.total_bing_images += item.total_bing_images
-        _scanResult.total_bing_videos += item.total_bing_videos
-        _scanResult.good_count += item.good_count
-        _scanResult.other_count += item.other_count
-        _scanResult.bad_count += item.bad_count
-        _scanResult.new_count += item.new_count
-        _scanResult.report_count += item.report_count
-        _scanResult.no_report_count += item.no_report_count
-        _scanResult.matches_count += item.matches_count
-        _scanResult.no_matches_count += item.no_matches_count
-      });
-
-      dispatch(setScanResult(_scanResult));
-
-    } else {
-      console.log(res.data);
-    }
-  }, [userInfo]);
-
-  const getExtraReportInfo = async () => {
-    const res = await getExtraReport();
-
-    if (res.status == 'success') dispatch(setExtraReport(res.data));
-  }
-
   useEffect(() => {
 
     if (!currentPath?.includes("admin") && !currentPath?.includes("app")) {
       setMounted(true);
       return;
     }
-    if ( !userInfo ) return;
 
-    console.log("userInfo:", userInfo);
+    if(!userInfo) return;
+    
     if (!userInfo.verified) {
       setModalValue({
         title: "You should verify Email before using our application",
@@ -184,56 +124,9 @@ export default function RootLayout({ children }) {
       onClose();
     }
 
-    getScrapedDataListInfo();
-
     setMounted(true);
 
-    const socket = io(ENDPOINT);
-
-    socket.on(`welcome`, (value) => {
-      console.log(value);
-    })
-
-    if (currentPath?.includes("app")) {
-      socket.on(`${userInfo.id}:scrape`, (value) => {
-        console.log("scrape-progress:", value)
-        if (value) dispatch(setScanProgress(value));
-      })
-
-      console.log(`userInfo.id:`, userInfo.id);
-
-      socket.on(`payment_status_${userInfo.id}`, (value) => {
-        console.log(`payment_status_${userInfo.id}:`, value);
-        dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, status: 'expired' } }));
-      });
-    }
-
-    if (currentPath?.includes("admin")) {
-      socket.on(`admin:dashboardInfo`, async (value) => {
-        if (value == 'scan-finished') {
-          getScrapedDataListInfo();
-          getExtraReportInfo();
-        }
-      })
-    }
-
-    return () => {
-      socket.disconnect();
-    }
-
   }, [userInfo]);
-
-  useEffect(() => {
-    if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
-      getScrapedDataListInfo();
-      setTimeout(() => {
-        dispatch(setScanProgress({
-          current: 0,
-          all: 0
-        }));
-      }, 30 * 1000);
-    }
-  }, [scanProgress]);
 
   useEffect(() => {
     if (getCookieValue('necessary') === 'un-allowed') return;

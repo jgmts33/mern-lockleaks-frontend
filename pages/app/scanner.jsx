@@ -5,22 +5,28 @@ import {
 import { GoogleSearch, BingSearch, Complete } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import { getUsernames } from '@/axios/usernames';
+import { getScrapedDataList } from "@/axios/download";
 import { scan } from '@/axios/bot';
-import { scanProgress as scanProgressInfo, lastScanResult as lastScanRusultInfo, setScanProgress } from "@/lib/bot/botSlice";
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { useDispatch, useSelector } from 'react-redux';
+import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
+import { io } from 'socket.io-client';
 
 export default function Scanner() {
 
+    const userInfo = useSelector(info);
+
     const scanProgress = useSelector(scanProgressInfo);
-    const lastScanResult = useSelector(lastScanRusultInfo);
+    const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
 
     const dispatch = useDispatch();
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
-        googlesearch: <GoogleSearch/>,
-        bingsearch: <BingSearch/>,
-        complete: <Complete/>,
+        googlesearch: <GoogleSearch />,
+        bingsearch: <BingSearch />,
+        complete: <Complete />,
     };
 
     const handleScan = useCallback(async () => {
@@ -29,9 +35,23 @@ export default function Scanner() {
             current: 0.01,
             all: 100
         }));
-        const res = await scan({ usernames });
+        scan({ usernames });
 
-    }, [usernames, scanProgress])
+    }, [usernames, scanProgress]);
+
+    const getScannerResult = async () => {
+
+        const res = await getScrapedDataList(false, "", true);
+
+        if (res.status == 'success') {
+            if (res.data?.length >= 1) {
+                setScanResult(res.data[0]);
+            }
+
+        } else {
+            console.log(res.data);
+        }
+    };
 
     const getUsernamesInfo = async () => {
         const res = await getUsernames();
@@ -46,7 +66,33 @@ export default function Scanner() {
 
     useEffect(() => {
         getUsernamesInfo();
-    }, []);
+        getScannerResult();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userInfo.id}:scrape`, (value) => {
+            console.log("scrape-progress:", value)
+            if (value) dispatch(setScanProgress(value));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
+
+    useEffect(() => {
+        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
+            getScannerResult();
+            setTimeout(() => {
+                dispatch(setScanProgress({
+                    current: 0,
+                    all: 0
+                }));
+            }, 30 * 1000);
+        }
+    }, [scanProgress]);
+
 
     const ScannerContent = [
         {
@@ -54,7 +100,7 @@ export default function Scanner() {
             title: "GOOGLE SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated an automated Google Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.total_google_links}</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_google_links}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -63,7 +109,7 @@ export default function Scanner() {
             title: "GOOGLE IMAGES SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated an automated Google Images Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.total_google_images}</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_google_images}</span>
                 <span className='font-normal text-xs'>new copyright infringements</span>
             </div>
         },
@@ -72,7 +118,7 @@ export default function Scanner() {
             title: "GOOGLE VIDEOS SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated an automated Google Videos Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.total_google_videos}</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_google_videos}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -81,7 +127,7 @@ export default function Scanner() {
             title: "BING SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated automated searches on Bing Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.total_bing_links}</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_links}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -90,7 +136,7 @@ export default function Scanner() {
             title: "BING IMAGES SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated automated searches on Bing Images Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.total_bing_images}</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_images}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -99,7 +145,7 @@ export default function Scanner() {
             title: "BING VIDEO SEARCH",
             content: <div className='px-20 justify-start w-3/4 max-md:w-full max-md:px-5 max-md:mt-2 space-x-1'>
                 <span className='font-normal text-xs'>Initiated automated searches on Bing Video Search, resulting in the detection of</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.total_bing_videos}</span>
+                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.total_bing_videos}</span>
                 <span className='font-normal text-xs'>new copyright infringements.</span>
             </div>
         },
@@ -167,12 +213,12 @@ export default function Scanner() {
                     <div className='px-20 max-md:px-0 font-normal text-xs space-x-1 max-sm:text-clip'>
                         <span className='font-normal text-xs'>Generated a removal report with</span>
                         <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{
-                            lastScanResult.total_google_links +
-                            lastScanResult.total_google_images +
-                            lastScanResult.total_google_videos +
-                            lastScanResult.total_bing_links +
-                            lastScanResult.total_bing_images +
-                            lastScanResult.total_bing_videos
+                            scanResult.total_google_links +
+                            scanResult.total_google_images +
+                            scanResult.total_google_videos +
+                            scanResult.total_bing_links +
+                            scanResult.total_bing_images +
+                            scanResult.total_bing_videos
                         }</span>
                         <span>copyright infringements and forwarded it to Search Engines.</span>
                     </div>

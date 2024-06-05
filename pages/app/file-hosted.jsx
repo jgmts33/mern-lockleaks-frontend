@@ -1,19 +1,71 @@
 "use client";
+import React, { useEffect, useState } from 'react';
 import {
     Button, Checkbox
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { lastScanResult as lastScanRusultInfo } from "@/lib/bot/botSlice";
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
+import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
+import { getScrapedDataList } from '@/axios/download';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { io } from 'socket.io-client';
 
 export default function FileHosted() {
 
-    const lastScanResult = useSelector(lastScanRusultInfo);
+    const userInfo = useSelector(info);
+
+    const scanProgress = useSelector(scanProgressInfo);
+    const dispatch = useDispatch();
+
+    const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
+
+    const getScannerResult = async () => {
+
+        const res = await getScrapedDataList(false, "", true);
+
+        if (res.status == 'success') {
+            if (res.data?.length >= 1) {
+                setScanResult(res.data[0]);
+            }
+
+        } else {
+            console.log(res.data);
+        }
+    };
 
     const icons = {
-        components: <Components/>,
+        components: <Components />,
     };
+
+    useEffect(() => {
+        getScannerResult();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userInfo.id}:scrape`, (value) => {
+            console.log("scrape-progress:", value)
+            if (value) dispatch(setScanProgress(value));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
+
+    useEffect(() => {
+        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
+            getScannerResult();
+            setTimeout(() => {
+                dispatch(setScanProgress({
+                    current: 0,
+                    all: 0
+                }));
+            }, 30 * 1000);
+        }
+    }, [scanProgress]);
 
     const ScannerContent = [
         {
@@ -23,7 +75,7 @@ export default function FileHosted() {
                 <div className='flex items-center'>
                     <div className='flex space-x-1 items-center'>
                         <span>FOUND</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.good_count}</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.good_count}</span>
                         <span>DOWNLOAD URLs.</span>
                     </div>
                 </div>
@@ -37,7 +89,7 @@ export default function FileHosted() {
             content:
                 <div className='flex items-center flex-wrap space-x-1'>
                     <span>Generated A Removal Report For</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.other_count}</span>
+                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.other_count}</span>
                         <span>FileHosts In Compliance With DMCA Policy And Forwarded It For Removal.</span>
                 </div>
         }
@@ -65,7 +117,7 @@ export default function FileHosted() {
             </div>
             <div className='flex flex-col mt-10 gap-3 max-sm:mt-5'>
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
-                <span className='font-medium text-lg text-white/50'>Scanning { lastScanResult.good_count + lastScanResult.other_count } Websites Using Specified Keywords And Usernames</span>
+                <span className='font-medium text-lg text-white/50'>Scanning { scanResult.good_count + scanResult.other_count } Websites Using Specified Keywords And Usernames</span>
             </div>
 
             {/* This section for define file hosted content*/}

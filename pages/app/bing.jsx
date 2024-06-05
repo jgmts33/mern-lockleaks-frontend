@@ -3,32 +3,35 @@ import Image from 'next/image';
 import {
     Button, Progress
 } from '@nextui-org/react';
-import { Components, BingSearch } from "@/components/utils/Icons";
+import { BingSearch, Components } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import BingIcon from '@/public/assets/background/Bing.svg';
 import { useDispatch, useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
 import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { getUsernames } from '@/axios/usernames';
 import { scan } from '@/axios/bot';
 import { getScrapedDataList } from '@/axios/download';
+import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
+import { io } from 'socket.io-client';
 
-export default function Bing() {
+export default function Google() {
 
-    const [scanResult, setScanResult] = useState({
-        total_bing_links: 0,
-        total_bing_images: 0,
-        total_bing_videos: 0
-    });
+    const userInfo = useSelector(info);
+
+    const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
+
     const scanProgress = useSelector(scanProgressInfo);
+
     const dispatch = useDispatch();
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
-        components: <Components/>,
         bingsearch: <BingSearch/>,
+        components: <Components/>,
     };
 
-    const getScrapedDataListInfo = async () => {
+    const getScanResult = async () => {
 
         const res = await getScrapedDataList(false, 'bing', true);
 
@@ -45,18 +48,11 @@ export default function Bing() {
             current: 0.01,
             all: 100
         }));
-        const res = await scan({
+        scan({
             usernames,
             only: 'bing'
         });
-
-        if (res.status == 'success') {
-            getScrapedDataListInfo();
-        }
-        else {
-            console.log(res.data);
-        }
-    }, [usernames, scanProgress])
+    }, [usernames, scanProgress]);
 
     const getUsernamesInfo = async () => {
         const res = await getUsernames();
@@ -71,8 +67,32 @@ export default function Bing() {
 
     useEffect(() => {
         getUsernamesInfo();
-        getScrapedDataListInfo();
-    }, []);
+        getScanResult();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userInfo.id}:scrape`, (value) => {
+            console.log("scrape-progress:", value)
+            if (value) dispatch(setScanProgress(value));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
+
+    useEffect(() => {
+        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
+            getScanResult();
+            setTimeout(() => {
+                dispatch(setScanProgress({
+                    current: 0,
+                    all: 0
+                }));
+            }, 30 * 1000);
+        }
+    }, [scanProgress]);
 
     const ScannerContent = [
         {

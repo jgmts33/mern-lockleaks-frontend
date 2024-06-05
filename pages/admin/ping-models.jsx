@@ -17,6 +17,8 @@ import {
     Switch,
     Tabs,
     Tab,
+    Pagination,
+    Spinner,
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -34,8 +36,8 @@ export default function ProxyBot() {
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [list, setList] = useState([]);
-    const [filteredList, setFilteredList] = useState([]);
     const [isActionProcessing, setIsActionProcessing] = useState(-1);
+    const [loadingState, setLoadingState] = useState('');
     const [searchValue, setSearchValue] = useState("");
     const [modalType, setModalType] = useState("");
     const [targetInfo, setTargetInfo] = useState({
@@ -48,7 +50,7 @@ export default function ProxyBot() {
     })
 
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
 
     let tabs = [
         {
@@ -76,13 +78,14 @@ export default function ProxyBot() {
         { name: "Actions", uid: "actions" },
     ];
 
-    const getPingModelsInfo = async (page) => {
-        const res = await getPingModels(page);
+    const getPingModelsInfo = async (page, search = "") => {
+        setLoadingState('loading');
+        const res = await getPingModels(page, search);
         if (res.status == 'success') {
             setList(res.data.data);
             setTotalPages(res.data.totalPages);
-            setSearchValue("");
         }
+        setLoadingState('');
     }
 
     const handleSubmit = useCallback(async () => {
@@ -185,21 +188,13 @@ export default function ProxyBot() {
     }, [targetInfo]);
 
     useEffect(() => {
-        getPingModelsInfo(page);
-    }, [page]);
-
-    useEffect(() => {
         const timer = setTimeout(() => {
-            let _list = list.filter(p => {
-                if (p.model_name.find((item) => item.includes(searchValue)) || p.platform.find((item) => item.includes(searchValue)) || p.social_media.find((item) => item.includes(searchValue))) return true;
-                else return false;
-            });
-            setFilteredList(_list);
+            getPingModelsInfo(page, searchValue)
         }, 300);
 
         return () => clearTimeout(timer);
 
-    }, [searchValue, list]);
+    }, [searchValue, page]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 w-full text-white max-lg:mx-auto ">
@@ -238,7 +233,10 @@ export default function ProxyBot() {
                             icons.search
                         }
                         value={searchValue}
-                        onValueChange={(value) => setSearchValue(value)}
+                        onValueChange={(value) => {
+                            setSearchValue(value);
+                            setPage(1);
+                        }}
                     />
                 </div>
                 <Button
@@ -274,12 +272,14 @@ export default function ProxyBot() {
                                     color="primary"
                                     page={page}
                                     total={totalPages}
-                                    onChange={(page) => setPage(page)}
+                                    onChange={(page) => {
+                                        setPage(page);
+                                        setSearchValue("");
+                                    }}
                                 />
                             </div>
                         ) : null
                     }
-                    {...args}
                 >
                     <TableHeader columns={columns}>
                         {(column) => (
@@ -289,12 +289,16 @@ export default function ProxyBot() {
                         )}
                     </TableHeader>
 
-                    <TableBody items={filteredList}>
+                    <TableBody
+                        items={list}
+                        loadingContent={<Spinner />}
+                        loadingState={loadingState}
+                    >
                         {(item, index) => (
                             <TableRow key={index}>
                                 {(columnKey) => <TableCell className='py-4'>{renderCell(item, columnKey)}</TableCell>}
                             </TableRow>
-                        )}
+                        )}              
 
                     </TableBody>
 

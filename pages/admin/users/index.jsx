@@ -8,7 +8,9 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    Switch
+    Switch,
+    Pagination,
+    Spinner
 } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -20,8 +22,7 @@ export default function Users() {
 
     const router = useRouter();
     const [searchValue, setSearchValue] = useState("");
-    const [filteredList, setFilteredList] = useState([]);
-
+    const [loadingState, setLoadingState] = useState(false);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
@@ -30,13 +31,15 @@ export default function Users() {
         search: <Search />,
     };
 
-    const getUsersList = async (page) => {
-        const res = await getUsersListInfo(page);
+    const getUsersList = async (page, search = "") => {
+        setLoadingState(true);
+        const res = await getUsersListInfo(page, search);
 
         if (res.status == 'success') {
             setList(res.data.data);
             setTotalPages(res.data.totalPages);
         }
+        setLoadingState(false);
     }
 
     const handleUpdateUserVisible = async (id, ban) => {
@@ -48,21 +51,13 @@ export default function Users() {
     }
 
     useEffect(() => {
-        getUsersList(page);
-    }, [page])
-
-    useEffect(() => {
         const timer = setTimeout(() => {
-            let _list = list.filter(p => {
-                if (p.email.includes(searchValue) || p.name?.includes(searchValue)) return true;
-                else return false;
-            });
-            setFilteredList(_list);
+            getUsersList(page, searchValue);
         }, 300);
 
         return () => clearTimeout(timer);
 
-    }, [searchValue, list]);
+    }, [searchValue, page]);
 
     const columns = [
         { name: "Email", uid: "email" },
@@ -170,7 +165,6 @@ export default function Users() {
                             </div>
                         ) : null
                     }
-                    {...args}
                 >
                     <TableHeader columns={columns}>
                         {(column) => (
@@ -180,7 +174,11 @@ export default function Users() {
                         )}
                     </TableHeader>
 
-                    <TableBody items={filteredList}>
+                    <TableBody
+                        items={list}
+                        loadingContent={<Spinner />}
+                        loadingState={loadingState}
+                    >
                         {(item, index) => (
                             <TableRow key={index}>
                                 {(columnKey) => <TableCell className='py-4'>{renderCell(item, columnKey)}</TableCell>}

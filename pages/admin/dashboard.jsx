@@ -1,24 +1,31 @@
 "use client";
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo, extraReport as extraReportInfo, setExtraReport } from "@/lib/bot/botSlice";
+import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { getExtraReport } from '@/axios/user';
-
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
+import { getScrapedDataList } from "@/axios/download";
+import { useDispatch } from "react-redux";
+import { io } from "socket.io-client";
+import { DEFAULT_SCAN_RESULT, ENDPOINT, DEFAULT_EXTRA_REPORT } from "@/config/config";
+import { getExtraReport } from "@/axios/user";
 
 export default function AdminDashbaord() {
 
     const router = useRouter();
 
-    const scanResult = useSelector(scanRusultInfo);
-    const lastScanResult = useSelector(lastScanResultInfo);
-    const extraReport = useSelector(extraReportInfo);
+    const userInfo = useSelector(info);
+    const scanProgress = useSelector(scanProgressInfo);
+
     const dispatch = useDispatch();
+    const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
+    const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
+    const [extraReport, setExtraReport] = useState(DEFAULT_EXTRA_REPORT);
 
     const icons = {
-        moredetails: <MoreDetails/>,
-        updownscroll: <UpDownScroll/>,
+        moredetails: <MoreDetails />,
+        updownscroll: <UpDownScroll />,
     };
 
     const [dashboardOverview, setDashboardOverview] = useState([
@@ -58,22 +65,58 @@ export default function AdminDashbaord() {
         },
         {
             title: "Total Orders",
-            subtitle:"total orders last 7 days",
+            subtitle: "total orders last 7 days",
             lastscan: 0,
             total: 0
         },
         {
             title: "Total Users",
-            subtitle:"total users last 7 days",
+            subtitle: "total users last 7 days",
             lastscan: 0,
             total: 0
         },
     ]);
 
+    const getScrapedDataListInfo = async () => {
+
+        const res = await getScrapedDataList(true);
+
+        if (res.status == 'success') {
+            
+            if (res.data?.length >= 1) {
+                setLastScanResult(res.data[0]);
+            }
+            
+            let _scanResult = DEFAULT_SCAN_RESULT;
+
+            res.data.map((item) => {
+                _scanResult.total_google_links += item.total_google_links
+                _scanResult.total_google_images += item.total_google_images
+                _scanResult.total_google_videos += item.total_google_videos
+                _scanResult.total_bing_links += item.total_bing_links
+                _scanResult.total_bing_images += item.total_bing_images
+                _scanResult.total_bing_videos += item.total_bing_videos
+                _scanResult.good_count += item.good_count
+                _scanResult.other_count += item.other_count
+                _scanResult.bad_count += item.bad_count
+                _scanResult.new_count += item.new_count
+                _scanResult.report_count += item.report_count
+                _scanResult.no_report_count += item.no_report_count
+                _scanResult.matches_count += item.matches_count
+                _scanResult.no_matches_count += item.no_matches_count
+            });
+
+            setScanResult(_scanResult);
+
+        } else {
+            console.log(res.data);
+        }
+    };
+
     const getExtraReportInfo = async () => {
         const res = await getExtraReport();
 
-        if (res.status == 'success') dispatch(setExtraReport(res.data));
+        if (res.status == 'success') setExtraReport(res.data);
     }
 
     useEffect(() => {
@@ -105,17 +148,17 @@ export default function AdminDashbaord() {
             {
                 title: " Adult Tube Websites",
                 subtitle: "total last scan",
-                lastscan: 
-                    lastScanResult.matches_count+
-                    lastScanResult.no_matches_count+
-                    lastScanResult.no_report_count+
+                lastscan:
+                    lastScanResult.matches_count +
+                    lastScanResult.no_matches_count +
+                    lastScanResult.no_report_count +
                     lastScanResult.report_count,
-                total: 
-                    scanResult.matches_count+
-                    scanResult.no_matches_count+
-                    scanResult.no_report_count+
+                total:
+                    scanResult.matches_count +
+                    scanResult.no_matches_count +
+                    scanResult.no_report_count +
                     scanResult.report_count
-                
+
             },
             {
                 title: "Social Media",
@@ -151,8 +194,40 @@ export default function AdminDashbaord() {
     }, [scanResult, lastScanResult, extraReport]);
 
     useEffect(() => {
+        getScrapedDataListInfo();
         getExtraReportInfo();
-    },[])
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userInfo.id}:scrape`, (value) => {
+            console.log("scrape-progress:", value)
+            if (value) dispatch(setScanProgress(value));
+        });
+
+        socket.on(`admin:dashboardInfo`, async (value) => {
+            if (value == 'scan-finished') {
+                getScrapedDataListInfo();
+                getExtraReportInfo();
+            }
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, []);
+
+    useEffect(() => {
+        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
+            getScrapedDataListInfo();
+            setTimeout(() => {
+                dispatch(setScanProgress({
+                    current: 0,
+                    all: 0
+                }));
+            }, 30 * 1000);
+        }
+    }, [scanProgress]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white">

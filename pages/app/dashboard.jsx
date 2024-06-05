@@ -2,19 +2,62 @@
 import { MoreDetails, UpDownScroll } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { scanResult as scanRusultInfo, lastScanResult as lastScanResultInfo } from "@/lib/bot/botSlice";
 import { useRouter } from 'next/router';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
+import { getScrapedDataList } from "@/axios/download";
+import { useDispatch } from "react-redux";
+import { io } from "socket.io-client";
+import { DEFAULT_SCAN_RESULT, ENDPOINT } from "@/config/config";
 
 export default function Dashbaord() {
 
     const router = useRouter();
 
-    const scanResult = useSelector(scanRusultInfo);
-    const lastScanResult = useSelector(lastScanResultInfo);
-    
+    const userInfo = useSelector(info);
+    const scanProgress = useSelector(scanProgressInfo);
+
+    const dispatch = useDispatch();
+    const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
+    const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
+
+    const getScrapedDataListInfo = async () => {
+
+        const res = await getScrapedDataList(!!userInfo?.roles.find(p => p == 'admin'));
+
+        if (res.status == 'success') {
+            if (res.data?.length >= 1) {
+                setLastScanResult(res.data[0]);
+            }
+            let _scanResult = DEFAULT_SCAN_RESULT;
+
+            res.data.map((item) => {
+                _scanResult.total_google_links += item.total_google_links
+                _scanResult.total_google_images += item.total_google_images
+                _scanResult.total_google_videos += item.total_google_videos
+                _scanResult.total_bing_links += item.total_bing_links
+                _scanResult.total_bing_images += item.total_bing_images
+                _scanResult.total_bing_videos += item.total_bing_videos
+                _scanResult.good_count += item.good_count
+                _scanResult.other_count += item.other_count
+                _scanResult.bad_count += item.bad_count
+                _scanResult.new_count += item.new_count
+                _scanResult.report_count += item.report_count
+                _scanResult.no_report_count += item.no_report_count
+                _scanResult.matches_count += item.matches_count
+                _scanResult.no_matches_count += item.no_matches_count
+            });
+
+            setScanResult(_scanResult);
+
+        } else {
+            console.log(res.data);
+        }
+    };
+
     const icons = {
-        moredetails: <MoreDetails/>,
-        updownscroll: <UpDownScroll/>,
+        moredetails: <MoreDetails />,
+        updownscroll: <UpDownScroll />,
     };
 
     const [dashboardOverview, setDashboardOverview] = useState([
@@ -82,17 +125,17 @@ export default function Dashbaord() {
             {
                 title: " Adult Tube Websites",
                 path: "/app/adult-website",
-                lastscan: 
-                    lastScanResult.matches_count+
-                    lastScanResult.no_matches_count+
-                    lastScanResult.no_report_count+
+                lastscan:
+                    lastScanResult.matches_count +
+                    lastScanResult.no_matches_count +
+                    lastScanResult.no_report_count +
                     lastScanResult.report_count,
-                total: 
-                    scanResult.matches_count+
-                    scanResult.no_matches_count+
-                    scanResult.no_report_count+
+                total:
+                    scanResult.matches_count +
+                    scanResult.no_matches_count +
+                    scanResult.no_report_count +
                     scanResult.report_count
-                
+
             },
             {
                 title: "Social Media",
@@ -113,6 +156,34 @@ export default function Dashbaord() {
             }
         ])
     }, [scanResult, lastScanResult]);
+
+    useEffect(() => {
+        getScrapedDataListInfo();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userInfo.id}:scrape`, (value) => {
+            console.log("scrape-progress:", value)
+            if (value) dispatch(setScanProgress(value));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, []);
+
+    useEffect(() => {
+        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
+            getScrapedDataListInfo();
+            setTimeout(() => {
+                dispatch(setScanProgress({
+                    current: 0,
+                    all: 0
+                }));
+            }, 30 * 1000);
+        }
+    }, [scanProgress]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white container">

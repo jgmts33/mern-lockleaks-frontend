@@ -10,7 +10,7 @@ export const getScrapedDataList = async (isAdmin = false, only = "", lastOne = f
   try {
     let URL = `${ENDPOINT}/${userId}/scraped-data`;
     if (isAdmin) URL = `${ENDPOINT}/scraped-data`;
-    if (only) URL += `?only=${only}`;
+    URL += `?only=${only}`;
     if (lastOne) URL += `&lastOne=true`;
 
     const res = await axios.get(URL, {

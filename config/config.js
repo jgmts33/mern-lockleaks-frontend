@@ -293,3 +293,32 @@ export const SUBSCRIPTION_NAMES = [
   'Pro',
   'Star'
 ]
+
+export const DEFAULT_SCAN_RESULT = {
+  total_google_links: 0,
+  total_google_images: 0,
+  total_google_videos: 0,
+  total_bing_links: 0,
+  total_bing_images: 0,
+  total_bing_videos: 0,
+  good_count: 0,
+  other_count: 0,
+  bad_count: 0,
+  new_count: 0,
+  report_count: 0,
+  no_report_count: 0,
+  matches_count: 0,
+  no_matches_count: 0,
+  status: 'available'
+}
+
+export const DEFAULT_EXTRA_REPORT = {
+  user: {
+    total: 0,
+    weekly: 0
+  },
+  order: {
+    total: 0,
+    weekly: 0
+  }
+}

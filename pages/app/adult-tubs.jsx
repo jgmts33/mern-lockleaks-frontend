@@ -1,19 +1,43 @@
 "use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Button, Checkbox
 } from '@nextui-org/react';
 import { Components, Checkboxs } from "@/components/utils/Icons";
-import { lastScanResult as lastScanRusultInfo } from "@/lib/bot/botSlice";
-import { useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
+import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
+import { getScrapedDataList } from '@/axios/download';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { io } from 'socket.io-client';
 
 export default function AdultTubs() {
 
-    const lastScanResult = useSelector(lastScanRusultInfo);
+    const userInfo = useSelector(info);
+
+    const scanProgress = useSelector(scanProgressInfo);
+    const dispatch = useDispatch();
+
+    const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
+
+    const getScannerResult = async () => {
+
+        const res = await getScrapedDataList(false, "", true);
+
+        if (res.status == 'success') {
+            if (res.data?.length >= 1) {
+                setScanResult(res.data[0]);
+            }
+
+        } else {
+            console.log(res.data);
+        }
+    };
 
     const icons = {
-        component: <Components/>,
-        checkboxs: <Checkboxs/>,
+        component: <Components />,
+        checkboxs: <Checkboxs />,
     };
 
     const ScannerContent = [
@@ -23,7 +47,7 @@ export default function AdultTubs() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.matches_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.matches_count}</span>
                     <span className='font-semibold text-sm'>MATCHES WITH SPECIFIED KEYWORDS AND USERNAMES  IN URLs.</span>
                 </div>
             </div>
@@ -34,7 +58,7 @@ export default function AdultTubs() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.no_matches_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.no_matches_count}</span>
                     <span className='font-semibold text-sm'>POTENTIAL MATCHES.</span>
                 </div>
             </div>
@@ -45,7 +69,7 @@ export default function AdultTubs() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.no_report_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.no_report_count}</span>
                     <span className='font-semibold text-sm'>NON-COMPLIANT WEBSITES REGARDING DMCA POLICY.</span>
                 </div>
             </div>
@@ -56,7 +80,7 @@ export default function AdultTubs() {
                 <div><Checkbox color='success' radius='full' isDisabled /></div>
                 <div className='space-x-1'>
                     <span className='font-semibold text-sm'>FOUND</span>
-                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{lastScanResult.report_count}</span>
+                    <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult.report_count}</span>
                     <span className='font-semibold text-sm'>WEBSITES COMPLYING WITH DMCA POLICY.</span>
                 </div>
             </div>
@@ -69,10 +93,10 @@ export default function AdultTubs() {
                     <span className='font-semibold text-sm'>Generated A Removal Report For</span>
                     <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>
                         {
-                            lastScanResult.matches_count+
-                            lastScanResult.no_matches_count+
-                            lastScanResult.no_report_count+
-                            lastScanResult.report_count
+                            scanResult.matches_count +
+                            scanResult.no_matches_count +
+                            scanResult.no_report_count +
+                            scanResult.report_count
                         }
                     </span>
                     <span className='font-semibold text-sm'>Websites In Compliance With DMCA Policy And Forwarded It For Removal.</span>
@@ -80,6 +104,34 @@ export default function AdultTubs() {
             </div>
         },
     ]
+
+    useEffect(() => {
+        getScannerResult();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userInfo.id}:scrape`, (value) => {
+            console.log("scrape-progress:", value)
+            if (value) dispatch(setScanProgress(value));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
+
+    useEffect(() => {
+        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
+            getScannerResult();
+            setTimeout(() => {
+                dispatch(setScanProgress({
+                    current: 0,
+                    all: 0
+                }));
+            }, 30 * 1000);
+        }
+    }, [scanProgress]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
@@ -104,11 +156,11 @@ export default function AdultTubs() {
             <div className='flex flex-col mt-10 gap-3'>
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>
                 <span className='font-medium text-lg text-white/50'>Scanning {
-                            lastScanResult.matches_count+
-                            lastScanResult.no_matches_count+
-                            lastScanResult.no_report_count+
-                            lastScanResult.report_count
-                        } Websites Using Specified Keywords And Usernames</span>
+                    scanResult.matches_count +
+                    scanResult.no_matches_count +
+                    scanResult.no_report_count +
+                    scanResult.report_count
+                } Websites Using Specified Keywords And Usernames</span>
             </div>
 
             {/* This section for define Adult Website Content*/}

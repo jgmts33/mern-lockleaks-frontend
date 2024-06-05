@@ -52,12 +52,12 @@ export const updatePingModel = async (id, data) => {
   }
 }
 
-export const getPingModels = async (page) => {
+export const getPingModels = async (page, search) => {
 
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.get(`${ENDPOINT}/ping-models?page=${page}`, {
+    const res = await axios.get(`${ENDPOINT}/ping-models?page=${page}&search=${search}`, {
       headers: {
         'x-access-token': accessToken
       }

@@ -7,18 +7,20 @@ import { GoogleSearch, Components } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import GoogleIcon from '@/public/assets/background/Google.svg';
 import { useDispatch, useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
 import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { getUsernames } from '@/axios/usernames';
 import { scan } from '@/axios/bot';
 import { getScrapedDataList } from '@/axios/download';
+import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
+import { io } from 'socket.io-client';
 
 export default function Google() {
 
-    const [scanResult, setScanResult] = useState({
-        total_google_links: 0,
-        total_google_images: 0,
-        total_google_videos: 0
-    });
+    const userInfo = useSelector(info);
+
+    const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
+
     const scanProgress = useSelector(scanProgressInfo);
 
     const dispatch = useDispatch();
@@ -29,7 +31,7 @@ export default function Google() {
         components: <Components/>,
     };
 
-    const getScrapedDataListInfo = async () => {
+    const getScanResult = async () => {
 
         const res = await getScrapedDataList(false, 'google', true);
 
@@ -46,17 +48,10 @@ export default function Google() {
             current: 0.01,
             all: 100
         }));
-        const res = await scan({
+        scan({
             usernames,
             only: 'google'
         });
-
-        if (res.status == 'success') {
-            getScrapedDataListInfo();
-        }
-        else {
-            console.log(res.data);
-        }
     }, [usernames, scanProgress]);
 
     const getUsernamesInfo = async () => {
@@ -72,8 +67,32 @@ export default function Google() {
 
     useEffect(() => {
         getUsernamesInfo();
-        getScrapedDataListInfo();
-    }, []);
+        getScanResult();
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`${userInfo.id}:scrape`, (value) => {
+            console.log("scrape-progress:", value)
+            if (value) dispatch(setScanProgress(value));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
+
+    useEffect(() => {
+        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
+            getScanResult();
+            setTimeout(() => {
+                dispatch(setScanProgress({
+                    current: 0,
+                    all: 0
+                }));
+            }, 30 * 1000);
+        }
+    }, [scanProgress]);
 
     const ScannerContent = [
         {
