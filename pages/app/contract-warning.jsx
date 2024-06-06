@@ -2,12 +2,17 @@
 import {
   Button,
   Input,
-  Progress
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  Progress,
+  useDisclosure
 } from '@nextui-org/react';
 import React, { useCallback, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ContractLine, DownloadIcon, IdCardImageIcon, UploadIcon } from '@/components/utils/Icons';
-import { submitKYC } from '../../axios/user';
+import { ContractLine, DownloadIcon, IdCardImageIcon, UploadIcon, Success, WarningOnModal } from '@/components/utils/Icons';
+import { submitKYC } from '@/axios/contract';
 
 export default function ContactWarning() {
   const router = useRouter();
@@ -16,7 +21,9 @@ export default function ContactWarning() {
     uploadIcon: <UploadIcon />,
     downloadIcon: <DownloadIcon />,
     contractLineIcon: <ContractLine />,
-    idCardImageIcon: <IdCardImageIcon />
+    idCardImageIcon: <IdCardImageIcon />,
+    success: <Success/>,
+    warning: <WarningOnModal/>,
   };
 
   const [IDCardFile, setIDCardFile] = useState(null);
@@ -26,6 +33,10 @@ export default function ContactWarning() {
   const [warning, setWarning] = useState(null);
   const [name, setName] = useState("");
   const [step, setStep] = useState(0);
+  const [modalData, setModalData] = useState(null);
+  const [isActionProcessing, setIsActionProcessing] = useState(false);
+
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   const fileIdCardUploadRef = useRef();
   const fileSelfieUploadRef = useRef();
@@ -80,28 +91,46 @@ export default function ContactWarning() {
   }, [IDCardImgUrl, selfieImgUrl]);
 
   const handleSubmit = useCallback(async () => {
+    setIsActionProcessing(true);
     let _warning = {};
 
     if (!name) {
       _warning.name = "Please type your Full Name"
-
       setWarning(_warning);
-
       return;
     }
 
     const formData = new FormData();
+
+    formData.append('name', name);
     formData.append('idcard', IDCardFile);
     formData.append('selfie', SelfieFile);
-    formData.append('name', name);
 
-    // const res = await submitKYC(formData);
+    const res = await submitKYC(formData);
 
     if (res.status == 'success') {
+      setModalData({
+        status: 'success',
+        title: 'Submitted Successfully!',
+        content: "Thank you for your submit. We will review your documentation in next 24 hrs.",
+        btnText: 'Go to Dashboard',
+        action: () => window.open("/app/dashboard", '_current')
+      });
+      onOpen();
 
     } else {
-      console.log(res.data);
+
+      setModalData({
+        status: 'failed',
+        title: 'Failed!',
+        content: res.data,
+        btnText: 'Try Again',
+        action: () => onClose()
+      });
+      onOpen();
     }
+
+    setIsActionProcessing(false);
 
   }, [IDCardFile, SelfieFile, name]);
 
@@ -218,7 +247,7 @@ export default function ContactWarning() {
               <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-10 max-sm:mt-0 max-w-[362px] text-center justify-center">
                 <p className='font-extrabold text-lg'>Upload ID Card</p>
                 <div className='flex flex-col w-full h-[250px] bg-white/10 border border-gray-500 rounded-[16px] mt-5'>
-                  <form id="form" encType='multipart/form-data' className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
+                  <div className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                     {
                       IDCardImgUrl
                         ?
@@ -248,8 +277,9 @@ export default function ContactWarning() {
                       ref={fileIdCardUploadRef}
                       onChange={() => uploadImageDisplay('id_card')}
                       hidden
+                      onDrop={() => uploadImageDisplay('id_card')}
                     />
-                  </form>
+                  </div>
                 </div>
                 <div className='h-10 mt-7'>
                   {
@@ -270,7 +300,7 @@ export default function ContactWarning() {
               <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-10 max-sm:mt-0 max-w-[362px] text-center justify-center">
                 <p className='font-extrabold text-lg'>Upload Selfie</p>
                 <div className='flex flex-col w-full h-[250px] bg-white/10 border border-gray-500 rounded-[16px] mt-5'>
-                  <form id="form" encType='multipart/form-data' className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
+                  <div className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                     {
                       selfieImgUrl
                         ?
@@ -301,7 +331,7 @@ export default function ContactWarning() {
                       onChange={() => uploadImageDisplay('selfie')}
                       hidden
                     />
-                  </form>
+                  </div>
                 </div>
                 <div className='h-10 mt-7'>
                   {
@@ -337,13 +367,45 @@ export default function ContactWarning() {
             radius="lg"
             className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mt-10"
             size='sm'
+            isLoading={isActionProcessing}
             onPress={handleSubmit}
-          // onPress={() => setStep(p => p + 1)}
           >
             <span>Submit</span>
           </Button> : <></>}
       </div>
+      <Modal
+        backdrop="opaque"
+        isOpen={isOpen}
+        onClose={onOpen}
+        onOpenChange={onOpenChange}
+        classNames={{
+          backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+        }}
+        hideCloseButton
+      >
+        <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
+          {() => (
+            <>
+              <ModalBody>
+                <div className='mx-auto flex items-center justify-center -mb-24'>{modalData?.status == 'success' ? icons.success : icons.warning}</div>
+                <p className='font-bold text-2xl text-center capitalize leading-9'>{modalData?.title}</p>
+                <p className='text-lg text-center capitalize leading-9'>{modalData?.content}</p>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  radius="lg"
+                  className="bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647] mx-auto"
+                  size='md'
+                  onPress={modalData?.action}
+                >
+                  <span>{modalData?.btnText}</span>
+                </Button>
+              </ModalFooter>
+            </>
+          )}
 
+        </ModalContent>
+      </Modal>
     </div>
   )
 }

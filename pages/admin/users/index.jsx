@@ -22,9 +22,9 @@ export default function Users() {
 
     const router = useRouter();
     const [searchValue, setSearchValue] = useState("");
-    const [loadingState, setLoadingState] = useState(false);
+    const [loadingState, setLoadingState] = useState("");
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
 
     const [list, setList] = useState([]);
     const icons = {
@@ -32,14 +32,14 @@ export default function Users() {
     };
 
     const getUsersList = async (page, search = "") => {
-        setLoadingState(true);
+        setLoadingState('loading');
         const res = await getUsersListInfo(page, search);
 
         if (res.status == 'success') {
             setList(res.data.data);
             setTotalPages(res.data.totalPages);
         }
-        setLoadingState(false);
+        setLoadingState("");
     }
 
     const handleUpdateUserVisible = async (id, ban) => {

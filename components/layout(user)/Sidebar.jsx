@@ -16,8 +16,8 @@ const Sidebar = ({ show, setter }) => {
     const pathname = usePathname();
 
     const icons = {
-        yellowstar: <YellowStar/>,
-        star: <Star/>,
+        yellowstar: <YellowStar />,
+        star: <Star />,
     };
 
     const router = useRouter();
@@ -78,7 +78,18 @@ const Sidebar = ({ show, setter }) => {
     return (
         <>
             <div className={`flex flex-col h-screen bg-[#000001] text-white max-sm:overflow-y-auto ease-in-out max-w-80 w-full max-sm:bg-[#020615] max-lg:h-screen justify-start max-sm:px-0 z-40 max-lg:absolute duration-1000 ${show ? "max-lg:left-0" : "max-lg:left-[-100%]"}`}>
-                
+                <div className="flex w-full px-6 py-3">
+                    {
+                        currentPath.includes("admin") ?
+                            <Link className="text-white cursor-pointer" href="/admin/dashboard">
+                                <Image src="/assets/logo.svg" width={150} height={50} alt="logo" />
+                            </Link>
+                            :
+                            <Link className="text-white cursor-pointer" href="/app/dashboard">
+                                <Image src="/assets/logo.svg" width={150} height={50} alt="logo" />
+                            </Link>
+                    }
+                </div>
                 <div className="overflow-y-auto h-[calc(100vh-56px)] px-3 pb-3">
 
                     <div className="flex flex-col sm:bg-[url('/assets/background/sidebar.png')] backdrop-blur-sm bg-cover bg-no-repeat rounded-[20px] space-y-1 px-4 py-3 w-full gap-2">
@@ -87,7 +98,7 @@ const Sidebar = ({ show, setter }) => {
                                 return (
                                     <div
                                         key={index}
-                                        className={("py-1 items-center cursor-pointer ") + ( pathname.startsWith(items.path) ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm'
+                                        className={("py-1 items-center cursor-pointer ") + (pathname.startsWith(items.path) ? ("bg-gradient-to-tr from-purple-light to-purple-weight flex px-2 gap-2 rounded-[20px] justify-start") : ("bg-transparent gap-3 text-white flex justify-start"))} size='sm'
                                         onClick={() => handleSidebarClick(items.path, index)}
                                     >
                                         {

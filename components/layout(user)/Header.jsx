@@ -110,7 +110,7 @@ const UserHeader = ({ show, setter }) => {
       className="bg-transparent z-30"
       maxWidth="full"
     >
-      <NavbarContent>
+      {currentPath.includes("contract-warning") ? <NavbarContent>
         <div className="flex w-full px-3 py-3">
           {
             currentPath.includes("admin") ?
@@ -123,7 +123,7 @@ const UserHeader = ({ show, setter }) => {
               </Link>
           }
         </div>
-      </NavbarContent>
+      </NavbarContent> : <></>} 
       <NavbarContent>
         <NavbarBrand>
           <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>

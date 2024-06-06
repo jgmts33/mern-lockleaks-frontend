@@ -46,7 +46,8 @@ export default function RootLayout({ children }) {
   const [selectCookie, setSlectCookie] = useState(false);
   const [modalValue, setModalValue] = useState({
     title: "",
-    content: ""
+    content: "",
+    footer: null
   });
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [mounted, setMounted] = useState(false);
@@ -103,14 +104,75 @@ export default function RootLayout({ children }) {
       return;
     }
 
-    if (userInfo.contract.status != "completed") {
+    if (userInfo.contract.status == "") {
       router.push("/app/contract-warning");
     }
 
-    if (!userInfo.verified) {
+    if (userInfo.contract.status == "pending") {
+      setModalValue({
+        title: "Please wait until your KYC submission approved",
+        content: "If you're not approved in 24 hrs , please check your inbox to know what's the reason.",
+        footer: <Button
+          radius="lg"
+          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+          size='md'
+          onPress={() => {
+            onClose();
+            window.location.replace("/");
+          }}
+        >
+          <span>Back to HomePage</span>
+        </Button>
+      })
+      onOpen();
+    }
+
+    else if (userInfo.contract.status == "declined") {
+      setModalValue({
+        title: "KYC Verification Failed",
+        content: userInfo.contract.reason,
+        footer: <Button
+          radius="lg"
+          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+          size='md'
+          onPress={() => {
+            onClose();
+            router.push("/app/contract-warning");
+          }}
+        >
+          <span>Submit Again</span>
+        </Button>
+      })
+      onOpen();
+    }
+
+    else if (!userInfo.verified) {
       setModalValue({
         title: "You should verify Email before using our application",
         content: 'If you want to use this feature, check your Inbox!',
+        footer: <div className="flex gap-6">
+          <Button
+            radius="lg"
+            className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+            size='md'
+            isLoading={isProcessing}
+            isDisabled={verifyEmailSendTimer}
+            onPress={() => handleConfirmClick()}
+          >
+            <span>Resend Email</span>
+          </Button>
+          <Button
+            radius="lg"
+            className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600 border`}
+            size='md'
+            onPress={() => {
+              onClose();
+              window.location.replace("/");
+            }}
+          >
+            <span>Back to HomePage</span>
+          </Button>
+        </div>
       })
       onOpen();
     }
@@ -118,7 +180,31 @@ export default function RootLayout({ children }) {
     else if (userInfo.subscription.status == 'expired') {
       setModalValue({
         title: "Sorry , but your plan is expired",
-        content: 'Please go to pricing page with clicking on the "Upgrade" button.'
+        content: 'Please go to pricing page with clicking on the "Upgrade" button.',
+        footer: <div className="flex gap-6">
+          {verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></>}
+          <Button
+            radius="lg"
+            className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+            size='md'
+            isLoading={isProcessing}
+            isDisabled={verifyEmailSendTimer}
+            onPress={() => handleConfirmClick()}
+          >
+            {userInfo.subscription.status == 'expired' ? <span>Renew</span> : <span>Upgrade</span>}
+          </Button>
+          <Button
+            radius="lg"
+            className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600 border`}
+            size='md'
+            onPress={() => {
+              onClose();
+              window.location.replace("/");
+            }}
+          >
+            <span>Back to HomePage</span>
+          </Button>
+        </div>
       })
       onOpen();
     }
@@ -126,7 +212,30 @@ export default function RootLayout({ children }) {
     else if (!userInfo.subscription.plan_id) {
       setModalValue({
         title: "Your subscription has expired or remains unpaid",
-        content: 'Please renew it to regain access to the panel!'
+        content: 'Please renew it to regain access to the panel!',
+        footer: <div className="flex gap-6">
+          <Button
+            radius="lg"
+            className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+            size='md'
+            isLoading={isProcessing}
+            isDisabled={verifyEmailSendTimer}
+            onPress={() => handleConfirmClick()}
+          >
+            {userInfo.subscription.status == 'expired' ? <span>Renew</span> : <span>Upgrade</span>}
+          </Button>
+          <Button
+            radius="lg"
+            className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+            size='md'
+            onPress={() => {
+              onClose();
+              window.location.replace("/checkout/buy?plan=trial")
+            }}
+          >
+            <span>Free Trial</span>
+          </Button>
+        </div>
       })
       onOpen();
     }
@@ -136,6 +245,16 @@ export default function RootLayout({ children }) {
     }
 
     setMounted(true);
+
+    const socket = io(ENDPOINT);
+
+    socket.on(`kyc_decided_${userInfo.id}`, (contract) => {
+      dispatch(setUserInfo({ ...userInfo, contract }));
+    });
+
+    return () => {
+      socket.disconnect();
+    }
 
   }, [userInfo]);
 
@@ -173,7 +292,7 @@ export default function RootLayout({ children }) {
         {
           userInfo ?
             <div className="flex ">
-              { !currentPath.includes("/app/contract-warning") ? <Sidebar show={showSidebar} setter={setShowSidebar} /> : <></>}
+              {!currentPath.includes("/app/contract-warning") ? <Sidebar show={showSidebar} setter={setShowSidebar} /> : <></>}
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
                 <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto relative" style={{ scrollBehavior: 'smooth' }}>
@@ -234,42 +353,7 @@ export default function RootLayout({ children }) {
                         <p className='font-light text-[22px]'>{modalValue.content} </p>
                       </ModalBody>
                       <ModalFooter>
-                        {verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></>}
-                        <Button
-                          radius="lg"
-                          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
-                          size='md'
-                          isLoading={isProcessing}
-                          isDisabled={verifyEmailSendTimer}
-                          onPress={() => handleConfirmClick()}
-                        >
-                          {!userInfo?.verified ? <span>Resend Email</span> : userInfo.subscription.status == 'expired' ? <span>Renew</span> : <span>Upgrade</span>}
-                        </Button>
-                        {
-                          !userInfo.subscription.plan_id ?
-                            <Button
-                              radius="lg"
-                              className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
-                              size='md'
-                              onPress={() => {
-                                onClose();
-                                window.location.replace("/checkout/buy?plan=trial")
-                              }}
-                            >
-                              <span>Free Trial</span>
-                            </Button> :
-                            <Button
-                              radius="lg"
-                              className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-gray-500 to-gray-600`}
-                              size='md'
-                              onPress={() => {
-                                onClose();
-                                window.location.replace("/");
-                              }}
-                            >
-                              <span>Back to HomePage</span>
-                            </Button>
-                        }
+                        {modalValue.footer}
                       </ModalFooter>
                     </>
                   )}
