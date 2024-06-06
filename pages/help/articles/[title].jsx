@@ -19,10 +19,10 @@ export default function Details() {
     })
 
     const icons = {
-        search: <Search/>,
-        collobation: <Collobation/>,
-        chat: <RecoveryChat/>,
-        direction: <ArrowRight/>,
+        search: <Search />,
+        collobation: <Collobation />,
+        chat: <RecoveryChat />,
+        direction: <ArrowRight />,
     };
 
     useEffect(() => {
@@ -58,8 +58,12 @@ export default function Details() {
                         required
                     />
                 </div>
-                <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
-                    <span>Search</span><span> {icons.search}</span>
+                <Button
+                    radius="lg"
+                    size='lg'
+                    className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg"
+                >
+                    <span>Search</span><span>{icons.search}</span>
                 </Button>
             </div>
             {
