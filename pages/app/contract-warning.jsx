@@ -13,6 +13,9 @@ import React, { useCallback, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ContractLine, DownloadIcon, IdCardImageIcon, UploadIcon, Success, WarningOnModal } from '@/components/utils/Icons';
 import { submitKYC } from '@/axios/contract';
+import IDCardExample from '@/public/assets/contract-warning/id_card.png';
+import SelfieExample from '@/public/assets/contract-warning/selfie.png';
+import Image from 'next/image';
 
 export default function ContactWarning() {
   const router = useRouter();
@@ -22,8 +25,8 @@ export default function ContactWarning() {
     downloadIcon: <DownloadIcon />,
     contractLineIcon: <ContractLine />,
     idCardImageIcon: <IdCardImageIcon />,
-    success: <Success/>,
-    warning: <WarningOnModal/>,
+    success: <Success />,
+    warning: <WarningOnModal />,
   };
 
   const [IDCardFile, setIDCardFile] = useState(null);
@@ -138,7 +141,7 @@ export default function ContactWarning() {
     <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white mx-auto">
       <p className='mt-5 mb-12 font-extrabold text-lg'>Lock Leaks Platform Access Agreement</p>
       {step == 0
-        ? <div className='max-md:mx-auto space-y-12 text-medium font-normal'>
+        ? <div className='max-md:mx-auto space-y-8 text-medium font-normal'>
           <p>Welcome to Lock Leaks! Before you gain access to our platform, we require you to complete the following agreement. By proceeding, you acknowledge and agree to the terms outlined below</p>
           <p className='font-bold'>Identification and Data Security:</p>
           <div>
@@ -149,6 +152,29 @@ export default function ContactWarning() {
             <li>Secure Storage: Your personal information and ID card uploads are encrypted and securely stored on our servers.</li>
             <li>Limited Access: Access to your data is restricted to verification purposes only and is not stored on our website.</li>
           </ul>
+          <div className='space-y-4'>
+            <div>
+              <p className='font-semibold'>Government ID/Passport</p>
+              <ul className='list-disc pl-6'>
+                <li>Users can upload a copy of their national ID card or passport by clicking the ‘Choose File’ button below.</li>
+                <li>They must also sign the terms and conditions contract. If the user does not provide the requested information,
+                  LOCK LEAKS reserves the right to block access to and/or terminate their accounts.
+                  The user explicitly consents to LOCK LEAKS using all their personal data in accordance
+                  with the services provided under this agreement.
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className='font-semibold'>Photograph/Selfie</p>
+              <ul className='list-disc pl-6'>
+                <li>Users can upload a copy of their national ID card or passport by clicking the ‘Choose File’ button below.</li>
+                <li>The user can submit a photograph of themselves holding up a sign that reads 'I want Lock Leaks as my authorized copyright representative'.
+                  Please ensure that the user's face and hands are visible in the image.
+                  The user needs to send this file to Lock Leaks by clicking 'Choose File' below.
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         :
         step == 1 ? <div className='max-md:mx-auto space-y-12 text-medium font-normal'>
@@ -232,19 +258,10 @@ export default function ContactWarning() {
       }
       <div className='flex max-sm:flex-col justify-between items-end mb-5 w-full'>
 
-        {step == 1 ? <Button
-          radius="lg"
-          className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white px-7 text-sm mt-10"
-          size='sm'
-          onPress={() => setStep(p => p - 1)}
-        >
-          <span>Back</span>
-        </Button> : <></>}
-
         {
           step == 0 ?
-            <div className='flex gap-8 w-full mt-8'>
-              <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-10 max-sm:mt-0 max-w-[362px] text-center justify-center">
+            <div className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-8 w-full mt-8'>
+              <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] p-5 text-center justify-center">
                 <p className='font-extrabold text-lg'>Upload ID Card</p>
                 <div className='flex flex-col w-full h-[250px] bg-white/10 border border-gray-500 rounded-[16px] mt-5'>
                   <div className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
@@ -275,6 +292,7 @@ export default function ContactWarning() {
                       type="file"
                       id="file"
                       ref={fileIdCardUploadRef}
+                      accept=".png,.jpg,.jpeg"
                       onChange={() => uploadImageDisplay('id_card')}
                       hidden
                       onDrop={() => uploadImageDisplay('id_card')}
@@ -297,7 +315,15 @@ export default function ContactWarning() {
                   }
                 </div>
               </div>
-              <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] mt-5 w-full p-10 max-sm:mt-0 max-w-[362px] text-center justify-center">
+              <div className="border border-gray-500 rounded-[16px]">
+                <Image
+                  src={IDCardExample}
+                  width={400}
+                  height={400}
+                  className='object-cover w-full h-full rounded-2xl'
+                />
+              </div>
+              <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] p-5 text-center justify-center">
                 <p className='font-extrabold text-lg'>Upload Selfie</p>
                 <div className='flex flex-col w-full h-[250px] bg-white/10 border border-gray-500 rounded-[16px] mt-5'>
                   <div className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
@@ -327,6 +353,7 @@ export default function ContactWarning() {
                     <input
                       type="file"
                       id="file"
+                      accept=".png,.jpg,.jpeg"
                       ref={fileSelfieUploadRef}
                       onChange={() => uploadImageDisplay('selfie')}
                       hidden
@@ -349,14 +376,31 @@ export default function ContactWarning() {
                   }
                 </div>
               </div>
+              <div className="border border-gray-500 rounded-[16px]">
+                <Image
+                  src={SelfieExample}
+                  width={400}
+                  height={400}
+                  className='object-cover w-full h-full rounded-2xl'
+                />
+              </div>
             </div>
             :
             <></>}
-
+      </div>
+      <div className='w-full flex justify-between'>
+        {step == 1 ? <Button
+          radius="lg"
+          className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white px-7 text-sm"
+          size='sm'
+          onPress={() => setStep(p => p - 1)}
+        >
+          <span>Back</span>
+        </Button> : <div></div>}
         {step == 0 ?
           <Button
             radius="lg"
-            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mt-10"
+            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm"
             size='sm'
             onPress={handleNext}
           >
@@ -365,7 +409,7 @@ export default function ContactWarning() {
           :
           step == 1 ? <Button
             radius="lg"
-            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mt-10"
+            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm"
             size='sm'
             isLoading={isActionProcessing}
             onPress={handleSubmit}

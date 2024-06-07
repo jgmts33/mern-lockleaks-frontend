@@ -10,6 +10,7 @@ import { getAccessToken } from '@/axios/token';
 import { resetPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';
 import moment from 'moment/moment';
+import { downloadCopyrightHolder } from '../../../axios/user';
 
 
 export default function AccountSetting() {
@@ -18,12 +19,13 @@ export default function AccountSetting() {
     const userInfo = useSelector(info);
     const [isPasswordResetProcessing, setIsPasswordResetProcessing] = useState(false);
     const [isChangePasswordSuccessed, setIsChangePasswordSuccessed] = useState(false);
+    const [isDownloadProcessing, setIsDownloadProcessing] = useState('');
 
     const icons = {
-        google: <Google/>,
-        twitter: <Twitter/>,
-        facebook: <Facebook/>,
-        error: <Error/>,
+        google: <Google />,
+        twitter: <Twitter />,
+        facebook: <Facebook />,
+        error: <Error />,
     };
 
     const [newPassword, setNewPassword] = useState("");
@@ -51,6 +53,27 @@ export default function AccountSetting() {
         }
     }, [newPassword]);
 
+    const handleContractDownload = async () => {
+
+    }
+
+    const handleCopyrightHolderDownload = async () => {
+
+        setIsDownloadProcessing('copyright_holder');
+        const res = await downloadCopyrightHolder(userInfo.id);
+        setIsDownloadProcessing('');
+        if (res.status == 'success') {
+            const blob = new Blob([res.data], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Copyright Holder.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto">
 
@@ -67,7 +90,7 @@ export default function AccountSetting() {
                     <div className='mx-auto'>
                         <span className='font-semibold text-base'>Personal Details</span>
                     </div>
-                    <div className='flex flex-col px-5 mt-10 gap-5'>
+                    <div className='flex flex-col px-5 mt-4 gap-5'>
 
                         {!userInfo?.social ? <div className='space-y-5'>
                             <Button
@@ -126,7 +149,7 @@ export default function AccountSetting() {
                                 <span className='font-semibold text-base'>Subscription info</span>
                             </div>
                             <div className='flex flex-col px-5 gap-5'>
-                                <div className='mt-10'>
+                                <div className='mt-4   '>
                                     <Button
                                         radius="lg"
                                         className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base py-5 w-full"
@@ -156,19 +179,42 @@ export default function AccountSetting() {
                         :
                         <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] mt-5 w-full max-sm:mt-0'>
                             <div className='mx-auto'>
-                                <span className='font-semibold text-base'>Contract Lockleaks</span>
+                                <span className='font-semibold text-base'>Contract Lock Leaks</span>
                             </div>
-                            <div className='flex flex-col px-5 gap-5'>
-                                <div className='mt-10'>
-                                    <Button
-                                        radius="lg"
-                                        className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
-                                        size='sm'
-                                    >
-                                        <span>Download</span>
-                                    </Button>
-                                </div>
+                            <div className='flex flex-col px-5 gap-5 mt-4  '>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
+                                    size='sm'
+                                    onPress={() => router.push("/app/settings/contract")}
+                                >
+                                    <span>View</span>
+                                </Button>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
+                                    size='sm'
+                                    isLoading={isDownloadProcessing == 'contract'}
+                                    onPress={handleContractDownload}
+                                >
+                                    <span>Download</span>
+                                </Button>
                             </div>
+
+                            <div className='mx-auto mt-8'>
+                                <span className='font-semibold text-base'>Copyright Holder</span>
+                            </div>
+                            {userInfo.copyright_holder ? <div className='flex flex-col px-5 gap-5 mt-4  '>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
+                                    size='sm'
+                                    isLoading={isDownloadProcessing == 'copyright_holder'}
+                                    onPress={handleCopyrightHolderDownload}
+                                >
+                                    <span>Download</span>
+                                </Button>
+                            </div> : <></>}
                         </div>
                 }
 
@@ -179,7 +225,7 @@ export default function AccountSetting() {
                         <span className='font-semibold text-base'>Tutorials</span>
                     </div>
                     <div className='flex flex-col px-5 gap-5'>
-                        <div className='mt-10'>
+                        <div className='mt-4   '>
                             <Button
                                 radius="lg"
                                 className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"

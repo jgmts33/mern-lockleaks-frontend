@@ -144,7 +144,7 @@ export const USER_SIDEBAR_LIST = [
     id: 15,
     icon: icons.AccountSetting,
     title: "ACCOUNT SETTINGS",
-    path: "/app/setting",
+    path: "/app/settings",
     favourite: false
   }, {
     id: 16,

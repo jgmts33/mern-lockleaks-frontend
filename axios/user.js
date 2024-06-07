@@ -218,3 +218,53 @@ export const deleteUser = async (id) => {
     }
   }
 }
+
+export const uploadCopyrightHolder = async (id, data) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/user-copyright-holder/${id}`, data, {
+      headers: {
+        'x-access-token': accessToken,
+        'Content-Type': 'multipart/form-data',
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const downloadCopyrightHolder = async (id) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/user-copyright-holder/${id}`, {
+      headers: {
+        'x-access-token': accessToken,
+        responseType: 'blob'
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

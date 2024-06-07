@@ -10,12 +10,13 @@ import {
     ModalHeader,
     ModalBody
 } from '@nextui-org/react';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getContractUsersListInfo, getCopyrightHolderUsersListInfo, handleKYCSubmission } from '@/axios/contract';
 import { Search } from "@/components/utils/Icons";
 import { io } from 'socket.io-client';
-import { ENDPOINT } from '../../config/config';
+import { ENDPOINT } from '@/config/config';
+import { downloadCopyrightHolder, uploadCopyrightHolder } from '../../axios/user';
 
 export default function AutoContract() {
 
@@ -23,12 +24,14 @@ export default function AutoContract() {
 
     const router = useRouter();
 
+    const copyrightHolderRef = useRef(null);
+
     const [selectedId, setSelectedId] = useState(-1)
     const [message, setMessage] = useState("");
     const [isActionProcessing, setIsActionProcessing] = useState({
         contract: -1,
         copyright_holder: -1
-    })
+    });
 
     const [filterStatus, setFilterStatus] = useState({
         contract: "pending",
@@ -56,11 +59,6 @@ export default function AutoContract() {
         copyright_holder: []
     });
 
-    const [selectedTarget, setSelectedTarget] = useState({
-        contract: null,
-        copyright_holder: null
-    })
-
     const icons = {
         search: <Search />,
     };
@@ -86,6 +84,49 @@ export default function AutoContract() {
             setTotalPages(p => ({ ...p, copyright_holder: res.data.totalPages }));
         }
         setLoadingState(p => ({ ...p, copyright_holder: false }));
+    }
+
+    const handleCopyrightHolderUpload = async () => {
+        copyrightHolderRef.current.click();
+    }
+
+    const handleUploadCopyrightHolder = useCallback(async () => {
+        const uploadedFile = copyrightHolderRef.current.files[0];
+        if (!uploadedFile) return;
+        setIsActionProcessing(p => ({ ...p, copyright_holder: selectedId }));
+
+        const formData = new FormData();
+        formData.append('file', uploadedFile);
+
+        const res = await uploadCopyrightHolder(selectedId, formData);
+
+        if (res.status == 'success') {
+            let copyrightHolderList = list.copyright_holder.filter(p => p.id != selectedId);
+
+            setList(p => ({
+                ...p,
+                copyright_holder: copyrightHolderList
+            }));
+        }
+
+        setIsActionProcessing(p => ({ ...p, copyright_holder: -1 }));
+
+    }, [selectedId]);
+
+    const handleDownload = async (id) => {
+        setIsActionProcessing(p => ({ ...p, copyright_holder: id }));
+        const res = await downloadCopyrightHolder(id);
+        setIsActionProcessing(p => ({ ...p, copyright_holder: -1 }));
+        if (res.status == 'success') {
+            const blob = new Blob([res.data], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Copyright Holder ${id}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
     }
 
     useEffect(() => {
@@ -143,7 +184,7 @@ export default function AutoContract() {
             let contractList = list.contract.slice(0).concat(user);
             setList(p => ({
                 ...p,
-                contract: contractList
+                contract: [...p.contract, user]
             }))
         });
 
@@ -212,7 +253,7 @@ export default function AutoContract() {
                         value={searchValue.contract}
                         onValueChange={(value) => setSearchValue(p => ({ ...p, contract: value }))}
                     />
-                    <ScrollShadow className='h-[calc(100vh-426px)] divide-y-2 mt-4'>
+                    <ScrollShadow className='h-[calc(100vh-440px)] divide-y-2 mt-4'>
                         {
                             loadingState.contract ?
                                 <div className='w-max mx-auto'>
@@ -227,10 +268,10 @@ export default function AutoContract() {
                                 : list.contract.length ? list.contract.map((item, index) => {
                                     return (
                                         <div key={index}>
-                                            <div className='flex items-center gap-2 mb-4' >
-                                                <div className='px-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center'>{index + 1}</div>
-                                                <div className='flex gap-4 justify-between w-full'>
-                                                    <p className='text-lg w-max'>{item.name} - {item.email}</p>
+                                            <div className='flex items-start gap-2 my-4' >
+                                                <div className='px-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center max-sm:hidden'>{index + 1}</div>
+                                                <div className='flex gap-4 justify-between w-full max-sm:flex-wrap'>
+                                                    <p className='text-lg'>{item.name} - {item.email}</p>
                                                     {
                                                         item.contract?.status == 'pending' ?
                                                             <div className='flex gap-4 items-center'>
@@ -264,11 +305,124 @@ export default function AutoContract() {
                                                                 className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
                                                                 size='sm'
                                                                 isLoading={isActionProcessing.contract == item.id}
-                                                                onPress={() => {
-
-                                                                }}
+                                                                onPress={() => router.push(`/admin/users/contract?id=${item.id}`)}
                                                             >
                                                                 View Contract
+                                                            </Button>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <hr className='w-full' />
+                                        </div >
+                                    )
+                                }) :
+                                    <p className='text-center'>There is not any data yet. </p>
+                        }
+                    </ScrollShadow>
+                </div>
+
+                <div className="flex flex-col gap-6 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
+                    <div className='flex gap-6'>
+                        <Button
+                            radius="full"
+                            className={"bg-gradient-to-tr border border-gray-700 text-white shadow-lg text-sm " + (filterStatus.copyright_holder == 'pending' ? "from-purple-light to-purple-weight" : "from-gray-600/40 to-gray-800/40")}
+                            size='sm'
+                            onClick={() => setFilterStatus(p => ({ ...p, copyright_holder: "pending" }))}
+                        >
+                            <span>Pending</span>
+                        </Button>
+                        <Button
+                            radius="full"
+                            className={"bg-gradient-to-tr border border-gray-700 text-white shadow-lg text-sm " + (filterStatus.copyright_holder == 'sent' ? "from-purple-light to-purple-weight" : "from-gray-600/40 to-gray-800/40")}
+                            onClick={() => setFilterStatus(p => ({ ...p, copyright_holder: "sent" }))}
+                            size='sm'
+                        >
+                            <span>Uploaded</span>
+                        </Button>
+                    </div>
+                    <Input
+                        isClearable
+                        radius="lg"
+                        classNames={{
+                            label: "text-black/50 dark:text-white/90",
+                            input: [
+                                "bg-transparent",
+                                "text-black/90 dark:text-white/90",
+                                "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+                            ],
+                            innerWrapper: "bg-transparent",
+                            inputWrapper: [
+                                "shadow-xl",
+                                "bg-default-200/50",
+                                "dark:bg-default/60",
+                                "backdrop-blur-xl",
+                                "backdrop-saturate-200",
+                                "hover:bg-default-200/70",
+                                "dark:hover:bg-default/70",
+                                "group-data-[focused=true]:bg-default-200/50",
+                                "dark:group-data-[focused=true]:bg-default/60",
+                                "!cursor-text",
+                            ],
+                        }}
+                        placeholder="Type to search by Email..."
+                        startContent={
+                            icons.search
+                        }
+                        value={searchValue.copyright_holder}
+                        onValueChange={(value) => setSearchValue(p => ({ ...p, copyright_holder: value }))}
+                    />
+                    <ScrollShadow className='h-[calc(100vh-440px)] divide-y-2 mt-4'>
+                        {
+                            loadingState.copyright_holder ?
+                                <div className='w-max mx-auto'>
+                                    <div role="status">
+                                        <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                                            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                                        </svg>
+                                        <span className="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                : list.copyright_holder.length ? list.copyright_holder.map((item, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <div className='flex items-start gap-2 my-4' >
+                                                <div className='px-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center max-sm:hidden'>{index + 1}</div>
+                                                <div className='flex gap-4 justify-between w-full max-sm:flex-wrap'>
+                                                    <p className='text-lg w-max'>{item.name}</p>
+                                                    {
+                                                        item.copyright_holder == '' ?
+                                                            <div className='flex gap-4 items-center'>
+                                                                <Button
+                                                                    radius="full"
+                                                                    className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
+                                                                    size='sm'
+                                                                    isLoading={isActionProcessing.copyright_holder == item.id}
+                                                                    onPress={() => {
+                                                                        handleCopyrightHolderUpload();
+                                                                        setSelectedId(item.id);
+                                                                    }}
+                                                                >
+                                                                    Upload
+                                                                </Button>
+                                                                <input
+                                                                    type="file"
+                                                                    id="file"
+                                                                    accept=".pdf"
+                                                                    ref={copyrightHolderRef}
+                                                                    onChange={handleUploadCopyrightHolder}
+                                                                    hidden
+                                                                />
+                                                            </div>
+                                                            :
+                                                            <Button
+                                                                radius="full"
+                                                                className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
+                                                                size='sm'
+                                                                isLoading={isActionProcessing.copyright_holder == item.id}
+                                                                onPress={() => handleDownload(item.id)}
+                                                            >
+                                                                Download
                                                             </Button>
                                                     }
                                                 </div>
@@ -310,7 +464,7 @@ export default function AutoContract() {
                                                 radius="lg"
                                                 className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
                                                 onPress={() => handleContract('decline')}
-                                                isLoading={isActionProcessing.contract != -1}
+                                                isLoading={isActionProcessing.copyright_holder != -1}
                                             >
                                                 Confirm
                                             </Button>

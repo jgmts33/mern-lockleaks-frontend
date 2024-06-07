@@ -1,7 +1,7 @@
 "use client";
 import {
-    Button, 
-    ScrollShadow, 
+    Button,
+    ScrollShadow,
     Input,
     useDisclosure,
     Modal,
@@ -13,9 +13,8 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Search, Pencil, Trash, Facebook, Google, Twitter } from "@/components/utils/Icons";
-import { getUserInfo, getUsernames } from '@/axios/user';
+import { getUserInfo, getUsernames, deleteUser, updateUserInfo } from '@/axios/user';
 import { SUBSCRIPTION_NAMES } from '@/config/config';
-import { deleteUser, updateUserInfo } from '@/axios/user';
 import { SelectSwitch, UnselectSwitch } from '@/components/utils/Icons';
 import { useSearchParams } from 'next/navigation';
 import { checkDoubleUsername, createUsernames, deleteUsername, updateUsername } from '@/axios/usernames';
@@ -25,6 +24,9 @@ export default function UsersView() {
 
     const router = useRouter();
     const searchParams = useSearchParams();
+
+    const user_id = searchParams.get('id');
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userDetails, setUserDetails] = useState(null);
@@ -74,7 +76,7 @@ export default function UsersView() {
                     usernameResult = await updateUsername(targetKeyword.id, { username: targetKeyword.username, link: targetKeyword.link });
                     _usernames[targetKeywordIndex].id = usernameResult.data.id;
                 } else {
-                    usernameResult = await createUsernames({ usernames: [{ username: targetKeyword.username, link: targetKeyword.link }] }, searchParams.get('id'));
+                    usernameResult = await createUsernames({ usernames: [{ username: targetKeyword.username, link: targetKeyword.link }] }, user_id);
                     _usernames[targetKeywordIndex].id = usernameResult.data[0].id;
                 }
                 _usernames[targetKeywordIndex].link = newLink;
@@ -87,7 +89,7 @@ export default function UsersView() {
             }
         }
         setIsUsernameLinkValidationProcessing(false);
-    }, [targetKeyword, usernames, targetKeywordIndex, searchParams.get('id')]);
+    }, [targetKeyword, usernames, targetKeywordIndex, user_id]);
 
     const handleDeleteUsername = useCallback(async (id) => {
         setIsUsernameDeleteProcessing(id);
@@ -126,10 +128,10 @@ export default function UsersView() {
 
     const getUserDetails = useCallback(async () => {
 
-        const userRes = await getUserInfo(searchParams.get('id'));
+        const userRes = await getUserInfo(user_id);
         if (userRes.status === 'success') {
             setUserDetails(userRes.data);
-            const usernamesRes = await getUsernames(searchParams.get('id'));
+            const usernamesRes = await getUsernames(user_id);
             if (usernamesRes.status == 'success') {
                 setUsernames(usernamesRes.data);
             }
@@ -137,7 +139,7 @@ export default function UsersView() {
         else {
             router.push("/admin/users");
         }
-    }, [searchParams.get('id')])
+    }, [user_id])
 
     const handleUpdateAuthInfo = useCallback(async () => {
         setIsActionProcessing(true);
@@ -185,24 +187,28 @@ export default function UsersView() {
     }
 
     useEffect(() => {
-        if (!searchParams.get('id')) return;
+        if (!user_id) return;
         getUserDetails();
-    }, [searchParams.get('id')]);
+    }, [user_id]);
 
     return (
         <>
             {userDetails ? <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
-                <div className='flex mt-5 max-lg:mx-auto w-full justify-between items-center'>
-                    <div>
-                        <span className='font-extrabold text-lg'>USERS</span>
+                <div className='max-lg:mx-auto'>
+                    <div className='flex gap-16 items-center'>
+                        <div><span className='font-extrabold text-lg'>USERS</span></div>
                     </div>
-                    <div>
-                        <Button radius='full' size="sm" className="bg-gradient-to-tr from-gray-700 to-gray-800 text-white text-sm" onClick={() => handleBackButton()}>
+                    <div className='flex justify-end mt-5'>
+                        <Button
+                            radius="lg"
+                            className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-500 text-white shadow-lg text-base" size='md'
+                            onClick={() => handleBackButton()}
+                        >
                             Back
                         </Button>
                     </div>
                 </div>
-                <div className='grid grid-cols-2 max-md:grid-cols-1 mt-10 gap-4'>
+                <div className='grid grid-cols-2 max-md:grid-cols-1 mt-5 gap-4'>
                     <div>
                         <p className='font-medium text-lg'>User Information</p>
                         <div className='flex flex-col gap-5 w-full bg-white/10 shadow-sm border border-gray-500 rounded-[16px] p-6 mt-4'>
@@ -220,11 +226,35 @@ export default function UsersView() {
                             </div>
                             <div className='flex font-semibold text-base gap-4 items-center'>
                                 <div className='flex'>CONTRACT :</div>
-                                <div className='flex'>
-                                    <Button radius='full' size="sm" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm">
+                                {userDetails.contract.status == 'approved' ? <div className='flex gap-6'>
+                                    <Button
+                                        radius='full'
+                                        className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
+                                        size="sm"
+                                        onPress={() => router.push(`/admin/users/contract?id=${user_id}`)}
+                                    >
+                                        View Contract
+                                    </Button>
+                                    <Button
+                                        radius='full'
+                                        className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
+                                        size="sm"
+                                    >
                                         Download
                                     </Button>
-                                </div>
+                                </div> : <></>}
+                            </div>
+                            <div className='flex font-semibold text-base gap-4 items-center'>
+                                <div className='flex'>COPYRIGHT HOLDER :</div>
+                                {userDetails.contract.copyright_holder ? <div className='flex gap-6'>
+                                    <Button
+                                        radius='full'
+                                        className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
+                                        size="sm"
+                                    >
+                                        Download
+                                    </Button>
+                                </div> : <></>}
                             </div>
                             <div className='flex font-semibold text-base max-w-[600px] gap-4'>
                                 <div className='flex'>PLAN :</div>

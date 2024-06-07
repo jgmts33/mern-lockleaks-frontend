@@ -37,7 +37,7 @@ export default function Users() {
 
         if (res.status == 'success') {
             setList(res.data.data);
-            setTotalPages(res.data.totalPages);
+            setTotalPages(res.data.totalPage);
         }
         setLoadingState("");
     }
