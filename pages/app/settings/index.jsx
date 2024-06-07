@@ -1,8 +1,8 @@
 "use client";
 import {
-    Button
+    Button, ScrollShadow
 } from '@nextui-org/react';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { Facebook, Google, Twitter, Error } from '@/components/utils/Icons';
@@ -10,7 +10,7 @@ import { getAccessToken } from '@/axios/token';
 import { resetPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';
 import moment from 'moment/moment';
-import { downloadCopyrightHolder } from '../../../axios/user';
+import { downloadCopyrightHolder, getUsernames } from '../../../axios/user';
 
 
 export default function AccountSetting() {
@@ -20,6 +20,7 @@ export default function AccountSetting() {
     const [isPasswordResetProcessing, setIsPasswordResetProcessing] = useState(false);
     const [isChangePasswordSuccessed, setIsChangePasswordSuccessed] = useState(false);
     const [isDownloadProcessing, setIsDownloadProcessing] = useState('');
+    const [usernames, setUsernames] = useState([]);
 
     const icons = {
         google: <Google />,
@@ -73,6 +74,21 @@ export default function AccountSetting() {
             window.URL.revokeObjectURL(url);
         }
     }
+
+    const getUsernamesInfo = useCallback(async () => {
+
+        const usernamesRes = await getUsernames(userInfo.id);
+        if (usernamesRes.status == 'success') {
+            setUsernames(usernamesRes.data);
+        }
+        else {
+            router.push("/app/settings");
+        }
+    }, [userInfo])
+
+    useEffect(() => {
+        getUsernamesInfo();
+    }, []);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto">
@@ -237,6 +253,20 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className='flex gap-2 flex-col mt-8'>
+                <p className='font-semibold'> Usernames List: </p>
+                <ScrollShadow className='max-h-60'>
+                    {
+                        usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
+                            <div>{index + 1}.</div>
+                            <div>
+                                <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.username}</span></p>
+                                <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.link}</span></p>
+                            </div>
+                        </div>)
+                    }
+                </ScrollShadow>
             </div>
         </div>
     )

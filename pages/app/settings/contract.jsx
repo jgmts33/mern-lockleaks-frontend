@@ -48,7 +48,7 @@ export default function ContractView() {
         }
     ]
 
-    const getUserDetails = useCallback(async () => {
+    const getUsernamesInfo = useCallback(async () => {
 
         const usernamesRes = await getUsernames(userInfo.id);
         if (usernamesRes.status == 'success') {
@@ -60,7 +60,7 @@ export default function ContractView() {
     }, [userInfo])
 
     useEffect(() => {
-        getUserDetails();
+        getUsernamesInfo();
     }, []);
 
     useEffect(() => {
@@ -82,7 +82,7 @@ export default function ContractView() {
                         size='md'
                         onClick={() => history.go(-1)}
                     >
-                        Back
+                        <span>Back</span>
                     </Button>
                 </div>
             </div>
@@ -97,11 +97,11 @@ export default function ContractView() {
             <div className='grid grid-cols-2 max-md:grid-cols-1 gap-6 my-6'>
                 <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
                     <p className='font-semibold text-lg'>For Lock Leaks:</p>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900'> <strong>Full Name:</strong> Cosmin Ridel </div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> Cosmin Ridel </div>
+                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900'> <strong>Full Name:</strong> <span className='notranslate'>Cosmin Ridel</span> </div>
+                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> <span className='notranslate'>Cosmin Ridel</span></div>
                     <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Date:</strong> {moment(userInfo?.contract.date).format('MMM DD, YYYY')} </div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>dmca@lockleaks.com </div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>lockleaks.com</div>
+                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 notranslate'>dmca@lockleaks.com </div>
+                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 notranslate'>lockleaks.com</div>
                     <Image
                         src={Logo}
                         width={150}
@@ -116,9 +116,9 @@ export default function ContractView() {
                     />
                 </div>
                 <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
-                    <p className='font-semibold text-lg'>For {userInfo?.name}:</p>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900'> <strong>Full Name:</strong> {userInfo?.name} </div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> {userInfo?.name} </div>
+                    <p className='font-semibold text-lg '>For <span className='notranslate'>{userInfo?.name}:</span></p>
+                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '> <strong>Full Name:</strong> <span className='notranslate'>{userInfo?.name} </span></div>
+                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> <span className='notranslate'>{userInfo?.name} </span></div>
                     <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Date:</strong> {moment(userInfo?.contract.date).format('MMM DD, YYYY')} </div>
                     <p className='font-semibold mt-4'> Copyright of Usernames </p>
                     <p>
@@ -137,8 +137,8 @@ export default function ContractView() {
                                     usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
                                         <div>{index + 1}.</div>
                                         <div>
-                                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{keyword.username}</span></p>
-                                            <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{keyword.link}</span></p>
+                                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.username}</span></p>
+                                            <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.link}</span></p>
                                         </div>
                                     </div>)
                                 }
@@ -146,7 +146,7 @@ export default function ContractView() {
                         </div>
                         <div className='flex gap-2 flex-col'>
                             <p className='font-semibold'> Social Media Username: </p>
-                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>mandrill</span></p>
+                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>mandrill</span></p>
                         </div>
                     </div>
                 </div>
