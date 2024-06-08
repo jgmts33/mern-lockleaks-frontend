@@ -125,7 +125,7 @@ export default function FreeTrial() {
               <p className='text-2xl'>Important Notice:</p>
             </div>
             <p className='text-lg font-light mt-4 mb-10'>
-              These features are for the trial version only. The LockLeaks team will handle strictly 5 takedowns from Search Engines! To benefit from all features, please purchase a subscription!
+              These features are for the trial version only. The Lock Leaks team will handle strictly 5 takedowns from Search Engines! To benefit from all features, please purchase a subscription!
             </p>
           </div>
         </div>

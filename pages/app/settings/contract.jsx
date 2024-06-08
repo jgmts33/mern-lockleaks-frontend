@@ -11,8 +11,11 @@ import Image from 'next/image';
 import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import { DownloadIcon } from '@/components/utils/Icons';
+import { usePDF } from 'react-to-pdf';
 
 export default function ContractView() {
+
+    const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
 
     const userInfo = useSelector(info);
     const router = useRouter();
@@ -25,23 +28,23 @@ export default function ContractView() {
     const CONTENT = [
         {
             title: 'Services Provided:',
-            content: 'LockLeaks agrees to provide the Client with access to its platform and features. The Client agrees to utilize these services in accordance with the terms outlined here in.'
+            content: 'Lock Leaks agrees to provide the Client with access to its platform and features. The Client agrees to utilize these services in accordance with the terms outlined here in.'
         },
         {
             title: 'Ownership and Authorization:',
-            content: 'The Client acknowledges that all content posted or hosted on LockLeaks is subject to copyright laws. By using the services provided, the Client affirms that they have the legal authority to post or host the content and grant authorization to LockLeaks.'
+            content: 'The Client acknowledges that all content posted or hosted on Lock Leaks is subject to copyright laws. By using the services provided, the Client affirms that they have the legal authority to post or host the content and grant authorization to Lock Leaks.'
         },
         {
             title: 'DMCA Authorization:',
-            content: 'By accepting this contract, the Client authorizes LockLeaks to act on their behalf for Digital Millennium Copyright Act (DMCA) compliance. Any copyright infringement notices or inquiries should be directed to LockLeaks at dmca@lockleaks.com.'
+            content: 'By accepting this contract, the Client authorizes Lock Leaks to act on their behalf for Digital Millennium Copyright Act (DMCA) compliance. Any copyright infringement notices or inquiries should be directed to Lock Leaks at dmca@lockleaks.com.'
         },
         {
             title: 'Data Handling and Privacy:',
-            content: 'LockLeaks agrees to handle all personal data provided by the Client in accordance with its Privacy Policy.'
+            content: 'Lock Leaks agrees to handle all personal data provided by the Client in accordance with its Privacy Policy.'
         },
         {
             title: 'Contract Parties:',
-            content: 'This Agreement is between the Client and AD BOOST SRL, the entity that owns and operates the LockLeaks platform.'
+            content: 'This Agreement is between the Client and AD BOOST SRL, the entity that owns and operates the Lock Leaks platform.'
         },
         {
             title: 'Termination of Agreement:',
@@ -49,7 +52,7 @@ export default function ContractView() {
         },
         {
             title: 'Governing Law:',
-            content: 'This Agreement shall be governed by and construed in accordance with the laws of [Romania]. IN WITNESS WHEREOF, the parties hereto have executed this Agreement as of the Effective Date.'
+            content: 'This Agreement shall be governed by and construed in accordance with the laws of Romania. IN WITNESS WHEREOF, the parties hereto have executed this Agreement as of the Effective Date.'
         }
     ]
 
@@ -75,7 +78,7 @@ export default function ContractView() {
     }, [userInfo]);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
+        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full" ref={targetRef}>
             <div className='max-lg:mx-auto'>
                 <div className='flex gap-16 items-center'>
                     <div><span className='font-extrabold text-lg'>Lock Leaks Contract Agreement</span></div>
@@ -166,6 +169,7 @@ export default function ContractView() {
                 <Button
                     radius="lg"
                     className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white px-7 text-sm"
+                    onClick={() => toPDF()}
                 >
                     <span>{icons.downloadIcon}</span><span> DOWNLOAD CONTRACT</span>
                 </Button>

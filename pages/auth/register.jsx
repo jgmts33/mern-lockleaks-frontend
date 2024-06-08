@@ -229,10 +229,10 @@ export default function Register() {
                         }
                         <div className="flex flex-col gap-2 text-[#CCCDD0]">
                             <Checkbox isSelected={isagreeSelected} onValueChange={(value) => setIsAgreeSelected(value)} radius="none">
-                                <p className='font-light text-xs pt-3 pl-2'>I consent to receive valuable updates from LockLeaks and acknowledge that I can unsubscribe at any time. No spam, guaranteed.</p>
+                                <p className='font-light text-xs pt-3 pl-2'>I consent to receive valuable updates from Lock Leaks and acknowledge that I can unsubscribe at any time. No spam, guaranteed.</p>
                             </Checkbox>
                             <Checkbox isSelected={isTermSelected} onValueChange={(value) => setIsTermSelected(value)} radius="none">
-                                <span className='font-light text-xs pl-2'>I agree to LockLeaks's</span> <Link href='/terms-of-service' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
+                                <span className='font-light text-xs pl-2'>I agree to Lock Leaks's</span> <Link href='/terms-of-service' className='text-white' underline='always'><span className='font-medium text-xs'>Terms of Service</span></Link>
                             </Checkbox>
                             {
                             errors.terms ?

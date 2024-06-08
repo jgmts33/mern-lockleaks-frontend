@@ -51,7 +51,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
   }, [email]);
 
   return (
-    <div className='w-full bg-black px-10 relative'>
+    <div className='w-full bg-black px-10 relative z-10'>
       <div className='max-w-[1512px] mx-auto relative z-10'>
         <div className='flex items-start justify-between text-large font-semibold text-[17px] py-16 max-lg:flex-col gap-10'>
           <div className='flex flex-col text-white font-light gap-2'>
@@ -119,7 +119,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
               <p className='notranslate'>AD BOOST SRL</p>
               <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
               <p className='notranslate'>Register Code (CUI): 48091747</p>
-              <p className='notranslate'>VAT: RO 48091747</p>
+              <p className='notranslate'>VAT: RO48091747</p>
             </div>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
             <Link href={"https://www.twitter.com/@lockleaks"} className='!no-underline !text-white'>{icons.twitter}</Link>
             <Link href={"https://linkedin.com/@lockleaks"} className='!no-underline !text-white'>{icons.linkedin}</Link>
             <Link href={"https://www.facebook.com/lockleaks"} className='!no-underline !text-white'>{icons.facebook}</Link>
-            <Link href={"https://www.reddit.com/r/LockLeaks"} className='!no-underline !text-white'>{icons.redit}</Link>
+            <Link href={"https://www.reddit.com/r/lockLeaks"} className='!no-underline !text-white'>{icons.redit}</Link>
           </div>
         </div>
       </div>

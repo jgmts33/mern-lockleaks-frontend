@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
                 {/* This section for define privacy policy content*/}
 
                 <div className='mt-10'>
-                    <p>Welcome to LockLeaks, operated by AD BOOST SRL ("LockLeaks," "we," "us," or "our"). We are dedicated to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices regarding your personal information, please contact us at support@lockleaks.com.</p>
+                    <p>Welcome to Lock Leaks, operated by AD BOOST SRL ("Lock Leaks," "we," "us," or "our"). We are dedicated to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices regarding your personal information, please contact us at support@lockleaks.com.</p>
                     <p>This privacy notice describes how we may use your information if you:</p>
                     <ul className='list-disc ml-4 my-4'>
                         <li>
@@ -258,7 +258,7 @@ export default function PrivacyPolicy() {
                             <p className='text-[#F68171] font-medium text-[22px] -ml-5 pb-3 uppercase'>15. How can you contact us about this notice?</p>
                             <p>If you have any questions or concerns about this privacy notice or our data practices, please don't hesitate to contact our Data Protection Officer (DPO), Administrator, by email at support@lockleaks.com, or by postal mail at:</p>
                             <br />
-                            <p>LockLeaks,</p>
+                            <p>Lock Leaks,</p>
                             <p>Attn: Data Protection Officer,</p>
                             <p>[Your Address],</p>
                             <p>Romania.</p>

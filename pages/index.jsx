@@ -14,20 +14,20 @@ export default function HomePage() {
   const router = useRouter();
 
   const icons = {
-    left: <ChevronLeft/>,
-    right: <ChevronRight/>,
-    shine: <Shine/>,
-    fan: <Fan/>,
-    lock: <Lock/>,
-    support: <Support/>,
-    thumbup: <ThumbUp/>,
-    protect: <Protect/>,
-    star: <Star/>,
-    twitter: <Twitter/>,
-    success: <IconSuccess/>,
-    chat: <Chat/>,
-    profile: <Profile/>,
-    tip: <Tip/>,
+    left: <ChevronLeft />,
+    right: <ChevronRight />,
+    shine: <Shine />,
+    fan: <Fan />,
+    lock: <Lock />,
+    support: <Support />,
+    thumbup: <ThumbUp />,
+    protect: <Protect />,
+    star: <Star />,
+    twitter: <Twitter />,
+    success: <IconSuccess />,
+    chat: <Chat />,
+    profile: <Profile />,
+    tip: <Tip />,
   };
 
   const assistSecionItems = [
@@ -84,7 +84,7 @@ export default function HomePage() {
           <li>Tiktok</li>
           <li>Instagram</li>
         </ul>
-        <p>Sur support team remains available seven days a week via live chat to extend further assistance.</p>
+        <p>Our support team remains available seven days a week via live chat to extend further assistance.</p>
       </div>,
       img: "assets/services/personal-agent.svg"
     },
@@ -97,11 +97,9 @@ export default function HomePage() {
           <li>Instagram</li>
           <li>X / Twitter</li>
           <li>TikTok</li>
-          <li>Twitter</li>
           <li>YouTube</li>
           <li>Telegram</li>
           <li>Facebook</li>
-          <li>Discord</li>
         </ul>
       </div>,
       img: "assets/services/impersonation.svg"
@@ -308,7 +306,7 @@ export default function HomePage() {
                         return (
                           <div
                             key={index}
-                            className='w-[365px] relative h-[315px] cursor-pointer max-md:w-[320px]'
+                            className='w-[365px] relative h-[315px] cursor-pointer max-md:w-[320px] z-10'
                             onMouseEnter={() => setIsFlipped(index)}
                             onMouseLeave={() => setIsFlipped(-1)}
                           >
@@ -337,7 +335,7 @@ export default function HomePage() {
                         return (
                           <div
                             key={index}
-                            className='card w-[365px] max-md:w-[320px] relative h-[315px] cursor-pointer'
+                            className='card w-[365px] max-md:w-[320px] relative h-[315px] cursor-pointer z-10'
                             onMouseEnter={() => setIsFlipped(index + 2)}
                             onMouseLeave={() => setIsFlipped(-1)}
                           >
@@ -363,16 +361,16 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl z-[5]' />
           </div>
         </div>
 
         {/* This section for define we're ready to assist*/}
 
         <div className='max-lg:px-3 relative'>
-          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl' />
-          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-sm:mt-24 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8">
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 right-0 bg-[#362666] bg-opacity-5 blur-3xl z-[5]' />
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='max-xl:hidden absolute top-0 left-0 bg-[#362666] bg-opacity-5 blur-3xl z-[5]' />
+          <div className="flex flex-col w-full p-20 max-md:text-[20px] max-md:p-10 max-sm:p-0 mt-32 max-sm:mt-24 max-w-[1100px] itmes-center mx-auto justify-center flex-wrap text-center gap-8 relative z-10">
             <span className='font-medium text-5xl mx-auto text-white max-w-[600px] max-lg:text-3xl'>OUR SERVICES FOR YOUR BENEFIT</span>
             <div className="grid grid-cols-4 gap-x-3 max-lg:flex-col max-w-[700px] mx-auto lg:hidden">
               {
@@ -382,7 +380,7 @@ export default function HomePage() {
                       key={index}
                       radius="lg"
                       variant={selectedServiceIndex == index ? 'solid' : 'faded'}
-                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-transparent border border-white/10 bg-opacity-20") + "  outline-none text-white shadow-full p-8 max-md:px-7 mt-4"}
+                      className={(selectedServiceIndex == index ? "bg-gradient-to-tr from-purple-light to-purple-weight" : "bg-transparent border border-white/10 bg-opacity-20") + "  outline-none text-white shadow-full p-8 max-md:px-7 mt-4 relative z-10"}
                       onClick={() => setSelectedServiceIndex(index)}
                     >
                       <Image src={service.img} width={30} height={30} alt='service' />
@@ -391,7 +389,7 @@ export default function HomePage() {
                 })
               }
             </div>
-            <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col max-lg:hidden">
+            <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col max-lg:hidden z-10">
               {
                 services.map((service, index) => {
                   return (
@@ -414,9 +412,9 @@ export default function HomePage() {
           {
             services.map((service, service_index) => {
               return (
-                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between max-lg:flex-col'}>
+                <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between max-lg:flex-col relative z-10'}>
                   <Image src={service.img} width={150} height={150} alt='services' className='max-lg:hidden' />
-                  <div className='max-w-[822px] w-full bg-transparent border border-gray-600 bg-opacity-60 rounded-3xl pt-10'>
+                  <div className='max-w-[822px] w-full bg-transparent border border-gray-600 bg-opacity-60 rounded-3xl pt-10 relative z-10'>
                     <div className='flex justify-center items-center'><span className='font-medium text-3xl text-center'>{service.name}</span></div>
                     <span className='font-medium text-lg'>{service.description}</span>
                   </div>
@@ -425,7 +423,9 @@ export default function HomePage() {
             })
           }
         </div>
-        <div className='max-lg:px-3 mx-auto'>
+        <div className='max-lg:px-3 mx-auto relative'>
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-96 -left-56 bg-[#0d091a] blur-3xl' />
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -bottom-96 right-0 bg-[#0d091a] blur-3xl' />
           <div className="mt-24 max-lg:text-center mx-auto max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative p-10">
             <div className='py-8'>
               <p className='font-medium text-5xl max-lg:text-4xl max-lg:leading-10 max-xl:text-4xl uppercase'>Securing Your Brand:</p>
@@ -451,8 +451,8 @@ export default function HomePage() {
 
         {/* This section for define support video*/}
 
-        {functionalCookieAllowed ? <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3">
-          <video controls preload="none" className='rounded-xl w-full'>
+        {functionalCookieAllowed ? <div className="mt-32 max-sm:mt-20 outline-none rounded-2xl container mx-auto flex justify-between items-center gap-8 max-md:px-3 z-10 relative">
+          <video controls preload="none" className='rounded-xl w-full z-10 relative'>
             <source src="/path/to/video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -460,17 +460,19 @@ export default function HomePage() {
 
         {/* This section for define we're ready to assist*/}
 
-        <div className="max-lg:flex-col container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24 max-sm:mt-20">
+        <div className="max-lg:flex-col container p-15 flex mx-auto justify-center flex-wrap text-center gap-16 mt-24 max-sm:mt-20 relative">
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -bottom-96 -left-56 bg-[#0d091a] blur-3xl z-[5]' />
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-96 right-0 bg-[#0d091a] blur-3xl z-[5]' />
           {
             percentDescription.map((item, index) => {
               return (
                 item.bgColor == true ?
-                  <div key={index}>
+                  <div key={index} className='z-10 relative'>
                     <p className='font-medium text-5xl bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent max-lg:text-4xl'>{item.title}</p>
                     <p className='font-normal text-lg'>{item.content}</p>
                   </div>
                   :
-                  <div key={index}>
+                  <div key={index} className='z-10 relative'>
                     <p className='font-medium text-5xl max-lg:text-4xl'>{item.title}</p>
                     <p className='font-normal text-lg'>{item.content}</p>
                   </div>
@@ -481,7 +483,7 @@ export default function HomePage() {
 
         {/* This section for define experience our rapid service*/}
 
-        <div className='max-lg:px-3'>
+        <div className='max-lg:px-3 z-10 relative'>
           <div className="mt-24 max-sm:mt-20 outline-none flex flex-col rounded-3xl bg-[#0E142B] container justify-between items-center gap-8 relative p-10 mx-auto">
             <div className='flex justify-start w-full'>
               <div className='px-9 py-6 max-xl:w-full max-xl:text-center'>
@@ -493,8 +495,8 @@ export default function HomePage() {
                 <Image src="assets/setup/clock-message.svg" alt='clock-message' width={800} height={600} className="top-0 right-0 absolute" />
               </div>
             </div>
-            <Button   
-              radius="lg" 
+            <Button
+              radius="lg"
               className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full" size='lg'
               onPress={() => router.push("/freetrial")}
             >

@@ -8,7 +8,7 @@ export default function AboutUs() {
     const AboutUsHeader = [
         {
             title: "Mission and Vision",
-            content: "LockLeaks is committed to the protection and promotion of creative digital content. We endeavor to provide innovative solutions and high-quality services that guarantee the safety and security of our clients' online content. Our primary goal is to be a trusted partner devoted to safeguarding creativity and copyright rights."
+            content: "Lock Leaks is committed to the protection and promotion of creative digital content. We endeavor to provide innovative solutions and high-quality services that guarantee the safety and security of our clients' online content. Our primary goal is to be a trusted partner devoted to safeguarding creativity and copyright rights."
         }, {
             title: "Experience and Expertise",
             content: "Our team comprises experts with extensive experience in the copyright protection and digital security industry. We are dedicated to using our knowledge to find personalized and effective solutions for each client. Our expertise allows us to quickly identify and manage copyright infringements."

@@ -38,7 +38,7 @@ export default function DeleteData() {
 
     const DeleteDataTitle = {
         title: "Request for Personal Data Deletion",
-        sub_title: "We are committed to safeguarding your privacy and personal data. Please complete the form below to request the deletion of your personal data from the LockLeaks platform. A member of our team will process the request as promptly as possible"
+        sub_title: "We are committed to safeguarding your privacy and personal data. Please complete the form below to request the deletion of your personal data from the Lock Leaks platform. A member of our team will process the request as promptly as possible"
     }
 
     const CapacityMaking = [
@@ -147,7 +147,7 @@ export default function DeleteData() {
                     <p className='text-xs text-red-700 mt-2'>{warning.name}</p>
                 </div>
                 <div>
-                    <p>Email Address used for the LockLeaks account:</p>
+                    <p>Email Address used for the Lock Leaks account:</p>
                     <input
                         type='text'
                         placeholder='Type here'

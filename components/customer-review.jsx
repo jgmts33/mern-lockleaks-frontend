@@ -9,16 +9,16 @@ import { getCustomerReviews } from '@/axios/customer-review';
 export default function CustomerReview() {
 
     const icons = {
-        left: <ChevronLeft/>,
-        right: <ChevronRight/>,
-        star: <Star/>,
-        telegram: <TelegramAlt/>,
-        discord: <DiscordAlt/>,
-        tiktok: <TiktokAlt/>,
-        instagram: <InstagramAlt/>,
-        facebook: <FacebookAlt/>,
-        reddit: <RedditAlt/>,
-        twitter: <TwitterXAlt/>,
+        left: <ChevronLeft />,
+        right: <ChevronRight />,
+        star: <Star />,
+        telegram: <TelegramAlt />,
+        discord: <DiscordAlt />,
+        tiktok: <TiktokAlt />,
+        instagram: <InstagramAlt />,
+        facebook: <FacebookAlt />,
+        reddit: <RedditAlt />,
+        twitter: <TwitterXAlt />,
     };
 
     const [list, setList] = useState([]);
@@ -38,7 +38,9 @@ export default function CustomerReview() {
     return (
         <div className='container relative text-white max-md:max-w-[650px] mx-auto w-[calc(100vw-50px)] mt-10 max-sm:mt-20 mb-5 px-2'>
             <p className='font-medium text-5xl max-xl:text-[30px] max-xl:text-center'>Customer Reviews</p>
-            <div className="mt-10 relative">
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -bottom-96 -left-56 bg-[#0d091a] blur-3xl z-[5]' />
+            <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-96 right-0 bg-[#0d091a] blur-3xl z-[5]' />
+            <div className="mt-10 relative z-10">
                 <Swiper
                     slidesPerView={3}
                     centeredSlides={true}
@@ -152,7 +154,7 @@ export default function CustomerReview() {
                                         : <></>
                                 }
                             </div>
-                            <p className='text-base font-normal opacity-80 mt-4 whitespace-normal break-words h-[50px] mb-8 overflow-hidden text-ellipsis'>{item.content.slice(0,30)}</p>
+                            <p className='text-base font-normal opacity-80 mt-4 whitespace-normal break-words h-[50px] mb-8 overflow-hidden text-ellipsis'>{item.content.slice(0, 30)}</p>
                         </div></SwiperSlide>)}
                 </Swiper>
             </div>
