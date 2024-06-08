@@ -149,7 +149,7 @@ export default function Pricing() {
             adult_analyze_status: true,
             forum_analyze_status: true,
             file_analyze_status: true,
-            AI_analyze_status: true,
+            AI_analyze_status: false,
             monthly_analyze_status: false,
             recovery_report_status: false,
             history_status: false,
