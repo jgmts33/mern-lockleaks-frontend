@@ -62,6 +62,7 @@ export default function Pricing() {
             AI_analyze: "Face Recognition AI Analyzer & Removal Report",
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
+            copyright_certification: "Copyright Certification",
             social_analyze_status: false,
             social_submit_status: false,
             adult_analyze_status: false,
@@ -71,6 +72,7 @@ export default function Pricing() {
             monthly_analyze_status: false,
             recovery_report_status: false,
             history_status: false,
+            copyright_certification_status: false,
             add_content: "px-3"
         }, {
             title: "STAR",
@@ -101,6 +103,7 @@ export default function Pricing() {
             AI_analyze: "Face Recognition AI Analyzer & Removal Report",
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
+            copyright_certification: "Copyright Certification",
             bing_removal_report_status: true,
             social_analyze_status: true,
             social_submit_status: true,
@@ -111,6 +114,7 @@ export default function Pricing() {
             monthly_analyze_status: true,
             recovery_report_status: true,
             history_status: true,
+            copyright_certification_status: true,
             add_content: "bg-opacity-50 bg-black/40 rounded-[20px] px-3 py-3"
         },
         {
@@ -143,6 +147,7 @@ export default function Pricing() {
             AI_analyze: "Face Recognition AI Analyzer & Removal Report",
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
+            copyright_certification: "Copyright Certification",
             bing_removal_report_status: true,
             social_analyze_status: false,
             social_submit_status: true,
@@ -152,6 +157,7 @@ export default function Pricing() {
             AI_analyze_status: false,
             monthly_analyze_status: false,
             recovery_report_status: false,
+            copyright_certification_status: false,
             history_status: false,
             add_content: "px-3"
         }
@@ -229,6 +235,10 @@ export default function Pricing() {
         {
             title: "Usernames History Content Recovery & Removal Report",
             content: "The 'Usernames History Content Recovery & Removal Report' offers a detailed account of the recovery and removal process for content associated with multiple usernames. Utilize this report to track the recovery and removal of unauthorized or unwanted content linked to specific usernames across various platforms. Gain insights into the effectiveness of content removal efforts and take proactive steps to safeguard your online image and security.popups finished."
+        },
+        {
+            title: "Copyright Certification",
+            content: "We assist you in becoming a registered copyright holder, ensuring that your content is legally recognized as yours. Your copyright certificate will be valid as evidence in court in 183 countries."
         },
     ]
 
@@ -569,6 +579,21 @@ export default function Pricing() {
                                                         </div>
                                                     </div>
                                                     <div className='flex flex-wrap'>{item.history_content}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.copyright_certification)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.copyright_certification_status
+                                                                    ?
+                                                                    <div><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.copyright_certification}</div>
                                                 </div>
                                             </div>
                                         </div>
