@@ -63,7 +63,7 @@ export default function Pricing() {
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             social_analyze_status: false,
-            social_submit_status: true,
+            social_submit_status: false,
             adult_analyze_status: false,
             forum_analyze_status: false,
             file_analyze_status: false,
@@ -144,12 +144,12 @@ export default function Pricing() {
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             bing_removal_report_status: true,
-            social_analyze_status: true,
+            social_analyze_status: false,
             social_submit_status: true,
             adult_analyze_status: true,
-            forum_analyze_status: false,
-            file_analyze_status: false,
-            AI_analyze_status: false,
+            forum_analyze_status: true,
+            file_analyze_status: true,
+            AI_analyze_status: true,
             monthly_analyze_status: false,
             recovery_report_status: false,
             history_status: false,
@@ -498,21 +498,6 @@ export default function Pricing() {
                                                 <div className='flex gap-3 items-center max-sm:gap-2'>
                                                     <div className='cusor-point flex'>
                                                         <div className='flex items-center w-10 h-5'>
-                                                            <div onClick={() => selectMoreDetails(item.social_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
-                                                            {
-                                                                item.social_analyze_status
-                                                                    ?
-                                                                    <div ><Image src={Complete} width={25} height={25} alt=''></Image></div>
-                                                                    :
-                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                    <div className='flex flex-wrap'>{item.social_analyze}</div>
-                                                </div>
-                                                <div className='flex gap-3 items-center max-sm:gap-2'>
-                                                    <div className='cusor-point flex'>
-                                                        <div className='flex items-center w-10 h-5'>
                                                             <div onClick={() => selectMoreDetails(item.social_submit)}><Image src={Info} width={20} height={20} alt=''></Image></div>
                                                             {
                                                                 item.social_submit_status
@@ -524,6 +509,21 @@ export default function Pricing() {
                                                         </div>
                                                     </div>
                                                     <div className='flex flex-wrap'>{item.social_submit}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.social_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.social_analyze_status
+                                                                    ?
+                                                                    <div ><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.social_analyze}</div>
                                                 </div>
                                                 <div className='flex gap-3 items-center max-sm:gap-2'>
                                                     <div className='cusor-point flex'>

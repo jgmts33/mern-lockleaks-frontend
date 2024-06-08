@@ -11,11 +11,8 @@ import Image from 'next/image';
 import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import { DownloadIcon } from '@/components/utils/Icons';
-import { usePDF } from 'react-to-pdf';
 
 export default function ContractView() {
-
-    const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
 
     const userInfo = useSelector(info);
     const router = useRouter();
@@ -65,7 +62,11 @@ export default function ContractView() {
         else {
             router.push("/app/settings");
         }
-    }, [userInfo])
+    }, [userInfo]);
+
+    const handleDownloadContract = async () => {
+        
+    }
 
     useEffect(() => {
         getUsernamesInfo();
@@ -94,7 +95,7 @@ export default function ContractView() {
                     </Button>
                 </div>
             </div>
-            <div ref={targetRef} className='w-full flex flex-col'>
+            <div className='w-full flex flex-col'>
                 <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5 mt-5">
                     {
                         CONTENT.map((item, index) => <div className='space-y-2' key={index}>
@@ -171,7 +172,7 @@ export default function ContractView() {
                 <Button
                     radius="lg"
                     className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white px-7 text-sm"
-                    onClick={() => toPDF()}
+                    onClick={handleDownloadContract}
                 >
                     <span>{icons.downloadIcon}</span><span> DOWNLOAD CONTRACT</span>
                 </Button>
