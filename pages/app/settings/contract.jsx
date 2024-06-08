@@ -15,7 +15,7 @@ import { usePDF } from 'react-to-pdf';
 
 export default function ContractView() {
 
-    const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
+    const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
 
     const userInfo = useSelector(info);
     const router = useRouter();
@@ -78,7 +78,7 @@ export default function ContractView() {
     }, [userInfo]);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full" ref={targetRef}>
+        <div className="flex flex-col px-5 py-5 text-white max-lg:mx-auto w-full">
             <div className='max-lg:mx-auto'>
                 <div className='flex gap-16 items-center'>
                     <div><span className='font-extrabold text-lg'>Lock Leaks Contract Agreement</span></div>
@@ -94,73 +94,75 @@ export default function ContractView() {
                     </Button>
                 </div>
             </div>
-            <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5 mt-5">
-                {
-                    CONTENT.map((item, index) => <div className='space-y-2' key={index}>
-                        <p className='font-semibold text-lg bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{index + 1}. {item.title}</p>
-                        <p>{item.content}</p>
-                    </div>)
-                }
-            </div>
-            <div className='grid grid-cols-2 max-md:grid-cols-1 gap-6 my-6'>
-                <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
-                    <p className='font-semibold text-lg'>For Lock Leaks:</p>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900'> <strong>Full Name:</strong> <span className='notranslate'>Cosmin Ridel</span> </div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> <span className='notranslate'>Cosmin Ridel</span></div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Date:</strong> {moment(userInfo?.contract.date).format('MMM DD, YYYY')} </div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 notranslate'>dmca@lockleaks.com </div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 notranslate'>lockleaks.com</div>
-                    <Image
-                        src={Logo}
-                        width={150}
-                        height={150}
-                        className='object-cover rounded-full'
-                    />
-                    <Image
-                        src={Stamp}
-                        width={100}
-                        height={100}
-                        className='object-cover rounded-full'
-                    />
-                    <div className='mt-6 text-sm italic space-y-2'>
-                        <p className='notranslate'>AD BOOST SRL</p>
-                        <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
-                        <p className='notranslate'>Register Code (CUI): 48091747</p>
-                        <p className='notranslate'>VAT: RO 48091747</p>
-                    </div>
+            <div ref={targetRef} className='w-full flex flex-col bg-[#020615]'>
+                <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5 mt-5">
+                    {
+                        CONTENT.map((item, index) => <div className='space-y-2' key={index}>
+                            <p className='font-semibold text-lg bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{index + 1}. {item.title}</p>
+                            <p>{item.content}</p>
+                        </div>)
+                    }
                 </div>
-                <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
-                    <p className='font-semibold text-lg '>For <span className='notranslate'>{userInfo?.name}:</span></p>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '> <strong>Full Name:</strong> <span className='notranslate'>{userInfo?.name} </span></div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> <span className='notranslate'>{userInfo?.name} </span></div>
-                    <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Date:</strong> {moment(userInfo?.contract.date).format('MMM DD, YYYY')} </div>
-                    <p className='font-semibold mt-4'> Copyright of Usernames </p>
-                    <p>
-                        The Customer acknowledges and agrees that all usernames listed in the attached schedule (hereinafter referred to as the "Username List")
-                        are the property of their respective copyright holders. Lock Leaks will assist the
-                        Customer in reporting any unauthorized use or illegal postings involving these
-                        usernames in accordance with the Digital Millennium Copyright Act (DMCA). The Customer
-                        grants Lock Leaks the authority to act on their behalf in submitting DMCA takedown
-                        notices and other necessary actions to protect their rights.
-                    </p>
-                    <div className='mt-2 grid grid-cols-2 max-sm:grid-cols-1 gap-4'>
-                        <div className='flex gap-2 flex-col'>
-                            <p className='font-semibold'> Usernames List: </p>
-                            <ScrollShadow className='max-h-60'>
-                                {
-                                    usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
-                                        <div>{index + 1}.</div>
-                                        <div>
-                                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
-                                            <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.link}</span></p>
-                                        </div>
-                                    </div>)
-                                }
-                            </ScrollShadow>
+                <div className='grid grid-cols-2 max-md:grid-cols-1 gap-6 my-6'>
+                    <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
+                        <p className='font-semibold text-lg'>For Lock Leaks:</p>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900'> <strong>Full Name:</strong> <span className='notranslate'>Cosmin Ridel</span> </div>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> <span className='notranslate'>Cosmin Ridel</span></div>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Date:</strong> {moment(userInfo?.contract.date).format('MMM DD, YYYY')} </div>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 notranslate'>dmca@lockleaks.com </div>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 notranslate'>lockleaks.com</div>
+                        <Image
+                            src={Logo}
+                            width={150}
+                            height={150}
+                            className='object-cover rounded-full'
+                        />
+                        <Image
+                            src={Stamp}
+                            width={100}
+                            height={100}
+                            className='object-cover rounded-full'
+                        />
+                        <div className='mt-6 text-sm italic space-y-2'>
+                            <p className='notranslate'>AD BOOST SRL</p>
+                            <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
+                            <p className='notranslate'>Register Code (CUI): 48091747</p>
+                            <p className='notranslate'>VAT: RO 48091747</p>
                         </div>
-                        <div className='flex gap-2 flex-col'>
-                            <p className='font-semibold'> Social Media Username: </p>
-                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> mandrill</span></p>
+                    </div>
+                    <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
+                        <p className='font-semibold text-lg '>For <span className='notranslate'>{userInfo?.name}:</span></p>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '> <strong>Full Name:</strong> <span className='notranslate'>{userInfo?.name} </span></div>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Signature:</strong> <span className='notranslate'>{userInfo?.name} </span></div>
+                        <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Date:</strong> {moment(userInfo?.contract.date).format('MMM DD, YYYY')} </div>
+                        <p className='font-semibold mt-4'> Copyright of Usernames </p>
+                        <p>
+                            The Customer acknowledges and agrees that all usernames listed in the attached schedule (hereinafter referred to as the "Username List")
+                            are the property of their respective copyright holders. Lock Leaks will assist the
+                            Customer in reporting any unauthorized use or illegal postings involving these
+                            usernames in accordance with the Digital Millennium Copyright Act (DMCA). The Customer
+                            grants Lock Leaks the authority to act on their behalf in submitting DMCA takedown
+                            notices and other necessary actions to protect their rights.
+                        </p>
+                        <div className='mt-2 grid grid-cols-2 max-sm:grid-cols-1 gap-4'>
+                            <div className='flex gap-2 flex-col'>
+                                <p className='font-semibold'> Usernames List: </p>
+                                <ScrollShadow className='max-h-60'>
+                                    {
+                                        usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
+                                            <div>{index + 1}.</div>
+                                            <div>
+                                                <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
+                                                <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.link}</span></p>
+                                            </div>
+                                        </div>)
+                                    }
+                                </ScrollShadow>
+                            </div>
+                            <div className='flex gap-2 flex-col'>
+                                <p className='font-semibold'> Social Media Username: </p>
+                                <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> mandrill</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
