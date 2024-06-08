@@ -94,7 +94,7 @@ export default function ContractView() {
                     </Button>
                 </div>
             </div>
-            <div ref={targetRef} className='w-full flex flex-col bg-[#020615]'>
+            <div ref={targetRef} className='w-full flex flex-col'>
                 <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5 mt-5">
                     {
                         CONTENT.map((item, index) => <div className='space-y-2' key={index}>

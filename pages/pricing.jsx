@@ -305,9 +305,9 @@ export default function Pricing() {
                     {
                         pricingContent.map((item, index) => {
                             return (
-                                <div key={index} className={'bg-gradient-to-tr  rounded-3xl max-xl:flex-col max-w-[544px] max-xl:mx-auto max-xl:w-full cursor-pointer px-3 ' + item.bg_color + " " + item.add_propertity + " max-xl:mt-4 "}>
+                                <div key={index} className={'bg-gradient-to-tr relative z-10 rounded-3xl max-xl:flex-col max-w-[544px] max-xl:mx-auto max-xl:w-full cursor-pointer px-3 ' + item.bg_color + " " + item.add_propertity + " max-xl:mt-4 "}>
                                     <div>
-                                        <div className='p-10'>
+                                        <div className='p-10 '>
                                             {
                                                 item.title == "STAR" ?
                                                     <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
@@ -347,7 +347,7 @@ export default function Pricing() {
                                                     </Button>
                                             }
                                         </div>
-                                        <div className={'flex flex-col gap-3 mb-1 ' + item.add_content}>
+                                        <div className={'flex flex-col gap-3 mb-1 relative ' + item.add_content}>
                                             <p className='font-semibold text-xl px-4'>USERNAMES : {item.user_name}</p>
                                             <div>
                                                 <Button radius="lg" className="w-full bg-gradient-to-br bg-transparent p-2 gap-5 hidden max-sm:block" size='md' onClick={() => { selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1) }}>
