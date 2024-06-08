@@ -191,7 +191,7 @@ export default function Dmcabadges() {
                             onClick={() => {
                               setTargetKeyword(null);
                               setTargetKeywordType("username")
-                              let _usernames = usernames.slice(0, -1);
+                              let _usernames = targetKeyword.update ? usernames.slice(0) : usernames.slice(0, -1);
                               setUsernames(_usernames);
                             }}
                           >

@@ -15,21 +15,21 @@ import { Crisp } from 'crisp-sdk-web';
 
 export default function Pricing() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const [isPricingSelected, setPricingSelected] = React.useState(true);
+    const [isPricingSelected, setPricingSelected] = React.useState('monthly');
     const [selectServiceList, setSelectServiceList] = React.useState(-1);
     const [selectMoreContent, setSelectMoreContent] = useState("");
 
     const router = useRouter();
 
     const icons = {
-        left: <ChevronLeft/>,
-        right: <ChevronRight/>,
-        shine: <Shine/>,
-        star: <Star/>,
-        arrowDown: <ArrowDown/>,
-        complete: () => <Complete/>,
-        uncomplete: () => <Uncomplete/>,
-        info: () => <Info/>,
+        left: <ChevronLeft />,
+        right: <ChevronRight />,
+        shine: <Shine />,
+        star: <Star />,
+        arrowDown: <ArrowDown />,
+        complete: () => <Complete />,
+        uncomplete: () => <Uncomplete />,
+        info: () => <Info />,
     };
 
     const pricingContent = [
@@ -54,14 +54,16 @@ export default function Pricing() {
             reverify_tool: "Re-verify & Re-analyzer Tool",
             google_removal_report: "Google Results, Images & Videos Removal Report",
             bing_removal_report: "Bing Results, Images & Videos Removal Report",
-            social_analyze: "Social Media Analyzer Tools & Removal Report",
             adult_analyze: "Adult Tubes Analyzer Tool & Removal Report",
             forum_analyze: "Forums Analyzer & Removal Report",
             file_analyze: "File Host Analyzer Tool & Removal Report",
+            social_analyze: "Social Media Analyzer Tools & Removal Report",
+            social_submit: "Social Media Submit & Removal Report",
             AI_analyze: "Face Recognition AI Analyzer & Removal Report",
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             social_analyze_status: false,
+            social_submit_status: true,
             adult_analyze_status: false,
             forum_analyze_status: false,
             file_analyze_status: false,
@@ -91,15 +93,17 @@ export default function Pricing() {
             reverify_tool: "Re-verify & Re-analyzer Tool",
             google_removal_report: "Google Results, Images & Videos Removal Report",
             bing_removal_report: "Bing Results, Images & Videos Removal Report",
-            social_analyze: "Social Media Analyzer Tools & Removal Report",
             adult_analyze: "Adult Tubes Analyzer Tool & Removal Report",
             forum_analyze: "Forums Analyzer & Removal Report",
             file_analyze: "File Host Analyzer Tool & Removal Report",
+            social_analyze: "Social Media Analyzer Tools & Removal Report",
+            social_submit: "Social Media Submit & Removal Report",
             AI_analyze: "Face Recognition AI Analyzer & Removal Report",
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             bing_removal_report_status: true,
             social_analyze_status: true,
+            social_submit_status: true,
             adult_analyze_status: true,
             forum_analyze_status: true,
             file_analyze_status: true,
@@ -131,15 +135,17 @@ export default function Pricing() {
             reverify_tool: "Re-verify & Re-analyzer Tool",
             google_removal_report: "Google Results, Images & Videos Removal Report",
             bing_removal_report: "Bing Results, Images & Videos Removal Report",
-            social_analyze: "Social Media Analyzer Tools & Removal Report",
             adult_analyze: "Adult Tubes Analyzer Tool & Removal Report",
             forum_analyze: "Forums Analyzer & Removal Report",
             file_analyze: "File Host Analyzer Tool & Removal Report",
+            social_analyze: "Social Media Analyzer Tools & Removal Report",
+            social_submit: "Social Media Submit & Removal Report",
             AI_analyze: "Face Recognition AI Analyzer & Removal Report",
             monthly_analyze: "Monthly Report Data Analytics and Insights",
             history_content: "Usernames History Content Recovery & Removal Report",
             bing_removal_report_status: true,
             social_analyze_status: true,
+            social_submit_status: true,
             adult_analyze_status: true,
             forum_analyze_status: false,
             file_analyze_status: false,
@@ -193,10 +199,6 @@ export default function Pricing() {
             content: "The 'Bing Results, Images & Videos Removal Report' offers comprehensive documentation of the removal process for content across Bing search results, images, and videos. This report provides detailed insights into the status and outcomes of removal requests, enabling you to monitor the effectiveness of content removal efforts. Stay informed about the management of your online presence and ensure that unauthorized content is promptly addressed and removed from Bing's platforms."
         },
         {
-            title: "Social Media Analyzer Tools & Removal Report",
-            content: "The 'Social Media Analyzer Tools & Removal Report' provides a comprehensive analysis of your social media presence and offers insights into content removal processes. Utilize these tools to monitor mentions, engagements, and reviews across various social media platforms. Additionally, gain detailed documentation of the content removal process, ensuring that unauthorized or harmful content is swiftly addressed and removed from social media channels. Stay informed about your online reputation and take proactive steps to manage and protect your brand image effectively."
-        },
-        {
             title: "Adult Tubes Analyzer Tool & Removal Report",
             content: "The 'Adult Tubes Analyzer Tool & Removal Report' offers specialized analysis and documentation for content across adult tube websites. Utilize these tools to monitor and analyze your presence on adult platforms, including mentions, interactions, and reviews. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content from adult tube sites. Stay informed about your online presence in adult spaces and take proactive steps to manage and protect your content effectively."
         },
@@ -207,6 +209,14 @@ export default function Pricing() {
         {
             title: "File Host Analyzer Tool & Removal Report",
             content: "The 'File Host Analyzer Tool & Removal Report' offers comprehensive analysis and documentation for content hosted on file sharing platforms. Utilize these tools to monitor and analyze the distribution of your content across various file hosting services. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content from file hosting platforms. Stay informed about the distribution of your content and take proactive steps to protect your intellectual property rights and brand image."
+        },
+        {
+            title: "Social Media Analyzer Tools & Removal Report",
+            content: "The 'Social Media Analyzer Tools & Removal Report' provides a comprehensive analysis of your social media presence and offers insights into content removal processes. Utilize these tools to monitor mentions, engagements, and reviews across various social media platforms. Additionally, gain detailed documentation of the content removal process, ensuring that unauthorized or harmful content is swiftly addressed and removed from social media channels. Stay informed about your online reputation and take proactive steps to manage and protect your brand image effectively."
+        },
+        {
+            title: "Social Media Submit & Removal Report",
+            content: "The 'Social Media Submit & Removal Report' empowers users to manage their social media presence by providing detailed insights and tools for content removal. Users can manually report impersonator accounts they find, and our system will ensure these accounts are promptly reported to the respective social media platforms. Monitor mentions, engagements, and reviews across various channels, and stay informed about your online reputation. Protect your brand from fraudulent accounts, impersonators, and harassment on various platforms, ensuring a secure and positive online presence."
         },
         {
             title: "Face Recognition AI Analyzer & Removal Report",
@@ -271,10 +281,20 @@ export default function Pricing() {
                     <span className="font-medium text-5xl max-lg:text-4xl">PRICING TABLE</span>
                 </div>
                 <div className='bg-gradient-to-tr w-1/2 max-lg:w-full max-lg:mt-16 max-sm:flex-wrap max-sm:w-full mx-auto mt-20 from-gray-600/40 to-gray-800/40 p-1 border-gray-600 border rounded-[30px] max-w-[576px] gap-2 items-center container'>
-                    <Button radius="full" className={isPricingSelected ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c879e0] to-[#ce28dd] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"} onClick={() => setPricingSelected(true)} size='lg'>
+                    <Button
+                        radius="full"
+                        className={isPricingSelected == 'monthly' ? "bg-gradient-to-tr mx-auto w-1/2 from-[#c879e0] to-[#ce28dd] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" : "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"}
+                        onClick={() => setPricingSelected('monthly')}
+                        size='lg'
+                    >
                         <span>Bill Monthly</span>
                     </Button>
-                    <Button radius="full" className={isPricingSelected ? "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" : "bg-gradient-to-tr mx-auto w-1/2 from-[#c879e0] to-[#ce28dd] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"} onClick={() => setPricingSelected(false)} size='lg'>
+                    <Button
+                        radius="full"
+                        className={isPricingSelected == 'monthly' ? "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" : "bg-gradient-to-tr mx-auto w-1/2 from-[#c879e0] to-[#ce28dd] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"}
+                        onClick={() => setPricingSelected('quarterly')}
+                        size='lg'
+                    >
                         <span>Bill Quarterly</span>
                     </Button>
                 </div>
@@ -297,9 +317,9 @@ export default function Pricing() {
                                                     false
                                             }
                                             <p className='text-center font-medium text-6xl mt-10'>{item.title}</p>
-                                            <div className='mt-10 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{isPricingSelected ? item.monthly_price : item.yearly_price}</p><p className='pt-5'>{isPricingSelected ? "/MO" : "/3 MO"}</p></div>
+                                            <div className='mt-10 flex text-center justify-center'><p className='font-normal text-3xl'>$</p><p className='text-center font-normal text-5xl'>{isPricingSelected == 'monthly' ? item.monthly_price : item.yearly_price}</p><p className='pt-5'>{isPricingSelected ? "/MO" : "/3 MO"}</p></div>
                                             {
-                                                isPricingSelected != true ?
+                                                isPricingSelected == 'quarterly' ?
                                                     <div className='flex flex-col mt-10 text-center'>
                                                         <span className='font-normal text-3xl'>{item.discount}</span>
                                                         <span className='font-medium text-5xl max-sm:text-4xl'>{item.save_price}</span>
@@ -312,7 +332,7 @@ export default function Pricing() {
                                                         radius="lg"
                                                         className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
                                                         size='lg'
-                                                        onClick={() => router.push(`/checkout/buy?plan=${item.value}`)}
+                                                        onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
                                                     >
                                                         <span>BUY</span>
                                                     </Button>
@@ -321,19 +341,14 @@ export default function Pricing() {
                                                         radius="lg"
                                                         className="w-full mt-10 bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
                                                         size='lg'
-                                                        onClick={() => router.push(`/checkout/buy?plan=${item.value}`)}
+                                                        onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
                                                     >
                                                         <span>BUY</span>
                                                     </Button>
                                             }
                                         </div>
                                         <div className={'flex flex-col gap-3 mb-1 ' + item.add_content}>
-                                            <div className={'flex justify-between items-center z-10 px-4'}>
-                                                <p className='font-semibold text-xl'>USERNAMES : {item.user_name}</p>
-                                                <Button radius="full" className="w-1/3 bg-gradient-to-br from-gray-600/40 to-gray-800/40 p-2" size='md'>
-                                                    <span>ADD EXTRA</span>
-                                                </Button>
-                                            </div>
+                                            <p className='font-semibold text-xl px-4'>USERNAMES : {item.user_name}</p>
                                             <div>
                                                 <Button radius="lg" className="w-full bg-gradient-to-br bg-transparent p-2 gap-5 hidden max-sm:block" size='md' onClick={() => { selectServiceList != index ? setSelectServiceList(index) : setSelectServiceList(-1) }}>
                                                     <div className='flex items-center justify-center'>
@@ -438,21 +453,6 @@ export default function Pricing() {
                                                 <div className='flex gap-3 items-center max-sm:gap-2'>
                                                     <div className='cusor-point flex'>
                                                         <div className='flex items-center w-10 h-5'>
-                                                            <div onClick={() => selectMoreDetails(item.social_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
-                                                            {
-                                                                item.social_analyze_status
-                                                                    ?
-                                                                    <div ><Image src={Complete} width={25} height={25} alt=''></Image></div>
-                                                                    :
-                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                    <div className='flex flex-wrap'>{item.social_analyze}</div>
-                                                </div>
-                                                <div className='flex gap-3 items-center max-sm:gap-2'>
-                                                    <div className='cusor-point flex'>
-                                                        <div className='flex items-center w-10 h-5'>
                                                             <div onClick={() => selectMoreDetails(item.adult_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
                                                             {
                                                                 item.adult_analyze_status
@@ -494,6 +494,36 @@ export default function Pricing() {
                                                         </div>
                                                     </div>
                                                     <div className='flex flex-wrap'>{item.forum_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.social_analyze)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.social_analyze_status
+                                                                    ?
+                                                                    <div ><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.social_analyze}</div>
+                                                </div>
+                                                <div className='flex gap-3 items-center max-sm:gap-2'>
+                                                    <div className='cusor-point flex'>
+                                                        <div className='flex items-center w-10 h-5'>
+                                                            <div onClick={() => selectMoreDetails(item.social_submit)}><Image src={Info} width={20} height={20} alt=''></Image></div>
+                                                            {
+                                                                item.social_submit_status
+                                                                    ?
+                                                                    <div ><Image src={Complete} width={25} height={25} alt=''></Image></div>
+                                                                    :
+                                                                    <div><Image src={Uncomplete} width={25} height={25} alt=''></Image></div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div className='flex flex-wrap'>{item.social_submit}</div>
                                                 </div>
                                                 <div className='flex gap-3 items-center max-sm:gap-2'>
                                                     <div className='cusor-point flex'>

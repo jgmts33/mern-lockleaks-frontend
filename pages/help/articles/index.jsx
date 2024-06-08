@@ -9,6 +9,7 @@ import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { getHelpArticleByCategory, getHelpCategories } from '@/axios/help';
+import { Crisp } from 'crisp-sdk-web';
 
 export default function Categories() {
 
@@ -193,7 +194,12 @@ export default function Categories() {
                     <span className='max-sm:text-center max-md:mx-auto'>Contact our customer support team now.</span>
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
-                    <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" size='md'>
+                    <Button 
+                        radius="lg" 
+                        className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" 
+                        size='md'
+                        onPress={() => Crisp.chat.open()}
+                    >
                         <span>Chat Now</span>
                     </Button>
                 </div>

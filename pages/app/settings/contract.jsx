@@ -10,12 +10,17 @@ import { getUsernames } from '../../../axios/user';
 import Image from 'next/image';
 import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
+import { DownloadIcon } from '@/components/utils/Icons';
 
 export default function ContractView() {
 
     const userInfo = useSelector(info);
     const router = useRouter();
     const [usernames, setUsernames] = useState([]);
+
+    const icons = {
+        downloadIcon: <DownloadIcon />,
+    }
 
     const CONTENT = [
         {
@@ -114,6 +119,12 @@ export default function ContractView() {
                         height={100}
                         className='object-cover rounded-full'
                     />
+                    <div className='mt-6 text-sm italic space-y-2'>
+                        <p className='notranslate'>AD BOOST SRL</p>
+                        <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
+                        <p className='notranslate'>Register Code (CUI): 48091747</p>
+                        <p className='notranslate'>VAT: RO 48091747</p>
+                    </div>
                 </div>
                 <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
                     <p className='font-semibold text-lg '>For <span className='notranslate'>{userInfo?.name}:</span></p>
@@ -137,8 +148,8 @@ export default function ContractView() {
                                     usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
                                         <div>{index + 1}.</div>
                                         <div>
-                                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.username}</span></p>
-                                            <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.link}</span></p>
+                                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
+                                            <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.link}</span></p>
                                         </div>
                                     </div>)
                                 }
@@ -146,12 +157,19 @@ export default function ContractView() {
                         </div>
                         <div className='flex gap-2 flex-col'>
                             <p className='font-semibold'> Social Media Username: </p>
-                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>mandrill</span></p>
+                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> mandrill</span></p>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div className='w-full flex justify-center'>
+                <Button
+                    radius="lg"
+                    className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white px-7 text-sm"
+                >
+                    <span>{icons.downloadIcon}</span><span> DOWNLOAD CONTRACT</span>
+                </Button>
+            </div>
         </div>
     )
 }

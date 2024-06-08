@@ -13,7 +13,7 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { SelectSwitch, Shine, UnselectSwitch, Success } from '@/components/utils/Icons';
+import { SelectSwitch, Shine, UnselectSwitch, Success, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt } from '@/components/utils/Icons';
 import { createUsernames } from '@/axios/usernames';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { updatePaymentStatus } from '@/axios/user';
@@ -21,21 +21,53 @@ import { generateNewFanPaymentLink } from '@/axios/agency';
 
 import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
-import { getAccessToken } from '../../axios/token';
-import { checkDoubleUsername } from '../../axios/usernames';
+import { getAccessToken } from '@/axios/token';
+import { checkDoubleUsername } from '@/axios/usernames';
 
-export default function BUY() {
+const subscriptionDetails = {
+    starter: {
+        name: 'STARTER',
+        usernames: 1,
+        prices: {
+            monthly: 150,
+            quarterly: 405
+        }
+    },
+    pro: {
+        name: 'PRO',
+        usernames: 3,
+        prices: {
+            monthly: 200,
+            quarterly: 510
+        }
+    },
+    star: {
+        name: 'STAR',
+        usernames: 5,
+        prices: {
+            monthly: 350,
+            quarterly: 840
+        }
+    }
+}
+
+export default function Checkout() {
 
     const userInfo = useSelector(info);
     const searchParams = useSearchParams();
     const plan = searchParams.get('plan');
+    const period = searchParams.get('period');
     const ButtonContent = [
-        "2 (+$40)", "3 (+$80)", "4 (+$120)", "CUSTOM"
+        "1 (+$15)", "2 (+$30)", "3 (+$45)", "CUSTOM"
     ]
 
     const icons = {
         shine: <Shine />,
         success: <Success />,
+        tiktokAlt: <TiktokAlt />,
+        instagramAlt: <InstagramAlt />,
+        facebookAlt: <FacebookAlt />,
+        redditAlt: <RedditAlt />,
     };
 
     const router = useRouter();
@@ -43,8 +75,8 @@ export default function BUY() {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
     const [step, setStep] = useState(0);
-    const [usernameCount, setUsernameCount] = useState(1);
-    const [customUsernameCount, setCustomUsernameCount] = useState(5);
+    const [extraUsernameCount, setExtraUsernameCount] = useState(0);
+    const [customUsernameCount, setCustomUsernameCount] = useState(4);
     const [targetKeyword, setTargetKeyword] = useState({
         username: '',
         link: '',
@@ -64,7 +96,7 @@ export default function BUY() {
     const [fanPaymentLink, setFanPaymentLink] = useState('');
 
     const handleSetUsernameCount = useCallback(() => {
-        setUsernameCount(customUsernameCount);
+        setExtraUsernameCount(customUsernameCount);
         onClose();
     }, [customUsernameCount]);
 
@@ -99,7 +131,7 @@ export default function BUY() {
             }
         }
         setIsUsernameLinkValidationProcessing(false);
-    }, [targetKeyword, usernames, targetKeywordIndex, usernameCount]);
+    }, [targetKeyword, usernames, targetKeywordIndex, extraUsernameCount]);
 
     const checkLinkValidation = useCallback(() => {
         var url = targetKeyword?.link || "";
@@ -116,7 +148,7 @@ export default function BUY() {
         setIsActionProcessing(true);
         const res = await generateNewFanPaymentLink({
             usernames,
-            amount: usernames.length * 40
+            amount: usernames.length * 15
         });
 
         if (res.status == 'success') {
@@ -124,11 +156,11 @@ export default function BUY() {
             navigator.clipboard.writeText(`${window.location.host}/payment?code=${res.data.code}`);
         }
         setIsActionProcessing(false);
-    }, [usernames, usernameCount]);
+    }, [usernames, extraUsernameCount]);
 
 
     const handlePaymentProcess = useCallback(async () => {
-        // TODO: payment integration usernameCount, totalPrice
+        // TODO: payment integration extraUsernameCount, totalPrice
 
         const createUsernamesRes = await createUsernames({ usernames });
 
@@ -144,7 +176,7 @@ export default function BUY() {
             }
         }
 
-    }, [usernames, usernameCount, plan]);
+    }, [usernames, extraUsernameCount, plan]);
 
     const handlesubmitUsernamesForFreeTrial = useCallback(async () => {
 
@@ -165,10 +197,12 @@ export default function BUY() {
     }, [usernames]);
 
     useEffect(() => {
-        setUsernames(p => ([...p.splice(0, usernameCount)]))
-    }, [usernameCount]);
+        if (!plan) return;
+        setUsernames(p => ([...p.splice(0, (subscriptionDetails[plan]?.usernames || 0) + extraUsernameCount)]))
+    }, [extraUsernameCount, plan]);
 
     useEffect(() => {
+        console.log("usernames:", usernames);
         setUrlValidation("");
     }, [usernames]);
 
@@ -185,7 +219,7 @@ export default function BUY() {
 
         if (plan == 'trial') {
             setStep(1);
-            setUsernameCount(1);
+            setExtraUsernameCount(0);
         }
     }, [plan]);
 
@@ -198,12 +232,9 @@ export default function BUY() {
                             <p className='font-medium text-6xl'>ORDER</p>
                             <div className='flex flex-col'>
                                 <p className='mt-10'>Tell Us Jow Many Usernames You're Using.</p>
-                                <select className="form-select bg-white text-black p-3 rounded-lg mt-5 block w-full">
-                                    <option>1 INCLUDED</option>
-                                    {/* <option>$5,000</option>
-                                    <option>$10,000</option>
-                                    <option>$25,000</option> */}
-                                </select>
+                                <div className="form-select bg-white text-black p-3 rounded-lg mt-5 block w-full">
+                                    {subscriptionDetails[plan]?.usernames} INCLUDED
+                                </div>
                             </div>
                             <div className='flex-col flex'>
                                 <p className='font-medium text-3xl'>ADD NEW USERNAME</p>
@@ -212,18 +243,18 @@ export default function BUY() {
                                         return (
                                             <Button
                                                 key={index}
-                                                className={"rounded-[10px] mt-5 max-w-[327px] max-sm:max-w-full bg-gradient-to-tr text-white text-base " + (index + 2 == usernameCount || (index == 3 && usernameCount >= 5) ? "from-purple-light to-purple-weight" : "from-gray-500 to-gray-600")}
+                                                className={"rounded-[10px] mt-5 max-w-[327px] max-sm:max-w-full bg-gradient-to-tr text-white text-base " + (index + 1 == extraUsernameCount || (index == 3 && extraUsernameCount >= 4) ? "from-purple-light to-purple-weight" : "from-gray-500 to-gray-600")}
                                                 size='md'
                                                 onPress={() => {
                                                     if (item == "CUSTOM") {
                                                         onOpen();
                                                     } else {
-                                                        setUsernameCount(index + 2);
+                                                        setExtraUsernameCount(index + 1);
                                                     }
                                                 }}
                                             >
-                                                {item}
-                                                {index == 3 && usernameCount >= 5 ? <span> {usernameCount} (+${usernameCount * 15}) </span> : <></>}
+                                                <spa>{item}</spa>
+                                                {index == 3 && extraUsernameCount >= 4 ? <span> {extraUsernameCount} (+${extraUsernameCount * 15}) </span> : <></>}
                                                 <span>{icons.shine}</span>
                                             </Button>
                                         )
@@ -232,15 +263,15 @@ export default function BUY() {
                             </div>
                         </div>
                         <div className="flex flex-col bg-gradient-to-tr mx-auto from-[#dd7272] to-[#7d1eeb] h-[430px] rounded-[20px] z-10 p-5 w-full text-center ">
-                            <div className='mt-5'>
+                            {plan == 'star' ? <div className='mt-5'>
                                 <Button radius="full" className="bg-opacity-50 mx-auto flex bg-white/50 p-2" size='md'>
                                     <span className='px-4'>popular</span>
                                 </Button>
-                            </div>
+                            </div> : <></>}
                             <div className='p-7 text-center flex flex-col justify-center'>
-                                <p className='font-bold text-6xl mt-3'>STAR</p>
-                                <p className='font-normal text-5xl mt-10'>$350</p>
-                                <p className='font-bold text-3xl'>/MO</p>
+                                <p className='font-bold text-6xl mt-3'>{subscriptionDetails[plan]?.name}</p>
+                                <p className='font-normal text-5xl mt-10'>${subscriptionDetails[plan]?.prices[period]}</p>
+                                <p className='font-bold text-3xl'>{period == 'quarterly' ? <span>3</span> : ''}/MO</p>
                                 <p className='font-normal text-base mt-5'>YOU ARE FREE TO CANCEL AT ANY TIME</p>
                                 <p className='font-normal text-base'>+ PRICE FROM EXTRA USERNAMES + ADDON CAM MODELS</p>
                             </div>
@@ -293,6 +324,7 @@ export default function BUY() {
                         </Modal>
                     </div>
                     :
+
                     step == 1
                         ?
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
@@ -367,7 +399,7 @@ export default function BUY() {
                                         onClick={() => {
                                             setTargetKeyword(null);
                                             setTargetKeywordType("username")
-                                            let _usernames = usernames.slice(0, -1);
+                                            let _usernames = targetKeyword.update ? usernames.slice(0) : usernames.slice(0, -1);
                                             setUsernames(_usernames);
                                         }}
                                     >
@@ -376,7 +408,7 @@ export default function BUY() {
                                 </div>
                             </div>
                                 :
-                                usernameCount > usernames.length ? <Button
+                                extraUsernameCount + subscriptionDetails[plan]?.usernames > usernames.length ? <Button
                                     radius="full"
                                     className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
                                     size='lg'
@@ -444,47 +476,71 @@ export default function BUY() {
                             }
                         </div>
                         :
-                        <div className='w-full'>
-                            <div className="flex bg-gradient-to-br mt-20 max-sm:mt-8 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col border border-gray-700 p-5">
-                                <p className='font-medium text-[34px] text-center'>PAYMENT</p>
-                                <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
-                                    Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.
-                                    This charge will be billed at regular intervals until you opt to cancel the automatic renewal.
-                                </p>
-                                <div className='mx-auto mt-10 max-w-[676px] gap-3 flex max-md:flex-col items-center'>
-                                    <Button
-                                        radius="full"
-                                        className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
-                                        size='lg'
-                                        onClick={handlePaymentProcess}
-                                    >
-                                        <span>Pay whith credit card</span>
-                                    </Button>
-                                    <Button
-                                        radius="full"
-                                        className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg"
-                                        size='lg'
-                                        onClick={handlePaymentProcess}
-                                    >
-                                        <span>Pay whith paypal</span>
-                                    </Button>
-                                    <Button
-                                        radius="full"
-                                        className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
-                                        size='lg'
-                                        onClick={handleCreateFanPaymentLink}
-                                        isLoading={isActionProcessing}
-                                    >
-                                        <span>Request fan support</span>
-                                    </Button>
+                        step == 2
+                            ?
+                            <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
+                                <span className='font-medium text-[34spanx] text-center -mb-4'>Social Media Username:</span>
+                                <div className='flex gap-4 my-4 mx-auto'>
+                                    <span>{icons.tiktokAlt}</span>
+                                    <span>{icons.facebookAlt}</span>
+                                    <span>{icons.redditAlt}</span>
+                                    <span>{icons.instagramAlt}</span>
                                 </div>
-                                {fanPaymentLink ? <p className='text-sm mt-4 text-green-500 font-bold'> The Fans Payment Link was copied to your clipboard. </p> : <></>}
+                                <div className='flex flex-col w-full'>
+                                    <input
+                                        type="text"
+                                        placeholder='Type here.. @username'
+                                        // value={targetKeyword.username}
+                                        // onChange={(e) => {
+                                        //     setTargetKeyword(p => ({ ...p, username: e.target.value }))
+                                        // }}
+                                        className='w-full outline-none p-2 rounded-lg bg-white text-black notranslate'
+                                        required
+                                    />
+                                </div>
                             </div>
-                            <div className='mx-auto text-start mt-20 max-sm:mt-8 mb-40 max-sm:mb-8 max-md:px-3'>
-                                <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
-                                <p className='font-normal text-base'>You will be charged this amount at regular intervals until you opt to cancel the automatic renewal.You can cancel the subscription using your account settings in the Billing section, or you can check the email you received for this purchase in your inbox. You will find instructions on how to cancel the subscription there.</p>
+                            :
+                            <div className='w-full'>
+                                <div className="flex bg-gradient-to-br mt-20 max-sm:mt-8 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col border border-gray-700 p-5">
+                                    <p className='font-medium text-[34px] text-center'>PAYMENT</p>
+                                    <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
+                                        Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.
+                                        This charge will be billed at regular intervals until you opt to cancel the automatic renewal.
+                                    </p>
+                                    <div className='mx-auto mt-10 max-w-[676px] gap-3 flex max-md:flex-col items-center'>
+                                        <Button
+                                            radius="full"
+                                            className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
+                                            size='lg'
+                                            onClick={handlePaymentProcess}
+                                        >
+                                            <span>Pay whith credit card</span>
+                                        </Button>
+                                        <Button
+                                            radius="full"
+                                            className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg"
+                                            size='lg'
+                                            onClick={handlePaymentProcess}
+                                        >
+                                            <span>Pay whith paypal</span>
+                                        </Button>
+                                        <Button
+                                            radius="full"
+                                            className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
+                                            size='lg'
+                                            onClick={handleCreateFanPaymentLink}
+                                            isLoading={isActionProcessing}
+                                        >
+                                            <span>Request fan support</span>
+                                        </Button>
+                                    </div>
+                                    {fanPaymentLink ? <p className='text-sm mt-4 text-green-500 font-bold'> The Fans Payment Link was copied to your clipboard. </p> : <></>}
+                                </div>
+                                <div className='mx-auto text-start mt-20 max-sm:mt-8 mb-40 max-sm:mb-8 max-md:px-3'>
+                                    <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
+                                    <p className='font-normal text-base'>You will be charged this amount at regular intervals until you opt to cancel the automatic renewal.You can cancel the subscription using your account settings in the Billing section, or you can check the email you received for this purchase in your inbox. You will find instructions on how to cancel the subscription there.</p>
+                                </div>
                             </div>
-                        </div>
             }
             <div className='max-sm:px-6 w-full fixed bottom-0 bg-black/55 backdrop-blur-xl left-0 z-20 h-20 px-4'>
                 {plan != 'trial' ? <div className='max-w-[1389px] flex justify-between items-center bg-transparent my-4 mx-auto'>
@@ -496,7 +552,7 @@ export default function BUY() {
                     >
                         <span>Back</span>
                     </Button> : <div></div>}
-                    {step < 2 ? <Button
+                    {step < 3 ? <Button
                         radius="lg"
                         className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && (!usernames.length || !usernames[0]?.link) ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
                         size='lg'
@@ -522,7 +578,7 @@ export default function BUY() {
             </div>
             <Modal
                 backdrop="opaque"
-                isOpen={(step == 2 && isOpen) || (plan && isOpen)}
+                isOpen={(step == 3 && isOpen) || (plan == 'free' && isOpen)}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{

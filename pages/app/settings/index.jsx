@@ -5,13 +5,14 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { Facebook, Google, Twitter, Error } from '@/components/utils/Icons';
+import { Facebook, Google, Twitter, Error, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt } from '@/components/utils/Icons';
 import { getAccessToken } from '@/axios/token';
 import { resetPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';
 import moment from 'moment/moment';
-import { downloadCopyrightHolder, getUsernames } from '../../../axios/user';
-
+import { downloadCopyrightHolder, getUsernames } from '@/axios/user';
+import Info from "@/public/assets/info.svg"
+import Image from 'next/image';
 
 export default function AccountSetting() {
 
@@ -27,6 +28,10 @@ export default function AccountSetting() {
         twitter: <Twitter />,
         facebook: <Facebook />,
         error: <Error />,
+        tiktokAlt: <TiktokAlt />,
+        instagramAlt: <InstagramAlt />,
+        facebookAlt: <FacebookAlt />,
+        redditAlt: <RedditAlt />,
     };
 
     const [newPassword, setNewPassword] = useState("");
@@ -64,14 +69,19 @@ export default function AccountSetting() {
         const res = await downloadCopyrightHolder(userInfo.id);
         setIsDownloadProcessing('');
         if (res.status == 'success') {
-            const blob = new Blob([res.data], { type: 'application/pdf' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Copyright Holder.pdf`;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
+            const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+            const url = URL.createObjectURL(pdfBlob);
+
+            // Create a temporary anchor element and simulate a click to download the file
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Copyright Holder.pdf'; // Customize the filename as needed
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Release the object URL to free up memory
+            setTimeout(() => URL.revokeObjectURL(url), 100);
         }
     }
 
@@ -253,21 +263,50 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
+                    <p className='font-semibold'> Usernames List: </p>
+                    <ScrollShadow className='max-h-60 mt-4'>
+                        {
+                            usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
+                                <div>{index + 1}.</div>
+                                <div>
+                                    <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
+                                    <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.link}</span></p>
+                                </div>
+                            </div>)
+                        }
+                    </ScrollShadow>
+                    <Button
+                        radius="md"
+                        className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base w-max mt-3"
+                        size='sm'
+                    >
+                        <span>Add More</span>
+                    </Button>
+                </div>
+                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
+                    <p className='font-semibold'> Social Media Username: </p>
+                    <div className='flex gap-4 my-4'>
+                        <span>{icons.tiktokAlt}</span>
+                        <span>{icons.facebookAlt}</span>
+                        <span>{icons.redditAlt}</span>
+                        <span>{icons.instagramAlt}</span>
+                    </div>
+                    <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> mandrill</span></p>
+                    <Button
+                        radius="md"
+                        className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base w-max mt-3"
+                        size='sm'
+                    >
+                        <span>Change Username</span>
+                    </Button>
+                    <div className='flex gap-2 items-start mt-6'>
+                        <Image src={Info} width={15} height={15} alt=''></Image>
+                        <p>The policy allows for modifications to the service agreement after a period of 30 days, contingent upon the renewal of the subscription.</p>
+                    </div>
+                </div>
             </div>
-            <div className='flex gap-2 flex-col mt-8'>
-                <p className='font-semibold'> Usernames List: </p>
-                <ScrollShadow className='max-h-60'>
-                    {
-                        usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
-                            <div>{index + 1}.</div>
-                            <div>
-                                <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.username}</span></p>
-                                <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'>{keyword.link}</span></p>
-                            </div>
-                        </div>)
-                    }
-                </ScrollShadow>
-            </div>
+
         </div>
     )
 }

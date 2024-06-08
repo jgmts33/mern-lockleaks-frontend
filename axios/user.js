@@ -252,7 +252,7 @@ export const downloadCopyrightHolder = async (id) => {
     const res = await axios.get(`${ENDPOINT}/user-copyright-holder/${id}`, {
       headers: {
         'x-access-token': accessToken,
-        responseType: 'blob'
+        responseType: 'arraybuffer'
       }
     });
 

@@ -118,14 +118,19 @@ export default function AutoContract() {
         const res = await downloadCopyrightHolder(id);
         setIsActionProcessing(p => ({ ...p, copyright_holder: -1 }));
         if (res.status == 'success') {
-            const blob = new Blob([res.data], { type: 'application/pdf' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Copyright Holder ${id}.pdf`;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
+            const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+            const url = URL.createObjectURL(pdfBlob);
+
+            // Create a temporary anchor element and simulate a click to download the file
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Copyright Holder ${id}.pdf`; // Customize the filename as needed
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Release the object URL to free up memory
+            setTimeout(() => URL.revokeObjectURL(url), 100);
         }
     }
 

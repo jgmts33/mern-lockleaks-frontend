@@ -80,6 +80,10 @@ export default function RootLayout({ children }) {
       window.open("/pricing");
     }
 
+    else if (userInfo.subscription.status == 'expired') {
+      window.open("/pricing");
+    }
+
   }, [userInfo]);
 
   const handleAllChecked = () => {
@@ -230,7 +234,7 @@ export default function RootLayout({ children }) {
             size='md'
             onPress={() => {
               onClose();
-              window.location.replace("/checkout/buy?plan=trial")
+              window.location.replace("/checkout?plan=trial")
             }}
           >
             <span>Free Trial</span>

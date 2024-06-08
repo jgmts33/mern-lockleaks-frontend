@@ -89,7 +89,7 @@ export default function FreeTrial() {
               radius="lg"
               className="w-full mt-6 bg-gradient-to-r mx-auto from-[#B759FF] to-[#F68171] border-gray-600 border text-white shadow-lg text-lg"
               size='lg'
-            onClick={() => router.push("/checkout/buy?plan=trial")}
+            onClick={() => router.push("/checkout?plan=trial")}
             >
               <span>Get Free Trial</span>
             </Button>

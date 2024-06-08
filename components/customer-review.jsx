@@ -16,9 +16,9 @@ export default function CustomerReview() {
         discord: <DiscordAlt/>,
         tiktok: <TiktokAlt/>,
         instagram: <InstagramAlt/>,
-        twitter: <TwitterXAlt/>,
         facebook: <FacebookAlt/>,
         reddit: <RedditAlt/>,
+        twitter: <TwitterXAlt/>,
     };
 
     const [list, setList] = useState([]);
