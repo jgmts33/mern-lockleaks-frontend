@@ -260,8 +260,8 @@ export const ADMIN_SIDEBAR_LIST = [
     favourite: false
   }, {
     icon: icons.autocontract,
-    title: "AUTO-CONTRACT",
-    path: "/admin/auto-contract",
+    title: "CONTRACT & COPYRIGHT",
+    path: "/admin/contract-copyright",
     favourite: false
   }, {
     icon: icons.bing,

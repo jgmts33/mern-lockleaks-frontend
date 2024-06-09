@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import {
-    Button, 
+    Button,
 } from '@nextui-org/react';
 import React from 'react';
 import { Shine, ProtectShadow, RecoveryChat } from "@/components/utils/Icons";
@@ -13,9 +13,9 @@ import CustomerReview from '@/components/customer-review';
 export default function MonthlyPdf() {
 
     const icons = {
-        shine: <Shine/>,
-        protect: <ProtectShadow/>,
-        chat: <RecoveryChat/>,
+        shine: <Shine />,
+        protect: <ProtectShadow />,
+        chat: <RecoveryChat />,
     };
 
     const MonthlyTitle = {
@@ -71,7 +71,9 @@ export default function MonthlyPdf() {
                     <p className='font-medium text-5xl uppercase text-center max-md:text-4xl'>{MonthlyTitle.title}</p>
                     <div className='flex items-center justify-between mx-auto max-2xl:justify-around max-md:flex-col'>
                         <div className='max-w-[653px] mt-10 max-sm:mt-4'><p className='font-normal text-lg mt-10'>{MonthlyTitle.content}</p></div>
-                        <Image src="/assets/logo.svg" width={190} height={50} className='mt-20 z-10' alt="logo" />
+                        <div className='font-medium text-7xl mt-0 max-md:w-52 max-md:h-24 z-10'>
+                            <Image src="/assets/logo.svg" width={300} height={150} alt="logo" />
+                        </div>
                         <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={633} height={642} className='absolute top-0 right-20 bg-[#362666] bg-opacity-5 blur-3xl max-xl:hidden' />
                     </div>
                 </div>

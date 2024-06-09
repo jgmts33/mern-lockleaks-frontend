@@ -26,7 +26,7 @@ export default function AI() {
 
     const AITitle = {
         title: "ARTIFICIAL INTELLIGENCE",
-        sub_title: "ur Artificial Intelligence service integrates cutting-edge facial recognition software, machine learning, optical character recognition, and a wide array of algorithms meticulously crafted by our experts. These technologies significantly bolster content protection against potential copyright infringements on leading platforms such as Google Images and Google Videos."
+        sub_title: "Our Artificial Intelligence service integrates cutting-edge facial recognition software, machine learning, optical character recognition, and a wide array of algorithms meticulously crafted by our experts. These technologies significantly bolster content protection against potential copyright infringements on leading platforms such as Google Images and Google Videos."
     }
 
     const [expandedFAQIndex, setExpandedFAQIndex] = useState(-1);

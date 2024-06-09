@@ -228,7 +228,7 @@ export default function Pricing() {
             title: "Face Recognition AI Analyzer & Removal Report",
             content: "The 'Face Recognition AI Analyzer & Removal Report' offers comprehensive analysis and documentation for content flagged by facial recognition AI systems. Utilize these tools to monitor and analyze instances of your content being flagged or identified across various platforms. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content flagged by facial recognition AI. Stay informed about the presence of your content and take proactive steps to protect your privacy and online reputation."
         },
-        {
+              {   
             title: "Monthly Report Data Analytics and Insights",
             content: "The 'Monthly Report Data Analytics and Insights' provides a comprehensive overview of your platform's performance, offering detailed analytics and valuable insights. Utilize this report to track key metrics, identify trends, and make data-driven decisions to optimize your strategies effectively. Stay informed about your platform's progress and leverage insights to drive growth and success.on features, search."
         },

@@ -46,7 +46,7 @@ export default function SERVICES() {
             {
                 title: "Artificial Intelligence",
                 content: "Upon discovering infringing content, our experts issue DMCA takedown notices swiftly. We employ a proactive approach using software and manual scans to remove unauthorized copies, leveraging strong relationships with file hosting sites in line with our clients' business policies.",
-                path: "/AI"
+                path: "/ai"
             },
             {
                 title: "Creator DMCA Content Protection",

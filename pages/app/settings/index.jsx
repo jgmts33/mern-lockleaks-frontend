@@ -4,7 +4,7 @@ import {
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { userInfo as info } from '@/lib/auth/authSlice';
+import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { Facebook, Google, Twitter, Error, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt } from '@/components/utils/Icons';
 import { getAccessToken } from '@/axios/token';
 import { resetPassword } from '@/axios/auth';
@@ -13,6 +13,8 @@ import moment from 'moment/moment';
 import { downloadCopyrightHolder, getUsernames } from '@/axios/user';
 import Info from "@/public/assets/info.svg"
 import Image from 'next/image';
+import { io } from 'socket.io-client';
+import { ENDPOINT } from '@/config/config';
 
 export default function AccountSetting() {
 
@@ -98,7 +100,17 @@ export default function AccountSetting() {
 
     useEffect(() => {
         getUsernamesInfo();
-    }, []);
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`copyright_holder_uploaded_${userInfo.id}`, (copyright_holder_name) => {
+            dispatch(setUserInfo({ ...userInfo, copyright_holder: copyright_holder_name }));
+        });
+
+        return () => {
+            socket.disconnect();
+        }
+    }, [userInfo]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto">
@@ -230,17 +242,22 @@ export default function AccountSetting() {
                             <div className='mx-auto mt-8'>
                                 <span className='font-semibold text-base'>Copyright Holder</span>
                             </div>
-                            {userInfo.copyright_holder ? <div className='flex flex-col px-5 gap-5 mt-4  '>
+                            <div className='flex flex-col px-5 gap-5 mt-4  '>
                                 <Button
                                     radius="lg"
-                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
+                                    className={"bg-gradient-to-br text-white shadow-lg text-base p-5 w-full " + (userInfo.copyright_holder ? 'from-purple-light to-purple-weight' : 'from-gray-800 to-gray-900 cursor-not-allowed')}
                                     size='sm'
+                                    isDisabled={!userInfo.copyright_holder}
                                     isLoading={isDownloadProcessing == 'copyright_holder'}
                                     onPress={handleCopyrightHolderDownload}
                                 >
-                                    <span>Download</span>
+                                    {userInfo.copyright_holder ?
+                                        <span>Download</span>
+                                        :
+                                        <span>Pending</span>
+                                    }
                                 </Button>
-                            </div> : <></>}
+                            </div>
                         </div>
                 }
 

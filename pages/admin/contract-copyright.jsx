@@ -86,9 +86,9 @@ export default function AutoContract() {
         setLoadingState(p => ({ ...p, copyright_holder: false }));
     }
 
-    const handleCopyrightHolderUpload = async () => {
-        copyrightHolderRef.current.click();
-    }
+    const handleCopyrightHolderUpload = useCallback(async () => {
+        copyrightHolderRef.current?.click();
+    }, [copyrightHolderRef]);
 
     const handleUploadCopyrightHolder = useCallback(async () => {
         const uploadedFile = copyrightHolderRef.current.files[0];
@@ -111,7 +111,7 @@ export default function AutoContract() {
 
         setIsActionProcessing(p => ({ ...p, copyright_holder: -1 }));
 
-    }, [selectedId]);
+    }, [selectedId, copyrightHolderRef]);
 
     const handleDownload = async (id) => {
         setIsActionProcessing(p => ({ ...p, copyright_holder: id }));
@@ -202,7 +202,7 @@ export default function AutoContract() {
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto w-full">
             <div className='mt-0 max-lg:mx-auto'>
-                <span className='font-extrabold text-lg'>Auto Contract</span>
+                <span className='font-extrabold text-lg'>Contract & Copyright Holder</span>
             </div>
             <div className='grid grid-cols-2 max-lg:grid-cols-1 gap-5 mt-10'>
                 <div>
@@ -260,7 +260,7 @@ export default function AutoContract() {
                             value={searchValue.contract}
                             onValueChange={(value) => setSearchValue(p => ({ ...p, contract: value }))}
                         />
-                        <ScrollShadow className='h-[calc(100vh-480px)] divide-y-2 mt-4'>
+                        <ScrollShadow className='h-[calc(100vh-480px)] divide-y-2 mt-4 flex flex-col'>
                             {
                                 loadingState.contract ?
                                     <div className='w-max mx-auto'>
@@ -275,10 +275,13 @@ export default function AutoContract() {
                                     : list.contract.length ? list.contract.map((item, index) => {
                                         return (
                                             <div key={index}>
-                                                <div className='flex items-start gap-2 my-4' >
-                                                    <div className='px-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center max-sm:hidden'>{index + 1}</div>
-                                                    <div className='flex gap-4 justify-between w-full max-sm:flex-wrap'>
-                                                        <p className='text-lg'>{item.name} - {item.email}</p>
+                                                <div className='flex items-start gap-2 my-4 w-full' >
+                                                    <div className='px-2 mt-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center max-sm:hidden'>{index + 1}</div>
+                                                    <div className='flex gap-4 justify-between w-full max-sm:flex-wrap items-center'>
+                                                        <div>
+                                                            <p className='text-lg'>{item.name} </p>
+                                                            <p>{item.email}</p>
+                                                        </div>
                                                         {
                                                             item.contract?.status == 'pending' ?
                                                                 <div className='flex gap-4 items-center'>
@@ -307,15 +310,17 @@ export default function AutoContract() {
                                                                     </Button>
                                                                 </div>
                                                                 :
-                                                                <Button
-                                                                    radius="full"
-                                                                    className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
-                                                                    size='sm'
-                                                                    isLoading={isActionProcessing.contract == item.id}
-                                                                    onPress={() => router.push(`/admin/users/contract?id=${item.id}`)}
-                                                                >
-                                                                    View Contract
-                                                                </Button>
+                                                                <div>
+                                                                    <Button
+                                                                        radius="full"
+                                                                        className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
+                                                                        size='sm'
+                                                                        isLoading={isActionProcessing.contract == item.id}
+                                                                        onPress={() => router.push(`/admin/users/contract?id=${item.id}`)}
+                                                                    >
+                                                                        View Contract
+                                                                    </Button>
+                                                                </div>
                                                         }
                                                     </div>
                                                 </div>
@@ -418,14 +423,7 @@ export default function AutoContract() {
                                                                     >
                                                                         Upload
                                                                     </Button>
-                                                                    <input
-                                                                        type="file"
-                                                                        id="file"
-                                                                        accept=".pdf"
-                                                                        ref={copyrightHolderRef}
-                                                                        onChange={handleUploadCopyrightHolder}
-                                                                        hidden
-                                                                    />
+
                                                                 </div>
                                                                 :
                                                                 <Button
@@ -446,6 +444,14 @@ export default function AutoContract() {
                                     }) :
                                         <p className='text-center'>There is not any data yet. </p>
                             }
+                            <input
+                                type="file"
+                                id="file"
+                                accept=".pdf"
+                                ref={copyrightHolderRef}
+                                onChange={handleUploadCopyrightHolder}
+                                hidden
+                            />
                         </ScrollShadow>
                     </div>
                 </div>
