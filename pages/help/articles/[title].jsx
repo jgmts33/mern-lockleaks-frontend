@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import {
     Button,
 } from '@nextui-org/react';
-import { Search, Collobation, RecoveryChat, ArrowRight } from "@/components/utils/Icons";
+import { Search, Collobation, RecoveryChat, ArrowRight, Like, Dislike } from "@/components/utils/Icons";
 import { useRouter } from 'next/router';
 import { getHelpArticle } from '@/axios/help';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
+import { reactToArticle } from '@/axios/help';
+import { getUserId } from '../../../axios/token';
 
 export default function Details() {
 
     const router = useRouter();
     const [isArticleProcessing, setIsArticleProcessing] = useState(false);
+    const [userId, setUserId] = useState(null);
     const [articleInfo, setArticleInfo] = useState({
         title: '',
         content: '',
-        categoryId: null
+        categoryId: null,
+        likes: [],
+        dislikes: []
     })
 
     const icons = {
@@ -23,11 +28,28 @@ export default function Details() {
         collobation: <Collobation />,
         chat: <RecoveryChat />,
         direction: <ArrowRight />,
+        like: <Like />,
+        dislike: <Dislike />
     };
+
+    const handleReactArticle = useCallback(async (react) => {
+
+
+        if (!router.query.title?.split("-").length || !userId || articleInfo.likes.find(p => p == userId) || articleInfo.dislikes.find(p => p == userId)) return;
+
+        const res = await reactToArticle(router.query.title?.split("-")[router.query.title?.split("-").length - 1], { user_id: userId, react });
+
+        if (res.status == 'success') {
+            if (react == 'like') setArticleInfo(p => ({ ...p, likes: [...p.likes, userId] }));
+            else setArticleInfo(p => ({ ...p, dislikes: [...p.dislikes, userId] }));
+        }
+
+    }, [router.query, userId, articleInfo])
 
     useEffect(() => {
         (async () => {
-            console.log(router.query.title)
+            const user_id = await getUserId();
+            setUserId(user_id);
             if (router.query.title?.split("-")) {
                 const titleWords = router.query.title?.split("").reverse().join("").split("-") || ['0'];
                 setIsArticleProcessing(true);
@@ -87,17 +109,31 @@ export default function Details() {
                                 <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(articleInfo.content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }} />
                             </div>
                         </div>
-                        <div className='max-w-[432px] mx-auto mt-20 mb-20 max-sm:mt-10'>
+                        {userId ? <div className='max-w-[432px] mx-auto mt-20 mb-20 max-sm:mt-10'>
                             <div className='flex'><span className='font-medium text-3xl text-center'>Was the article helpful?</span></div>
                             <div className='flex justify-around mt-5'>
-                                <Button radius="lg" className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg " size='lg'>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-tr mx-auto from-[#c775e0] to-[#c233af] border-gray-600 border text-white shadow-lg "
+                                    size='lg'
+                                    onPress={() => handleReactArticle('like')}
+                                >
                                     <span>Yes</span>
+                                    <span>{icons.like}</span>
+                                    <span>{articleInfo.likes?.length || ''}</span>
                                 </Button>
-                                <Button radius="lg" className="from-gray-800 to-gray-900 border border-gray-950 mx-auto px-7 py-5 text-lg text-white shadow-lg" size='lg'>
+                                <Button
+                                    radius="lg"
+                                    className="from-gray-800 to-gray-900 border border-gray-950 mx-auto px-7 py-5 text-lg text-white shadow-lg"
+                                    size='lg'
+                                    onPress={() => handleReactArticle('dislike')}
+                                >
                                     <span>No</span>
+                                    <span>{icons.dislike}</span>
+                                    <span>{articleInfo.dislikes?.length || ''}</span>
                                 </Button>
                             </div>
-                        </div>
+                        </div> : <></>}
                     </>
             }
 

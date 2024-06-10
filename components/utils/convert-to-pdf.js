@@ -12,17 +12,17 @@ export const downloadContract = (userInfo, usernames) => {
     doc.text('1. Services Provided:', 10, 26);
     doc.setFontSize(12);
     doc.text('Lock Leaks agrees to provide the Client with access to its platform and features. The Client agrees to utilize these services in accordance with the', 10, 32);
-    doc.text('terms outlined here in', 10, 38);
+    doc.text('terms outlined here in.', 10, 38);
     doc.setFontSize(15);
     doc.text('2. Ownership and Authorization:', 10, 47);
     doc.setFontSize(12);
     doc.text('The Client acknowledges that all content posted or hosted on Lock Leaks is subject to copyright laws. By using the services provided, the Client', 10, 53);
-    doc.text('affirms that they have the legal authority to post or host the content and grant authorization to Lock Leaks', 10, 59);
+    doc.text('affirms that they have the legal authority to post or host the content and grant authorization to Lock Leaks.', 10, 59);
     doc.setFontSize(15);
     doc.text('3. DMCA Authorization:', 10, 68);
     doc.setFontSize(12);
     doc.text('By accepting this contract, the Client authorizes Lock Leaks to act on their behalf for Digital Millennium Copyright Act (DMCA) compliance. Any', 10, 74);
-    doc.text('copyright infringement notices or inquiries should be directed to Lock Leaks at dmca@lockleaks.com', 10, 80);
+    doc.text('copyright infringement notices or inquiries should be directed to Lock Leaks at dmca@lockleaks.com.', 10, 80);
     doc.setFontSize(15);
     doc.text('4. Data Handling and Privacy:', 10, 89);
     doc.setFontSize(12);
@@ -30,7 +30,7 @@ export const downloadContract = (userInfo, usernames) => {
     doc.setFontSize(15);
     doc.text('5. Contract Parties:', 10, 104);
     doc.setFontSize(12);
-    doc.text('This Agreement is between the Client and AD BOOST SRL, the entity that owns and operates the Lock Leaks platform.', 10, 110);
+    doc.text('This Agreement is between the Client and AD BOOST S.R.L, the entity that owns and operates the Lock Leaks platform.', 10, 110);
     doc.setFontSize(15);
     doc.text('6. Termination of Agreement', 10, 119);
     doc.setFontSize(12);
@@ -53,7 +53,7 @@ export const downloadContract = (userInfo, usernames) => {
     doc.text(`Date: ${moment(userInfo?.contract.date).format('MMM DD, YYYY')}`, 154, 185);
     doc.text(`dmca@lockleaks.com`, 14, 191);
     doc.text(`lockleaks.com`, 14, 197);
-    doc.addImage('/assets/logo.png', "PNG", 6, 206, 80, 16);
+    doc.addImage('/assets/logo.png', "PNG", -16, 196, 120, 30);
     doc.setFontSize(15);
     doc.text(`Copyright of Usernames`, 150, 206);
     doc.setFontSize(12)
@@ -79,10 +79,10 @@ export const downloadContract = (userInfo, usernames) => {
 
     doc.setFontSize(12);
     doc.setFont("default", "italic");
-    doc.text(`AD BOOST SRL`, 10, 265);
+    doc.text(`AD BOOST S.R.L`, 10, 265);
     doc.text(`Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343`, 10, 271);
     doc.text(`Register Code (CUI): 48091747`, 10, 277);
-    doc.text(`VAT: RO 48091747`, 10, 283);
+    doc.text(`VAT: RO48091747`, 10, 283);
     doc.addImage('/assets/stamp.png', "PNG", 10, 226, 30, 30);
     doc.save(`Contract (Lock Leaks - ${userInfo?.name}).pdf`);
 }

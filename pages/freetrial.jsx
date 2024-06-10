@@ -4,15 +4,18 @@ import Image from 'next/image';
 import {
   Button
 } from '@nextui-org/react';
-import ImgContactUs from '@/public/assets/free-analys/contact-us.svg';
 import ImgChat from '@/public/assets/free-analys/chat.svg';
 import ImgBush2 from '@/public/assets/free-analys/bush-2.svg';
 import ImgBush3 from '@/public/assets/free-analys/bush-3.svg';
 import ImgBush4 from '@/public/assets/free-analys/bush-4.svg';
+import Person from '@/public/assets/free-analys/person.svg';
+import Download from '@/public/assets/free-analys/download.svg';
+import Line from '@/public/assets/free-analys/line.svg';
+import Confirm from '@/public/assets/free-analys/confirm.svg';
 import { Shine, Robertchat, RecoveryChat, Bell, Complete } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customer-review';
-import { Crisp } from 'crisp-sdk-web';
 import { useRouter } from 'next/router';
+import { Crisp } from 'crisp-sdk-web';
 
 
 export default function FreeTrial() {
@@ -64,18 +67,30 @@ export default function FreeTrial() {
                 <li>Our strong affiliations with file hosting sites ensure prompt consideration of our DMCA takedown notices, aligning with our clients' business policies.</li>
               </ul>
             </div>
-            <div className='mx-auto relative my-10'>
-              <Image className="max-md:w-full rounded-[20px]" width={600} height={387} src={ImgContactUs} alt="Contact Us" />
-              <Button
-                radius="lg"
-                className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg w-max mx-auto mt-10 absolute z-10 bottom-6 left-24"
-                size='lg'
-                onClick={() => {
-                  Crisp.chat.open();
-                }}
-              >
-                <span>Contact Us </span> <span>{icons.shine}</span>
-              </Button>
+            <div className='w-full relative my-10'>
+              <p className='text-[40px] font-extrabold text-center'>Tutorial<span className='bg-gradient-to-r from-[#B759FF] to-[#F68171] bg-clip-text text-transparent px-2'>Free</span>Trial</p>
+              <div className='w-full flex justify-between items-center mt-4 text-lg'>
+                <div className='flex gap-4 items-center'>
+                  <Image className="" src={Person} width={36} height={36} alt='Person' />
+                  <p> Create Account</p>
+                </div>
+                <div className='flex gap-4 items-center'>
+                  <Image className="" src={Download} width={36} height={36} alt='Download' />
+                  <p> Get Free Trial for 3 Days!</p>
+                </div>
+              </div>
+              <div className='flex items-center justify-between mt-4 px-4 relative text-3xl font-extrabold'>
+                <div className='px-2 w-14 h-14 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center'>{1}</div>
+                <Image className="flex-1" src={Line} width={100} height={2} alt='Line' />
+
+                <div className='px-2 w-14 h-14 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center'>{2}</div>
+                <Image className="flex-1" src={Line} width={100} height={2} alt='Line' />
+                <div className='px-2 w-14 h-14 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center'>{3}</div>
+              </div>
+              <div className='flex gap-3 items-center mt-4 mx-auto w-max'>
+                <Image src={Confirm} width={32} height={32} alt='Confirm' />
+                <p> Verify Email</p>
+              </div>
             </div>
             <div className='space-y-2'>
               <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent text-[28px] w-max'>One-Time Free Trial:</p>
@@ -128,6 +143,16 @@ export default function FreeTrial() {
               These features are for the trial version only. The Lock Leaks team will handle strictly 5 takedowns from Search Engines! To benefit from all features, please purchase a subscription!
             </p>
           </div>
+        </div>
+        <div className='w-full flex justify-end mt-6 '>
+          <Button
+            radius="lg"
+            className="bg-gradient-to-r from-[#B759FF] to-[#F68171] border-gray-600 border text-white shadow-lg text-lg relative z-10"
+            size='lg'
+            onClick={() => Crisp.chat.open()}
+          >
+            <span>Contact us</span>
+          </Button>
         </div>
       </div >
       <div className='w-full relative'>

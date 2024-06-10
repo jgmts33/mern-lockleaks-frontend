@@ -96,7 +96,7 @@ export default function CreatorDmca() {
                                     size='lg'
                                     onPress={() => router.push("/dmcabadges")}
                                 >
-                                    <span>Free Trial</span>
+                                    <span>Download DMCA Badges</span>
                                 </Button>
                             </div>
                             <div className='relative w-1/2 flex max-xl:flex-col max-lg:hidden'>

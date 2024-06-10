@@ -11,7 +11,7 @@ import Image from 'next/image';
 import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import { DownloadIcon } from '@/components/utils/Icons';
-import { downloadContract } from '@/components/utils/covnert-to-pdf';
+import { downloadContract } from '@/components/utils/convert-to-pdf';
 
 export default function ContractView() {
 
@@ -42,7 +42,7 @@ export default function ContractView() {
         },
         {
             title: 'Contract Parties:',
-            content: 'This Agreement is between the Client and AD BOOST SRL, the entity that owns and operates the Lock Leaks platform.'
+            content: 'This Agreement is between the Client and AD BOOST S.R.L, the entity that owns and operates the Lock Leaks platform.'
         },
         {
             title: 'Termination of Agreement:',
@@ -126,10 +126,10 @@ export default function ContractView() {
                             className='object-cover rounded-full'
                         />
                         <div className='mt-6 text-sm italic space-y-2'>
-                            <p className='notranslate'>AD BOOST SRL</p>
+                            <p className='notranslate'>AD BOOST S.R.L</p>
                             <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
                             <p className='notranslate'>Register Code (CUI): 48091747</p>
-                            <p className='notranslate'>VAT: RO 48091747</p>
+                            <p className='notranslate'>VAT: RO48091747</p>
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">

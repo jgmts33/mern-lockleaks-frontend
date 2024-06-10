@@ -115,6 +115,28 @@ export const updateHelpArticle = async (id, data) => {
   }
 }
 
+export const reactToArticle = async (id, data) => {
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/help/articles/${id}`, data, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+    return {
+      status: 'success',
+      data: res.data
+    }
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+
 export const deleteHelpArticle = async (id) => {
   const accessToken = await getAccessToken();
   try {
