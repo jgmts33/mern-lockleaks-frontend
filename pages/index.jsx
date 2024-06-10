@@ -389,7 +389,7 @@ export default function HomePage() {
                 })
               }
             </div>
-            <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col max-lg:hidden z-10">
+            <div className="flex flex-wrap relative gap-x-4 gap-y-2 max-lg:flex-col max-lg:hidden z-10 justify-center">
               {
                 services.map((service, index) => {
                   return (

@@ -139,48 +139,6 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
-    else if (userInfo.contract.status == "") {
-      router.push("/app/contract-warning");
-    }
-
-    else if (userInfo.contract.status == "pending") {
-      setModalValue({
-        title: "Please wait until your KYC submission approved",
-        content: "If you're not approved in 24 hrs , please check your inbox to know what's the reason.",
-        footer: <Button
-          radius="lg"
-          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
-          size='md'
-          onPress={() => {
-            onClose();
-            window.location.replace("/");
-          }}
-        >
-          <span>Back to Homepage</span>
-        </Button>
-      })
-      onOpen();
-    }
-
-    else if (userInfo.contract.status == "declined") {
-      setModalValue({
-        title: "KYC Verification Failed",
-        content: userInfo.contract.reason,
-        footer: <Button
-          radius="lg"
-          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
-          size='md'
-          onPress={() => {
-            onClose();
-            router.push("/app/contract-warning");
-          }}
-        >
-          <span>Submit Again</span>
-        </Button>
-      })
-      onOpen();
-    }
-
     else if (userInfo.subscription.status == 'expired') {
       setModalValue({
         title: "Sorry , but your plan is expired",
@@ -244,6 +202,48 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
+    else if (userInfo.contract.status == "") {
+      router.push("/app/kyc-submit");
+    }
+
+    else if (userInfo.contract.status == "pending") {
+      setModalValue({
+        title: "Please wait until your KYC submission approved",
+        content: "If you're not approved in 24 hrs , please check your inbox to know what's the reason.",
+        footer: <Button
+          radius="lg"
+          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+          size='md'
+          onPress={() => {
+            onClose();
+            window.location.replace("/");
+          }}
+        >
+          <span>Back to Homepage</span>
+        </Button>
+      })
+      onOpen();
+    }
+
+    else if (userInfo.contract.status == "declined") {
+      setModalValue({
+        title: "KYC Verification Failed",
+        content: userInfo.contract.reason,
+        footer: <Button
+          radius="lg"
+          className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
+          size='md'
+          onPress={() => {
+            onClose();
+            router.push("/app/kyc-submit");
+          }}
+        >
+          <span>Submit Again</span>
+        </Button>
+      })
+      onOpen();
+    }
+
     else {
       onClose();
     }
@@ -296,7 +296,7 @@ export default function RootLayout({ children }) {
         {
           userInfo ?
             <div className="flex ">
-              {!currentPath.includes("/app/contract-warning") ? <Sidebar show={showSidebar} setter={setShowSidebar} /> : <></>}
+              {!currentPath.includes("/app/kyc-submit") ? <Sidebar show={showSidebar} setter={setShowSidebar} /> : <></>}
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
                 <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto relative" style={{ scrollBehavior: 'smooth' }}>

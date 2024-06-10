@@ -13,8 +13,8 @@ import React, { useCallback, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ContractLine, DownloadIcon, IdCardImageIcon, UploadIcon, Success, WarningOnModal } from '@/components/utils/Icons';
 import { submitKYC } from '@/axios/contract';
-import IDCardExample from '@/public/assets/contract-warning/id_card.png';
-import SelfieExample from '@/public/assets/contract-warning/selfie.png';
+import IDCardExample from '@/public/assets/kyc-submit/id_card.png';
+import SelfieExample from '@/public/assets/kyc-submit/selfie.png';
 import Image from 'next/image';
 
 export default function ContactWarning() {

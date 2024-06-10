@@ -151,7 +151,7 @@ export default function AdultTubs() {
                 </div>
             </div>
             <div className='mt-5'>
-                <span className='font-extrabold text-lg'>ADULT WEBSITES SCANNED</span>
+                <span className='font-extrabold text-lg'>ADULT TUBES SCANNED</span>
             </div>
             <div className='flex flex-col mt-10 gap-3'>
                 <span className='font-semibold text-base'>RESULTS FROM LAST SCAN:</span>

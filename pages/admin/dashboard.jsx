@@ -41,7 +41,7 @@ export default function AdminDashbaord() {
             total: 0
         },
         {
-            title: " Adult Tube Websites",
+            title: " Adult Tubes",
             path: "/app/adult-website",
             lastscan: 0,
             total: 0
@@ -146,7 +146,7 @@ export default function AdminDashbaord() {
                 total: 0
             },
             {
-                title: " Adult Tube Websites",
+                title: " Adult Tubes",
                 subtitle: "total last scan",
                 lastscan:
                     lastScanResult.matches_count +

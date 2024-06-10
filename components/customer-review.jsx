@@ -152,7 +152,7 @@ export default function CustomerReview() {
                                         : <></>
                                 }
                             </div>
-                            <p className='text-base font-normal opacity-80 mt-4 whitespace-normal break-words h-[50px] mb-8 overflow-hidden text-ellipsis'>{item.content.slice(0, 30)}</p>
+                            <p className='text-base font-normal opacity-80 mt-4 whitespace-normal break-words mb-8 overflow-hidden text-ellipsis'>{item.content.slice(0, 86)} <span>{item.content.length > 86 ? '...' : ''}</span> </p>
                         </div></SwiperSlide>)}
                 </Swiper>
             </div>

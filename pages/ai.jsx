@@ -179,7 +179,6 @@ export default function AI() {
                         })
                     }
                 </div>
-                <div className='mt-20 max-xl:mt-0'><Image className="w-[461px] h-[312px] absolute right-0 -mt-36 max-lg:hidden max-2xl:hidden" src={RobertHand} alt='robert hand' /></div>
             </div>
             <CustomerReview />
         </>

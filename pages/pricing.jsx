@@ -206,7 +206,7 @@ export default function Pricing() {
         },
         {
             title: "Adult Tubes Analyzer Tool & Removal Report",
-            content: "The 'Adult Tubes Analyzer Tool & Removal Report' offers specialized analysis and documentation for content across adult tube websites. Utilize these tools to monitor and analyze your presence on adult platforms, including mentions, interactions, and reviews. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content from adult tube sites. Stay informed about your online presence in adult spaces and take proactive steps to manage and protect your content effectively."
+            content: "The 'Adult Tubes Analyzer Tool & Removal Report' offers specialized analysis and documentation for content across Adult Tubes. Utilize these tools to monitor and analyze your presence on adult platforms, including mentions, interactions, and reviews. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content from adult tube sites. Stay informed about your online presence in adult spaces and take proactive steps to manage and protect your content effectively."
         },
         {
             title: "Forums Analyzer & Removal Report",

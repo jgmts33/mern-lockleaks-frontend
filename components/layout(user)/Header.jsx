@@ -110,7 +110,7 @@ const UserHeader = ({ show, setter }) => {
       className="bg-transparent z-30"
       maxWidth="full"
     >
-      {currentPath.includes("contract-warning") ? <NavbarContent>
+      {currentPath.includes("kyc-submit") ? <NavbarContent>
         <div className="flex w-full px-3 py-3">
           {
             currentPath.includes("admin") ?

@@ -114,7 +114,7 @@ export default function AccountSetting() {
     }, [userInfo]);
 
     return (
-        <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto">
+        <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto pb-5">
 
             {/* This section for define Account Settings header*/}
 
