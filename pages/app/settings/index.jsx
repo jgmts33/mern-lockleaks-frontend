@@ -220,23 +220,14 @@ export default function AccountSetting() {
                             <div className='mx-auto'>
                                 <span className='font-semibold text-base'>Contract Lock Leaks</span>
                             </div>
-                            <div className='flex flex-col px-5 gap-5 mt-4  '>
+                            <div className='px-5 '>
                                 <Button
                                     radius="lg"
-                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
+                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full mt-4"
                                     size='sm'
                                     onPress={() => router.push("/app/settings/contract")}
                                 >
                                     <span>View</span>
-                                </Button>
-                                <Button
-                                    radius="lg"
-                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
-                                    size='sm'
-                                    isLoading={isDownloadProcessing == 'contract'}
-                                    onPress={handleContractDownload}
-                                >
-                                    <span>Download</span>
                                 </Button>
                             </div>
 
