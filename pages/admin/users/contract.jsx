@@ -12,6 +12,7 @@ import Logo from '@/public/assets/logo.svg';
 import Image from 'next/image';
 import { DownloadIcon } from '@/components/utils/Icons';
 import { downloadContract } from '@/components/utils/convert-to-pdf';
+import { getSocialUsername } from '@/axios/social-usernames';
 
 export default function ContractView() {
 
@@ -51,6 +52,7 @@ export default function ContractView() {
 
     const [userDetails, setUserDetails] = useState(null);
     const [usernames, setUsernames] = useState([]);
+    const [socialUsername, setSocialUsername] = useState(null);
 
     const user_id = searchParams.get('id');
 
@@ -75,11 +77,15 @@ export default function ContractView() {
             if (usernamesRes.status == 'success') {
                 setUsernames(usernamesRes.data);
             }
+            const socialUsernameRes = await getSocialUsername(user_id);
+            if (socialUsernameRes.status == 'success') {
+                setSocialUsername(socialUsernameRes.data);
+            }
         }
         else {
             router.push("/admin/users");
         }
-    }, [user_id])
+    }, [user_id]);
 
     useEffect(() => {
         getUserDetails();
@@ -167,7 +173,7 @@ export default function ContractView() {
                         </div>
                         <div className='flex gap-2 flex-col'>
                             <p className='font-semibold'> Social Media Username: </p>
-                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>mandrill</span></p>
+                            <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{socialUsername?.username}</span></p>
                         </div>
                     </div>
                 </div>

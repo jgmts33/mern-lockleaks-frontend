@@ -12,13 +12,15 @@ import {
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Search, Pencil, Trash, Facebook, Google, Twitter } from "@/components/utils/Icons";
+import { Search, Pencil, Trash, Facebook, Google, Twitter, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt } from "@/components/utils/Icons";
 import { getUserInfo, getUsernames, deleteUser, updateUserInfo } from '@/axios/user';
 import { SUBSCRIPTION_NAMES } from '@/config/config';
 import { SelectSwitch, UnselectSwitch } from '@/components/utils/Icons';
 import { useSearchParams } from 'next/navigation';
 import { checkDoubleUsername, createUsernames, deleteUsername, updateUsername } from '@/axios/usernames';
 import moment from 'moment/moment';
+import { getSocialUsername } from '@/axios/social-usernames';
+import { updateSocialUsername } from '@/axios/social-usernames';
 
 export default function UsersView() {
 
@@ -31,6 +33,8 @@ export default function UsersView() {
     const [password, setPassword] = useState('');
     const [userDetails, setUserDetails] = useState(null);
     const [usernames, setUsernames] = useState([]);
+    const [socialUsername, setSocialUsername] = useState(null);
+    const [socialUsernameText, setSocialUsernameText] = useState(null);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [isUsernameDeleteProcessing, setIsUsernameDeleteProcessing] = useState(-1);
     const [modalData, setModalData] = useState({
@@ -119,7 +123,11 @@ export default function UsersView() {
         trash: <Trash />,
         google: <Google />,
         facebook: <Facebook />,
-        twitter: <Twitter />
+        twitter: <Twitter />,
+        tiktokAlt: <TiktokAlt />,
+        instagramAlt: <InstagramAlt />,
+        facebookAlt: <FacebookAlt />,
+        redditAlt: <RedditAlt />,
     };
 
     const handleBackButton = () => {
@@ -135,6 +143,10 @@ export default function UsersView() {
             if (usernamesRes.status == 'success') {
                 setUsernames(usernamesRes.data);
             }
+            const socialUsernameRes = await getSocialUsername(user_id);
+            if (socialUsernameRes.status == 'success') {
+                setSocialUsername(socialUsernameRes.data);
+            }
         }
         else {
             router.push("/admin/users");
@@ -144,13 +156,29 @@ export default function UsersView() {
     const handleUpdateAuthInfo = useCallback(async () => {
         setIsActionProcessing(true);
 
+        if (modalData.target == 'social-username') {
+            const res = await updateSocialUsername(socialUsername?.id, { username: socialUsernameText });
+
+            if (res.status == 'success') {
+                setModalData({
+                    target: "",
+                    title: "",
+                    result: ""
+                });
+                setSocialUsername(res.data);
+                onClose();
+            }
+            setIsActionProcessing(false);
+            return;
+        }
+
         let requestData = {
             email
         };
 
         if (modalData.target == 'password') requestData.password = password;
 
-        const res = await updateUserInfo(id, requestData);
+        const res = await updateUserInfo(user_id, requestData);
 
         if (res.status == 'success') {
             if (modalData.target == 'email') {
@@ -172,7 +200,7 @@ export default function UsersView() {
         }
 
         setIsActionProcessing(false);
-    }, [email, password, modalData])
+    }, [email, password, modalData, socialUsernameText, socialUsername])
 
     const handleDeleteUser = async () => {
         setIsActionProcessing(true);
@@ -268,7 +296,15 @@ export default function UsersView() {
                                 <div className='flex'> Expire Date :</div>
                                 <div className='flex'> {moment(userDetails.subscription.expire_date).format("MMM DD, YYYY")}</div>
                             </div> : <></>}
-                            <div className='flex flex-col max-w-[200px] space-y-8 mt-8'>
+                            <div className='flex font-semibold text-base max-w-[600px] gap-4'>
+                                <p>Moderator</p>
+                                <Switch isSelected={userDetails.roles.find(p => p == 'moderator')} onValueChange={(value) => {
+                                    // handleUpdateUserVisible(item.id, value);
+                                }}>
+                                    {userDetails.roles.find(p => p == 'moderator') ? <span>Yes</span> : <span>No</span>}
+                                </Switch>
+                            </div>
+                            <div className='flex flex-col max-w-[200px] space-y-8'>
                                 <Button
                                     radius='full'
                                     size="sm"
@@ -339,13 +375,22 @@ export default function UsersView() {
                                                             label="Email"
                                                             value={email}
                                                             onChange={(e) => setEmail(e.target.value)}
-                                                        /> :
-                                                        <Input
-                                                            type="password"
-                                                            label="Password"
-                                                            value={password}
-                                                            onChange={(e) => setPassword(e.target.value)}
                                                         />
+                                                        :
+                                                        modalData.target == 'password' ?
+                                                            <Input
+                                                                type="password"
+                                                                label="Password"
+                                                                value={password}
+                                                                onChange={(e) => setPassword(e.target.value)}
+                                                            />
+                                                            :
+                                                            <Input
+                                                                type="text"
+                                                                label="Social Username"
+                                                                value={socialUsernameText}
+                                                                onChange={(e) => setSocialUsernameText(e.target.value)}
+                                                            />
                                                 }
                                                 <div className='flex my-2 mt-4 justify-end'>
                                                     <Button
@@ -483,7 +528,7 @@ export default function UsersView() {
                             >
                                 <span>Add New Username</span>
                             </Button>
-                            <ScrollShadow className='h-[560px] flex flex-col gap-3 py-2'>
+                            <ScrollShadow className='h-[400px] flex flex-col gap-3 py-2'>
                                 {
                                     usernames.map((keyword, index) => {
                                         return (
@@ -532,6 +577,32 @@ export default function UsersView() {
                                     })
                                 }
                             </ScrollShadow>
+                            <div className='flex flex-col'>
+                                <p className='font-semibold'> Social Media Username: </p>
+                                <div className='flex gap-4 my-4'>
+                                    <span>{icons.tiktokAlt}</span>
+                                    <span>{icons.facebookAlt}</span>
+                                    <span>{icons.redditAlt}</span>
+                                    <span>{icons.instagramAlt}</span>
+                                </div>
+                                <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {socialUsername?.username}</span></p>
+                                <Button
+                                    radius="md"
+                                    className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base w-max mt-3"
+                                    size='sm'
+                                    onClick={() => {
+                                        setModalData({
+                                            title: "Update Social Media Username",
+                                            target: "social-username",
+                                            result: ""
+                                        });
+                                        setSocialUsernameText(socialUsername?.username);
+                                        onOpen();
+                                    }}
+                                >
+                                    <span>Change Username</span>
+                                </Button>
+                            </div>
                         </div>
 
                     </div>

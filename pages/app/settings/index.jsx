@@ -25,6 +25,7 @@ export default function AccountSetting() {
     const [isChangePasswordSuccessed, setIsChangePasswordSuccessed] = useState(false);
     const [isDownloadProcessing, setIsDownloadProcessing] = useState('');
     const [usernames, setUsernames] = useState([]);
+    const [socialUsername, setSocialUsername] = useState(null);
 
     const icons = {
         google: <Google />,
@@ -97,10 +98,22 @@ export default function AccountSetting() {
         else {
             router.push("/app/settings");
         }
-    }, [userInfo])
+    }, [userInfo]);
+
+    const getSocialUsernameInfo = useCallback(async () => {
+
+        const socialUsernameRes = await getSocialUsername(userInfo.id);
+        if (socialUsernameRes.status == 'success') {
+            setSocialUsername(socialUsernameRes.data);
+        }
+        else {
+            router.push("/app/settings");
+        }
+    }, [userInfo]);
 
     useEffect(() => {
         getUsernamesInfo();
+        getSocialUsernameInfo();
 
         const socket = io(ENDPOINT);
 
@@ -301,7 +314,7 @@ export default function AccountSetting() {
                         <span>{icons.redditAlt}</span>
                         <span>{icons.instagramAlt}</span>
                     </div>
-                    <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> mandrill</span></p>
+                    <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {socialUsername?.username}</span></p>
                     <Button
                         radius="md"
                         className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base w-max mt-3"

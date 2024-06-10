@@ -23,6 +23,7 @@ import { useRouter } from 'next/router';
 import { useSearchParams } from 'next/navigation';
 import { getAccessToken } from '@/axios/token';
 import { checkDoubleUsername } from '@/axios/usernames';
+import { createNewSocialUsername } from '@/axios/social-usernames';
 
 const subscriptionDetails = {
     starter: {
@@ -91,6 +92,7 @@ export default function Checkout() {
             link: ''
         }
     ]);
+    const [socialUsername, setSocialUsername] = useState("");
     const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
     const [fanPaymentLink, setFanPaymentLink] = useState('');
@@ -162,9 +164,11 @@ export default function Checkout() {
     const handlePaymentProcess = useCallback(async () => {
         // TODO: payment integration extraUsernameCount, totalPrice
 
+        const socialUsernameRes = await createNewSocialUsername({ username: socialUsername });
+
         const createUsernamesRes = await createUsernames({ usernames });
 
-        if (createUsernamesRes.status == 'success') {
+        if (createUsernamesRes.status == 'success' && socialUsernameRes.status == 'success') {
             const res = await updatePaymentStatus({
                 plan: plan
             });
@@ -176,7 +180,7 @@ export default function Checkout() {
             }
         }
 
-    }, [usernames, extraUsernameCount, plan]);
+    }, [usernames, extraUsernameCount, plan, socialUsername]);
 
     const handlesubmitUsernamesForFreeTrial = useCallback(async () => {
 
@@ -490,10 +494,10 @@ export default function Checkout() {
                                     <input
                                         type="text"
                                         placeholder='Type here.. @username'
-                                        // value={targetKeyword.username}
-                                        // onChange={(e) => {
-                                        //     setTargetKeyword(p => ({ ...p, username: e.target.value }))
-                                        // }}
+                                        value={socialUsername}
+                                        onChange={(e) => {
+                                            setSocialUsername(e.target.value);
+                                        }}
                                         className='w-full outline-none p-2 rounded-lg bg-white text-black notranslate'
                                         required
                                     />
@@ -554,11 +558,11 @@ export default function Checkout() {
                     </Button> : <div></div>}
                     {step < 3 ? <Button
                         radius="lg"
-                        className={"bg-gradient-to-tr text-white w-36  " + (step == 1 && (!usernames.length || !usernames[0]?.link) ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
+                        className={"bg-gradient-to-tr text-white w-36  " + ((step == 1 && (!usernames.length || !usernames[0]?.link) || (step == 2 && !socialUsername)) ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
                         size='lg'
-                        disabled={step == 1 && (!usernames.length || !usernames[0]?.link)}
+                        disabled={(step == 1 && (!usernames.length || !usernames[0]?.link)) || (step == 2 && !socialUsername)}
                         onPress={() => {
-                            if (step == 1 && (!usernames.length || !usernames[0]?.link)) return;
+                            if ((step == 1 && (!usernames.length || !usernames[0]?.link) || (step == 2 && !socialUsername))) return;
                             setStep(p => p + 1)
                         }}
                     >

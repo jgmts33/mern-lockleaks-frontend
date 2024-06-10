@@ -12,12 +12,14 @@ import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import { DownloadIcon } from '@/components/utils/Icons';
 import { downloadContract } from '@/components/utils/convert-to-pdf';
+import { getSocialUsername } from '../../../axios/social-usernames';
 
 export default function ContractView() {
 
     const userInfo = useSelector(info);
     const router = useRouter();
     const [usernames, setUsernames] = useState([]);
+    const [socialUsername, setSocialUsername] = useState(null);
 
     const icons = {
         downloadIcon: <DownloadIcon />,
@@ -65,12 +67,24 @@ export default function ContractView() {
         }
     }, [userInfo]);
 
+    const getSocialUsernameInfo = useCallback(async () => {
+
+        const socialUsernameRes = await getSocialUsername(userInfo.id);
+        if (socialUsernameRes.status == 'success') {
+            setSocialUsername(socialUsernameRes.data);
+        }
+        else {
+            router.push("/app/settings");
+        }
+    }, [userInfo]);
+
     const handleDownloadContract = useCallback(() => {
         downloadContract(userInfo, usernames);
     }, [userInfo, usernames])
 
     useEffect(() => {
         getUsernamesInfo();
+        getSocialUsernameInfo();
     }, []);
 
     useEffect(() => {
@@ -163,7 +177,7 @@ export default function ContractView() {
                             </div>
                             <div className='flex gap-2 flex-col'>
                                 <p className='font-semibold'> Social Media Username: </p>
-                                <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> mandrill</span></p>
+                                <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {socialUsername?.username }</span></p>
                             </div>
                         </div>
                     </div>
