@@ -92,10 +92,6 @@ export default function FreeTrial() {
                 <p> Verify Email</p>
               </div>
             </div>
-            <div className='space-y-2'>
-              <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent text-[28px] w-max'>One-Time Free Trial:</p>
-              <p className='text-lg'>The free trial is one-time only and cannot be used more than once or with different usernames.</p>
-            </div>
           </div>
           <div className={'bg-gradient-to-tr from-[#3BC940]/10 to-gray-800/40 rounded-3xl cursor-pointer max-w-[590px] border-[0.4px] border-white/10 px-[54px] py-[62px] w-full max-sm:px-6 h-max'}>
             <p className='text-[63px] text-center'>FREE</p>
@@ -144,7 +140,11 @@ export default function FreeTrial() {
             </p>
           </div>
         </div>
-        <div className='w-full flex justify-end mt-6 '>
+        <div className='w-full flex justify-between mt-10 items-start'>
+          <div className='space-y-2'>
+            <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent text-[28px] w-max'>One-Time Free Trial:</p>
+            <p className='text-lg'>The free trial is one-time only and cannot be used more than once or with different usernames.</p>
+          </div>
           <Button
             radius="lg"
             className="bg-gradient-to-r from-[#B759FF] to-[#F68171] border-gray-600 border text-white shadow-lg text-lg relative z-10"
