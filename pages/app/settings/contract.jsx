@@ -11,6 +11,7 @@ import Image from 'next/image';
 import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import { DownloadIcon } from '@/components/utils/Icons';
+import { downloadContract } from '@/components/utils/covnert-to-pdf';
 
 export default function ContractView() {
 
@@ -64,9 +65,9 @@ export default function ContractView() {
         }
     }, [userInfo]);
 
-    const handleDownloadContract = async () => {
-        
-    }
+    const handleDownloadContract = useCallback(() => {
+        downloadContract(userInfo, usernames);
+    }, [userInfo, usernames])
 
     useEffect(() => {
         getUsernamesInfo();

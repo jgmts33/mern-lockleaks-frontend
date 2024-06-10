@@ -132,7 +132,7 @@ export default function RootLayout({ children }) {
               window.location.replace("/");
             }}
           >
-            <span>Back to HomePage</span>
+            <span>Back to Homepage</span>
           </Button>
         </div>
       })
@@ -156,7 +156,7 @@ export default function RootLayout({ children }) {
             window.location.replace("/");
           }}
         >
-          <span>Back to HomePage</span>
+          <span>Back to Homepage</span>
         </Button>
       })
       onOpen();
@@ -206,7 +206,7 @@ export default function RootLayout({ children }) {
               window.location.replace("/");
             }}
           >
-            <span>Back to HomePage</span>
+            <span>Back to Homepage</span>
           </Button>
         </div>
       })

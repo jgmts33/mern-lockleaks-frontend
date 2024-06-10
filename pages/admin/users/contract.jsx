@@ -3,14 +3,15 @@ import {
     Button,
     ScrollShadow
 } from '@nextui-org/react';
-import { Components } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
-import { getUserInfo, getUsernames, deleteUser, updateUserInfo } from '@/axios/user';
+import { getUserInfo, getUsernames } from '@/axios/user';
 import { useRouter, useSearchParams } from 'next/navigation';
 import moment from 'moment';
 import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import Image from 'next/image';
+import { DownloadIcon } from '@/components/utils/Icons';
+import { downloadContract } from '@/components/utils/covnert-to-pdf';
 
 export default function ContractView() {
 
@@ -52,6 +53,14 @@ export default function ContractView() {
     const [usernames, setUsernames] = useState([]);
 
     const user_id = searchParams.get('id');
+
+    const icons = {
+        downloadIcon: <DownloadIcon />,
+    }
+
+    const handleDownloadContract = useCallback(() => {
+        downloadContract(userDetails, usernames);
+    }, [userDetails, usernames])
 
     const getUserDetails = useCallback(async () => {
 
@@ -108,7 +117,6 @@ export default function ContractView() {
                     <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>  <strong>Date:</strong> {moment(userDetails?.contract.date).format('MMM DD, YYYY')} </div>
                     <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>dmca@lockleaks.com </div>
                     <div className='py-4 px-5 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 '>lockleaks.com</div>
-                    {/* <div className='flex gap-6 items-center'> */}
                     <Image
                         src={Logo}
                         width={150}
@@ -121,7 +129,12 @@ export default function ContractView() {
                         height={100}
                         className='object-cover rounded-full'
                     />
-                    {/* </div> */}
+                    <div className='mt-6 text-sm italic space-y-2'>
+                        <p className='notranslate'>AD BOOST SRL</p>
+                        <p className='notranslate'>Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343</p>
+                        <p className='notranslate'>Register Code (CUI): 48091747</p>
+                        <p className='notranslate'>VAT: RO 48091747</p>
+                    </div>
                 </div>
                 <div className="flex flex-col gap-4 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
                     <p className='font-semibold text-lg'>For {userDetails?.name}:</p>
@@ -159,7 +172,15 @@ export default function ContractView() {
                     </div>
                 </div>
             </div>
-
+            <div className='w-full flex justify-center'>
+                <Button
+                    radius="lg"
+                    className="bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white px-7 text-sm"
+                    onClick={handleDownloadContract}
+                >
+                    <span>{icons.downloadIcon}</span><span> DOWNLOAD CONTRACT</span>
+                </Button>
+            </div>
         </div>
     )
 }

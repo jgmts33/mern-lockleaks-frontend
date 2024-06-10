@@ -15,6 +15,7 @@ import Info from "@/public/assets/info.svg"
 import Image from 'next/image';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
+import { downloadContract } from '../../../components/utils/covnert-to-pdf';
 
 export default function AccountSetting() {
 
@@ -61,9 +62,9 @@ export default function AccountSetting() {
         }
     }, [newPassword]);
 
-    const handleContractDownload = async () => {
-
-    }
+    const handleContractDownload = useCallback(() => {
+        downloadContract(userInfo, usernames);
+    }, [userInfo, usernames]);
 
     const handleCopyrightHolderDownload = async () => {
 

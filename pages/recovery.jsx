@@ -198,7 +198,7 @@ export default function Recovery() {
                                     <div key={index} className="flex max-w-[466px] py-10 bg-white/10 bg-opacity-20 shadow-sm border border-gray-500 rounded-[20px] p-5 cursor-pointer top-6 mt-6">
                                         <div className='flex flex-col'>
                                             <span>{cards.step}</span>
-                                            <p className='font-semibold text-xl mt-5 max-sm:text-lg'>{cards.title}</p>
+                                            <p className='font-semibold text-xl mt-5 max-sm:text-lg h-16 max-sm:h-auto'>{cards.title}</p>
                                             <Button className="bg-gradient-to-tr mt-5 bg-white/10 max-w-[88px] rounded-[30px] text-white shadow-lg" size='sm'>
                                                 <span>answer:</span>
                                             </Button>
