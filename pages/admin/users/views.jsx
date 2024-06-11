@@ -93,9 +93,9 @@ export default function UsersView() {
             }
         }
         setIsUsernameLinkValidationProcessing(false);
-    }, [targetKeyword, usernames, targetKeywordIndex, user_id]);
+    }, [targetKeyword.link, targetKeyword.username, targetKeyword.update, targetKeyword.id, checkLinkValidation, usernames, targetKeywordIndex, user_id]);
 
-    const handleDeleteUsername = useCallback(async (id) => {
+    const handleDeleteUsername = async (id) => {
         setIsUsernameDeleteProcessing(id);
         const res = await deleteUsername(id);
 
@@ -103,7 +103,7 @@ export default function UsersView() {
             setUsernames(p => p.filter(item => item.id != id));
         }
         setIsUsernameDeleteProcessing(-1);
-    })
+    }
 
     const checkLinkValidation = useCallback(() => {
         var url = targetKeyword?.link || "";
@@ -151,7 +151,7 @@ export default function UsersView() {
         else {
             router.push("/admin/users");
         }
-    }, [user_id])
+    }, [router, user_id])
 
     const handleUpdateAuthInfo = useCallback(async () => {
         setIsActionProcessing(true);
@@ -200,7 +200,11 @@ export default function UsersView() {
         }
 
         setIsActionProcessing(false);
-    }, [email, password, modalData, socialUsernameText, socialUsername])
+    }, [modalData.target, email, password, user_id, socialUsername?.id, socialUsernameText, onClose])
+
+    const handleSetToModerator = useCallback(async (value) => {
+
+    }, [userDetails]);
 
     const handleDeleteUser = async () => {
         setIsActionProcessing(true);
@@ -299,7 +303,7 @@ export default function UsersView() {
                             <div className='flex font-semibold text-base max-w-[600px] gap-4'>
                                 <p>Moderator</p>
                                 <Switch isSelected={userDetails.roles.find(p => p == 'moderator')} onValueChange={(value) => {
-                                    // handleUpdateUserVisible(item.id, value);
+                                    handleSetToModerator(item.id, value);
                                 }}>
                                     {userDetails.roles.find(p => p == 'moderator') ? <span>Yes</span> : <span>No</span>}
                                 </Switch>
