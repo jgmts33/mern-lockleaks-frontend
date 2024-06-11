@@ -26,6 +26,14 @@ import { checkDoubleUsername } from '@/axios/usernames';
 import { createNewSocialUsername } from '@/axios/social-usernames';
 
 const subscriptionDetails = {
+    trial: {
+        name: 'Free',
+        usernames: 1,
+        prices: {
+            monthly: 0,
+            quarterly: 0
+        }
+    },
     starter: {
         name: 'STARTER',
         usernames: 1,
@@ -100,7 +108,7 @@ export default function Checkout() {
     const handleSetUsernameCount = useCallback(() => {
         setExtraUsernameCount(customUsernameCount);
         onClose();
-    }, [customUsernameCount]);
+    }, [customUsernameCount, onClose]);
 
     const handleSetNewUsername = useCallback(() => {
         console.log(usernames, targetKeywordIndex);
@@ -112,6 +120,16 @@ export default function Checkout() {
             setTargetKeywordType('link');
         }
     }, [targetKeyword, usernames, targetKeywordIndex]);
+
+    const checkLinkValidation = useCallback(() => {
+        var url = targetKeyword?.link || "";
+        var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (!regexp.test(url)) {
+            setUrlValidation("Please enter valid Link.");
+            return false;
+        }
+        return true;
+    }, [targetKeyword]);
 
     const handleSetNewLink = useCallback(async () => {
         let newLink = targetKeyword.link.replace("@", "");
@@ -133,17 +151,7 @@ export default function Checkout() {
             }
         }
         setIsUsernameLinkValidationProcessing(false);
-    }, [targetKeyword, usernames, targetKeywordIndex, extraUsernameCount]);
-
-    const checkLinkValidation = useCallback(() => {
-        var url = targetKeyword?.link || "";
-        var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-        if (!regexp.test(url)) {
-            setUrlValidation("Please enter valid Link.");
-            return false;
-        }
-        return true;
-    }, [targetKeyword]);
+    }, [targetKeyword?.link, targetKeyword?.username, checkLinkValidation, usernames, targetKeywordIndex]);
 
     const handleCreateFanPaymentLink = useCallback(async () => {
 
@@ -158,7 +166,7 @@ export default function Checkout() {
             navigator.clipboard.writeText(`${window.location.host}/payment?code=${res.data.code}`);
         }
         setIsActionProcessing(false);
-    }, [usernames, extraUsernameCount]);
+    }, [usernames]);
 
 
     const handlePaymentProcess = useCallback(async () => {
@@ -180,7 +188,7 @@ export default function Checkout() {
             }
         }
 
-    }, [usernames, extraUsernameCount, plan, socialUsername]);
+    }, [socialUsername, usernames, plan, onOpen]);
 
     const handlesubmitUsernamesForFreeTrial = useCallback(async () => {
 
@@ -198,7 +206,7 @@ export default function Checkout() {
             }
         }
 
-    }, [usernames]);
+    }, [onOpen, usernames]);
 
     useEffect(() => {
         if (!plan) return;
@@ -225,7 +233,7 @@ export default function Checkout() {
             setStep(1);
             setExtraUsernameCount(0);
         }
-    }, [plan]);
+    }, [plan, router]);
 
     return (
         <div className="text-white w-full min-h-[calc(100vh-120px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4 px-4">
@@ -563,7 +571,8 @@ export default function Checkout() {
                         disabled={(step == 1 && (!usernames.length || !usernames[0]?.link)) || (step == 2 && !socialUsername)}
                         onPress={() => {
                             if ((step == 1 && (!usernames.length || !usernames[0]?.link) || (step == 2 && !socialUsername))) return;
-                            setStep(p => p + 1)
+                            if (step == 1 && plan != 'star') setStep(p => p + 2);
+                            setStep(p => p + 1);
                         }}
                     >
                         <span>Next</span>
@@ -582,7 +591,7 @@ export default function Checkout() {
             </div>
             <Modal
                 backdrop="opaque"
-                isOpen={(step == 3 && isOpen) || (plan == 'free' && isOpen)}
+                isOpen={(step == 3 && isOpen) || (plan == 'trial' && isOpen)}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{

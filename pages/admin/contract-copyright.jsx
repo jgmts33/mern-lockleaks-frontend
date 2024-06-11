@@ -152,9 +152,9 @@ export default function AutoContract() {
 
     }, [searchValue.copyright_holder, page.copyright_holder, filterStatus.copyright_holder]);
 
-    const handleContract = useCallback(async (decision) => {
+    const handleContract = useCallback(async (decision, id) => {
 
-        setIsActionProcessing(p => ({ ...p, contract: selectedId }));
+        setIsActionProcessing(p => ({ ...p, contract: id }));
 
         let requestData = {
             decision
@@ -163,11 +163,11 @@ export default function AutoContract() {
             requestData.message = message
         }
 
-        const res = await handleKYCSubmission(selectedId, requestData);
+        const res = await handleKYCSubmission(id, requestData);
 
         if (res.status == 'success') {
 
-            let contractList = list.contract.filter(p => p.id != selectedId);
+            let contractList = list.contract.filter(p => p.id != id);
 
             setList(p => ({
                 ...p,
@@ -179,7 +179,7 @@ export default function AutoContract() {
         setIsActionProcessing(p => ({ ...p, contract: -1 }));
         onClose();
 
-    }, [message, selectedId, list]);
+    }, [message, list]);
 
     useEffect(() => {
 
@@ -204,12 +204,12 @@ export default function AutoContract() {
             <div className='mt-0 max-lg:mx-auto'>
                 <span className='font-extrabold text-lg'>Contract & Copyright Holder</span>
             </div>
-            <div className='grid grid-cols-2 max-lg:grid-cols-1 gap-5 mt-10'>
+            <div className='grid grid-cols-2 max-lg:grid-cols-1 gap-5 max-sm:gap-16 mt-10'>
                 <div>
                     <div className='max-lg:mx-auto mb-5'>
                         <span className='font-semibold text-base'>Contract Upload</span>
                     </div>
-                    <div className="flex flex-col gap-6 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-10 max-sm:p-5">
+                    <div className="flex flex-col gap-6 w-full h-full bg-white/15 border border-gray-500 rounded-[20px] max-md:mx-auto p-8 max-sm:p-4">
 
                         <div className='flex gap-6'>
                             <Button
@@ -260,7 +260,7 @@ export default function AutoContract() {
                             value={searchValue.contract}
                             onValueChange={(value) => setSearchValue(p => ({ ...p, contract: value }))}
                         />
-                        <ScrollShadow className='h-[calc(100vh-480px)] divide-y-2 mt-4 flex flex-col'>
+                        <ScrollShadow className='h-[calc(100vh-480px)] divide-y-2 mt-4 flex flex-col px-2'>
                             {
                                 loadingState.contract ?
                                     <div className='w-max mx-auto'>
@@ -292,7 +292,7 @@ export default function AutoContract() {
                                                                         isLoading={isActionProcessing.contract == item.id}
                                                                         onPress={() => {
                                                                             setSelectedId(item.id);
-                                                                            handleContract('approve');
+                                                                            handleContract('approve', item.id);
                                                                         }}
                                                                     >
                                                                         Approve
@@ -484,7 +484,7 @@ export default function AutoContract() {
                                             <Button
                                                 radius="lg"
                                                 className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
-                                                onPress={() => handleContract('decline')}
+                                                onPress={() => handleContract('decline', selectedId)}
                                                 isLoading={isActionProcessing.copyright_holder != -1}
                                             >
                                                 Confirm

@@ -65,17 +65,10 @@ export default function RecoveryUsers() {
                         </div>
                     </div>
                     <div className='flex flex-col w-1/3 justify-center items-center max-2xl:w-full max-lg:mt-5'>
-                        <div className='font-extrabold text-lg mx-auto text-center'><span>Profile Content Removal</span></div>
                         <div className="flex flex-col max-w-[460px] max-xl:max-w-full w-full bg-white/15 border border-gray-500 rounded-[16px] mt-5 p-10 pb-10">
                             <div className='flex text-center mx-auto'>
-                                <span className='font-normal text-base'><span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning:</span> Your government-issued ID is already in our database and does not need to be uploaded again. It will be used if necessary to delete the profiles you report. </span>
+                                <span className='font-normal text-base'><span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning:</span> Requests are reviewed, and the contract is stored in the database and used to verify that Lock Leaks is authorized to act on behalf of the client to initiate the removal process. </span>
                             </div>
-                            <Button radius="lg" className="bg-gradient-to-tr bg-white/10 text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
-                                <span>+ Upload</span>
-                            </Button>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
-                                <span>Start</span>
-                            </Button>
                         </div>
                     </div>
                 </div>

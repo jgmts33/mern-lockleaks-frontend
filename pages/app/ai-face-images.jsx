@@ -6,7 +6,7 @@ import {
 import { Chain, Components, UploadIcon } from "@/components/utils/Icons";
 import React, { useRef } from 'react';
 import { useState } from 'react';
-import AIFaceImageExample from '@/public/assets/kyc-submit/id_card.png';
+import AIFaceImageExample from '@/public/assets/kyc-submit/selfie-ai.jpg';
 
 export default function AIImage() {
     const [value, setValue] = React.useState(25);
@@ -21,7 +21,7 @@ export default function AIImage() {
 
     const [previewImgUrl, setPreviewImgUrl] = useState('');
     const [uploadedFile, setUploadedFile] = useState(null);
-    const [warning , setWarning] = useState('');
+    const [warning, setWarning] = useState('');
 
     const handleImageUpload = (event, type) => {
         event.preventDefault();
@@ -101,7 +101,7 @@ export default function AIImage() {
                 {/* This section for define AI face images upload*/}
                 <div className='grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6 mt-8'>
                     <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] p-5 text-center justify-center">
-                        <p className='font-extrabold text-lg'>Upload ID Card</p>
+                        <p className='font-extrabold text-lg'>Upload Selfie Photo</p>
                         <div className='flex flex-col w-full h-[250px] bg-white/10 border border-gray-500 rounded-[16px] mt-5'>
                             <div className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
                                 {
@@ -164,12 +164,9 @@ export default function AIImage() {
                     </div>
                     <div className='flex flex-col gap-6 max-lg:flex-row max-sm:flex-col max-lg:col-span-2 max-sm:col-span-1'>
                         <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] w-full p-10 max-sm:mt-0">
-                            <div className='flex'>
-                                <span className='font-normal text-base'><span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning:</span> Your government-issued ID is already in our database and does not need to be uploaded again. It will be used if necessary to delete the profiles you report. </span>
+                            <div className='flex text-center mx-auto'>
+                                <span className='font-normal text-base'><span className='font-normal text-base bg-gradient-to-r from-purple-light to-purple-weight bg-clip-text text-transparent'>Warning:</span> Requests are reviewed, and the contract is stored in the database and used to verify that Lock Leaks is authorized to act on behalf of the client to initiate the removal process. </span>
                             </div>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mx-auto mt-10" size='sm'>
-                                <span>Upload ID</span>
-                            </Button>
                         </div>
                         <div className="flex flex-col bg-white/15 border border-gray-500 rounded-[16px] p-10 max-sm:hidden">
                             <div className='flex flex-col'>

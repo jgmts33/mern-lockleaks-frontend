@@ -65,6 +65,16 @@ export default function UsersView() {
         }
     }, [targetKeyword, usernames, targetKeywordIndex]);
 
+    const checkLinkValidation = useCallback(() => {
+        var url = targetKeyword?.link || "";
+        var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (!regexp.test(url)) {
+            setUrlValidation("Please enter valid Link.");
+            return false;
+        }
+        return true;
+    }, [targetKeyword]);
+
     const handleSetNewLink = useCallback(async () => {
         let newLink = targetKeyword.link.replace("@", "");
         setIsUsernameLinkValidationProcessing(true);
@@ -104,16 +114,6 @@ export default function UsersView() {
         }
         setIsUsernameDeleteProcessing(-1);
     }
-
-    const checkLinkValidation = useCallback(() => {
-        var url = targetKeyword?.link || "";
-        var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-        if (!regexp.test(url)) {
-            setUrlValidation("Please enter valid Link.");
-            return false;
-        }
-        return true;
-    }, [targetKeyword]);
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
@@ -221,7 +221,7 @@ export default function UsersView() {
     useEffect(() => {
         if (!user_id) return;
         getUserDetails();
-    }, [user_id]);
+    }, [getUserDetails, user_id]);
 
     return (
         <>
@@ -266,13 +266,6 @@ export default function UsersView() {
                                         onPress={() => router.push(`/admin/users/contract?id=${user_id}`)}
                                     >
                                         View Contract
-                                    </Button>
-                                    <Button
-                                        radius='full'
-                                        className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
-                                        size="sm"
-                                    >
-                                        Download
                                     </Button>
                                 </div> : <></>}
                             </div>

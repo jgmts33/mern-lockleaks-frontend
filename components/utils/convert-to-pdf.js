@@ -30,7 +30,7 @@ export const downloadContract = (userInfo, usernames) => {
     doc.setFontSize(15);
     doc.text('5. Contract Parties:', 10, 104);
     doc.setFontSize(12);
-    doc.text('This Agreement is between the Client and AD BOOST S.R.L, the entity that owns and operates the Lock Leaks platform.', 10, 110);
+    doc.text('This Agreement is between the Client and AD BOOST S.R.L., the entity that owns and operates the Lock Leaks platform.', 10, 110);
     doc.setFontSize(15);
     doc.text('6. Termination of Agreement', 10, 119);
     doc.setFontSize(12);
@@ -53,7 +53,7 @@ export const downloadContract = (userInfo, usernames) => {
     doc.text(`Date: ${moment(userInfo?.contract.date).format('MMM DD, YYYY')}`, 154, 185);
     doc.text(`dmca@lockleaks.com`, 14, 191);
     doc.text(`lockleaks.com`, 14, 197);
-    doc.addImage('/assets/logo.png', "PNG", -16, 196, 120, 30);
+    doc.addImage('/assets/logo.png', "PNG", 4, 196, 120, 30);
     doc.setFontSize(15);
     doc.text(`Copyright of Usernames`, 150, 206);
     doc.setFontSize(12)
@@ -79,7 +79,7 @@ export const downloadContract = (userInfo, usernames) => {
 
     doc.setFontSize(12);
     doc.setFont("default", "italic");
-    doc.text(`AD BOOST S.R.L`, 10, 265);
+    doc.text(`AD BOOST S.R.L.`, 10, 265);
     doc.text(`Romania, Bacau, Strada Letea 32, Bloc A, Ap. 116, 600343`, 10, 271);
     doc.text(`Register Code (CUI): 48091747`, 10, 277);
     doc.text(`VAT: RO48091747`, 10, 283);

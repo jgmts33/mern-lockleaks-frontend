@@ -66,9 +66,9 @@ export default function CustomerReview() {
                     initialSlide={2}
                     style={{ width: "calc(100% - 110px)" }}
                 >
-                    {list.map((item, index) => <SwiperSlide key={index}>
+                    {list.map((item, index) => <SwiperSlide key={index} >
                         <div
-                            className={"mx-auto text-left w-full rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 p-10 max max-sm:p-4 cursor-pointer hover:opacity-90 duration-300"}
+                            className={"mx-auto text-left w-full h-[263px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 p-6 max max-sm:p-4 cursor-pointer hover:opacity-90 duration-300"}
                             onClick={() => {
                                 if (item.refer_link) window.open(item.refer_link, '_blank');
                             }}
@@ -152,8 +152,9 @@ export default function CustomerReview() {
                                         : <></>
                                 }
                             </div>
-                            <p className='text-base font-normal opacity-80 mt-4 whitespace-normal break-words mb-8 overflow-hidden text-ellipsis'>{item.content.slice(0, 86)} <span>{item.content.length > 86 ? '...' : ''}</span> </p>
-                        </div></SwiperSlide>)}
+                            <p className='text-base font-normal opacity-80 mt-4 whitespace-normal break-words overflow-hidden text-ellipsis'>{item.content.slice(0, 140)} <span>{item.content.length > 140 ? '...' : ''}</span> </p>
+                        </div>
+                    </SwiperSlide>)}
                 </Swiper>
             </div>
             <button className="swiper-custom-prev bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] bg-opacity-20 text-white shadow-full w-10 h-10 flex items-center justify-center rounded-lg absolute z-10 bottom-[calc(50%-80px)] left-2">

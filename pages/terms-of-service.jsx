@@ -18,7 +18,7 @@ export default function TermService() {
                 {/* This section for define Terms of Service content*/}
 
                 <div className='mt-10'>
-                    <p>Welcome to Lock Leaks, operated by AD BOOST S.R.L ("Lock Leaks," "we," "us," or "our"). We are dedicated to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices regarding your personal information, please contact us at support@lockleaks.com.</p>
+                    <p>Welcome to Lock Leaks, operated by AD BOOST S.R.L. ("Lock Leaks," "we," "us," or "our"). We are dedicated to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices regarding your personal information, please contact us at support@lockleaks.com.</p>
                     <p>This privacy notice describes how we may use your information if you:</p>
                     <ul className='list-disc ml-4 my-4'>
                         <li>

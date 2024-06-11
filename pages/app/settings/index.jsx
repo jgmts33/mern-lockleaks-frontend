@@ -1,9 +1,10 @@
 "use client";
 import {
-    Button, ScrollShadow
+    Button, Input, Modal, ModalBody, ModalContent, ModalHeader, ScrollShadow, Spinner,
+    useDisclosure
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
 import { Facebook, Google, Twitter, Error, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt } from '@/components/utils/Icons';
 import { getAccessToken } from '@/axios/token';
@@ -11,21 +12,29 @@ import { resetPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';
 import moment from 'moment/moment';
 import { downloadCopyrightHolder, getUsernames } from '@/axios/user';
+import { getSocialUsername } from '@/axios/social-usernames';
 import Info from "@/public/assets/info.svg"
 import Image from 'next/image';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
 import { downloadContract } from '@/components/utils/convert-to-pdf';
+import { updateSocialUsername } from '../../../axios/social-usernames';
 
 export default function AccountSetting() {
 
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
     const router = useRouter();
+    const dispatch = useDispatch();
     const userInfo = useSelector(info);
     const [isPasswordResetProcessing, setIsPasswordResetProcessing] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
     const [isChangePasswordSuccessed, setIsChangePasswordSuccessed] = useState(false);
     const [isDownloadProcessing, setIsDownloadProcessing] = useState('');
+    const [isUpdatingProcessing, setIsUpdatingProcessing] = useState(false);
     const [usernames, setUsernames] = useState([]);
     const [socialUsername, setSocialUsername] = useState(null);
+    const [socialUsernameText, setSocialUsernameText] = useState("");
 
     const icons = {
         google: <Google />,
@@ -90,7 +99,7 @@ export default function AccountSetting() {
     }
 
     const getUsernamesInfo = useCallback(async () => {
-
+        setIsProcessing(true);
         const usernamesRes = await getUsernames(userInfo.id);
         if (usernamesRes.status == 'success') {
             setUsernames(usernamesRes.data);
@@ -98,6 +107,7 @@ export default function AccountSetting() {
         else {
             router.push("/app/settings");
         }
+        setIsProcessing(false);
     }, [userInfo]);
 
     const getSocialUsernameInfo = useCallback(async () => {
@@ -110,6 +120,18 @@ export default function AccountSetting() {
             router.push("/app/settings");
         }
     }, [userInfo]);
+
+    const handleUpdateSocialUsername = useCallback(async () => {
+        
+        setIsUpdatingProcessing(true);
+        const res = await updateSocialUsername(userInfo?.id, { username: socialUsernameText });
+        
+        if (res.status == 'success') {
+            setSocialUsername(res.data);
+            onClose();
+        }
+        setIsUpdatingProcessing(false);
+    }, [userInfo, socialUsernameText]);
 
     useEffect(() => {
         getUsernamesInfo();
@@ -287,9 +309,11 @@ export default function AccountSetting() {
                 </div>
                 <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
                     <p className='font-semibold'> Usernames List: </p>
-                    <ScrollShadow className='max-h-60 mt-4'>
+                    <ScrollShadow className='h-60 mt-4'>
                         {
-                            usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
+                            isProcessing?
+                            <Spinner size='md' />
+                            : usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
                                 <div>{index + 1}.</div>
                                 <div>
                                     <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
@@ -319,6 +343,10 @@ export default function AccountSetting() {
                         radius="md"
                         className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base w-max mt-3"
                         size='sm'
+                        onClick={() => {
+                            setSocialUsernameText(socialUsername?.username);
+                            onOpen();
+                        }}
                     >
                         <span>Change Username</span>
                     </Button>
@@ -328,7 +356,45 @@ export default function AccountSetting() {
                     </div>
                 </div>
             </div>
-
+            <Modal
+                    backdrop="opaque"
+                    isOpen={isOpen}
+                    size='lg'
+                    onOpenChange={onOpenChange}
+                    classNames={{
+                        backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+                    }}
+                >
+                    <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
+                        {(onClose) => (
+                            <>
+                                <ModalHeader>
+                                    Update Social Username
+                                </ModalHeader>
+                                <ModalBody>
+                                    <div className='flex flex-col'>
+                                        <Input
+                                            type="text"
+                                            label="Decline Message"
+                                            value={socialUsernameText}
+                                            onChange={(e) => setSocialUsernameText(e.target.value)}
+                                        />
+                                        <div className='flex my-2 mt-4 justify-end'>
+                                            <Button
+                                                radius="lg"
+                                                className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
+                                                onPress={handleUpdateSocialUsername}
+                                                isLoading={isUpdatingProcessing}
+                                            >
+                                                Confirm
+                                            </Button>
+                                        </div>
+                                    </div>
+                                </ModalBody>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
         </div>
     )
 }

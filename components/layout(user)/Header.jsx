@@ -77,7 +77,7 @@ const UserHeader = ({ show, setter }) => {
   };
 
   const handleUserSetting = () => {
-    router.push("/app/setting")
+    router.push("/app/settings")
   }
 
   const notifications = [

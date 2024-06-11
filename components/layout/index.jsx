@@ -202,7 +202,7 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
-    else if (userInfo.contract.status == "") {
+    else if (userInfo.subscription.plan_id != 1 && userInfo.contract.status == "") {
       router.push("/app/kyc-submit");
     }
 
