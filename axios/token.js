@@ -83,6 +83,7 @@ export const getAccessToken = async () => {
 
 export const getUserId = () => {
   let access = getCookieValue('access') || '';
+  if (!access) return '';
   const { id } = jwtDecode(access);
   return id ? id : '';
 }

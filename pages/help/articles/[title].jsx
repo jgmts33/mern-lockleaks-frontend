@@ -48,8 +48,6 @@ export default function Details() {
 
     useEffect(() => {
         (async () => {
-            const user_id = await getUserId();
-            setUserId(user_id);
             if (router.query.title?.split("-")) {
                 const titleWords = router.query.title?.split("").reverse().join("").split("-") || ['0'];
                 setIsArticleProcessing(true);
@@ -59,6 +57,8 @@ export default function Details() {
                 }
                 setIsArticleProcessing(false);
             }
+            const user_id = await getUserId();
+            setUserId(user_id);
         })();
     }, [router.query]);
 
