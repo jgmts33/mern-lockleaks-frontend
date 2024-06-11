@@ -82,7 +82,7 @@ export default function CreatePost() {
         }
         setActionIsProcessing(false);
 
-    }, [blogDetails, searchParams.get('id')], tagsStr);
+    }, [blogDetails, searchParams.get('id'), tagsStr]);
 
     useEffect(() => {
         setMounted(true);

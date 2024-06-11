@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 import { getBlogDetailsWithViews, getSimilarBlogs } from '@/axios/blog';
 import 'react-quill/dist/quill.snow.css';
 import DOMPurify from 'dompurify';
+import moment from 'moment/moment';
 
 export default function Blog() {
 
@@ -30,7 +31,8 @@ export default function Blog() {
         content: "",
         banner: null,
         views: 0,
-        tags: []
+        tags: [],
+        createdAt: new Date()
     });
 
     useEffect(() => {
@@ -71,7 +73,7 @@ export default function Blog() {
         <>
             {
                 isProcessing ?
-                    <div className='w-full flex justify-center mt-10'>
+                    <div className='w-full flex justify-center mt-10 min-h-[calc(100vh-600px)] items-center'>
                         <div role="status">
                             <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
@@ -82,69 +84,113 @@ export default function Blog() {
                     </div>
                     :
                     <>
-                        <Image src={RobertHand} className='max-2xl:hidden absolute right-0 top-[600px]' alt='rober-hand' />
-                        <div className="text-white relative flex flex-col mx-auto container px-3">
-
-                            {/* This section for define Blog Format Page Header*/}
-
-                            <div className='mt-10'>
-                                <div className='flex gap-2 ml-3 items-end'>
-                                    <img className="h-10 w-10 rounded-md" src={avatarPreviewImgUrl} alt="Modern building architecture" />
+                        <div className="text-white relative flex flex-col mx-auto w-full px-3 container">
+                            <div className='w-full h-[400px] relative flex items-center justify-center gap-4'>
+                                <Image src={bannerPreviewImgUrl} width={1300} height={400} alt="Service" className='object-cover w-full h-full absolute bg-slate-400' />
+                                <div className='flex gap-2 relative z-10 backdrop-blur-2xl bg-gray-800/30 p-4 rounded-lg'>
+                                    <Image width={40} height={40} className="h-10 w-10 rounded-md" src={avatarPreviewImgUrl} alt="Modern building architecture" />
                                     <div className='flex flex-col'>
                                         <span className='font-light text-sm justify-start'>{blogDetails.moderatorInfo.name}</span>
                                         <span className='font-light text-xs'>{blogDetails.moderatorInfo.description}</span>
                                     </div>
                                 </div>
-                                <div className='flex max-xl:flex-col mt-5 mx-auto max-xl:mx-auto bg-white/10 bg-opacity-20 shadow-sm shadow-gray-50 border-gray-600 rounded-3xl h-[550px] max-xl:h-auto'>
-                                    <Image src={bannerPreviewImgUrl} width={550} height={550} alt="Service" className='object-cover max-xl:w-full rounded-s-3xl' />
-                                    <div className='flex flex-col p-6 relative w-full h-[550px]'>
-                                        <span className='max-xl:text-center font-medium text-5xl mx-auto'>{blogDetails.title}</span>
-                                        <div className='mt-5 overflow-y-auto ql-editor' >
-                                            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blogDetails.content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }} />
-                                        </div>
-                                        <Button radius="full" className="absolute flex items-center top-4 right-4 bg-gradient-to-tr from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6 opacity-40" size='md'>
-                                            <span className='text-medium font-normal'>{blogDetails.views}</span><span> {icons.eye}</span>
-                                        </Button>
-                                    </div>
+
+                                <div className="flex gap-1 items-center relative z-10 backdrop-blur-2xl bg-gray-800/30 px-2 py-1 text-sm rounded-lg">
+                                    <span>{blogDetails.views}</span><span> {icons.eye}</span>
+                                </div>
+
+                                <div className="flex gap-1 items-center relative z-10 backdrop-blur-2xl bg-gray-800/30 px-2 py-1 text-sm rounded-lg">
+                                    {moment(new Date(blogDetails.createdAt)).format("MMM DD, YYYY")}
                                 </div>
                             </div>
-
-                            {/* This section for define Blog Format Page Actions*/}
-
-                            <div className='flex justify-start mt-10 max-sm:mt-5 gap-5 max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 z-10'>
+                            <div className='flex justify-start mt-5 gap-5 z-10'>
                                 <Button
                                     radius="full"
                                     className="bg-gradient-to-tr flex items-center from-gray-800/80 to-gray-800/40  border-gray-600 border text-white shadow-lg max-md:text-[15px] px-6"
-                                    size='md'
+                                    size='sm'
                                     onPress={() => router.push("/")}
                                 >
-                                    <span className='text-medium font-normal'>Lockleaks</span><span> {icons.right}</span>
+                                    <span className='text-sm'>Lock Leaks</span><span> {icons.right}</span>
                                 </Button>
                                 <Button
                                     radius="full"
                                     className="bg-gradient-to-tr flex items-center from-gray-800/80 to-gray-800/40 text-white shadow-lg max-md:text-[15px] px-6"
-                                    size='md'
+                                    size='sm'
                                     onPress={() => router.push("/blog")}
                                 >
-                                    <span className='text-medium font-normal'>Blog</span><span> {icons.right}</span>
+                                    <span className='text-sm'>Blog</span><span> {icons.right}</span>
                                 </Button>
                                 <Button
                                     radius="full"
-                                    className="bg-gradient-to-tr flex items-center from-[#c775e0] to-[#c233af] border-gray-600 text-white shadow-lg max-md:text-[13px] px-6"
-                                    size='md'
+                                    className="bg-gradient-to-tr flex items-center from-[#c775e0] to-[#c233af] border-gray-600 text-white shadow-lg max-md:text-[13px] px-6 max-sm:hidden"
+                                    size='sm'
                                 >
-                                    <span className='text-medium font-normal'>{blogDetails.title}</span><span> {icons.right}</span>
+                                    <span className='text-sm'>{blogDetails.title}</span><span> {icons.right}</span>
                                 </Button>
                             </div>
-                            <div className='font-light flex mt-32 gap-5 justify-start max-xl:mx-auto max-xl:flex-col max-xl:w-1/2 max-xl:mt-5'>
-                                <Button radius="full" className="bg-gradient-to-tr flex items-center from-gray-800/80 to-gray-800/40 border-gray-600 border text-white shadow-lg max-md:text-[13px] px-6" size='md'>
-                                    <p className='text-medium font-normal'>{blogDetails.tags.join(", ")}</p>
-                                </Button>
+                            {/* This section for define Blog Format Page Header*/}
+
+                            <div className='mt-10 flex gap-2 divide-x-1 max-sm:divide-x-0 container mx-auto max-sm:flex-col'>
+                                <div className='flex flex-col p-6 max-sm:p-2 relative flex-1 max-sm:order-2'>
+                                    <span className='max-xl:text-center font-medium text-5xl mx-auto'>{blogDetails.title}</span>
+                                    <div className='mt-5 overflow-y-auto ql-editor' >
+                                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blogDetails.content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }} />
+                                    </div>
+                                </div>
+                                <div className='w-[320px] p-4 max-sm:order-1 max-sm:w-full'>
+                                    <div className='flex gap-x-4 gap-y-2 flex-wrap'>
+                                        {
+                                            blogDetails.tags.map((item) => <div
+                                                key={item}
+                                                className=' backdrop-blur-2xl bg-gray-800 px-2 py-1 text-sm rounded-lg'
+                                            >
+                                                <p>{item}</p>
+                                            </div>)
+                                        }
+                                    </div>
+                                    <div className='flex flex-col w-full mt-6 gap-5 max-md:mx-auto divide-y-1' >
+                                        {
+                                            similarBlogs.map((item, index) => {
+                                                return (
+                                                    <div key={index}
+                                                        className="w-full"
+                                                        onClick={() => router.push(`/blog/format?id=${item.id}`)}
+                                                    >
+                                                        <div className="flex flex-col py-3 gap-2">
+                                                            <Image
+                                                                width={400}
+                                                                height={128}
+                                                                className="h-32 w-full rounded object-cover"
+                                                                src={`https://server.lockleaks.com/images?filename=${item.banner}`}
+                                                                alt="Modern building architecture"
+                                                            />
+                                                            <div className='flex gap-2'>
+                                                                <Image
+                                                                    width={32}
+                                                                    height={32}
+                                                                    className="h-8 w-8"
+                                                                    src={`https://server.lockleaks.com/images?filename=${item.moderatorInfo.avatar}`}
+                                                                    alt="Modern building architecture"
+                                                                />
+                                                                <div className='flex flex-col'>
+                                                                    <span className='font-light text-sm justify-start'>{item.moderatorInfo.name}</span>
+                                                                    <span className='font-light text-xs'>{item.moderatorInfo.description}</span>
+                                                                </div>
+                                                            </div>
+                                                            <p className="font-semibold text-sm">{item.title}</p>
+                                                            <p className="text-[10px]">{item.shortContent}</p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                </div>
                             </div>
 
                             {/* This section for define Blog Format Page Cards*/}
 
-                            <div className='w-full flex mx-auto gap-10 max-lg:flex-col max-xl:flex-col max-md:px-3 relative'>
+                            {/* <div className='w-full flex mx-auto gap-10 max-lg:flex-col max-xl:flex-col max-md:px-3 relative'>
                                 <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={160} height={180} className='max-md:hidden absolute -top-56 left-96 bg-[#532a88] bg-opacity-30 blur-3xl z-0' />
                                 {similarBlogs.length ? <Image src="/assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={342} className='max-md:hidden absolute top-32 right-44 bg-[#532a88] bg-opacity-30 blur-3xl z-0' /> : <></>}
                                 <div className='flex flex-col top-24 w-full mt-16 gap-10 max-md:mx-auto z-10' >
@@ -206,7 +252,7 @@ export default function Blog() {
                                         })
                                     }
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </>
             }
