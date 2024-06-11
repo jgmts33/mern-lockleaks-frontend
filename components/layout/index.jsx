@@ -103,7 +103,7 @@ export default function RootLayout({ children }) {
 
     if (!userInfo) return;
 
-    if (userInfo.roles.includes("admin")) {
+    if (userInfo.roles.includes("admin") || userInfo.roles.includes("moderator")) {
       setMounted(true);
       return;
     }
@@ -300,7 +300,7 @@ export default function RootLayout({ children }) {
               <div className="w-full gradiant-background">
                 <UserHeader setter={setShowSidebar} />
                 <div className="flex flex-col flex-grow w-screen md:w-full h-[calc(100vh-65px)] overflow-y-auto relative" style={{ scrollBehavior: 'smooth' }}>
-                  {userInfo.roles.includes('admin') || USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value == undefined || userInfo.subscription.features[USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value]
+                  {userInfo.roles.includes('admin') || userInfo.roles.includes('moderator') || USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value == undefined || userInfo.subscription.features[USER_SIDEBAR_LIST.find(item => item.path === currentPath)?.value]
                     ?
                     children :
                     <div className="w-full py-10 max-sm:py-6">

@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { Poppins } from "next/font/google";
 import { ADMIN_SIDEBAR_LIST, USER_SIDEBAR_LIST } from "@/config/config";
+import { MODERATOR_SIDEBAR_LIST } from "../../config/config";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -69,6 +70,9 @@ const Sidebar = ({ show, setter }) => {
         if (userInfo.roles.includes('admin')) {
             setSidebarList(ADMIN_SIDEBAR_LIST);
             setSelectedSidebar(ADMIN_SIDEBAR_LIST.findIndex(p => p.path === currentPath));
+        } else if (userInfo.roles.includes('moderator')) {
+            setSidebarList(MODERATOR_SIDEBAR_LIST);
+            setSelectedSidebar(MODERATOR_SIDEBAR_LIST.findIndex(p => p.path === currentPath));
         } else {
             setSidebarList(USER_SIDEBAR_LIST);
             setSelectedSidebar(USER_SIDEBAR_LIST.findIndex(p => p.path === currentPath));

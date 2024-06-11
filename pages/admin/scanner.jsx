@@ -7,11 +7,14 @@ import { UpDownScroll, MoreDetails } from "@/components/utils/Icons";
 import { acceptOrder, getScrapedDataList } from '@/axios/download';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 export default function Scanner() {
 
     const [scrapedData, setScrapedData] = useState([]);
     const [isProcessing, setIsProcessing] = useState(false);
+    const userInfo = useSelector(info);
 
     const icons = {
         updownscroll: <UpDownScroll/>,
@@ -34,6 +37,7 @@ export default function Scanner() {
     }
 
     const handleAccept = useCallback(async (folder_name, index) => {
+        if ( scrapedData[index]?.accepted == true && userInfo.roles.find(p => p == 'moderator') ) return;
         const res = await acceptOrder(folder_name);
 
         if (res.status == 'success') {
@@ -55,7 +59,7 @@ export default function Scanner() {
         } else {
             console.log("Error");
         }
-    }, [scrapedData]);
+    }, [scrapedData, userInfo]);
 
     useEffect(() => {
         setScannerDetails(p => ({
@@ -144,10 +148,10 @@ export default function Scanner() {
                             <span className='text-[#A29EB1]'>total orders:</span>
                             <span className='py-1'>{scannerDetails.total_orders}</span>
                             <div className='flex flex-col space-y-2 py-3'>
-                                <div className='flex gap-2'>
+                                {userInfo?.roles?.find(p => p == 'admin') ?<div className='flex gap-2'>
                                     <span className='gap-5 font-normal text-[18px] text-[#A29EB1]'>Accepted orders:</span>
                                     <span className='gap-5 font-normal text-[18px] text-white'>{scannerDetails.accept_orders}</span>
-                                </div>
+                                </div> : <></>}
                                 <div className='flex gap-2'>
                                     <span className='font-normal text-[18px] text-[#A29EB1]'>Pending orders:</span>
                                     <span className='font-normal text-[18px] text-[white]'>{scannerDetails.pending_orders}</span>

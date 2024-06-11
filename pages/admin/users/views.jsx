@@ -21,6 +21,7 @@ import { checkDoubleUsername, createUsernames, deleteUsername, updateUsername } 
 import moment from 'moment/moment';
 import { getSocialUsername } from '@/axios/social-usernames';
 import { updateSocialUsername } from '@/axios/social-usernames';
+import { updateUserToModerator } from '../../../axios/user';
 
 export default function UsersView() {
 
@@ -147,6 +148,7 @@ export default function UsersView() {
             if (socialUsernameRes.status == 'success') {
                 setSocialUsername(socialUsernameRes.data);
             }
+            setEmail(userRes.data?.email);
         }
         else {
             router.push("/admin/users");
@@ -203,7 +205,12 @@ export default function UsersView() {
     }, [modalData.target, email, password, user_id, socialUsername?.id, socialUsernameText, onClose])
 
     const handleSetToModerator = useCallback(async (value) => {
-
+        const res = await updateUserToModerator(userDetails?.id, value);
+        
+        if ( res.status == 'success')  {
+            if ( value ) setUserDetails(p => ({...p, roles: ['moderator']}));
+            else setUserDetails(p => ({...p, roles: ['user']}));
+        }
     }, [userDetails]);
 
     const handleDeleteUser = async () => {
@@ -295,10 +302,13 @@ export default function UsersView() {
                             </div> : <></>}
                             <div className='flex font-semibold text-base max-w-[600px] gap-4'>
                                 <p>Moderator</p>
-                                <Switch isSelected={userDetails.roles.find(p => p == 'moderator')} onValueChange={(value) => {
-                                    handleSetToModerator(item.id, value);
-                                }}>
-                                    {userDetails.roles.find(p => p == 'moderator') ? <span>Yes</span> : <span>No</span>}
+                                <Switch
+                                    isSelected={!!userDetails.roles.find(p => p == 'moderator')}
+                                    onValueChange={(value) => {
+                                        handleSetToModerator(value);
+                                    }}
+                                >
+                                    {!!userDetails.roles.find(p => p == 'moderator') ? <span>Yes</span> : <span>No</span>}
                                 </Switch>
                             </div>
                             <div className='flex flex-col max-w-[200px] space-y-8'>

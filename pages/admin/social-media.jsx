@@ -4,7 +4,7 @@ import {
     ScrollShadow
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { acceptSocialProfiles, getSocialProfileSubmitions } from '@/axios/social';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
@@ -75,7 +75,8 @@ export default function SocialMedia() {
         setIsProcessing(false);
     }
 
-    const handleAccept = async (file_name, index) => {
+    const handleAccept = useCallback(async (file_name, index) => {
+        if ( socialMediaSubmitionsList[index]?.accepted == true && userInfo.roles.find(p => p == 'moderator') ) return;
         setIsSubmitionAcceptProcessing(index);
         const res = await acceptSocialProfiles(file_name);
 
@@ -100,7 +101,7 @@ export default function SocialMedia() {
             });
         }
         setIsSubmitionAcceptProcessing(-1);
-    }
+    },[userInfo, socialMediaSubmitionsList]);
 
     useEffect(() => {
         setSocialMediaSubmitContent([

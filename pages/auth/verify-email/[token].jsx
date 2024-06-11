@@ -16,8 +16,8 @@ export default function VerifyEmail() {
 
         if (res.status === 'success') {
           dispatch(setUserInfo({ ...res.data }));
-          // Email verification successful
-          router.push('/app/dashboard');
+          if ( res.data.roles.find(p => p == 'moderator') ) router.push('/admin/dashboard');
+        else router.push('/app/dashboard');
         }
       }
     })();

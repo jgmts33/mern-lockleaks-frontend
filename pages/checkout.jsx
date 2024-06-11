@@ -604,8 +604,10 @@ export default function Checkout() {
                         <>
                             <ModalBody>
                                 <div className='mx-auto flex items-center justify-center -mb-24'>{icons.success}</div>
-                                <span className='font-bold text-2xl text-center capitalize leading-9'>Paid Successfully!</span>
-                                {/* <span className='font-bold text-2xl text-center capitalize leading-9'>Usernames added Successfully!</span> */}
+                                {
+                                    plan != 'trial' ? <span className='font-bold text-2xl text-center capitalize leading-9'>Paid Successfully!</span>
+                                        : <span className='font-bold text-2xl text-center capitalize leading-9'>Usernames added Successfully!</span>
+                                }
                             </ModalBody>
                             <ModalFooter>
                                 <Button

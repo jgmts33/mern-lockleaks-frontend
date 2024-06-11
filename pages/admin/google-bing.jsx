@@ -1,24 +1,27 @@
 "use client";
 import {
-    Button, 
+    Button,
     ScrollShadow
 } from '@nextui-org/react';
 import { GoogleSearch, Components, BingSearch } from "@/components/utils/Icons";
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { acceptOrder, getScrapedDataList } from '@/axios/download';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 export default function GoogleBing() {
 
     const [googleScrapedData, setGoogleScrapedData] = useState([]);
     const [bingScrapedData, setBingScrapedData] = useState([]);
     const [isProcessing, setIsProcessing] = useState(false);
+    const userInfo = useSelector(info);
 
     const icons = {
-        googlesearch: <GoogleSearch/>,
-        components: <Components/>,
-        bingsearch: <BingSearch/>,
+        googlesearch: <GoogleSearch />,
+        components: <Components />,
+        bingsearch: <BingSearch />,
     };
 
     const getScrapedDataListInfo = async () => {
@@ -30,7 +33,9 @@ export default function GoogleBing() {
         setIsProcessing(false);
     }
 
-    const handleAccept = async (folder_name, index, only) => {
+    const handleAccept = useCallback(async (folder_name, index, only) => {
+        if (only == 'google' && googleScrapedData[index]?.accepted == true && userInfo.roles.find(p => p == 'moderator')) return;
+        if (only == 'bing' && bingScrapedData[index]?.accepted == true && userInfo.roles.find(p => p == 'moderator')) return;
 
         const res = await acceptOrder(folder_name);
 
@@ -59,7 +64,7 @@ export default function GoogleBing() {
         } else {
             console.log("Error");
         }
-    };
+    }, [userInfo, googleScrapedData, bingScrapedData]);
 
     useEffect(() => {
         getScrapedDataListInfo();
@@ -111,13 +116,13 @@ export default function GoogleBing() {
     ]);
 
     useEffect(() => {
-        setGoogleScannerContent([
+
+        if (userInfo?.roles?.find(p => p == 'admin')) setGoogleScannerContent([
             {
                 icon: icons.googlesearch,
                 title: "TOTAL ORDERS:",
                 content: googleScrapedData.length
-            },
-            {
+            }, {
                 icon: icons.googlesearch,
                 title: "ACCEPTED ORDERS:",
                 content: googleScrapedData.filter(p => p.accepted == true).length
@@ -127,10 +132,21 @@ export default function GoogleBing() {
                 content: googleScrapedData.filter(p => p.accepted == false).length
             }
         ])
-    }, [googleScrapedData]);
+        else setGoogleScannerContent([
+            {
+                icon: icons.googlesearch,
+                title: "TOTAL ORDERS:",
+                content: googleScrapedData.length
+            }, {
+                icon: icons.googlesearch,
+                title: "PENDING ORDERS:",
+                content: googleScrapedData.filter(p => p.accepted == false).length
+            }
+        ])
+    }, [googleScrapedData, userInfo]);
 
     useEffect(() => {
-        setBingScannerContent([
+        if (userInfo?.roles?.find(p => p == 'admin')) setBingScannerContent([
             {
                 icon: icons.bingsearch,
                 title: "TOTAL ORDERS:",
@@ -146,7 +162,18 @@ export default function GoogleBing() {
                 content: bingScrapedData.filter(p => p.accepted == false).length
             }
         ])
-    }, [bingScrapedData]);
+        else setBingScannerContent([
+            {
+                icon: icons.bingsearch,
+                title: "TOTAL ORDERS:",
+                content: bingScrapedData.length
+            }, {
+                icon: icons.bingsearch,
+                title: "PENDING ORDERS:",
+                content: bingScrapedData.filter(p => p.accepted == false).length
+            }
+        ])
+    }, [bingScrapedData, userInfo]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 w-full py-5 text-white max-lg:mx-auto max-lg:px-3">

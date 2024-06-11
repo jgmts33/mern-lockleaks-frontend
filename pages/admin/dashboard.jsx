@@ -82,11 +82,11 @@ export default function AdminDashbaord() {
         const res = await getScrapedDataList(true);
 
         if (res.status == 'success') {
-            
+
             if (res.data?.length >= 1) {
                 setLastScanResult(res.data[0]);
             }
-            
+
             let _scanResult = DEFAULT_SCAN_RESULT;
 
             res.data.map((item) => {
@@ -120,7 +120,7 @@ export default function AdminDashbaord() {
     }
 
     useEffect(() => {
-        setDashboardOverview([
+        let _overview = [
             {
                 title: "Search Engines",
                 subtitle: "total last scan",
@@ -178,20 +178,26 @@ export default function AdminDashbaord() {
                 lastscan: lastScanResult.good_count,
                 total: scanResult.good_count
             },
-            {
-                title: "Total Orders",
-                subtitle: "total orders in 7 days",
-                lastscan: extraReport.order.weekly,
-                total: extraReport.order.total
-            },
-            {
-                title: "Total Users",
-                subtitle: "total users in 7 days",
-                lastscan: extraReport.user.weekly,
-                total: extraReport.user.total
-            },
-        ])
-    }, [scanResult, lastScanResult, extraReport]);
+        ];
+
+        if (userInfo?.roles?.find(p => p == 'admin')) {
+            _overview = [
+                ..._overview,
+                {
+                    title: "Total Orders",
+                    subtitle: "total orders in 7 days",
+                    lastscan: extraReport.order.weekly,
+                    total: extraReport.order.total
+                },
+                {
+                    title: "Total Users",
+                    subtitle: "total users in 7 days",
+                    lastscan: extraReport.user.weekly,
+                    total: extraReport.user.total
+                },]
+        }
+        setDashboardOverview(_overview);
+    }, [scanResult, lastScanResult, extraReport, userInfo]);
 
     useEffect(() => {
         getScrapedDataListInfo();

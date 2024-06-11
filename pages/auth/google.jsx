@@ -17,7 +17,8 @@ export default function VerifyCode() {
       if (res.status === 'success') {
         dispatch(setUserInfo({ ...res.data }));
         setTokens(res.data.tokens);
-        router.push('/app/dashboard');
+        if ( res.data.roles.find(p => p == 'moderator') ) router.push('/admin/dashboard');
+        else router.push('/app/dashboard');
       }
     }
     else {

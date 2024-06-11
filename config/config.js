@@ -286,6 +286,96 @@ export const ADMIN_SIDEBAR_LIST = [
   }
 ]
 
+
+export const MODERATOR_SIDEBAR_LIST = [
+  {
+    icon: icons.category,
+    title: "DASHBOARD",
+    path: "/admin/dashboard",
+    favourite: false
+  }, {
+    icon: icons.scanner,
+    title: "SCANNER",
+    path: "/admin/scanner",
+    favourite: false
+  }, {
+    icon: icons.search,
+    title: "GOOGLE & BING",
+    path: "/admin/google-bing",
+    favourite: false
+  }, {
+    icon: icons.AIProfile,
+    title: "ARTIFICIAL INTELLIGENCE",
+    path: "/admin/ai-face",
+    favourite: false
+  }, {
+    icon: icons.submit,
+    title: "SOCIAL MEDIA",
+    path: "/admin/social-media",
+    favourite: false
+  }, {
+    icon: icons.agency,
+    title: "AGENCY",
+    path: "/admin/agency",
+    favourite: false
+  }, {
+    icon: icons.AIProfile,
+    title: "PERSONAL AGENT",
+    path: "/admin/personal-agent",
+    favourite: false
+  }, {
+    icon: icons.usercontent,
+    title: "R&R OF USER CONTENT",
+    path: "/admin/ruser-content",
+    favourite: false
+  }, {
+    icon: icons.calendarcheck,
+    title: "DATA ANALYTICS",
+    path: "/admin/analytics",
+    favourite: false
+  }, {
+    icon: icons.DataReport,
+    title: "DATA REPORT",
+    path: "/admin/data-report",
+    favourite: false
+  }, {
+    icon: icons.testbots,
+    title: "TEST BOTS",
+    path: "/admin/test-bots",
+    favourite: false
+  }, {
+    icon: icons.management,
+    title: "REPORTS MANAGEMENT",
+    path: "/admin/report-management",
+    favourite: false
+  }, {
+    icon: icons.review,
+    title: "REVIEWS MANAGEMENT",
+    path: "/admin/review",
+    favourite: false
+  }, {
+    icon: icons.keywordsDataSet,
+    title: "KEYWORDS DATASET",
+    path: "/admin/keywords",
+    favourite: false
+  }, {
+    icon: icons.bing,
+    title: "NEWSLETTER",
+    path: "/admin/news",
+    favourite: false
+  }, {
+    icon: icons.helpPost,
+    title: "HELP",
+    path: "/admin/help",
+    favourite: false
+  }, {
+    icon: icons.notification,
+    title: "NOTIFICATION",
+    path: "/admin/notifications",
+    favourite: false
+  }
+]
+
 export const SUBSCRIPTION_NAMES = [
   '',
   'Trial',

@@ -147,6 +147,32 @@ export const updateUserVisible = async (id, ban) => {
   }
 }
 
+export const updateUserToModerator = async (id, action) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.patch(`${ENDPOINT}/user-to-moderator/${id}`, {
+      action
+    }, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
 export const getUserInfo = async (id) => {
 
   const accessToken = await getAccessToken();
