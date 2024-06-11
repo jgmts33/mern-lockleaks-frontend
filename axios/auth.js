@@ -21,7 +21,14 @@ export const login = async (data) => {
 
 export const register = async (data) => {
   try {
-    const res = await axios.post(`${ENDPOINT}/auth/signup`, data);
+
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+
+    const res = await axios.post(`${ENDPOINT}/auth/signup`, {
+      ...data,
+      ip: data.ip
+    });
 
     return {
       status: 'success',
@@ -57,7 +64,14 @@ export const verifyEmail = async (token) => {
 
 export const googleAuth = async (code) => {
   try {
-    const res = await axios.post(`${ENDPOINT}/auth/google`, { code });
+
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+
+    const res = await axios.post(`${ENDPOINT}/auth/google`, {
+      code,
+      ip: data.ip
+    });
 
     return {
       status: 'success',
@@ -74,7 +88,14 @@ export const googleAuth = async (code) => {
 
 export const facebookAuth = async (code) => {
   try {
-    const res = await axios.post(`${ENDPOINT}/auth/facebook`, { code });
+
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+
+    const res = await axios.post(`${ENDPOINT}/auth/facebook`, {
+      code,
+      ip: data.ip
+    });
 
     return {
       status: 'success',
@@ -90,8 +111,15 @@ export const facebookAuth = async (code) => {
 }
 
 export const twitterAuth = async (code) => {
+
+  const response = await fetch('https://api.ipify.org?format=json');
+  const data = await response.json();
+
   try {
-    const res = await axios.post(`${ENDPOINT}/auth/twitter`, { code });
+    const res = await axios.post(`${ENDPOINT}/auth/twitter`, {
+      code,
+      ip: data.ip
+    });
 
     return {
       status: 'success',

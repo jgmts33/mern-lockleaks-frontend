@@ -6,7 +6,6 @@ import {
 } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { ChevronRight, Eye } from "@/components/utils/Icons";
-import RobertHand from '@/public/assets/copyright/robert-hand.svg';
 import { useRouter } from 'next/router';
 import { getBlogDetailsWithViews, getSimilarBlogs } from '@/axios/blog';
 import 'react-quill/dist/quill.snow.css';
@@ -41,7 +40,6 @@ export default function Blog() {
 
             if (router.query.title?.split("-")) {
                 const titleWords = router.query.title?.split("").reverse().join("").split("-") || ['0'];
-                console.log("titleWords:", titleWords);
                 setIsProcessing(true);
                 const res = await getBlogDetailsWithViews(Number(titleWords[0].split("").reverse().join("")));
                 if (res.status == 'success') {
@@ -86,7 +84,7 @@ export default function Blog() {
                     <>
                         <div className="text-white relative flex flex-col mx-auto w-full px-3 container">
                             <div className='w-full h-[400px] relative flex items-center justify-center gap-4'>
-                                <Image src={bannerPreviewImgUrl} width={1300} height={400} alt="Service" className='object-cover w-full h-full absolute bg-slate-400' />
+                                <Image src={bannerPreviewImgUrl} width={1300} height={400} alt="Service" className='object-cover w-full h-full absolute hover:bg-slate-300/20' />
                                 <div className='flex gap-2 relative z-10 backdrop-blur-2xl bg-gray-800/30 p-4 rounded-lg'>
                                     <Image width={40} height={40} className="h-10 w-10 rounded-md" src={avatarPreviewImgUrl} alt="Modern building architecture" />
                                     <div className='flex flex-col'>
@@ -137,8 +135,8 @@ export default function Blog() {
                                         <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blogDetails.content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling'] }) }} />
                                     </div>
                                 </div>
-                                <div className='w-[320px] p-4 max-sm:order-1 max-sm:w-full'>
-                                    <div className='flex gap-x-4 gap-y-2 flex-wrap'>
+                                <div className='w-[320px] p-2 max-sm:order-1 max-sm:w-full'>
+                                    <div className='flex gap-x-4 gap-y-2 flex-wrap px-2'>
                                         {
                                             blogDetails.tags.map((item) => <div
                                                 key={item}
@@ -153,14 +151,14 @@ export default function Blog() {
                                             similarBlogs.map((item, index) => {
                                                 return (
                                                     <div key={index}
-                                                        className="w-full"
-                                                        onClick={() => router.push(`/blog/format?id=${item.id}`)}
+                                                        className="w-full cursor-pointer hover:bg-slate-300/10 p-2 rounded duration-300"
+                                                        onClick={() => router.push(`/blog/${item.title.replaceAll(" ", "-")}-${item.id}`)}
                                                     >
-                                                        <div className="flex flex-col py-3 gap-2">
+                                                        <div className="flex flex-col gap-2">
                                                             <Image
                                                                 width={400}
                                                                 height={128}
-                                                                className="h-32 w-full rounded object-cover"
+                                                                className="h-32 w-full rounded object-cover hover:bg-slate-300/20"
                                                                 src={`https://server.lockleaks.com/images?filename=${item.banner}`}
                                                                 alt="Modern building architecture"
                                                             />
