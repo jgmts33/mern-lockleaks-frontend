@@ -16,7 +16,6 @@ export default function VerifyEmail() {
         const res = await verifyEmail(router.query.token);
 
         if (res.status === 'success') {
-          dispatch(setUserInfo({ ...res.data }));
           if (res.data?.roles.find(p => p == 'moderator')) window.open('/admin/dashboard', '_self');
           else window.open('/app/dashboard', '_self');
         }
