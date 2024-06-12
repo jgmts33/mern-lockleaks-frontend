@@ -17,7 +17,7 @@ import Info from "@/public/assets/info.svg"
 import Image from 'next/image';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
-import { downloadContract } from '@/components/utils/convert-to-pdf';
+import { downloadContract } from '@/components/utils/contract-to-pdf';
 import { updateSocialUsername } from '../../../axios/social-usernames';
 
 export default function AccountSetting() {

@@ -23,11 +23,11 @@ export const register = async (data) => {
   try {
 
     const response = await fetch('https://api.ipify.org?format=json');
-    const data = await response.json();
+    const region = await response.json();
 
     const res = await axios.post(`${ENDPOINT}/auth/signup`, {
       ...data,
-      ip: data.ip
+      ip: region.ip
     });
 
     return {
@@ -66,11 +66,11 @@ export const googleAuth = async (code) => {
   try {
 
     const response = await fetch('https://api.ipify.org?format=json');
-    const data = await response.json();
+    const region = await response.json();
 
     const res = await axios.post(`${ENDPOINT}/auth/google`, {
       code,
-      ip: data.ip
+      ip: region.ip
     });
 
     return {
@@ -90,11 +90,11 @@ export const facebookAuth = async (code) => {
   try {
 
     const response = await fetch('https://api.ipify.org?format=json');
-    const data = await response.json();
+    const region = await response.json();
 
     const res = await axios.post(`${ENDPOINT}/auth/facebook`, {
       code,
-      ip: data.ip
+      ip: region.ip
     });
 
     return {
@@ -113,12 +113,12 @@ export const facebookAuth = async (code) => {
 export const twitterAuth = async (code) => {
 
   const response = await fetch('https://api.ipify.org?format=json');
-  const data = await response.json();
+  const region = await response.json();
 
   try {
     const res = await axios.post(`${ENDPOINT}/auth/twitter`, {
       code,
-      ip: data.ip
+      ip: region.ip
     });
 
     return {

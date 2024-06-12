@@ -11,7 +11,7 @@ import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import Image from 'next/image';
 import { DownloadIcon } from '@/components/utils/Icons';
-import { downloadContract } from '@/components/utils/convert-to-pdf';
+import { downloadContract } from '@/components/utils/contract-to-pdf';
 import { getSocialUsername } from '@/axios/social-usernames';
 
 export default function ContractView() {
