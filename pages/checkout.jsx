@@ -343,7 +343,7 @@ export default function Checkout() {
                         ?
                         <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto'>
                             <span className='font-medium text-[34spanx] text-center -mb-4'>USERNAMES LIST</span>
-                            <span className='font-medium text-center'>(<span className='notranslate'>{usernames.filter(p => (p.link != "")).length}</span> USERNAMES)</span>
+                            <span className='font-medium text-center'>(<span className='notranslate pr-2'>{usernames.filter(p => (p.link != "")).length}</span> USERNAMES)</span>
 
                             {targetKeyword != null ? <div className="flex bg-gradien t-to-br from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 cursor-pointer flex-col border border-gray-700 py-20 px-10 ">
                                 {
@@ -595,7 +595,7 @@ export default function Checkout() {
             </div>
             <Modal
                 backdrop="opaque"
-                isOpen={(step == 3 && isOpen) || (plan == 'trial' && isOpen)}
+                isOpen={(step != 1 && isOpen) || (plan == 'trial' && isOpen)}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{
