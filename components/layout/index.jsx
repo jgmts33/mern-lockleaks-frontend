@@ -327,12 +327,13 @@ export default function RootLayout({ children }) {
                 isOpen={isOpen}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
+                size="lg"
                 classNames={{
                   backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
                 }}
                 hideCloseButton
               >
-                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
+                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32 pb-6'>
                   {() => (
                     <>
                       <ModalHeader>

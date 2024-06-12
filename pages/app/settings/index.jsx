@@ -25,10 +25,10 @@ export default function AccountSetting() {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
     const PLANS = [
-        { id: 1, name: 'trial' },
-        { id: 2, name: 'starter' },
-        { id: 3, name: 'pro' },
-        { id: 4, name: 'star' }
+        { id: 1, name: 'trial', label: 'Free Trial' },
+        { id: 2, name: 'starter', label: 'Starter' },
+        { id: 3, name: 'pro', label: 'Pro' },
+        { id: 4, name: 'star', label: 'Star' }
     ]
 
     const router = useRouter();
@@ -245,10 +245,10 @@ export default function AccountSetting() {
                                         className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
                                         size='sm'
                                     >
-                                        <span>Plan : <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{PLANS.find(p => p.id == userInfo?.subscription.plan_id)?.name}</span></span>
+                                        <span>Plan : <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{PLANS.find(p => p.id == userInfo?.subscription.plan_id)?.label}</span></span>
                                     </Button>
                                 </div>
-                                <div>
+                                {userInfo?.subscription.payment_method ? <div>
                                     <Button
                                         radius="lg"
                                         className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
@@ -256,7 +256,7 @@ export default function AccountSetting() {
                                     >
                                         <span>Payment Method: <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{userInfo?.subscription.payment_method}</span></span>
                                     </Button>
-                                </div>
+                                </div> : <></>}
                             </div>
                         </div>
                 }
@@ -366,11 +366,11 @@ export default function AccountSetting() {
                     <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {socialUsername?.username}</span></p>
                     <Button
                         radius="md"
-                        className={"bg-gradient-to-br text-white shadow-lg text-base w-max mt-3 " + (new Date(socialUsername?.updatedAt).setMonth(new Date(socialUsername?.updatedAt).getMonth() + 1) > new Date() ? 'from-gray-800 to-gray-900 cursor-not-allowed' : 'from-purple-light to-purple-weight')}
-                        disabled={new Date(socialUsername?.updatedAt).setMonth(new Date(socialUsername?.updatedAt).getMonth() + 1) > new Date()}
+                        className={"bg-gradient-to-br text-white shadow-lg text-base w-max mt-3 " + (new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date() ? 'from-gray-800 to-gray-900 cursor-not-allowed' : 'from-purple-light to-purple-weight')}
+                        disabled={new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date()}
                         size='sm'
                         onClick={() => {
-                            if (new Date(socialUsername?.updatedAt).setMonth(new Date(socialUsername?.updatedAt).getMonth() + 1) > new Date()) return;
+                            if (new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date()) return;
                             setSocialUsernameText(socialUsername?.username);
                             onOpen();
                         }}
