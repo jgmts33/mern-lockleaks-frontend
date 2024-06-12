@@ -86,7 +86,7 @@ export default function AutoContract() {
         setLoadingState(p => ({ ...p, copyright_holder: false }));
     }
 
-    const handleCopyrightHolderUpload = useCallback(async () => {
+    const uploadCopyrightHolderFile = useCallback(async () => {
         copyrightHolderRef.current?.click();
     }, [copyrightHolderRef]);
 
@@ -417,7 +417,7 @@ export default function AutoContract() {
                                                                         size='sm'
                                                                         isLoading={isActionProcessing.copyright_holder == item.id}
                                                                         onPress={() => {
-                                                                            handleCopyrightHolderUpload();
+                                                                            uploadCopyrightHolderFile();
                                                                             setSelectedId(item.id);
                                                                         }}
                                                                     >

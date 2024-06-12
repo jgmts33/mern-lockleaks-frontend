@@ -10,10 +10,10 @@ import {
     ModalBody,
     Switch
 } from '@nextui-org/react';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Search, Pencil, Trash, Facebook, Google, Twitter, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt } from "@/components/utils/Icons";
-import { getUserInfo, getUsernames, deleteUser, updateUserInfo } from '@/axios/user';
+import { Search, Pencil, Trash, Facebook, Google, Twitter, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt, Add } from "@/components/utils/Icons";
+import { getUserInfo, getUsernames, deleteUser, updateUserInfo, updatePaymentStatus, updateUserToModerator, downloadCopyrightHolder, uploadCopyrightHolder } from '@/axios/user';
 import { SUBSCRIPTION_NAMES } from '@/config/config';
 import { SelectSwitch, UnselectSwitch } from '@/components/utils/Icons';
 import { useSearchParams } from 'next/navigation';
@@ -21,7 +21,6 @@ import { checkDoubleUsername, createUsernames, deleteUsername, updateUsername } 
 import moment from 'moment/moment';
 import { getSocialUsername } from '@/axios/social-usernames';
 import { updateSocialUsername } from '@/axios/social-usernames';
-import { updateUserToModerator } from '../../../axios/user';
 
 export default function UsersView() {
 
@@ -30,10 +29,23 @@ export default function UsersView() {
 
     const user_id = searchParams.get('id');
 
+    const PLANS = [
+        { id: 1, name: 'trial' },
+        { id: 2, name: 'starter' },
+        { id: 3, name: 'pro' },
+        { id: 4, name: 'star' }
+    ]
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userDetails, setUserDetails] = useState(null);
     const [usernames, setUsernames] = useState([]);
+    const [planDetails, setPlanDetails] = useState({
+        status: "",
+        plan_id: 1,
+        period: 1,
+        payment_method: ""
+    })
     const [socialUsername, setSocialUsername] = useState(null);
     const [socialUsernameText, setSocialUsernameText] = useState(null);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
@@ -50,6 +62,9 @@ export default function UsersView() {
         link: '',
         update: false
     });
+
+    const copyrightHolderRef = useRef(null);
+    const [reUploaded, setReUploaded] = useState(false);
 
     const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
     const [urlValidation, setUrlValidation] = useState("");
@@ -129,6 +144,7 @@ export default function UsersView() {
         instagramAlt: <InstagramAlt />,
         facebookAlt: <FacebookAlt />,
         redditAlt: <RedditAlt />,
+        add: <Add />
     };
 
     const handleBackButton = () => {
@@ -156,7 +172,7 @@ export default function UsersView() {
     }, [router, user_id])
 
     const handleUpdateAuthInfo = useCallback(async () => {
-        setIsActionProcessing(true);
+        setIsActionProcessing('auth');
 
         if (modalData.target == 'social-username') {
             const res = await updateSocialUsername(socialUsername?.id, { username: socialUsernameText });
@@ -206,16 +222,16 @@ export default function UsersView() {
 
     const handleSetToModerator = useCallback(async (value) => {
         const res = await updateUserToModerator(userDetails?.id, value);
-        
-        if ( res.status == 'success')  {
-            if ( value ) setUserDetails(p => ({...p, roles: ['moderator']}));
-            else setUserDetails(p => ({...p, roles: ['user']}));
+
+        if (res.status == 'success') {
+            if (value) setUserDetails(p => ({ ...p, roles: ['moderator'] }));
+            else setUserDetails(p => ({ ...p, roles: ['user'] }));
         }
     }, [userDetails]);
 
-    const handleDeleteUser = async () => {
-        setIsActionProcessing(true);
-        const res = await deleteUser(id);
+    const handleDeleteUser = useCallback(async () => {
+        setIsActionProcessing('delete');
+        const res = await deleteUser(user_id);
 
         if (res.status == 'success') {
             router.push("/admin/users");
@@ -223,6 +239,83 @@ export default function UsersView() {
             console.log(res.data);
         }
         setIsActionProcessing(false);
+    }, [user_id]);
+
+    const handleAddPlanMannually = useCallback(async () => {
+        setIsActionProcessing('plan');
+        const res = await updatePaymentStatus({
+            plan: PLANS.find(p => p.id == planDetails.plan_id).name,
+            payment_method: planDetails.payment_method,
+            period: planDetails.period
+        }, user_id);
+
+        if (res.status == 'success') {
+            setUserDetails(p => ({
+                ...p,
+                subscription: {
+                    expire_date: planDetails.plan_id == 1 ? new Date().setDate(new Date().getDate() + 3) : new Date().setMonth(new Date().getMonth() + planDetails.period),
+                    payment_method: planDetails.payment_method,
+                    plan_id: planDetails.plan_id,
+                    status: "active"
+                }
+            }));
+            setPlanDetails({
+                status: "",
+                plan_id: 1,
+                period: 1,
+                payment_method: ""
+            });
+            onClose();
+        }
+
+        setIsActionProcessing(false);
+    }, [planDetails, user_id]);
+
+    const uploadCopyrightHolderFile = useCallback(async () => {
+        copyrightHolderRef.current?.click();
+    }, [copyrightHolderRef]);
+
+    const handleUploadCopyrightHolder = useCallback(async () => {
+        const uploadedFile = copyrightHolderRef.current.files[0];
+        if (!uploadedFile) return;
+        setIsActionProcessing('copyright_holder');
+
+        const formData = new FormData();
+        formData.append('file', uploadedFile);
+
+        const res = await uploadCopyrightHolder(user_id, formData);
+
+        if (res.status == 'success') {
+            setReUploaded(true);
+
+            setTimeout(() => {
+                setReUploaded(false);
+            }, 1000);
+        }
+
+        setIsActionProcessing(false);
+
+    }, [user_id, copyrightHolderRef]);
+
+    const handleDownload = async (id) => {
+        setIsActionProcessing('copyright_holder');
+        const res = await downloadCopyrightHolder(id);
+        setIsActionProcessing(false);
+        if (res.status == 'success') {
+            const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+            const url = URL.createObjectURL(pdfBlob);
+
+            // Create a temporary anchor element and simulate a click to download the file
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `Copyright Holder ${id}.pdf`; // Customize the filename as needed
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Release the object URL to free up memory
+            setTimeout(() => URL.revokeObjectURL(url), 100);
+        }
     }
 
     useEffect(() => {
@@ -252,8 +345,16 @@ export default function UsersView() {
                         <p className='font-medium text-lg'>User Information</p>
                         <div className='flex flex-col gap-5 w-full bg-white/10 shadow-sm border border-gray-500 rounded-[16px] p-6 mt-4'>
                             <div className='flex font-semibold text-base gap-4'>
+                                <div className='flex'>USER ID :</div>
+                                <div className='flex'>{userDetails.id}</div>
+                            </div>
+                            <div className='flex font-semibold text-base gap-4'>
                                 <div className='flex'>EMAIL :</div>
                                 <div className='flex'>{userDetails.email}</div>
+                            </div>
+                            <div className='flex font-semibold text-base gap-4'>
+                                <div className='flex'>IP Address :</div>
+                                <div className='flex'>{userDetails.ip}</div>
                             </div>
                             <div className='flex font-semibold text-base gap-4'>
                                 <div className='flex'>Full Name :</div>
@@ -278,24 +379,43 @@ export default function UsersView() {
                             </div>
                             <div className='flex font-semibold text-base gap-4 items-center'>
                                 <div className='flex'>COPYRIGHT HOLDER :</div>
-                                {userDetails.contract.copyright_holder ? <div className='flex gap-6'>
+                                {userDetails.copyright_holder ? <div className='flex gap-6'>
                                     <Button
                                         radius='full'
                                         className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
                                         size="sm"
+                                        onPress={() => handleDownload(userDetails?.id)}
+                                        isLoading={isActionProcessing == 'copyright_holder'}
                                     >
                                         Download
                                     </Button>
+                                    <Button
+                                        radius="full"
+                                        className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
+                                        size='sm'
+                                        isLoading={isActionProcessing == 'copyright_holder'}
+                                        onPress={uploadCopyrightHolderFile}
+                                    >
+                                        { reUploaded ? 'Uploaded' : 'Re-Upload' }
+                                    </Button>
+                                    <input
+                                        type="file"
+                                        id="file"
+                                        accept=".pdf"
+                                        ref={copyrightHolderRef}
+                                        onChange={handleUploadCopyrightHolder}
+                                        hidden
+                                    />
                                 </div> : <></>}
                             </div>
-                            <div className='flex font-semibold text-base max-w-[600px] gap-4'>
+                            {userDetails.subscription.plan_id ? <div className='flex font-semibold text-base max-w-[600px] gap-4'>
                                 <div className='flex'>PLAN :</div>
                                 <div className='flex capitalize'>{userDetails.subscription.status} </div>
-                            </div>
-                            <div className='flex font-semibold text-base max-w-[600px] gap-4'>
+                            </div> : <></>}
+                            {userDetails.subscription.plan_id ? <div className='flex font-semibold text-base max-w-[600px] gap-4'>
                                 <div className='flex'>{userDetails.subscription.status == 'expired' ? 'LAST PLAN' : 'ACTIVE PLAN'} :</div>
                                 <div className='flex'> {SUBSCRIPTION_NAMES[userDetails.subscription.plan_id]}</div>
-                            </div>
+                            </div> : <></>}
                             {userDetails.subscription.status == 'active' ? <div className='flex font-semibold text-base max-w-[600px] gap-4'>
                                 <div className='flex'> Expire Date :</div>
                                 <div className='flex'> {moment(userDetails.subscription.expire_date).format("MMM DD, YYYY")}</div>
@@ -311,7 +431,7 @@ export default function UsersView() {
                                     {!!userDetails.roles.find(p => p == 'moderator') ? <span>Yes</span> : <span>No</span>}
                                 </Switch>
                             </div>
-                            <div className='flex flex-col max-w-[200px] space-y-8'>
+                            <div className='flex flex-wrap gap-4'>
                                 <Button
                                     radius='full'
                                     size="sm"
@@ -348,10 +468,35 @@ export default function UsersView() {
                                     size="sm"
                                     className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
                                     onPress={handleDeleteUser}
-                                    isLoading={isActionProcessing}
+                                    isLoading={isActionProcessing == 'delete'}
                                 >
                                     <span className='flex gap-1'>{icons.trash} DELETE USER</span>
                                 </Button>
+                                {!userDetails.subscription.plan_id ?
+                                    <Button
+                                        radius='full'
+                                        size="sm"
+                                        className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm"
+                                        onPress={() => {
+                                            setModalData({
+                                                title: "Add Plan",
+                                                target: "plan",
+                                                result: ""
+                                            });
+                                            setPlanDetails({
+                                                plan_id: 1,
+                                                expire_date: new Date(),
+                                                payment_method: '',
+                                                status: ''
+                                            })
+                                            onOpen();
+                                        }}
+                                        isLoading={isActionProcessing == 'plan'}
+                                    >
+                                        <span className='flex gap-1 items-center'>{icons.add} ADD PLAN</span>
+                                    </Button>
+                                    :
+                                    <></>}
                             </div>
                         </div>
                         <Modal
@@ -375,36 +520,95 @@ export default function UsersView() {
                                         <ModalBody>
                                             <p className='text-left text-red-500'>{modalData.result}</p>
                                             <div className='flex flex-col w-full'>
-                                                {
-                                                    modalData.target == 'email' ?
-                                                        <Input
-                                                            type="text"
-                                                            label="Email"
-                                                            value={email}
-                                                            onChange={(e) => setEmail(e.target.value)}
-                                                        />
-                                                        :
-                                                        modalData.target == 'password' ?
-                                                            <Input
-                                                                type="password"
-                                                                label="Password"
-                                                                value={password}
-                                                                onChange={(e) => setPassword(e.target.value)}
-                                                            />
-                                                            :
-                                                            <Input
-                                                                type="text"
-                                                                label="Social Username"
-                                                                value={socialUsernameText}
-                                                                onChange={(e) => setSocialUsernameText(e.target.value)}
-                                                            />
-                                                }
+                                                {modalData?.target == 'plan' ?
+                                                    <div className='space-y-2'>
+
+                                                        <div className='flex gap-2 items-center'>
+                                                            <p>PLANS: </p>
+                                                            {PLANS.map((item, index) => <div key={index}>
+                                                                <Button
+                                                                    radius="lg"
+                                                                    className={"border border-gray-500 text-white shadow-lg px-6 text-base capitalize bg-gradient-to-tr " + (planDetails.plan_id == item.id ? 'from-purple-light to-purple-weight' : 'from-gray-500 to-gray-600')}
+                                                                    onPress={() => setPlanDetails({
+                                                                        plan_id: item.id,
+                                                                        period: 1,
+                                                                        payment_method: 'Mannul',
+                                                                        status: 'active'
+                                                                    })}
+                                                                >
+                                                                    {item.name}
+                                                                </Button>
+                                                            </div>)}
+
+                                                        </div>
+                                                        {
+                                                            planDetails.plan_id != 1 ? <div className='flex gap-2 items-center'>
+                                                                <p>PERIOD: </p>
+                                                                <div className='flex gap-2 items-center'>
+                                                                    <Button
+                                                                        radius="lg"
+                                                                        className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr " + (planDetails.period == 1 ? 'from-purple-light to-purple-weight' : 'from-gray-500 to-gray-600')}
+                                                                        onPress={() => setPlanDetails(p => ({
+                                                                            ...p,
+                                                                            period: 1,
+                                                                            payment_method: 'mannul',
+                                                                            status: 'active'
+                                                                        }))}
+                                                                    >
+                                                                        1 Month
+                                                                    </Button>
+                                                                    <Button
+                                                                        radius="lg"
+                                                                        className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr " + (planDetails.period == 3 ? 'from-purple-light to-purple-weight' : 'from-gray-500 to-gray-600')}
+                                                                        onPress={() => setPlanDetails(p => ({
+                                                                            ...p,
+                                                                            period: 3,
+                                                                            payment_method: 'mannul',
+                                                                            status: 'active'
+                                                                        }))}
+                                                                    >
+                                                                        3 Months
+                                                                    </Button>
+                                                                </div>
+                                                            </div> : <></>
+                                                        }
+                                                    </div>
+                                                    :
+                                                    <div>
+                                                        {
+                                                            modalData.target == 'email' ?
+                                                                <Input
+                                                                    type="text"
+                                                                    label="Email"
+                                                                    value={email}
+                                                                    onChange={(e) => setEmail(e.target.value)}
+                                                                />
+                                                                :
+                                                                modalData.target == 'password' ?
+                                                                    <Input
+                                                                        type="password"
+                                                                        label="Password"
+                                                                        value={password}
+                                                                        onChange={(e) => setPassword(e.target.value)}
+                                                                    />
+                                                                    :
+                                                                    <Input
+                                                                        type="text"
+                                                                        label="Social Username"
+                                                                        value={socialUsernameText}
+                                                                        onChange={(e) => setSocialUsernameText(e.target.value)}
+                                                                    />
+                                                        }
+                                                    </div>}
                                                 <div className='flex my-2 mt-4 justify-end'>
                                                     <Button
                                                         radius="lg"
                                                         className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
-                                                        onClick={handleUpdateAuthInfo}
-                                                        isLoading={isActionProcessing}
+                                                        onClick={() => {
+                                                            if (modalData.target == 'plan') handleAddPlanMannually();
+                                                            else handleUpdateAuthInfo();
+                                                        }}
+                                                        isLoading={isActionProcessing == 'auth' || isActionProcessing == 'plan'}
                                                     >
                                                         Save
                                                     </Button>

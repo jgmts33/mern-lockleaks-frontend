@@ -50,13 +50,13 @@ export const getExtraReport = async () => {
   }
 }
 
-export const updatePaymentStatus = async (data) => {
+export const updatePaymentStatus = async (data, id = null) => {
 
   const accessToken = await getAccessToken();
   const userId = getUserId();
 
   try {
-    const res = await axios.patch(`${ENDPOINT}/subscription/${userId}`,
+    const res = await axios.patch(`${ENDPOINT}/subscription/${id ? id : userId}`,
       data,
       {
         headers: {

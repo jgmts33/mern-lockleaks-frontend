@@ -2367,3 +2367,12 @@ export const Dislike = () => {
         </g>
     </svg>)
 }
+
+export const Add = () => {
+    return (<svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 48 48">
+        <g fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth={4}>
+            <rect width={36} height={36} x={6} y={6} rx={3}></rect>
+            <path strokeLinecap="round" d="M24 16v16m-8-8h16"></path>
+        </g>
+    </svg>)
+}

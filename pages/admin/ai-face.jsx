@@ -5,12 +5,15 @@ import {
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
 import React, { useState } from 'react';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 export default function AIface() {
     const [value, setValue] = React.useState(25);
     const [selectGoogleAccept, setSelectGoogleAccept] = useState(0)
     const [selectBingAccept, setSelectBingAccept] = useState(0)
 
+    const userInfo = useSelector(info);
 
     const icons = {
         components: <Components/>,

@@ -155,7 +155,7 @@ export default function Checkout() {
 
     const handleCreateFanPaymentLink = useCallback(async () => {
 
-        setIsActionProcessing(true);
+        setIsActionProcessing('fan');
         const res = await generateNewFanPaymentLink({
             usernames,
             amount: usernames.length * 15
@@ -169,16 +169,18 @@ export default function Checkout() {
     }, [usernames]);
 
 
-    const handlePaymentProcess = useCallback(async () => {
+    const handlePaymentProcess = useCallback(async (payment_method) => {
         // TODO: payment integration extraUsernameCount, totalPrice
-
+        setIsActionProcessing(payment_method);
         const socialUsernameRes = await createNewSocialUsername({ username: socialUsername });
 
         const createUsernamesRes = await createUsernames({ usernames });
 
         if (createUsernamesRes.status == 'success' && socialUsernameRes.status == 'success') {
             const res = await updatePaymentStatus({
-                plan: plan
+                plan: plan,
+                payment_method,
+                period: period == 'monthly' ? 1 : 3
             });
 
             if (res.status == 'success') {
@@ -187,8 +189,8 @@ export default function Checkout() {
                 console.log("Error:", res.data);
             }
         }
-
-    }, [socialUsername, usernames, plan, onOpen]);
+        setIsActionProcessing(false);
+    }, [socialUsername, usernames, plan, onOpen, period]);
 
     const handlesubmitUsernamesForFreeTrial = useCallback(async () => {
 
@@ -524,7 +526,8 @@ export default function Checkout() {
                                             radius="full"
                                             className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
                                             size='lg'
-                                            onClick={handlePaymentProcess}
+                                            onClick={() => handlePaymentProcess('Credit Card')}
+                                            isLoading={isActionProcessing == 'Credit Card'}
                                         >
                                             <span>Pay whith credit card</span>
                                         </Button>
@@ -532,7 +535,8 @@ export default function Checkout() {
                                             radius="full"
                                             className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg"
                                             size='lg'
-                                            onClick={handlePaymentProcess}
+                                            isLoading={isActionProcessing == 'Paypal'}
+                                            onClick={() => handlePaymentProcess('Paypal')}
                                         >
                                             <span>Pay whith paypal</span>
                                         </Button>
@@ -541,7 +545,7 @@ export default function Checkout() {
                                             className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
                                             size='lg'
                                             onClick={handleCreateFanPaymentLink}
-                                            isLoading={isActionProcessing}
+                                            isLoading={isActionProcessing == 'fan'}
                                         >
                                             <span>Request fan support</span>
                                         </Button>

@@ -24,6 +24,13 @@ export default function AccountSetting() {
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
+    const PLANS = [
+        { id: 1, name: 'trial' },
+        { id: 2, name: 'starter' },
+        { id: 3, name: 'pro' },
+        { id: 4, name: 'star' }
+    ]
+
     const router = useRouter();
     const dispatch = useDispatch();
     const userInfo = useSelector(info);
@@ -122,10 +129,10 @@ export default function AccountSetting() {
     }, [userInfo]);
 
     const handleUpdateSocialUsername = useCallback(async () => {
-        
+
         setIsUpdatingProcessing(true);
         const res = await updateSocialUsername(userInfo?.id, { username: socialUsernameText });
-        
+
         if (res.status == 'success') {
             setSocialUsername(res.data);
             onClose();
@@ -165,7 +172,7 @@ export default function AccountSetting() {
                         <span className='font-semibold text-base'>Personal Details</span>
                     </div>
                     <div className='flex flex-col px-5 mt-4 gap-5'>
-
+                        <p>USER ID: {userInfo?.id}</p>
                         {!userInfo?.social ? <div className='space-y-5'>
                             <Button
                                 radius="lg"
@@ -238,6 +245,15 @@ export default function AccountSetting() {
                                         className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
                                         size='sm'
                                     >
+                                        <span>Plan : <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{PLANS.find(p => p.id == userInfo?.subscription.plan_id)?.name}</span></span>
+                                    </Button>
+                                </div>
+                                <div>
+                                    <Button
+                                        radius="lg"
+                                        className="bg-gradient-to-br bg-white/10 border border-gray-500 text-white shadow-lg text-base p-5 w-full"
+                                        size='sm'
+                                    >
                                         <span>Payment Method: <span className='capitalize bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent'>{userInfo?.subscription.payment_method}</span></span>
                                     </Button>
                                 </div>
@@ -270,20 +286,29 @@ export default function AccountSetting() {
                                 <span className='font-semibold text-base'>Copyright Holder</span>
                             </div>
                             <div className='flex flex-col px-5 gap-5 mt-4  '>
-                                <Button
-                                    radius="lg"
-                                    className={"bg-gradient-to-br text-white shadow-lg text-base p-5 w-full " + (userInfo.copyright_holder ? 'from-purple-light to-purple-weight' : 'from-gray-800 to-gray-900 cursor-not-allowed')}
-                                    size='sm'
-                                    isDisabled={!userInfo.copyright_holder}
-                                    isLoading={isDownloadProcessing == 'copyright_holder'}
-                                    onPress={handleCopyrightHolderDownload}
-                                >
-                                    {userInfo.copyright_holder ?
-                                        <span>Download</span>
-                                        :
-                                        <span>Pending</span>
-                                    }
-                                </Button>
+                                {
+                                    userInfo?.subscription.plan_id == 3 || userInfo?.subscription.plan_id == 4 ? <Button
+                                        radius="lg"
+                                        className={"bg-gradient-to-br text-white shadow-lg text-base p-5 w-full " + (userInfo.copyright_holder ? 'from-purple-light to-purple-weight' : 'from-gray-800 to-gray-900 cursor-not-allowed')}
+                                        size='sm'
+                                        isDisabled={!userInfo.copyright_holder}
+                                        isLoading={isDownloadProcessing == 'copyright_holder'}
+                                        onPress={handleCopyrightHolderDownload}
+                                    >
+                                        {userInfo.copyright_holder ?
+                                            <span>Download</span>
+                                            :
+                                            <span>Pending</span>
+                                        }
+                                    </Button> : <Button
+                                        radius="lg"
+                                        className={"bg-gradient-to-br text-white shadow-lg text-base p-5 w-full " + (userInfo.copyright_holder ? 'from-purple-light to-purple-weight' : 'from-gray-800 to-gray-900 cursor-not-allowed')}
+                                        size='sm'
+                                        onPress={() => window.open("/pricing", '_blank')}
+                                    >
+                                        Available for Star/Pro Plan
+                                    </Button>
+                                }
                             </div>
                         </div>
                 }
@@ -311,15 +336,15 @@ export default function AccountSetting() {
                     <p className='font-semibold'> Usernames List: </p>
                     <ScrollShadow className='h-60 mt-4'>
                         {
-                            isProcessing?
-                            <Spinner size='md' />
-                            : usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
-                                <div>{index + 1}.</div>
-                                <div>
-                                    <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
-                                    <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.link}</span></p>
-                                </div>
-                            </div>)
+                            isProcessing ?
+                                <Spinner size='md' />
+                                : usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
+                                    <div>{index + 1}.</div>
+                                    <div>
+                                        <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
+                                        <p>Link: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.link}</span></p>
+                                    </div>
+                                </div>)
                         }
                     </ScrollShadow>
                     <Button
@@ -341,9 +366,11 @@ export default function AccountSetting() {
                     <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {socialUsername?.username}</span></p>
                     <Button
                         radius="md"
-                        className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base w-max mt-3"
+                        className={"bg-gradient-to-br text-white shadow-lg text-base w-max mt-3 " + (new Date(socialUsername?.updatedAt).setMonth(new Date(socialUsername?.updatedAt).getMonth() + 1) > new Date() ? 'from-gray-800 to-gray-900 cursor-not-allowed' : 'from-purple-light to-purple-weight')}
+                        disabled={new Date(socialUsername?.updatedAt).setMonth(new Date(socialUsername?.updatedAt).getMonth() + 1) > new Date()}
                         size='sm'
                         onClick={() => {
+                            if (new Date(socialUsername?.updatedAt).setMonth(new Date(socialUsername?.updatedAt).getMonth() + 1) > new Date()) return;
                             setSocialUsernameText(socialUsername?.username);
                             onOpen();
                         }}
@@ -357,44 +384,44 @@ export default function AccountSetting() {
                 </div>
             </div>
             <Modal
-                    backdrop="opaque"
-                    isOpen={isOpen}
-                    size='lg'
-                    onOpenChange={onOpenChange}
-                    classNames={{
-                        backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
-                    }}
-                >
-                    <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
-                        {(onClose) => (
-                            <>
-                                <ModalHeader>
-                                    Update Social Username
-                                </ModalHeader>
-                                <ModalBody>
-                                    <div className='flex flex-col'>
-                                        <Input
-                                            type="text"
-                                            label="Decline Message"
-                                            value={socialUsernameText}
-                                            onChange={(e) => setSocialUsernameText(e.target.value)}
-                                        />
-                                        <div className='flex my-2 mt-4 justify-end'>
-                                            <Button
-                                                radius="lg"
-                                                className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
-                                                onPress={handleUpdateSocialUsername}
-                                                isLoading={isUpdatingProcessing}
-                                            >
-                                                Confirm
-                                            </Button>
-                                        </div>
+                backdrop="opaque"
+                isOpen={isOpen}
+                size='lg'
+                onOpenChange={onOpenChange}
+                classNames={{
+                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+                }}
+            >
+                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute max-md:top-32'>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader>
+                                Update Social Username
+                            </ModalHeader>
+                            <ModalBody>
+                                <div className='flex flex-col'>
+                                    <Input
+                                        type="text"
+                                        label="Decline Message"
+                                        value={socialUsernameText}
+                                        onChange={(e) => setSocialUsernameText(e.target.value)}
+                                    />
+                                    <div className='flex my-2 mt-4 justify-end'>
+                                        <Button
+                                            radius="lg"
+                                            className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
+                                            onPress={handleUpdateSocialUsername}
+                                            isLoading={isUpdatingProcessing}
+                                        >
+                                            Confirm
+                                        </Button>
                                     </div>
-                                </ModalBody>
-                            </>
-                        )}
-                    </ModalContent>
-                </Modal>
+                                </div>
+                            </ModalBody>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
         </div>
     )
 }

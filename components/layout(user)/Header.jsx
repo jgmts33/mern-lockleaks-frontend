@@ -5,13 +5,16 @@ import { YellowStar, Search, Dot, Pencil, Trash, Control, Window, LogOut, Accoun
 import { useState } from 'react';
 import {
   Button, Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Navbar, NavbarBrand, NavbarContent, NavbarItem,
-  Link
+  Link,
+  Avatar
 } from '@nextui-org/react';
 import UserAvatar from '@/public/assets/background/Avatar.svg';
 import { usePathname, useRouter } from 'next/navigation';
 import { Poppins } from "next/font/google";
 import { setTokensExpired, getCookieValue } from "@/axios/token";
 import { GoogleTranslate } from "../translater";
+import { useSelector } from "react-redux";
+import { userInfo as info } from '@/lib/auth/authSlice';
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -20,6 +23,7 @@ const UserHeader = ({ show, setter }) => {
   const router = useRouter();
   const currentPath = usePathname();
   const [prefLangCookie, setPrefLangCookie] = useState('');
+  const userInfo = useSelector(info);
 
   const icons = {
     yellowstar: <YellowStar />,
@@ -123,7 +127,7 @@ const UserHeader = ({ show, setter }) => {
               </Link>
           }
         </div>
-      </NavbarContent> : <></>} 
+      </NavbarContent> : <></>}
       <NavbarContent>
         <NavbarBrand>
           <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
@@ -169,13 +173,13 @@ const UserHeader = ({ show, setter }) => {
         <NavbarItem>
           <Dropdown className="text-white">
             <DropdownTrigger>
-              <div className="flex items-center text-white cursor-pointer">
-                <div className="flex flex-col max-sm:hidden">
-                  <span className="font-semibold text-sm">Emilia Clarke</span>
-                  <span className="font-normal text-xs">EC@gmail.com</span>
-                </div>
+              <div className="flex items-center text-white cursor-pointer gap-2">
+                {userInfo?.name ? <div className="flex flex-col max-sm:hidden text-right">
+                  <span className="font-semibold text-sm">{userInfo?.name}</span>
+                  <span className="font-normal text-xs">{userInfo?.email}</span>
+                </div> : <></>}
                 <Badge content="" color="success" shape="circle" placement="bottom-right">
-                  <Image src={UserAvatar} width={35} height={35} className="" alt="useravatar" />
+                  <Avatar alt="useravatar" />
                 </Badge>
               </div>
             </DropdownTrigger>
@@ -183,12 +187,12 @@ const UserHeader = ({ show, setter }) => {
               aria-label="Action event example"
               className="text-white"
             >
-              <DropdownItem>
+              {userInfo?.roles.find(p => p == 'user') ? <DropdownItem>
                 <div className={"flex w-full space-x-1 mx-auto " + poppins.className} onClick={handleUserSetting}>
                   <span>{icons.accountsetting}</span>
                   <span>Account Settings</span>
                 </div>
-              </DropdownItem>
+              </DropdownItem> : null}
               <DropdownItem>
                 <div className={"flex w-full space-x-2 mx-auto pl-1 " + poppins.className} onClick={handleLogOut}>
                   <span>{icons.logout}</span>
