@@ -17,7 +17,7 @@ export default function VerifyEmail() {
 
         if (res.status === 'success') {
           dispatch(setUserInfo({ ...res.data }));
-          if (res.data.roles.find(p => p == 'moderator')) window.open('/admin/dashboard', '_self');
+          if (res.data?.roles.find(p => p == 'moderator')) window.open('/admin/dashboard', '_self');
           else window.open('/app/dashboard', '_self');
         }
       }
