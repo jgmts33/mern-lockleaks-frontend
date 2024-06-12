@@ -8,9 +8,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { acceptSocialProfiles, getSocialProfileSubmitions } from '@/axios/social';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 export default function SocialMedia() {
 
+    const userInfo = useSelector(info);
     const [selectGoogleAccept, setSelectGoogleAccept] = useState(0)
     const [isProcessing, setIsProcessing] = useState(false);
     const [isSubmitionAcceptProcessing, setIsSubmitionAcceptProcessing] = useState(-1);

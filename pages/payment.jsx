@@ -184,7 +184,7 @@ export default function PaymentProcessed() {
           {() => (
             <>
               <ModalBody>
-                <div className='mx-auto flex items-center justify-center -mb-24'>{modalData?.status == 'success' ? icons.success : icons.warning}</div>
+                <div className='mx-auto flex items-center justify-center'>{modalData?.status == 'success' ? icons.success : icons.warning}</div>
                 <p className='font-bold text-2xl text-center capitalize leading-9'>{modalData?.title}</p>
                 {/* <span className='font-bold text-2xl text-center capitalize leading-9'>Usernames added Successfully!</span> */}
               </ModalBody>
