@@ -161,3 +161,29 @@ export const sendMessage = async (data) => {
     }
   }
 }
+
+
+export const addHelpCountsOnTicket = async (id, data) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/ticket-help-count/${id}`, data,
+      {
+        headers: {
+          'x-access-token': accessToken,
+        }
+      });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

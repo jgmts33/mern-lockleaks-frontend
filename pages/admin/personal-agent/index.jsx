@@ -1,6 +1,11 @@
 "use client";
 import {
     Button, ScrollShadow, Input,
+    Modal,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    useDisclosure,
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -14,6 +19,7 @@ import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
 import { SendMessage } from '@/components/utils/Icons';
 import { Poppins } from 'next/font/google';
+import { addHelpCountsOnTicket } from '@/axios/ticket';
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -27,6 +33,8 @@ export default function TicketDetail() {
     const [filterdList, setFilteredList] = useState([]);
     const [searchValue, setSearchValue] = useState("");
     const [targetTicket, setTargetTicket] = React.useState(null);
+    const [newCount, setNewCount] = useState(0);
+    const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [isTicketProcessing, setIsTicketProcessing] = useState(false);
 
     const [isMessagesProcessing, setIsMessagesProcessing] = useState(false);
@@ -42,14 +50,16 @@ export default function TicketDetail() {
     const [sortDateDSC, setSortDateDSC] = useState(true);
     const router = useRouter();
 
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
     const icons = {
-        cancel: <Cancel/>,
-        shape: <Shape/>,
-        paperclip: <PaperClip/>,
-        paperplane: <PaperPlane/>,
-        search: <Search/>,
-        sortDown: <SortDown/>,
-        sortUp: <SortUp/>,
+        cancel: <Cancel />,
+        shape: <Shape />,
+        paperclip: <PaperClip />,
+        paperplane: <PaperPlane />,
+        search: <Search />,
+        sortDown: <SortDown />,
+        sortUp: <SortUp />,
         sendMessage: <SendMessage fill="currentColor" size={32} />,
     };
 
@@ -203,6 +213,17 @@ export default function TicketDetail() {
 
     }, [targetTicket]);
 
+    const handleAddNewCount = useCallback(async () => {
+        if ( !newCount ) return;
+        setIsActionProcessing(true);
+        const res = await addHelpCountsOnTicket(targetTicket?.id, { count: newCount });
+
+        if ( res.status == 'success') {
+            onClose();
+        }
+        setIsActionProcessing(false);
+    }, [newCount, targetTicket])
+
     useEffect(() => {
         getTicketsInfo();
     }, []);
@@ -343,13 +364,24 @@ export default function TicketDetail() {
                 </div>
                 {targetTicket ?
                     <div className='flex flex-col w-full justify-between flex-1'>
-                        <div className="flex flex-col w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5">
-                            <div className='flex justify-between items-center'>
-                                <div className='flex flex-col space-y-4'>
+                        <div className="flex flex-col w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-sm:px-2 max-sm:py-4">
+                            <div className='flex justify-between items-center max-sm:flex-col gap-2'>
+                                <div className='flex flex-col space-y-4 max-sm:order-2 '>
                                     <span className='font-normal text-sm'>#{targetTicket.id} / {moment(targetTicket.createdAt).format('MMMM DD, YYYY')}</span>
                                     <span className='font-semibold text-base mt-2'>{targetTicket.name}</span>
                                 </div>
                                 <div className='flex gap-3 items-center'>
+                                    {targetTicket.status != 'closed' && targetTicket.status != 'solved' ? <Button
+                                        radius="full"
+                                        className={"bg-gradient-to-tr border border-gray-600 text-white text-base " + (targetTicket.status != 'solved' ? 'from-purple-light to-purple-weight' : 'from-gray-700 to-gray-800')}
+                                        size='sm'
+                                        onClick={async () => {
+                                            onOpen();
+                                            setNewCount(0);
+                                        }}
+                                    >
+                                        Send
+                                    </Button> : <></>}
                                     {targetTicket.status != 'closed' ? <Button
                                         radius="full"
                                         className={"bg-gradient-to-tr border border-gray-600 text-white text-base " + (targetTicket.status != 'solved' ? 'from-purple-light to-purple-weight' : 'from-gray-700 to-gray-800')}
@@ -499,6 +531,49 @@ export default function TicketDetail() {
                     </div>
                 }
             </div>
+
+            <Modal
+                backdrop="opaque"
+                isOpen={isOpen}
+                size={'lg'}
+                onOpenChange={onOpenChange}
+                placement="center"
+                classNames={{
+                    backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
+                }}
+            >
+                <ModalContent className='bg-gradient-to-br from-gray-500 to-gray-600 justify-center opacity-[.77]  text-white text-center max-md:absolute'>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader>
+                                <p className='font-semibold text-lg'>
+                                    Add New Count
+                                </p>
+                            </ModalHeader>
+                            <ModalBody>
+                                <div className='flex flex-col w-full'>
+                                    <Input
+                                        type="number"
+                                        label="Count"
+                                        value={newCount}
+                                        onChange={(e) => setNewCount(Number(e.target.value))}
+                                    />
+                                    <div className='flex my-2 mt-4 justify-end'>
+                                        <Button
+                                            radius="lg"
+                                            className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
+                                            onClick={handleAddNewCount}
+                                            isLoading={isActionProcessing}
+                                        >
+                                            Add
+                                        </Button>
+                                    </div>
+                                </div>
+                            </ModalBody>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
         </div>
     )
 }
