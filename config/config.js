@@ -196,13 +196,8 @@ export const ADMIN_SIDEBAR_LIST = [
     favourite: false
   }, {
     icon: icons.calendarcheck,
-    title: "DATA ANALYTICS",
-    path: "/admin/analytics",
-    favourite: false
-  }, {
-    icon: icons.DataReport,
-    title: "DATA REPORT",
-    path: "/admin/data-report",
+    title: "DATA REPORT & Analytics",
+    path: "/admin/data-report-analytics",
     favourite: false
   }, {
     icon: icons.testbots,

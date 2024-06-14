@@ -294,3 +294,76 @@ export const downloadCopyrightHolder = async (id) => {
     }
   }
 }
+
+export const getDataReportList = async (id) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/data-report`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getDataAnalyticsList = async (id) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/data-analytics`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const downloadFile = async (fileName) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/download-pdf?file=${fileName}`, {
+      headers: {
+        'x-access-token': accessToken,
+        responseType: 'arraybuffer'
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

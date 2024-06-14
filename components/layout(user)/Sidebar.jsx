@@ -7,8 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { Poppins } from "next/font/google";
-import { ADMIN_SIDEBAR_LIST, USER_SIDEBAR_LIST } from "@/config/config";
-import { MODERATOR_SIDEBAR_LIST } from "../../config/config";
+import { ADMIN_SIDEBAR_LIST, USER_SIDEBAR_LIST, MODERATOR_SIDEBAR_LIST } from "@/config/config";
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
