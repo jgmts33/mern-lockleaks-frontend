@@ -24,6 +24,9 @@ export default function Users() {
     const [searchValue, setSearchValue] = useState("");
     const [loadingState, setLoadingState] = useState("");
     const [page, setPage] = useState(1);
+    const [totalResult , setTotalResult] = useState(0);
+    const [activeUserCount, setActiveUserCount] = useState(0);
+    const [inActiveUserCount, setInActiveUserCount] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
 
     const [list, setList] = useState([]);
@@ -38,6 +41,9 @@ export default function Users() {
         if (res.status == 'success') {
             setList(res.data.data);
             setTotalPages(res.data.totalPage);
+            setTotalResult(res.data.totalCount);
+            setActiveUserCount(res.data.activeCount)
+            setInActiveUserCount(res.data.inActiveCount)
         }
         setLoadingState("");
     }
@@ -108,9 +114,9 @@ export default function Users() {
                 <span className='font-extrabold text-lg'>USERS</span>
             </div>
             <div className='flex justify-between mt-10 max-sm:mt-5 max-md:gap-5 max-sm:flex-col max-sm:mx-auto'>
-                <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: {list.filter(p => p.subscription?.status == 'active').length}</span>
-                <span className='font-semibold text-base'>TOTAL USERS: {list.length}</span>
-                <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: {list.filter(p => p.subscription?.status != 'active').length}</span>
+                <span className='font-semibold text-base'>TOTAL ACTIVE PLANS: {totalResult}</span>
+                <span className='font-semibold text-base'>TOTAL USERS: {activeUserCount}</span>
+                <span className='font-semibold text-base'>TOTAL INACTIVE PLANS: {inActiveUserCount}</span>
             </div>
             <div className='max-w-[500px] w-full mt-4'>
                 <Input

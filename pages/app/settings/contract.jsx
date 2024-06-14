@@ -6,13 +6,13 @@ import { useSelector } from "react-redux";
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useRouter } from 'next/navigation';
 import { Button, ScrollShadow } from '@nextui-org/react';
-import { getUsernames } from '../../../axios/user';
+import { getUsernames } from '@/axios/user';
 import Image from 'next/image';
 import Stamp from '@/public/assets/stamp.png';
 import Logo from '@/public/assets/logo.svg';
 import { DownloadIcon } from '@/components/utils/Icons';
 import { downloadContract } from '@/components/utils/contract-to-pdf';
-import { getSocialUsername } from '../../../axios/social-usernames';
+import { getSocialUsername } from '@/axios/social-usernames';
 
 export default function ContractView() {
 

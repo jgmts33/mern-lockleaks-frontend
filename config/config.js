@@ -121,40 +121,26 @@ export const USER_SIDEBAR_LIST = [
     favourite: false
   }, {
     id: 12,
-    icon: icons.DataReport,
-    title: "DATA REPORT",
-    value: 'data_report',
-    path: "/app/report",
-    favourite: false
-  }, {
-    id: 13,
-    icon: icons.calendarcheck,
-    title: "DATA ANALYTICS",
-    value: 'data_analytics',
-    path: "/app/analytics",
-    favourite: false
-  }, {
-    id: 14,
     icon: icons.AIProfile,
     title: "PERSONAL AGENT",
     value: 'personal_agent',
     path: "/app/personal-agent",
     favourite: false
   }, {
-    id: 15,
+    id: 13,
     icon: icons.AccountSetting,
     title: "ACCOUNT SETTINGS",
     path: "/app/settings",
     favourite: false
   }, {
-    id: 16,
+    id: 14,
     icon: icons.DownloadData,
     title: "DOWNLOAD DATA",
     value: 'download_data',
     path: "/app/download",
     favourite: false
   }, {
-    id: 17,
+    id: 15,
     icon: icons.notification,
     title: "NOTIFICATION",
     path: "/app/notification",
