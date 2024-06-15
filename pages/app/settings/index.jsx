@@ -174,13 +174,7 @@ export default function AccountSetting() {
                     <div className='flex flex-col px-5 mt-4 gap-5'>
                         <p>USER ID: {userInfo?.id}</p>
                         {!userInfo?.social ? <div className='space-y-5'>
-                            <Button
-                                radius="lg"
-                                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base p-5 w-full"
-                                size='sm'
-                            >
-                                <span>Change Password</span>
-                            </Button>
+                            <p>Change Password</p>
                             <div className='flex flex-col w-full'>
                                 <label className='font-normal text-xs text-white/65'>Enter new password</label>
                                 <input

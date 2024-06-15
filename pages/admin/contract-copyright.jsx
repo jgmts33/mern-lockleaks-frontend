@@ -407,7 +407,10 @@ export default function AutoContract() {
                                                 <div className='flex items-start gap-2 my-4' >
                                                     <div className='px-2 min-w-7 h-6 bg-gradient-to-tr from-purple-light to-purple-weight rounded-full flex items-center justify-center max-sm:hidden'>{index + 1}</div>
                                                     <div className='flex gap-4 justify-between w-full max-sm:flex-wrap'>
-                                                        <p className='text-lg w-max'>{item.name}</p>
+                                                        <div>
+                                                            <p className='text-lg'>{item.name} </p>
+                                                            <p>{item.email}</p>
+                                                        </div>
                                                         {
                                                             item.copyright_holder == '' ?
                                                                 <div className='flex gap-4 items-center'>
