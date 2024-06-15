@@ -23,13 +23,15 @@ export default function DmcaBadges() {
         const res = await getDmcaImages();
         const positionsRes = await getDmcaImagesPositions();
 
-        if (res.status == 'success') {
+        if (positionsRes.data.length) {
             let _list = [];
             positionsRes.data?.map((item, index) => {
                 const data = res.data.find((badge) => badge.id == item);
                 _list.push(data);
             });
             setList(_list);
+        } else {
+            setList(res.data);
         }
     }
 
