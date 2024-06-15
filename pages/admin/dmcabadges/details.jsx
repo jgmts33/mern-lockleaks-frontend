@@ -17,7 +17,7 @@ export default function DmcaBadgeDetails() {
     const [list, setList] = useState([]);
 
     const icons = {
-        remove: <RemoveIcon/>
+        remove: <RemoveIcon />
     }
 
     const getDmcaImagesInfo = async () => {
@@ -25,12 +25,17 @@ export default function DmcaBadgeDetails() {
         const positionsRes = await getDmcaImagesPositions();
 
         if (res.status == 'success') {
-            let _list = [];
-            positionsRes.data?.map((item, index) => {
-                const data = res.data.find((badge) => badge.id == item);
-                _list.push(data);
-            });
-            setList(_list);
+            if (positionsRes.data.length) {
+                let _list = [];
+                positionsRes.data?.map((item, index) => {
+                    const data = res.data.find((badge) => badge.id == item);
+                    _list.push(data);
+                });
+                setList(_list);
+            } else {
+                setList(res.data);
+            }
+
         }
     }
 
@@ -83,7 +88,7 @@ export default function DmcaBadgeDetails() {
 
     useEffect(() => {
         console.log("list:", list);
-    },[list])
+    }, [list])
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto w-full">

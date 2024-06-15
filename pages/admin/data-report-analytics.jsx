@@ -70,7 +70,7 @@ export default function Scanner() {
             // Create a temporary anchor element and simulate a click to download the file
             const link = document.createElement('a');
             link.href = url;
-            link.download = `Copyright Holder ${id}.pdf`; // Customize the filename as needed
+            link.download = `${fileName}.pdf`; // Customize the filename as needed
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -95,7 +95,7 @@ export default function Scanner() {
                 <div className='flex flex-col bg-white/10 border border-gray-500 px-5 py-5 rounded-[16px] mt-5 w-full'>
                     <p>Data Report List</p>
                     <ScrollShadow className="h-[calc(100vh-240px)] mt-5">
-                        <div className='flex flex-col scroll px-5 gap-5 max-sm:px-2'>
+                        <div className='flex flex-col scroll px-2 gap-5 max-sm:px-2'>
                             {
                                 isProcessing.report ?
                                     <div className='w-full flex justify-center'>
@@ -137,7 +137,7 @@ export default function Scanner() {
                 <div className='flex flex-col bg-white/10 border border-gray-500 px-5 py-5 rounded-[16px] mt-5 w-full'>
                     <p>Data Analytics List</p>
                     <ScrollShadow className="h-[calc(100vh-240px)] mt-5">
-                        <div className='flex flex-col scroll px-5 gap-5 max-sm:px-2'>
+                        <div className='flex flex-col scroll px-2 gap-5 max-sm:px-2'>
                             {
                                 isProcessing.analytics ?
                                     <div className='w-full flex justify-center'>

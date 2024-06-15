@@ -163,7 +163,9 @@ export default function Header() {
       <NavbarContent className="lg:hidden mx-auto flex" justify="center">
         <NavbarBrand>
           <Link href="/">
-            <Image src="/assets/logo.svg" width={190} height={50} alt="logo" className="justify-starter" />
+            <div>
+              <Image src="/assets/logo.svg" width={190} height={50} alt="logo" className="justify-starter" />
+            </div>
           </Link>
         </NavbarBrand>
       </NavbarContent>
