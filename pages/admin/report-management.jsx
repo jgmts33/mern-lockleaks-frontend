@@ -25,6 +25,7 @@ import { useRouter } from 'next/navigation';
 import { createNewPingModel, deletePingModel, getPingModels, updatePingModel } from '@/axios/ping-models';
 import _ from 'lodash';
 import { Search } from '@/components/utils/Icons';
+import { createNewReport, deleteReport, getReports, updateReport } from '../../axios/reports';
 
 export default function ProxyBot() {
 
@@ -42,11 +43,9 @@ export default function ProxyBot() {
     const [modalType, setModalType] = useState("");
     const [targetInfo, setTargetInfo] = useState({
         id: '',
-        model_name: [],
-        platform: [],
-        social_media: [],
-        response: false,
-        goal: false
+        website: '',
+        links: [],
+        success: false,
     })
 
     const [page, setPage] = useState(1);
@@ -54,33 +53,27 @@ export default function ProxyBot() {
 
     let tabs = [
         {
-            id: "model_name",
-            label: "Model Name"
+            id: "website",
+            label: "Website"
         },
         {
-            id: "platform",
-            label: "Platform"
-        },
-        {
-            id: "social_media",
-            label: "Social Media"
+            id: "links",
+            label: "Links"
         }
     ];
 
     const listRef = useRef(null);
 
     const columns = [
-        { name: "Model Name", uid: "model_name" },
-        { name: "Platform", uid: "platform" },
-        { name: "Social Media", uid: "social_media" },
-        { name: "Response", uid: "response" },
-        { name: "Goal", uid: "goal" },
+        { name: "Website", uid: "website" },
+        { name: "Links", uid: "links" },
+        { name: "Success", uid: "success" },
         { name: "Actions", uid: "actions" },
     ];
 
-    const getPingModelsInfo = async (page, search = "") => {
+    const getReportsInfo = async (page, search = "") => {
         setLoadingState('loading');
-        const res = await getPingModels(page, search);
+        const res = await getReports(page, search);
         if (res.status == 'success') {
             setList(res.data.data);
             setTotalPages(res.data.totalPages);
@@ -91,8 +84,8 @@ export default function ProxyBot() {
     const handleSubmit = useCallback(async () => {
         setIsActionProcessing(targetInfo.id);
         let res;
-        if (modalType == 'update') res = await updatePingModel(targetInfo.id, targetInfo);
-        else res = await createNewPingModel(targetInfo);
+        if (modalType == 'update') res = await updateReport(targetInfo.id, targetInfo);
+        else res = await createNewReport(targetInfo);
         if (res.status == 'success') {
             if (modalType == 'update') {
                 setList(p => p.map(item => item.id == targetInfo.id ? targetInfo : item));
@@ -113,16 +106,16 @@ export default function ProxyBot() {
     }, [targetInfo, modalType]);
 
     const handleUpdate = async (data) => {
-        const res = await updatePingModel(data.id, data);
+        const res = await updateReport(data.id, data);
         if (res.status == 'success') {
             setList(p => p.map(item => item.id == data.id ? data : item));
             setSearchValue("");
         };
     }
 
-    const handleDeletPingModel = async (id) => {
+    const handleDeletReport = async (id) => {
         setIsActionProcessing(id);
-        const res = await deletePingModel(id);
+        const res = await deleteReport(id);
         if (res.status == 'success') {
             setList(p => p.filter(item => item.id != id));
             setSearchValue("");
@@ -153,25 +146,21 @@ export default function ProxyBot() {
                             radius="full"
                             className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
                             size='sm'
-                            onPress={() => handleDeletPingModel(item.id)}
+                            onPress={() => handleDeletReport(item.id)}
                             isLoading={item.id == isActionProcessing}
                         >
                             Delete
                         </Button>
                     </div>
                 );
-            case "response":
+            case "success":
                 return <Switch isSelected={cellValue} onValueChange={(value) => {
-                    handleUpdate({ ...item, response: value });
+                    handleUpdate({ ...item, success: value });
                 }}>
                     {cellValue ? <span>Yes</span> : <span>No</span>}
                 </Switch>
-            case "goal":
-                return <Switch isSelected={cellValue} onValueChange={(value) => {
-                    handleUpdate({ ...item, goal: value });
-                }}>
-                    {cellValue ? <span>Yes</span> : <span>No</span>}
-                </Switch>
+            case "website":
+                return <p>{cellValue}</p>
             default:
                 return <div className='flex items-center w-max gap-4'>
                     <p>{cellValue[0]}</p>
@@ -189,7 +178,7 @@ export default function ProxyBot() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            getPingModelsInfo(page, searchValue)
+            getReportsInfo(page, searchValue)
         }, 300);
 
         return () => clearTimeout(timer);
@@ -244,11 +233,9 @@ export default function ProxyBot() {
                     onClick={() => {
                         setTargetInfo({
                             id: '',
-                            model_name: [],
-                            platform: [],
-                            social_media: [],
-                            response: false,
-                            goal: false
+                            website: '',
+                            links: [],
+                            success: false
                         });
                         setModalType('add');
                         onOpen();
@@ -298,7 +285,7 @@ export default function ProxyBot() {
                             <TableRow key={index}>
                                 {(columnKey) => <TableCell className='py-4'>{renderCell(item, columnKey)}</TableCell>}
                             </TableRow>
-                        )}              
+                        )}
 
                     </TableBody>
 
@@ -330,7 +317,7 @@ export default function ProxyBot() {
                                         {(item) => (
                                             <Tab key={item.id} title={item.label}>
                                                 <div className='flex flex-col space-y-4'>
-                                                    <div className='justify-center flex'>
+                                                    {item.id != 'website' ? <div className='justify-center flex'>
                                                         <Button
                                                             className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
                                                             onClick={() => {
@@ -341,36 +328,52 @@ export default function ProxyBot() {
                                                         >
                                                             Add New
                                                         </Button>
-                                                    </div>
-                                                    <ScrollShadow className='max-h-[240px] space-y-2 px-2'>
-                                                        {
-                                                            targetInfo[item.id].map((eachData, index) => <div key={index} className='flex gap-2 items-center'>
-                                                                <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
-                                                                <Input
-                                                                    type="text"
-                                                                    size='sm'
-                                                                    label={item.label}
-                                                                    value={eachData}
-                                                                    onChange={(e) => {
-                                                                        let _targetInfo = _.clone(targetInfo);
-                                                                        _targetInfo[item.id][index] = e.target.value;
-                                                                        setTargetInfo(_targetInfo);
-                                                                    }}
-                                                                />
-                                                                <Button
-                                                                    className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
-                                                                    onPress={() => {
-                                                                        let _targetInfo = _.clone(targetInfo);
-                                                                        _targetInfo[item.id] = _targetInfo[item.id].filter((p, i) => i != index);
-                                                                        setTargetInfo(_targetInfo);
-                                                                    }}
-                                                                >
-                                                                    Delete
-                                                                </Button>
-                                                            </div>)
-                                                        }
-                                                        <div ref={listRef} />
-                                                    </ScrollShadow>
+                                                    </div> : <></>}
+                                                    {
+                                                        item.id == 'website' ? <div className='flex gap-2 items-center mt-6'>
+                                                            <Input
+                                                                type="text"
+                                                                size='sm'
+                                                                label={item.label}
+                                                                value={targetInfo.website}
+                                                                onChange={(e) => {
+                                                                    let _targetInfo = _.clone(targetInfo);
+                                                                    _targetInfo.website = e.target.value;
+                                                                    setTargetInfo(_targetInfo);
+                                                                }}
+                                                            />
+                                                        </div>
+                                                            :
+                                                            <ScrollShadow className='max-h-[240px] space-y-2 px-2'>
+                                                                {
+                                                                    targetInfo[item.id]?.map((eachData, index) => <div key={index} className='flex gap-2 items-center'>
+                                                                        <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
+                                                                        <Input
+                                                                            type="text"
+                                                                            size='sm'
+                                                                            label={item.label}
+                                                                            value={eachData}
+                                                                            onChange={(e) => {
+                                                                                let _targetInfo = _.clone(targetInfo);
+                                                                                _targetInfo[item.id][index] = e.target.value;
+                                                                                setTargetInfo(_targetInfo);
+                                                                            }}
+                                                                        />
+                                                                        <Button
+                                                                            className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
+                                                                            onPress={() => {
+                                                                                let _targetInfo = _.clone(targetInfo);
+                                                                                _targetInfo[item.id] = _targetInfo[item.id].filter((p, i) => i != index);
+                                                                                setTargetInfo(_targetInfo);
+                                                                            }}
+                                                                        >
+                                                                            Delete
+                                                                        </Button>
+                                                                    </div>)
+                                                                }
+                                                                <div ref={listRef} />
+                                                            </ScrollShadow>
+                                                    }
                                                     <div className='flex justify-end'>
                                                         <Button
                                                             radius="lg"
