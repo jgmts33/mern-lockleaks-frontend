@@ -19,6 +19,7 @@ import {
     Tab,
     Pagination,
     Spinner,
+    Textarea,
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -44,6 +45,7 @@ export default function ProxyBot() {
     const [targetInfo, setTargetInfo] = useState({
         id: '',
         website: '',
+        method: '',
         links: [],
         success: false,
     })
@@ -57,6 +59,10 @@ export default function ProxyBot() {
             label: "Website"
         },
         {
+            id: 'method',
+            label: 'Method'
+        },
+        {
             id: "links",
             label: "Links"
         }
@@ -66,6 +72,7 @@ export default function ProxyBot() {
 
     const columns = [
         { name: "Website", uid: "website" },
+        { name: "Method", uid: "method" },
         { name: "Links", uid: "links" },
         { name: "Success", uid: "success" },
         { name: "Actions", uid: "actions" },
@@ -93,11 +100,10 @@ export default function ProxyBot() {
             else setList(p => [...p, res.data]);
             setTargetInfo({
                 id: '',
-                model_name: [],
-                platform: [],
-                social_media: [],
-                response: false,
-                goal: false
+                website: '',
+                method: '',
+                links: [],
+                success: false
             });
             onClose();
             setSearchValue("");
@@ -159,6 +165,8 @@ export default function ProxyBot() {
                 }}>
                     {cellValue ? <span>Yes</span> : <span>No</span>}
                 </Switch>
+            case "method":
+                return <p>{cellValue?.split("\n")[0]}{cellValue?.split("\n").length > 1 ? '...' : ''}</p>
             case "website":
                 return <p>{cellValue}</p>
             default:
@@ -234,6 +242,7 @@ export default function ProxyBot() {
                         setTargetInfo({
                             id: '',
                             website: '',
+                            method: '',
                             links: [],
                             success: false
                         });
@@ -317,7 +326,7 @@ export default function ProxyBot() {
                                         {(item) => (
                                             <Tab key={item.id} title={item.label}>
                                                 <div className='flex flex-col space-y-4'>
-                                                    {item.id != 'website' ? <div className='justify-center flex'>
+                                                    {item.id != 'website' && item.id != 'method' ? <div className='justify-center flex'>
                                                         <Button
                                                             className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
                                                             onClick={() => {
@@ -344,35 +353,47 @@ export default function ProxyBot() {
                                                             />
                                                         </div>
                                                             :
-                                                            <ScrollShadow className='max-h-[240px] space-y-2 px-2'>
-                                                                {
-                                                                    targetInfo[item.id]?.map((eachData, index) => <div key={index} className='flex gap-2 items-center'>
-                                                                        <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
-                                                                        <Input
-                                                                            type="text"
-                                                                            size='sm'
-                                                                            label={item.label}
-                                                                            value={eachData}
-                                                                            onChange={(e) => {
-                                                                                let _targetInfo = _.clone(targetInfo);
-                                                                                _targetInfo[item.id][index] = e.target.value;
-                                                                                setTargetInfo(_targetInfo);
-                                                                            }}
-                                                                        />
-                                                                        <Button
-                                                                            className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
-                                                                            onPress={() => {
-                                                                                let _targetInfo = _.clone(targetInfo);
-                                                                                _targetInfo[item.id] = _targetInfo[item.id].filter((p, i) => i != index);
-                                                                                setTargetInfo(_targetInfo);
-                                                                            }}
-                                                                        >
-                                                                            Delete
-                                                                        </Button>
-                                                                    </div>)
-                                                                }
-                                                                <div ref={listRef} />
-                                                            </ScrollShadow>
+                                                            item.id == 'method' ? <div className='flex gap-2 items-center mt-6'>
+                                                                <Textarea
+                                                                    size='sm'
+                                                                    label={item.label}
+                                                                    value={targetInfo.method}
+                                                                    onChange={(e) => {
+                                                                        let _targetInfo = _.clone(targetInfo);
+                                                                        _targetInfo.method = e.target.value;
+                                                                        setTargetInfo(_targetInfo);
+                                                                    }}
+                                                                />
+                                                            </div> :
+                                                                <ScrollShadow className='max-h-[240px] space-y-2 px-2'>
+                                                                    {
+                                                                        targetInfo[item.id]?.map((eachData, index) => <div key={index} className='flex gap-2 items-center'>
+                                                                            <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
+                                                                            <Input
+                                                                                type="text"
+                                                                                size='sm'
+                                                                                label={item.label}
+                                                                                value={eachData}
+                                                                                onChange={(e) => {
+                                                                                    let _targetInfo = _.clone(targetInfo);
+                                                                                    _targetInfo[item.id][index] = e.target.value;
+                                                                                    setTargetInfo(_targetInfo);
+                                                                                }}
+                                                                            />
+                                                                            <Button
+                                                                                className="bg-gradient-to-tr from-gray-700 to-gray-800 border border-gray-500 text-white shadow-lg text-base"
+                                                                                onPress={() => {
+                                                                                    let _targetInfo = _.clone(targetInfo);
+                                                                                    _targetInfo[item.id] = _targetInfo[item.id].filter((p, i) => i != index);
+                                                                                    setTargetInfo(_targetInfo);
+                                                                                }}
+                                                                            >
+                                                                                Delete
+                                                                            </Button>
+                                                                        </div>)
+                                                                    }
+                                                                    <div ref={listRef} />
+                                                                </ScrollShadow>
                                                     }
                                                     <div className='flex justify-end'>
                                                         <Button
