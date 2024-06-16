@@ -108,7 +108,6 @@ export default function CopyRight() {
                             )
                         })
                     }
-                    <Image className="w-[461px] h-[312px] absolute right-0 max-xl:hidden" src={RobertHand} alt='robert hand' />
                 </div>
 
                 {/* This section for define FAQ for copyright*/}
