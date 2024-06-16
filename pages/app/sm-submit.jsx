@@ -96,7 +96,7 @@ export default function SMsubmit() {
         const res = await socialProfileSubmit(data);
         if (res.status == 'success') {
             setSubmittedResult(data.length);
-            setLeftCount(p => p - data.length);
+            setLeftCount(p => (p - (data.length || 0)));
             setLinksStr("");
             setLinks([]);
         }
@@ -107,7 +107,7 @@ export default function SMsubmit() {
         const res = await getDailySubmitionCount();
 
         if (res.status == 'success') {
-            setLeftCount(userInfo.subscription.features.social_media_profile_submition - res.data.totalCount);
+            setLeftCount(userInfo.subscription.features.sm_submit - (res.data.totalCount || 0));
         }
     }, [userInfo]);
 
