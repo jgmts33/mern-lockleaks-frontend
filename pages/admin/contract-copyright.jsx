@@ -169,6 +169,8 @@ export default function AutoContract() {
 
             let contractList = list.contract.filter(p => p.id != id);
 
+            getCopyrightHolderUsersList(page.copyright_holder, searchValue.copyright_holder, filterStatus.copyright_holder);
+
             setList(p => ({
                 ...p,
                 contract: contractList
@@ -179,14 +181,13 @@ export default function AutoContract() {
         setIsActionProcessing(p => ({ ...p, contract: -1 }));
         onClose();
 
-    }, [message, list]);
+    }, [message, list, page, searchValue, filterStatus]);
 
     useEffect(() => {
 
         const socket = io(ENDPOINT);
 
         socket.on(`new_kyc_submitted`, (user) => {
-            let contractList = list.contract.slice(0).concat(user);
             setList(p => ({
                 ...p,
                 contract: [...p.contract, user]
