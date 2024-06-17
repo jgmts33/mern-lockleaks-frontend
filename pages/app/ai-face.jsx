@@ -36,18 +36,10 @@ export default function AIImage() {
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base'>10</span>
                 <span>websites.</span>
             </div>
-        },
-        {
+        },{
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-sm'>
-                <span>Photos Matched</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base'>10</span>
-                <span>.</span>
-            </div>
-        }, {
-            icon: icons.components,
-            content: <div className='flex items-center space-x-1 font-normal text-sm'>
-                <span>Profiles Matched:</span>
+                <span>Total Matched:</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base'>10</span>
                 <span>.</span>
             </div>
@@ -213,9 +205,9 @@ export default function AIImage() {
                         <div><span className='font-normal text-base'>AI RESULTS REMOVAL MODULE</span></div>
                     </div>
                     <div className='flex items-center space-x-1 max-lg:flex-wrap'>
-                        <span className='font-normal text-xs'>Generated a removal report with</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
-                        <span className='font-normal text-xs'>copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
+                        <span className='font-normal text-xs'>Generated a removal report with
+                        <span className='px-1 bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
+                        copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
                     </div>
                 </div>
             </div>
