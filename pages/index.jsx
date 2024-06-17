@@ -408,12 +408,12 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className='max-xl:px-3 max-w-[1076px] mx-auto max-lg:pt-20'>
+        <div className='max-xl:px-3 max-w-[1076px] mx-auto max-lg:pt-20 relative z-10'>
           {
             services.map((service, service_index) => {
               return (
                 <div key={service_index} className={(service_index != selectedServiceIndex ? "hidden" : "") + ' flex items-center justify-between max-lg:flex-col relative z-10'}>
-                  <Image src={service.img} width={150} height={150} alt='services' className='max-lg:hidden' />
+                  <Image src={service.img} width={150} height={150} alt='services' className='max-lg:hidden relative z-10' />
                   <div className='max-w-[822px] w-full bg-transparent border border-gray-600 bg-opacity-60 rounded-3xl pt-10 relative z-10'>
                     <div className='flex justify-center items-center'><span className='font-medium text-3xl text-center'>{service.name}</span></div>
                     <span className='font-medium text-lg'>{service.description}</span>
@@ -423,10 +423,10 @@ export default function HomePage() {
             })
           }
         </div>
-        <div className='max-lg:px-3 mx-auto relative z-10'>
-          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-96 -left-56 bg-[#0d091a] blur-3xl' />
-          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -bottom-96 right-0 bg-[#0d091a] blur-3xl' />
-          <div className="mt-24 max-lg:text-center mx-auto max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative p-10">
+        <div className='max-lg:px-3 mx-auto relative'>
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-96 -left-56 bg-[#0d091a] blur-3xl z-[5]' />
+          <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -bottom-96 right-0 bg-[#0d091a] blur-3xl z-[5]' />
+          <div className="mt-24 max-lg:text-center mx-auto max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative p-10 relative z-10">
             <div className='py-8'>
               <p className='font-medium text-5xl max-lg:text-4xl max-lg:leading-10 max-xl:text-4xl uppercase'>Securing Your Brand:</p>
               <p className='font-normal mt-5 text-lg'>Count on Us to Safeguard Your Content</p>

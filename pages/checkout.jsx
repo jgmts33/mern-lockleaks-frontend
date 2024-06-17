@@ -158,12 +158,13 @@ export default function Checkout() {
         setIsActionProcessing('fan');
         const res = await generateNewFanPaymentLink({
             usernames,
-            amount: usernames.length * 15
+            amount: usernames.length * 15,
+            period: period
         });
 
         if (res.status == 'success') {
-            setFanPaymentLink(`${window.location.host}/payment?code=${res.data.code}`)
-            navigator.clipboard.writeText(`${window.location.host}/payment?code=${res.data.code}`);
+            setFanPaymentLink(`${window.location.host}/payment?code=${res.data.code}&type=fans`)
+            navigator.clipboard.writeText(`${window.location.host}/payment?code=${res.data.code}&type=fans`);
         }
         setIsActionProcessing(false);
     }, [usernames]);

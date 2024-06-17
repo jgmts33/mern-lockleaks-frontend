@@ -21,16 +21,17 @@ import { io } from 'socket.io-client';
 export default function PaymentProcessed() {
 
   const icons = {
-    shine: <Shine/>,
-    success: <Success/>,
-    warning: <WarningOnModal/>,
+    shine: <Shine />,
+    success: <Success />,
+    warning: <WarningOnModal />,
   };
   const router = useRouter();
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
+  const paymentType = searchParams.get('type');
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [isProcessing, setIsProcessing] = useState("");
   const [usernames, setUsernames] = useState([]);
   const [price, setPrice] = useState(0);
   const [usersCount, setUsersCount] = useState(0);
@@ -38,12 +39,12 @@ export default function PaymentProcessed() {
 
   const handlePaymentProcess = useCallback(async (payment_method) => {
     if (!code) return;
-    setIsProcessing(true);
+    setIsProcessing(payment_method);
     await updatePaymentLink({
       code,
       payment_method
     });
-    setIsProcessing(false);
+    setIsProcessing("");
   }, [code]);
 
   useEffect(() => {
@@ -149,7 +150,7 @@ export default function PaymentProcessed() {
               radius="full"
               className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
               size='lg'
-              isLoading={isProcessing}
+              isLoading={isProcessing == 'credit_card'}
               onClick={() => handlePaymentProcess('credit_card')}
             >
               <span>Pay whith credit card</span>
@@ -158,7 +159,7 @@ export default function PaymentProcessed() {
               radius="full"
               className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg"
               size='lg'
-              isLoading={isProcessing}
+              isLoading={isProcessing == 'paypal'}
               onClick={() => handlePaymentProcess('paypal')}
             >
               <span>Pay whith paypal</span>

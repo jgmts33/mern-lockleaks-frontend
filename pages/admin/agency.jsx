@@ -332,7 +332,7 @@ export default function Dmcabadges() {
             >
               <span>Create Link</span>
             </Button>
-            {createdCode ? <CopyToClipboard text={`${window.location.host}/payment?code=${createdCode}`}
+            {createdCode ? <CopyToClipboard text={`${window.location.host}/payment?code=${createdCode}&type=agency`}
               onCopy={() => {
                 setIsCopied(true)
                 setTimeout(() => {

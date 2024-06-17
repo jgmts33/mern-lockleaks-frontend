@@ -363,7 +363,7 @@ export default function Pricing() {
                                                 item.title == "STAR" ?
                                                     <Button
                                                         radius="lg"
-                                                        className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg " + ( userInfo?.subscription?.plan_id == 4 ? "from-gray-600/40 to-gray-800/40" : "from-[#aa7fe2] to-[#ec4d1d]" )  }
+                                                        className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg from-gray-600/40 to-gray-800/40" }
                                                         size='lg'
                                                         onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
                                                         disabled={userInfo?.subscription?.plan_id == 4}

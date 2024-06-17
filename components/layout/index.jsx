@@ -103,6 +103,14 @@ export default function RootLayout({ children }) {
 
     if (!userInfo) return;
 
+    if ((userInfo.roles.includes("admin") || userInfo.roles.includes("moderator")) && currentPath.includes("app")) {
+      router.push("/admin/dashboard");
+    }
+
+    if (userInfo.roles.includes("user") && currentPath.includes("admin")) {
+      router.push("/app/dashboard");
+    }
+
     if (userInfo.roles.includes("admin") || userInfo.roles.includes("moderator")) {
       setMounted(true);
       return;
