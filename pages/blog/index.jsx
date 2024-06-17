@@ -105,7 +105,6 @@ export default function BlogList() {
                   <img className="h-80 w-full mt-2 p-2 rounded-[20px]" src={`https://server.lockleaks.com/images?filename=${blog.banner}`} alt="Modern building architecture" />
                   <div className="p-5 flex-1">
                     <p className="font-semibold text-xl">{blog.title}</p>
-                    <p className="font-normal text-base mt-5">{blog.shortContent}</p>
                   </div>
                   <div className='flex gap-5 mt-5 ml-3 max-lg:mx-auto justify-between items-center'>
                     <div className='flex gap-3 items-center'>

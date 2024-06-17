@@ -564,7 +564,11 @@ export default function Checkout() {
                         radius="lg"
                         className="bg-gradient-to-tr text-white w-36  from-purple-light to-purple-weight"
                         size='lg'
-                        onPress={() => setStep(p => p - 1)}
+                        onPress={() => {
+                            console.log(step);
+                            if (step == 3 && plan != 'star') setStep(p => p - 2);
+                            else setStep(p => p - 1);
+                        }}
                     >
                         <span>Back</span>
                     </Button> : <div></div>}
@@ -576,7 +580,7 @@ export default function Checkout() {
                         onPress={() => {
                             if ((step == 1 && (!usernames.length || !usernames[0]?.link) || (step == 2 && !socialUsername))) return;
                             if (step == 1 && plan != 'star') setStep(p => p + 2);
-                            setStep(p => p + 1);
+                            else setStep(p => p + 1);
                         }}
                     >
                         <span>Next</span>
@@ -595,7 +599,7 @@ export default function Checkout() {
             </div>
             <Modal
                 backdrop="opaque"
-                isOpen={(step != 1 && isOpen) || (plan == 'trial' && isOpen)}
+                isOpen={(step != 0 && isOpen) || (plan == 'trial' && isOpen)}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
                 classNames={{

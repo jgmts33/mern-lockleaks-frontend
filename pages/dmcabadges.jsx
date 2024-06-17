@@ -7,7 +7,6 @@ import {
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Shine } from "@/components/utils/Icons";
-import RobertHand from '@/public/assets/dmcabadge/robert-hand.svg';
 import PhotoRight from '@/public/assets/dmcabadge/photo-right.svg';
 import PhotoLeft from '@/public/assets/dmcabadge/photo-left.svg';
 import Robert from '@/public/assets/dmcabadge/robert.svg';
@@ -119,7 +118,6 @@ export default function DmcaBadges() {
                 <div className='flex w-[calc(100vw-10px)] relative pt-64 max-xl:flex-col max-xl:justify-center max-xl:items-center max-xl:pt-20'>
                     <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={433} height={342} className='absolute max-xl:hidden left-0 top-0 bg-[#a189f8] bg-opacity-5 blur-3xl' />
                     <div className='flex w-1/3 relative '>
-                        <Image className='z-10 max-xl:hidden' src={RobertHand} alt='robert-hand' />
                         <Image className='absolute -right-32 top-20 max-xl:hidden' src={PhotoRight} alt='photo right rotate' />
                     </div>
                     <div className='w-1/3 text-center mt-32 relative z-10 max-xl:mt-0 max-xl:w-full'>

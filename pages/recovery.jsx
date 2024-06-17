@@ -9,7 +9,6 @@ import LeftChat from '@/public/assets/recovery/left-chat.svg';
 import RightChat from '@/public/assets/recovery/right-chat.svg';
 import Photo from '@/public/assets/recovery/photo.svg';
 import Shape from '@/public/assets/recovery/shape.svg';
-import RobertHand from '@/public/assets/recovery/robert-hand.svg';
 import CustomerReview from '@/components/customer-review';
 
 export default function Recovery() {
@@ -137,9 +136,6 @@ export default function Recovery() {
                             <Image alt='right-chat' className='mt-40' src={RightChat} />
                             <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={333} height={150} className='max-2xl:hidden absolute bg-[#8b4cf1] z-0 top-0 left-44 bg-opacity-5 blur-3xl' />
                             <Image alt='photo' className='absolute left-40' src={Photo} />
-                        </div>
-                        <div className='flex'>
-                            <Image alt='robert-hand' className='right-0 absolute max-xl:hidden' src={RobertHand} />
                         </div>
                     </div>
                 </div>

@@ -256,6 +256,10 @@ export default function RootLayout({ children }) {
       dispatch(setUserInfo({ ...userInfo, contract }));
     });
 
+    socket.on(`verify_email_${userInfo.id}`, (value) => {
+      dispatch(setUserInfo({ ...userInfo, verified: true }));
+    })
+
     return () => {
       socket.disconnect();
     }

@@ -63,7 +63,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
             <Link href={"/creatordmca"} className='!no-underline !text-white'>Creator DMCA Content Protection</Link>
             <Link href={"/catfishing"} className='!no-underline !text-white'>Catifishing & Impersonation</Link>
             <Link href={"/recovery"} className='!no-underline !text-white'>Username History Recovery Removal</Link>
-            <Link href={"/freetrial"} className='!no-underline !text-white'>Monthly Analytics & PDF Reports</Link>
+            <Link href={"/free-trial"} className='!no-underline !text-white'>Monthly Analytics & PDF Reports</Link>
             <Link href={"/dmcabadges"} className='z-10 !no-underline !text-white'>DMCA Badges</Link>
           </div>
           <div className='flex flex-col text-white font-light gap-2'>
@@ -157,7 +157,7 @@ export default function Footer({ cookieSettingsOnOpen }) {
             <>
               <ModalBody>
                 <div className='mx-auto flex items-center justify-center -mb-24'>{icons.success}</div>
-                <span className='font-bold text-2xl text-center leading-9'>Successfully your email record, you will receive news from Lockleaks from now.</span>
+                <span className='font-bold text-2xl text-center leading-9'>Successfully your email record, you will receive news from Lock Leaks from now.</span>
               </ModalBody>
               <ModalFooter>
                 <Button

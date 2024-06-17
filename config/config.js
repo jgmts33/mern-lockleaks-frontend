@@ -80,16 +80,9 @@ export const USER_SIDEBAR_LIST = [
   }, {
     id: 6,
     icon: icons.photo,
-    title: "AI FACE IMAGES",
-    value: 'ai_face_images',
-    path: "/app/ai-face-images",
-    favourite: false
-  }, {
-    id: 7,
-    icon: icons.AIProfile,
-    title: "AI FACE PROFILES",
-    value: 'ai_face_profiles',
-    path: "/app/ai-face-profile",
+    title: "AI FACE",
+    value: 'ai_face',
+    path: "/app/ai-face",
     favourite: false
   }, {
     id: 8,
@@ -196,8 +189,8 @@ export const ADMIN_SIDEBAR_LIST = [
     favourite: false
   }, {
     icon: icons.calendarcheck,
-    title: "DATA REPORT & ANALYTICS",
-    path: "/admin/data-report-analytics",
+    title: "REPORT & ANALYTICS",
+    path: "/admin/report-analytics",
     favourite: false
   }, {
     icon: icons.testbots,

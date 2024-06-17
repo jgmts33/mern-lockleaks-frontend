@@ -16,6 +16,7 @@ export default function Help() {
 
     const [categories, setCategories] = useState([]);
     const [isCategoryProcessing, setIsCategoryProcessing] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
 
     const icons = {
         search: <Search/>,
@@ -79,11 +80,14 @@ export default function Help() {
                         name="search"
                         placeholder='Type your questions here'
                         className='w-full outline-none p-3 rounded-lg bg-white text-black'
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
                         required
                     />
                 </div>
                 <Button radius="lg" className="bg-gradient-to-tr mx-auto z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
-                    <span>Search<span className='w-5 h-5'>{icons.search}</span></span>
+                    <span>Search</span>
+                    <span className='w-5 h-5'>{icons.search}</span>
                 </Button>
             </div>
             <div className='flex mx-auto mt-10'>

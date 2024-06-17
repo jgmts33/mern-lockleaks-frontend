@@ -111,7 +111,7 @@ export default function AutoContract() {
 
         setIsActionProcessing(p => ({ ...p, copyright_holder: -1 }));
 
-    }, [selectedId, copyrightHolderRef]);
+    }, [selectedId, copyrightHolderRef, list]);
 
     const handleDownload = async (id) => {
         setIsActionProcessing(p => ({ ...p, copyright_holder: id }));

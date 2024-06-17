@@ -326,7 +326,8 @@ export default function AccountSetting() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
+
+                {userInfo?.subscription.plan_id == 4 ? <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
                     <p className='font-semibold'> Usernames List: </p>
                     <ScrollShadow className='h-60 mt-4'>
                         {
@@ -348,8 +349,8 @@ export default function AccountSetting() {
                     >
                         <span>Add More</span>
                     </Button>
-                </div>
-                <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
+                </div> : <></>}
+                {userInfo?.subscription.plan_id == 4 ? <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
                     <p className='font-semibold'> Social Media Username: </p>
                     <div className='flex gap-4 my-4'>
                         <span>{icons.tiktokAlt}</span>
@@ -375,7 +376,7 @@ export default function AccountSetting() {
                         <Image src={Info} width={15} height={15} alt=''></Image>
                         <p>The policy allows for modifications to the service agreement after a period of 30 days, contingent upon the renewal of the subscription.</p>
                     </div>
-                </div>
+                </div> : <></>}
             </div>
             <Modal
                 backdrop="opaque"

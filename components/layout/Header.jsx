@@ -242,7 +242,7 @@ export default function Header() {
                   radius="sm"
                   className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg"
                   size='lg'
-                  onClick={() => router.push("/freetrial")}
+                  onClick={() => router.push("/free-trial")}
                 >
                   <span>Free Trial</span>
                 </Button>
@@ -297,7 +297,7 @@ export default function Header() {
                   radius="sm"
                   className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg mt-4"
                   size='lg'
-                  onClick={() => router.push("/freetrial")}
+                  onClick={() => router.push("/free-trial")}
                 >
                   <span>Free Trial</span>
                 </Button>

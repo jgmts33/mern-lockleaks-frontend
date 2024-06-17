@@ -128,7 +128,7 @@ export default function HomePage() {
     {
       name: "Anonymity",
       description: <div className='outline-none px-10 py-10'>
-        <p>"Filing a DMCA complaint often necessitates divulging personal information like real names, contact numbers, and addresses. Protecting your anonymity is our top priority; hence, we utilize our company’s contact information to lodge DMCA complaints on your behalf.</p>
+        <p>Filing a DMCA complaint often necessitates divulging personal information like real names, contact numbers, and addresses. Protecting your anonymity is our top priority; hence, we utilize our company’s contact information to lodge DMCA complaints on your behalf.</p>
         <p className='mt-10'> Several internet companies store personal information in publicly accessible databases like the Lumen database used by Twitter and Google. Rulta takes extra precautions to safeguard your identity.</p>
       </div>,
       img: "assets/services/anonymity.svg"
@@ -498,7 +498,7 @@ export default function HomePage() {
             <Button
               radius="lg"
               className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-full" size='lg'
-              onPress={() => router.push("/freetrial")}
+              onPress={() => router.push("/free-trial")}
             >
               <span>Get Free Trial</span>
             </Button>
