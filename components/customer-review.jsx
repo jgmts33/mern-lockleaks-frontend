@@ -41,8 +41,7 @@ export default function CustomerReview() {
             <div className="mt-10">
                 <Swiper
                     slidesPerView={3}
-                    centeredSlides={true}
-                    spaceBetween={10}
+                    spaceBetween={20}
                     pagination={{
                         type: 'fraction',
                     }}
@@ -64,11 +63,11 @@ export default function CustomerReview() {
                         }
                     }}
                     initialSlide={2}
-                    style={{ width: "calc(100% - 110px)" }}
+                    style={{ width: "calc(100% - 130px)" }}
                 >
                     {list.map((item, index) => <SwiperSlide key={index} >
                         <div
-                            className={"mx-auto text-left w-full h-[263px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 p-6 max max-sm:p-4 cursor-pointer hover:opacity-90 duration-300"}
+                            className={"text-left w-full min-h-[263px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600 p-6 max max-sm:p-4 cursor-pointer hover:opacity-90 duration-300"}
                             onClick={() => {
                                 if (item.refer_link) window.open(item.refer_link, '_blank');
                             }}

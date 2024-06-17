@@ -126,7 +126,7 @@ const Sidebar = ({ show, setter }) => {
                                         }
                                         <div className="flex cursor-pointer gap-1 items-center" onClick={() => handleSelectTitle()}>
                                             <span>{items.icon}</span>
-                                            <span className="text-sm">{items.title}</span>
+                                            <span className={"text-sm " + (items.title == 'AI FACE' ? 'notranslate' : '') }>{items.title}</span>
                                         </div>
                                     </div>
                                 )

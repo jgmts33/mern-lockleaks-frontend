@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button, Modal, ModalContent, ModalHeader, ModalBody, useDisclosure
 } from '@nextui-org/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Shine, Star, ChevronLeft, ChevronRight, ArrowDown } from "@/components/utils/Icons";
 import CustomerReview from '@/components/customer-review';
@@ -12,8 +12,12 @@ import Uncomplete from "@/public/assets/background/uncomplete.svg";
 import Info from "@/public/assets/info.svg"
 import { useRouter } from 'next/router';
 import { Crisp } from 'crisp-sdk-web';
+import { getUserInfo } from "@/axios/auth";
+import { getAccessToken, getCookieValue, setTokensExpired } from "@/axios/token";
 
 export default function Pricing() {
+
+    const [userInfo, setUserInfo] = useState(null);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [isPricingSelected, setPricingSelected] = React.useState('monthly');
     const [selectServiceList, setSelectServiceList] = React.useState(-1);
@@ -228,7 +232,7 @@ export default function Pricing() {
             title: "Face Recognition AI Analyzer & Removal Report",
             content: "The 'Face Recognition AI Analyzer & Removal Report' offers comprehensive analysis and documentation for content flagged by facial recognition AI systems. Utilize these tools to monitor and analyze instances of your content being flagged or identified across various platforms. Additionally, gain detailed reports on the content removal process, ensuring swift and effective removal of unauthorized or harmful content flagged by facial recognition AI. Stay informed about the presence of your content and take proactive steps to protect your privacy and online reputation."
         },
-              {   
+        {
             title: "Monthly Report Data Analytics and Insights",
             content: "The 'Monthly Report Data Analytics and Insights' provides a comprehensive overview of your platform's performance, offering detailed analytics and valuable insights. Utilize this report to track key metrics, identify trends, and make data-driven decisions to optimize your strategies effectively. Stay informed about your platform's progress and leverage insights to drive growth and success.on features, search."
         },
@@ -247,6 +251,25 @@ export default function Pricing() {
         onOpenChange(!isOpen)
         onOpen();
     }
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const accessToken = await getAccessToken();
+                if (accessToken) {
+                    const res = await getUserInfo();
+                    if (res.status == 'success') {
+                        setUserInfo(res.data);
+                    }
+                    else {
+                        window.open("/", "_self");
+                    }
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        })();
+    }, []);
 
     return (
         <>
@@ -337,24 +360,37 @@ export default function Pricing() {
                                                     : false
                                             }
                                             {
-                                                item.title != "STAR" ?
+                                                item.title == "STAR" ?
                                                     <Button
                                                         radius="lg"
-                                                        className="w-full mt-10 bg-gradient-to-tr mx-auto from-[#aa7fe2] to-[#ec4d1d] border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
+                                                        className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg " + ( userInfo?.subscription?.plan_id == 4 ? "from-gray-600/40 to-gray-800/40" : "from-[#aa7fe2] to-[#ec4d1d]" )  }
                                                         size='lg'
                                                         onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
+                                                        disabled={userInfo?.subscription?.plan_id == 4}
                                                     >
-                                                        <span>BUY</span>
+                                                        {userInfo?.subscription?.plan_id == 4 ? <span>ACTIVE</span> : !userInfo?.subscription?.plan_id ? <span>BUY</span> : <span>UPGRADE</span>}
                                                     </Button>
                                                     :
-                                                    <Button
-                                                        radius="lg"
-                                                        className="w-full mt-10 bg-gradient-to-tr mx-auto from-gray-600/40 to-gray-800/40 border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
-                                                        size='lg'
-                                                        onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
-                                                    >
-                                                        <span>BUY</span>
-                                                    </Button>
+                                                    item.title == "PRO" ?
+                                                        <Button
+                                                            radius="lg"
+                                                            className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg " + ( userInfo?.subscription?.plan_id == 3 ? "from-gray-600/40 to-gray-800/40" : "from-[#aa7fe2] to-[#ec4d1d]" )  }
+                                                            size='lg'
+                                                            onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
+                                                            disabled={userInfo?.subscription?.plan_id == 3}
+                                                        >
+                                                            {userInfo?.subscription?.plan_id == 3 ? <span>ACTIVE</span> : !userInfo?.subscription?.plan_id ? <span>BUY</span> : userInfo?.subscription?.plan_id < 3 ? <span>UPGRADE</span> : <span>DOWNGRADE</span>}
+                                                        </Button>
+                                                        :
+                                                        <Button
+                                                            radius="lg"
+                                                            className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg " + ( userInfo?.subscription?.plan_id == 2 ? "from-gray-600/40 to-gray-800/40" : "from-[#aa7fe2] to-[#ec4d1d]" )  }
+                                                            size='lg'
+                                                            onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
+                                                            disabled={userInfo?.subscription?.plan_id == 2}
+                                                        >
+                                                            {userInfo?.subscription?.plan_id == 2 ? <span>ACTIVE</span> : !userInfo?.subscription?.plan_id ? <span>BUY</span> : userInfo?.subscription?.plan_id < 2 ? <span>UPGRADE</span> : <span>DOWNGRADE</span>}
+                                                        </Button>
                                             }
                                         </div>
                                         <div className={'flex flex-col gap-3 mb-1 relative ' + item.add_content}>

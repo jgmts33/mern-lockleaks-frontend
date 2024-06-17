@@ -423,7 +423,7 @@ export default function HomePage() {
             })
           }
         </div>
-        <div className='max-lg:px-3 mx-auto relative'>
+        <div className='max-lg:px-3 mx-auto relative z-10'>
           <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -top-96 -left-56 bg-[#0d091a] blur-3xl' />
           <Image src="assets/bg-shape-purple-circle.svg" alt='shape-purple' width={533} height={542} className='max-2xl:hidden absolute -bottom-96 right-0 bg-[#0d091a] blur-3xl' />
           <div className="mt-24 max-lg:text-center mx-auto max-xl:mx-auto max-lg:justify-center outline-none rounded-3xl bg-[#0E142B] container flex justify-between items-center gap-8 relative p-10">

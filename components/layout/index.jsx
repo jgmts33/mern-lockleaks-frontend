@@ -143,7 +143,7 @@ export default function RootLayout({ children }) {
       setModalValue({
         title: "Sorry , but your plan is expired",
         content: 'Please go to pricing page with clicking on the "Upgrade" button.',
-        footer: <div className="flex gap-2 w-full flex-wrap justify-center">
+        footer: <div className="flex gap-2 w-full justify-center">
           {verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></>}
           <Button
             radius="lg"
@@ -175,7 +175,7 @@ export default function RootLayout({ children }) {
       setModalValue({
         title: "Your subscription has expired or remains unpaid",
         content: 'Please renew it to regain access to the panel!',
-        footer: <div className="flex gap-2 w-full flex-wrap justify-center">
+        footer: <div className="flex gap-2 w-full justify-center">
           <Button
             radius="lg"
             className={`bg-gradient-to-tr h-[60px] text-lg w-full min-w-max max-w-[calc(50%-1rem)] from-[#9C3FE4] to-[#C65647]`}
@@ -331,7 +331,7 @@ export default function RootLayout({ children }) {
                 isOpen={isOpen}
                 onClose={onOpen}
                 onOpenChange={onOpenChange}
-                size="lg"
+                size="xl"
                 classNames={{
                   backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
                 }}
