@@ -56,8 +56,11 @@ export default function PaymentProcessed() {
         setModalData({
           status: 'success',
           title: 'Paid Successfully!',
-          btnText: 'Go to Dashboard',
-          action: () => window.open("/app/dashboard", '_current')
+          btnText: paymentType == 'fans' ? 'Go to Homepage' : 'Go to Dashboard',
+          action: () => {
+            if ( paymentType == 'fans' ) window.open("/", '_current');
+            else window.open("/app/dashboard", '_current')
+          }
         });
         onOpen();
       } else {

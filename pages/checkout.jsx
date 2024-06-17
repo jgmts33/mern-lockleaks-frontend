@@ -24,6 +24,8 @@ import { useSearchParams } from 'next/navigation';
 import { getAccessToken } from '@/axios/token';
 import { checkDoubleUsername } from '@/axios/usernames';
 import { createNewSocialUsername } from '@/axios/social-usernames';
+import { ENDPOINT } from '@/config/config';
+import { io } from 'socket.io-client';
 
 const subscriptionDetails = {
     trial: {
@@ -104,6 +106,7 @@ export default function Checkout() {
     const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
     const [fanPaymentLink, setFanPaymentLink] = useState('');
+    const [fanPaymentCode, setFanPaymentCode] = useState('');
 
     const handleSetUsernameCount = useCallback(() => {
         setExtraUsernameCount(customUsernameCount);
@@ -159,10 +162,11 @@ export default function Checkout() {
         const res = await generateNewFanPaymentLink({
             usernames,
             amount: usernames.length * 15,
-            period: period
+            period: period == 'monthly' ? 1 : 3
         });
 
         if (res.status == 'success') {
+            setFanPaymentCode(res.data.code);
             setFanPaymentLink(`${window.location.host}/payment?code=${res.data.code}&type=fans`)
             navigator.clipboard.writeText(`${window.location.host}/payment?code=${res.data.code}&type=fans`);
         }
@@ -236,7 +240,20 @@ export default function Checkout() {
             setStep(1);
             setExtraUsernameCount(0);
         }
+
     }, [plan, router]);
+
+    useEffect(() => {
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`payment_link_status_${fanPaymentCode}`, (value) => {
+            if ( value == 'paid' ) {
+                onOpen();
+            }
+        });
+
+    },[fanPaymentCode]);
 
     return (
         <div className="text-white w-full min-h-[calc(100vh-120px)] max-w-[1389px]  flex flex-col items-center justify-center pb-24 pt-4 px-4">
