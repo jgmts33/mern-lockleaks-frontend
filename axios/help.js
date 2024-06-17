@@ -40,6 +40,27 @@ export const getHelpAriticles = async () => {
   }
 }
 
+export const searchHelpAriticles = async (value) => {
+  const accessToken = await getAccessToken();
+  try {
+    const res = await axios.get(`${ENDPOINT}/help/search-articles?search=${value}`, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
 export const getHelpArticleByCategory = async (categoryId) => {
 
   try {

@@ -8,7 +8,7 @@ import { Search, Collobation, RedStar, RecoveryChat } from "@/components/utils/I
 import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { getHelpArticleByCategory, getHelpCategories } from '@/axios/help';
+import { getHelpArticleByCategory, getHelpCategories, searchHelpAriticles } from '@/axios/help';
 import { Crisp } from 'crisp-sdk-web';
 
 export default function Categories() {
@@ -20,6 +20,7 @@ export default function Categories() {
     const [articles, setArticles] = useState([]);
     const [isCategoryProcessing, setIsCategoryProcessing] = useState(false);
     const [isArticleProcessing, setIsArticleProcessing] = useState(false);
+    const [searchValue, setSearchValue] = useState(params.get('search' || ''));
 
     const icons = {
         chat: <RecoveryChat />,
@@ -38,7 +39,7 @@ export default function Categories() {
         }
 
         setIsCategoryProcessing(false);
-    }, [params.get('category')]);
+    }, []);
 
     useEffect(() => {
         if (categories.length && params.get('category')) setSelectCategoryId(categories.find(p => p.name == params.get('category').replaceAll("-", " ").replaceAll("_", "&"))?.id);
@@ -56,7 +57,21 @@ export default function Categories() {
         setIsArticleProcessing(false);
     }
 
+    const handleSearchHelpArticles = async (search) => {
+
+        if (!search) return;
+
+        const res = await searchHelpAriticles(search);
+
+        if (res.status) {
+            setArticles(res.data);
+            setSelectCategoryId(-1);
+        }
+
+    };
+
     const handleGoCategory = (categoryName) => {
+        setSearchValue("");
         router.push(`/help/articles?category=${categoryName.replaceAll(" ", "-").replaceAll("&", "_")}`, { scroll: false });
     }
 
@@ -69,6 +84,10 @@ export default function Categories() {
     useEffect(() => {
         getCategoriesInfo();
     }, []);
+
+    useEffect(() => {
+        handleSearchHelpArticles(params.get('search'));
+    }, [params.get('search')]);
 
     return (
         <div className="text-white relative flex flex-col mx-auto min-[1500px]:px-32 w-full" >
@@ -86,9 +105,16 @@ export default function Categories() {
                         placeholder='Type your questions here'
                         className='w-full outline-none p-3 rounded-lg bg-white text-black'
                         required
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
                     />
                 </div>
-                <Button radius="lg" className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
+                <Button
+                    radius="lg"
+                    className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg"
+                    size='lg'
+                    onClick={() => router.push(`/help/articles?search=${searchValue}`)}
+                >
                     <span>Search</span><span>{icons.search}</span>
                 </Button>
             </div>
@@ -101,6 +127,17 @@ export default function Categories() {
                 <div className="flex z-10 gap-10 backdrop-blur-sm bg-white/5 shadow-sm rounded-[20px] w-full p-20 max-xl:p-0 mt-20 max-xl:flex-col max-xl:mx-auto max-xl:justify-center max-xl:items-center">
                     <div className='flex flex-col min-w-[300px] w-[300px] gap-3 max-md:mx-auto max-md:justify-center max-md:items-center max-md:w-full'>
                         <div className='max-xl:pt-10'><span className='font-medium text-3xl'>Categories</span></div>
+                        <div>
+                            {
+                                params.get('search') ? <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-tr from-purple-light to-purple-weight border-gray-600 border text-white px-5 py-5 shadow-lg text-lg max-sm:text-base"
+                                    size='md'
+                                >
+                                    <span>Search</span>
+                                </Button> : <></>
+                            }
+                        </div>
                         {
                             isCategoryProcessing ?
                                 <div className='w-full flex mt-5 ml-10'>
@@ -194,9 +231,9 @@ export default function Categories() {
                     <span className='max-sm:text-center max-md:mx-auto'>Contact our customer support team now.</span>
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
-                    <Button 
-                        radius="lg" 
-                        className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" 
+                    <Button
+                        radius="lg"
+                        className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm"
                         size='md'
                         onPress={() => Crisp.chat.open()}
                     >

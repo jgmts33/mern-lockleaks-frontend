@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image';
 import {
     Button
@@ -8,7 +8,7 @@ import { Search, Collobation, RecoveryChat, ArrowRight } from "@/components/util
 import RightChat from '@/public/assets/setup/rightchat.svg';
 import LeftChat from '@/public/assets/setup/leftchat.svg';
 import { useRouter } from 'next/navigation';
-import { getHelpCategories } from '@/axios/help';
+import { getHelpCategories, searchHelpAriticles } from '@/axios/help';
 import { Crisp } from 'crisp-sdk-web';
 
 export default function Help() {
@@ -19,10 +19,10 @@ export default function Help() {
     const [searchValue, setSearchValue] = useState('');
 
     const icons = {
-        search: <Search/>,
-        collobation: <Collobation/>,
-        chat: <RecoveryChat/>,
-        direction: <ArrowRight/>,
+        search: <Search />,
+        collobation: <Collobation />,
+        chat: <RecoveryChat />,
+        direction: <ArrowRight />,
     };
 
     const getCategoriesInfo = async () => {
@@ -85,7 +85,12 @@ export default function Help() {
                         required
                     />
                 </div>
-                <Button radius="lg" className="bg-gradient-to-tr mx-auto z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg" size='lg'>
+                <Button
+                    radius="lg"
+                    className="bg-gradient-to-tr mx-auto z-10 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-lg"
+                    size='lg'
+                    onClick={() => router.push(`/help/articles?search=${searchValue}`)}
+                >
                     <span>Search</span>
                     <span className='w-5 h-5'>{icons.search}</span>
                 </Button>
@@ -164,9 +169,9 @@ export default function Help() {
                     <span>Contact our customer support team now.</span>
                 </div>
                 <div className='max-sm:mt-10 max-md:mx-auto max-md:justify-center max-lg:items-center max-md:mmx-auto'>
-                    <Button 
-                        radius="lg" 
-                        className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm" 
+                    <Button
+                        radius="lg"
+                        className="bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-10 py-5 text-sm"
                         size='md'
                         onClick={() => Crisp.chat.open()}
                     >
