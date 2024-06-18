@@ -61,7 +61,7 @@ export default function ContractView() {
     }
 
     const handleDownloadContract = useCallback(() => {
-        downloadContract(userDetails, usernames, socialUsername);
+        downloadContract(userDetails, usernames, socialUsername.username);
     }, [userDetails, usernames, socialUsername])
 
     const getUserDetails = useCallback(async () => {
