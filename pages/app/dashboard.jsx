@@ -192,8 +192,8 @@ export default function Dashbaord() {
 
         socket.on(`update_ticket_count_${userInfo.id}`, (value) => {
             setPersonalAgentCount(p => ({
-                last: value,
-                total: p.total + value
+                last: value.last_count,
+                total: p.total + value.count
             }))
         })
 
