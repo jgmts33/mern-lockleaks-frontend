@@ -65,6 +65,7 @@ export default function AccountSetting() {
     const [step, setStep] = useState(1);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [fanPaymentLink, setFanPaymentLink] = useState('');
+    const [fanPaymentCode, setFanPaymentCode] = useState('');
 
     const icons = {
         google: <Google />,
@@ -238,7 +239,7 @@ export default function AccountSetting() {
         const res = await generateNewFanPaymentLink({
             usernames,
             amount: usernames.length * 15,
-            period: period == 'monthly' ? 1 : 3
+            period: null
         });
 
         if (res.status == 'success') {
@@ -259,10 +260,16 @@ export default function AccountSetting() {
             dispatch(setUserInfo({ ...userInfo, copyright_holder: copyright_holder_name }));
         });
 
+        socket.on(`payment_link_status_${fanPaymentCode}`, (value) => {
+            if ( value == 'paid' ) {
+                onClose();
+            }
+        });
+
         return () => {
             socket.disconnect();
         }
-    }, [userInfo]);
+    }, [userInfo, fanPaymentCode]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 text-white max-lg:mx-auto pb-5">
