@@ -182,7 +182,7 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
-    else if (!userInfo.subscription.plan_id) {
+    else if (userInfo.subscription.status != 'active') {
       setModalValue({
         title: <span>Your subscription has expired or remains unpaid</span>,
         content: <span>Please renew it to regain access to the panel!</span>,
@@ -351,6 +351,10 @@ export default function RootLayout({ children }) {
     })();
 
   }, []);
+
+  useEffect(() => {
+    console.log("userInfo:", userInfo);
+  },[userInfo]);
 
   if (mounted) return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>

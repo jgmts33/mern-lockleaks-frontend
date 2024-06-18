@@ -390,7 +390,7 @@ export default function AutoContract() {
                             value={searchValue.copyright_holder}
                             onValueChange={(value) => setSearchValue(p => ({ ...p, copyright_holder: value }))}
                         />
-                        <ScrollShadow className='h-[calc(100vh-480px)] divide-y-2 mt-4'>
+                        <ScrollShadow className='h-[calc(100vh-480px)] divide-y-2 mt-4 px-2'>
                             {
                                 loadingState.copyright_holder ?
                                     <div className='w-max mx-auto'>
