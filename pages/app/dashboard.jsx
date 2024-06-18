@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from "@/config/config";
 import { getTicketsByUser } from "@/axios/ticket";
+import { getSocialScanResultByUser } from "@/axios/social";
 
 export default function Dashbaord() {
 
@@ -22,6 +23,10 @@ export default function Dashbaord() {
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [personalAgentCount, setPersonalAgentCount] = useState({
+        total: 0,
+        last: 0
+    });
+    const [social, setSocial] = useState({
         total: 0,
         last: 0
     })
@@ -59,6 +64,16 @@ export default function Dashbaord() {
             console.log(res.data);
         }
     };
+
+    const getSocialScrapedDataInfo = async () => {
+        const res = await getSocialScanResultByUser();
+        if (res.status == 'success') {
+            setSocial({
+                total: res.data.totalResult,
+                last: res.data.lastResult
+            });
+        }
+    }
 
     const getTicketsByUserInfo = async () => {
         const res = await getTicketsByUser();
@@ -157,13 +172,12 @@ export default function Dashbaord() {
                     scanResult.no_matches_count +
                     scanResult.no_report_count +
                     scanResult.report_count
-
             },
             {
                 title: "Social Media",
                 path: "/app/sm-scanner",
-                lastscan: 0,
-                total: 0
+                lastscan: social.last,
+                total: social.total
             },
             {
                 title: "Personal Agent",
@@ -177,11 +191,12 @@ export default function Dashbaord() {
                 total: scanResult.good_count
             }
         ])
-    }, [scanResult, lastScanResult, personalAgentCount]);
+    }, [scanResult, lastScanResult, personalAgentCount, social]);
 
     useEffect(() => {
         getScrapedDataListInfo();
         getTicketsByUserInfo();
+        getSocialScrapedDataInfo();
 
         const socket = io(ENDPOINT);
 

@@ -60,6 +60,33 @@ export const acceptSocialProfiles = async (name) => {
   }
 }
 
+
+export const acceptSocialScanner = async (name) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/social-download-file?file=${name}`, {
+      headers: {
+        'x-access-token': accessToken
+      },
+      responseType: 'blob'
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+
 export const getSocialProfileSubmitions = async () => {
   const accessToken = await getAccessToken();
 
@@ -90,6 +117,76 @@ export const getDailySubmitionCount = async () => {
 
   try {
     const res = await axios.get(`${ENDPOINT}/social-media-profiles/count/${userId}`, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getSocialScanResult = async () => {
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/social-scan-result`, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getSocialScanResultsList = async () => {
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/social-scan-result-list`, {
+      headers: {
+        'x-access-token': accessToken
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getSocialScanResultByUser = async () => {
+  const accessToken = await getAccessToken();
+  const userId = getUserId();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/${userId}/social-scan-result`, {
       headers: {
         'x-access-token': accessToken
       }

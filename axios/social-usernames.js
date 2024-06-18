@@ -75,12 +75,14 @@ export const deleteSocialUsername = async (id) => {
   }
 }
 
-export const getSocialUsername = async (user_id) => {
+export const getSocialUsername = async (user_id = null) => {
+
+  const userId = await getUserId();
 
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.get(`${ENDPOINT}/social-usernames/${user_id}`, {
+    const res = await axios.get(`${ENDPOINT}/social-usernames/${user_id ? user_id : userId}`, {
       headers: {
         'x-access-token': accessToken
       }

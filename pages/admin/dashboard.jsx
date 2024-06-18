@@ -11,6 +11,7 @@ import { io } from "socket.io-client";
 import { DEFAULT_SCAN_RESULT, ENDPOINT, DEFAULT_EXTRA_REPORT } from "@/config/config";
 import { getExtraReport } from "@/axios/user";
 import { getTickets } from "@/axios/ticket";
+import { getSocialScanResult } from "@/axios/social";
 
 export default function AdminDashbaord() {
 
@@ -23,6 +24,10 @@ export default function AdminDashbaord() {
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [personalAgentCount, setPersonalAgentCount] = useState({
+        total: 0,
+        last: 0
+    })
+    const [social, setSocial] = useState({
         total: 0,
         last: 0
     })
@@ -135,6 +140,16 @@ export default function AdminDashbaord() {
         }
     }
 
+    const getSocialScrapedDataInfo = async () => {
+        const res = await getSocialScanResult();
+        if (res.status == 'success') {
+            setSocial({
+                total: res.data.totalResult,
+                last: res.data.lastResult
+            });
+        }
+    }
+
     const getExtraReportInfo = async () => {
         const res = await getExtraReport();
 
@@ -185,8 +200,8 @@ export default function AdminDashbaord() {
             {
                 title: "Social Media",
                 subtitle: "total last scan",
-                lastscan: 0,
-                total: 0
+                lastscan: social.last,
+                total: social.total
             },
             {
                 title: "Personal Agent",
@@ -219,12 +234,13 @@ export default function AdminDashbaord() {
                 },]
         }
         setDashboardOverview(_overview);
-    }, [scanResult, lastScanResult, extraReport, userInfo, personalAgentCount]);
+    }, [scanResult, lastScanResult, extraReport, userInfo, personalAgentCount, social]);
 
     useEffect(() => {
         getScrapedDataListInfo();
         getExtraReportInfo();
         getTicketsInfo();
+        getSocialScrapedDataInfo();
 
         const socket = io(ENDPOINT);
 
@@ -244,6 +260,13 @@ export default function AdminDashbaord() {
             setPersonalAgentCount(p => ({
                 last: value.last_count,
                 total: p.total + value.count
+            }))
+        })
+
+        socket.on(`social-scan-finished`, (value) => {
+            setSocial(p => ({
+                last: value,
+                total: p.total + value
             }))
         })
 

@@ -35,3 +35,33 @@ export const scan = async ({
     }
   }
 }
+
+export const socialScan = async (username) => {
+
+  const accessToken = await getAccessToken();
+  const userId = getUserId();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/${userId}/scan-social`,
+      {
+        username
+      }
+      ,
+      {
+        headers: {
+          'x-access-token': accessToken
+        }
+      });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

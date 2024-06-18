@@ -3,32 +3,62 @@ import {
     Button, Progress
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { getSocialUsername } from '@/axios/social-usernames';
+import { socialScan } from '@/axios/bot';
 
 export default function SMscanner() {
-    const [value, setValue] = React.useState(25);
+    const [value, setValue] = React.useState(0);
+    const [socialUsername, setSocialUsername] = useState('');
+    const [scanResult, setScanResult] = useState(0)
 
     const icons = {
-        components: <Components/>,
+        components: <Components />,
     };
 
     const ScanList = [
         {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
-                <span>Scanning On</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
-                <span>websites.</span>
+                Scanning On <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg px-1'>4</span> websites.
             </div>
         }, {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-base'>
-                <span>Profiles Matched:</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
-                <span>.</span>
+                Profiles Matched: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg px-1'>{scanResult}.</span>
             </div>
         },
     ]
+
+    const handleScan = useCallback(async () => {
+
+        if (!socialUsername) return;
+        setValue(90);
+        const res = await socialScan(socialUsername);
+        setValue(100);
+        setTimeout(() => {
+            setValue(0);
+        }, 30 * 1000);
+        if (res.status == 'success') {
+
+            setScanResult(res.data.result);
+        }
+
+
+    }, [socialUsername])
+
+    const getSocialUsernameInfo = async () => {
+
+        const res = await getSocialUsername();
+
+        if (res.status == 'success') {
+            setSocialUsername(res.data.username);
+        }
+    }
+
+    useEffect(() => {
+        getSocialUsernameInfo();
+    }, []);
 
     return (
         <>
@@ -41,8 +71,18 @@ export default function SMscanner() {
                         <span className='font-extrabold text-lg'>SOCIAL MEDIA SCANNER</span>
                     </div>
                     <div className='max-sm:hidden'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-lg" size='sm'>
-                            <span>START</span>
+                        <Button
+                            radius="lg"
+                            className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
+                            size='sm'
+                            disabled={!!value}
+                            onPress={() => {
+                                if (!value) handleScan()
+                            }}
+                        >
+                            {
+                                value == 0 ? <span>START</span> : value == 100 ? <span>FINISHED</span> : <span>Processing</span>
+                            }
                         </Button>
                     </div>
                     <Progress
