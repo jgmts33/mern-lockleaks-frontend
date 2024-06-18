@@ -104,8 +104,8 @@ export default function AccountSetting() {
     }, [newPassword]);
 
     const handleContractDownload = useCallback(() => {
-        downloadContract(userInfo, usernames);
-    }, [userInfo, usernames]);
+        downloadContract(userInfo, usernames, socialUsername);
+    }, [userInfo, usernames, socialUsername]);
 
     const handleCopyrightHolderDownload = async () => {
 

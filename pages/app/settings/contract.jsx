@@ -79,8 +79,8 @@ export default function ContractView() {
     }, [userInfo]);
 
     const handleDownloadContract = useCallback(() => {
-        downloadContract(userInfo, usernames);
-    }, [userInfo, usernames])
+        downloadContract(userInfo, usernames, socialUsername);
+    }, [userInfo, usernames, socialUsername])
 
     useEffect(() => {
         getUsernamesInfo();

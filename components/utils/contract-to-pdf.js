@@ -1,7 +1,7 @@
 import { jsPDF } from 'jspdf';
 import moment from 'moment';
 
-export const downloadContract = (userInfo, usernames) => {
+export const downloadContract = (userInfo, usernames, socialUsername) => {
     const doc = new jsPDF({
         format: 'a3'
     });
@@ -71,7 +71,7 @@ export const downloadContract = (userInfo, usernames) => {
     doc.text(`Social Media Username:`, 218, 272);
 
     doc.setFontSize(12);
-    doc.text(`Username: ${'mandrill'}`, 222, 281);
+    doc.text(`Username: ${socialUsername}`, 222, 281);
     for (let i = 0; i < usernames.length; i++) {
         doc.text(`${i + 1}. Username: ${usernames[i].username}`, 154, 281 + i * 12);
         doc.text(`Link: ${usernames[i].link}`, 159, 281 + i * 12 + 6);

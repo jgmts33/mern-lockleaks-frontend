@@ -128,7 +128,7 @@ const UserHeader = ({ show, setter }) => {
           }
         </div>
       </NavbarContent> : <></>}
-      <NavbarContent>
+      { !currentPath.includes("kyc-submit") ? <NavbarContent>
         <NavbarBrand>
           <Button radius="sm" isIconOnly className="bg-transparent text-white px-3 hidden items-center max-lg:block" size='sm' onClick={() => { setter(oldVal => !oldVal); }}>
             <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
@@ -136,7 +136,7 @@ const UserHeader = ({ show, setter }) => {
             </svg>
           </Button>
         </NavbarBrand>
-      </NavbarContent>
+      </NavbarContent> : <></>}
       <NavbarContent justify="end">
         <NavbarItem className="text-white flex max-sm:hidden">
           {prefLangCookie && !currentPath.includes('admin') ? <GoogleTranslate prefLangCookie={prefLangCookie} /> : <></>}

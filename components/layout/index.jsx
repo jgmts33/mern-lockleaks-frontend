@@ -121,8 +121,8 @@ export default function RootLayout({ children }) {
 
     if (!userInfo.verified) {
       setModalValue({
-        title: <span>You should verify Email before using our application</span>,
-        content: <span>If you want to use this feature, check your Inbox!</span>,
+        title: <div>You should verify Email before using our application</div>,
+        content: <div>If you want to use this feature, check your Inbox!</div>,
         footer: <div className="flex gap-2 w-full flex-wrap justify-center">
           <Button
             radius="lg"
@@ -152,8 +152,8 @@ export default function RootLayout({ children }) {
 
     else if (userInfo.subscription.status == 'expired') {
       setModalValue({
-        title: <span>Sorry , but your plan is expired</span>,
-        content: <span>Please go to pricing page with clicking on the "Upgrade" button.</span>,
+        title: <div>Sorry , but your plan is expired</div>,
+        content: <div>Please go to pricing page with clicking on the "Upgrade" button.</div>,
         footer: <div className="flex gap-2 w-full justify-center">
           {verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></>}
           <Button
@@ -184,8 +184,8 @@ export default function RootLayout({ children }) {
 
     else if (userInfo.subscription.status != 'active') {
       setModalValue({
-        title: <span>Your subscription has expired or remains unpaid</span>,
-        content: <span>Please renew it to regain access to the panel!</span>,
+        title: <div>Your subscription has expired or remains unpaid</div>,
+        content: <div>Please renew it to regain access to the panel!</div>,
         footer: <div className="flex gap-2 w-full justify-center">
           <Button
             radius="lg"
@@ -220,8 +220,8 @@ export default function RootLayout({ children }) {
 
     else if (userInfo.contract.status == "pending") {
       setModalValue({
-        title: <span>Please wait until your KYC submission approved</span>,
-        content: <span>If you're not approved in 24 hrs , please check your inbox to know what's the reason.</span>,
+        title: <div>Please wait until your KYC submission approved</div>,
+        content: <div>If you're not approved in 24 hrs , please check your inbox to know what's the reason.</div>,
         footer: <Button
           radius="lg"
           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
@@ -269,7 +269,7 @@ export default function RootLayout({ children }) {
       console.log("contract:", contract);
       if (contract.status == 'approved') {
         setModalValue({
-          title: <span>KYC Verification Successful!</span>,
+          title: <div>KYC Verification Successful!</div>,
           content: <div>
             <p className="mb-5 text-lg font-semibold">Your KYC submission has been approved.</p>
             <p className='mb-5 text-medium font-semibold'>The contract has been created.</p>
@@ -323,7 +323,7 @@ export default function RootLayout({ children }) {
       socket.disconnect();
     }
 
-  }, [userInfo]);
+  }, [userInfo, currentPath]);
 
   useEffect(() => {
 
