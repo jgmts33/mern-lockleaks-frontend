@@ -1,12 +1,13 @@
 "use client";
 import {
     Button, Input, Modal, ModalBody, ModalContent, ModalHeader, ScrollShadow, Spinner,
+    Switch,
     useDisclosure
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { userInfo as info, setUserInfo } from '@/lib/auth/authSlice';
-import { Facebook, Google, Twitter, Error, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt } from '@/components/utils/Icons';
+import { Facebook, Google, Twitter, Error, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt, UnselectSwitch, SelectSwitch } from '@/components/utils/Icons';
 import { getAccessToken } from '@/axios/token';
 import { resetPassword } from '@/axios/auth';
 import { useRouter } from 'next/router';
@@ -19,6 +20,8 @@ import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
 import { downloadContract } from '@/components/utils/contract-to-pdf';
 import { updateSocialUsername } from '../../../axios/social-usernames';
+import { checkDoubleUsername, createUsernames } from '@/axios/usernames';
+import { generateNewFanPaymentLink } from '@/axios/agency';
 
 export default function AccountSetting() {
 
@@ -39,9 +42,29 @@ export default function AccountSetting() {
     const [isChangePasswordSuccessed, setIsChangePasswordSuccessed] = useState(false);
     const [isDownloadProcessing, setIsDownloadProcessing] = useState('');
     const [isUpdatingProcessing, setIsUpdatingProcessing] = useState(false);
-    const [usernames, setUsernames] = useState([]);
+    const [purchasedUsernames, setPurchasedUsernames] = useState([]);
     const [socialUsername, setSocialUsername] = useState(null);
     const [socialUsernameText, setSocialUsernameText] = useState("");
+    const [modalType, setModalType] = useState('');
+
+    const [targetKeyword, setTargetKeyword] = useState({
+        username: '',
+        link: '',
+        update: false
+    });
+    const [targetKeywordType, setTargetKeywordType] = useState('username');
+    const [targetKeywordIndex, setTargetKeywordIndex] = useState(0);
+    const [urlValidation, setUrlValidation] = useState("");
+    const [usernames, setUsernames] = useState([
+        {
+            username: '',
+            link: ''
+        }
+    ]);
+    const [isUsernameLinkValidationProcessing, setIsUsernameLinkValidationProcessing] = useState(false);
+    const [step, setStep] = useState(1);
+    const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [fanPaymentLink, setFanPaymentLink] = useState('');
 
     const icons = {
         google: <Google />,
@@ -109,7 +132,7 @@ export default function AccountSetting() {
         setIsProcessing(true);
         const usernamesRes = await getUsernames(userInfo.id);
         if (usernamesRes.status == 'success') {
-            setUsernames(usernamesRes.data);
+            setPurchasedUsernames(usernamesRes.data);
         }
         else {
             router.push("/app/settings");
@@ -139,6 +162,92 @@ export default function AccountSetting() {
         }
         setIsUpdatingProcessing(false);
     }, [userInfo, socialUsernameText]);
+
+    const handleSetNewUsername = useCallback(() => {
+        console.log(usernames, targetKeywordIndex);
+        let newUsername = targetKeyword.username.replace("@", "");
+        if (newUsername) {
+            const _usernames = usernames.slice(0);
+            _usernames[targetKeywordIndex].username = newUsername;
+            setUsernames(_usernames);
+            setTargetKeywordType('link');
+        }
+    }, [targetKeyword, usernames, targetKeywordIndex]);
+
+    const checkLinkValidation = useCallback(() => {
+        var url = targetKeyword?.link || "";
+        var regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (!regexp.test(url)) {
+            setUrlValidation("Please enter valid Link.");
+            return false;
+        }
+        return true;
+    }, [targetKeyword]);
+
+    const handleSetNewLink = useCallback(async () => {
+        let newLink = targetKeyword.link.replace("@", "");
+        setIsUsernameLinkValidationProcessing(true);
+        if (newLink && checkLinkValidation()) {
+            const _usernames = usernames.slice(0);
+            const res = await checkDoubleUsername({
+                username: _usernames[targetKeywordIndex].username,
+                link: newLink
+            });
+            if (res.data.valid && !usernames.filter((item, index) => index != targetKeywordIndex).find(item => item.link === newLink && item.username == targetKeyword.username.replace("@", ""))) {
+                _usernames[targetKeywordIndex].link = newLink;
+                setUsernames(_usernames);
+                setTargetKeyword(null);
+                setTargetKeywordType('username');
+            }
+            else {
+                setUrlValidation("Already existed.");
+            }
+        }
+        setIsUsernameLinkValidationProcessing(false);
+    }, [targetKeyword?.link, targetKeyword?.username, checkLinkValidation, usernames, targetKeywordIndex]);
+
+    const handlePaymentProcess = useCallback(async (payment_method) => {
+        // TODO: payment integration extraUsernameCount, totalPrice
+        setIsActionProcessing(payment_method);
+
+        const createUsernamesRes = await createUsernames({ usernames });
+
+        if (createUsernamesRes.status == 'success') {
+            onClose();
+            setUsernames([]);
+            setStep(1);
+            getUsernamesInfo();
+            // const res = await updatePaymentStatus({
+            //     plan: plan,
+            //     payment_method,
+            //     period: null
+            // });
+
+            // if (res.status == 'success') {
+            //     onOpen();
+            // } else {
+            //     console.log("Error:", res.data);
+            // }
+        }
+        setIsActionProcessing(false);
+    }, [socialUsername, usernames, onOpen]);
+
+    const handleCreateFanPaymentLink = useCallback(async () => {
+
+        setIsActionProcessing('fan');
+        const res = await generateNewFanPaymentLink({
+            usernames,
+            amount: usernames.length * 15,
+            period: period == 'monthly' ? 1 : 3
+        });
+
+        if (res.status == 'success') {
+            setFanPaymentCode(res.data.code);
+            setFanPaymentLink(`${window.location.host}/payment?code=${res.data.code}&type=fans`)
+            navigator.clipboard.writeText(`${window.location.host}/payment?code=${res.data.code}&type=fans`);
+        }
+        setIsActionProcessing(false);
+    }, [usernames]);
 
     useEffect(() => {
         getUsernamesInfo();
@@ -333,7 +442,7 @@ export default function AccountSetting() {
                         {
                             isProcessing ?
                                 <Spinner size='md' />
-                                : usernames.map((keyword, index) => <div key={index} className='flex gap-1'>
+                                : purchasedUsernames.map((keyword, index) => <div key={index} className='flex gap-1'>
                                     <div>{index + 1}.</div>
                                     <div>
                                         <p>Username: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent notranslate'> {keyword.username}</span></p>
@@ -346,6 +455,10 @@ export default function AccountSetting() {
                         radius="md"
                         className="bg-gradient-to-br from-purple-light to-purple-weight text-white shadow-lg text-base w-max mt-3"
                         size='sm'
+                        onClick={() => {
+                            setModalType('scanner');
+                            onOpen();
+                        }}
                     >
                         <span>Add More</span>
                     </Button>
@@ -367,6 +480,7 @@ export default function AccountSetting() {
                         onClick={() => {
                             if (new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date()) return;
                             setSocialUsernameText(socialUsername?.username);
+                            setModalType('social');
                             onOpen();
                         }}
                     >
@@ -381,7 +495,7 @@ export default function AccountSetting() {
             <Modal
                 backdrop="opaque"
                 isOpen={isOpen}
-                size='lg'
+                size={modalType == 'scanner' ? '3xl' : 'lg'}
                 onOpenChange={onOpenChange}
                 classNames={{
                     backdrop: "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-100"
@@ -391,27 +505,243 @@ export default function AccountSetting() {
                     {(onClose) => (
                         <>
                             <ModalHeader>
-                                Update Social Username
+                                {modalType == 'scanner' ? <span>Add New Usernames</span> : <span>Update Social Username</span>}
                             </ModalHeader>
                             <ModalBody>
-                                <div className='flex flex-col'>
-                                    <Input
-                                        type="text"
-                                        label="Decline Message"
-                                        value={socialUsernameText}
-                                        onChange={(e) => setSocialUsernameText(e.target.value)}
-                                    />
-                                    <div className='flex my-2 mt-4 justify-end'>
-                                        <Button
+                                {modalType == 'scanner' ? <div>
+                                    {
+                                        step == 1 ? <div className='flex flex-col gap-5 w-full max-w-[724px] mx-auto text-left'>
+                                            <span className='font-medium text-[34spanx] text-center -mb-4'>USERNAMES LIST</span>
+                                            <span className='font-medium text-center'>(<span className='notranslate pr-2'>{usernames.filter(p => (p.link != "")).length}</span> USERNAMES)</span>
+
+                                            {targetKeyword != null ? <div className="flex bg-gradient-to-br from-gray-900 to-gray-800 shadow-sm rounded-[20px] z-10 cursor-pointer flex-col border border-gray-700 py-6 px-10 ">
+                                                {
+                                                    targetKeywordType == 'link' ?
+                                                        <span className='font-medium text-[34px] text-center'>{!targetKeyword.update ? <span>ADD</span> : <span>UPDATE</span>} LINK TO <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold'>{usernames[targetKeywordIndex]?.username || ""}</span></span>
+                                                        :
+                                                        !targetKeyword.update ? <span>ADD NEW USERNAME</span> : <span>UPDATE USERNAME</span>
+                                                }
+                                                <div className='mt-3'>
+                                                    {targetKeywordType == 'link' ? <span>We will utilize your profile page URL to establish your ownership of this content</span> : <span>We will use your username to identify and report copyright infringements</span>}
+                                                </div>
+                                                <div className="flex w-full flex-col gap-4 mt-5">
+                                                    <div className='flex justify-start'>{targetKeywordType == 'link' ? <span> LINK:</span> : <span>USERNAME</span>}</div>
+                                                    <div className='flex'>
+                                                        {
+                                                            <div className="w-full flex">
+                                                                <div className="flex flex-col gap-2 mt-1">
+                                                                    <Switch
+                                                                        defaultSelected
+                                                                        size="lg"
+                                                                        color="default"
+                                                                        thumbIcon={({ isSelected, className }) =>
+                                                                            isSelected ? (
+                                                                                <SelectSwitch className={className} />
+                                                                            ) : (
+                                                                                <UnselectSwitch className={className} />
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                    </Switch>
+                                                                </div>
+                                                                <div className='flex flex-col w-full'>
+                                                                    <input
+                                                                        type="text"
+                                                                        placeholder={targetKeywordType == 'username' ? 'Type here.. @username' : 'Type here.... example: https://onlyfans.com/@username'}
+                                                                        value={targetKeywordType == 'link' ? targetKeyword.link : targetKeyword.username}
+                                                                        onChange={(e) => {
+                                                                            if (targetKeywordType == 'link') setTargetKeyword(p => ({ ...p, link: e.target.value }))
+                                                                            else setTargetKeyword(p => ({ ...p, username: e.target.value }))
+                                                                        }}
+                                                                        className='w-full outline-none p-2 rounded-lg bg-white text-black notranslate'
+                                                                        required
+                                                                    />
+                                                                    <span className='mt-1 text-red-700'>{urlValidation}</span>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className='bg-gradient-to-tr max-sm:flex-wrap w-full mx-auto mt-10 from-gray-600/40 to-gray-800/40 p-1 border-gray-700 border rounded-[30px] max-w-[576px] gap-2 items-center'
+                                                >
+                                                    <Button
+                                                        radius="full"
+                                                        className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg"
+                                                        isLoading={isUsernameLinkValidationProcessing}
+                                                        onClick={() => {
+                                                            if (targetKeywordType == 'link') handleSetNewLink();
+                                                            else handleSetNewUsername();
+                                                        }}
+                                                    >
+                                                        {targetKeywordType == 'link' ? <span>Save</span> : <span>Next</span>}
+                                                    </Button>
+                                                    <Button
+                                                        radius="full"
+                                                        className="w-1/2 bg-transparent mx-auto px-7 py-5 text-lg"
+                                                        onClick={() => {
+                                                            setTargetKeyword(null);
+                                                            setTargetKeywordType("username")
+                                                            let _usernames = targetKeyword.update ? usernames.slice(0) : usernames.slice(0, -1);
+                                                            setUsernames(_usernames);
+                                                        }}
+                                                    >
+                                                        <span>Cancel</span>
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                                :
+                                                <Button
+                                                    radius="full"
+                                                    className="bg-gradient-to-tr mx-auto w-1/2 from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-5 text-lg" /* "w-1/2 bg-transparent mx-auto px-7 py-5 text-lg" */
+                                                    size='lg'
+                                                    onClick={() => {
+                                                        setTargetKeyword({
+                                                            username: '',
+                                                            link: ''
+                                                        });
+                                                        setUsernames(p => [...p, {
+                                                            username: '',
+                                                            link: ''
+                                                        }])
+                                                        setTargetKeywordIndex(usernames.length)
+                                                    }}
+                                                >
+                                                    <span>Add New</span>
+                                                </Button>
+                                            }
+
+                                            {
+                                                usernames.map((keyword, index) => {
+                                                    return (
+                                                        <div key={index}>
+                                                            {
+                                                                keyword.username && keyword.link ?
+                                                                    <div className='flex items-center gap-4 bg-gradient-to-br from-gray-900 to-gray-800 shadow-sm border border-gray-700 px-8 py-4 w-full rounded-xl'>
+                                                                        <p className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent text-xl font-bold'>{index + 1}</p>
+                                                                        <div className='flex flex-col gap-2 flex-1'>
+                                                                            <div>USERNAME: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold notranslate'>{keyword.username}</span></div>
+                                                                            <div>LINK: <span className='bg-gradient-to-tr from-purple-light to-purple-weight bg-clip-text text-transparent font-bold notranslate'>{keyword.link}</span></div>
+                                                                        </div>
+                                                                        <div className='flex w-max items-center gap-4'>
+                                                                            <Button
+                                                                                radius="full"
+                                                                                className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
+                                                                                size='sm'
+                                                                                onClick={() => {
+                                                                                    setTargetKeywordIndex(index);
+                                                                                    setTargetKeyword({ ...usernames[index], update: true });
+                                                                                }}
+                                                                            >
+                                                                                <span>Edit</span>
+                                                                            </Button>
+                                                                            <Button
+                                                                                radius="full"
+                                                                                className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
+                                                                                size='sm'
+                                                                                onClick={() => {
+                                                                                    setUsernames(p => {
+                                                                                        let _p = p.slice(0);
+                                                                                        _p.splice(index, 1);
+                                                                                        return _p;
+                                                                                    });
+                                                                                }}
+                                                                            >
+                                                                                <span>Delete</span>
+                                                                            </Button>
+                                                                        </div>
+                                                                    </div>
+                                                                    :
+                                                                    <></>}
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                            :
+                                            <div className='w-full'>
+                                                <div className="flex bg-gradient-to-br mt-8 text-center mx-auto from-gray-900 to-gray-800 shadow-sm rounded-[20px] z-10 flex-col border border-gray-700 p-5">
+                                                    <p className='font-medium text-[34px] text-center'>PAYMENT</p>
+                                                    <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
+                                                        Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.
+                                                        This charge will be billed at regular intervals until you opt to cancel the automatic renewal.
+                                                    </p>
+                                                    <div className='mx-auto mt-10 max-w-[676px] gap-3 flex max-md:flex-col items-center'>
+                                                        <Button
+                                                            radius="full"
+                                                            className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
+                                                            size='lg'
+                                                            onClick={() => handlePaymentProcess('Credit Card')}
+                                                            isLoading={isActionProcessing == 'Credit Card'}
+                                                        >
+                                                            <span>Pay whith credit card</span>
+                                                        </Button>
+                                                        <Button
+                                                            radius="full"
+                                                            className=" bg-gradient-to-tr mx-auto from-purple-light to-purple-weight border-gray-600 border text-white shadow-lg px-7 py-7 text-lg"
+                                                            size='lg'
+                                                            isLoading={isActionProcessing == 'Paypal'}
+                                                            onClick={() => handlePaymentProcess('Paypal')}
+                                                        >
+                                                            <span>Pay whith paypal</span>
+                                                        </Button>
+                                                        <Button
+                                                            radius="full"
+                                                            className="border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"
+                                                            size='lg'
+                                                            onClick={handleCreateFanPaymentLink}
+                                                            isLoading={isActionProcessing == 'fan'}
+                                                        >
+                                                            <span>Request fan support</span>
+                                                        </Button>
+                                                    </div>
+                                                    {fanPaymentLink ? <p className='text-sm mt-4 text-green-500 font-bold'> The Fans Payment Link was copied to your clipboard. </p> : <></>}
+                                                </div>
+                                                <div className='mx-auto text-start my-8 max-md:px-3'>
+                                                    <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
+                                                    <p className='font-normal text-base'>You will be charged this amount at regular intervals until you opt to cancel the automatic renewal.You can cancel the subscription using your account settings in the Billing section, or you can check the email you received for this purchase in your inbox. You will find instructions on how to cancel the subscription there.</p>
+                                                </div>
+                                            </div>
+                                    }
+                                    <div className='flex my-2 mt-4 justify-between w-full'>
+                                        {step == 2 ? <Button
                                             radius="lg"
                                             className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
-                                            onPress={handleUpdateSocialUsername}
-                                            isLoading={isUpdatingProcessing}
+                                            onPress={() => setStep(1)}
                                         >
-                                            Confirm
-                                        </Button>
+                                            Back
+                                        </Button> : <div></div>}
+                                        {step == 1 ? <Button
+                                            radius="lg"
+                                            className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr " + (!(usernames.length && usernames[0].link != '') ? 'from-gray-500 to-gray-600' : 'from-purple-light to-purple-weight')}
+                                            disabled={!(usernames.length && usernames[0].link != '')}
+                                            onPress={() => {
+                                                if ((usernames.length && usernames[0].link != '')) setStep(2)
+                                            }}
+                                        >
+                                            Next
+                                        </Button> : <div></div>}
                                     </div>
                                 </div>
+                                    :
+                                    <div className='flex flex-col'>
+                                        <Input
+                                            type="text"
+                                            label="Social Username"
+                                            value={socialUsernameText}
+                                            onChange={(e) => setSocialUsernameText(e.target.value)}
+                                        />
+                                        <div className='flex my-2 mt-4 justify-end'>
+                                            <Button
+                                                radius="lg"
+                                                className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
+                                                onPress={handleUpdateSocialUsername}
+                                                isLoading={isUpdatingProcessing}
+                                            >
+                                                Confirm
+                                            </Button>
+                                        </div>
+                                    </div>}
                             </ModalBody>
                         </>
                     )}

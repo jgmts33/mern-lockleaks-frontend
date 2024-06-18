@@ -17,7 +17,7 @@ import {
   ModalHeader
 } from '@nextui-org/react';
 import NextTopLoader from 'nextjs-toploader';
-import { WarningModal } from "../utils/Icons";
+import { ContractLine, DownloadIcon, IdCardImageIcon, WarningModal } from "../utils/Icons";
 import { getUserInfo } from "@/axios/auth";
 import CookieSettigs, { COOKIE_SETTING_OPTIONS } from "../cookie-settings";
 import { io } from "socket.io-client";
@@ -37,6 +37,9 @@ export default function RootLayout({ children }) {
 
   const icons = {
     warningmodal: <WarningModal />,
+    downloadIcon: <DownloadIcon />,
+    contractLineIcon: <ContractLine />,
+    idCardImageIcon: <IdCardImageIcon />,
   };
 
   const currentPath = usePathname();
@@ -252,7 +255,7 @@ export default function RootLayout({ children }) {
       onOpen();
     }
 
-    else {
+    else if (userInfo.contract.status != 'approved') {
       onClose();
     }
 
@@ -262,6 +265,44 @@ export default function RootLayout({ children }) {
 
     socket.on(`kyc_decided_${userInfo.id}`, (contract) => {
       dispatch(setUserInfo({ ...userInfo, contract }));
+      console.log("contract:", contract);
+      if (contract.status == 'approved') {
+        setModalValue({
+          title: <span>Accessing the Contract</span>,
+          content: <div>
+            <p className='mb-5 text-medium font-semibold'>The contract has been created.</p>
+            <p className='mb-5 text-medium font-semibold'>The contract haYou can now access the platform and its features.s been created.</p>
+            <p className='mb-5 text-xs font-normal text-[#CCCDD0]'> If you wish to download the contract (PDF), simply click on "DOWNLOAD CONTRACT." To view it within the platform, navigate to "SETTINGS" {"->"} "Contract Lock Leaks" in the user panel menu.</p>
+          </div>,
+          footer: <div className="w-full">
+            <div className="flex gap-2 w-full justify-center items-center">
+              <Button
+                radius="lg"
+                className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm w-full"
+                onClick={() => {
+                  onClose();
+                  router.push("/app/settings/contract");
+                }}
+              >
+                <span>VIEW CONTRACT</span>
+              </Button>
+              <Button
+                radius="lg"
+                className="bg-gradient-to-tr  from-gray-700 to-gray-800 text-white px-7 text-sm w-full mx-auto"
+                onClick={() => onClose()}
+              >
+                <span>ACCESS PLATFORM</span>
+              </Button>
+            </div>
+            <div className='flex justify-between items-center mt-6'>
+              {icons.contractLineIcon}
+              {icons.idCardImageIcon}
+            </div>
+          </div>,
+          hideIcon: true
+        })
+        onOpen();
+      }
     });
 
     socket.on(`verify_email_${userInfo.id}`, (value) => {
@@ -373,9 +414,9 @@ export default function RootLayout({ children }) {
                         </div>
                       </ModalHeader>
                       <ModalBody>
-                        <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>
-                        <p className='font-bold text-[34px] text-center capitalize leading-9'>{modalValue.title}!</p>
-                        <p className='font-light text-[22px]'>{modalValue.content} </p>
+                        {modalValue.hideIcon ? <></> : <div className='mx-auto flex items-center justify-center -mb-24'>{icons.warningmodal}</div>}
+                        <div className='font-bold text-[34px] text-center capitalize leading-9'>{modalValue.title}!</div>
+                        <div className='font-light text-[22px]'>{modalValue.content} </div>
                       </ModalBody>
                       <ModalFooter>
                         {modalValue.footer}
