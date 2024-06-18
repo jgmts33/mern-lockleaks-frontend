@@ -162,12 +162,6 @@ export default function CreatePost() {
                                         />
                                         <Input
                                             type="text"
-                                            label="Short Description"
-                                            value={blogDetails.shortContent}
-                                            onChange={(e) => setBlogDetails(p => ({ ...p, shortContent: e.target.value }))}
-                                        />
-                                        <Input
-                                            type="text"
                                             label="Tags with ','"
                                             value={tagsStr}
                                             onChange={(e) => setTagsStr(e.target.value)}

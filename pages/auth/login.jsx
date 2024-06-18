@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {
     Button, Link, Modal, ModalContent, ModalBody, ModalFooter, useDisclosure
 } from '@nextui-org/react';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success } from "@/components/utils/Icons";
 import React, { useRef } from "react";
 import { login } from '@/axios/auth';
@@ -11,18 +11,25 @@ import GoogleAuth from '@/components/auth/google';
 import FaceBookAuth from '@/components/auth/facebook';
 import TwitterAuth from '@/components/auth/twitter';
 import { setTokens } from '@/axios/token';
+import { useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
+
     const icons = {
-        lock: <Lock/>,
-        envelop: <Envelop/>,
-        google: <Google/>,
-        twitter: <Twitter/>,
-        facebook: <Facebook/>,
-        warningmodal: <WarningModal/>,
-        error: <Error/>,
-        success: <Success/>,
+        lock: <Lock />,
+        envelop: <Envelop />,
+        google: <Google />,
+        twitter: <Twitter />,
+        facebook: <Facebook />,
+        warningmodal: <WarningModal />,
+        error: <Error />,
+        success: <Success />,
     };
+
+    const router = useRouter();
+    const userInfo = useSelector(info);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
@@ -60,7 +67,7 @@ export default function Login() {
         });
 
         if (res.status == "success") {
-            if ( res.data.roles.find(p => p == 'admin') ) {
+            if (res.data.roles.find(p => p == 'admin')) {
                 setModalValue({
                     status: "failed",
                     content: "You are Admin. Please go to your private login page."
@@ -86,7 +93,7 @@ export default function Login() {
 
     const handleConfirmClick = useCallback(() => {
         if (modalValue.status === "success") {
-            if ( modalValue.userInfo.ban ) {
+            if (modalValue.userInfo.ban) {
                 setModalValue({
                     status: "failed",
                     content: "You were banned, please contact support."
@@ -102,6 +109,12 @@ export default function Login() {
             onOpenChange(false);
         }
     }, [modalValue.status]);
+
+    useEffect(() => {
+        console.log("userInfo:", userInfo);
+        if (userInfo?.roles.includes("admin") || userInfo?.roles.includes("moderator")) router.push("/admin/dashboard");
+        if (userInfo?.roles.includes("user")) router.push("/app/dashboard");
+    }, [userInfo]);
 
     return (
 

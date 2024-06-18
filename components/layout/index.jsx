@@ -118,8 +118,8 @@ export default function RootLayout({ children }) {
 
     if (!userInfo.verified) {
       setModalValue({
-        title: "You should verify Email before using our application",
-        content: 'If you want to use this feature, check your Inbox!',
+        title: <span>You should verify Email before using our application</span>,
+        content: <span>If you want to use this feature, check your Inbox!</span>,
         footer: <div className="flex gap-2 w-full flex-wrap justify-center">
           <Button
             radius="lg"
@@ -149,8 +149,8 @@ export default function RootLayout({ children }) {
 
     else if (userInfo.subscription.status == 'expired') {
       setModalValue({
-        title: "Sorry , but your plan is expired",
-        content: 'Please go to pricing page with clicking on the "Upgrade" button.',
+        title: <span>Sorry , but your plan is expired</span>,
+        content: <span>Please go to pricing page with clicking on the "Upgrade" button.</span>,
         footer: <div className="flex gap-2 w-full justify-center">
           {verifyEmailSendTimer ? <p className="text-xs text-red-500 font-bold">You can resend after {verifyEmailSendTimer}s</p> : <></>}
           <Button
@@ -181,8 +181,8 @@ export default function RootLayout({ children }) {
 
     else if (!userInfo.subscription.plan_id) {
       setModalValue({
-        title: "Your subscription has expired or remains unpaid",
-        content: 'Please renew it to regain access to the panel!',
+        title: <span>Your subscription has expired or remains unpaid</span>,
+        content: <span>Please renew it to regain access to the panel!</span>,
         footer: <div className="flex gap-2 w-full justify-center">
           <Button
             radius="lg"
@@ -216,8 +216,8 @@ export default function RootLayout({ children }) {
 
     else if (userInfo.contract.status == "pending") {
       setModalValue({
-        title: "Please wait until your KYC submission approved",
-        content: "If you're not approved in 24 hrs , please check your inbox to know what's the reason.",
+        title: <span>Please wait until your KYC submission approved</span>,
+        content: <span>If you're not approved in 24 hrs , please check your inbox to know what's the reason.</span>,
         footer: <Button
           radius="lg"
           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
@@ -235,8 +235,8 @@ export default function RootLayout({ children }) {
 
     else if (userInfo.contract.status == "declined") {
       setModalValue({
-        title: "KYC Verification Failed",
-        content: userInfo.contract.reason,
+        title: <span>KYC Verification Failed</span>,
+        content: <span>{userInfo.contract.reason}</span>,
         footer: <Button
           radius="lg"
           className={`bg-gradient-to-tr mt-4 h-[60px] w-full text-lg mb-5 from-[#9C3FE4] to-[#C65647]`}
@@ -281,7 +281,7 @@ export default function RootLayout({ children }) {
       if (getCookieValue('necessary') == 'un-allowed') return;
     }
 
-    if (!currentPath?.includes("app") && !currentPath?.includes("admin")) return;
+    if (!currentPath?.includes("app") && !currentPath?.includes("admin") && !currentPath?.includes("login") && !currentPath?.includes("register")) return;
 
     (async () => {
       try {

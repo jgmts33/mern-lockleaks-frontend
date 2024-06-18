@@ -9,6 +9,7 @@ import { getScrapedDataList } from "@/axios/download";
 import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from "@/config/config";
+import { getTicketsByUser } from "@/axios/ticket";
 
 export default function Dashbaord() {
 
@@ -20,6 +21,10 @@ export default function Dashbaord() {
     const dispatch = useDispatch();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
+    const [personalAgentCount, setPersonalAgentCount] = useState({
+        total: 0,
+        last: 0
+    })
 
     const getScrapedDataListInfo = async () => {
 
@@ -54,6 +59,23 @@ export default function Dashbaord() {
             console.log(res.data);
         }
     };
+
+    const getTicketsByUserInfo = async () => {
+        const res = await getTicketsByUser();
+
+        if (res.status == 'success') {
+            let total = 0, last = 0;
+            for (let index = 0; index < res.data.length; index++) {
+                if (res.data[index].count != 0 && last == 0) last = res.data[index].count;
+                total += res.data[index].count;
+            }
+
+            setPersonalAgentCount({
+                total,
+                last: last
+            })
+        }
+    }
 
     const icons = {
         moredetails: <MoreDetails />,
@@ -145,8 +167,8 @@ export default function Dashbaord() {
             },
             {
                 title: "Personal Agent",
-                lastscan: 0,
-                total: 0
+                lastscan: personalAgentCount.last,
+                total: personalAgentCount.total
             },
             {
                 title: "File Hosted",
@@ -155,10 +177,11 @@ export default function Dashbaord() {
                 total: scanResult.good_count
             }
         ])
-    }, [scanResult, lastScanResult]);
+    }, [scanResult, lastScanResult, personalAgentCount]);
 
     useEffect(() => {
         getScrapedDataListInfo();
+        getTicketsByUserInfo();
 
         const socket = io(ENDPOINT);
 
@@ -167,11 +190,18 @@ export default function Dashbaord() {
             if (value) dispatch(setScanProgress(value));
         });
 
+        socket.on(`update_ticket_count_${userInfo.id}`, (value) => {
+            setPersonalAgentCount(p => ({
+                last: value,
+                total: p.total + value
+            }))
+        })
+
         return () => {
             socket.disconnect();
         }
 
-    }, []);
+    }, [userInfo]);
 
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {

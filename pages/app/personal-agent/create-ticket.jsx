@@ -8,18 +8,20 @@ import { Cancel } from "@/components/utils/Icons";
 import { createNewTicket } from '../../../axios/ticket';
 
 export default function CreateTicket() {
+
+    const [isProcessing, setIsProcessing] = useState(false);
     const router = useRouter();
     const [name, setName] = useState('');
     const [message, setMessage] = useState('');
 
     const icons = {
-        cancel: <Cancel/>,
+        cancel: <Cancel />,
     };
 
     const handleCreate = useCallback(async () => {
 
         if (!name || !message) return;
-
+        setIsProcessing(true);
         const res = await createNewTicket({
             name,
             content: message,
@@ -29,7 +31,7 @@ export default function CreateTicket() {
         if (res.status == 'success') {
             router.push('/app/personal-agent/ticket-detail')
         }
-
+        setIsProcessing(false);
     }, [name, message]);
 
     const handlePreviousPage = () => {
@@ -87,6 +89,7 @@ export default function CreateTicket() {
                         className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white px-12"
                         size='sm'
                         onClick={handleCreate}
+                        isLoading={isProcessing}
                     >
                         <span>Create</span>
                     </Button>

@@ -327,7 +327,7 @@ export default function AccountSetting() {
                     </div>
                 </div>
 
-                {userInfo?.subscription.plan_id == 4 ? <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
+                {userInfo?.subscription.plan_id != 1 ? <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 py-5 rounded-[16px] w-full p-5'>
                     <p className='font-semibold'> Usernames List: </p>
                     <ScrollShadow className='h-60 mt-4'>
                         {

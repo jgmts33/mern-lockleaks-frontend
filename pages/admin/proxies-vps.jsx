@@ -12,18 +12,27 @@ import {
     TableBody,
     TableRow,
     TableCell,
-    ModalHeader
+    ModalHeader,
+    Pagination,
+    Spinner
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getProxiesBots, createNewProxiesBot, deleteProxiesBot, updateProxiesBot } from '@/axios/proxies-bot';
 import moment from 'moment';
+import { Search } from '@/components/utils/Icons';
 
 export default function ProxyBot() {
+
+    const icons = {
+        search: <Search />,
+    }
+
     const router = useRouter();
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [list, setList] = useState([]);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
+    const [loadingState, setLoadingState] = useState('');
     const [modalType, setModalType] = useState("");
     const [targetInfo, setTargetInfo] = useState({
         id: '',
@@ -38,6 +47,10 @@ export default function ProxyBot() {
         proxy_expire_date: null,
     })
 
+    const [searchValue, setSearchValue] = useState("");
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+
     const columns = [
         { name: "Vps Source", uid: "vps_source" },
         { name: "Proxy Source", uid: "proxy_source" },
@@ -46,11 +59,14 @@ export default function ProxyBot() {
         { name: "ACTIONS", uid: "actions" },
     ];
 
-    const getProxiesBotsInfo = async () => {
-        const res = await getProxiesBots();
+    const getProxiesBotsInfo = async (page, search = "") => {
+        setLoadingState('loading');
+        const res = await getProxiesBots(page, search);
         if (res.status == 'success') {
-            setList(res.data);
+            setList(res.data.data);
+            setTotalPages(res.data.totalPages);
         }
+        setLoadingState('');
     }
 
     const handleSubmit = useCallback(async () => {
@@ -139,46 +155,103 @@ export default function ProxyBot() {
     }, []);
 
     useEffect(() => {
-        getProxiesBotsInfo();
-    }, []);
+        const timer = setTimeout(() => {
+            getProxiesBotsInfo(page, searchValue)
+        }, 300);
+
+        return () => clearTimeout(timer);
+
+    }, [searchValue, page]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 w-full text-white max-lg:mx-auto ">
             <div className='max-lg:mx-auto max-sm:mt-0'>
                 <span className='font-extrabold text-lg'>PROXIES / VPS  BOTS</span>
             </div>
-            <div className='flex items-center justify-between mt-8'>
-                <p className='text-lg'>Info</p>
-                <div>
-                    <Button
-                        radius="full"
-                        className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
-                        size='sm'
-                        onClick={() => {
-                            setTargetInfo({
-                                vps_source: '',
-                                ip_address: '',
-                                username: '',
-                                password: '',
-                                vps_expire_date: null,
-                                proxy_source: '',
-                                proxy_credentials: '',
-                                proxy_type: '',
-                                proxy_expire_date: null,
-                            });
-                            setModalType('add');
-                            onOpen();
+            <p className='text-lg mt-8'>Info</p>
+            <div className='flex items-center justify-between mt-4 gap-3'>
+                <div className='max-w-[500px] w-full'>
+                    <Input
+                        isClearable
+                        radius="lg"
+                        classNames={{
+                            label: "text-black/50 dark:text-white/90",
+                            input: [
+                                "bg-transparent",
+                                "text-black/90 dark:text-white/90",
+                                "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+                            ],
+                            innerWrapper: "bg-transparent",
+                            inputWrapper: [
+                                "shadow-xl",
+                                "bg-default-200/50",
+                                "dark:bg-default/60",
+                                "backdrop-blur-xl",
+                                "backdrop-saturate-200",
+                                "hover:bg-default-200/70",
+                                "dark:hover:bg-default/70",
+                                "group-data-[focus=true]:bg-default-200/50",
+                                "dark:group-data-[focus=true]:bg-default/60",
+                                "!cursor-text",
+                            ],
                         }}
-                    >
-                        Add
-                    </Button>
+                        placeholder="Type to search..."
+                        startContent={
+                            icons.search
+                        }
+                        value={searchValue}
+                        onValueChange={(value) => {
+                            setSearchValue(value);
+                            setPage(1);
+                        }}
+                    />
                 </div>
+                <Button
+                    radius="full"
+                    className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg text-base"
+                    size='sm'
+                    onClick={() => {
+                        setTargetInfo({
+                            vps_source: '',
+                            ip_address: '',
+                            username: '',
+                            password: '',
+                            vps_expire_date: null,
+                            proxy_source: '',
+                            proxy_credentials: '',
+                            proxy_type: '',
+                            proxy_expire_date: null,
+                        });
+                        setModalType('add');
+                        onOpen();
+                    }}
+                >
+                    Add
+                </Button>
             </div>
             <div className='flex flex-col bg-white/10 shadow-sm border border-gray-500 rounded-[16px] mt-4 w-full p-10 max-md:p-4'>
                 <Table
                     className='max-h-[520px] overflow-y-auto'
                     isHeaderSticky
                     aria-labelledby="Proxies/VPS Bots"
+                    bottomContent={
+                        totalPages > 0 ? (
+                            <div className="flex w-full justify-center">
+                                <Pagination
+                                    isCompact
+                                    showControls
+                                    showShadow
+                                    color="primary"
+                                    page={page}
+                                    total={totalPages}
+                                    onChange={(page) => {
+                                        setPage(page);
+                                        setSearchValue("");
+                                    }}
+                                />
+                            </div>
+                        ) : null
+                    }
                 >
                     <TableHeader columns={columns}>
                         {(column) => (
@@ -188,7 +261,11 @@ export default function ProxyBot() {
                         )}
                     </TableHeader>
 
-                    <TableBody items={list}>
+                    <TableBody
+                        items={list}
+                        loadingContent={<Spinner />}
+                        loadingState={loadingState}
+                    >
                         {(item, index) => (
                             <TableRow key={index}>
                                 {(columnKey) => <TableCell className='py-4'>{renderCell(item, columnKey)}</TableCell>}

@@ -52,12 +52,12 @@ export const updateProxiesBot = async (id, data) => {
   }
 }
 
-export const getProxiesBots = async () => {
+export const getProxiesBots = async (page, search) => {
 
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.get(`${ENDPOINT}/proxies-bots`, {
+    const res = await axios.get(`${ENDPOINT}/proxies-bots?page=${page}&search=${search}`, {
       headers: {
         'x-access-token': accessToken
       }

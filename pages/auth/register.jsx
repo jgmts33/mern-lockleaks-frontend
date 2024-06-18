@@ -16,10 +16,11 @@ import { Lock, Envelop, Twitter, Facebook, Google, Error, Success, WarningModal 
 import { register } from '@/axios/auth';
 import GoogleAuth from '@/components/auth/google';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
 import FaceBookAuth from '@/components/auth/facebook';
 import TwitterAuth from '@/components/auth/twitter';
+import { userInfo as info } from '@/lib/auth/authSlice';
 import { setTokens } from '@/axios/token';
+import { useSelector } from 'react-redux';
 
 export default function Register() {
 
@@ -35,7 +36,7 @@ export default function Register() {
     };
 
     const router = useRouter();
-    const dispatch = useDispatch();
+    const userInfo = useSelector(info);
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -156,6 +157,12 @@ export default function Register() {
             onOpenChange(false);
         }
     }, [modalValue]);
+
+    useEffect(() => {
+        console.log("userInfo:", userInfo);
+        if (userInfo?.roles.includes("admin") || userInfo?.roles.includes("moderator")) router.push("/admin/dashboard");
+        if (userInfo?.roles.includes("user")) router.push("/app/dashboard");
+    }, [userInfo]);
 
     return (
         <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>

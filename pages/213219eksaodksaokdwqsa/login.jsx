@@ -7,6 +7,9 @@ import React, { useCallback, useState, useRef } from 'react';
 import { Lock, Envelop, Twitter, Facebook, Google, WarningModal, Error, Success } from "@/components/utils/Icons";
 import { login } from '@/axios/auth';
 import { setTokens } from '@/axios/token';
+import { useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
     const icons = {
@@ -19,6 +22,9 @@ export default function Login() {
         error: <Error/>,
         success: <Success/>,
     };
+
+    const router = useRouter();
+    const userInfo = useSelector(info);
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
@@ -59,6 +65,12 @@ export default function Login() {
 
         setIsProcessing(false);
     }, [email, password]);
+
+    useEffect(() => {
+        console.log("userInfo:", userInfo);
+        if (userInfo?.roles.includes("admin") || userInfo?.roles.includes("moderator")) router.push("/admin/dashboard");
+        if (userInfo?.roles.includes("user")) router.push("/app/dashboard");
+    }, [userInfo]);
 
     return (
 

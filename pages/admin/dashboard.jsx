@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
 import { DEFAULT_SCAN_RESULT, ENDPOINT, DEFAULT_EXTRA_REPORT } from "@/config/config";
 import { getExtraReport } from "@/axios/user";
+import { getTickets } from "@/axios/ticket";
 
 export default function AdminDashbaord() {
 
@@ -21,6 +22,10 @@ export default function AdminDashbaord() {
     const dispatch = useDispatch();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
+    const [personalAgentCount, setPersonalAgentCount] = useState({
+        total: 0,
+        last: 0
+    })
     const [extraReport, setExtraReport] = useState(DEFAULT_EXTRA_REPORT);
 
     const icons = {
@@ -113,6 +118,23 @@ export default function AdminDashbaord() {
         }
     };
 
+    const getTicketsInfo = async () => {
+        const res = await getTickets();
+
+        if (res.status == 'success') {
+            let total = 0, last = 0;
+            for (let index = 0; index < res.data.length; index++) {
+                if (res.data[index].count != 0 && last == 0) last = res.data[index].count;
+                total += res.data[index].count;
+            }
+
+            setPersonalAgentCount({
+                total,
+                last: last
+            })
+        }
+    }
+
     const getExtraReportInfo = async () => {
         const res = await getExtraReport();
 
@@ -169,8 +191,8 @@ export default function AdminDashbaord() {
             {
                 title: "Personal Agent",
                 subtitle: "total last scan",
-                lastscan: 0,
-                total: 0
+                lastscan: personalAgentCount.last,
+                total: personalAgentCount.total
             },
             {
                 title: "File Hosted",
@@ -197,11 +219,12 @@ export default function AdminDashbaord() {
                 },]
         }
         setDashboardOverview(_overview);
-    }, [scanResult, lastScanResult, extraReport, userInfo]);
+    }, [scanResult, lastScanResult, extraReport, userInfo, personalAgentCount]);
 
     useEffect(() => {
         getScrapedDataListInfo();
         getExtraReportInfo();
+        getTicketsInfo();
 
         const socket = io(ENDPOINT);
 
@@ -215,6 +238,13 @@ export default function AdminDashbaord() {
                 getScrapedDataListInfo();
                 getExtraReportInfo();
             }
+        })
+
+        socket.on(`update_ticket_count`, (value) => {
+            setPersonalAgentCount( p => ({
+                last: value,
+                total: p.total + value
+            }))
         })
 
         return () => {

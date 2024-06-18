@@ -39,7 +39,7 @@ export default function AIImage() {
         },{
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-sm'>
-                <span>Total Matched:</span>
+                <span>Total Profiles & Images Matched:</span>
                 <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base'>10</span>
                 <span>.</span>
             </div>

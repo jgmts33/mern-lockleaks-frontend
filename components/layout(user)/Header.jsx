@@ -174,7 +174,7 @@ const UserHeader = ({ show, setter }) => {
           <Dropdown className="text-white">
             <DropdownTrigger>
               <div className="flex items-center text-white cursor-pointer gap-2">
-                {userInfo?.name ? <div className="flex flex-col max-sm:hidden text-right">
+                {userInfo?.name ? <div className="flex flex-col max-sm:hidden text-right notranslate">
                   <span className="font-semibold text-sm">{userInfo?.name}</span>
                   <span className="font-normal text-xs">{userInfo?.email}</span>
                 </div> : <></>}
