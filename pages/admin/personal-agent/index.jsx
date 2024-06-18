@@ -47,6 +47,7 @@ export default function TicketDetail() {
     const [isSendingMessage, setIsSendingMessage] = useState(false);
 
     const [selectedTicketStatus, setSelectedTicketStatus] = useState('');
+    const [addNewCountResult, setAddNewCountResult] = useState(false);
     const [sortDateDSC, setSortDateDSC] = useState(true);
     const router = useRouter();
 
@@ -214,12 +215,16 @@ export default function TicketDetail() {
     }, [targetTicket]);
 
     const handleAddNewCount = useCallback(async () => {
-        if ( !newCount ) return;
+        if (!newCount) return;
         setIsActionProcessing(true);
         const res = await addHelpCountsOnTicket(targetTicket?.id, { count: newCount });
 
-        if ( res.status == 'success') {
-            onClose();
+        if (res.status == 'success') {
+            setAddNewCountResult(true);
+            setTimeout(() => {
+                setAddNewCountResult(false);
+                onClose();
+            }, 2000);
         }
         setIsActionProcessing(false);
     }, [newCount, targetTicket])
@@ -562,10 +567,13 @@ export default function TicketDetail() {
                                         <Button
                                             radius="lg"
                                             className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-purple-light to-purple-weight"}
-                                            onClick={handleAddNewCount}
+                                            onClick={() => {
+                                                if (addNewCountResult) return;
+                                                handleAddNewCount();
+                                            }}
                                             isLoading={isActionProcessing}
                                         >
-                                            Add
+                                            {addNewCountResult ? 'Sent!' : 'Add'}
                                         </Button>
                                     </div>
                                 </div>
