@@ -266,7 +266,15 @@ export default function RootLayout({ children }) {
 
     socket.on(`verify_email_${userInfo.id}`, (value) => {
       dispatch(setUserInfo({ ...userInfo, verified: true }));
-    })
+    });
+
+    socket.on(`payment_status_${userInfo.id}`, (value) => {
+      dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, status: 'expired' } }));
+    });
+
+    socket.on(`payment_status_updated_${userInfo.id}`, (value) => {
+      dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, status: 'active' } }));
+    });
 
     return () => {
       socket.disconnect();
