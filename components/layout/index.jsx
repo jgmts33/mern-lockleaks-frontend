@@ -268,11 +268,12 @@ export default function RootLayout({ children }) {
       console.log("contract:", contract);
       if (contract.status == 'approved') {
         setModalValue({
-          title: <span>Accessing the Contract</span>,
+          title: <span>KYC Verification Successful!</span>,
           content: <div>
+            <p className="mb-5 text-lg font-semibold">Your KYC submission has been approved.</p>
             <p className='mb-5 text-medium font-semibold'>The contract has been created.</p>
-            <p className='mb-5 text-medium font-semibold'>The contract haYou can now access the platform and its features.s been created.</p>
-            <p className='mb-5 text-xs font-normal text-[#CCCDD0]'> If you wish to download the contract (PDF), simply click on "DOWNLOAD CONTRACT." To view it within the platform, navigate to "SETTINGS" {"->"} "Contract Lock Leaks" in the user panel menu.</p>
+            <p className='mb-5 text-medium font-semibold'>You can now access the platform and its features.</p>
+            <p className='mb-5 text-xs font-normal text-[#CCCDD0]'>If you wish to download the contract (PDF), simply click on "DOWNLOAD CONTRACT." To view it within the platform, navigate to "SETTINGS" <span>{`->`}</span> "Contract Lock Leaks" in the user panel menu.</p>
           </div>,
           footer: <div className="w-full">
             <div className="flex gap-2 w-full justify-center items-center">
