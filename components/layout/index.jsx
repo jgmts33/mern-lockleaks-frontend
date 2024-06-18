@@ -215,6 +215,7 @@ export default function RootLayout({ children }) {
 
     else if (userInfo.subscription.plan_id != 1 && userInfo.contract.status == "") {
       router.push("/app/kyc-submit");
+      onClose();
     }
 
     else if (userInfo.contract.status == "pending") {
