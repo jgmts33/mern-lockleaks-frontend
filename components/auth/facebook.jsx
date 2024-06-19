@@ -9,7 +9,7 @@ import queryString from "query-string";
 export default function FaceBookAuth() {
 
   const icons = {
-    facebook: <Facebook/>,
+    facebook: <Facebook />,
   };
 
   const dispatch = useDispatch();
@@ -32,12 +32,16 @@ export default function FaceBookAuth() {
   }
 
 
-  return <Button
-    radius="lg"
-    className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
-    size='md'
-    onClick={handleFacebookAuth}
-  >
-    {icons.facebook}
-  </Button>
+  return <>
+    {
+      process.env.NEXT_PUBLIC_FACEBOOK_APP_ID ? <Button
+        radius="lg"
+        className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
+        size='md'
+        onClick={handleFacebookAuth}
+      >
+        {icons.facebook}
+      </Button> : <div></div>
+    }
+  </>
 }

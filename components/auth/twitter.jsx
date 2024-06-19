@@ -9,7 +9,7 @@ import queryString from "query-string";
 export default function FaceBookAuth() {
 
   const icons = {
-    twitter: <Twitter/>,
+    twitter: <Twitter />,
   };
 
   const dispatch = useDispatch();
@@ -38,12 +38,16 @@ export default function FaceBookAuth() {
   }
 
 
-  return <Button
-    radius="lg"
-    className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
-    size='md'
-    onClick={handleTwitterAuth}
-  >
-    {icons.twitter}
-  </Button>
-}
+  return <>
+    {
+      process.env.NEXT_PUBLIC_TWITTER_CLIENT_ID ? <Button
+        radius="lg"
+        className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
+        size='md'
+        onClick={handleTwitterAuth}
+      >
+        {icons.twitter}
+      </Button> : <div></div>
+    }
+      </>
+    }

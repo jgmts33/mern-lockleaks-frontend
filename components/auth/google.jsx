@@ -10,7 +10,7 @@ import queryString from "query-string";
 export default function GoogleAuth() {
 
   const icons = {
-    google: <Google/>,
+    google: <Google />,
   };
 
   const dispatch = useDispatch();
@@ -35,12 +35,16 @@ export default function GoogleAuth() {
   }
 
 
-  return <Button
-    radius="lg"
-    className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
-    size='md'
-    onClick={handleGoogleAuth}
-  >
-    {icons.google}
-  </Button>
+  return <>
+    {
+      process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ? <Button
+        radius="lg"
+        className="text-white shadow-lg w-full mt-4 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-600"
+        size='md'
+        onClick={handleGoogleAuth}
+      >
+        {icons.google}
+      </Button> : <div></div>
+    }
+  </>
 }
