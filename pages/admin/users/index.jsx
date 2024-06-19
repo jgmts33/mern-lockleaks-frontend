@@ -67,7 +67,7 @@ export default function Users() {
 
     const columns = [
         { name: "Email", uid: "email" },
-        { name: "Username", uid: "name" },
+        { name: "Full Name", uid: "name" },
         { name: "Plan", uid: "plan" },
         { name: "Ban", uid: "ban" },
         { name: "View", uid: "view" },
