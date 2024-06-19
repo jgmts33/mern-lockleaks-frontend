@@ -739,7 +739,7 @@ export default function UsersView() {
                             >
                                 <span>Add New Username</span>
                             </Button>
-                            <ScrollShadow className='h-[400px] flex flex-col gap-3 py-2'>
+                            <ScrollShadow className='h-[calc(100vh-540px)] flex flex-col gap-3 py-2'>
                                 {
                                     usernames.map((keyword, index) => {
                                         return (

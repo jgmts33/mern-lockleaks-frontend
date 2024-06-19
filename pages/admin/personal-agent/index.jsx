@@ -6,6 +6,7 @@ import {
     ModalHeader,
     ModalBody,
     useDisclosure,
+    Spinner,
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -86,7 +87,7 @@ export default function TicketDetail() {
             console.log("res.data:", res.data)
             setMessages(res.data);
         }
-        if ( userRes.status == 'success' ) {
+        if (userRes.status == 'success') {
             setTargetUser(userRes.data);
         }
         setIsMessagesProcessing(false);
@@ -242,7 +243,7 @@ export default function TicketDetail() {
                 <span className='font-semibold text-[18px]'>Your Inquiries</span>
             </div>
             <div className='flex gap-5 max-sm:flex-col flex-1'>
-                <div className={"flex flex-col max-w-[480px] h-full max-sm:w-full max-sm:w-max-full w-full bg-white/15 border border-gray-500 rounded-[20px] px-10 py-5 max-md:mx-auto " + (targetTicket ? "max-sm:hidden" : "")}>
+                <div className={"flex flex-col max-w-[480px] h-full max-sm:w-full max-sm:w-max-full w-full bg-white/15 border border-gray-500 rounded-[20px] p-5 max-md:mx-auto " + (targetTicket ? "max-sm:hidden" : "")}>
                     <div className='flex flex-col justify-between mt-5 items-center'>
                         <div className='flex justify-between w-full items-center gap-4'>
                             <Input
@@ -338,7 +339,7 @@ export default function TicketDetail() {
                         </div>
                     </div>
                     <div className='flex flex-col pt-3 w-full flex-1'>
-                        <ScrollShadow className='h-[calc(100vh-400px)] space-y-2'>
+                        <ScrollShadow className='h-[calc(100vh-360px)] space-y-2 px-2'>
                             {
                                 !isTicketProcessing ?
                                     filterdList.length ?
@@ -356,14 +357,9 @@ export default function TicketDetail() {
                                         })
                                         : <p className='text-center mt-4'>No Tickets</p>
 
-                                    : <div className='w-full flex justify-center mt-5'>
-                                        <div role="status">
-                                            <svg aria-hidden="true" className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-                                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-                                            </svg>
-                                            <span className="sr-only">Loading...</span>
-                                        </div>
+                                    :
+                                    <div class="w-full justify-center flex mt-5">
+                                        <Spinner />
                                     </div>
                             }
                         </ScrollShadow>
@@ -436,7 +432,7 @@ export default function TicketDetail() {
                                     console.log(eachMessage);
                                     return <div key={index} className={'w-full flex flex-col ' + (eachMessage.sender_id == userInfo?.id ? 'items-end' : '')}>
                                         <div className='max-sm:max-w-full max-w-[600px] w-max p-2 space-y-2'>
-                                            <p className={eachMessage.sender_id == userInfo?.id ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userInfo?.id ? <span>{ targetUser?.name ? targetUser?.name : targetUser?.email }:</span> : "You:"}</p>
+                                            <p className={eachMessage.sender_id == userInfo?.id ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userInfo?.id ? <span>{targetUser?.name ? targetUser?.name : targetUser?.email}:</span> : "You:"}</p>
                                             <div className={eachMessage.sender_id != userInfo?.id ? 'flex justify-end' : 'flex '}>
                                                 <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
                                                     <pre className={poppins.className + ' text-wrap'}>{eachMessage.content}</pre>

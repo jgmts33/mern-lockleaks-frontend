@@ -1,6 +1,7 @@
 "use client";
 import {
-    Button, ScrollShadow, Input, useDisclosure, Modal, ModalContent, ModalBody, ModalHeader
+    Button, ScrollShadow, Input, useDisclosure, Modal, ModalContent, ModalBody, ModalHeader,
+    Spinner
 } from '@nextui-org/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -11,7 +12,7 @@ export default function PingModels() {
     const router = useRouter();
 
     const icons = {
-        search: <Search/>,
+        search: <Search />,
     };
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
@@ -31,24 +32,33 @@ export default function PingModels() {
     const [customKeywordsSearchInput, setcustomKeywordsSearchInput] = useState("");
     const [urlValidation, setUrlValidation] = useState("");
 
+    const [isLoading, setIsLoading] = useState({
+        basic: false,
+        custom: false
+    })
+
     const getBasicKeywordsData = async () => {
+        setIsLoading(p => ({ ...p, basic: true }))
         const res = await getBasicKeywords();
         console.log("res.data:", res.data);
         if (res.status == 'success') setBasicKeywords(res.data);
+        setIsLoading(p => ({ ...p, basic: false }))
     }
 
     const getCustomKeywordsData = async () => {
+        setIsLoading(p => ({ ...p, custom: true }))
         const res = await getCustomKeywords();
 
         if (res.status == 'success') setCustomKeywords(res.data);
+        setIsLoading(p => ({ ...p, custom: false }))
     }
 
     const handleAddNewKeyword = useCallback(async () => {
         setUrlValidation("");
-        if ( targetKeywordType == 'custom' && !checkLinkValidation() ) return;
+        if (targetKeywordType == 'custom' && !checkLinkValidation()) return;
         setIsAdding(true);
         if (selectedCustomKeywordId) {
-            const res = await editCustomKeyword( selectedCustomKeywordId,  {
+            const res = await editCustomKeyword(selectedCustomKeywordId, {
                 website: newWebsite,
                 keywords: newKeywords
             });
@@ -79,7 +89,7 @@ export default function PingModels() {
                 }
             }
         }
-        
+
         setNewWebsite("");
         setNewKeywords("");
         setNewBasicKeyword("");
@@ -89,10 +99,10 @@ export default function PingModels() {
 
     }, [targetKeywordType, newWebsite, newKeywords, newBasicKeyword, selectedCustomKeywordId, customKeywords]);
 
-    const handleDeleteKeyword = async( id, type ) => {
+    const handleDeleteKeyword = async (id, type) => {
         setSelectedCustomKeywordId(id);
         setIsDeleting(true);
-        if (type == 'basic'){
+        if (type == 'basic') {
             const res = await deleteBasicKeyword(id);
             if (res.status == 'success') {
                 setBasicKeywords(p => p.filter(kw => kw.id != id));
@@ -118,12 +128,12 @@ export default function PingModels() {
     useEffect(() => {
         getBasicKeywordsData();
         getCustomKeywordsData();
-    },[]);
+    }, []);
 
     useEffect(() => {
         setFilteredBasicKeywords(basicKeywords.filter((item) => item.keyword.toLowerCase().includes(basicKeywordsSearchInput.toLowerCase())));
         setFilteredCustomKeywords(customKeywords.filter((item) => item.website.toLowerCase().includes(customKeywordsSearchInput.toLowerCase())));
-    },[basicKeywords, customKeywords, basicKeywordsSearchInput, customKeywordsSearchInput]);
+    }, [basicKeywords, customKeywords, basicKeywordsSearchInput, customKeywordsSearchInput]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
@@ -178,42 +188,49 @@ export default function PingModels() {
                     </div>
                     <ScrollShadow className='mt-4 h-60 overflow-y-auto'>
                         {
-                            filteredBasicKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
-                                <Input
-                                    radius="lg"
-                                    classNames={{
-                                        input: [
-                                            "bg-transparent",
-                                            "text-black/90 dark:text-white/90",
-                                            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
-                                        ],
-                                        innerWrapper: "bg-transparent",
-                                        inputWrapper: [
-                                            "shadow-xl",
-                                            "bg-default-200/50",
-                                            "dark:bg-default/60",
-                                            "backdrop-blur-xl",
-                                            "backdrop-saturate-200",
-                                            "hover:bg-default-200/70",
-                                            "dark:hover:bg-default/70",
-                                            "group-data-[focused=true]:bg-default-200/50",
-                                            "dark:group-data-[focused=true]:bg-default/60",
-                                            "!cursor-text",
-                                        ],
-                                    }}
-                                    value={item.keyword}
-                                    disabled
-                                />
-                                <Button 
-                                    radius="full" 
-                                    className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"} 
-                                    size='sm' 
-                                    onClick={() => handleDeleteKeyword(item.id, "basic")}
-                                    isLoading={selectedCustomKeywordId == item.id && isDeleting}
-                                >
-                                    Delete
-                                </Button>
-                            </div>)
+                            isLoading.basic ?
+                                <div class="w-full justify-center flex">
+                                    <Spinner />
+                                </div> :
+                                filteredBasicKeywords.length ?
+                                    filteredBasicKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
+                                        <Input
+                                            radius="lg"
+                                            classNames={{
+                                                input: [
+                                                    "bg-transparent",
+                                                    "text-black/90 dark:text-white/90",
+                                                    "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+                                                ],
+                                                innerWrapper: "bg-transparent",
+                                                inputWrapper: [
+                                                    "shadow-xl",
+                                                    "bg-default-200/50",
+                                                    "dark:bg-default/60",
+                                                    "backdrop-blur-xl",
+                                                    "backdrop-saturate-200",
+                                                    "hover:bg-default-200/70",
+                                                    "dark:hover:bg-default/70",
+                                                    "group-data-[focused=true]:bg-default-200/50",
+                                                    "dark:group-data-[focused=true]:bg-default/60",
+                                                    "!cursor-text",
+                                                ],
+                                            }}
+                                            value={item.keyword}
+                                            disabled
+                                        />
+                                        <Button
+                                            radius="full"
+                                            className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr from-gray-700 to-gray-800"}
+                                            size='sm'
+                                            onClick={() => handleDeleteKeyword(item.id, "basic")}
+                                            isLoading={selectedCustomKeywordId == item.id && isDeleting}
+                                        >
+                                            Delete
+                                        </Button>
+                                    </div>)
+                                    :
+                                    <p>Not any Basic keywords yet</p>
                         }
                     </ScrollShadow>
                 </div>
@@ -263,7 +280,11 @@ export default function PingModels() {
                     </div>
                     <ScrollShadow className='mt-4 h-60 overflow-y-auto'>
                         {
-                            filteredCustomKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
+                            isLoading.custom ?
+                            <div class="w-full justify-center flex">
+                                <Spinner />
+                            </div> :
+                            filteredCustomKeywords.length ? filteredCustomKeywords.map((item) => <div className='flex items-center gap-x-3 py-2 pl-2 pr-20' key={item.id}>
                                 <Input
                                     radius="lg"
                                     classNames={{
@@ -313,6 +334,8 @@ export default function PingModels() {
                                     Delete
                                 </Button>
                             </div>)
+                            :
+                            <p>Not any Basic keywords yet</p>
                         }
                     </ScrollShadow>
                 </div>
