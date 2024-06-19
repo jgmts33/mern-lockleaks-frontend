@@ -13,8 +13,8 @@ export default function TermService() {
 
                 {/* This section for define Terms of Service header*/}
 
-                <p className='font-medium uppercase max-lg:text-[30px] mt-10 mb-3 max-sm:mt-5 text-center'>{PravicyPolicy.title}</p>
-                <p className='text-center'>UPDATE DATE: 01.05.2024</p>
+                <h1 className='font-medium uppercase max-lg:text-[30px] mt-10 mb-3 max-sm:mt-5 text-center'>{PravicyPolicy.title}</h1>
+                <p className='text-center'>UPDATE DATE: 19.06.2024</p>
 
                 <h2 class="font-medium text-[#F68171]">Agreement to Terms</h2>
 
