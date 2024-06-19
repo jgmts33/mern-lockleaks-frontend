@@ -104,13 +104,11 @@ export default function Footer({ cookieSettingsOnOpen }) {
                 required
               />
               <Button
-                className="absolute bottom-0 right-1 h-4 bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] text-white shadow-lg rounded-full px-7 py-6 text-lg top-2"
-                size='sm'
+                className="absolute bottom-0 right-1 h-4 bg-gradient-to-tr from-[#9C3FE4] to-[#C65647] shadow-lg rounded-full px-7 py-6 text-lg top-2"
                 onPress={handleSubscribe}
                 isLoading={isProcessing}
               >
                 <span>SEND</span>
-                <span>{icons.shine}</span>
               </Button>
             </div>
             <p className='text-sm font-normal text-red-600 mt-1 pl-6'>{warning}</p>
