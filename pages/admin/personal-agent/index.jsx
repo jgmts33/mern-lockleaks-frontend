@@ -20,6 +20,7 @@ import { ENDPOINT } from '@/config/config';
 import { SendMessage } from '@/components/utils/Icons';
 import { Poppins } from 'next/font/google';
 import { addHelpCountsOnTicket } from '@/axios/ticket';
+import { getUserInfo } from '@/axios/auth';
 
 const poppins = Poppins({ weight: ["300", "500"], subsets: ["latin"] });
 
@@ -32,7 +33,8 @@ export default function TicketDetail() {
     const [list, setList] = useState([]);
     const [filterdList, setFilteredList] = useState([]);
     const [searchValue, setSearchValue] = useState("");
-    const [targetTicket, setTargetTicket] = React.useState(null);
+    const [targetTicket, setTargetTicket] = useState(null);
+    const [targetUser, setTargetUser] = useState(null);
     const [newCount, setNewCount] = useState(0);
     const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [isTicketProcessing, setIsTicketProcessing] = useState(false);
@@ -64,10 +66,6 @@ export default function TicketDetail() {
         sendMessage: <SendMessage fill="currentColor" size={32} />,
     };
 
-    const handleGoSettings = () => {
-        router.push("/app/personal-agent/property");
-    }
-
     const getTicketsInfo = async () => {
         setIsTicketProcessing(true);
         const res = await getTickets();
@@ -82,10 +80,14 @@ export default function TicketDetail() {
         if (!targetTicket) return;
         setIsMessagesProcessing(true);
         const res = await getMessagesByTicket(targetTicket.id)
+        const userRes = await getUserInfo(targetTicket.user_id);
 
         if (res.status == 'success') {
             console.log("res.data:", res.data)
             setMessages(res.data);
+        }
+        if ( userRes.status == 'success' ) {
+            setTargetUser(userRes.data);
         }
         setIsMessagesProcessing(false);
     }, [targetTicket]);
@@ -434,7 +436,7 @@ export default function TicketDetail() {
                                     console.log(eachMessage);
                                     return <div key={index} className={'w-full flex flex-col ' + (eachMessage.sender_id == userInfo?.id ? 'items-end' : '')}>
                                         <div className='max-sm:max-w-full max-w-[600px] w-max p-2 space-y-2'>
-                                            <p className={eachMessage.sender_id == userInfo?.id ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userInfo?.id ? 'Username:' : "Support:"}</p>
+                                            <p className={eachMessage.sender_id == userInfo?.id ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id != userInfo?.id ? <span>{ targetUser?.name ? targetUser?.name : targetUser?.email }:</span> : "You:"}</p>
                                             <div className={eachMessage.sender_id != userInfo?.id ? 'flex justify-end' : 'flex '}>
                                                 <div className={'max-w-full w-max bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
                                                     <pre className={poppins.className + ' text-wrap'}>{eachMessage.content}</pre>

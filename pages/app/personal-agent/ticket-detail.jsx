@@ -393,7 +393,7 @@ export default function TicketDetail() {
                                     console.log(eachMessage);
                                     return <div key={index} className={'w-full flex flex-col ' + (eachMessage.sender_id == userInfo?.id ? 'items-end' : '')}>
                                         <div className='max-sm:max-w-full max-w-[600px] w-max p-2 space-y-2'>
-                                            <p className={eachMessage.sender_id == userInfo?.id ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id == userInfo?.id ? 'Username:' : "Support:"}</p>
+                                            <p className={eachMessage.sender_id == userInfo?.id ? 'text-right px-2' : ' px-2'}>{eachMessage.sender_id == userInfo?.id ? <span>You:</span> : <span>Support:</span>}</p>
                                             <div className={eachMessage.sender_id == userInfo?.id ? 'flex justify-end' : 'flex '}>
                                                 <div className={'w-full bg-white/15 border border-gray-500 rounded-[20px] p-5 min-w-48'}>
                                                     <pre className={poppins.className + ' text-wrap'}>{eachMessage.content}</pre>

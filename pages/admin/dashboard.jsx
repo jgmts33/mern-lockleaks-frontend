@@ -21,6 +21,8 @@ export default function AdminDashbaord() {
     const userInfo = useSelector(info);
     const scanProgress = useSelector(scanProgressInfo);
 
+    const DEFAULT = DEFAULT_SCAN_RESULT;
+
     const dispatch = useDispatch();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
@@ -102,9 +104,25 @@ export default function AdminDashbaord() {
                 setLastScanResult(res.data[0]);
             }
 
-            let _scanResult = DEFAULT_SCAN_RESULT;
+            let _scanResult = {
+                total_google_links: 0,
+                total_google_images: 0,
+                total_google_videos: 0,
+                total_bing_links: 0,
+                total_bing_images: 0,
+                total_bing_videos: 0,
+                good_count: 0,
+                other_count: 0,
+                bad_count: 0,
+                new_count: 0,
+                report_count: 0,
+                no_report_count: 0,
+                matches_count: 0,
+                no_matches_count: 0,
+                status: 'available'
+            };
 
-            res.data.map((item) => {
+            for (let item of res.data) {
                 _scanResult.total_google_links += item.total_google_links
                 _scanResult.total_google_images += item.total_google_images
                 _scanResult.total_google_videos += item.total_google_videos
@@ -119,7 +137,7 @@ export default function AdminDashbaord() {
                 _scanResult.no_report_count += item.no_report_count
                 _scanResult.matches_count += item.matches_count
                 _scanResult.no_matches_count += item.no_matches_count
-            });
+            };
 
             setScanResult(_scanResult);
 
@@ -297,7 +315,7 @@ export default function AdminDashbaord() {
             socket.disconnect();
         }
 
-    }, []);
+    }, [dispatch, userInfo.id]);
 
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {

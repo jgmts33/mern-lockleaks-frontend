@@ -194,13 +194,14 @@ export const sendVerificationEmail = async (email) => {
   }
 }
 
-export const getUserInfo = async () => {
+export const getUserInfo = async (id = null) => {
 
-  const userId = getUserId();
+  const userId = getUserId(); 
+  console.log("id:", id)
 
   try {
 
-    const res = await axios.get(`${ENDPOINT}/users/${userId}`, {
+    const res = await axios.get(`${ENDPOINT}/users/${id ? id : userId}`, {
       headers: {
         'x-access-token': await getAccessToken()
       }

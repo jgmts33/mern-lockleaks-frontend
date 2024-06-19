@@ -44,7 +44,23 @@ export default function Dashbaord() {
             if (res.data?.length >= 1) {
                 setLastScanResult(res.data[0]);
             }
-            let _scanResult = DEFAULT_SCAN_RESULT;
+            let _scanResult = {
+                total_google_links: 0,
+                total_google_images: 0,
+                total_google_videos: 0,
+                total_bing_links: 0,
+                total_bing_images: 0,
+                total_bing_videos: 0,
+                good_count: 0,
+                other_count: 0,
+                bad_count: 0,
+                new_count: 0,
+                report_count: 0,
+                no_report_count: 0,
+                matches_count: 0,
+                no_matches_count: 0,
+                status: 'available'
+            };;
 
             res.data.map((item) => {
                 _scanResult.total_google_links += item.total_google_links
@@ -226,6 +242,14 @@ export default function Dashbaord() {
                 last: value.last_count,
                 total: p.total + value.count
             }))
+        })
+
+        socket.on(`admin:aiFaceScanFinished`, (value) => {
+            if ( value.user_id == userInfo.id ) getAIBotsScrapedDataInfo();
+        })
+
+        socket.on(`admin:socialScanFinished`, (value) => {
+            if ( value.user_id == userInfo.id ) getSocialScrapedDataInfo();
         })
 
         return () => {
