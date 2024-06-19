@@ -11,6 +11,7 @@ import { io } from "socket.io-client";
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from "@/config/config";
 import { getTicketsByUser } from "@/axios/ticket";
 import { getSocialScanResultByUser } from "@/axios/social";
+import { getAIFaceScanResultByUser } from "@/axios/ai-face";
 
 export default function Dashbaord() {
 
@@ -27,6 +28,10 @@ export default function Dashbaord() {
         last: 0
     });
     const [social, setSocial] = useState({
+        total: 0,
+        last: 0
+    })
+    const [aiBots, setAiBots] = useState({
         total: 0,
         last: 0
     })
@@ -69,6 +74,16 @@ export default function Dashbaord() {
         const res = await getSocialScanResultByUser();
         if (res.status == 'success') {
             setSocial({
+                total: res.data.totalResult,
+                last: res.data.lastResult
+            });
+        }
+    }
+
+    const getAIBotsScrapedDataInfo = async () => {
+        const res = await getAIFaceScanResultByUser();
+        if (res.status == 'success') {
+            setAiBots({
                 total: res.data.totalResult,
                 last: res.data.lastResult
             });
@@ -156,8 +171,8 @@ export default function Dashbaord() {
             },
             {
                 title: "AI Bots",
-                lastscan: 0,
-                total: 0
+                lastscan: aiBots.last,
+                total: aiBots.total
             },
             {
                 title: " Adult Tubes",
@@ -191,12 +206,13 @@ export default function Dashbaord() {
                 total: scanResult.good_count
             }
         ])
-    }, [scanResult, lastScanResult, personalAgentCount, social]);
+    }, [scanResult, lastScanResult, personalAgentCount, social, aiBots]);
 
     useEffect(() => {
         getScrapedDataListInfo();
         getTicketsByUserInfo();
         getSocialScrapedDataInfo();
+        getAIBotsScrapedDataInfo();
 
         const socket = io(ENDPOINT);
 

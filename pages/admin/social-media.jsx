@@ -110,7 +110,7 @@ export default function SocialMedia() {
     const handleScanAccept = useCallback(async (file, index) => {
         setIsScanAcceptProcessing(index);
 
-        if (socialMediaSubmitionsList[index]?.downloaded == true && userInfo.roles.find(p => p == 'moderator')) return;
+        if (socialMediaScanList[index]?.downloaded == true && userInfo.roles.find(p => p == 'moderator')) return;
 
         const res = await acceptSocialScanner(file);
 
@@ -126,7 +126,7 @@ export default function SocialMedia() {
 
             setSocialMediaScanList(prevState => {
                 return prevState.map(p => {
-                    if (p.name == file) return {
+                    if (p.file == file) return {
                         ...p,
                         downloaded: true
                     }
@@ -192,6 +192,10 @@ export default function SocialMedia() {
             }
         });
 
+        socket.on(`admin:socialScanFinished`, async (value) => {
+            setSocialMediaScanList(p => ([...p, value]));
+        });
+
         return () => socket.close();
     }, []);
 
@@ -232,7 +236,7 @@ export default function SocialMedia() {
                         </div>
                     </div>
                     <div className='flex flex-col bg-white/10 border border-gray-500 p-10 max-sm:p-4 rounded-[16px] mt-5 w-full'>
-                        <ScrollShadow className="h-[320px]">
+                        <ScrollShadow className="h-[calc(100vh-560px)]">
                             <div className='flex flex-col gap-5 px-2'>
                                 {
                                     isProcessing.scan ?

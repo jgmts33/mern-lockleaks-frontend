@@ -65,3 +65,30 @@ export const socialScan = async (username) => {
     }
   }
 }
+
+export const aiFaceScan = async (data) => {
+
+  const accessToken = await getAccessToken();
+  const userId = getUserId();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/${userId}/scan-ai-face`, data,
+      {
+        headers: {
+          'x-access-token': accessToken,
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

@@ -4,12 +4,15 @@ import {
     Button, Progress, ScrollShadow
 } from '@nextui-org/react';
 import { Chain, Components, UploadIcon } from "@/components/utils/Icons";
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useState } from 'react';
 import AIFaceImageExample from '@/public/assets/kyc-submit/selfie-ai.jpg';
+import { aiFaceScan } from '@/axios/bot';
 
 export default function AIImage() {
-    const [value, setValue] = React.useState(25);
+
+    const [value, setValue] = React.useState(0);
+    const [scanResult, setScanResult] = useState(0);
 
     const icons = {
         chain: <Chain />,
@@ -28,28 +31,48 @@ export default function AIImage() {
         fileUploadRef.current.click();
     }
 
+    const handleScan = useCallback(async () => {
+
+        if (!uploadedFile) return;
+
+        const formData = new FormData();
+
+        formData.append('photo', uploadedFile);
+
+        setValue(90);
+        const res = await aiFaceScan(formData);
+        setValue(100);
+        setTimeout(() => {
+            setValue(0);
+        }, 30 * 1000);
+        if (res.status == 'success') {
+            setUploadedFile(null);
+            setPreviewImgUrl('');
+            setScanResult(res.data.result);
+        }
+
+
+    }, [uploadedFile])
+
     const scanResults = [
         {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-sm'>
-                <span>Scanning on</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base'>10</span>
-                <span>websites.</span>
+                Scanning on<span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base px-1'>1M</span>websites.
             </div>
-        },{
+        }, {
             icon: icons.components,
             content: <div className='flex items-center space-x-1 font-normal text-sm'>
-                <span>Total Profiles & Images Matched:</span>
-                <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base'>10</span>
-                <span>.</span>
+                Total Profiles & Images Matched:<span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-base px-1'>{scanResult}.</span>
             </div>
         },
     ]
 
-    const uploadImageDisplay = async (type) => {
+    const uploadImageDisplay = async () => {
         try {
             const _uploadedFile = fileUploadRef.current.files[0];
             const cachedURL = URL.createObjectURL(_uploadedFile);
+            setUploadedFile(_uploadedFile)
             setPreviewImgUrl(cachedURL);
 
         } catch (error) {
@@ -75,9 +98,19 @@ export default function AIImage() {
                             <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
                         </div>
                     </div>
-                    <div className='flex space-x-5 max-sm:hidden'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-5 text-lg" size='sm'>
-                            <span>START</span>
+                    <div className='max-sm:hidden'>
+                        <Button
+                            radius="lg"
+                            className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
+                            size='sm'
+                            disabled={!!value}
+                            onPress={() => {
+                                if (!value) handleScan()
+                            }}
+                        >
+                            {
+                                value == 0 ? <span>START</span> : value == 100 ? <span>FINISHED</span> : <span>Processing</span>
+                            }
                         </Button>
                     </div>
                     <Progress
@@ -206,8 +239,8 @@ export default function AIImage() {
                     </div>
                     <div className='flex items-center space-x-1 max-lg:flex-wrap'>
                         <span className='font-normal text-xs'>Generated a removal report with
-                        <span className='px-1 bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span> 
-                        copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
+                            <span className='px-1 bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>{scanResult}</span>
+                            copyright infringements, including AI results, matched photos, and profiles, and forwarded it to AI Engines.</span>
                     </div>
                 </div>
             </div>

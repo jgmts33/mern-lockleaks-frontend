@@ -12,6 +12,7 @@ import { DEFAULT_SCAN_RESULT, ENDPOINT, DEFAULT_EXTRA_REPORT } from "@/config/co
 import { getExtraReport } from "@/axios/user";
 import { getTickets } from "@/axios/ticket";
 import { getSocialScanResult } from "@/axios/social";
+import { getAIFaceScanResult } from "@/axios/ai-face";
 
 export default function AdminDashbaord() {
 
@@ -28,6 +29,10 @@ export default function AdminDashbaord() {
         last: 0
     })
     const [social, setSocial] = useState({
+        total: 0,
+        last: 0
+    })
+    const [aiBots, setAiBots] = useState({
         total: 0,
         last: 0
     })
@@ -150,6 +155,16 @@ export default function AdminDashbaord() {
         }
     }
 
+    const getAIBotsScrapedDataInfo = async () => {
+        const res = await getAIFaceScanResult();
+        if (res.status == 'success') {
+            setAiBots({
+                total: res.data.totalResult,
+                last: res.data.lastResult
+            });
+        }
+    }
+
     const getExtraReportInfo = async () => {
         const res = await getExtraReport();
 
@@ -179,8 +194,8 @@ export default function AdminDashbaord() {
             {
                 title: "AI Bots",
                 subtitle: "total last scan",
-                lastscan: 0,
-                total: 0
+                lastscan: aiBots.last,
+                total: aiBots.total
             },
             {
                 title: " Adult Tubes",
@@ -234,13 +249,14 @@ export default function AdminDashbaord() {
                 },]
         }
         setDashboardOverview(_overview);
-    }, [scanResult, lastScanResult, extraReport, userInfo, personalAgentCount, social]);
+    }, [scanResult, lastScanResult, extraReport, userInfo, personalAgentCount, social, aiBots]);
 
     useEffect(() => {
         getScrapedDataListInfo();
         getExtraReportInfo();
         getTicketsInfo();
         getSocialScrapedDataInfo();
+        getAIBotsScrapedDataInfo();
 
         const socket = io(ENDPOINT);
 
@@ -265,6 +281,13 @@ export default function AdminDashbaord() {
 
         socket.on(`social-scan-finished`, (value) => {
             setSocial(p => ({
+                last: value,
+                total: p.total + value
+            }))
+        })
+
+        socket.on(`ai-face-scan-finished`, (value) => {
+            setAiBots(p => ({
                 last: value,
                 total: p.total + value
             }))
