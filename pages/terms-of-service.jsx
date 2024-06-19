@@ -42,7 +42,7 @@ export default function TermService() {
 
                 {/* <!-- Definitions --> */}
 
-                <h3 class="text-[#c879e0]">Definitions</h3>
+                <h3 class="bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Definitions</h3>
                 <p>For the purposes of these Terms of Service:</p>
                 <ul>
                     <li><b>User:</b> Refers to those individuals and/or entities authorized by Lock Leaks to receive the Services pursuant to and in accordance with the Order without any subscription.</li>
@@ -61,38 +61,38 @@ export default function TermService() {
 
                 {/* <!-- Confidential Information Section --> */}
 
-                <h3 class="font-medium text-[#c879e0]">Confidential Information</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Confidential Information</h3>
                 <p><b class="font-medium">User Obligations:</b> Users must keep Confidential Information confidential and shall not disclose it to any third party except as necessary for the performance of the Services.</p>
                 <p><b class="font-medium">Company Obligations:</b> Lock Leaks shall keep User's Confidential Information confidential and shall not disclose it to any third party except as necessary for the performance of the Services.</p>
 
                 {/* <!-- User Responsibilities Section --> */}
 
-                <h3 class="font-medium text-[#c879e0]">User Responsibilities</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">User Responsibilities</h3>
                 <ul>
                     <li>Users must use the Services in accordance with the provided instructions.</li>
                     <li>Users are responsible for ensuring that any information provided is accurate and up to date.</li>
                     <li>Users must not misuse or improperly use the Software provided by Lock Leaks.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Fees and Payment</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Fees and Payment</h3>
                 <ul>
                     <li>Users agree to pay the fees specified in their Order.</li>
                     <li>All fees are non-refundable unless otherwise stated in the Order.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Termination</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Termination</h3>
                 <ul>
                     <li>Lock Leaks reserves the right to terminate or suspend access to the Services for any user who breaches these Terms of Service.</li>
                     <li>Users may terminate their subscription by providing written notice in accordance with the termination policy outlined in their Order.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Limitation of Liability</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Limitation of Liability</h3>
                 <ul>
                     <li>Lock Leaks shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to the use of the Services.</li>
                     <li>The total liability of Lock Leaks for any claims arising out of or related to the Services shall not exceed the amount paid by the User for the Services.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Governing Law</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Governing Law</h3>
                 <ul>
                     <li>These Terms of Service shall be governed by and construed in accordance with the laws of Romania.</li>
                 </ul>
@@ -137,25 +137,25 @@ export default function TermService() {
                 <p>If the Promoter fully meets its obligations as outlined above, LOCK LEAKS may either provide a discount on the service fee (with the discount rate determined by Lock Leaks at its sole discretion) or upgrade the subscription plan at no additional cost.</p>
                 <p>If the Promoter breaches its obligations, all benefits mentioned in the previous point will be revoked, and the promoter must pay LOCK LEAKS the applicable fees (the discounted amount or the difference between the original and upgraded plan).</p>
 
-                <h3 class="font-medium text-[#c879e0]">Fees and Payment</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Fees and Payment</h3>
                 <ul>
                     <li>Users agree to pay the fees specified in their Order.</li>
                     <li>All fees are non-refundable unless otherwise stated in the Order.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Termination</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Termination</h3>
                 <ul>
                     <li>Lock Leaks reserves the right to terminate or suspend access to the Services for any user who breaches these Terms of Service.</li>
                     <li>Users may terminate their subscription by providing written notice in accordance with the termination policy outlined in their Order.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Limitation of Liability</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Limitation of Liability</h3>
                 <ul>
                     <li>Lock Leaks shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to the use of the Services.</li>
                     <li>The total liability of Lock Leaks for any claims arising out of or related to the Services shall not exceed the amount paid by the User for the Services.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Governing Law</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Governing Law</h3>
                 <ul>
                     <li>These Terms of Service shall be governed by and construed in accordance with the laws of Romania.</li>
                 </ul>
@@ -204,14 +204,14 @@ export default function TermService() {
 
                 <p>The Agreement and your subscription to LOCK LEAKS Services become effective upon your signup on our website and continue until either you or we terminate the subscription and Agreement.</p>
 
-                <h3 class="font-medium text-[#c879e0]">1. Cancellation by You:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cancellation by You:</h3>
                 <ul>
                     <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Paddle.com after your subscription or request a cancellation link directly from LOCKLEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
                     <li>Cancellation allows you to maintain access to the service until the end of your billing period. Payments are generally non-refundable, and no refunds or credits are provided for partial membership periods or unused content, as permitted by applicable law.</li>
                     <li>If Lock Leaks determines that you are abusing the cancellation and refund process, it reserves the right to block access to and/or terminate your account at its sole discretion.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">2. Refunds for Advance Payments:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Refunds for Advance Payments:</h3>
                 <ul>
                     <li><b>Daily Plans:</b> If canceled within 5 days of purchase, all payments are refunded. After 6 days, the refund is calculated as (total price paid / term purchased) * remaining days of the plan.</li>
                     <li><b>Monthly Plans:</b> Refund is calculated as (total price paid / 30) * remaining days of the plan.</li>
@@ -247,14 +247,14 @@ export default function TermService() {
 
                 <p>The Agreement and your subscription to LOCK LEAKS Services become effective upon your signup on our website and continue until either you or we terminate the subscription and Agreement.</p>
 
-                <h3 class="font-medium text-[#c879e0]">1. Cancellation by You:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cancellation by You:</h3>
                 <ul>
                     <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Paddle.com after your subscription or request a cancellation link directly from LOCKLEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
                     <li>Cancellation allows you to maintain access to the service until the end of your billing period. Payments are generally non-refundable, and no refunds or credits are provided for partial membership periods or unused content, as permitted by applicable law.</li>
                     <li>If Lock Leaks determines that you are abusing the cancellation and refund process, it reserves the right to block access to and/or terminate your account at its sole discretion.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">2. Refunds for Advance Payments:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Refunds for Advance Payments:</h3>
                 <ul>
                     <li><b>Daily Plans:</b> If canceled within 5 days of purchase, all payments are refunded. After 6 days, the refund is calculated as (total price paid / term purchased) * remaining days of the plan.</li>
                     <li><b>Monthly Plans:</b> Refund is calculated as (total price paid / 30) * remaining days of the plan.</li>
@@ -266,7 +266,7 @@ export default function TermService() {
                 <h2 class="font-medium text-[#F68171]">Free Trial</h2>
                 <ul>
                     <li>
-                        <h3 class="font-medium text-[#c879e0]">1. Trial Period:</h3>
+                        <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Trial Period:</h3>
                         <p>By signing up for a trial version of LOCKLEAKS Services, you can use the services free of charge for 3 days. During the trial, you have access to the following LOCKLEAKS Services:</p>
                         <ul>
                             <li>Takedown requests are limited to 5 URL per day.</li>
@@ -281,7 +281,7 @@ export default function TermService() {
                     <li>The terms and availability of the free trial may be changed by LOCKLEAKS at any time without prior notice.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">2. Verification Steps:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Verification Steps:</h3>
                 <ul>
                     <li>
                         <p>To verify your profile, you must complete one of the following steps:</p>
@@ -298,12 +298,12 @@ export default function TermService() {
 
                 <h2 class="font-medium text-[#F68171]">Customer and User Obligations</h2>
 
-                <h3 class="font-medium text-[#c879e0]">1. Cooperation and Compliance:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cooperation and Compliance:</h3>
                 <ul>
                     <li>The Customer and Users must provide Lock Leaks with all necessary cooperation and access to information required to deliver the Services. They must comply with all applicable laws and regulations in relation to their activities under the Contract and fulfill all their responsibilities as outlined in the Contract in a timely and efficient manner. Any delays in providing the required assistance may lead LockLeaks to adjust the agreed timetable or delivery schedule as necessary.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">2. Content Ownership and Authority:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Content Ownership and Authority:</h3>
                 <ul>
                     <li>The Customer and Users warrant that any content they report to LockLeaks, or for which they submit takedown or delisting notices using the Services, infringes their intellectual property rights and that they have the authority to request its removal from the Site where it is hosted or indexed.</li>
                     <li>The Customer and Users acknowledge that LockLeaks may perform verification checks to confirm the ownership of the content. This includes, but is not limited to, checks of public databases, financial and company records, and direct requests for license and rights holder agreements from the Customer or User.</li>
@@ -311,7 +311,7 @@ export default function TermService() {
                     <li>The Customer and Users grant Lock Leaks express authority to issue takedown requests on their behalf.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">3. Indemnification:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">3. Indemnification:</h3>
                 <ul>
                     <li>The Customer and Users shall indemnify LockLeaks against all liabilities, costs, expenses, damages, and losses arising from or in connection with the Customer's or User's breach of any terms of the Contract.</li>
                 </ul>
@@ -347,14 +347,14 @@ export default function TermService() {
 
                 <p>The Agreement and your subscription to LOCK LEAKS Services become effective upon your signup on our website and continue until either you or we terminate the subscription and Agreement.</p>
 
-                <h3 class="font-medium text-[#c879e0]">1. Cancellation by You:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cancellation by You:</h3>
                 <ul>
                     <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Paddle.com after your subscription or request a cancellation link directly from LOCKLEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
                     <li>Cancellation allows you to maintain access to the service until the end of your billing period. Payments are generally non-refundable, and no refunds or credits are provided for partial membership periods or unused content, as permitted by applicable law.</li>
                     <li>If Lock Leaks determines that you are abusing the cancellation and refund process, it reserves the right to block access to and/or terminate your account at its sole discretion.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">2. Refunds for Advance Payments:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Refunds for Advance Payments:</h3>
                 <ul>
                     <li><b>Daily Plans:</b> If canceled within 5 days of purchase, all payments are refunded. After 6 days, the refund is calculated as (total price paid / term purchased) * remaining days of the plan.</li>
                     <li><b>Monthly Plans:</b> Refund is calculated as (total price paid / 30) * remaining days of the plan.</li>
@@ -366,7 +366,7 @@ export default function TermService() {
                 <h2 class="font-medium text-[#F68171]">Free Trial</h2>
                 <ul>
                     <li>
-                        <h3 class="font-medium text-[#c879e0]">1. Trial Period:</h3>
+                        <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Trial Period:</h3>
                         <p>By signing up for a trial version of LOCKLEAKS Services, you can use the services free of charge for 3 days. During the trial, you have access to the following LOCKLEAKS Services:</p>
                         <ul>
                             <li>Takedown requests are limited to 5 URL per day.</li>
@@ -381,7 +381,7 @@ export default function TermService() {
                     <li>The terms and availability of the free trial may be changed by LOCKLEAKS at any time without prior notice.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">2. Verification Steps:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Verification Steps:</h3>
                 <ul>
                     <li>
                         <p>To verify your profile, you must complete one of the following steps:</p>
@@ -398,12 +398,12 @@ export default function TermService() {
 
                 <h2 class="font-medium text-[#F68171]">Customer and User Obligations</h2>
 
-                <h3 class="font-medium text-[#c879e0]">1. Cooperation and Compliance:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cooperation and Compliance:</h3>
                 <ul>
                     <li>The Customer and Users must provide Lock Leaks with all necessary cooperation and access to information required to deliver the Services. They must comply with all applicable laws and regulations in relation to their activities under the Contract and fulfill all their responsibilities as outlined in the Contract in a timely and efficient manner. Any delays in providing the required assistance may lead LockLeaks to adjust the agreed timetable or delivery schedule as necessary.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">2. Content Ownership and Authority:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Content Ownership and Authority:</h3>
                 <ul>
                     <li>The Customer and Users warrant that any content they report to LockLeaks, or for which they submit takedown or delisting notices using the Services, infringes their intellectual property rights and that they have the authority to request its removal from the Site where it is hosted or indexed.</li>
                     <li>The Customer and Users acknowledge that LockLeaks may perform verification checks to confirm the ownership of the content. This includes, but is not limited to, checks of public databases, financial and company records, and direct requests for license and rights holder agreements from the Customer or User.</li>
@@ -411,14 +411,14 @@ export default function TermService() {
                     <li>The Customer and Users grant Lock Leaks express authority to issue takedown requests on their behalf.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">3. Indemnification:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">3. Indemnification:</h3>
                 <ul>
                     <li>The Customer and Users shall indemnify LockLeaks against all liabilities, costs, expenses, damages, and losses arising from or in connection with the Customer's or User's breach of any terms of the Contract.</li>
                 </ul>
 
                 <h2 class="font-medium text-[#F68171]">Prohibited Activities</h2>
 
-                <h3 class="font-medium text-[#c879e0]">As a user of the Site, you agree not to:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">As a user of the Site, you agree not to:</h3>
                 <ul>
                     <li>Systematically retrieve data or other content from the Site to create or compile a collection, compilation, database, or directory without our written permission.</li>
                     <li>Send inaccurate takedown requests frequently.</li>
@@ -463,7 +463,7 @@ export default function TermService() {
 
                 <h2 class="font-medium text-[#F68171]">Prohibited Activities</h2>
 
-                <h3 class="font-medium text-[#c879e0]">As a user of the Site, you agree not to:</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">As a user of the Site, you agree not to:</h3>
 
                 <ul>
                     <li>Collect User Content, personally-identifiable information, or any other information, or otherwise access the Services using automated means (such as harvesting bots, robots, spiders, scrapers, or other means).</li>
@@ -506,70 +506,70 @@ export default function TermService() {
 
                 <h2 class="font-medium text-[#F68171]">Lock Leaks Terms and Conditions Summary</h2>
 
-                <h3 class="font-medium text-[#c879e0]">Prohibited Activities</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Prohibited Activities</h3>
                 <ul>
                     <li><b>Unauthorized Use:</b> Users cannot misuse the site, engage in harmful activities, or infringe on others' rights. This includes data scraping, unauthorized resale, security breaches, and uploading harmful content.</li>
                     <li><b>Impersonation and Harassment:</b> Users must not impersonate others, harass individuals, or engage in automated data gathering.</li>
                     <li><b>Content Violations:</b> Contributions must be legal, non-infringing, and respectful.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">User Generated Contributions</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">User Generated Contributions</h3>
                 <ul>
                     <li><b>Content Ownership:</b> Users retain ownership of their contributions but grant LockLeaks a license to use them.</li>
                     <li><b>Content Guidelines:</b> Contributions must not be harmful, false, or unlawful.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Submissions</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Submissions</h3>
                 <ul>
                     <li><b>Feedback:</b> Any feedback provided is non-confidential and becomes the property of Lock Leaks, which can use it without compensation to the user.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Third-Party Websites and Content</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Third-Party Websites and Content</h3>
                 <ul>
                     <li><b>External Links:</b> Lock Leaks is not responsible for third-party websites and content accessed through the site.</li>
                     <li><b>User Risk:</b> Users should review third-party terms and policies as they access them at their own risk.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">U.S. Government Rights</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">U.S. Government Rights</h3>
                 <ul>
                     <li><b>Regulations:</b> Services are considered commercial items, subject to specific FAR and DFARS regulations regarding government usage.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Site Management</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Site Management</h3>
                 <ul>
                     <li><b>Monitoring and Action:</b> Lock Leaks can monitor the site, take legal action, and manage contributions to protect the site’s integrity.</li>
                     <li><b>Content Removal:</b> The company can remove content and restrict access as necessary.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Privacy Policy</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Privacy Policy</h3>
                 <ul>
                     <li><b>Data Handling:</b> Users agree to the site's Privacy Policy and consent to data transfer and processing in the U.S.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Term and Termination</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Term and Termination</h3>
                 <ul>
                     <li><b>Effective Duration:</b> Terms remain effective as long as the user uses the site.</li>
                     <li><b>Account Termination:</b> Lock Leaks can terminate access or accounts for any reason without notice. Terminated users cannot create new accounts and may face legal action.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Modifications and Interruptions</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Modifications and Interruptions</h3>
                 <ul>
                     <li><b>Content Changes:</b> Lock Leaks can change or discontinue site content without notice.</li>
                     <li><b>Service Interruptions:</b> The site may experience interruptions, and Lock Leaks is not liable for resulting inconvenience or damage.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Governing Law</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Governing Law</h3>
                 <ul>
                     <li><b>Jurisdiction:</b> Terms are governed by Romanian law, and disputes may be resolved in Romanian courts or the user's country of residence within the EU.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Dispute Resolution</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Dispute Resolution</h3>
                 <p>For any disputes arising regarding the site, users can access the online dispute resolution platform provided by the European Commission. This platform offers a convenient and efficient way to resolve issues without resorting to legal action. If users require assistance or wish to address any concerns directly with us, they can contact our support team for prompt resolution.</p>
 
-                <h3 class="font-medium text-[#c879e0]">Corrections</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Corrections</h3>
                 <p>Ensuring the accuracy and integrity of the information presented on our site is essential. In the event of typographical errors, inaccuracies, or omissions, we reserve the right to make corrections promptly. This commitment to accuracy enhances the user experience and ensures that visitors receive reliable and up-to-date information.</p>
 
-                <h3 class="font-medium text-[#c879e0]">Data Protection and GDPR Compliance</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Data Protection and GDPR Compliance</h3>
                 <p>This section outlines the obligations and responsibilities of both parties regarding the processing and protection of personal data in accordance with the General Data Protection Regulation (GDPR).</p>
                 <ul>
                     <li><b>Protection of Personal Data:</b> Both parties agree to protect any personal data transferred between them in compliance with the GDPR.</li>
@@ -583,10 +583,10 @@ export default function TermService() {
                     <li><b>Data Retention:</b> LOCK LEAKS is not obligated to delete personal data during the storage period defined by relevant law, but afterward, it must delete any data other than the personal data of the user or customer.</li>
                 </ul>
 
-                <h3 class="font-medium text-[#c879e0]">Severability</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Severability</h3>
                 <p>The provision regarding severability ensures that if any part of the terms is deemed unlawful, void, or unenforceable, that specific provision will be adjusted to the minimum extent necessary or removed altogether. This adjustment won't impact the validity and enforceability of the remaining provisions of the terms.</p>
 
-                <h3 class="font-medium text-[#c879e0]">Contact Information</h3>
+                <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">Contact Information</h3>
                 <p>If you need to address a concern about the Site or seek additional information regarding its usage, you can contact AD BOOST SRL at the following:</p>
                 <p>Company Name: AD BOOST S.R.L.<br />
                     Address: Bacau, Strada Letea 32, Bloc A, Ap. 116<br />
