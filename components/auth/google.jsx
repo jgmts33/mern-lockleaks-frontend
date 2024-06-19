@@ -44,7 +44,7 @@ export default function GoogleAuth() {
         onClick={handleGoogleAuth}
       >
         {icons.google}
-      </Button> : <div></div>
+      </Button> : <></>
     }
   </>
 }

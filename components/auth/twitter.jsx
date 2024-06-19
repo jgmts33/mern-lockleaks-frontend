@@ -47,7 +47,7 @@ export default function FaceBookAuth() {
         onClick={handleTwitterAuth}
       >
         {icons.twitter}
-      </Button> : <div></div>
+      </Button> : <></>
     }
       </>
     }

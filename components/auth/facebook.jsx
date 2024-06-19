@@ -41,7 +41,7 @@ export default function FaceBookAuth() {
         onClick={handleFacebookAuth}
       >
         {icons.facebook}
-      </Button> : <div></div>
+      </Button> : <></>
     }
   </>
 }
