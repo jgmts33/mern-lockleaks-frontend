@@ -588,7 +588,7 @@ export default function TermService() {
 
                 <h3 class="font-medium text-[#c879e0]">Contact Information</h3>
                 <p>If you need to address a concern about the Site or seek additional information regarding its usage, you can contact AD BOOST SRL at the following:</p>
-                <p>Company Name: AD BOOST SRL<br />
+                <p>Company Name: AD BOOST S.R.L.<br />
                     Address: Bacau, Strada Letea 32, Bloc A, Ap. 116<br />
                     Country: Romania<br />
                     Phone: +40743798564<br />
