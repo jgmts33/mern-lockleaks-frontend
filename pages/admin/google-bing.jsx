@@ -16,7 +16,11 @@ export default function GoogleBing() {
 
     const [googleScrapedData, setGoogleScrapedData] = useState([]);
     const [bingScrapedData, setBingScrapedData] = useState([]);
-    const [isProcessing, setIsProcessing] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isProcessing, setIsProcessing] = useState({
+        index: -1,
+        type: ''
+    });
     const userInfo = useSelector(info);
 
     const icons = {
@@ -26,15 +30,19 @@ export default function GoogleBing() {
     };
 
     const getScrapedDataListInfo = async () => {
-        setIsProcessing(true);
+        setIsLoading(true);
         const resGoogle = await getScrapedDataList(true, 'google');
         if (resGoogle.status == 'success') setGoogleScrapedData(resGoogle.data);
         const resBing = await getScrapedDataList(true, 'bing');
         if (resBing.status == 'success') setBingScrapedData(resBing.data);
-        setIsProcessing(false);
+        setIsLoading(false);
     }
 
     const handleAccept = useCallback(async (folder_name, index, only) => {
+        setIsProcessing({
+            index,
+            type:only
+        })
         if (only == 'google' && googleScrapedData[index]?.accepted == true && userInfo.roles.find(p => p == 'moderator')) return;
         if (only == 'bing' && bingScrapedData[index]?.accepted == true && userInfo.roles.find(p => p == 'moderator')) return;
 
@@ -65,6 +73,11 @@ export default function GoogleBing() {
         } else {
             console.log("Error");
         }
+
+        setIsProcessing({
+            index : -1,
+            type: ''
+        })
     }, [userInfo, googleScrapedData, bingScrapedData]);
 
     useEffect(() => {
@@ -218,7 +231,7 @@ export default function GoogleBing() {
                         <ScrollShadow className="h-[320px]">
                             <div className='flex flex-col gap-5 px-2'>
                                 {
-                                    isProcessing ?
+                                    isLoading ?
                                         <div class="w-full justify-center flex">
                                             <Spinner />
                                         </div>
@@ -234,6 +247,7 @@ export default function GoogleBing() {
                                                             radius="lg"
                                                             className={item.status == 'available' ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
                                                             size='sm'
+                                                            isLoading={ isProcessing.index == index && isProcessing.type == 'google' }
                                                             onClick={() => {
                                                                 if (item.status == 'available') handleAccept(item.scrape_date, index, 'google');
                                                             }}
@@ -282,7 +296,7 @@ export default function GoogleBing() {
                         <ScrollShadow className="h-[320px]">
                             <div className='flex flex-col gap-5 px-2'>
                                 {
-                                    isProcessing ?
+                                    isLoading ?
                                         <div class="w-full justify-center flex">
                                             <Spinner />
                                         </div>
@@ -298,6 +312,7 @@ export default function GoogleBing() {
                                                             radius="lg"
                                                             className={item.status == 'available' ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
                                                             size='sm'
+                                                            isLoading={ isProcessing.index == index && isProcessing.type == 'bing' }
                                                             onClick={() => {
                                                                 if (item.status == 'available') handleAccept(item.scrape_date, index, 'bing');
                                                             }}

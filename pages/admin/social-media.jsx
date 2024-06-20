@@ -187,14 +187,14 @@ export default function SocialMedia() {
 
         const socket = io(ENDPOINT);
 
-        socket.on(`admin:socialMediaSubmition`, async (value) => {
+        socket.on(`social-profile-submission`, async (value) => {
             if (value == 'uploaded') {
                 getSocialMediaProfileSubmitionsInfo();
             }
         });
 
         socket.on(`admin:socialScanFinished`, async (value) => {
-            setSocialMediaScanList(p => ([...p, value]));
+            setSocialMediaScanList(p => ([value, ...p]));
         });
 
         return () => socket.close();
@@ -310,7 +310,7 @@ export default function SocialMedia() {
                                             return (
                                                 <div key={index} className='flex items-center gap-4 max-xl:flex-col max-xl:gap-2'>
                                                     <div className='flex bg-white/10 py-3 w-full rounded-[16px] px-6'>
-                                                        <span className='font-normal text-sm'>social.{item.user_id}.{item.name}.zip</span>
+                                                        <span className='font-normal text-sm'>{item.name}</span>
                                                     </div>
                                                     <Button
                                                         radius="lg"

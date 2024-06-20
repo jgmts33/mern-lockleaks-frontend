@@ -43,7 +43,7 @@ export default function Google() {
     };
 
     const handleScan = useCallback(async () => {
-        if (!usernames.length || scanProgress) return;
+        if (!usernames.length || scanProgress.current) return;
         dispatch(setScanProgress({
             current: 0.01,
             all: 100

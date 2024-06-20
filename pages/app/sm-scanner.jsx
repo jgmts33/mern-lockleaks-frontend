@@ -156,9 +156,10 @@ export default function SMscanner() {
                         <span className='font-normal text-base'>SOCIAL MEDIA RESULTS REMOVAL MODULE</span>
                     </div>
                     <div className='px-20 max-lg:px-0 space-x-1 items-center'>
-                        <span className='font-normal text-xs'>Generated a removal report with</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>10</span>
-                        <span className='font-normal text-sm'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
+                        <span className='font-normal text-xs'>Generated a removal report with
+                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>{scanResult}</span>
+                            <span className='font-normal text-sm'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
+                        </span>
                     </div>
                 </div>
             </div>

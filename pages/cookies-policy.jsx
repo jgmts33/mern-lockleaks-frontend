@@ -11,7 +11,7 @@ export default function CookiePolicy() {
         <>
             <div className="flex flex-col mx-auto items-center max-w-[1470px] justify-center text-white w-full font-normal text-base">
                 <h1 className='font-medium uppercase max-lg:text-[30px] mt-10 mb-3 max-sm:mt-5 text-center'>{PravicyPolicy.title}</h1>
-                <div className='mt-5 max-xl:px-3 mb-5'>
+                <div className='mt-5 max-xl:px-3 mb-5 space-y-2'>
                     <p>This Cookie Policy explains how AD BOOST SRL ("Company", "we", "us", and "our") uses cookies and similar technologies to recognize you when you visit our websites at <a href="https://www.lockleaks.com">https://www.lockleaks.com</a> ("Websites"). It explains what these technologies are and why we use them, as well as your rights to control our use of them. In some cases, we may use cookies to collect personal information, or that becomes personal information if we combine it with other information.</p>
 
                     <h2 class="font-medium text-[#F68171]">What are cookies?</h2>

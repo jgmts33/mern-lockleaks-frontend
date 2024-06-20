@@ -14,7 +14,8 @@ import { useSelector } from 'react-redux';
 export default function Scanner() {
 
     const [scrapedData, setScrapedData] = useState([]);
-    const [isProcessing, setIsProcessing] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(-1);
+    const [isLoading, setIsLoading] = useState(false);
     const userInfo = useSelector(info);
 
     const icons = {
@@ -30,14 +31,15 @@ export default function Scanner() {
     });
 
     const getScrapedDataListInfo = async () => {
-        setIsProcessing(true);
+        setIsLoading(true);
         const res = await getScrapedDataList(true);
         console.log("res:", res);
         if (res.status == 'success') setScrapedData(res.data);
-        setIsProcessing(false);
+        setIsLoading(false);
     }
 
     const handleAccept = useCallback(async (folder_name, index) => {
+        setIsProcessing(index);
         if (scrapedData[index]?.accepted == true && userInfo.roles.find(p => p == 'moderator')) return;
         const res = await acceptOrder(folder_name);
 
@@ -60,6 +62,7 @@ export default function Scanner() {
         } else {
             console.log("Error");
         }
+        setIsProcessing(-1);
     }, [scrapedData, userInfo]);
 
     useEffect(() => {
@@ -100,7 +103,7 @@ export default function Scanner() {
                     <ScrollShadow className="h-[320px]">
                         <div className='flex flex-col scroll px-5 gap-5 max-sm:px-2'>
                             {
-                                isProcessing ?
+                                isLoading ?
                                     <div class="w-full justify-center flex">
                                         <Spinner />
                                     </div>
@@ -109,13 +112,14 @@ export default function Scanner() {
                                         return (
                                             <div key={index} className='flex items-center gap-4 max-sm:gap-2'>
                                                 <div className='bg-white/20 p-3 w-full rounded-[16px] font-normal text-sm'>
-                                                    {`${item.user_id} - ${item.scrape_date}.zip`}
+                                                    {item.scrape_date}
                                                 </div>
                                                 <div>
                                                     <Button
                                                         radius="lg"
                                                         className={item.status == 'available' ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
                                                         size='sm'
+                                                        isLoading={isProcessing == index}
                                                         onClick={() => {
                                                             if (item.status == 'available') handleAccept(item.scrape_date, index);
                                                         }}

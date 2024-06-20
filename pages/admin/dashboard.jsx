@@ -288,7 +288,7 @@ export default function AdminDashbaord() {
                 getScrapedDataListInfo();
                 getExtraReportInfo();
             }
-        })
+        });
 
         socket.on(`update_ticket_count`, (value) => {
             setPersonalAgentCount(p => ({

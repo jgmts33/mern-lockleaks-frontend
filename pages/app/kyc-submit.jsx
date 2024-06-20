@@ -9,13 +9,15 @@ import {
   Progress,
   useDisclosure
 } from '@nextui-org/react';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ContractLine, DownloadIcon, IdCardImageIcon, UploadIcon, Success, WarningOnModal } from '@/components/utils/Icons';
 import { submitKYC } from '@/axios/contract';
 import IDCardExample from '@/public/assets/kyc-submit/id_card.png';
 import SelfieExample from '@/public/assets/kyc-submit/selfie.png';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
 
 export default function ContactWarning() {
   const router = useRouter();
@@ -29,6 +31,7 @@ export default function ContactWarning() {
     warning: <WarningOnModal />,
   };
 
+  const userInfo = useSelector(info);
   const [IDCardFile, setIDCardFile] = useState(null);
   const [SelfieFile, setSelfieFile] = useState(null);
   const [IDCardImgUrl, setIDCardImgUrl] = useState(null);
@@ -136,6 +139,12 @@ export default function ContactWarning() {
     setIsActionProcessing(false);
 
   }, [IDCardFile, SelfieFile, name]);
+
+  useEffect(() => {
+    if ( userInfo.contract.status == 'approved') {
+      router.push("/app/dashboard");
+    }
+  },[userInfo]);
 
   return (
     <div className="flex flex-col bg-gradient-to-tr px-5 py-5 container text-white mx-auto">
