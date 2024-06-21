@@ -210,6 +210,12 @@ const UserHeader = ({ show, setter }) => {
                         if (item.content.includes('New Order Google & Bing')) {
                           router.push("/admin/google-bing")
                         }
+                        if (item.content.includes('New Order AI FACE')) {
+                          router.push("/admin/ai-face")
+                        }
+                        if (item.content.includes('New Order R&R')) {
+                          router.push("/admin/ruser-content")
+                        }
                         if (item.content.includes('New Order Scanner')) {
                           router.push("/admin/scanner")
                         }
