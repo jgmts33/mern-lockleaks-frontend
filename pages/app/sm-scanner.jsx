@@ -10,6 +10,7 @@ import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useSelector } from 'react-redux';
+import { getCurrentSocialScannerStatus } from '@/axios/social';
 
 export default function SMscanner() {
 
@@ -17,6 +18,7 @@ export default function SMscanner() {
     const [value, setValue] = React.useState(0);
     const [socialUsername, setSocialUsername] = useState('');
     const [scanResult, setScanResult] = useState(0)
+    const [limit, setLimit] = useState(0);
 
     const icons = {
         components: <Components />,
@@ -24,29 +26,19 @@ export default function SMscanner() {
 
     const handleScan = useCallback(async () => {
 
-        if (!socialUsername) return;
+        if (!socialUsername || !limit) return;
         setValue(90);
-        localStorage.setItem('sm-scanner', JSON.stringify({
-            value: 90,
-            date: new Date()
-        }));
         const res = await socialScan(socialUsername);
         setValue(100);
-        localStorage.setItem('sm-scanner', 100);
         setTimeout(() => {
             setValue(0);
-            localStorage.setItem('sm-scanner', JSON.stringify({
-                value: 0,
-                date: new Date()
-            }));
         }, 30 * 1000);
         if (res.status == 'success') {
-
             setScanResult(res.data.result);
         }
 
 
-    }, [socialUsername])
+    }, [socialUsername, limit])
 
     const getSocialUsernameInfo = async () => {
 
@@ -57,19 +49,23 @@ export default function SMscanner() {
         }
     }
 
+    const getCurrentStatus = useCallback(async () => {
+
+        const res = await getCurrentSocialScannerStatus();
+
+        if (res.status == 'success') {
+            setLimit(userInfo.subscription.features.sm_scanner - res.data.count);
+
+            if (res.data.inProgress) {
+                setScanProgress(res.data.inProgress.progress * 100);
+            }
+
+        }
+    }, [userInfo]);
+
     useEffect(() => {
         getSocialUsernameInfo();
-
-        if (localStorage.getItem('sm-scanner')) {
-            let _scanProgress = JSON.parse(localStorage.getItem('sm-scanner'));
-            if (_scanProgress.value != 0) {
-                if (new Date(_scanProgress.date) < new Date().setMinutes(new Date().getMinutes() - 5)) {
-                    setValue(0);
-                }
-
-                setValue(_scanProgress.value)
-            }
-        }
+        getCurrentStatus();
 
         const socket = io(ENDPOINT);
 
@@ -78,10 +74,6 @@ export default function SMscanner() {
                 setScanResult(value.result);
                 setTimeout(() => {
                     setValue(0);
-                    localStorage.setItem('sm-scanner', JSON.stringify({
-                        value: 0,
-                        date: new Date()
-                    }));
                 }, 30 * 1000);
             }
         })
@@ -102,11 +94,10 @@ export default function SMscanner() {
                     <div>
                         <span className='font-extrabold text-lg'>SOCIAL MEDIA SCANNER</span>
                     </div>
-                    <div className='max-sm:hidden'>
+                    <div className='flex flex-col items-center gap-1 max-sm:hidden'>
                         <Button
                             radius="lg"
                             className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
-                            size='sm'
                             disabled={!!value}
                             onPress={() => {
                                 if (!value) handleScan()
@@ -116,6 +107,7 @@ export default function SMscanner() {
                                 value == 0 ? <span>START</span> : value == 100 ? <span>FINISHED</span> : <span>Processing</span>
                             }
                         </Button>
+                        <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: {limit} </p>
                     </div>
                     <Progress
                         size="md"
@@ -147,10 +139,20 @@ export default function SMscanner() {
                             <span className='font-normal text-xs pt-3'>Upload your ID card, then select the platform icon. Place the link or links of the profiles you want to report, and press the SUBMIT button.</span>
                         </div>
                     </div>
-                    <div className='sm:hidden max-sm:mt-5 max-sm:mx-auto'>
-                        <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-lg" size='sm'>
-                            <span>START</span>
+                    <div className='flex flex-col items-center gap-1 sm:hidden'>
+                        <Button
+                            radius="lg"
+                            className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
+                            disabled={!!value}
+                            onPress={() => {
+                                if (!value) handleScan()
+                            }}
+                        >
+                            {
+                                value == 0 ? <span>START</span> : value == 100 ? <span>FINISHED</span> : <span>Processing</span>
+                            }
                         </Button>
+                        <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: {limit} </p>
                     </div>
                     <Progress
                         size="md"

@@ -12,25 +12,23 @@ import { useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
+import { getCurrentAIFaceScannerStatus } from '@/axios/ai-face';
 
 export default function AIImage() {
 
+    const userInfo = useSelector(info);
     const [value, setValue] = React.useState(0);
     const [scanResult, setScanResult] = useState(0);
-    const [warning, setWarning] = useState('');
-
-    const userInfo = useSelector(info);
+    const [limit, setLimit] = useState(0);
+    const fileUploadRef = useRef(null);
+    const [previewImgUrl, setPreviewImgUrl] = useState('');
+    const [uploadedFile, setUploadedFile] = useState(null);
 
     const icons = {
         chain: <Chain />,
         components: <Components />,
         uploadIcon: <UploadIcon />,
     };
-
-    const fileUploadRef = useRef(null);
-
-    const [previewImgUrl, setPreviewImgUrl] = useState('');
-    const [uploadedFile, setUploadedFile] = useState(null);
 
     const handleImageUpload = (event, type) => {
         event.preventDefault();
@@ -39,25 +37,17 @@ export default function AIImage() {
 
     const handleScan = useCallback(async () => {
 
-        if (!uploadedFile) return;
+        if (!uploadedFile || !limit) return;
 
         const formData = new FormData();
 
         formData.append('photo', uploadedFile);
 
         setValue(90);
-        localStorage.setItem('ai-face', JSON.stringify({
-            value: 90,
-            date: new Date()
-        }));
         const res = await aiFaceScan(formData);
         setValue(100);
         setTimeout(() => {
             setValue(0);
-            localStorage.setItem('ai-face', JSON.stringify({
-                value: 0,
-                date: new Date()
-            }));
         }, 30 * 1000);
         if (res.status == 'success') {
             setUploadedFile(null);
@@ -66,7 +56,7 @@ export default function AIImage() {
         }
 
 
-    }, [uploadedFile])
+    }, [uploadedFile, limit])
 
     const scanResults = [
         {
@@ -96,24 +86,29 @@ export default function AIImage() {
         }
     }
 
+    const getCurrentStatus = useCallback(async () => {
+
+        const res = await getCurrentAIFaceScannerStatus();
+
+        if (res.status == 'success') {
+            setLimit(userInfo.subscription.features.ai_face - res.data.count);
+
+            if (res.data.inProgress) {
+                setScanProgress(res.data.inProgress.progress * 100);
+            }
+
+        }
+    }, [userInfo]);
+
     useEffect(() => {
 
-        if (localStorage.getItem('ai-face')) {
-            let _scanProgress = JSON.parse(localStorage.getItem('ai-face'));
-            if (_scanProgress.value != 0) {
-                if (new Date(_scanProgress.date) < new Date().setMinutes(new Date().getMinutes() - 5)) {
-                    setValue(0);
-                }
-
-                setValue(_scanProgress.value)
-            }
-        }
+        getCurrentStatus();
 
         const socket = io(ENDPOINT);
 
         socket.on(`ai-face-scan-finished`, (value) => {
             console.log(value);
-            if ( value.user_id == userInfo.id ) {
+            if (value.user_id == userInfo.id) {
                 setUploadedFile(null);
                 setPreviewImgUrl('');
                 setScanResult(value.result);
@@ -132,7 +127,7 @@ export default function AIImage() {
 
                 {/* This section for define AI FACE PROFILES header*/}
 
-                <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
+                <div className='flex gap-16 items-start max-md:flex-col max-md:gap-5'>
                     <div className='flex felx'>
                         <div><span className='font-extrabold text-lg'>AI FACE PROFILES</span></div>
                     </div>
@@ -142,11 +137,10 @@ export default function AIImage() {
                             <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
                         </div>
                     </div>
-                    <div className='max-sm:hidden'>
+                    <div className='flex flex-col items-center gap-1 max-sm:hidden'>
                         <Button
                             radius="lg"
                             className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
-                            size='sm'
                             disabled={!!value}
                             onPress={() => {
                                 if (!value) handleScan()
@@ -156,6 +150,7 @@ export default function AIImage() {
                                 value == 0 ? <span>START</span> : value == 100 ? <span>FINISHED</span> : <span>Processing</span>
                             }
                         </Button>
+                        <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: {limit} </p>
                     </div>
                     <Progress
                         size="md"
@@ -216,10 +211,7 @@ export default function AIImage() {
                                     onClick={(e) => handleImageUpload(e, 'id_card')}
                                 >
                                     <span>Change Image</span>
-                                </Button> :
-                                    warning ?
-                                        <p className='text-red-600 font-bold'>{warning}</p>
-                                        : <></>
+                                </Button> : <></>
                             }
                         </div>
                     </div>
@@ -243,10 +235,20 @@ export default function AIImage() {
                                 <span className='font-normal text-xs pt-3'>Choose the reference image, upload your photo, upload your ID card picture, and then press Start.</span>
                             </div>
                         </div>
-                        <div className='flex space-x-5 sm:hidden max-sm:mx-auto max-sm:mt-5'>
-                            <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-5 text-lg" size='sm'>
-                                <span>START</span>
+                        <div className='flex flex-col items-center gap-1 sm:hidden'>
+                            <Button
+                                radius="lg"
+                                className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
+                                disabled={!!value}
+                                onPress={() => {
+                                    if (!value) handleScan()
+                                }}
+                            >
+                                {
+                                    value == 0 ? <span>START</span> : value == 100 ? <span>FINISHED</span> : <span>Processing</span>
+                                }
                             </Button>
+                            <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: {limit} </p>
                         </div>
                         <Progress
                             size="md"

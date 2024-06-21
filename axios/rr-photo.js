@@ -97,3 +97,27 @@ export const getRRPhotoScanResultByUser = async () => {
   }
 }
 
+export const getCurrentRRPhotoScannerStatus = async () => {
+
+  const accessToken = await getAccessToken();
+  const userId = await getUserId();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/${userId}/current-rr-photo-scanner-status`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

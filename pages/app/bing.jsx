@@ -13,19 +13,18 @@ import { scan } from '@/axios/bot';
 import { getScrapedDataList } from '@/axios/download';
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
 import { io } from 'socket.io-client';
+import { getCurrentScannerStatus } from '@/axios/scanner';
 
 export default function Google() {
 
     const userInfo = useSelector(info);
-
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
-
     const [scanProgress, setScanProgress] = useState({
         current: 0,
         all: 0
     })
-
     const [usernames, setUsernames] = useState([]);
+    const [limit, setLimit] = useState(0);
 
     const icons = {
         bingsearch: <BingSearch />,
@@ -44,23 +43,16 @@ export default function Google() {
     };
 
     const handleScan = useCallback(async () => {
-        if (!usernames.length || scanProgress.current) return;
+        if (!usernames.length || scanProgress.current || !limit) return;
         setScanProgress({
             current: 0.01,
             all: 100
         });
-        localStorage.setItem('bing-scanner', JSON.stringify({
-            data: {
-                current: 0.01,
-                all: 100
-            },
-            date: new Date()
-        }));
         scan({
             usernames,
             only: 'bing'
         });
-    }, [usernames, scanProgress]);
+    }, [usernames, scanProgress, limit]);
 
     const getUsernamesInfo = async () => {
         const res = await getUsernames();
@@ -73,36 +65,28 @@ export default function Google() {
         }
     }
 
-    useEffect(() => {
-        getUsernamesInfo();
-        getScanResult();
+    const getCurrentStatus = useCallback(async () => {
 
-        const socket = io(ENDPOINT);
+        const res = await getCurrentScannerStatus('bing');
 
-        if (JSON.parse(localStorage.getItem('bing-scanner'))) {
-            let _scanProgress = JSON.parse(localStorage.getItem('bing-scanner'));
-            if (_scanProgress.data.current != 0) {
-                if (new Date(_scanProgress.date) < new Date().setMinutes(new Date().getMinutes() - 5)) {
-                    setScanProgress({
-                        current: 0,
-                        all: 0
-                    });
-                }
+        if (res.status == 'success') {
+            setLimit(userInfo.subscription.features.bing - res.data.count);
 
-                if (_scanProgress.data.current + 1 == _scanProgress.data.all) {
-                    setScanProgress({
-                        all: _scanProgress.data.all,
-                        current: _scanProgress.data.all
-                    });
-                } else {
-                    setScanProgress({
-                        all: _scanProgress.data.all,
-                        current: _scanProgress.data.current
-                    });
-                }
+            if (res.data.inProgress) {
+                setScanProgress({
+                    current: res.data.inProgress.progress,
+                    all: 1
+                });
             }
 
         }
+    }, [userInfo]);
+
+    useEffect(() => {
+        getUsernamesInfo();
+        getCurrentStatus();
+
+        const socket = io(ENDPOINT);
 
         socket.on(`${userInfo.id}:scrape-bing`, (value) => {
             if (value) setScanProgress(value);
@@ -123,13 +107,6 @@ export default function Google() {
                     current: 0,
                     all: 0
                 });
-                localStorage.setItem('bing-scanner', JSON.stringify({
-                    data: {
-                        current: 0,
-                        all: 0
-                    },
-                    date: new Date()
-                }));
             }, 30 * 1000);
         }
     }, [scanProgress]);
@@ -174,13 +151,12 @@ export default function Google() {
 
             {/* This section for define bing scan header*/}
 
-            <div className='flex gap-16 items-center max-md:flex-col max-md:gap-5'>
+            <div className='flex gap-16 items-start max-md:flex-col max-md:gap-5'>
                 <div><span className='font-extrabold text-lg'>BING MODULE</span></div>
-                <div>
+                <div className='flex flex-col items-center gap-1'>
                     <Button
                         radius="lg"
                         className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!scanProgress.current ? "from-purple-light to-purple-weight" : scanProgress.current == scanProgress.all ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
-                        size='sm'
                         disabled={scanProgress.current}
                         onPress={() => handleScan()}
                     >
@@ -188,13 +164,14 @@ export default function Google() {
                             scanProgress.current == 0 ? <span>START</span> : scanProgress.current == scanProgress.all ? <span>FINISHED</span> : <span>Processing</span>
                         }
                     </Button>
+                    <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: {limit} </p>
                 </div>
                 <Progress
                     size="md"
                     aria-label="Loading..."
                     className="max-w-2xl"
                     color='secondary'
-                    value={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 100)}
+                    value={scanProgress.current * 100 / (scanProgress.all ? scanProgress.all : 1)}
                     showValueLabel={true}
                 />
             </div>

@@ -97,3 +97,27 @@ export const getRRUserScanResultByUser = async () => {
   }
 }
 
+export const getCurrentRRUserScannerStatus = async () => {
+
+  const accessToken = await getAccessToken();
+  const userId = await getUserId();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/${userId}/current-rr-user-scanner-status`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
