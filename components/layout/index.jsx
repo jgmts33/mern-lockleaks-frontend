@@ -337,7 +337,7 @@ export default function RootLayout({ children }) {
       if (getCookieValue('necessary') == 'un-allowed') return;
     }
 
-    if (!currentPath?.includes("app") && !currentPath?.includes("admin") && !currentPath?.includes("login") && !currentPath?.includes("register")) return;
+    if (!currentPath?.includes("app") && !currentPath?.includes("admin")) return;
 
     (async () => {
       try {
