@@ -6,7 +6,6 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 import { downloadSrapedData, getScrapedDataList } from '@/axios/download';
 import moment from 'moment/moment';
-import { scanProgress as scanProgressInfo } from "@/lib/bot/botSlice";
 import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
@@ -16,7 +15,6 @@ export default function DownloadData() {
 
     const userInfo = useSelector(info);
     const [list, setList] = useState([]);
-    const scanProgress = useSelector(scanProgressInfo);
     const [isProcessing, setIsProcessing] = useState(-1);
     const [isLoading, setIsLoading] = useState(false);
     const getScrapedDataListInfo = async () => {
@@ -63,10 +61,6 @@ export default function DownloadData() {
         }
         setIsProcessing(-1);
     }, [list]);
-
-    useEffect(() => {
-        if (scanProgress == 100) getScrapedDataListInfo();
-    }, [scanProgress]);
 
     useEffect(() => {
 
