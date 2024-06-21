@@ -467,3 +467,28 @@ export const testBots = async () => {
   }
 
 }
+
+export const downloadTestResult = async (name) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/download-test-bots-result?folder_name=${name}`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+
+}
