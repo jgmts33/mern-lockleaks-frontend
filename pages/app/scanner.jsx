@@ -16,7 +16,6 @@ import { getCurrentScannerStatus } from '@/axios/scanner';
 export default function Scanner() {
 
     const userInfo = useSelector(info);
-
     const [scanProgress, setScanProgress] = useState({
         current: 0,
         all: 0
@@ -73,7 +72,7 @@ export default function Scanner() {
         if (res.status == 'success') {
             setLimit(userInfo.subscription.features.scanner - res.data.count);
 
-            if ( res.data.inProgress ) {
+            if (res.data.inProgress) {
                 setScanProgress({
                     current: res.data.inProgress.progress,
                     all: 1
@@ -84,7 +83,7 @@ export default function Scanner() {
     }, [userInfo]);
 
     useEffect(() => {
-        
+
         getUsernamesInfo();
         getCurrentStatus();
 
@@ -103,6 +102,7 @@ export default function Scanner() {
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
             getScannerResult();
+            setLimit(p => p - 1);
             setTimeout(() => {
                 setScanProgress({
                     current: 0,

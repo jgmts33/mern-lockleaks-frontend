@@ -72,6 +72,7 @@ export default function SMscanner() {
         socket.on(`social-scan-finished`, (value) => {
             if (value.user_id == userInfo.id) {
                 setScanResult(value.result);
+                setLimit(p => p - 1);
                 setTimeout(() => {
                     setValue(0);
                 }, 30 * 1000);

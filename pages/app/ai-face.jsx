@@ -107,7 +107,7 @@ export default function AIImage() {
         const socket = io(ENDPOINT);
 
         socket.on(`ai-face-scan-finished`, (value) => {
-            console.log(value);
+            setLimit(p => p - 1);
             if (value.user_id == userInfo.id) {
                 setUploadedFile(null);
                 setPreviewImgUrl('');

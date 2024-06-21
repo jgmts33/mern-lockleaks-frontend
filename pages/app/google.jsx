@@ -105,6 +105,7 @@ export default function Google() {
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
             getScanResult();
+            setLimit(p => p - 1);
             setTimeout(() => {
                 setScanProgress({
                     current: 0,
