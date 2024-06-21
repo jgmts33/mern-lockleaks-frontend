@@ -163,6 +163,10 @@ export default function ProxyBot() {
 
     }, [searchValue, page]);
 
+    useEffect(() => {
+        setPage(1);
+    },[searchValue]);
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 w-full text-white max-lg:mx-auto ">
             <div className='max-lg:mx-auto max-sm:mt-0'>

@@ -26,12 +26,36 @@ export const getUsersListInfo = async (page, search) => {
   }
 }
 
-export const getExtraReport = async () => {
+export const getUsersReport = async () => {
 
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.get(`${ENDPOINT}/extra-report`, {
+    const res = await axios.get(`${ENDPOINT}/users-report`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getOrdersReport = async () => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/orders-report`, {
       headers: {
         'x-access-token': accessToken,
       }
@@ -352,6 +376,56 @@ export const downloadFile = async (fileName) => {
       headers: {
         'x-access-token': accessToken,
         responseType: 'arraybuffer'
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const getNotifications = async () => {
+
+  const accessToken = await getAccessToken();
+  const userId = await getUserId();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/${userId}/notification`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
+export const clearNotifications = async (id) => {
+
+  const accessToken = await getAccessToken();
+  const userId = await getUserId();
+
+  try {
+    const res = await axios.delete(`${ENDPOINT}/${userId}/notification`, {
+      headers: {
+        'x-access-token': accessToken,
       }
     });
 

@@ -375,14 +375,3 @@ export const DEFAULT_SCAN_RESULT = {
   no_matches_count: 0,
   status: 'available'
 }
-
-export const DEFAULT_EXTRA_REPORT = {
-  user: {
-    total: 0,
-    weekly: 0
-  },
-  order: {
-    total: 0,
-    weekly: 0
-  }
-}

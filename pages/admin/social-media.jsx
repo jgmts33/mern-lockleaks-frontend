@@ -193,11 +193,12 @@ export default function SocialMedia() {
             }
         });
 
-        socket.on(`admin:socialScanFinished`, async (value) => {
+        socket.on(`social-scan-finished`, async (value) => {
+            console.log("value:", value);
             setSocialMediaScanList(p => ([value, ...p]));
         });
 
-        return () => socket.close();
+        return () => socket.disconnect();
     }, []);
 
     return (

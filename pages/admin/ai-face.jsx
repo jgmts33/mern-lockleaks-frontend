@@ -105,11 +105,11 @@ export default function AIface() {
 
         const socket = io(ENDPOINT);
 
-        socket.on(`admin:aiFaceScanFinished`, async (value) => {
+        socket.on(`ai-face-scan-finished`, async (value) => {
             setAIFaceScanList(p => ([value, ...p]));
         });
 
-        return () => socket.close();
+        return () => socket.disconnect();
     }, []);
 
     return (

@@ -5,19 +5,15 @@ import {
 } from '@nextui-org/react';
 import { Components, Checkboxs } from "@/components/utils/Icons";
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
 import { getScrapedDataList } from '@/axios/download';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 
 export default function AdultTubs() {
 
     const userInfo = useSelector(info);
-
-    const scanProgress = useSelector(scanProgressInfo);
-    const dispatch = useDispatch();
 
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
 
@@ -110,9 +106,8 @@ export default function AdultTubs() {
 
         const socket = io(ENDPOINT);
 
-        socket.on(`${userInfo.id}:scrape`, (value) => {
-            console.log("scrape-progress:", value)
-            if (value) dispatch(setScanProgress(value));
+        socket.on(`scanner-finished-${userInfo.id}`, () => {
+            getScannerResult();
         });
 
         return () => {
@@ -120,18 +115,6 @@ export default function AdultTubs() {
         }
 
     }, [userInfo]);
-
-    useEffect(() => {
-        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
-            getScannerResult();
-            setTimeout(() => {
-                dispatch(setScanProgress({
-                    current: 0,
-                    all: 0
-                }));
-            }, 30 * 1000);
-        }
-    }, [scanProgress]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">

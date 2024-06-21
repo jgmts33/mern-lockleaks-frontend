@@ -65,6 +65,10 @@ export default function Users() {
 
     }, [searchValue, page]);
 
+    useEffect(() => {
+        setPage(1);
+    },[searchValue]);
+
     const columns = [
         { name: "Email", uid: "email" },
         { name: "Full Name", uid: "name" },

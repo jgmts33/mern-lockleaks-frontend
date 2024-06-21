@@ -16,7 +16,10 @@ export default function GoogleBing() {
 
     const [googleScrapedData, setGoogleScrapedData] = useState([]);
     const [bingScrapedData, setBingScrapedData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState({
+        google: false,
+        bing : false,
+    });
     const [isProcessing, setIsProcessing] = useState({
         index: -1,
         type: ''
@@ -29,13 +32,18 @@ export default function GoogleBing() {
         bingsearch: <BingSearch />,
     };
 
-    const getScrapedDataListInfo = async () => {
-        setIsLoading(true);
+    const getGoogleScrapedDataListInfo = async () => {
+        setIsLoading(p => ({...p, google: true}));
         const resGoogle = await getScrapedDataList(true, 'google');
         if (resGoogle.status == 'success') setGoogleScrapedData(resGoogle.data);
+        setIsLoading(p => ({...p, google: false}));
+    }
+
+    const getBingScrapedDataListInfo = async () => {
+        setIsLoading(p => ({...p, bing: true}));
         const resBing = await getScrapedDataList(true, 'bing');
         if (resBing.status == 'success') setBingScrapedData(resBing.data);
-        setIsLoading(false);
+        setIsLoading(p => ({...p, bing: false}));
     }
 
     const handleAccept = useCallback(async (folder_name, index, only) => {
@@ -81,17 +89,21 @@ export default function GoogleBing() {
     }, [userInfo, googleScrapedData, bingScrapedData]);
 
     useEffect(() => {
-        getScrapedDataListInfo();
+        getGoogleScrapedDataListInfo();
+        getBingScrapedDataListInfo();
 
         const socket = io(ENDPOINT);
 
-        socket.on(`admin:dashboardInfo`, async (value) => {
-            if (value == 'scan-finished') {
-                getScrapedDataListInfo();
+        socket.on(`scanner-finished`, async (value) => {
+            if (value == 'google') {
+                getGoogleScrapedDataListInfo();
+            }
+            if (value == 'bing') {
+                getBingScrapedDataListInfo();
             }
         })
 
-        return () => socket.close();
+        return () => socket.disconnect();
     }, []);
 
     const [googleScannerContent, setGoogleScannerContent] = useState([
@@ -231,7 +243,7 @@ export default function GoogleBing() {
                         <ScrollShadow className="h-[320px]">
                             <div className='flex flex-col gap-5 px-2'>
                                 {
-                                    isLoading ?
+                                    isLoading.google ?
                                         <div class="w-full justify-center flex">
                                             <Spinner />
                                         </div>
@@ -296,7 +308,7 @@ export default function GoogleBing() {
                         <ScrollShadow className="h-[320px]">
                             <div className='flex flex-col gap-5 px-2'>
                                 {
-                                    isLoading ?
+                                    isLoading.bing ?
                                         <div class="w-full justify-center flex">
                                             <Spinner />
                                         </div>

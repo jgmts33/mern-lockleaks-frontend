@@ -6,8 +6,14 @@ import { Components } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import { getSocialUsername } from '@/axios/social-usernames';
 import { socialScan } from '@/axios/bot';
+import { io } from 'socket.io-client';
+import { ENDPOINT } from '@/config/config';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 export default function SMscanner() {
+
+    const userInfo = useSelector(info);
     const [value, setValue] = React.useState(0);
     const [socialUsername, setSocialUsername] = useState('');
     const [scanResult, setScanResult] = useState(0)
@@ -16,28 +22,23 @@ export default function SMscanner() {
         components: <Components />,
     };
 
-    const ScanList = [
-        {
-            icon: icons.components,
-            content: <div className='flex items-center space-x-1 font-normal text-base'>
-                Scanning On <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg px-1'>4</span> websites.
-            </div>
-        }, {
-            icon: icons.components,
-            content: <div className='flex items-center space-x-1 font-normal text-base'>
-                Profiles Matched: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg px-1'>{scanResult}.</span>
-            </div>
-        },
-    ]
-
     const handleScan = useCallback(async () => {
 
         if (!socialUsername) return;
         setValue(90);
+        localStorage.setItem('sm-scanner', JSON.stringify({
+            value: 90,
+            date: new Date()
+        }));
         const res = await socialScan(socialUsername);
         setValue(100);
+        localStorage.setItem('sm-scanner', 100);
         setTimeout(() => {
             setValue(0);
+            localStorage.setItem('sm-scanner', JSON.stringify({
+                value: 0,
+                date: new Date()
+            }));
         }, 30 * 1000);
         if (res.status == 'success') {
 
@@ -58,7 +59,38 @@ export default function SMscanner() {
 
     useEffect(() => {
         getSocialUsernameInfo();
-    }, []);
+
+        if (localStorage.getItem('sm-scanner')) {
+            let _scanProgress = JSON.parse(localStorage.getItem('sm-scanner'));
+            if (_scanProgress.value != 0) {
+                if (new Date(_scanProgress.date) < new Date().setMinutes(new Date().getMinutes() - 5)) {
+                    setValue(0);
+                }
+
+                setValue(_scanProgress.value)
+            }
+        }
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`social-scan-finished`, (value) => {
+            if (value.user_id == userInfo.id) {
+                setScanResult(value.result);
+                setTimeout(() => {
+                    setValue(0);
+                    localStorage.setItem('sm-scanner', JSON.stringify({
+                        value: 0,
+                        date: new Date()
+                    }));
+                }, 30 * 1000);
+            }
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
 
     return (
         <>
@@ -133,19 +165,24 @@ export default function SMscanner() {
                 {/* This section for define Social Media Scanner list*/}
 
                 <div className='flex flex-col mt-10 max-sm:mt-5'>
-                    {
-                        ScanList.map((items, index) => {
-                            return (
-                                <div key={index} className='flex flex-col'>
-                                    <div className='flex gap-3 py-7 px-5'>
-                                        {icons.components}
-                                        {items.content}
-                                    </div>
-                                    <hr className='w-full'></hr>
-                                </div>
-                            )
-                        })
-                    }
+                    <div className='flex flex-col'>
+                        <div className='flex gap-3 py-7 px-5'>
+                            {icons.components}
+                            <div className='flex items-center space-x-1 font-normal text-base'>
+                                Scanning On <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg px-1'>4</span> websites.
+                            </div>
+                        </div>
+                        <hr className='w-full'></hr>
+                    </div>
+                    <div className='flex flex-col'>
+                        <div className='flex gap-3 py-7 px-5'>
+                            {icons.components}
+                            <div className='flex items-center space-x-1 font-normal text-base'>
+                                Profiles Matched: <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg px-1'>{scanResult}.</span>
+                            </div>
+                        </div>
+                        <hr className='w-full'></hr>
+                    </div>
                 </div>
 
                 {/* This section for define Social Media Scanner footer*/}
@@ -157,7 +194,7 @@ export default function SMscanner() {
                     </div>
                     <div className='px-20 max-lg:px-0 space-x-1 items-center'>
                         <span className='font-normal text-xs'>Generated a removal report with
-                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg'>{scanResult}</span>
+                            <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-normal text-lg px-1'>{scanResult}</span>
                             <span className='font-normal text-sm'>copyright infringements, including  AI Results, matched photos & profiles, and forwarded it to  Social Media Platforms.</span>
                         </span>
                     </div>

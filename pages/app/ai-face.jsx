@@ -4,15 +4,21 @@ import {
     Button, Progress, ScrollShadow
 } from '@nextui-org/react';
 import { Chain, Components, UploadIcon } from "@/components/utils/Icons";
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useState } from 'react';
 import AIFaceImageExample from '@/public/assets/kyc-submit/selfie-ai.jpg';
 import { aiFaceScan } from '@/axios/bot';
+import { useSelector } from 'react-redux';
+import { userInfo as info } from '@/lib/auth/authSlice';
+import { io } from 'socket.io-client';
+import { ENDPOINT } from '@/config/config';
 
 export default function AIImage() {
 
     const [value, setValue] = React.useState(0);
     const [scanResult, setScanResult] = useState(0);
+
+    const userInfo = useSelector(info);
 
     const icons = {
         chain: <Chain />,
@@ -40,10 +46,18 @@ export default function AIImage() {
         formData.append('photo', uploadedFile);
 
         setValue(90);
+        localStorage.setItem('ai-face', JSON.stringify({
+            value: 90,
+            date: new Date()
+        }));
         const res = await aiFaceScan(formData);
         setValue(100);
         setTimeout(() => {
             setValue(0);
+            localStorage.setItem('ai-face', JSON.stringify({
+                value: 0,
+                date: new Date()
+            }));
         }, 30 * 1000);
         if (res.status == 'success') {
             setUploadedFile(null);
@@ -81,6 +95,36 @@ export default function AIImage() {
             setPreviewImgUrl('');
         }
     }
+
+    useEffect(() => {
+
+        if (localStorage.getItem('ai-face')) {
+            let _scanProgress = JSON.parse(localStorage.getItem('ai-face'));
+            if (_scanProgress.value != 0) {
+                if (new Date(_scanProgress.date) < new Date().setMinutes(new Date().getMinutes() - 5)) {
+                    setValue(0);
+                }
+
+                setValue(_scanProgress.value)
+            }
+        }
+
+        const socket = io(ENDPOINT);
+
+        socket.on(`ai-face-scan-finished`, (value) => {
+            console.log(value);
+            if ( value.user_id == userInfo.id ) {
+                setUploadedFile(null);
+                setPreviewImgUrl('');
+                setScanResult(value);
+            }
+        })
+
+        return () => {
+            socket.disconnect();
+        }
+
+    }, [userInfo]);
 
     return (
         <>

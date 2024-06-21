@@ -4,12 +4,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { getScrapedDataList } from "@/axios/download";
 import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
-import { DEFAULT_SCAN_RESULT, ENDPOINT, DEFAULT_EXTRA_REPORT } from "@/config/config";
-import { getExtraReport } from "@/axios/user";
+import { DEFAULT_SCAN_RESULT, ENDPOINT } from "@/config/config";
+import { getOrdersReport, getUsersReport } from "@/axios/user";
 import { getTickets } from "@/axios/ticket";
 import { getSocialScanResult } from "@/axios/social";
 import { getAIFaceScanResult } from "@/axios/ai-face";
@@ -19,11 +18,7 @@ export default function AdminDashbaord() {
     const router = useRouter();
 
     const userInfo = useSelector(info);
-    const scanProgress = useSelector(scanProgressInfo);
 
-    const DEFAULT = DEFAULT_SCAN_RESULT;
-
-    const dispatch = useDispatch();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [personalAgentCount, setPersonalAgentCount] = useState({
@@ -38,7 +33,14 @@ export default function AdminDashbaord() {
         total: 0,
         last: 0
     })
-    const [extraReport, setExtraReport] = useState(DEFAULT_EXTRA_REPORT);
+    const [userCount, setUserCount] = useState({
+        total: 0,
+        weekly: 0
+    });
+    const [orderCount, setOrderCount] = useState({
+        total: 0,
+        weekly: 0
+    })
 
     const icons = {
         moredetails: <MoreDetails />,
@@ -183,12 +185,15 @@ export default function AdminDashbaord() {
         }
     }
 
-    const getExtraReportInfo = async () => {
-        const res = await getExtraReport();
-
-        if (res.status == 'success') setExtraReport(res.data);
+    const getUsersReportInfo = async () => {
+        const res = await getUsersReport();
+        if (res.status == 'success') setUserCount(res.data);
     }
 
+    const getOrdersReportInfo = async () => {
+        const res = await getOrdersReport();
+        if (res.status == 'success') setOrderCount(res.data);
+    }
     useEffect(() => {
         let _overview = [
             {
@@ -256,38 +261,40 @@ export default function AdminDashbaord() {
                 {
                     title: "Total Orders",
                     subtitle: "total orders in 7 days",
-                    lastscan: extraReport.order.weekly,
-                    total: extraReport.order.total
+                    lastscan: orderCount.weekly,
+                    total: orderCount.total
                 },
                 {
                     title: "Total Users",
                     subtitle: "total users in 7 days",
-                    lastscan: extraReport.user.weekly,
-                    total: extraReport.user.total
+                    lastscan: userCount.weekly,
+                    total: userCount.total
                 },]
         }
         setDashboardOverview(_overview);
-    }, [scanResult, lastScanResult, extraReport, userInfo, personalAgentCount, social, aiBots]);
+    }, [scanResult, lastScanResult, userInfo, personalAgentCount, social, aiBots, orderCount, userCount]);
 
     useEffect(() => {
         getScrapedDataListInfo();
-        getExtraReportInfo();
         getTicketsInfo();
         getSocialScrapedDataInfo();
         getAIBotsScrapedDataInfo();
+        if (userInfo?.roles?.find(p => p == 'admin')) {
+            getUsersReportInfo();
+            getOrdersReportInfo();
+        }
 
         const socket = io(ENDPOINT);
 
-        socket.on(`${userInfo.id}:scrape`, (value) => {
-            console.log("scrape-progress:", value)
-            if (value) dispatch(setScanProgress(value));
+        socket.on(`scanner-finished`, async () => {
+            getScrapedDataListInfo();
         });
 
-        socket.on(`admin:dashboardInfo`, async (value) => {
-            if (value == 'scan-finished') {
-                getScrapedDataListInfo();
-                getExtraReportInfo();
-            }
+        socket.on(`new-user-registered`, async () => {
+            setUserCount(p => ({
+                total: p.total + 1,
+                weekly: p.weekly + 1
+            }))
         });
 
         socket.on(`update_ticket_count`, (value) => {
@@ -299,15 +306,15 @@ export default function AdminDashbaord() {
 
         socket.on(`social-scan-finished`, (value) => {
             setSocial(p => ({
-                last: value,
-                total: p.total + value
+                last: value.result,
+                total: p.total + value.result
             }))
         })
 
         socket.on(`ai-face-scan-finished`, (value) => {
             setAiBots(p => ({
-                last: value,
-                total: p.total + value
+                last: value.result,
+                total: p.total + value.result
             }))
         })
 
@@ -315,19 +322,7 @@ export default function AdminDashbaord() {
             socket.disconnect();
         }
 
-    }, [dispatch, userInfo.id]);
-
-    useEffect(() => {
-        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
-            getScrapedDataListInfo();
-            setTimeout(() => {
-                dispatch(setScanProgress({
-                    current: 0,
-                    all: 0
-                }));
-            }, 30 * 1000);
-        }
-    }, [scanProgress]);
+    }, [userInfo.id]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white">

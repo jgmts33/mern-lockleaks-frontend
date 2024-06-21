@@ -79,8 +79,8 @@ export default function Scanner() {
 
         const socket = io(ENDPOINT);
 
-        socket.on(`admin:dashboardInfo`, async (value) => {
-            if (value == 'scan-finished') {
+        socket.on(`scanner-finished`, async (value) => {
+            if (value == '') {
                 getScrapedDataListInfo();
             }
         });
@@ -90,7 +90,7 @@ export default function Scanner() {
             setScrapedData(p => p.filter((item) => !value.find((_value) => _value.id == item.id)));
         });
 
-        return () => socket.close();
+        return () => socket.disconnect();
     }, []);
 
     return (

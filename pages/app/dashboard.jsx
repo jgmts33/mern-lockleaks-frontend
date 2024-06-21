@@ -4,9 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { getScrapedDataList } from "@/axios/download";
-import { useDispatch } from "react-redux";
 import { io } from "socket.io-client";
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from "@/config/config";
 import { getTicketsByUser } from "@/axios/ticket";
@@ -18,9 +16,7 @@ export default function Dashbaord() {
     const router = useRouter();
 
     const userInfo = useSelector(info);
-    const scanProgress = useSelector(scanProgressInfo);
 
-    const dispatch = useDispatch();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [lastScanResult, setLastScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [personalAgentCount, setPersonalAgentCount] = useState({
@@ -232,11 +228,6 @@ export default function Dashbaord() {
 
         const socket = io(ENDPOINT);
 
-        socket.on(`${userInfo.id}:scrape`, (value) => {
-            console.log("scrape-progress:", value)
-            if (value) dispatch(setScanProgress(value));
-        });
-
         socket.on(`update_ticket_count_${userInfo.id}`, (value) => {
             setPersonalAgentCount(p => ({
                 last: value.last_count,
@@ -244,11 +235,15 @@ export default function Dashbaord() {
             }))
         })
 
-        socket.on(`admin:aiFaceScanFinished`, (value) => {
+        socket.on(`ai-face-scan-finished`, (value) => {
             if ( value.user_id == userInfo.id ) getAIBotsScrapedDataInfo();
         })
 
-        socket.on(`admin:socialScanFinished`, (value) => {
+        socket.on(`scanner-finished-${userInfo.id}`, () => {
+            getScrapedDataListInfo();
+        });
+
+        socket.on(`social-scan-finished`, (value) => {
             if ( value.user_id == userInfo.id ) getSocialScrapedDataInfo();
         })
 
@@ -257,18 +252,6 @@ export default function Dashbaord() {
         }
 
     }, [userInfo]);
-
-    useEffect(() => {
-        if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
-            getScrapedDataListInfo();
-            setTimeout(() => {
-                dispatch(setScanProgress({
-                    current: 0,
-                    all: 0
-                }));
-            }, 30 * 1000);
-        }
-    }, [scanProgress]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 pt-5 text-white container">

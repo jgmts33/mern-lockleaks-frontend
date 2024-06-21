@@ -319,6 +319,11 @@ export default function RootLayout({ children }) {
       dispatch(setUserInfo({ ...userInfo, subscription: { ...userInfo.subscription, status: 'active' } }));
     });
 
+    socket.on(`user-ban-${userInfo.id}`, (value) => {
+      window.open("/auth/login", '_self');
+      setTokensExpired();
+    });
+
     return () => {
       socket.disconnect();
     }
@@ -352,10 +357,6 @@ export default function RootLayout({ children }) {
     })();
 
   }, []);
-
-  useEffect(() => {
-    console.log("userInfo:", userInfo);
-  },[userInfo]);
 
   if (mounted) return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>

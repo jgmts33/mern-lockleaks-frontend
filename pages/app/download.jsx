@@ -80,6 +80,10 @@ export default function DownloadData() {
             setList(p => p.filter((item) => item.id != value));
         });
 
+        socket.on(`scanner-finished-${userInfo.id}`, () => {
+            getScrapedDataListInfo();
+        });
+
         return () => {
             socket.disconnect();
         }

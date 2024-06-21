@@ -6,14 +6,13 @@ import {
 import { GoogleSearch, Components } from "@/components/utils/Icons";
 import React, { useCallback, useEffect, useState } from 'react';
 import GoogleIcon from '@/public/assets/background/Google.svg';
-import { useDispatch, useSelector } from 'react-redux';
 import { userInfo as info } from '@/lib/auth/authSlice';
-import { scanProgress as scanProgressInfo, setScanProgress } from "@/lib/bot/botSlice";
 import { getUsernames } from '@/axios/usernames';
 import { scan } from '@/axios/bot';
 import { getScrapedDataList } from '@/axios/download';
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
 import { io } from 'socket.io-client';
+import { useSelector } from 'react-redux';
 
 export default function Google() {
 
@@ -21,14 +20,16 @@ export default function Google() {
 
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
 
-    const scanProgress = useSelector(scanProgressInfo);
+    const [scanProgress, setScanProgress] = useState({
+        current: 0,
+        all: 0
+    })
 
-    const dispatch = useDispatch();
     const [usernames, setUsernames] = useState([]);
 
     const icons = {
-        googlesearch: <GoogleSearch/>,
-        components: <Components/>,
+        googlesearch: <GoogleSearch />,
+        components: <Components />,
     };
 
     const getScanResult = async () => {
@@ -44,9 +45,16 @@ export default function Google() {
 
     const handleScan = useCallback(async () => {
         if (!usernames.length || scanProgress.current) return;
-        dispatch(setScanProgress({
+        setScanProgress({
             current: 0.01,
             all: 100
+        });
+        localStorage.setItem('google-scanner', JSON.stringify({
+            data: {
+                current: 0.01,
+                all: 100
+            },
+            date: new Date()
         }));
         scan({
             usernames,
@@ -71,9 +79,36 @@ export default function Google() {
 
         const socket = io(ENDPOINT);
 
-        socket.on(`${userInfo.id}:scrape`, (value) => {
-            console.log("scrape-progress:", value)
-            if (value) dispatch(setScanProgress(value));
+        if (JSON.parse(localStorage.getItem('google-scanner'))) {
+            let _scanProgress = JSON.parse(localStorage.getItem('google-scanner'));
+            if (_scanProgress.data.current != 0) {
+                if (new Date(_scanProgress.date) < new Date().setMinutes(new Date().getMinutes() - 5)) {
+                    setScanProgress({
+                        current: 0,
+                        all: 0
+                    });
+                }
+
+                if (_scanProgress.data.current + 1 == _scanProgress.data.all) {
+                    setScanProgress({
+                        all: _scanProgress.data.all,
+                        current: _scanProgress.data.all
+                    });
+                } else {
+                    setScanProgress({
+                        all: _scanProgress.data.all,
+                        current: _scanProgress.data.current
+                    });
+                }
+            }
+        }
+
+        socket.on(`${userInfo.id}:scrape-google`, (value) => {
+            if (value) setScanProgress(value);
+            localStorage.setItem('google-scanner', JSON.stringify({
+                data: value,
+                date: new Date()
+            }));
         });
 
         return () => {
@@ -86,9 +121,16 @@ export default function Google() {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
             getScanResult();
             setTimeout(() => {
-                dispatch(setScanProgress({
+                setScanProgress({
                     current: 0,
                     all: 0
+                });
+                localStorage.setItem('google-scanner', JSON.stringify({
+                    data: {
+                        current: 0,
+                        all: 0
+                    },
+                    date: new Date()
                 }));
             }, 30 * 1000);
         }
