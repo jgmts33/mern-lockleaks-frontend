@@ -219,6 +219,9 @@ const UserHeader = ({ show, setter }) => {
                         if (item.content.includes('New Order Scanner')) {
                           router.push("/admin/scanner")
                         }
+                        if (item.content.includes('New KYC Submission!')) {
+                          router.push("/admin/contract-copyright")
+                        }
                       }}
                     >
                       <div className={"max-w-[300px] flex w-full flex-col " + poppins.className}>
