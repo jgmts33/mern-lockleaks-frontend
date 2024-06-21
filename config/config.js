@@ -15,7 +15,6 @@ const icons = {
   dmcabadges: <DmcaBadges />,
   AccountSetting: <AccountSetting />,
   DownloadData: <DownloadData />,
-  notification: <Notification />,
   scanner: <Scanner />,
   photo: <Photo />,
   profilesquare: <ProfileSquare />,
@@ -132,12 +131,6 @@ export const USER_SIDEBAR_LIST = [
     value: 'download_data',
     path: "/app/download",
     favourite: false
-  }, {
-    id: 15,
-    icon: icons.notification,
-    title: "NOTIFICATION",
-    path: "/app/notification",
-    favourite: false
   }
 ];
 
@@ -252,11 +245,6 @@ export const ADMIN_SIDEBAR_LIST = [
     title: "HELP",
     path: "/admin/help",
     favourite: false
-  }, {
-    icon: icons.notification,
-    title: "NOTIFICATION",
-    path: "/admin/notifications",
-    favourite: false
   }
 ]
 
@@ -341,11 +329,6 @@ export const MODERATOR_SIDEBAR_LIST = [
     icon: icons.helpPost,
     title: "HELP",
     path: "/admin/help",
-    favourite: false
-  }, {
-    icon: icons.notification,
-    title: "NOTIFICATION",
-    path: "/admin/notifications",
     favourite: false
   }
 ]

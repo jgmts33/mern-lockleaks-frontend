@@ -178,6 +178,20 @@ const UserHeader = ({ show, setter }) => {
               aria-label="Action event example"
               className="text-white max-h-[300px] overflow-y-auto max-w-[240px] m-2"
             >
+              {notifications.length ? <DropdownItem
+                isReadOnly
+                className="mt-2 "
+              >
+                <div
+                  className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg py-2 w-full h-full flex justify-center rounded-lg"
+                  onClick={() => {
+                    if (isProcessing) return;
+                    handleClearNotifications();
+                  }}
+                >
+                  {isProcessing ? <Spinner size="sm" className="mx-auto" /> : <p className="font-bold text-center">Clear Notifications</p>}
+                </div>
+              </DropdownItem> : <DropdownItem isReadOnly><p className="font-bold text-center">Notifications is not yet.</p></DropdownItem>}
               {
                 notifications.map((item, index) => {
                   return (
@@ -209,20 +223,6 @@ const UserHeader = ({ show, setter }) => {
                   )
                 })
               }
-              {notifications.length ? <DropdownItem
-                isReadOnly
-                className="mt-2 "
-              >
-                <div
-                  className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg py-2 w-full h-full flex justify-center rounded-lg"
-                  onClick={() => {
-                    if (isProcessing) return;
-                    handleClearNotifications();
-                  }}
-                >
-                  {isProcessing ? <Spinner size="sm" className="mx-auto" /> : <p className="font-bold text-center">Clear Notifications</p>}
-                </div>
-              </DropdownItem> : <DropdownItem isReadOnly><p className="font-bold text-center">Notifications is not yet.</p></DropdownItem>}
             </DropdownMenu>
           </Dropdown>
         </NavbarItem>

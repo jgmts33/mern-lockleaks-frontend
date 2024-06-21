@@ -441,3 +441,29 @@ export const clearNotifications = async (id) => {
     }
   }
 }
+
+export const testBots = async () => {
+
+  const accessToken = await getAccessToken();
+  const userId = await getUserId();
+
+  try {
+    const res = await axios.get(`${ENDPOINT}/${userId}/test-bots`, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+
+}

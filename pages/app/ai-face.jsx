@@ -116,7 +116,7 @@ export default function AIImage() {
             if ( value.user_id == userInfo.id ) {
                 setUploadedFile(null);
                 setPreviewImgUrl('');
-                setScanResult(value);
+                setScanResult(value.result);
             }
         })
 

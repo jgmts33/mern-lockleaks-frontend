@@ -4,14 +4,17 @@ import {
 } from '@nextui-org/react';
 import { Components, WarningIcon } from "@/components/utils/Icons";
 import React, { useState } from 'react';
+import { testBots } from '@/axios/user';
 
 export default function TestBots() {
+
+    const [isProcessing, setIsProcessing] = useState(false);
     const [selectWorkingBot, setSelectWorkingBot] = useState(0)
     const [selectNotWorkingBot, setSelectNotWorkingBot] = useState(0)
 
     const icons = {
-        components: <Components/>,
-        warningicon: <WarningIcon/>,
+        components: <Components />,
+        warningicon: <WarningIcon />,
     };
 
     const BotStatus = [
@@ -21,12 +24,12 @@ export default function TestBots() {
             used: 14,
             total: 15
         },
-        {
-            icon: icons.warningicon,
-            title: "NO WORK BOTS:",
-            used: 1,
-            total: 15
-        }
+        // {
+        //     icon: icons.warningicon,
+        //     title: "NO WORK BOTS:",
+        //     used: 1,
+        //     total: 15
+        // }
     ]
 
     const WorkingBots = [
@@ -47,6 +50,16 @@ export default function TestBots() {
         }
     ]
 
+    const handleTestBots = async () => {
+        setIsProcessing(true);
+        const res = await testBots();
+        console.log(res.data);
+        if ( res.status == 'success' ) {
+
+        }
+        setIsProcessing(false);
+    }
+
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
             <div className='flex gap-16 items-center max-lg:mx-auto'>
@@ -57,7 +70,13 @@ export default function TestBots() {
                     <span className=''>Info</span>
                 </div>
                 <div>
-                    <Button radius="full" className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-6 text-base" size='sm'>
+                    <Button 
+                        radius="full" 
+                        className="bg-gradient-to-tr from-purple-light to-purple-weight border border-gray-500 text-white shadow-lg px-6 text-base" 
+                        size='sm'
+                        isLoading={isProcessing}
+                        onClick={handleTestBots}
+                    >
                         START TEST
                     </Button>
                 </div>
@@ -102,7 +121,7 @@ export default function TestBots() {
                                                     <span>{items.title}</span>
                                                 </div>
                                                 <div>
-                                                    <Button radius="full" className={("border border-gray-500 text-white shadow-lg px-6 text-base ")+(selectWorkingBot == index ? "bg-gradient-to-tr from-purple-light to-purple-weight " : "bg-gradient-to-tr from-gray-700 to-gray-800")} size='sm' onClick={()=>setSelectWorkingBot(index)}>
+                                                    <Button radius="full" className={("border border-gray-500 text-white shadow-lg px-6 text-base ") + (selectWorkingBot == index ? "bg-gradient-to-tr from-purple-light to-purple-weight " : "bg-gradient-to-tr from-gray-700 to-gray-800")} size='sm' onClick={() => setSelectWorkingBot(index)}>
                                                         Download
                                                     </Button>
                                                 </div>
@@ -117,7 +136,7 @@ export default function TestBots() {
                         </ScrollShadow>
                     </div>
                 </div>
-                <div className='flex flex-col w-full'>
+                {/* <div className='flex flex-col w-full'>
                     <span className='font-semibold text-base bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent max-lg:text-center'>Not WORKING BOTS</span>
                     <div className="flex flex-col bg-white/15 border border-gray-500 mt-2 rounded-[16px] w-full pb-8">
                         <ScrollShadow className='h-80'>
@@ -130,7 +149,7 @@ export default function TestBots() {
                                                     <span>{items.title}</span>
                                                 </div>
                                                 <div>
-                                                <Button radius="full" className={("border border-gray-500 text-white shadow-lg px-6 text-base ")+(selectNotWorkingBot == index ? "bg-gradient-to-tr from-purple-light to-purple-weight " : "bg-gradient-to-tr from-gray-700 to-gray-800")} size='sm' onClick={()=>setSelectNotWorkingBot(index)}>
+                                                    <Button radius="full" className={("border border-gray-500 text-white shadow-lg px-6 text-base ") + (selectNotWorkingBot == index ? "bg-gradient-to-tr from-purple-light to-purple-weight " : "bg-gradient-to-tr from-gray-700 to-gray-800")} size='sm' onClick={() => setSelectNotWorkingBot(index)}>
                                                         Download
                                                     </Button>
                                                 </div>
@@ -144,7 +163,7 @@ export default function TestBots() {
                             }
                         </ScrollShadow>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
