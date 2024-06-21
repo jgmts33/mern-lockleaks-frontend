@@ -3,13 +3,81 @@ import {
     Button,
 } from '@nextui-org/react';
 import { Components } from "@/components/utils/Icons";
-import React from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { rrPhotoScan, rrUserScan } from '@/axios/bot';
 
 export default function RecoveryUsers() {
 
     const icons = {
         components: <Components />,
     };
+
+    const [scanResult, setScanResult] = useState(0);
+    const [uploadedFile, setUploadedFile] = useState(null);
+    const [username, setUsername] = useState('');
+    const [warning, setWarning] = useState('');
+
+    const fileUploadRef = useRef(null);
+
+    const [previewImgUrl, setPreviewImgUrl] = useState('');
+    const [isProcessing, setIsProcessing] = useState({
+        photo: false,
+        user: false
+    });
+
+    const handleImageUpload = (event, type) => {
+        event.preventDefault();
+        fileUploadRef.current.click();
+    }
+
+    const handlePhotoScan = useCallback(async () => {
+
+        if (!uploadedFile) return;
+
+        setIsProcessing(p => ({ ...p, photo: true }));
+
+        const formData = new FormData();
+
+        formData.append('photo', uploadedFile);
+
+        const res = await rrPhotoScan(formData);
+        if (res.status == 'success') {
+            setPreviewImgUrl('');
+            setScanResult(res.data.result);
+            setUploadedFile(null);
+        }
+
+        setIsProcessing(p => ({ ...p, photo: false }));
+    }, [uploadedFile]);
+
+    const handleUserScan = useCallback(async () => {
+        if ( !username ) return;
+
+        setIsProcessing(p => ({ ...p, user: true }));
+
+        const res = await rrUserScan({ username });
+
+        if ( res.status == 'success' ) {
+            setScanResult(res.data.result);
+            setUsername('');
+        }
+
+        setIsProcessing(p => ({ ...p, user: false }));
+    }, [username]);
+
+    const uploadImageDisplay = async () => {
+        try {
+            const _uploadedFile = fileUploadRef.current.files[0];
+            const cachedURL = URL.createObjectURL(_uploadedFile);
+            setUploadedFile(_uploadedFile);
+            setPreviewImgUrl(cachedURL);
+
+        } catch (error) {
+            console.error(error);
+            setUploadedFile(null);
+            setPreviewImgUrl('');
+        }
+    }
 
     return (
         <>
@@ -40,10 +108,62 @@ export default function RecoveryUsers() {
                                 <div className='flex max-w-[250px] text-center mx-auto'>
                                     <span className='font-normal text-sm'>To Start the Scanning Process, Please Begin by Uploading a Photo of Yourself</span>
                                 </div>
-                                <Button radius="lg" className="bg-gradient-to-tr bg-white/10 text-white shadow-lg px-7 py-5 text-sm mx-auto mt-10" size='sm'>
-                                    <span>+ Upload</span>
-                                </Button>
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
+                                <div className="flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer">
+                                    {
+                                        previewImgUrl
+                                            ?
+                                            <img
+                                                src={previewImgUrl}
+                                                alt="Preview Image Url"
+                                                className='w-full object-cover rounded-2xl h-60'
+                                            />
+                                            :
+                                            <div className="flex flex-col items-center justify-center h-60 border w-full rounded-2xl">
+                                                {icons.uploadIcon}
+                                                <p>Drag & Drop to Upload File</p>
+                                                <p>Or</p>
+                                                <Button
+                                                    radius="lg"
+                                                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white px-7 text-sm mx-auto mt-2"
+                                                    size='sm'
+                                                    onClick={handleImageUpload}
+                                                >
+                                                    <span>Browse File</span>
+                                                </Button>
+                                            </div>
+                                    }
+                                    <input
+                                        type="file"
+                                        id="file"
+                                        ref={fileUploadRef}
+                                        accept=".png,.jpg,.jpeg"
+                                        onChange={uploadImageDisplay}
+                                        hidden
+                                        onDrop={uploadImageDisplay}
+                                    />
+                                </div>
+                                <div className='h-10 mt-3 mx-auto'>
+                                    {
+                                        previewImgUrl ? <Button
+                                            radius="full"
+                                            className="bg-gradient-to-tr from-purple-light to-purple-weight text-white text-sm mx-auto"
+                                            size="sm"
+                                            onClick={(e) => handleImageUpload(e, 'id_card')}
+                                        >
+                                            <span>Change Image</span>
+                                        </Button> :
+                                            warning ?
+                                                <p className='text-red-600 font-bold'>{warning}</p>
+                                                : <></>
+                                    }
+                                </div>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-4"
+                                    isLoading={isProcessing.photo}
+                                    onClick={handlePhotoScan}
+                                    size='sm'
+                                >
                                     <span>Start</span>
                                 </Button>
                             </div>
@@ -57,8 +177,16 @@ export default function RecoveryUsers() {
                                     name="content"
                                     className='w-full outline-none p-3 rounded-2xl mt-7 bg-white/15 border border-gray-700'
                                     placeholder='Type here'
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
                                 />
-                                <Button radius="lg" className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-10" size='sm'>
+                                <Button
+                                    radius="lg"
+                                    className="bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg px-12 py-5 text-sm mx-auto mt-4"
+                                    isLoading={isProcessing.user}
+                                    onClick={handleUserScan}
+                                    size='sm'
+                                >
                                     <span>Start</span>
                                 </Button>
                             </div>
@@ -92,9 +220,7 @@ export default function RecoveryUsers() {
                         <span className='font-normal text-base'>HISTORICAL PROFILE RESULTS</span>
                     </div>
                     <div className='px-20 max-lg:px-3 items-center space-x-1'>
-                        <span className='font-normal text-xs'>Generated a removal report for</span>
-                        <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg'>10</span>
-                        <span className='font-normal text-xs'>copyright infringements, encompassing AI results, matched photos & profiles, and manually forwarded it to Recovery Usernames Platforms.</span>
+                        <span className='font-normal text-xs'>Generated a removal report for <span className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-medium text-lg px-1'>{scanResult}</span> copyright infringements, encompassing AI results, matched photos & profiles, and manually forwarded it to Recovery Usernames Platforms.</span>
                     </div>
                 </div>
             </div>

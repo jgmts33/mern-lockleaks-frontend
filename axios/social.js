@@ -139,7 +139,7 @@ export const getSocialScanResult = async () => {
   const accessToken = await getAccessToken();
 
   try {
-    const res = await axios.get(`${ENDPOINT}/social-scan-result`, {
+    const res = await axios.get(`${ENDPOINT}/social-result`, {
       headers: {
         'x-access-token': accessToken
       }
@@ -186,7 +186,7 @@ export const getSocialScanResultByUser = async () => {
   const userId = getUserId();
 
   try {
-    const res = await axios.get(`${ENDPOINT}/${userId}/social-scan-result`, {
+    const res = await axios.get(`${ENDPOINT}/${userId}/social-result`, {
       headers: {
         'x-access-token': accessToken
       }

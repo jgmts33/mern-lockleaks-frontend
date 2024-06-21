@@ -288,6 +288,10 @@ export default function AdminDashbaord() {
 
         socket.on(`scanner-finished`, async () => {
             getScrapedDataListInfo();
+            setOrderCount(p => ({
+                total: p.total + 1,
+                weekly: p.weekly + 1
+            }));
         });
 
         socket.on(`new-user-registered`, async () => {
@@ -301,21 +305,54 @@ export default function AdminDashbaord() {
             setPersonalAgentCount(p => ({
                 last: value.last_count,
                 total: p.total + value.count
-            }))
+            }));
         })
 
         socket.on(`social-scan-finished`, (value) => {
             setSocial(p => ({
                 last: value.result,
                 total: p.total + value.result
-            }))
+            }));
+            setOrderCount(p => ({
+                total: p.total + 1,
+                weekly: p.weekly + 1
+            }));
         })
+
+        socket.on(`social-profile-submission`, (value) => {
+            setSocial(p => ({
+                last: value.count,
+                total: p.total + value.count
+            }))
+            setOrderCount(p => ({
+                total: p.total + 1,
+                weekly: p.weekly + 1
+            }));
+        })
+
+        socket.on(`rr-photo-scan-finished`, (value) => {
+            setOrderCount(p => ({
+                total: p.total + 1,
+                weekly: p.weekly + 1
+            }));
+        });
+
+        socket.on(`rr-user-scan-finished`, (value) => {
+            setOrderCount(p => ({
+                total: p.total + 1,
+                weekly: p.weekly + 1
+            }));
+        });
 
         socket.on(`ai-face-scan-finished`, (value) => {
             setAiBots(p => ({
                 last: value.result,
                 total: p.total + value.result
-            }))
+            }));
+            setOrderCount(p => ({
+                total: p.total + 1,
+                weekly: p.weekly + 1
+            }));
         })
 
         return () => {

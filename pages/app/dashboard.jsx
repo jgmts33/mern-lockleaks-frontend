@@ -239,6 +239,10 @@ export default function Dashbaord() {
             if ( value.user_id == userInfo.id ) getAIBotsScrapedDataInfo();
         })
 
+        socket.on(`social-profile-submission`, (value) => {
+            if ( value.user_id == userInfo.id ) getSocialScrapedDataInfo();
+        })
+
         socket.on(`scanner-finished-${userInfo.id}`, () => {
             getScrapedDataListInfo();
         });

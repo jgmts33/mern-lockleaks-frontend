@@ -11,8 +11,8 @@ import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useSelector } from 'react-redux';
-import { getRRPhotoScanResultsList } from '@/axios/rr-photo';
-import { getRRUserScanResultsList } from '@/axios/rr-user';
+import { acceptRRPhotoScanner, getRRPhotoScanResultsList } from '@/axios/rr-photo';
+import { acceptRRUserScanner, getRRUserScanResultsList } from '@/axios/rr-user';
 
 export default function RRContent() {
 
@@ -54,7 +54,13 @@ export default function RRContent() {
         if (type == 'photo' && rrPhotoScrapedData[index]?.downloaded == true && userInfo.roles.find(p => p == 'moderator')) return;
         if (type == 'user' && rrUserScrapedData[index]?.downloaded == true && userInfo.roles.find(p => p == 'moderator')) return;
 
-        const res = await acceptOrder(folder_name);
+        let res;
+
+        if ( type == 'photo' ) {
+            res = await acceptRRPhotoScanner(folder_name);
+        } else {
+            res = await acceptRRUserScanner(folder_name);
+        }
 
         if (res.status == 'success') {
             const blob = new Blob([res.data]);
@@ -250,20 +256,18 @@ export default function RRContent() {
                                         rrPhotoScrapedData.length ? rrPhotoScrapedData.map((item, index) => {
                                             return (
                                                 <div key={index} className='flex items-center gap-4 max-sm:gap-2'>
-                                                    <div className='bg-white/20 p-3 w-full rounded-[16px] font-normal text-sm'>
-                                                        {`${item.user_id} - ${item.scrape_date}.zip`}
+                                                    <div className='bg-white/20 px-3 py-2 w-full rounded-[16px] font-normal text-sm'>
+                                                        {item.file}
                                                     </div>
                                                     <div>
                                                         <Button
                                                             radius="lg"
-                                                            className={item.status == 'available' ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
+                                                            className="border border-white/40 px-4 bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base"
                                                             size='sm'
-                                                            isLoading={isProcessing.index == index && isProcessing.type == 'google'}
-                                                            onClick={() => {
-                                                                if (item.status == 'available') handleAccept(item.scrape_date, index, 'google');
-                                                            }}
+                                                            onClick={() => handleAccept(item.file, index, 'photo')}
+                                                            isLoading={isProcessing.index == index && isProcessing.type == 'photo'}
                                                         >
-                                                            {item.status == 'available' ? item.accepted ? <span>Accepted</span> : <span>Accept</span> : <span>Expired</span>}
+                                                            {item.downloaded ? "Accepted" : "Accept"}
                                                         </Button>
                                                     </div>
                                                 </div>
@@ -316,19 +320,17 @@ export default function RRContent() {
                                             return (
                                                 <div key={index} className='flex items-center gap-4 max-sm:gap-2'>
                                                     <div className='bg-white/20 p-3 w-full rounded-[16px] font-normal text-sm'>
-                                                        {`${item.user_id} - ${item.scrape_date}.zip`}
+                                                        {item.file}
                                                     </div>
                                                     <div>
                                                         <Button
                                                             radius="lg"
-                                                            className={item.status == 'available' ? "bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base" : "bg-gradient-to-tr bg-white/10 text-white shadow-lg text-base"}
+                                                            className="border border-white/40 px-4 bg-gradient-to-tr from-purple-light to-purple-weight text-white shadow-lg text-base"
                                                             size='sm'
-                                                            isLoading={isProcessing.index == index && isProcessing.type == 'bing'}
-                                                            onClick={() => {
-                                                                if (item.status == 'available') handleAccept(item.scrape_date, index, 'bing');
-                                                            }}
+                                                            onClick={() => handleAccept(item.file, index, 'user')}
+                                                            isLoading={isProcessing.index == index && isProcessing.type == 'user'}
                                                         >
-                                                            {item.status == 'available' ? item.accepted ? <span>Accepted</span> : <span>Accept</span> : <span>Expired</span>}
+                                                            {item.downloaded ? "Accepted" : "Accept"}
                                                         </Button>
                                                     </div>
                                                 </div>

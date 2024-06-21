@@ -17,6 +17,7 @@ export default function AIImage() {
 
     const [value, setValue] = React.useState(0);
     const [scanResult, setScanResult] = useState(0);
+    const [warning, setWarning] = useState('');
 
     const userInfo = useSelector(info);
 
@@ -30,7 +31,6 @@ export default function AIImage() {
 
     const [previewImgUrl, setPreviewImgUrl] = useState('');
     const [uploadedFile, setUploadedFile] = useState(null);
-    const [warning, setWarning] = useState('');
 
     const handleImageUpload = (event, type) => {
         event.preventDefault();
