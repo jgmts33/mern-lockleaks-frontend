@@ -104,6 +104,10 @@ export default function TestBots() {
                 }
             ]))
         });
+
+        return () => {
+            socket.disconnect();
+        }
         
     },[userInfo]);
 
