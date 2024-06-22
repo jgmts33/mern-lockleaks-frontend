@@ -5,12 +5,14 @@ import {
 import { Components, WarningIcon } from "@/components/utils/Icons";
 import React, { useEffect, useState } from 'react';
 import { downloadTestResult, testBots } from '@/axios/user';
-import { acceptAIFaceScanner } from '@/axios/ai-face';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
+import {userInfo as info } from '@/lib/auth/authSlice';
+import { useSelector } from 'react-redux';
 
 export default function TestBots() {
 
+    const userInfo = useSelector(info)
     const [isLoading, setIsLoading] = useState(false);
     const [isProcessing, setIsProcessing] = useState(-1);
     const [workingBots, setWorkingBots] = useState([]);
@@ -53,7 +55,7 @@ export default function TestBots() {
 
         const socket = io(ENDPOINT);
 
-        socket.on(`test_scanner_finished`, (value) => {
+        socket.on(`test_scanner_finished_${userInfo.id}`, (value) => {
             setWorkingBots(p => ([
                 ...p,
                 {
@@ -63,7 +65,7 @@ export default function TestBots() {
             ]))
         });
 
-        socket.on(`test_sm_scanner_finished`, (value) => {
+        socket.on(`test_sm_scanner_finished_${userInfo.id}`, (value) => {
             setWorkingBots(p => ([
                 ...p,
                 {
@@ -73,7 +75,7 @@ export default function TestBots() {
             ]))
         });
 
-        socket.on(`test_ai_face_finished`, (value) => {
+        socket.on(`test_ai_face_finished_${userInfo.id}`, (value) => {
             setWorkingBots(p => ([
                 ...p,
                 {
@@ -83,7 +85,7 @@ export default function TestBots() {
             ]))
         });
 
-        socket.on(`test_rr_photo_finished`, (value) => {
+        socket.on(`test_rr_photo_finished_${userInfo.id}`, (value) => {
             setWorkingBots(p => ([
                 ...p,
                 {
@@ -93,7 +95,7 @@ export default function TestBots() {
             ]))
         });
 
-        socket.on(`test_rr_user_finished`, (value) => {
+        socket.on(`test_rr_user_finished_${userInfo.id}`, (value) => {
             setWorkingBots(p => ([
                 ...p,
                 {
@@ -103,7 +105,7 @@ export default function TestBots() {
             ]))
         });
         
-    },[]);
+    },[userInfo]);
 
     return (
         <div className="flex flex-col bg-gradient-to-tr px-5 py-5 text-white max-lg:mx-auto">
