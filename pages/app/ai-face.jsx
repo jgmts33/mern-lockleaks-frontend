@@ -103,7 +103,7 @@ export default function AIImage() {
     }, [userInfo]);
 
     useEffect(() => {
-
+        if ( !userInfo ) return;
         getCurrentStatus();
 
         const socket = io(ENDPOINT);

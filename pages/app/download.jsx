@@ -63,10 +63,9 @@ export default function DownloadData() {
     }, [list]);
 
     useEffect(() => {
-
+        if ( !userInfo ) return;
         const socket = io(ENDPOINT);
 
-        if (!userInfo) return;
         getScrapedDataListInfo();
 
         socket.on(`scraped_data_expired_${userInfo.id}`, (value) => {

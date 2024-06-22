@@ -16,7 +16,7 @@ import { io } from 'socket.io-client';
 import { getCurrentScannerStatus } from '@/axios/scanner';
 import { useRouter } from 'next/router';
 
-export default function Google() {
+export default function Bing() {
 
     const userInfo = useSelector(info);
     const router = useRouter();
@@ -85,6 +85,7 @@ export default function Google() {
     }, [userInfo]);
 
     useEffect(() => {
+        if ( !userInfo ) return;
         getUsernamesInfo();
         getCurrentStatus();
 

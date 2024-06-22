@@ -85,7 +85,7 @@ export default function Scanner() {
     }, [userInfo]);
 
     useEffect(() => {
-
+        if ( !userInfo ) return;
         getUsernamesInfo();
         getCurrentStatus();
 

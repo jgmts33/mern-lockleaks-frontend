@@ -85,6 +85,7 @@ export default function Google() {
     }, [userInfo]);
 
     useEffect(() => {
+        if ( !userInfo ) return;
         getUsernamesInfo();
         getCurrentStatus();
 

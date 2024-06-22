@@ -221,6 +221,7 @@ export default function Dashbaord() {
     }, [scanResult, lastScanResult, personalAgentCount, social, aiBots]);
 
     useEffect(() => {
+        if ( !userInfo ) return;
         getScrapedDataListInfo();
         getTicketsByUserInfo();
         getSocialScrapedDataInfo();

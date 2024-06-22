@@ -36,6 +36,7 @@ export default function FileHosted() {
     };
 
     useEffect(() => {
+        if ( !userInfo ) return;
         getScannerResult();
 
         const socket = io(ENDPOINT);

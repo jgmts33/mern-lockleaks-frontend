@@ -66,6 +66,7 @@ export default function SMscanner() {
     }, [userInfo]);
 
     useEffect(() => {
+        if ( !userInfo ) return;
         getSocialUsernameInfo();
         getCurrentStatus();
 
