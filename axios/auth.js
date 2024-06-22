@@ -197,7 +197,6 @@ export const sendVerificationEmail = async (email) => {
 export const getUserInfo = async (id = null) => {
 
   const userId = getUserId(); 
-  console.log("id:", id)
 
   try {
 

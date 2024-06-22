@@ -70,7 +70,7 @@ export default function Scanner() {
     const getCurrentStatus = useCallback(async () => {
 
         const res = await getCurrentScannerStatus();
-
+        console.log("userInfo:", userInfo, res.data);
         if (res.status == 'success') {
             setLimit(userInfo.subscription.features.scanner - res.data.count);
 
@@ -82,7 +82,7 @@ export default function Scanner() {
             }
 
         }
-    }, [userInfo]);
+    }, [userInfo, setLimit]);
 
     useEffect(() => {
         if ( !userInfo ) return;
@@ -99,7 +99,7 @@ export default function Scanner() {
             socket.disconnect();
         }
 
-    }, [userInfo, router]);
+    }, [userInfo]);
 
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
@@ -191,7 +191,7 @@ export default function Scanner() {
                                 scanProgress.current == 0 ? <span>START</span> : scanProgress.current == scanProgress.all ? <span>FINISHED</span> : <span>Processing</span>
                             }
                         </Button>
-                        <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: {limit} </p>
+                        <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: <span className='notranslate'>{limit}</span> </p>
                     </div>
                     <Progress
                         size="md"

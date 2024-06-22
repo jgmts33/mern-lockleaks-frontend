@@ -152,7 +152,7 @@ export default function AIImage() {
                                 value == 0 ? <span>START</span> : value == 100 ? <span>FINISHED</span> : <span>Processing</span>
                             }
                         </Button>
-                        <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: {limit} </p>
+                        <p className='bg-gradient-to-r from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent font-semibold'>Left: <span className='notranslate'>{limit}</span> </p>
                     </div>
                     <Progress
                         size="md"
