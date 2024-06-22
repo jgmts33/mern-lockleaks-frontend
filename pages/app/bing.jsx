@@ -14,10 +14,12 @@ import { getScrapedDataList } from '@/axios/download';
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
 import { io } from 'socket.io-client';
 import { getCurrentScannerStatus } from '@/axios/scanner';
+import { useRouter } from 'next/router';
 
 export default function Google() {
 
     const userInfo = useSelector(info);
+    const router = useRouter();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [scanProgress, setScanProgress] = useState({
         current: 0,
@@ -97,7 +99,7 @@ export default function Google() {
             socket.disconnect();
         }
 
-    }, [userInfo]);
+    }, [userInfo, router]);
 
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {

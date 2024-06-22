@@ -12,10 +12,12 @@ import { useSelector } from 'react-redux';
 import { DEFAULT_SCAN_RESULT, ENDPOINT } from '@/config/config';
 import { io } from 'socket.io-client';
 import { getCurrentScannerStatus } from '@/axios/scanner';
+import { useRouter } from 'next/router';
 
 export default function Scanner() {
 
     const userInfo = useSelector(info);
+    const router = useRouter();
     const [scanProgress, setScanProgress] = useState({
         current: 0,
         all: 0
@@ -97,7 +99,7 @@ export default function Scanner() {
             socket.disconnect();
         }
 
-    }, [userInfo]);
+    }, [userInfo, router]);
 
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {

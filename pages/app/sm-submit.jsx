@@ -7,11 +7,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useSelector } from 'react-redux';
 import { getDailySubmitionCount, socialProfileSubmit } from '@/axios/social';
+import { useRouter } from 'next/router';
 
 export default function SMsubmit() {
 
     const userInfo = useSelector(info);
-
+    const router = useRouter();
     const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [selectedSocialMedia, setSelectedSocialMedia] = useState('facebook.com');
     const [warning, setWarning] = useState('');
@@ -116,7 +117,7 @@ export default function SMsubmit() {
         if (userInfo.email) {
             getDailySubmitionCountInfo();
         }
-    }, [userInfo]);
+    }, [userInfo, router]);
 
     return (
         <>

@@ -13,10 +13,12 @@ import { userInfo as info } from '@/lib/auth/authSlice';
 import { io } from 'socket.io-client';
 import { ENDPOINT } from '@/config/config';
 import { getCurrentAIFaceScannerStatus } from '@/axios/ai-face';
+import { useRouter } from 'next/router';
 
 export default function AIImage() {
 
     const userInfo = useSelector(info);
+    const router = useRouter();
     const [value, setValue] = React.useState(0);
     const [scanResult, setScanResult] = useState(0);
     const [limit, setLimit] = useState(0);
@@ -119,7 +121,7 @@ export default function AIImage() {
             socket.disconnect();
         }
 
-    }, [userInfo]);
+    }, [userInfo, router]);
 
     return (
         <>
