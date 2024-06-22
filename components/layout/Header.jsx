@@ -27,7 +27,7 @@ export default function Header() {
       content: "Services",
       path: "/services"
     }, {
-      content: "Scan&Takedown",
+      content: "Scan & Takedown",
       path: "/scantakedown"
     }, {
       content: "AI",
