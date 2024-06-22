@@ -194,7 +194,7 @@ export const getCurrentTicketStatus = async () => {
   const userId = await getUserId();
 
   try {
-    const res = await axios.post(`${ENDPOINT}/${userId}/current-ticket-status`,
+    const res = await axios.get(`${ENDPOINT}/${userId}/current-ticket-status`,
       {
         headers: {
           'x-access-token': accessToken,
