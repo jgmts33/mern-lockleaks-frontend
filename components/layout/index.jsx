@@ -308,7 +308,7 @@ export default function RootLayout({ children }) {
     });
 
     socket.on(`verify_email_${userInfo.id}`, (value) => {
-      dispatch(setUserInfo({ ...userInfo, verified: true }));
+      dispatch(setUserInfo({ ...userInfo, value }));
     });
 
     socket.on(`payment_status_${userInfo.id}`, (value) => {
