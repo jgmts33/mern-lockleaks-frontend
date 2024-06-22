@@ -128,7 +128,7 @@ export default function TicketDetail() {
         const res = await getCurrentTicketStatus();
 
         if (res.status == 'success') {
-            setLimit(userInfo.subscription.features.personal_agent - res.data.current);
+            setLimit(userInfo.subscription.features.personal_agent - res.data.count);
         }
     }, [userInfo])
 
