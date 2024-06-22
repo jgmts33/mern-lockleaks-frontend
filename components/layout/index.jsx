@@ -356,7 +356,7 @@ export default function RootLayout({ children }) {
       }
     })();
 
-  }, [router]);
+  }, []);
 
   if (mounted) return (
     <div className={poppins.className + (userInfo ? " overflow-hidden !p-0" : "")}>
