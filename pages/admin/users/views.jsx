@@ -13,7 +13,7 @@ import {
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Search, Pencil, Trash, Facebook, Google, Twitter, FacebookAlt, RedditAlt, InstagramAlt, TiktokAlt, Add } from "@/components/utils/Icons";
-import { getUserInfo, getUsernames, deleteUser, updateUserInfo, updatePaymentStatus, updateUserToModerator, downloadCopyrightHolder, uploadCopyrightHolder } from '@/axios/user';
+import { getUserInfo, getUsernames, deleteUser, updateUserInfo, updatePaymentStatus, updateUserToModerator, downloadCopyrightHolder, uploadCopyrightHolder, updateUserEmailVerify } from '@/axios/user';
 import { SUBSCRIPTION_NAMES } from '@/config/config';
 import { SelectSwitch, UnselectSwitch } from '@/components/utils/Icons';
 import { useSearchParams } from 'next/navigation';
@@ -229,6 +229,14 @@ export default function UsersView() {
         }
     }, [userDetails]);
 
+    const handleUserEmailVerify = useCallback(async (value) => {
+        const res = await updateUserEmailVerify(userDetails?.id, value);
+
+        if (res.status == 'success') {
+            setUserDetails(p => ({ ...p, verified: value }));
+        }
+    }, [userDetails]);
+
     const handleDeleteUser = useCallback(async () => {
         setIsActionProcessing('delete');
         const res = await deleteUser(user_id);
@@ -352,6 +360,17 @@ export default function UsersView() {
                                 <div className='flex'>EMAIL :</div>
                                 <div className='flex'>{userDetails.email}</div>
                             </div>
+                            <div className='flex font-semibold text-base max-w-[600px] gap-4'>
+                                <p>Email verified</p>
+                                <Switch
+                                    isSelected={!!userDetails.verified}
+                                    onValueChange={(value) => {
+                                        handleUserEmailVerify(value);
+                                    }}
+                                >
+                                    {!!userDetails.verified ? <span>Yes</span> : <span>No</span>}
+                                </Switch>
+                            </div>
                             <div className='flex font-semibold text-base gap-4'>
                                 <div className='flex'>IP Address :</div>
                                 <div className='flex'>{userDetails.ip}</div>
@@ -396,7 +415,7 @@ export default function UsersView() {
                                         isLoading={isActionProcessing == 'copyright_holder'}
                                         onPress={uploadCopyrightHolderFile}
                                     >
-                                        { reUploaded ? 'Uploaded' : 'Re-Upload' }
+                                        {reUploaded ? 'Uploaded' : 'Re-Upload'}
                                     </Button>
                                     <input
                                         type="file"

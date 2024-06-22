@@ -197,6 +197,32 @@ export const updateUserToModerator = async (id, action) => {
   }
 }
 
+export const updateUserEmailVerify = async (id, verified) => {
+
+  const accessToken = await getAccessToken();
+
+  try {
+    const res = await axios.patch(`${ENDPOINT}/user-email-verify/${id}`, {
+      verified
+    }, {
+      headers: {
+        'x-access-token': accessToken,
+      }
+    });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}
+
 export const getUserInfo = async (id) => {
 
   const accessToken = await getAccessToken();
