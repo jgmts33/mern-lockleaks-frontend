@@ -502,7 +502,8 @@ export const downloadTestResult = async (name) => {
     const res = await axios.get(`${ENDPOINT}/download-test-bots-result?folder_name=${name}`, {
       headers: {
         'x-access-token': accessToken,
-      }
+      },
+      responseType: 'blob'
     });
 
     return {
