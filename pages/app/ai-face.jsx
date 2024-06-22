@@ -142,7 +142,7 @@ export default function AIImage() {
                         <Button
                             radius="lg"
                             className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
-                            disabled={!!value}
+                            isDisabled={!!value}
                             onPress={() => {
                                 if (!value) handleScan()
                             }}
@@ -240,7 +240,7 @@ export default function AIImage() {
                             <Button
                                 radius="lg"
                                 className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!value ? "from-purple-light to-purple-weight" : value == 100 ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
-                                disabled={!!value}
+                                isDisabled={!!value}
                                 onPress={() => {
                                     if (!value) handleScan()
                                 }}

@@ -187,3 +187,29 @@ export const addHelpCountsOnTicket = async (id, data) => {
     }
   }
 }
+
+export const getCurrentTicketStatus = async () => {
+
+  const accessToken = await getAccessToken();
+  const userId = await getUserId();
+
+  try {
+    const res = await axios.post(`${ENDPOINT}/${id}/current-ticket-status`,
+      {
+        headers: {
+          'x-access-token': accessToken,
+        }
+      });
+
+    return {
+      status: 'success',
+      data: res.data
+    }
+
+  } catch (err) {
+    return {
+      status: 'fail',
+      data: err.response?.data?.message || "something went wrong"
+    }
+  }
+}

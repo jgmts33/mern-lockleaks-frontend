@@ -182,7 +182,7 @@ export default function Scanner() {
                         <Button
                             radius="lg"
                             className={"bg-gradient-to-tr text-white shadow-lg px-7 text-lg " + (!scanProgress.current ? "from-purple-light to-purple-weight" : scanProgress.current == scanProgress.all ? "from-green-700 to-green-800" : "from-purple-light to-purple-weight")}
-                            disabled={scanProgress.current}
+                            isDisabled={scanProgress.current}
                             onPress={() => handleScan()}
                         >
                             {

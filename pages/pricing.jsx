@@ -366,7 +366,7 @@ export default function Pricing() {
                                                         className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg from-gray-600/40 to-gray-800/40" }
                                                         size='lg'
                                                         onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
-                                                        disabled={userInfo?.subscription?.plan_id == 4}
+                                                        isDisabled={userInfo?.subscription?.plan_id == 4}
                                                     >
                                                         {userInfo?.subscription?.plan_id == 4 ? <span>ACTIVE</span> : !userInfo?.subscription?.plan_id ? <span>BUY</span> : <span>UPGRADE</span>}
                                                     </Button>
@@ -377,7 +377,7 @@ export default function Pricing() {
                                                             className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg " + ( userInfo?.subscription?.plan_id == 3 ? "from-gray-600/40 to-gray-800/40" : "from-[#aa7fe2] to-[#ec4d1d]" )  }
                                                             size='lg'
                                                             onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
-                                                            disabled={userInfo?.subscription?.plan_id == 3}
+                                                            isDisabled={userInfo?.subscription?.plan_id == 3}
                                                         >
                                                             {userInfo?.subscription?.plan_id == 3 ? <span>ACTIVE</span> : !userInfo?.subscription?.plan_id ? <span>BUY</span> : userInfo?.subscription?.plan_id < 3 ? <span>UPGRADE</span> : <span>DOWNGRADE</span>}
                                                         </Button>
@@ -387,7 +387,7 @@ export default function Pricing() {
                                                             className={"w-full mt-10 bg-gradient-to-tr mx-auto border-gray-600 border text-white shadow-lg px-7 py-5 text-lg " + ( userInfo?.subscription?.plan_id == 2 ? "from-gray-600/40 to-gray-800/40" : "from-[#aa7fe2] to-[#ec4d1d]" )  }
                                                             size='lg'
                                                             onClick={() => router.push(`/checkout?plan=${item.value}&period=${isPricingSelected}`)}
-                                                            disabled={userInfo?.subscription?.plan_id == 2}
+                                                            isDisabled={userInfo?.subscription?.plan_id == 2}
                                                         >
                                                             {userInfo?.subscription?.plan_id == 2 ? <span>ACTIVE</span> : !userInfo?.subscription?.plan_id ? <span>BUY</span> : userInfo?.subscription?.plan_id < 2 ? <span>UPGRADE</span> : <span>DOWNGRADE</span>}
                                                         </Button>

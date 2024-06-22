@@ -6,7 +6,7 @@ import {
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Cancel, Shape, PaperClip, PaperPlane, Search, SortDown, SortUp } from "@/components/utils/Icons";
-import { getMessagesByTicket, getTicketsByUser, sendMessage, updateTickStatus } from '@/axios/ticket';
+import { getCurrentTicketStatus, getMessagesByTicket, getTicketsByUser, sendMessage, updateTickStatus } from '@/axios/ticket';
 import moment from 'moment/moment';
 import { userInfo as info } from '@/lib/auth/authSlice';
 import { useSelector } from 'react-redux';
@@ -41,6 +41,7 @@ export default function TicketDetail() {
 
     const [selectedTicketStatus, setSelectedTicketStatus] = useState('');
     const [sortDateDSC, setSortDateDSC] = useState(true);
+    const [limit, setLimit] = useState(0);
     const router = useRouter();
 
     const icons = {
@@ -123,6 +124,14 @@ export default function TicketDetail() {
         }
     }, [message, userInfo, targetTicket]);
 
+    const getCurrentTicketStatusInfo = useCallback(async () => {
+        const res = await getCurrentTicketStatus();
+
+        if (res.status == 'success') {
+            setLimit(userInfo.subscription.features.personal_agent - res.data.current);
+        }
+    }, [userInfo])
+
     useEffect(() => {
         if (selectedTicketStatus == '') setFilteredList(list);
 
@@ -203,6 +212,7 @@ export default function TicketDetail() {
 
     useEffect(() => {
         getTicketsInfo();
+        getCurrentTicketStatusInfo();
     }, []);
 
     return (
@@ -301,9 +311,13 @@ export default function TicketDetail() {
                             radius="full"
                             className="bg-gradient-to-tr border border-gray-600 text-white text-base from-purple-light to-purple-weight mt-4"
                             size='sm'
-                            onClick={() => router.push("/app/personal-agent/create-ticket")}
+                            isDisabled={!limit}
+                            onClick={() => {
+                                if ( !limit ) return;
+                                router.push("/app/personal-agent/create-ticket");
+                            }}
                         >
-                            <span>Create New Ticket</span>
+                            <span>Create New Ticket (Left: <span className='notranslate'>{limit}</span>)</span>
                         </Button>
                     </div>
                     <div className='flex flex-col pt-3 w-full flex-1'>

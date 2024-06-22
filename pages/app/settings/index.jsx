@@ -482,7 +482,7 @@ export default function AccountSetting() {
                     <Button
                         radius="md"
                         className={"bg-gradient-to-br text-white shadow-lg text-base w-max mt-3 " + (new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date() ? 'from-gray-800 to-gray-900 cursor-not-allowed' : 'from-purple-light to-purple-weight')}
-                        disabled={new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date()}
+                        isDisabled={new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date()}
                         size='sm'
                         onClick={() => {
                             if (new Date(socialUsername?.updatedAt).setMinutes(new Date(socialUsername?.updatedAt).getMinutes() + 1) > new Date()) return;
@@ -721,7 +721,7 @@ export default function AccountSetting() {
                                         {step == 1 ? <Button
                                             radius="lg"
                                             className={"border border-gray-500 text-white shadow-lg px-6 text-base bg-gradient-to-tr " + (!(usernames.length && usernames[0].link != '') ? 'from-gray-500 to-gray-600' : 'from-purple-light to-purple-weight')}
-                                            disabled={!(usernames.length && usernames[0].link != '')}
+                                            isDisabled={!(usernames.length && usernames[0].link != '')}
                                             onPress={() => {
                                                 if ((usernames.length && usernames[0].link != '')) setStep(2)
                                             }}

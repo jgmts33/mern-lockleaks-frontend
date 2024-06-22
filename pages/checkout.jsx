@@ -594,7 +594,7 @@ export default function Checkout() {
                         radius="lg"
                         className={"bg-gradient-to-tr text-white w-36  " + ((step == 1 && (!usernames.length || !usernames[0]?.link) || (step == 2 && !socialUsername)) ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
                         size='lg'
-                        disabled={(step == 1 && (!usernames.length || !usernames[0]?.link)) || (step == 2 && !socialUsername)}
+                        isDisabled={(step == 1 && (!usernames.length || !usernames[0]?.link)) || (step == 2 && !socialUsername)}
                         onPress={() => {
                             if ((step == 1 && (!usernames.length || !usernames[0]?.link) || (step == 2 && !socialUsername))) return;
                             if (step == 1 && plan != 'star') setStep(p => p + 2);
@@ -607,7 +607,7 @@ export default function Checkout() {
                     <Button
                         radius="lg"
                         className={"bg-gradient-to-tr text-white w-36  " + (!usernames.length || !usernames[0]?.link ? " from-gray-700 to-gray-800 cursor-not-allowed" : "from-purple-light to-purple-weight")}
-                        disabled={!usernames.length || !usernames[0]?.link}
+                        isDisabled={!usernames.length || !usernames[0]?.link}
                         size='lg'
                         onPress={handlesubmitUsernamesForFreeTrial}
                     >
