@@ -12,7 +12,6 @@ import { useRouter } from 'next/router';
 export default function SMsubmit() {
 
     const userInfo = useSelector(info);
-    const router = useRouter();
     const [isActionProcessing, setIsActionProcessing] = useState(false);
     const [selectedSocialMedia, setSelectedSocialMedia] = useState('facebook.com');
     const [warning, setWarning] = useState('');
@@ -117,7 +116,7 @@ export default function SMsubmit() {
         if (userInfo.email) {
             getDailySubmitionCountInfo();
         }
-    }, [userInfo, router]);
+    }, [userInfo]);
 
     return (
         <>

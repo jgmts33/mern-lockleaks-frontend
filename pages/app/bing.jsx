@@ -19,7 +19,6 @@ import { useRouter } from 'next/router';
 export default function Bing() {
 
     const userInfo = useSelector(info);
-    const router = useRouter();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [scanProgress, setScanProgress] = useState({
         current: 0,
@@ -100,7 +99,7 @@ export default function Bing() {
             socket.disconnect();
         }
 
-    }, [userInfo, router]);
+    }, [userInfo]);
 
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {

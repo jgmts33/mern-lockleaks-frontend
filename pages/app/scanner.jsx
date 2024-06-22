@@ -17,7 +17,6 @@ import { useRouter } from 'next/router';
 export default function Scanner() {
 
     const userInfo = useSelector(info);
-    const router = useRouter();
     const [scanProgress, setScanProgress] = useState({
         current: 0,
         all: 0
@@ -70,7 +69,6 @@ export default function Scanner() {
     const getCurrentStatus = useCallback(async () => {
 
         const res = await getCurrentScannerStatus();
-        console.log("userInfo:", userInfo, res.data);
         if (res.status == 'success') {
             setLimit(userInfo.subscription.features.scanner - res.data.count);
 

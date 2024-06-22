@@ -16,7 +16,6 @@ import { useRouter } from 'next/router';
 export default function SMscanner() {
 
     const userInfo = useSelector(info);
-    const router = useRouter();
     const [value, setValue] = React.useState(0);
     const [socialUsername, setSocialUsername] = useState('');
     const [scanResult, setScanResult] = useState(0)
@@ -86,7 +85,7 @@ export default function SMscanner() {
             socket.disconnect();
         }
 
-    }, [userInfo, router]);
+    }, [userInfo]);
 
     return (
         <>

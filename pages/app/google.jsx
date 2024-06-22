@@ -19,7 +19,6 @@ import { useRouter } from 'next/router';
 export default function Google() {
 
     const userInfo = useSelector(info);
-    const router = useRouter();
     const [scanResult, setScanResult] = useState(DEFAULT_SCAN_RESULT);
     const [scanProgress, setScanProgress] = useState({
         current: 0,
@@ -103,7 +102,7 @@ export default function Google() {
             socket.disconnect();
         }
 
-    }, [userInfo, router]);
+    }, [userInfo]);
 
     useEffect(() => {
         if (scanProgress.current == scanProgress.all && scanProgress.current != 0) {
