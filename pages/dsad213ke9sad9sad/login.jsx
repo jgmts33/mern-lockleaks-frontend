@@ -109,11 +109,11 @@ export default function Login() {
         }
     }, [modalValue.status]);
 
-    useEffect(() => {
-        console.log("userInfo:", userInfo);
-        if (userInfo?.roles.includes("admin") || userInfo?.roles.includes("moderator")) router.push("/admin/dashboard");
-        if (userInfo?.roles.includes("user")) router.push("/app/dashboard");
-    }, [userInfo]);
+    // useEffect(() => {
+    //     console.log("userInfo:", userInfo);
+    //     if (userInfo?.roles.includes("admin") || userInfo?.roles.includes("moderator")) router.push("/admin/dashboard");
+    //     if (userInfo?.roles.includes("user")) router.push("/app/dashboard");
+    // }, [userInfo]);
 
     return (
 

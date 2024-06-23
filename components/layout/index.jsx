@@ -99,7 +99,7 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
 
-    if (!currentPath?.includes("admin") && !currentPath?.includes("app")) {
+    if (!currentPath?.includes("admin") && !currentPath?.includes("app") && !currentPath?.includes("login") && !currentPath?.includes("register")) {
       setMounted(true);
       return;
     }
@@ -260,7 +260,7 @@ export default function RootLayout({ children }) {
       onClose();
     }
 
-    setMounted(true);
+    if (!currentPath?.includes("login") && !currentPath?.includes("register")) setMounted(true);
 
     const socket = io(ENDPOINT);
 
@@ -337,7 +337,7 @@ export default function RootLayout({ children }) {
       if (getCookieValue('necessary') == 'un-allowed') return;
     }
 
-    if (!currentPath?.includes("app") && !currentPath?.includes("admin")) return;
+    if (!currentPath?.includes("app") && !currentPath?.includes("admin") && !currentPath?.includes("login") && !currentPath?.includes("register")) return;
 
     (async () => {
       try {
@@ -345,6 +345,10 @@ export default function RootLayout({ children }) {
         if (accessToken) {
           const res = await getUserInfo();
           if (res.status == 'success') {
+            if (currentPath?.includes("login") || currentPath?.includes("register")) {
+              if (res.data?.roles.includes("admin") || res.data?.roles.includes("moderator")) window.open("/admin/dashboard", '_self');
+              if (res.data?.roles.includes("user")) window.open("/app/dashboard", '_self');
+            }
             dispatch(setUserInfo(res.data));
           }
           else {
@@ -353,6 +357,8 @@ export default function RootLayout({ children }) {
         }
       } catch (err) {
         console.log(err);
+      } finally {
+        setMounted(true);
       }
     })();
 

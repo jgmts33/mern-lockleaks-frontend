@@ -158,11 +158,11 @@ export default function Register() {
         }
     }, [modalValue]);
 
-    useEffect(() => {
-        console.log("userInfo:", userInfo);
-        if (userInfo?.roles.includes("admin") || userInfo?.roles.includes("moderator")) router.push("/admin/dashboard");
-        if (userInfo?.roles.includes("user")) router.push("/app/dashboard");
-    }, [userInfo]);
+    // useEffect(() => {
+    //     console.log("userInfo:", userInfo);
+    //     if (userInfo?.roles.includes("admin") || userInfo?.roles.includes("moderator")) router.push("/admin/dashboard");
+    //     if (userInfo?.roles.includes("user")) router.push("/app/dashboard");
+    // }, [userInfo]);
 
     return (
         <div className='px-10 max-sm:px-2 flex w-full min-h-[calc(100vh-80px)]'>
