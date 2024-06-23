@@ -151,7 +151,7 @@ export default function ContactWarning() {
       <p className='mt-5 mb-12 font-extrabold text-lg'>Lock Leaks Platform Access Agreement</p>
       {step == 0
         ? <div className='max-md:mx-auto space-y-8 text-medium font-normal'>
-          <p>Welcome to Lock Leaks! Before you gain access to our platform, we require you to complete the following agreement. By proceeding, you acknowledge and agree to the terms outlined below</p>
+          <p>Welcome to Lock Leaks! Before you gain access to our platform, we require you to complete the following agreement. By proceeding, you acknowledge and agree to the terms outlined below.</p>
           <p className='font-bold'>Identification and Data Security:</p>
           <div>
             <p className='font-bold'>1.Identification Upload and Data Handling:</p>
