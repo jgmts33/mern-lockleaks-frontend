@@ -197,7 +197,7 @@ export default function ContactWarning() {
           </ul>
           <div>
             <p className='font-bold'>3.Online Signature for Acceptance of Contract:</p>
-            <p>By typing your full name below, you agree to the terms outlined in the Lock Leaks Platform Access Agreement and provide your electronic signature:</p>
+            <p>By typing your full name below, you agree to the terms outlined in the Lock Leaks Platform Access Agreement and provide your electronic signature.</p>
           </div>
           <div>
             <Input

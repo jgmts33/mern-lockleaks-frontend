@@ -127,7 +127,7 @@ export default function CreatePost() {
                     <>
                         <div className='grid grid-cols-2 max-md:grid-cols-1 w-full gap-6 items-end'>
                             <div>
-                                <p className='mb-4'>BLog Details</p>
+                                <p className='mb-4'>Blog Details</p>
                                 <div className='flex gap-4 max-sm:flex-col items-end'>
                                     <div className='space-y-4'>
                                         <div className='flex flex-col w-64 h-64 bg-white/10 shadow-sm border border-gray-500 rounded-[16px]'>

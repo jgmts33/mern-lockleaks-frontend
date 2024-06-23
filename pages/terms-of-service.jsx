@@ -179,16 +179,16 @@ export default function TermService() {
                 <h2 class="font-medium text-[#F68171]">Fees and Payment</h2>
 
                 <p>
-                    1. Membership subscriptions are billed in advance based on the selected membership type and are payable through Paddle.com Inc., which describes itself as a payments infrastructure for software companies. For products that do not require a subscription, users pay directly for the product. Users have the right to use the product for the duration specified by LockLeaks on the Site. If the user does not renew at the end of this term, LockLeaks will cease providing service.
+                    1. Membership subscriptions are billed in advance based on the selected membership type and are payable through Stripe.com Inc., which describes itself as a payments infrastructure for software companies. For products that do not require a subscription, users pay directly for the product. Users have the right to use the product for the duration specified by Lock Leaks on the Site. If the user does not renew at the end of this term, Lock Leaks will cease providing service.
                 </p>
                 <p>
-                    2. You may need to purchase or pay a fee to access some of the services offered through Paddle.
+                    2. You may need to purchase or pay a fee to access some of the services offered through Stripe.
                 </p>
                 <p>
-                    3. You must provide current, complete, and accurate purchase and account information for all purchases made via Paddle.com. For more payment details, please visit Paddle.com.
+                    3. You must provide current, complete, and accurate purchase and account information for all purchases made via Stripe.com. For more payment details, please visit Stripe.com.
                 </p>
                 <p>
-                    4. Pricing on the Site does not include VAT. Paddle.com will add a VAT fee to your purchase price.
+                    4. Pricing on the Site does not include VAT. Stripe.com will add a VAT fee to your purchase price.
                 </p>
                 <p>
                     5. LOCK LEAKS may change prices at any time, with notice of the change provided on the Site. In such cases, the user has the right to terminate the relevant agreement free of charge, in writing or by email, effective on the date the price change takes effect.
@@ -206,7 +206,7 @@ export default function TermService() {
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cancellation by You:</h3>
                 <ul>
-                    <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Paddle.com after your subscription or request a cancellation link directly from LOCKLEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
+                    <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Stripe.com after your subscription or request a cancellation link directly from LOCK LEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
                     <li>Cancellation allows you to maintain access to the service until the end of your billing period. Payments are generally non-refundable, and no refunds or credits are provided for partial membership periods or unused content, as permitted by applicable law.</li>
                     <li>If Lock Leaks determines that you are abusing the cancellation and refund process, it reserves the right to block access to and/or terminate your account at its sole discretion.</li>
                 </ul>
@@ -222,16 +222,16 @@ export default function TermService() {
                 <h2 class="font-medium text-[#F68171]">Fees and Payment</h2>
 
                 <p>
-                    1. Membership subscriptions are billed in advance based on the selected membership type and are payable through Paddle.com Inc., which describes itself as a payments infrastructure for software companies. For products that do not require a subscription, users pay directly for the product. Users have the right to use the product for the duration specified by LockLeaks on the Site. If the user does not renew at the end of this term, LockLeaks will cease providing service.
+                    1. Membership subscriptions are billed in advance based on the selected membership type and are payable through Stripe.com Inc., which describes itself as a payments infrastructure for software companies. For products that do not require a subscription, users pay directly for the product. Users have the right to use the product for the duration specified by Lock Leaks on the Site. If the user does not renew at the end of this term, Lock Leaks will cease providing service.
                 </p>
                 <p>
-                    2. You may need to purchase or pay a fee to access some of the services offered through Paddle.
+                    2. You may need to purchase or pay a fee to access some of the services offered through Stripe.
                 </p>
                 <p>
-                    3. You must provide current, complete, and accurate purchase and account information for all purchases made via Paddle.com. For more payment details, please visit Paddle.com.
+                    3. You must provide current, complete, and accurate purchase and account information for all purchases made via Stripe.com. For more payment details, please visit Stripe.com.
                 </p>
                 <p>
-                    4. Pricing on the Site does not include VAT. Paddle.com will add a VAT fee to your purchase price.
+                    4. Pricing on the Site does not include VAT. Stripe.com will add a VAT fee to your purchase price.
                 </p>
                 <p>
                     5. LOCK LEAKS may change prices at any time, with notice of the change provided on the Site. In such cases, the user has the right to terminate the relevant agreement free of charge, in writing or by email, effective on the date the price change takes effect.
@@ -249,7 +249,7 @@ export default function TermService() {
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cancellation by You:</h3>
                 <ul>
-                    <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Paddle.com after your subscription or request a cancellation link directly from LOCKLEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
+                    <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Stripe.com after your subscription or request a cancellation link directly from LOCK LEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
                     <li>Cancellation allows you to maintain access to the service until the end of your billing period. Payments are generally non-refundable, and no refunds or credits are provided for partial membership periods or unused content, as permitted by applicable law.</li>
                     <li>If Lock Leaks determines that you are abusing the cancellation and refund process, it reserves the right to block access to and/or terminate your account at its sole discretion.</li>
                 </ul>
@@ -267,7 +267,7 @@ export default function TermService() {
                 <ul>
                     <li>
                         <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Trial Period:</h3>
-                        <p>By signing up for a trial version of LOCKLEAKS Services, you can use the services free of charge for 3 days. During the trial, you have access to the following LOCKLEAKS Services:</p>
+                        <p>By signing up for a trial version of LOCK LEAKS Services, you can use the services free of charge for 3 days. During the trial, you have access to the following LOCK LEAKS Services:</p>
                         <ul>
                             <li>Takedown requests are limited to 5 URL per day.</li>
                             <li>The feature scanner module (Google & Bing) scans limited links and does not operate worldwide.</li>
@@ -278,7 +278,7 @@ export default function TermService() {
                     <li>At the end of the free trial, your account will be charged according to the subscription plan you selected.</li>
                     <li>Each person is allowed to use the free trial only once. The option to skip the trial and upgrade to a paid plan is available on your dashboard. If you click the skip trial button, your free trial will end immediately, even if the payment process fails.</li>
                     <li>LOCK LEAKS reserves the right to deny a trial order without providing a reason.</li>
-                    <li>The terms and availability of the free trial may be changed by LOCKLEAKS at any time without prior notice.</li>
+                    <li>The terms and availability of the free trial may be changed by LOCK LEAKS at any time without prior notice.</li>
                 </ul>
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Verification Steps:</h3>
@@ -287,7 +287,7 @@ export default function TermService() {
                         <p>To verify your profile, you must complete one of the following steps:</p>
                         <ul>
                             <li><b>Social Media Verification:</b> Follow Lock Leaks on Facebook, Instagram, and Twitter and send us a Direct Message indicating your interest in working with Lock Leaks along with your email address.</li>
-                            <li><b>Photograph/Selfie:</b> Send a photograph of yourself holding a sign that reads, “I want LockLeaks as my authorized copyright representative.” Ensure your face and hands are visible in the image.</li>
+                            <li><b>Photograph/Selfie:</b> Send a photograph of yourself holding a sign that reads, “I want Lock Leaks as my authorized copyright representative.” Ensure your face and hands are visible in the image.</li>
                             <li><b>Government ID/Passport:</b> Attach a copy of your national ID card or passport.</li>
                         </ul>
                     </li>
@@ -300,38 +300,38 @@ export default function TermService() {
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cooperation and Compliance:</h3>
                 <ul>
-                    <li>The Customer and Users must provide Lock Leaks with all necessary cooperation and access to information required to deliver the Services. They must comply with all applicable laws and regulations in relation to their activities under the Contract and fulfill all their responsibilities as outlined in the Contract in a timely and efficient manner. Any delays in providing the required assistance may lead LockLeaks to adjust the agreed timetable or delivery schedule as necessary.</li>
+                    <li>The Customer and Users must provide Lock Leaks with all necessary cooperation and access to information required to deliver the Services. They must comply with all applicable laws and regulations in relation to their activities under the Contract and fulfill all their responsibilities as outlined in the Contract in a timely and efficient manner. Any delays in providing the required assistance may lead Lock Leaks to adjust the agreed timetable or delivery schedule as necessary.</li>
                 </ul>
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Content Ownership and Authority:</h3>
                 <ul>
-                    <li>The Customer and Users warrant that any content they report to LockLeaks, or for which they submit takedown or delisting notices using the Services, infringes their intellectual property rights and that they have the authority to request its removal from the Site where it is hosted or indexed.</li>
-                    <li>The Customer and Users acknowledge that LockLeaks may perform verification checks to confirm the ownership of the content. This includes, but is not limited to, checks of public databases, financial and company records, and direct requests for license and rights holder agreements from the Customer or User.</li>
+                    <li>The Customer and Users warrant that any content they report to Lock Leaks, or for which they submit takedown or delisting notices using the Services, infringes their intellectual property rights and that they have the authority to request its removal from the Site where it is hosted or indexed.</li>
+                    <li>The Customer and Users acknowledge that Lock Leaks may perform verification checks to confirm the ownership of the content. This includes, but is not limited to, checks of public databases, financial and company records, and direct requests for license and rights holder agreements from the Customer or User.</li>
                     <li>The Customer and Users warrant that they either own the intellectual property rights in the content or have been granted an express license to act and enforce the intellectual property rights on behalf of the rights owner.</li>
                     <li>The Customer and Users grant Lock Leaks express authority to issue takedown requests on their behalf.</li>
                 </ul>
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">3. Indemnification:</h3>
                 <ul>
-                    <li>The Customer and Users shall indemnify LockLeaks against all liabilities, costs, expenses, damages, and losses arising from or in connection with the Customer's or User's breach of any terms of the Contract.</li>
+                    <li>The Customer and Users shall indemnify Lock Leaks against all liabilities, costs, expenses, damages, and losses arising from or in connection with the Customer's or User's breach of any terms of the Contract.</li>
                 </ul>
 
                 <h2 class="font-medium text-[#F68171]">Prohibited Activities</h2>
-                <p>You may not access or use the Site for any purpose other than that for which it is made available. The Site may not be used for any commercial endeavors except those specifically endorsed or approved by us. LockLeaks reserves the right to refuse service to any user who has previously disputed the site or whose content is deemed unacceptable.</p>
+                <p>You may not access or use the Site for any purpose other than that for which it is made available. The Site may not be used for any commercial endeavors except those specifically endorsed or approved by us. Lock Leaks reserves the right to refuse service to any user who has previously disputed the site or whose content is deemed unacceptable.</p>
 
                 <h2 class="font-medium text-[#F68171]">Fees and Payment</h2>
 
                 <p>
-                    1. Membership subscriptions are billed in advance based on the selected membership type and are payable through Paddle.com Inc., which describes itself as a payments infrastructure for software companies. For products that do not require a subscription, users pay directly for the product. Users have the right to use the product for the duration specified by LockLeaks on the Site. If the user does not renew at the end of this term, LockLeaks will cease providing service.
+                    1. Membership subscriptions are billed in advance based on the selected membership type and are payable through Stripe.com Inc., which describes itself as a payments infrastructure for software companies. For products that do not require a subscription, users pay directly for the product. Users have the right to use the product for the duration specified by Lock Leaks on the Site. If the user does not renew at the end of this term, Lock Leaks will cease providing service.
                 </p>
                 <p>
-                    2. You may need to purchase or pay a fee to access some of the services offered through Paddle.
+                    2. You may need to purchase or pay a fee to access some of the services offered through Stripe.
                 </p>
                 <p>
-                    3. You must provide current, complete, and accurate purchase and account information for all purchases made via Paddle.com. For more payment details, please visit Paddle.com.
+                    3. You must provide current, complete, and accurate purchase and account information for all purchases made via Stripe.com. For more payment details, please visit Stripe.com.
                 </p>
                 <p>
-                    4. Pricing on the Site does not include VAT. Paddle.com will add a VAT fee to your purchase price.
+                    4. Pricing on the Site does not include VAT. Stripe.com will add a VAT fee to your purchase price.
                 </p>
                 <p>
                     5. LOCK LEAKS may change prices at any time, with notice of the change provided on the Site. In such cases, the user has the right to terminate the relevant agreement free of charge, in writing or by email, effective on the date the price change takes effect.
@@ -349,7 +349,7 @@ export default function TermService() {
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cancellation by You:</h3>
                 <ul>
-                    <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Paddle.com after your subscription or request a cancellation link directly from LOCKLEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
+                    <li>You may cancel your subscription at any time without prior notice. To cancel, click the “cancellation link” sent by Stripe.com after your subscription or request a cancellation link directly from LOCK LEAKS by emailing support@lockleaks.com. It is your responsibility to remove any LOCK LEAKS-related DMCA Badges from your website before you cancel your social media accounts.</li>
                     <li>Cancellation allows you to maintain access to the service until the end of your billing period. Payments are generally non-refundable, and no refunds or credits are provided for partial membership periods or unused content, as permitted by applicable law.</li>
                     <li>If Lock Leaks determines that you are abusing the cancellation and refund process, it reserves the right to block access to and/or terminate your account at its sole discretion.</li>
                 </ul>
@@ -367,7 +367,7 @@ export default function TermService() {
                 <ul>
                     <li>
                         <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Trial Period:</h3>
-                        <p>By signing up for a trial version of LOCKLEAKS Services, you can use the services free of charge for 3 days. During the trial, you have access to the following LOCKLEAKS Services:</p>
+                        <p>By signing up for a trial version of LOCK LEAKS Services, you can use the services free of charge for 3 days. During the trial, you have access to the following LOCK LEAKS Services:</p>
                         <ul>
                             <li>Takedown requests are limited to 5 URL per day.</li>
                             <li>The feature scanner module (Google & Bing) scans limited links and does not operate worldwide.</li>
@@ -378,7 +378,7 @@ export default function TermService() {
                     <li>At the end of the free trial, your account will be charged according to the subscription plan you selected.</li>
                     <li>Each person is allowed to use the free trial only once. The option to skip the trial and upgrade to a paid plan is available on your dashboard. If you click the skip trial button, your free trial will end immediately, even if the payment process fails.</li>
                     <li>LOCK LEAKS reserves the right to deny a trial order without providing a reason.</li>
-                    <li>The terms and availability of the free trial may be changed by LOCKLEAKS at any time without prior notice.</li>
+                    <li>The terms and availability of the free trial may be changed by LOCK LEAKS at any time without prior notice.</li>
                 </ul>
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Verification Steps:</h3>
@@ -387,7 +387,7 @@ export default function TermService() {
                         <p>To verify your profile, you must complete one of the following steps:</p>
                         <ul>
                             <li><b>Social Media Verification:</b> Follow Lock Leaks on Facebook, Instagram, and Twitter and send us a Direct Message indicating your interest in working with Lock Leaks along with your email address.</li>
-                            <li><b>Photograph/Selfie:</b> Send a photograph of yourself holding a sign that reads, “I want LockLeaks as my authorized copyright representative.” Ensure your face and hands are visible in the image.</li>
+                            <li><b>Photograph/Selfie:</b> Send a photograph of yourself holding a sign that reads, “I want Lock Leaks as my authorized copyright representative.” Ensure your face and hands are visible in the image.</li>
                             <li><b>Government ID/Passport:</b> Attach a copy of your national ID card or passport.</li>
                         </ul>
                     </li>
@@ -400,20 +400,20 @@ export default function TermService() {
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">1. Cooperation and Compliance:</h3>
                 <ul>
-                    <li>The Customer and Users must provide Lock Leaks with all necessary cooperation and access to information required to deliver the Services. They must comply with all applicable laws and regulations in relation to their activities under the Contract and fulfill all their responsibilities as outlined in the Contract in a timely and efficient manner. Any delays in providing the required assistance may lead LockLeaks to adjust the agreed timetable or delivery schedule as necessary.</li>
+                    <li>The Customer and Users must provide Lock Leaks with all necessary cooperation and access to information required to deliver the Services. They must comply with all applicable laws and regulations in relation to their activities under the Contract and fulfill all their responsibilities as outlined in the Contract in a timely and efficient manner. Any delays in providing the required assistance may lead Lock Leaks to adjust the agreed timetable or delivery schedule as necessary.</li>
                 </ul>
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">2. Content Ownership and Authority:</h3>
                 <ul>
-                    <li>The Customer and Users warrant that any content they report to LockLeaks, or for which they submit takedown or delisting notices using the Services, infringes their intellectual property rights and that they have the authority to request its removal from the Site where it is hosted or indexed.</li>
-                    <li>The Customer and Users acknowledge that LockLeaks may perform verification checks to confirm the ownership of the content. This includes, but is not limited to, checks of public databases, financial and company records, and direct requests for license and rights holder agreements from the Customer or User.</li>
+                    <li>The Customer and Users warrant that any content they report to Lock Leaks, or for which they submit takedown or delisting notices using the Services, infringes their intellectual property rights and that they have the authority to request its removal from the Site where it is hosted or indexed.</li>
+                    <li>The Customer and Users acknowledge that Lock Leaks may perform verification checks to confirm the ownership of the content. This includes, but is not limited to, checks of public databases, financial and company records, and direct requests for license and rights holder agreements from the Customer or User.</li>
                     <li>The Customer and Users warrant that they either own the intellectual property rights in the content or have been granted an express license to act and enforce the intellectual property rights on behalf of the rights owner.</li>
                     <li>The Customer and Users grant Lock Leaks express authority to issue takedown requests on their behalf.</li>
                 </ul>
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">3. Indemnification:</h3>
                 <ul>
-                    <li>The Customer and Users shall indemnify LockLeaks against all liabilities, costs, expenses, damages, and losses arising from or in connection with the Customer's or User's breach of any terms of the Contract.</li>
+                    <li>The Customer and Users shall indemnify Lock Leaks against all liabilities, costs, expenses, damages, and losses arising from or in connection with the Customer's or User's breach of any terms of the Contract.</li>
                 </ul>
 
                 <h2 class="font-medium text-[#F68171]">Prohibited Activities</h2>
@@ -454,7 +454,7 @@ export default function TermService() {
                                 <li>Violates, or encourages any conduct that would violate, any applicable law or regulation or would give rise to civil liability.</li>
                                 <li>Infringes, misappropriates, or violates a third party’s trademark, patent, trade secret, copyright, moral rights, or other proprietary rights, or rights of publicity or privacy.</li>
                                 <li>Contains any type of unauthorized or unsolicited advertising or commercial communications (such as spam or multi-level marketing).</li>
-                                <li>Impersonates any person or entity, including any LOCKLEAKS employees or representatives.</li>
+                                <li>Impersonates any person or entity, including any LOCK LEAKS employees or representatives.</li>
                                 <li>Promotes illegal or harmful activities or substances.</li>
                             </ul>
                         </li>
@@ -515,7 +515,7 @@ export default function TermService() {
 
                 <h3 class="font-medium bg-gradient-to-br from-[#9C3FE4] to-[#C65647] bg-clip-text text-transparent">User Generated Contributions</h3>
                 <ul>
-                    <li><b>Content Ownership:</b> Users retain ownership of their contributions but grant LockLeaks a license to use them.</li>
+                    <li><b>Content Ownership:</b> Users retain ownership of their contributions but grant Lock Leaks a license to use them.</li>
                     <li><b>Content Guidelines:</b> Contributions must not be harmful, false, or unlawful.</li>
                 </ul>
 
