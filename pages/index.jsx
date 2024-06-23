@@ -46,7 +46,7 @@ export default function HomePage() {
       name: "Protect Content Now!",
       description: <div className='outline-none px-10 py-10'>
         <p>Upon detecting any infringing content, our expert agents act promptly by issuing DMCA takedown notices to the relevant internet authorities.We diligently remove any* illicit copies of your content identified through both software and manual scans.</p>
-        <p className='mt-10'>Our strong affiliations with file hosting sites ensure swift consideration of our DMCA takedown notices, aligning with our clients business policies.*Limited by DMCA compliance</p>
+        <p className='mt-10'>Our strong affiliations with file hosting sites ensure swift consideration of our DMCA takedown notices, aligning with our clients business policies.*Limited by DMCA compliance.</p>
       </div>,
       img: "assets/services/takedown.svg"
     },
@@ -55,7 +55,7 @@ export default function HomePage() {
       description: <div className='outline-none px-10 py-10'>
         <p>Delist holds membership in Google's Trusted Copyright Removal Program, leading to the rapid delisting of any reported infringing content.</p>
         <p className='mt-10'>Please note, we refrain from reporting referrals, reviews, affiliates, and any content you wish to retain.</p>
-        <p>We boast a perfect track record, removing 100% of reported infringing content from Google Search, Google Video, and Google Images, also covering Microsoft Bing</p>
+        <p>We boast a perfect track record, removing 100% of reported infringing content from Google Search, Google Video, and Google Images, also covering Microsoft Bing.</p>
       </div>,
       img: "assets/services/delist.svg"
     },
@@ -112,7 +112,7 @@ export default function HomePage() {
           <li>Results from Google Search, Images, and Videos</li>
           <li>Diverse websites including video-streaming platforms, forums, peer-to-peer sites, and more, totaling over 100,000 inspected websites</li>
           <li>File hosting services</li>
-          <li>Social media platforms such as Reddit, Instagram, Twitter, and TikTok.</li>
+          <li>Social media platforms such as Reddit, Instagram, Twitter, and TikTok</li>
         </ul>
       </div>,
       img: "assets/services/scan.svg"
@@ -144,7 +144,7 @@ export default function HomePage() {
     {
       name: "Re-verify & Re-analyzer",
       description: <div className='outline-none px-10 py-10'>
-        <p>This functionality involves repetitive scans and periodic updates to identify and evaluate any new copyright infringements or reintroduced content. It ensures constant monitoring of illegal activities and helps rediscover previously undetected content, ensuring all violations are appropriately managed and eliminated, maintaining high-security standards for copyrighted content.what need be here</p>
+        <p>This functionality involves repetitive scans and periodic updates to identify and evaluate any new copyright infringements or reintroduced content. It ensures constant monitoring of illegal activities and helps rediscover previously undetected content, ensuring all violations are appropriately managed and eliminated, maintaining high-security standards for copyrighted content.what need be here.</p>
       </div>,
       img: "assets/services/reverify-reanalyzer.svg"
     },
