@@ -188,7 +188,7 @@ export default function SocialMedia() {
         const socket = io(ENDPOINT);
 
         socket.on(`social-profile-submission`, async (value) => {
-            setSocialMediaScanList(p => ([value, ...p]));
+            setSocialMediaSubmitionsList(p => ([value, ...p]));
         });
 
         socket.on(`social-scan-finished`, async (value) => {
