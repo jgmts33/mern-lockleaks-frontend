@@ -310,7 +310,14 @@ export default function UsersView() {
         const res = await downloadCopyrightHolder(id);
         setIsActionProcessing(false);
         if (res.status == 'success') {
-            const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+            const decodedData = atob(res.data);
+            const byteCharacters = new Uint8Array(decodedData.length);
+            for (let i = 0; i < decodedData.length; i++) {
+                byteCharacters[i] = decodedData.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteCharacters.buffer);
+            const arrayBuffer = byteArray.buffer;
+            const pdfBlob = new Blob([arrayBuffer], { type: 'application/pdf' });
             const url = URL.createObjectURL(pdfBlob);
 
             // Create a temporary anchor element and simulate a click to download the file
