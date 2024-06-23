@@ -144,7 +144,7 @@ export default function PaymentProcessed() {
 
         <div className="flex bg-gradient-to-br mt-20 max-sm:mt-8 text-center mx-auto from-gray-600/10 to-gray-800/80 shadow-sm rounded-[20px] z-10 flex-col border border-gray-700 p-5">
           <p className='font-medium text-[34px] text-center'>PAYMENT</p>
-          <p className='mt-3 font-normal text-base'>We utilize Paddle as our payment processing platform. Paddle ensures secure payment transactions.
+          <p className='mt-3 font-normal text-base'>We utilize Stripe as our payment processing platform. Stripe ensures secure payment transactions.
             Follow the on-screen instructions to complete your purchase securely. Please note, additional VAT costs may apply based on your location.
             This charge will be billed at regular intervals until you opt to cancel the automatic renewal.
           </p>
@@ -170,7 +170,7 @@ export default function PaymentProcessed() {
           </div>
         </div>
         <div className='mx-auto text-start mt-20 max-sm:mt-8 mb-8 max-md:px-3'>
-          <p className='font-normal text-base'>We're utilizing Paddle for payment processing. What is Paddle? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
+          <p className='font-normal text-base'>We're utilizing Stripe for payment processing. What is Stripe? Please follow the on-screen instructions to securely complete your purchase.Please note that an additional cost, such as VAT, may be applicable based on your location. </p>
           <p className='font-normal text-base'>You will be charged this amount at regular intervals until you opt to cancel the automatic renewal.You can cancel the subscription using your account settings in the Billing section, or you can check the email you received for this purchase in your inbox. You will find instructions on how to cancel the subscription there.</p>
         </div>
       </div>
